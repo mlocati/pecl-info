@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>opendirectory</name>
+  <summary>PHP interface to OpenDirectory Framework</summary>
+  <description>Open Directory is a directory service architecture whose programming 
+  interface provides a centralized way for applications and services to retrieve 
+  information stored in directories. The Open Directory architecture consists of 
+  the DirectoryServices daemon, which receives Open Directory client API calls and 
+  sends them to the appropriate Open Directory plug-in.</description>
+  <maintainers>
+    <maintainer>
+      <user>jhannus</user>
+      <name>Justin Hannus</name>
+      <email>jhannus@128kb.com</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.2.2</version>
+    <date>2004-01-31</date>
+    <license>PHP</license>
+    <state>beta</state>
+    <notes>1. Some internal stuff has changed.
+	2. example.php has changed.
+	3. The following functions were added:
+	array ds_do_attribute_value_search(resource noderef, mixed rec_types, string attr_type, int match_type, string search)
+	array ds_get_record_attribute_info(resource dirref, resource rec_ref, string attr_type)
+	array ds_get_record_reference_info(resource dirref, resource rec_ref)
+	resource ds_open_dir_service_proxy(string host, int portno, string username, string passwd [, string auth_type_name])
+	4. Directory node authentication was fixed for 10.2 (which should be the same for 10.3)
+	
+	NOTE: ds_create_record() is still buggy when used to create *AND* open a record (see last parameter). 
+	  For the time being use separate calls to ds_create_record() and ds_open_record() if you want to
+	  use the record reference returned with set_record_[name|type] functions, unexpected results may happen.
+	  This may be a limitation to the framework's dsCreateRecordAndOpen() routine. I'm still looking 
+	  into this. Consider this extension unstable as the function names, parameters and return values 
+	  may change.</notes>
+    <deps>
+      <dep type="php" rel="ge">4.3.0</dep>
+    </deps>
+    <filelist>
+      <file role="src" md5sum="f16cc9314b340f57abaf04f870b8abab" name="config.m4"/>
+      <file role="src" md5sum="7767803b8a0fdfb3db328dcf235b0b92" name="opendirectory.c"/>
+      <file role="src" md5sum="f54115afd92d6c44c6793d904d06ff6f" name="opendirectory_errors.h"/>
+      <file role="src" md5sum="25fa1555972645ff7859afe07f72ae01" name="php_opendirectory.h"/>
+      <file role="php" md5sum="ee250200b1e9187068bdbd553741167a" name="example.php"/>
+      <file role="php" md5sum="fe7de3c507d9c8f0b27bc7882d2e9868" name="DSConstants.php"/>
+      <file role="doc" md5sum="adf27bd28e5cec9e3bcb0685548ae692" name="README"/>
+      <file role="doc" md5sum="71324386069161196dda4dbfa48e7531" name="CHANGES"/>
+      <file role="doc" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL"/>
+      <file role="doc" md5sum="677b5aeadec8f4efcc7466a1a9a08516" name="CREDITS"/>
+    </filelist>
+  </release>
+</package>

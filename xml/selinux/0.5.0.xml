@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>selinux</name>
+ <channel>pecl.php.net</channel>
+ <summary>SELinux binding for PHP script language</summary>
+ <description>This extension provides a set of interfaces to communicate between
+    SELinux and PHP script language. It contains functions to get/set
+    security context of processes and other objects, to get/set system
+    booleans, to make a query for in-kernel security server and so on.</description>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>KaiGai Kohei</name>
+  <user>kaigai</user>
+  <email>kaigai@kaigai.gr.jp</email>
+  <active>yes</active>
+ </lead>
+ <date>2020-04-22</date>
+ <time>13:50:37</time>
+ <version>
+  <release>0.5.0</release>
+  <api>0.4.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license/">PHP License</license>
+ <notes>
+- drop support for PHP 5
+- preliminary support for PHP 8
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="673e0fd878ab2afbfa93b783962cafe6" name="tests/001-information.phpt" role="test" />
+   <file md5sum="d8d5313081a494021f59417c2c64fb3a" name="tests/002-boolean.phpt" role="test" />
+   <file md5sum="e801d91ef491a357f7b4cd97190e4adb" name="README" role="doc" />
+   <file md5sum="120722ac328447294083a64f651c3ddc" name="LICENSE" role="doc" />
+   <file md5sum="d51d4fe5e55fac1c16e777af42311ae8" name="config.m4" role="src" />
+   <file md5sum="44d36753751f59ea925084a1ed7a08fe" name="selinux.c" role="src" />
+   <file md5sum="e793eba4d849081eac92d396ba333c60" name="php_selinux.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+   <os>
+    <name>linux</name>
+   </os>
+  </required>
+ </dependencies>
+ <providesextension>selinux</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="enable-selinux" prompt="Enable SELinux?" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <date>2018-08-20</date>
+   <version>
+    <release>0.4.2</release>
+    <api>0.4.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license/">PHP License</license>
+   <notes>
+- missing libselinux in link command
+- The selinux_deny_unknown() was added
+- PHP 7 compatibility (Remi)
+- fix build with libselinux 2.0 (RHEL-6)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.4.1</release>
+    <api>0.4.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2015-05-24</date>
+   <notes>
+- selinux_compute_create() allows to take 4th argument to give
+  an object name.
+- selinux_x_label_lookup() and selinux_db_label_lookup() were added.
+- PHP 7 compatibility (Remi)
+- fix build woth libselinux 2.0 (RHEL-6)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.1</release>
+    <api>0.3.1</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2009-04-16</date>
+   <notes>
+- The &quot;permissive&quot; tag was added to selinux_compute_av
+- The selinux_deny_unknown() was added
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.1</release>
+    <api>0.2.1</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2009-03-12</date>
+   <notes>
+- Specfile to build RPM package is added.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.2</release>
+    <api>0.1.2</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2009-03-03</date>
+   <notes>
+- The initial release of SELinux binding for PHP script language.
+   </notes>
+  </release>
+ </changelog>
+</package>

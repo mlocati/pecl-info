@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.10" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>rpminfo</name>
+ <channel>pecl.php.net</channel>
+ <summary>RPM information</summary>
+ <description>Retrieve RPM information using librpm.
+Available functions:
+- rpmvercmp to compare 2 EVRs
+- rpminfo to retrieve information from a RPM file
+- rpmdbinfo to rerieve information from an installed RPM</description>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2020-03-11</date>
+ <time>07:37:03</time>
+ <version>
+  <release>0.2.2</release>
+  <api>0.2.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license>PHP 3.01</license>
+ <notes>
+- Fix gh#1 rpmvercmp() incorrect comparison result
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="68906a068fb25ce5ecfbe9dec3791c27" name="examples/repomanage.php" role="doc" />
+   <file md5sum="e90d03f47ea41348b4958058f56ba717" name="examples/rpmvercmp.php" role="doc" />
+   <file md5sum="a5d24bf6a193fa419c31c6e548282a2a" name="examples/librpm.php" role="doc" />
+   <file md5sum="e0de7f6bae298c9debeec55218bc19a0" name="tests/001-presence.phpt" role="test" />
+   <file md5sum="41213dc5829ab95719bb659a9bb96eaa" name="tests/002-rpmvercmp.phpt" role="test" />
+   <file md5sum="7a2e39673d60a1a456e170f9aaf661eb" name="tests/003-rpminfo.phpt" role="test" />
+   <file md5sum="375f7f5909d5a9d2ebd780a6b0a44870" name="tests/004-constants.phpt" role="test" />
+   <file md5sum="9264df7327201fd440acfa5d154021f4" name="tests/005-rpminfo-full.phpt" role="test" />
+   <file md5sum="5d738ae12afad49e1216f4fa6cdd0227" name="tests/006-rpminfo-errors.phpt" role="test" />
+   <file md5sum="bdca8258322d826e024a07aa8fc22944" name="tests/007-rpmdbinfo.phpt" role="test" />
+   <file md5sum="b7ca30c67f8e57831b4ed329ef908fb7" name="tests/bidon.rpm" role="test" />
+   <file md5sum="e8cf0e7631e3e55fb41b25bc971220da" name="tests/bidon-src.rpm" role="test" />
+   <file md5sum="031b20d0424cb93fb72a3b638afbe1d2" name="config.m4" role="src" />
+   <file md5sum="aa8c3bc666beb805400a76e113f7015d" name="php_rpminfo.h" role="src" />
+   <file md5sum="4c2153cceb64ef794bd84e9218694574" name="rpminfo.c" role="src" />
+   <file md5sum="520a7cfc1720f637ceca27e76ce9f1e3" name="CREDITS" role="doc" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL" role="doc" />
+   <file md5sum="c0af599f66d0461c5837c695fcbc5c1e" name="LICENSE" role="doc" />
+   <file md5sum="7074ea528881000d6ecbd2c134dd64c8" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>rpminfo</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2018-02-12</date>
+   <version>
+    <release>0.2.1</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- add summary in minimal information set
+- retrieve array from metadata
+- add RPMSENSE_* macros
+   </notes>
+  </release>
+  <release>
+   <date>2018-02-08</date>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- new function:
+  array rpmdbinfo(string name [, bool full]);
+   </notes>
+  </release>
+  <release>
+   <date>2018-02-08</date>
+   <version>
+    <release>0.1.3dev</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- first pecl release
+- rpminfo(): add option to retrieve error message instead of raising a warning
+   </notes>
+  </release>
+  <release>
+   <date>2018-01-26</date>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- fix segfault in ZTS mode
+- define RPMVERSION constant
+   </notes>
+  </release>
+  <release>
+   <date>2018-01-26</date>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- first release with 2 functions:
+  int rpmvercmp(string evr1, string evr2);
+  array rpminfo(string path [, bool full]);
+   </notes>
+  </release>
+ </changelog>
+</package>

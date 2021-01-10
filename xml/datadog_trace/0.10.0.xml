@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.10.7" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>datadog_trace</name>
+ <channel>pecl.php.net</channel>
+ <summary>APM and distributed tracing for PHP</summary>
+ <description>The Datadog PHP Tracer brings APM and distributed tracing to PHP.</description>
+ <lead>
+  <name>Sammy Kaye Powers</name>
+  <user>sammyk</user>
+  <email>sammyk@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2019-01-22</date>
+ <time>15:05:12</time>
+ <version>
+  <release>0.10.0</release>
+  <api>0.10.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="https://github.com/DataDog/dd-trace-php/blob/master/LICENSE">BSD 3-Clause</license>
+ <notes>
+**WARNING: THIS IS A BREAKING CHANGE RELEASE**
+
+Refer to the migration guide (/UPGRADE-0.10.md) for a detailed description.
+
+At an high level here are the breaking changes we introduced:
+
+- We removed OpenTracing as a required dependency. We still support OpenTracing, so you can do `OpenTracing\GlobalTracer::get()` in your code and still retrieve a OpenTracing compliant tracer, but OpenTracing dependency is now optional.
+- We introduced auto-instrumentation and 1-step installation in place of manual registration of providers/bundles. Before, in order to see traces, you had to install our extension, add two dependencies to the composer file and add a provider (Laravel) or a bundle (Symfony). Starting from now you will only have to install the extension. You still have freedom to manually instrument the code, but only for advanced usage.
+
+### Added
+- Request init hook configuration allowing running arbitrary code before actual request execution #175
+- Support OpenTracing without depending on it #193
+- Initial C extension PHP 5.4 support #205
+- Removal of external dependencies to support auto-instrumentation #206
+- Migration from namespace based constants to class based constants for tags, formats and types #207
+- Track integration loading to avoid re-loading unnecessary ones #211
+- Documenting release steps #223
+- Ability to run web framework tests in external web server #232
+- Support for auto-instrumentation #237
+- Support for Zend Framework 1 #238
+- `Tracer::startRootSpan()` to track the root `Scope` instance which can be accessed with `Tracer::getRootScope()` #241
+
+### Fixed
+- The INI settings now appear in `phpinfo()` and when running `$ php -i` #242
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="a2d8df09f396a4df50654a30fa72d7e4" name="src/ext/compat_zend_string.c" role="src" />
+   <file md5sum="d722a9b70d8e47b26a55649be4a583f7" name="src/ext/compat_zend_string.h" role="src" />
+   <file md5sum="b04a5a87f4a6087fec5e5279ca1cb65a" name="src/ext/ddtrace.c" role="src" />
+   <file md5sum="f872736eea94cadc656674126226f950" name="src/ext/ddtrace.h" role="src" />
+   <file md5sum="56142f9675ed2ecd2faa3d45ac441544" name="src/ext/debug.h" role="src" />
+   <file md5sum="0a11826ed98d6998851a45138f390134" name="src/ext/dispatch.c" role="src" />
+   <file md5sum="17e59349815deaca7251ee975f1a137c" name="src/ext/dispatch.h" role="src" />
+   <file md5sum="806e39c809a3b9b1e7e6c0dcef342e3d" name="src/ext/dispatch_compat.h" role="src" />
+   <file md5sum="43c5ad8ce86c22c9a035c01f89ecd0bc" name="src/ext/dispatch_compat_php5.c" role="src" />
+   <file md5sum="541e35ee9e3a3d7bf96550999e6f9bf1" name="src/ext/dispatch_compat_php5.h" role="src" />
+   <file md5sum="969fcb313c454b41dff9599d8b129a6b" name="src/ext/dispatch_compat_php7.c" role="src" />
+   <file md5sum="e57ae1a03e69d2010e1f199c56f46aab" name="src/ext/dispatch_setup.c" role="src" />
+   <file md5sum="b869ded1d6f83de8a09bbf239a7fd091" name="src/ext/version.h" role="src" />
+   <file md5sum="aa538199e059700f3d09c5341d5e7a2d" name="tests/ext/access_modifier_method_access_hook.phpt" role="test" />
+   <file md5sum="4a08625ac2121107cf77f945c197e473" name="tests/ext/access_modifier_property_access_hook.phpt" role="test" />
+   <file md5sum="39a537b42c807ca77a7a94e79a4e137c" name="tests/ext/case_insensitive_method_hook.phpt" role="test" />
+   <file md5sum="be79bce2496fe401e56b68c081b83ed5" name="tests/ext/closure_accessing_outside_variables.phpt" role="test" />
+   <file md5sum="8663b712524b5ab566333c7f763f0d6f" name="tests/ext/closure_set_inside_object_methods.phpt" role="test" />
+   <file md5sum="dba5bdf810c02b3e351dce531f482cce" name="tests/ext/method_returning_array.phpt" role="test" />
+   <file md5sum="a4430a4c9ef393809cb90517ab9f9311" name="tests/ext/multiple_instrumentations.phpt" role="test" />
+   <file md5sum="ff846bd64f65db0b876d314679af6787" name="tests/ext/namespaces.phpt" role="test" />
+   <file md5sum="254dbf39f5712febc4d0200f5ea40723" name="tests/ext/overriding_construct.phpt" role="test" />
+   <file md5sum="9f5764ecf1ab82c4ec841f6de4cf656f" name="tests/ext/overriding_method_defined_in_parent.phpt" role="test" />
+   <file md5sum="37f2bc798254ff146659a35878b633f0" name="tests/ext/private_method_hook.phpt" role="test" />
+   <file md5sum="53e9462b2d068009e0b6a23bcea2cdb9" name="tests/ext/protected_method_hook.phpt" role="test" />
+   <file md5sum="fd1924431ffd4944ed06792f378bdd58" name="tests/ext/recursion.phpt" role="test" />
+   <file md5sum="dcfd404e9d62cdd488a6b7bfbcd839c0" name="tests/ext/return_value_passed.phpt" role="test" />
+   <file md5sum="e984b7e67b6076a6395b075f31488153" name="tests/ext/simple_function_hook.phpt" role="test" />
+   <file md5sum="be7f5a3833e0f607bea4d51c26fd701f" name="tests/ext/simple_method_hook.phpt" role="test" />
+   <file md5sum="f480dac361372ea514daad2d414e6ed7" name="tests/ext/throw_exception.phpt" role="test" />
+   <file md5sum="86dcbd4df2c0e1a65ef79715f65a6efb" name="tests/ext/variable_length_parameter_list.phpt" role="test" />
+   <file md5sum="86d8d0bc04c03911e8358ab6939f33ca" name="tests/ext/with_params_function_hook.phpt" role="test" />
+   <file md5sum="615ca12addba2609c3878b721ffa8abc" name="tests/ext/with_params_method_hook.phpt" role="test" />
+   <file md5sum="0143ee5b9e64d85a6837b9a8c9bb817f" name="CHANGELOG.md" role="doc" />
+   <file md5sum="d460a47f115259b52f480108c569cbaf" name="config.m4" role="src" />
+   <file md5sum="bb70ec375a72403325f23192cea36357" name="LICENSE" role="doc" />
+   <file md5sum="51ba9b264c6fc86ccdb7d95cd4c3cb21" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.6</min>
+    <max>7.2.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+   <extension>
+    <name>json</name>
+   </extension>
+  </required>
+ </dependencies>
+ <providesextension>ddtrace</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="enable-ddtrace-debug" prompt="Enable internal debugging in ddtrace" />
+ </extsrcrelease>
+</package>

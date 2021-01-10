@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.9.5" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>redis</name>
+ <channel>pecl.php.net</channel>
+ <summary>PHP extension for interfacing with Redis</summary>
+ <description>This extension provides an API for communicating with Redis servers.</description>
+ <lead>
+  <name>Michael Grunder</name>
+  <user>mgrunder</user>
+  <email>michael.grunder@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Nicolas Favre-Felix</name>
+  <user>nff</user>
+  <email>n.favrefelix@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2016-06-10</date>
+ <time>20:08:21</time>
+ <version>
+  <release>3.0.0</release>
+  <api>3.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+phpredis 3.0.0
+
+This version of phpredis supports cluster and is intended for php versions
+7.0.0 and higher.  To compile cluster-enabled phpredis for older versions
+of php, please use the 2.2.8 pecl package.
+
+A huge thanks goes out to Sean DuBois for doing all the work required to get
+phpredis working in php 7.0!
+
+-- Improvements ---
+
+* PHP 7 Support (Sean DuBois) [3159bd2, 567dc2f, daa4d9f, f2711e3, 9cb9d07,
+  9d51c89, 9ff8f49, 33bb629, cbdf65a, f30b7fd, c687a51, 6b3e773, 2bf8241,
+  771bd3d, 9221ca4, 4e00df6, e2407ca, 97fcfe6, 77e6200]
+* Redis Cluster support
+* Allow SINTERSTORE to take a single array argument again
+* IPv6 support
+
+--- Fixes ---
+
+* config.w32 fix (Jan-E) [495d308, c9e0b682]
+* Exception handling improvement (Jan-E) [314a2c3c]
+* Unit test fix for max int value (Jan-E) [659ea2aa]
+* unsigned long -&gt; zend_ulong fix (Jan-E) [4d66e3d4]
+* Visual Stuio 14 fixes (Jan-E) [ea98401c]
+* Segfault fix when looking up our socket (ephemeralsnow) [0126481a]
+* Allow &apos;-&apos; and &apos;+&apos; in ZRANGEBYLEX (Patrick Pokatilo) [8bfa2188]
+* Documentation fixes (Ares) [54b9a0ec]
+* php7 related memory leak fix (Stuart Carnie) [b75bf3b4]
+* Potential segfault fix in cluster session (Sergei Lomakov) [661fb5b1]
+* php7 related serialization leak fix (Adam Harvey) [c40fc1d8]
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="19f80c291d8ffb93cf3908aaafad9b33" name="tests/RedisArrayTest.php" role="test" />
+   <file md5sum="b384305998f2b227658bb8ca18a307c0" name="tests/RedisClusterTest.php" role="test" />
+   <file md5sum="3d78ee2cd82e304b86b4c8578400e416" name="tests/RedisTest.php" role="test" />
+   <file md5sum="ed860333967031d2575d08931406ce1c" name="tests/TestRedis.php" role="test" />
+   <file md5sum="3c77a9738c40b9777bd9e3529553a84b" name="tests/TestSuite.php" role="test" />
+   <file md5sum="91a9744e1472465cda5133f1bd4bf2eb" name="tests/make-cluster.sh" role="test" />
+   <file md5sum="e9ddcb5f7abcef8507c394d8386f4742" name="tests/mkring.sh" role="test" />
+   <file md5sum="10838263d5bac8477a46b575c71ff7f5" name="README.markdown" role="doc" />
+   <file md5sum="fe0a0a3a745b2903a9b0c689150bc8b9" name="arrays.markdown" role="doc" />
+   <file md5sum="9b1afab3bd4a953f0be59f32f3f2cfad" name="cluster.markdown" role="doc" />
+   <file md5sum="d56374bf738d2b10cb1f97cd7c9cfb30" name="CREDITS" role="doc" />
+   <file md5sum="cb564efdf78cce8ea6e4b5a4f7c05d97" name="COPYING" role="doc" />
+   <file md5sum="3de6221eef4f2f4f9b216965006a445b" name="config.m4" role="src" />
+   <file md5sum="61b9a472763a861ac811b0c582aac1e6" name="config.w32" role="src" />
+   <file md5sum="05f01f869cd48d8a9e16d2e4af032208" name="common.h" role="src" />
+   <file md5sum="56b21a32a09c692b068d714071e02e2e" name="library.c" role="src" />
+   <file md5sum="ab2d4d28aa738285bcf371ec7c1ac71e" name="library.h" role="src" />
+   <file md5sum="7cd76808271fe7f51c6826662b2a3bbf" name="php_redis.h" role="src" />
+   <file md5sum="d168af9e65aa02bffee6ef5674bf5e15" name="redis_array.c" role="src" />
+   <file md5sum="80bd91ed3677d9f350a8ebb921562a2e" name="redis_array.h" role="src" />
+   <file md5sum="db8dd5c04657bca5f883b9eb9e9e3cc0" name="redis_array_impl.c" role="src" />
+   <file md5sum="a0abca9519053797e74caccb5a381027" name="redis_array_impl.h" role="src" />
+   <file md5sum="be8baa6c891881a125f5ea00e140cdb4" name="redis_cluster.c" role="src" />
+   <file md5sum="0ebaca75412e6197fb0cfe5371452c53" name="redis_cluster.h" role="src" />
+   <file md5sum="6152ef0a5fd494a8c6eb3e7aa058a6e9" name="cluster_library.c" role="src" />
+   <file md5sum="3d627e03aae137defc15139713f35a2c" name="cluster_library.h" role="src" />
+   <file md5sum="0d94d806a95fb755bbf1114fb83d6881" name="redis_commands.c" role="src" />
+   <file md5sum="6004dbb0355c966ab0e7ec5bf14b41ae" name="redis_commands.h" role="src" />
+   <file md5sum="96fec740251f3697b7315d169c66caa8" name="redis.c" role="src" />
+   <file md5sum="b21982c70ca8292b4ac540a76cd3bac4" name="crc16.h" role="src" />
+   <file md5sum="4a96a71b7839020d05ae7f213f8f5f3f" name="redis_session.c" role="src" />
+   <file md5sum="be7c5140b93be49b39eb0a91bc5ed303" name="redis_session.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+    <max>7.1.0</max>
+    <exclude>6.0.0</exclude>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>redis</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.0.0</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2016-06-10</date>
+   <notes>
+phpredis 3.0.0
+
+ -- Improvements ---
+
+ * Implemented PFADD, PFMERGE, and PFCOUNT command handling
+ * Implemented ZRANGEBYLEX command (holding off on ZREVRANGEBYLEX
+   as that won&apos;t be out until 3.0)
+ * Implemented getMode() so clients can detect whether we&apos;re in
+   ATOMIC/MULTI/PIPELINE mode.
+ * Implemented rawCommand() so clients can send arbitrary things to
+   the redis server
+ * Implemented DEBUG OBJECT (@michael-grunder, @isage)
+ * Added/abide by connect timeout for RedisArray
+ * Select to the last selected DB when phpredis reconnects
+
+ -- Fixes ---
+
+ * Fix a possible invalid free in _serialize
+ * Added SAVE and BGSAVE to &quot;distributable&quot; commands for RedisArray
+ * @welting -- Fixed invalid &quot;argc&quot; calculation re HLL commands
+ * Allow clients to break out of the subscribe loop and return context.
+ * Fixes a memory leak in SCAN when OPT_SCAN_RETRY id.
+ * @remicollet -- Fix possible segfault when igbinary is enabled.
+ * Add a couple of cases where we throw on an error (LOADING/NOAUTH/MASTERDOWN)
+ * Fix several issues with serialization NARY
+ * @itcom -- Fix missing TSRMLS_CC and a TSRMLS_DC/TSRMLS_CC typo
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.7</release>
+    <api>2.2.7</api>
+   </version>
+   <date>2015-03-03</date>
+   <notes>
+phpredis 2.2.7
+
+ -- Improvements ---
+
+ * Implemented PFADD, PFMERGE, and PFCOUNT command handling
+ * Implemented ZRANGEBYLEX command (holding off on ZREVRANGEBYLEX
+   as that won&apos;t be out until 3.0)
+ * Implemented getMode() so clients can detect whether we&apos;re in
+   ATOMIC/MULTI/PIPELINE mode.
+ * Implemented rawCommand() so clients can send arbitrary things to
+   the redis server
+ * Implemented DEBUG OBJECT (@michael-grunder, @isage)
+ * Added/abide by connect timeout for RedisArray
+ * Select to the last selected DB when phpredis reconnects
+
+ -- Fixes ---
+
+ * Fix a possible invalid free in _serialize
+ * Added SAVE and BGSAVE to &quot;distributable&quot; commands for RedisArray
+ * @welting -- Fixed invalid &quot;argc&quot; calculation re HLL commands
+ * Allow clients to break out of the subscribe loop and return context.
+ * Fixes a memory leak in SCAN when OPT_SCAN_RETRY id.
+ * @remicollet -- Fix possible segfault when igbinary is enabled.
+ * Add a couple of cases where we throw on an error (LOADING/NOAUTH/MASTERDOWN)
+ * Fix several issues with serialization NARY
+ * @itcom -- Fix missing TSRMLS_CC and a TSRMLS_DC/TSRMLS_CC typo
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.5</release>
+    <api>2.2.5</api>
+   </version>
+   <date>2014-03-15</date>
+   <notes>
+phpredis 2.2.5
+
+This is a minor release with several bug fixes as well as additions to support
+new commands that have been introduced to Redis since our last release.
+
+A special thanks to everyone who helps the project by commenting on issues and
+submitting pull requests!  :)
+
+[NEW] Support for the BITPOS command
+[NEW] Connection timeout option for RedisArray (@MikeToString)
+[NEW] A _serialize method, to complement our existing _unserialize method
+[NEW] Support for the PUBSUB command
+[NEW] Support for SCAN, SSCAN, HSCAN, and ZSCAN
+[NEW] Support for the WAIT command
+
+[FIX] Handle the COPY and REPLACE arguments for the MIGRATE command
+
+[DOC] Fix syntax error in documentation for the SET command (@mithunsatheesh)
+[DOC] Homebrew documentation instructions (@mathias)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.4</release>
+    <api>2.2.4</api>
+   </version>
+   <date>2013-09-01</date>
+   <notes>
+**
+** Features / Improvements
+**
+
+* Randomized reconnect delay for RedisArray @mobli
+  This feature adds an optional parameter when constructing a RedisArray object
+  such that a random delay will be introduced if reconnections are made,
+  mitigating any &apos;thundering herd&apos; type problems.
+
+* Lazy connections to RedisArray servers @mobli
+  By default, RedisArray will attempt to connect to each server you pass in
+  the ring on construction.  This feature lets you specify that you would
+  rather have RedisArray only attempt a connection when it needs to get data
+  from a particular node (throughput/performance improvement).
+
+* Allow LONG and STRING keys in MGET/MSET
+* Extended SET options for Redis &gt;= 2.6.12
+* Persistent connections and UNIX SOCKET support for RedisArray
+* Allow aggregates for ZUNION/ZINTER without weights @mheijkoop
+* Support for SLOWLOG command
+* Reworked MGET algorithm to run in linear time regardless of key count.
+* Reworked ZINTERSTORE/ZUNIONSTORE algorithm to run in linear time
+
+**
+** Bug fixes
+**
+
+* C99 Compliance (or rather lack thereof) fix @mobli
+* Added ZEND_ACC_CTOR and ZEND_ACC_DTOR @euskadi31
+* Stop throwing and clearing an exception on connect failure @matmoi
+* Fix a false positive unit test failure having to do with TTL returns
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.3</release>
+    <api>2.2.3</api>
+   </version>
+   <date>2013-04-29</date>
+   <notes>
+First release to PECL
+   </notes>
+  </release>
+ </changelog>
+</package>

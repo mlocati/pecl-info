@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>APM</name>
+ <channel>pecl.php.net</channel>
+ <summary>Alternative PHP Monitor</summary>
+ <description>Monitoring extension for PHP, collects error events and send them to one of the drivers.
+SQLite and MySQL drivers are storing those in a database.
+More drivers to come (SNMP, e-mail, Hadoop,...).</description>
+ <lead>
+  <name>Davide Mendolia</name>
+  <user>dmendolia</user>
+  <email>dmendolia@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Patrick Allaert</name>
+  <user>patrickallaert</user>
+  <email>patrickallaert@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2010-11-07</date>
+ <time>17:23:41</time>
+ <version>
+  <release>1.0.0beta3</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+Added:
+- MySQL driver
+- Per driver error reporting level
+- Asynchronous processing of events (config option: apm.deffered_processing)
+
+Changed:
+- Code refactored to make use of &apos;APM drivers&apos;
+
+Fixed:
+- APM cannot be compiled with PHP &lt; 5.2.2.
+- Bug #17502: Drivers&apos; rshutdown run only when slow_request tracking is enabled.
+- Bug #17512: Sqlite connections aren&apos;t closed at the end of the request.
+- Bug #17513: Using MySQL driver, only events of the first incoming request are stored.
+- Bug #19421: apm.*_error_reporting is ignored.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="0aa4138383937b93c9aab5f0f2af6255" name="drivers/mysql.c" role="php" />
+   <file md5sum="fbd7fff1844d9544a8f2c5d4c29006d0" name="drivers/mysql.h" role="php" />
+   <file md5sum="1c9928b0fd0c553bd26a93d398870931" name="drivers/sqlite3.c" role="php" />
+   <file md5sum="d826131fe88cd16f300d2c40c70ae3af" name="drivers/sqlite3.h" role="php" />
+   <file md5sum="2a44fbdb7360c60122bcf6dcef0387d8" name="web/css/redmond/images/ui-bg_flat_0_aaaaaa_40x100.png" role="data" />
+   <file md5sum="2b8885da50e2324557185fb0890ce2b7" name="web/css/redmond/images/ui-bg_flat_55_fbec88_40x100.png" role="data" />
+   <file md5sum="f5d28f9ed0eead945e114696ae7b4c67" name="web/css/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png" role="data" />
+   <file md5sum="e4710322ded115c72efbd0756234b6f2" name="web/css/redmond/images/ui-bg_glass_85_dfeffc_1x400.png" role="data" />
+   <file md5sum="5a3be2d8fff8324d59aec3df7b0a0c83" name="web/css/redmond/images/ui-bg_glass_95_fef1ec_1x400.png" role="data" />
+   <file md5sum="527d96cb51eaa54fa74a90db078008c4" name="web/css/redmond/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" role="data" />
+   <file md5sum="4ebbd20039de922b3dc09d2c9fa31014" name="web/css/redmond/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" role="data" />
+   <file md5sum="2b6a88b05b94c56fb478fe70dad68cdc" name="web/css/redmond/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" role="data" />
+   <file md5sum="9b7ff408ffb2e4d5c857a59b5799cd67" name="web/css/redmond/images/ui-icons_217bc0_256x240.png" role="data" />
+   <file md5sum="a4127cef04012ee8681adef24d8e2a0f" name="web/css/redmond/images/ui-icons_2e83ff_256x240.png" role="data" />
+   <file md5sum="e0c0f562214c2b55d5282cee751bd291" name="web/css/redmond/images/ui-icons_469bdd_256x240.png" role="data" />
+   <file md5sum="7cbddd5ef5c7c8610df20ea1db0a5b36" name="web/css/redmond/images/ui-icons_6da8d5_256x240.png" role="data" />
+   <file md5sum="85eb7d511838b9bc089b7d6efd4ded92" name="web/css/redmond/images/ui-icons_cd0a0a_256x240.png" role="data" />
+   <file md5sum="b781b766d87d93a8031ce7def8266a5f" name="web/css/redmond/images/ui-icons_d8e7f3_256x240.png" role="data" />
+   <file md5sum="b781b766d87d93a8031ce7def8266a5f" name="web/css/redmond/images/ui-icons_d8e7f3_256x240.png1" role="data" />
+   <file md5sum="bc97e6a0adc01da5bfdaf04ad4c16a23" name="web/css/redmond/images/ui-icons_f9bd01_256x240.png" role="data" />
+   <file md5sum="dd98ee91918b3859c7909ea835eb25f9" name="web/css/redmond/jquery-ui-1.7.1.custom.css" role="data" />
+   <file md5sum="d8a08c83bbca8da9bfa67db45149b3e9" name="web/css/apm.css" role="data" />
+   <file md5sum="dc17e35440fc5d3b7cff9667d9847c8d" name="web/css/ellipsis-xbl.xml" role="data" />
+   <file md5sum="d143cc86d9dd146ee911c0d19ec65de8" name="web/css/greybox.css" role="data" />
+   <file md5sum="1e8f33d18a671bc119b9d551d5b154dc" name="web/css/ui.jqgrid.css" role="data" />
+   <file md5sum="56398e76be6355ad5999b262208a17c9" name="web/img/blank.gif" role="data" />
+   <file md5sum="2418c6a93df60c8f453d76977d88a826" name="web/img/close.gif" role="data" />
+   <file md5sum="097bcba1917770ee5ee563efe5bbf617" name="web/img/overlay.png" role="data" />
+   <file md5sum="538d6d09c1e2e078be9e8702b5b151df" name="web/js/i18n/grid.locale-bg.js" role="data" />
+   <file md5sum="4cd8da6d84064e4ccc2bbccb9a39b07b" name="web/js/i18n/grid.locale-bg1251.js" role="data" />
+   <file md5sum="ddcb606e5706a99b9a3a597f8feebfef" name="web/js/i18n/grid.locale-cat.js" role="data" />
+   <file md5sum="62ade3ca32c1c1ec97287cde419303ab" name="web/js/i18n/grid.locale-cn.js" role="data" />
+   <file md5sum="0b9fdbf773cfba9681af9b7a33524ff0" name="web/js/i18n/grid.locale-cs.js" role="data" />
+   <file md5sum="7ccfa3040f7613ab17dde95292d0b5b8" name="web/js/i18n/grid.locale-de.js" role="data" />
+   <file md5sum="6cab3277f931aa1a20ee71cb1e336ff7" name="web/js/i18n/grid.locale-dk.js" role="data" />
+   <file md5sum="2b1e968216302890fc926ee31c9b9ef3" name="web/js/i18n/grid.locale-el.js" role="data" />
+   <file md5sum="bd188761c59a445345715905f7f389b9" name="web/js/i18n/grid.locale-en.js" role="data" />
+   <file md5sum="40f959b22a16ff6b4265a0bea66bbfe6" name="web/js/i18n/grid.locale-fa.js" role="data" />
+   <file md5sum="dfbf2fc251bb4080d651febded10128f" name="web/js/i18n/grid.locale-fi.js" role="data" />
+   <file md5sum="9e491baea0bcb43ac0155b5cbf9a1cc2" name="web/js/i18n/grid.locale-fr.js" role="data" />
+   <file md5sum="dcac607442c93877f326894d2a37c6ad" name="web/js/i18n/grid.locale-he.js" role="data" />
+   <file md5sum="e8f96c81d458548e179bb0eb139bb5f9" name="web/js/i18n/grid.locale-is.js" role="data" />
+   <file md5sum="e8a573ae4a688746607a10f45d607c27" name="web/js/i18n/grid.locale-it.js" role="data" />
+   <file md5sum="1de1ed6cdd21e2ed6a160dc89808ae2c" name="web/js/i18n/grid.locale-jp.js" role="data" />
+   <file md5sum="8587d57deedcaf2ce4701c91b31744a5" name="web/js/i18n/grid.locale-nl.js" role="data" />
+   <file md5sum="68571ca07ce6e6c5102085321c2b44ae" name="web/js/i18n/grid.locale-no.js" role="data" />
+   <file md5sum="d4dd4bd2dba632229ca10a40be549363" name="web/js/i18n/grid.locale-pl.js" role="data" />
+   <file md5sum="9e606c01ea204c65e489be54ea050d69" name="web/js/i18n/grid.locale-pt-br.js" role="data" />
+   <file md5sum="09acd89792eaa4d523bf5183485257cc" name="web/js/i18n/grid.locale-pt.js" role="data" />
+   <file md5sum="e4657d90edb7a0ea3097805cf6e9fbcf" name="web/js/i18n/grid.locale-ro.js" role="data" />
+   <file md5sum="9c79062ed402ff1fab616882fc8dd49e" name="web/js/i18n/grid.locale-ru.js" role="data" />
+   <file md5sum="028f7106366c2f043fb99d6fe93777f8" name="web/js/i18n/grid.locale-sp.js" role="data" />
+   <file md5sum="80729715237da4961dc5a168a80cd7f4" name="web/js/i18n/grid.locale-sv.js" role="data" />
+   <file md5sum="83f6083bc7d07c22cb493c6103a3e4e9" name="web/js/i18n/grid.locale-tr.js" role="data" />
+   <file md5sum="d9ea400f9b34f513c120aa060840d523" name="web/js/i18n/grid.locale-ua.js" role="data" />
+   <file md5sum="ed38f5027660cff6efafb9c99023403d" name="web/js/apm.js" role="data" />
+   <file md5sum="c297d927b3b4156111f16c078deb3272" name="web/js/greybox.js" role="data" />
+   <file md5sum="bb381e2d19d8eace86b34d20759491a5" name="web/js/jquery-1.3.2.min.js" role="data" />
+   <file md5sum="6c59c1d4b1b2df986cb2266d62aea6f9" name="web/js/jquery.jqGrid.min.js" role="data" />
+   <file md5sum="06c8e4b0e3c2c69bfb9eeafd11d22ba4" name="web/php-5-3/index.php" role="php" />
+   <file md5sum="f3b6b63a6edda06e7b94cb2c498f4ce7" name="web/php-5-3/event.php" role="php" />
+   <file md5sum="e8c9c20dce4270740d093cbaaa462fb1" name="web/apm.php" role="php" />
+   <file md5sum="b7940d854a86d7cc05901db1a7660296" name="web/config.php" role="php" />
+   <file md5sum="14f6c898c65f4fc2728dc2d5df91d12e" name="web/event.php" role="php" />
+   <file md5sum="3ef45b25eb2587e6406c52ad6c35c4b4" name="web/events.php" role="php" />
+   <file md5sum="72d6247e5032187ce89f8e32b7b87ec6" name="web/lib.php" role="php" />
+   <file md5sum="ebe666169c31b7a439b000b5276da9e5" name="web/slow_requests.php" role="php" />
+   <file md5sum="fb23be1607ea11d233f9437b40ab1d15" name="AUTHORS" role="doc" />
+   <file md5sum="694f49a7e1f276ba75a3dd2c5acd580d" name="LICENSE" role="doc" />
+   <file md5sum="7d63bc53edc306b9c5decd125b712575" name="NEWS" role="doc" />
+   <file md5sum="6ad22f6b83903f64d1cecd423bca5bb5" name="apm.c" role="src" />
+   <file md5sum="399d7d89aebed84acf98a4ce0ec35efb" name="apm.ini" role="data" />
+   <file md5sum="af7e2d71a612126b6546d965dbc12826" name="apm.sql" role="data" />
+   <file md5sum="486b639e12e24a3020ddbce6a51ac5d1" name="backtrace.c" role="src" />
+   <file md5sum="8ffb63c3a1e657552fa814d3eadb5b12" name="backtrace.h" role="src" />
+   <file md5sum="f7f2d56902b77dbeb3dbb09dabee1652" name="config.m4" role="src" />
+   <file md5sum="5009d9776b673d0f051ea1f6ebb1f7d6" name="config.w32" role="src" />
+   <file md5sum="4b6764cc9d90ab44e61307e75f98999b" name="php_apm.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>apm</providesextension>
+ <extsrcrelease />
+</package>

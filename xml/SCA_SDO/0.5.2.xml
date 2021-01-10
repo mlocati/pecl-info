@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>sdo</name>
+  <summary>Service Data Objects (SDOs) for PHP</summary>
+  <description>Service Data Objects (SDOs) enable PHP applications to work with data from different sources (like a database query, an XML file, or a spreadsheet) using a single interface.</description>
+  <maintainers>
+    <maintainer>
+      <user>gcc</user>
+      <name>Graham Charters</name>
+      <email>charters@uk.ibm.com</email>
+      <role>lead</role>
+    </maintainer>
+    <maintainer>
+      <user>cem</user>
+      <name>Caroline Maynard</name>
+      <email>caroline.maynard@uk.ibm.com</email>
+      <role>lead</role>
+    </maintainer>
+    <maintainer>
+      <user>mfp</user>
+      <name>Matthew Peters</name>
+      <email>matthew_peters@uk.ibm.com</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.5.2</version>
+    <date>2005-10-06</date>
+    <license>Apache 2.0</license>
+    <state>beta</state>
+    <notes>This release fixes a number of bugs:
+- The XML DAS now throws a more meaningful exception when the xsd or xml file is not found
+- The interface to SDO_DAS_DataFactory::addPropertyToType has changed and the previous interface is deprecated
+- The interface to SDO_DAS_DataFactory::addProperty now supports the setting of default values
+- The unit tests for the XML DAS have been added to
+- The Relational DAS adapts to whether PDO constants are using old-style PDO_* or new-style PDO::*
+- The Relational DAS contains a workaround for a problem with PDO_Statement::RowCount and ODBC driver
+- Some SDO_DAS_ChangeSummary* constants, which were probably only used by the Relational DAS, have been changed</notes>
+    <filelist>
+      <file role="src" baseinstalldir="SDO" md5sum="789c23c63e96b54bafa08565db366957" name="cpp\sdo\ChangedDataObjectList.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="4e9024b106e888ae653727f45213136e" name="cpp\sdo\ChangedDataObjectListImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="5fe280065790e839414d9145e98a6d5b" name="cpp\sdo\ChangedDataObjectListImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="dbea451dd5a4db75602b8e02d85059d5" name="cpp\sdo\ChangeSummary.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a7472c816de0eaf287bb2bd092cc62a7" name="cpp\sdo\ChangeSummary.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="05984994ed5b3bfd732aa0e3bf43bf84" name="cpp\sdo\ChangeSummaryImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="4dd55ad49ed0bfe04c984960879cca74" name="cpp\sdo\ChangeSummaryImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="337aea2543669fccdf547d272d9be203" name="cpp\sdo\CopyHelper.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="0438a78edb425e847763cc61093488f3" name="cpp\sdo\CopyHelper.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="272772d8b55c7832f133f8b8982ba01f" name="cpp\sdo\DASDataObject.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="bc716aa8fdcd3e0eca01faec0294a99c" name="cpp\sdo\DASDataObject.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="66399a4405caf273faedec87413258a2" name="cpp\sdo\DASProperty.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="e16e32107ebb6f1c420bbdb22bdd081a" name="cpp\sdo\DASProperty.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a8884020badd050d3f6053b28dae4e8a" name="cpp\sdo\DASType.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="2af894c3981da33cdd598be1c040f218" name="cpp\sdo\DASType.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="5ebf2e852575219b6fb7c270ddf1936d" name="cpp\sdo\DASValue.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="e21fa112032850a1f28feab67b8f52ef" name="cpp\sdo\DASValue.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="0b4e29e31076174ae0b0d61ead12bf8c" name="cpp\sdo\DASValues.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="48a254279efdcb25092fe53622b30d09" name="cpp\sdo\DASValues.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="e644274f01542949a9cabdef16ba2de2" name="cpp\sdo\DataFactory.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="ef376eeffbbc0dd811b9d106c4b01fb8" name="cpp\sdo\DataFactory.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="150defb5d4ca6777f318ad35fcb1d34f" name="cpp\sdo\DataFactoryImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="d8dde2c1daf6ded84b93dec2183c6fe2" name="cpp\sdo\DataFactoryImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a965eb4ab02140bcb775e47ca3f9abd9" name="cpp\sdo\DataGraph.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="188a9dc3b1d422cd286dff59e4aaf6f7" name="cpp\sdo\DataGraph.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="79ba1d52369acab97d7152ca8da0dad6" name="cpp\sdo\DataGraphImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="4e85a4a575f166798d2fbdba07a55d57" name="cpp\sdo\DataGraphImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="c637af131214a0f9cdddd69cc1974d62" name="cpp\sdo\DataObject.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="13cecdda00c9a64fdba77a3e438c3c45" name="cpp\sdo\DataObject.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a451c71e567dfbddb7b1eb7fdfde048e" name="cpp\sdo\DataObjectImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="6e3a4f79a52256c0c55463d82dfd755a" name="cpp\sdo\DataObjectImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="cad304195d40486ce71861ba54cd36db" name="cpp\sdo\DataObjectList.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="bd034cfcf84fcae4cb0bc12941d6d090" name="cpp\sdo\DataObjectList.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="42b847822da49f42147724a22cd0325c" name="cpp\sdo\DataObjectListImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="20817fdda823c5b96106930caa91b462" name="cpp\sdo\DataObjectListImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="368cada5c816ad48cee6dbf7a105e55b" name="cpp\sdo\EqualityHelper.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="9f500e1699d8307e17af2726dd81f201" name="cpp\sdo\EqualityHelper.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="f70b68a367eb2a5b538fb287f02155cf" name="cpp\sdo\export.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="2bd8c2b454d7ba7c4f46620d9cb899da" name="cpp\sdo\HelperProvider.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="9fe020ff4adf65fd6ddfd423ff605edd" name="cpp\sdo\HelperProvider.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="fb1d26e9a35723fe03aa6a9ab068dd0d" name="cpp\sdo\Logger.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="58073bead1662a75972de35558b5bbba" name="cpp\sdo\Logger.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="202f905f000c652174590bdddeb4dc39" name="cpp\sdo\Property.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="c985b80389630d9f1b8f66fbe3c4e4a6" name="cpp\sdo\Property.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="297e1cf68632aedb737df7ba2f6c4d5a" name="cpp\sdo\PropertyDefinition.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a98c8d7c7167abb1750cfead6544d291" name="cpp\sdo\PropertyDefinition.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="09b26c8e22e6661057bc2faa72881bb1" name="cpp\sdo\PropertyImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="fb70aa41e72c30fbc0f907146911d128" name="cpp\sdo\PropertyImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a0392f4b1a37b572d306630a589e7274" name="cpp\sdo\PropertyList.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="96b278ffc56dda2b0985d4f00ddbcb0d" name="cpp\sdo\PropertyList.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="d8580fa424e224f877742e7f75771cd1" name="cpp\sdo\PropertySetting.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="9eb0b650e95f9ad7aed313dff57ddbfb" name="cpp\sdo\PropertySetting.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="874fcc08141c927465e2d7cae49798d9" name="cpp\sdo\RefCountingObject.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="d625a90310de32aaff04816d7e62f5b9" name="cpp\sdo\RefCountingObject.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="4ca8d9721868a4059d38afc97d98e7ab" name="cpp\sdo\RefCountingPointer.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a3e6a193139c233af17b196ae23a52ac" name="cpp\sdo\RefCountingPointer.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="ad5bb621a4736710842d92180159b617" name="cpp\sdo\SAX2Attribute.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="296fe18a9b27e70e5f7871c8a30897fd" name="cpp\sdo\SAX2Attribute.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="f218a42231245386c015e7d7421ed963" name="cpp\sdo\SAX2Attributes.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="f65f05a454862065cd6ec62ac3817c84" name="cpp\sdo\SAX2Attributes.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="9efa4ff03f63b33eb4187bba30e7d3b5" name="cpp\sdo\SAX2Namespaces.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="279d7bae336fcd9ac0ad672e268b3c0b" name="cpp\sdo\SAX2Namespaces.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="6797560d31a61aa3b62c9baf4143377a" name="cpp\sdo\SAX2Parser.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="7f7ba5716fb9a58ee08dcfc1c7799394" name="cpp\sdo\SAX2Parser.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="b0dbf0190b6ee79aafb22fc4c5d46967" name="cpp\sdo\SchemaInfo.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="54bad2dfa6c323dcd95a8bc8eb902335" name="cpp\sdo\SchemaInfo.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="c7b7e1651fd2c8040696bac141d0e9c7" name="cpp\sdo\SDO.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="871a475e100259cce41ae175ec1f6663" name="cpp\sdo\SdoCheck.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="85746bffd56cb7b34238108a0a351bc4" name="cpp\sdo\SdoCheck.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="fb81f85655b39e9668b8444d06df6dc4" name="cpp\sdo\SDODate.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="63b249b9a6ad35d5e5a6f76351c417a8" name="cpp\sdo\SDODate.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="602fb2df5711a4001a83ccf0517ebb48" name="cpp\sdo\SdoRuntime.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="6e9aa8fc6891be3b867e26c807956db5" name="cpp\sdo\SdoRuntime.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="2604f7e654e469e1297eba2a5a3a98f7" name="cpp\sdo\SDORuntimeException.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="5171617c15e3da6ad9d7b817badac320" name="cpp\sdo\SDORuntimeException.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="b328f58628a18ac981d716fb4454a39e" name="cpp\sdo\SDOSAX2Parser.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="5437abde2cb0ea51382c92ff3f21c714" name="cpp\sdo\SDOSAX2Parser.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="55183e8b8565a5a9ceabbefda9b185b8" name="cpp\sdo\SDOSchemaSAX2Parser.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="38913312e4e6a180c011e41402b68b37" name="cpp\sdo\SDOSchemaSAX2Parser.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="de98757d7b599a892809ed584778be53" name="cpp\sdo\SDOSPI.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="1212725455a9aa167e87cd62096c7370" name="cpp\sdo\SDOXMLBufferWriter.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="44169565a3246c34bf0bf4294acc8cf4" name="cpp\sdo\SDOXMLBufferWriter.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="5a6d56e9d65144a906422ad4cf60c778" name="cpp\sdo\SDOXMLFileWriter.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="42a5d4c3055140f4f221b5f5ad0ab1b5" name="cpp\sdo\SDOXMLFileWriter.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="6b185a22d1abf61804eb01941fb879c7" name="cpp\sdo\SDOXMLStreamWriter.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="62413a235e6543370283ead8cfc3a8f0" name="cpp\sdo\SDOXMLStreamWriter.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="9135923d20bee02792fc32e41d2248aa" name="cpp\sdo\SDOXMLString.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="c6967536b013369f7337bb5ba0fe2e7c" name="cpp\sdo\SDOXMLString.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="c0eeeb483c1f8596bccecb0d0f67cfa0" name="cpp\sdo\SDOXMLWriter.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="d2596c8c8a6ec072b1e8e52b35dc4250" name="cpp\sdo\SDOXMLWriter.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="7451f5e76a8e5bfb20a2482c6633fe3b" name="cpp\sdo\SDOXSDBufferWriter.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="2995625db977b3818fa1bb2445843b35" name="cpp\sdo\SDOXSDBufferWriter.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="fc9169460e584092280e44cf75ea7087" name="cpp\sdo\SDOXSDFileWriter.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="00fe474f54361cb04f8540873d59ad2b" name="cpp\sdo\SDOXSDFileWriter.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="6366df1d88fde0aa75d8d763b258d565" name="cpp\sdo\SDOXSDStreamWriter.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="fa8c315bfd12952a63f24444a9e99be7" name="cpp\sdo\SDOXSDStreamWriter.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="719f090e20d9bddb37915781418704d6" name="cpp\sdo\SDOXSDWriter.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="e31bcd9e7a82ba85b4e874a678d2df99" name="cpp\sdo\SDOXSDWriter.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="0f51aed726e198a4991bd14507552a1d" name="cpp\sdo\Sequence.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="ef9f54affac5f1ce11d8ad2eb2a4391a" name="cpp\sdo\Sequence.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="5bfb4ab7352d9e534674005c7ba99efe" name="cpp\sdo\SequenceImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="6adb64194c52687bece3a69236b6f0f1" name="cpp\sdo\SequenceImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="81aa841e4e37911bf675638238e6f4ef" name="cpp\sdo\Setting.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="f45d9fe5975e4bb583d9533b04e83ba5" name="cpp\sdo\Setting.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="2d8372972065fa1ee1aba9f3953e71e2" name="cpp\sdo\SettingList.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="181579cf0b38c04a49b9a7d8899643b8" name="cpp\sdo\SettingList.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="cb5fd0458a68af5758493e6436dbc94a" name="cpp\sdo\Type.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="95e69123ea242c9e9e088cd25162ac01" name="cpp\sdo\Type.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="9abc8eb9842443766f08c4ee2b0e59a3" name="cpp\sdo\TypeDefinition.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="55ed355f8ed4e2c92aa44c88b03f11ef" name="cpp\sdo\TypeDefinition.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="551ced0d5aeea8f799c18e495fe358e3" name="cpp\sdo\TypeDefinitions.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="3ac6d9e28739ce18fbe6d407eb195412" name="cpp\sdo\TypeDefinitions.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a117832bb8d0ba5074d727af7c73c1ea" name="cpp\sdo\TypeImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="2b9c37980aa97ef84d2bee67766aaf3b" name="cpp\sdo\TypeImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="7cce0654485de2537552715712ac0583" name="cpp\sdo\TypeList.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="2b65f2031d6d2d0af607f0d6e840a1bc" name="cpp\sdo\TypeList.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="0903e7ad4fd40f876d1eead47bb98ebd" name="cpp\sdo\XMLDocument.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="7dcd03a9a7395d4f9a1656a879786dcf" name="cpp\sdo\XMLDocument.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="75fbadc520539075da9f8321108af486" name="cpp\sdo\XMLDocumentImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="7bd146b28b6b32954cb1b827258b6c60" name="cpp\sdo\XMLDocumentImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="d4fd6e4650ad3a713d2eb3562a041569" name="cpp\sdo\XMLHelper.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="aaffee43090cfd7a2cf666125ad1f5e3" name="cpp\sdo\XMLHelper.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="6233a697f89b2cc492eb6bb8dc9f952c" name="cpp\sdo\XMLHelperImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="b3340c5d8b104940f4b61a2b08e5a4f7" name="cpp\sdo\XMLHelperImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="47f4bd9421b5d49245988ac3145b364b" name="cpp\sdo\XMLQName.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a977fe202fcdc453ddadada5cb9b8622" name="cpp\sdo\XMLQName.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="cf6e5799782b07703dc9da103396927f" name="cpp\sdo\XpathHelper.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="95ae637ea90eea36fa978eaa6faa26e3" name="cpp\sdo\XpathHelper.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="5e4fe8c0472018bea728e6a37d9e1628" name="cpp\sdo\XSDHelper.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="298f91b9a5959429f4bba4a0b0f737a3" name="cpp\sdo\XSDHelper.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="c2717d35a245360f306a9232c46ab2e6" name="cpp\sdo\XSDHelperImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="47b367ad675f90f626366f2f7856dc98" name="cpp\sdo\XSDHelperImpl.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="2a7c6c7019ecc3c512916c63e6668a4c" name="cpp\sdo\XSDPropertyInfo.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="f8346e3d16cc769a3a28c3af9c588f02" name="cpp\sdo\XSDPropertyInfo.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="ad0bd0c7a362c4d0377b0d8f384a1802" name="cpp\sdo\XSDTypeInfo.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="b2eb888519a571096b1ba9997d2383f5" name="cpp\sdo\XSDTypeInfo.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="cf9e5c92ac52a1c250d18e383ec07a3f" name="cpp\xmldas\XMLDAS.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="52ca21de42e841acf47b003d1d0bcb19" name="cpp\xmldas\XMLDAS.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="d17796a771bb9333f10da1fbd1a097fd" name="cpp\xmldas\XMLDASCheck.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="0cc96bf07ed10f44cf1ea4bf44b87c93" name="cpp\xmldas\XMLDASCheck.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="60114f1c46bddb28c0068aed22ef2700" name="cpp\xmldas\XMLDASExport.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="bfb7c0cbaffdff371ae2f196b245bcb1" name="cpp\xmldas\XMLDASImpl.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="56aca990e49d72d849d76071aea05dfe" name="cpp\xmldas\XMLDASImpl.h"/>
+      <file role="php" baseinstalldir="SDO" md5sum="b6c3a8bce04af787515543939da02288" name="DAS\Relational.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="4fa95d9ed995275c172e1aa1ee0e354b" name="DAS\Relational\Action.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="ad900e235a2554248932f119790a7944" name="DAS\Relational\ContainmentReference.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="429c0ce041128f390e30ef2a0fe77c98" name="DAS\Relational\ContainmentReferencesModel.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="1bc81fbc81e3bead7f0a0e2406db6cf4" name="DAS\Relational\DatabaseModel.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="c7044e02292ce731f5d291603a6006cc" name="DAS\Relational\DataObjectHelper.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="1c31564f7de731a5e419500a8ecba5aa" name="DAS\Relational\DeleteAction.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="36599f6f37af4b42f4c72ea3957b89ce" name="DAS\Relational\Exception.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="45e55fce4c3b207aeade9cf271e3853e" name="DAS\Relational\ForeignKey.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="5d0baf8e4c1836fa88a1c115df3a86cc" name="DAS\Relational\InsertAction.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="c016aee7250c55f46b87348881824d49" name="DAS\Relational\KeyObjectMap.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="c16c322915f50a8a9d4198c1d6609789" name="DAS\Relational\NonContainmentReference.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="4bef8c8acb47c77b427c788ce01c3d77" name="DAS\Relational\ObjectModel.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="bcd927df041e8d6740e8a908ed7c6cd8" name="DAS\Relational\PDOConstants.colon.inc.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="e40f50cf93c8122884bd9e3a990ba331" name="DAS\Relational\PDOConstants.underscore.inc.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="c9107168a30f7ad98101a0ce195f57de" name="DAS\Relational\Plan.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="93265e36bebf2224cc11290e14b514f3" name="DAS\Relational\PrimaryKey.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="bdbb2ce3e801f913f4ee37caae195949" name="DAS\Relational\ReferencesModel.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="10ce23dd13919049fd8ad2665cdc3a17" name="DAS\Relational\Table.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="f03a95312d8d1acbca2d33b951eae600" name="DAS\Relational\UpdateAction.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="b771c28ca32beb5d0f64be7ed6ad551c" name="DAS\Relational\UpdateNonContainmentReferenceAction.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="e77f9d9b45cbaf290bfbd48217e2afaa" name="DAS\Relational\Scenarios\1c-C.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="f6275996bb1cff93e8769e151f4b5a05" name="DAS\Relational\Scenarios\1c-CD.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="6388e3920c1a9b74511558cefa7c9ffb" name="DAS\Relational\Scenarios\1c-CRU.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="11798106f0d32a132962819e890f6ade" name="DAS\Relational\Scenarios\1c-CRUD.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="7ca44afcffea85a331a11808fcf87eb9" name="DAS\Relational\Scenarios\1c-DCsamePK.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="c986d572749a4b318d306576d851fc39" name="DAS\Relational\Scenarios\1c-R.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="89724249a4903f1929eea287e54e48b9" name="DAS\Relational\Scenarios\1c-RA.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="d777d08461baadcc09f350af02c4eecb" name="DAS\Relational\Scenarios\1c-RD.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="033375183aef21ff5a9b314264dcf577" name="DAS\Relational\Scenarios\1c-RU.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="83c9bfb6418fc4a05d1330e79ce1c767" name="DAS\Relational\Scenarios\1c-RUnull.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="4c7a47c9d9d225e12fbbf25775a92d42" name="DAS\Relational\Scenarios\1c-RUunsetPrimitive.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="f66b76eb08509350317d30af7e471f77" name="DAS\Relational\Scenarios\1cd-C.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="17e491ea7c9c35ec18dfb77f5d413f0c" name="DAS\Relational\Scenarios\1cd-CRUD.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="4b7ec3e405116086515815c8ea530581" name="DAS\Relational\Scenarios\1cd-CRUDnull.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="8c8f518a55af96b017f609cafdb4d99f" name="DAS\Relational\Scenarios\1cd-RA.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="d5a4385eb6cdd623546de20f17b465b5" name="DAS\Relational\Scenarios\1cde-C.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="5d11b90854281bad15bb6fa7b09e2dfb" name="DAS\Relational\Scenarios\1cde-CRU.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="7c12df7f364cc21ceb3aa197537383d9" name="DAS\Relational\Scenarios\1cde-CRUD.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="6e2547a0a53a6af18216bdf8a914604e" name="DAS\Relational\Scenarios\1cde-CRUDdetach.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="842d162a71ac1609c9fb388b5846bb81" name="DAS\Relational\Scenarios\1cde-R.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="948c8994beb594a31caedcac58006e14" name="DAS\Relational\Scenarios\1e-CRUD.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="9c1b0a31dc4b2487c3a99e967b0fc68b" name="DAS\Relational\Scenarios\companydb_db2.sql"/>
+      <file role="php" baseinstalldir="SDO" md5sum="4c7aae02dda8dcdb2400d121b33bafac" name="DAS\Relational\Scenarios\companydb_mysql.sql"/>
+      <file role="php" baseinstalldir="SDO" md5sum="db980e99c17d4587e29f302b798bb165" name="DAS\Relational\Scenarios\company_metadata.inc.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="88483c04d7e10a1d011c1265f4fb39a6" name="DAS\Relational\Scenarios\mc-C.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="acd11617fb1fd6a77af1713291416193" name="DAS\Relational\Scenarios\mc-R.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="96f9f1f4751b446ddec7494ba763337f" name="DAS\Relational\Scenarios\mc-RD.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="406a3ac56945e83b842964e9c3b71cf4" name="DAS\Relational\Scenarios\mc-RU.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="b54021b39e70da799eed755523f5e14e" name="DAS\Relational\Scenarios\runAllScenarios.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="594fd7af2fa67ea081160d8baf667e02" name="DAS\Relational\Tests\TestContainmentReference.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="6445ef43e6ecc381c0a592666c881abc" name="DAS\Relational\Tests\TestDatabaseModel.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="d5e15523d03dbbf68a27d00c0b38d49f" name="DAS\Relational\Tests\TestForeignKey.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="b9c3ddd760effed8da26c6cdad693759" name="DAS\Relational\Tests\TestInsertAction.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="bc9053e63a81aa08664cca8e8ff1f7f8" name="DAS\Relational\Tests\TestObjectModel.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="d3928b035a12442cee8fcff336e7a611" name="DAS\Relational\Tests\TestPlan.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="bea1ff705c799d67fd9bda77d38f78d6" name="DAS\Relational\Tests\TestReferencesModel.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="69f8a6b48b0616118a2aaadede033c00" name="DAS\Relational\Tests\TestRelational.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="715ce639e02bd7f068c1f20d56f800a3" name="DAS\Relational\Tests\TestSuite.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="a7000eabb7b11d863c47058d58599443" name="DAS\Relational\Tests\TestTable.php"/>
+      <file role="php" baseinstalldir="SDO" md5sum="b2a827ec47c4ed863500bd289b404fb3" name="DAS\Relational\Tests\ZDERunner.php"/>
+      <file role="test" baseinstalldir="SDO" md5sum="43ae21caa18c3734994203ee20040b8c" name="tests\001.phpt"/>
+      <file role="test" baseinstalldir="SDO" md5sum="0113a551a146c46c9a22ecefc61d38de" name="tests\002.phpt"/>
+      <file role="test" baseinstalldir="SDO" md5sum="b38e2722c14a80601ed3065e9b1a24da" name="tests\003.phpt"/>
+      <file role="test" baseinstalldir="SDO" md5sum="6985af99badba5b85c7b2f49e55085d5" name="tests\004.phpt"/>
+      <file role="test" baseinstalldir="SDO" md5sum="2f68d0c0f1f1698a44953b6ff7543d1b" name="tests\005.phpt"/>
+      <file role="test" baseinstalldir="SDO" md5sum="0e863d27652deb7a7a752c653eed09d2" name="tests\company.xml"/>
+      <file role="test" baseinstalldir="SDO" md5sum="e55b3d86cd1b0ca3d5ac1aae45791291" name="tests\company.xsd"/>
+      <file role="test" baseinstalldir="SDO" md5sum="3f206c0345d82497d6411c2852cf3e66" name="tests\company1.xsd"/>
+      <file role="test" baseinstalldir="SDO" md5sum="67342f863f3544feee8858f5eadfde43" name="tests\company_noxmldecl.xml"/>
+      <file role="test" baseinstalldir="SDO" md5sum="556ce66b95eaa1544597230a90723684" name="tests\SDOAPITest.php"/>
+      <file role="test" baseinstalldir="SDO" md5sum="de3249302fa19f35ac7e1c0afa7bea27" name="tests\test.inc"/>
+      <file role="test" baseinstalldir="SDO" md5sum="135e1a6e4eb8cbf6769e88f09bd4d3a7" name="tests\XMLDASTest.php"/>
+      <file role="src" baseinstalldir="SDO" md5sum="50ecdaf55087ddf122469aa84bedefb1" name="config.m4"/>
+      <file role="src" baseinstalldir="SDO" md5sum="c1ea4d84d8737298d3da2c5113e4b64d" name="config.w32"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a3fcdbaa23efe7222f063c8fa14ce77d" name="CREDITS"/>
+      <file role="src" baseinstalldir="SDO" md5sum="005134140e26d831b125205c3a443dbb" name="das_xml.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL"/>
+      <file role="src" baseinstalldir="SDO" md5sum="c7bb71cf2ce10d58d325eeb640528dea" name="INSTALL"/>
+      <file role="src" baseinstalldir="SDO" md5sum="1534a3ff9c50ea44c4fcaca212de7eb6" name="php_sdo.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="5152539a9219bb7ac609450ed26b2902" name="php_sdo_das_xml.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a3262f27982c57e0e7764993633ca5da" name="php_sdo_das_xml_int.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="4b8994c6012647d69e5900b3be5c4629" name="php_sdo_int.h"/>
+      <file role="src" baseinstalldir="SDO" md5sum="12f67943e801a69497af1e3e2e38699a" name="README"/>
+      <file role="src" baseinstalldir="SDO" md5sum="c05d0b5b2b4ea5369f5a5393b9f679bf" name="sdo.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="43211ab738752ed6f4b7b889ded12c1b" name="SDO_DAS_ChangeSummary.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="11849ead0ef38d2c72ccae6e6857a5e3" name="SDO_DAS_DataFactory.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="6e9a8c38b75e67b7a8fdced3b2fcc373" name="SDO_DAS_Setting.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="a49ad96b939de577355d876b7a2beef8" name="SDO_DAS_XML.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="fda03aa65ade91ea7a704a1a646d4260" name="SDO_DAS_XML_Document.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="1582f31b8bcbf18db98998c2fd52025f" name="SDO_DataObject.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="04a134ad46c366ac26df7d7fb20ed9db" name="SDO_List.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="f00bac86769d989479226e7880f278eb" name="SDO_Sequence.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="5fd70e63183f409ff9df7716639f73a9" name="sdo_utils.cpp"/>
+      <file role="src" baseinstalldir="SDO" md5sum="197e81c17ed37bb4dcaadfffc227e7aa" name="xmldas_utils.cpp"/>
+    </filelist>
+  </release>
+  <changelog>
+    <release>
+      <version>0.5.0</version>
+      <date>2005-07-22</date>
+      <license>Apache 2.0</license>
+      <state>beta</state>
+      <notes>This is the first release of SDO for PHP. It contains the core SDO extension and two Data Access Services: an XML DAS written in C and a Relational DAS to work with relational databases, which is written in PHP and uses PDO. The SDO extension requires a recent version of PHP 5.1. It has been tested on both 5.1.0b2 and 5.1.0b3. The core SDO extension and XML DAS work with 5.1.0b2. The Relational DAS requires PHP 5.1.0b3.
+</notes>
+    </release>
+    <release>
+      <version>0.5.1</version>
+      <date>2005-08-08</date>
+      <license>Apache 2.0</license>
+      <state>beta</state>
+      <notes>Now includes support for DB2 on both Windows and Linux as well as MySQL.
+Added some tests for the XML DAS.
+</notes>
+    </release>
+    <release>
+      <version>0.5.2</version>
+      <date>2005-10-06</date>
+      <license>Apache 2.0</license>
+      <state>beta</state>
+      <notes>This release fixes a number of bugs:
+- The XML DAS now throws a more meaningful exception when the xsd or xml file is not found
+- The interface to SDO_DAS_DataFactory::addPropertyToType has changed and the previous interface is deprecated
+- The interface to SDO_DAS_DataFactory::addProperty now supports the setting of default values
+- The unit tests for the XML DAS have been added to
+- The Relational DAS adapts to whether PDO constants are using old-style PDO_* or new-style PDO::*
+- The Relational DAS contains a workaround for a problem with PDO_Statement::RowCount and ODBC driver
+- Some SDO_DAS_ChangeSummary* constants, which were probably only used by the Relational DAS, have been changed
+</notes>
+    </release>
+  </changelog>
+</package>

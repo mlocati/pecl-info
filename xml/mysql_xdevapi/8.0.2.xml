@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.3" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>mysql_xdevapi</name>
+ <channel>pecl.php.net</channel>
+ <summary>MySQL X DevAPI for PHP</summary>
+ <description>The X DevAPI is he new common API for MySQL Connectors built on the X Protocol introduced in MySQL 5.7.12.
+
+The X DevAPI wraps powerful concepts in a simple API.
+* A new high-level session concept enables you to write code that can transparently scale from single MySQL Server to a multiple server environment. 
+* Read operations are simple and easy to understand.
+
+The X DevAPI introduces a new, modern and easy-to-learn way to work with your data.
+* Documents are stored in Collections and have their dedicated CRUD operation set.
+* Work with your existing domain objects or generate code based on structure definitions for strictly typed languages.
+* Focus is put on working with data via CRUD operations. See Section 3.1, “CRUD Operations Overview”.
+* Modern practices and syntax styles are used to get away from traditional SQL-String-Building. See Chapter 10, Building Expressions.</description>
+ <lead>
+  <name>Dariusz Slusarczyk</name>
+  <user>marines</user>
+  <email>marines@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Filip Janiszewski</name>
+  <user>fjanisze</user>
+  <email>fjanisze@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Johannes Schlüter</name>
+  <user>johannes</user>
+  <email>johannes@php.net</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Andrey Hristov</name>
+  <user>andrey</user>
+  <email>andrey@php.net</email>
+  <active>no</active>
+ </developer>
+ <date>2017-07-11</date>
+ <time>13:48:06</time>
+ <version>
+  <release>8.0.2</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+WL10393/10097 DevAPI: Table.createTable
+MY-235: Configuration handling interface
+WL-10402  Ensure all connectors are secure by default
+WL10627 / 10728 Forbid modify() and remove() with no condition
+WL-10089/10392 DevAPI: Cleanup Drop APIs
+WL-10390: DevAPI, Document UUID generation
+WL-10506: Bugs and Clarifications
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="d367ca93a6b90446a69492de7b136f43" name="messages/mysqlx_message__auth_continue.cc" role="src" />
+   <file md5sum="15dcbd88041153b1ba1eec287c74f16b" name="messages/mysqlx_message__auth_continue.h" role="src" />
+   <file md5sum="f064e2829c7b808868e0a90c66771cc2" name="messages/mysqlx_message__auth_ok.cc" role="src" />
+   <file md5sum="8a9dd675a1e3a939162d95ef7c9bc86a" name="messages/mysqlx_message__auth_ok.h" role="src" />
+   <file md5sum="66d3fefeea43c5b305d789f74636b1e5" name="messages/mysqlx_message__auth_start.cc" role="src" />
+   <file md5sum="5ae821cebaf3a764de0ff35b0cc497f6" name="messages/mysqlx_message__auth_start.h" role="src" />
+   <file md5sum="a6b87da67109fbb4664071bd834d96f9" name="messages/mysqlx_message__capabilities.cc" role="src" />
+   <file md5sum="43307b760dfb895aae6a04bad3a7f08c" name="messages/mysqlx_message__capabilities.h" role="src" />
+   <file md5sum="aa4f061e3e9750696791ddb2e24a3d1a" name="messages/mysqlx_message__capabilities_get.cc" role="src" />
+   <file md5sum="8361679e1dea1b6dba61cd642ed16ced" name="messages/mysqlx_message__capabilities_get.h" role="src" />
+   <file md5sum="f4576af4bc11d30e006d1fdec3c628d2" name="messages/mysqlx_message__capabilities_set.cc" role="src" />
+   <file md5sum="8fabac1bb7a53f7f4fe79fb1a3b02da2" name="messages/mysqlx_message__capabilities_set.h" role="src" />
+   <file md5sum="f5e142e111b2ec42626ef00c70c7bb8b" name="messages/mysqlx_message__capability.cc" role="src" />
+   <file md5sum="7ec5cc635e362ee549f79174620f5f37" name="messages/mysqlx_message__capability.h" role="src" />
+   <file md5sum="88600b4e9e950eb3e5457747b8dd5d70" name="messages/mysqlx_message__data_fetch_done.cc" role="src" />
+   <file md5sum="6d370653152f5532c1e018043d0574f7" name="messages/mysqlx_message__data_fetch_done.h" role="src" />
+   <file md5sum="bffdd39893659c9e95126e7a0d9c02b5" name="messages/mysqlx_message__error.cc" role="src" />
+   <file md5sum="54203f446ddec0cffdc631f924d45c68" name="messages/mysqlx_message__error.h" role="src" />
+   <file md5sum="5b256cc19b83d3a0bca4059e37f5a3cf" name="messages/mysqlx_message__ok.cc" role="src" />
+   <file md5sum="903bfd20470075d55b1d5525842d487f" name="messages/mysqlx_message__ok.h" role="src" />
+   <file md5sum="abad97d105476bb6cc60cceb64d6447a" name="messages/mysqlx_message__stmt_execute.cc" role="src" />
+   <file md5sum="3b3637d627c20224fe7d00cbdc8deeeb" name="messages/mysqlx_message__stmt_execute.h" role="src" />
+   <file md5sum="9c0af5ca229043dce8e0c655033e660c" name="messages/mysqlx_message__stmt_execute_ok.cc" role="src" />
+   <file md5sum="7a51eb805f6000596bfaea7523d22f33" name="messages/mysqlx_message__stmt_execute_ok.h" role="src" />
+   <file md5sum="5f9dba34d8e7fecedf79e34362997235" name="messages/mysqlx_node_connection.cc" role="src" />
+   <file md5sum="c0071792cd954e48b3c0372d39f46bb7" name="messages/mysqlx_node_connection.h" role="src" />
+   <file md5sum="65acd07df17120923b870b9816de3dec" name="messages/mysqlx_node_pfc.cc" role="src" />
+   <file md5sum="188037f7156fdf64db87d27213000e51" name="messages/mysqlx_node_pfc.h" role="src" />
+   <file md5sum="c3d57f9d971d0884becc59cfb448df5d" name="messages/mysqlx_resultset__column_metadata.cc" role="src" />
+   <file md5sum="40097a413e12e9d71939708090f9f974" name="messages/mysqlx_resultset__column_metadata.h" role="src" />
+   <file md5sum="bbfab715688fed03a535ab2ad348df3b" name="messages/mysqlx_resultset__data_row.cc" role="src" />
+   <file md5sum="fdfffbd97c9872987d683bda782b465c" name="messages/mysqlx_resultset__data_row.h" role="src" />
+   <file md5sum="a028519f5f80717bf3f502d84e1fc61d" name="messages/mysqlx_resultset__resultset_metadata.cc" role="src" />
+   <file md5sum="e82dbf76dbb2daba3054b22ff6a77590" name="messages/mysqlx_resultset__resultset_metadata.h" role="src" />
+   <file md5sum="7a1b50d81e2f323e9bfceb2316300d94" name="phputils/allocator.cc" role="src" />
+   <file md5sum="17dae70cbc7aa4038213456ceebe0130" name="phputils/allocator.h" role="src" />
+   <file md5sum="c97a63720ff6a99bfa53a16a83dbaee7" name="phputils/exceptions.cc" role="src" />
+   <file md5sum="f16c58137c43025b9ee568d8c1f11971" name="phputils/exceptions.h" role="src" />
+   <file md5sum="0978d14a803e2deda45abf73aa0fcbd5" name="phputils/object.cc" role="src" />
+   <file md5sum="b9c905c4d12c234ed84dcf94a33c25e7" name="phputils/object.h" role="src" />
+   <file md5sum="9c85572531af1d8502b9588f3cc9e8e3" name="phputils/string_utils.cc" role="src" />
+   <file md5sum="09f2e1f31d6a1f2893c77420762918df" name="phputils/string_utils.h" role="src" />
+   <file md5sum="e1c0ce91e36bb46a687cf285edf9dec4" name="phputils/strings.cc" role="src" />
+   <file md5sum="72199ddc857fffafe67913fb00056ec9" name="phputils/strings.h" role="src" />
+   <file md5sum="25097a8d7127a904d4bb2c1df286100a" name="phputils/types.h" role="src" />
+   <file md5sum="30f4da50ac05e94b721f8bd5908d83f4" name="tests/001.phpt" role="test" />
+   <file md5sum="595dd8799480e05bbe25100abfceb1a4" name="tests/002.phpt" role="test" />
+   <file md5sum="0036acee8ea6f39ba32adab7b88cbe07" name="tests/003.phpt" role="test" />
+   <file md5sum="d21413cf64c1d621c29299f07573b699" name="tests/004.phpt" role="test" />
+   <file md5sum="f89dc78224084f38ed50c04d6a0c36f9" name="tests/005.phpt" role="test" />
+   <file md5sum="abe0fcc58e98d7b3d4e5796cf718a29a" name="tests/006.phpt" role="test" />
+   <file md5sum="cd7bad21f03eaa7e7fee3827feaabf62" name="tests/007.phpt" role="test" />
+   <file md5sum="1925dff013adaaaf03bbf87adf91961a" name="tests/008.phpt" role="test" />
+   <file md5sum="99d236e2aeecc3caba5ccfd7a2662410" name="tests/009.phpt" role="test" />
+   <file md5sum="ceaf5581b6d0e7e9d60ccd59cbea5a97" name="tests/010.phpt" role="test" />
+   <file md5sum="3cf723349271ba0ccad7282ae20ac75f" name="tests/011.phpt" role="test" />
+   <file md5sum="2c369eec85bddeb294f22e71d526394a" name="tests/012.phpt" role="test" />
+   <file md5sum="42401ebaf7af09af24377c7c8b7b7cbc" name="tests/013.phpt" role="test" />
+   <file md5sum="bb8ea0823bb0fa4a294d3984b8e5592e" name="tests/014.phpt" role="test" />
+   <file md5sum="61f470e3ebcd9bdb92c4a18b7c0ba3fd" name="tests/015.phpt" role="test" />
+   <file md5sum="fdfb2863e1c6ae8e3c34ef573df73256" name="tests/016.phpt" role="test" />
+   <file md5sum="6514067c367ba3eadbd1f5ef9971bf16" name="tests/017.phpt" role="test" />
+   <file md5sum="fe54f78fc5527c87c93e4999363ec7b0" name="tests/018.phpt" role="test" />
+   <file md5sum="3c4e7f5b9df91e3a5950f4c9afc3f0a9" name="tests/019.phpt" role="test" />
+   <file md5sum="8ee11e9070bd3ba0eb9bdf7ad646d0f2" name="tests/020.phpt" role="test" />
+   <file md5sum="de89cc326ce96fa9f322367bedab8718" name="tests/021.phpt" role="test" />
+   <file md5sum="942b04d5c331cef86c9972af33e7dc73" name="tests/022.phpt" role="test" />
+   <file md5sum="4941ae274b3f40bf43ce72b0c6ad7417" name="tests/023.phpt" role="test" />
+   <file md5sum="c695ed18e8944bbf59cc49e672dcbe27" name="tests/024.phpt" role="test" />
+   <file md5sum="53910ad555b557e37ebc72b568be856f" name="tests/025.phpt" role="test" />
+   <file md5sum="d9e0a20ba80711af67719589c7d78176" name="tests/026.phpt" role="test" />
+   <file md5sum="87d1997ef070d2af3bb70c44d7b4c93f" name="tests/027.phpt" role="test" />
+   <file md5sum="d9e4b5a662915fda78a795506cb3a445" name="tests/028.phpt" role="test" />
+   <file md5sum="1c0ed5670c88afc534cee2fade54767d" name="tests/029.phpt" role="test" />
+   <file md5sum="e5afb68272de7863aafb9d574a3b5447" name="tests/030.phpt" role="test" />
+   <file md5sum="ad19d250702f1efe59f6c608f710de75" name="tests/031.phpt" role="test" />
+   <file md5sum="ebd3b941f726492dd261acfb261afea5" name="tests/032.phpt" role="test" />
+   <file md5sum="7000b7394c4004a5e5d95d48a43c5162" name="tests/033.phpt" role="test" />
+   <file md5sum="6eae101f0f30e2bd2721e48a12b115d7" name="tests/034.phpt" role="test" />
+   <file md5sum="e78002386868c30e62bf54121ac7b764" name="tests/035.phpt" role="test" />
+   <file md5sum="eee93fa8e96b6df4fbda26a9ed40b822" name="tests/036.phpt" role="test" />
+   <file md5sum="ea2423439e462b700db1d9788a40ae85" name="tests/connect.inc" role="test" />
+   <file md5sum="c6f44cd528be291a1c3b2ff9cdce372e" name="tests/mysqlx_create_alter_drop_view.phpt" role="test" />
+   <file md5sum="d0ecc205f6b739c24cc6f7ce128c0735" name="tests/mysqlx_create_drop_index.phpt" role="test" />
+   <file md5sum="322f9e168d6085a20f9b115987cc0614" name="tests/mysqlx_create_table.phpt" role="test" />
+   <file md5sum="fc9f0a3f4a2c97e0622e7368008e5e27" name="tests/mysqlx_drop_item.phpt" role="test" />
+   <file md5sum="cd65fd3037dd98c25732c23cbc612f8e" name="tests/mysqlx_exists_in_database.phpt" role="test" />
+   <file md5sum="e9a4b5819992a5fc0b871f8d6d624ea1" name="tests/mysqlx_get_collection_as_table.phpt" role="test" />
+   <file md5sum="9588ea371e409206824425dcf42b6eb5" name="tests/mysqlx_get_name.phpt" role="test" />
+   <file md5sum="6d51c4c9fb6408d8f9ca25bf85158e69" name="tests/mysqlx_multiple_results.phpt" role="test" />
+   <file md5sum="53b5e2f5c04ec380ace3524df5e24098" name="xmysqlnd/crud_parsers/compilerutils.h" role="src" />
+   <file md5sum="bd538d8944491cf0681953c6461431ad" name="xmysqlnd/crud_parsers/expression_parser.cc" role="src" />
+   <file md5sum="3d384e80127c17aaf1e629bf9c32c009" name="xmysqlnd/crud_parsers/expression_parser.h" role="src" />
+   <file md5sum="b4cb73df5c4a9dc4fdc42343594471c4" name="xmysqlnd/crud_parsers/memory_new.h" role="src" />
+   <file md5sum="52758a4d058bbbd47ea716e48f14363c" name="xmysqlnd/crud_parsers/orderby_parser.cc" role="src" />
+   <file md5sum="dca5836581b3b5343c3efe5de3363d55" name="xmysqlnd/crud_parsers/orderby_parser.h" role="src" />
+   <file md5sum="ad7f80e719668d4f321ece6dad18e90d" name="xmysqlnd/crud_parsers/projection_parser.cc" role="src" />
+   <file md5sum="7a3e6e1de163804f4d83e08d71e297cb" name="xmysqlnd/crud_parsers/projection_parser.h" role="src" />
+   <file md5sum="34d704933616bb550b4ed89cda75fdfc" name="xmysqlnd/crud_parsers/tokenizer.cc" role="src" />
+   <file md5sum="2f5f8355fb9626e7f8bc7c7ce742fbe8" name="xmysqlnd/crud_parsers/tokenizer.h" role="src" />
+   <file md5sum="26482923225cf3fce46e6f11642cb3a4" name="xmysqlnd/crud_parsers/xmysqlnd_crud_parsers.h" role="src" />
+   <file md5sum="a46a81f0115a3762a588ff16ab12c1de" name="xmysqlnd/proto_def/mysqlx.proto" role="src" />
+   <file md5sum="52642cc18d0f031486cbbcb4199a5851" name="xmysqlnd/proto_def/mysqlx_connection.proto" role="src" />
+   <file md5sum="246814385af76eb58b164dae439391c6" name="xmysqlnd/proto_def/mysqlx_crud.proto" role="src" />
+   <file md5sum="6b0661b855f1fb0e10bffbff7740c8ff" name="xmysqlnd/proto_def/mysqlx_datatypes.proto" role="src" />
+   <file md5sum="baa3345428c9b01c7340193d7dfe3ae1" name="xmysqlnd/proto_def/mysqlx_expect.proto" role="src" />
+   <file md5sum="7142ed27f40e56929e6b61e808c3d9ce" name="xmysqlnd/proto_def/mysqlx_expr.proto" role="src" />
+   <file md5sum="e03b9854c42a2e6ea5160540d3245c69" name="xmysqlnd/proto_def/mysqlx_notice.proto" role="src" />
+   <file md5sum="ce35752e2c78f2a9a0ae65de8ae2c518" name="xmysqlnd/proto_def/mysqlx_resultset.proto" role="src" />
+   <file md5sum="ac0deb12f259400c9fcbec079f6e3277" name="xmysqlnd/proto_def/mysqlx_session.proto" role="src" />
+   <file md5sum="f638e85af20fdf0d268430103a9de63b" name="xmysqlnd/proto_def/mysqlx_sql.proto" role="src" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="xmysqlnd/proto_gen/.keep" role="doc" />
+   <file md5sum="81e7437d49ac267276379217311c4e5f" name="xmysqlnd/json_patch.txt" role="doc" />
+   <file md5sum="3fc36c1efbc28daf6df34b82bbef57dc" name="xmysqlnd/xmysqlnd.h" role="src" />
+   <file md5sum="ba6802974993e027a4fc10decc9786be" name="xmysqlnd/xmysqlnd_any2expr.cc" role="src" />
+   <file md5sum="1ecde41fc49ae2b747c33249caa97de3" name="xmysqlnd/xmysqlnd_any2expr.h" role="src" />
+   <file md5sum="397729b0ba8f2ff6200592f0bf09e2ee" name="xmysqlnd/xmysqlnd_crud_collection_commands.cc" role="src" />
+   <file md5sum="fc07d584472300585ac4db3f76340d3c" name="xmysqlnd/xmysqlnd_crud_collection_commands.h" role="src" />
+   <file md5sum="cee092f69377391de1f4adda9b4aaaa0" name="xmysqlnd/xmysqlnd_crud_commands.h" role="src" />
+   <file md5sum="1d4655bb633991244f12e4bbde273cad" name="xmysqlnd/xmysqlnd_crud_table_commands.cc" role="src" />
+   <file md5sum="eb6369eca6fd236b38af88550990bff6" name="xmysqlnd/xmysqlnd_crud_table_commands.h" role="src" />
+   <file md5sum="f86acb704f65c7c3418fb71e8b3647b2" name="xmysqlnd/xmysqlnd_ddl_table_defs.cc" role="src" />
+   <file md5sum="1b4acb1f53baff5f38babc0a5b11eba2" name="xmysqlnd/xmysqlnd_ddl_table_defs.h" role="src" />
+   <file md5sum="f59196b00cccc425d4399f7595f76641" name="xmysqlnd/xmysqlnd_ddl_view_commands.cc" role="src" />
+   <file md5sum="6587431be20eb3aa0f3ea91a60e356d1" name="xmysqlnd/xmysqlnd_ddl_view_commands.h" role="src" />
+   <file md5sum="4c72d014ef23730261ea61d092aeb8d2" name="xmysqlnd/xmysqlnd_driver.cc" role="src" />
+   <file md5sum="ff6f81744cf0216c33f9e90606e96310" name="xmysqlnd/xmysqlnd_driver.h" role="src" />
+   <file md5sum="a1f62aeee78368d328cf02db69b844c4" name="xmysqlnd/xmysqlnd_enum_n_def.h" role="src" />
+   <file md5sum="9ee66c89240f1bfd3c0e4c344cb1a18a" name="xmysqlnd/xmysqlnd_environment.cc" role="src" />
+   <file md5sum="450927b2a0fbab28092a132bb5b5e02c" name="xmysqlnd/xmysqlnd_environment.h" role="src" />
+   <file md5sum="0f5e5db3e7c85fc33e56975190cabd8e" name="xmysqlnd/xmysqlnd_extension_plugin.cc" role="src" />
+   <file md5sum="bcbc460982cec3ed60e88178d021a61b" name="xmysqlnd/xmysqlnd_extension_plugin.h" role="src" />
+   <file md5sum="b2e9435bcd64201445a0b92a473ccb5f" name="xmysqlnd/xmysqlnd_index_collection_commands.cc" role="src" />
+   <file md5sum="c1ad42c49c5176ffbb23e00f6c2ac23c" name="xmysqlnd/xmysqlnd_index_collection_commands.h" role="src" />
+   <file md5sum="237977d3d35fc713a1f0412526f49d61" name="xmysqlnd/xmysqlnd_node_collection.cc" role="src" />
+   <file md5sum="a7fdaa236f4e3cd994f78dda81e97acf" name="xmysqlnd/xmysqlnd_node_collection.h" role="src" />
+   <file md5sum="52a4250099acc7d8d3308a463a3aff0a" name="xmysqlnd/xmysqlnd_node_schema.cc" role="src" />
+   <file md5sum="d516debfc41b5acb69e97a97fd89f159" name="xmysqlnd/xmysqlnd_node_schema.h" role="src" />
+   <file md5sum="ff4aebc82c5596ef6c41ba50eadc6f9b" name="xmysqlnd/xmysqlnd_node_session.cc" role="src" />
+   <file md5sum="c505bd1319aa42bfd96feee0f66d3170" name="xmysqlnd/xmysqlnd_node_session.h" role="src" />
+   <file md5sum="cec7b5b293891e9b3095a012d5d9bb0d" name="xmysqlnd/xmysqlnd_node_stmt.cc" role="src" />
+   <file md5sum="21c00ac3120879dcd27ed5b4b7d7cb4f" name="xmysqlnd/xmysqlnd_node_stmt.h" role="src" />
+   <file md5sum="0bbda9dd884654ffa1594794551e28b9" name="xmysqlnd/xmysqlnd_node_stmt_result.cc" role="src" />
+   <file md5sum="afb515971d96c0307dffd978d1145bca" name="xmysqlnd/xmysqlnd_node_stmt_result.h" role="src" />
+   <file md5sum="5a474e696f1bd2a5469a74ab207c6a3b" name="xmysqlnd/xmysqlnd_node_stmt_result_meta.cc" role="src" />
+   <file md5sum="71aaa196dde0a6db3b807121204aa92f" name="xmysqlnd/xmysqlnd_node_stmt_result_meta.h" role="src" />
+   <file md5sum="815a47b6c74b21f038c58a9ebd85443c" name="xmysqlnd/xmysqlnd_node_table.cc" role="src" />
+   <file md5sum="83644ee8c68625ecedde7bc2fcd4bb48" name="xmysqlnd/xmysqlnd_node_table.h" role="src" />
+   <file md5sum="ea6b8c2e6ab6418d71aa8f4f4a22c0aa" name="xmysqlnd/xmysqlnd_object_factory.cc" role="src" />
+   <file md5sum="570fc91f35056668efeddd091b046e63" name="xmysqlnd/xmysqlnd_object_factory.h" role="src" />
+   <file md5sum="2dfff35bb906c955ec8e7f378657bc14" name="xmysqlnd/xmysqlnd_priv.h" role="src" />
+   <file md5sum="5c24da1e596966777b09f82f7da23835" name="xmysqlnd/xmysqlnd_protocol_dumper.cc" role="src" />
+   <file md5sum="d9e5bb3a21b36b323d16bd4d9473b248" name="xmysqlnd/xmysqlnd_protocol_dumper.h" role="src" />
+   <file md5sum="170456e15fc94a8c63c5daf6802c2a78" name="xmysqlnd/xmysqlnd_protocol_frame_codec.cc" role="src" />
+   <file md5sum="de93a04139bc0a2e9936a25ba0969b90" name="xmysqlnd/xmysqlnd_protocol_frame_codec.h" role="src" />
+   <file md5sum="33a2ad08c99e9e91de002fe1d3a32b2f" name="xmysqlnd/xmysqlnd_rowset.cc" role="src" />
+   <file md5sum="60334828c92f4de02bed3d183026c4d3" name="xmysqlnd/xmysqlnd_rowset.h" role="src" />
+   <file md5sum="79d4f2b8c07eb5e84c3fd0e617208d07" name="xmysqlnd/xmysqlnd_rowset_buffered.cc" role="src" />
+   <file md5sum="32225ff0c2d692600e787755edb29f54" name="xmysqlnd/xmysqlnd_rowset_buffered.h" role="src" />
+   <file md5sum="e16c2504e09519dc75792140d1d0b31f" name="xmysqlnd/xmysqlnd_rowset_fwd.cc" role="src" />
+   <file md5sum="d080f9010801e264dacc177983bd7895" name="xmysqlnd/xmysqlnd_rowset_fwd.h" role="src" />
+   <file md5sum="e183669d181bb0a0e9cbaa7309aa52d5" name="xmysqlnd/xmysqlnd_session_config.cc" role="src" />
+   <file md5sum="814910339e17621be80fc730697e806d" name="xmysqlnd/xmysqlnd_session_config.h" role="src" />
+   <file md5sum="27169b35d29d9dad4a55dbbe07d34cc3" name="xmysqlnd/xmysqlnd_statistics.cc" role="src" />
+   <file md5sum="9486a22296b6438d74bcf75b9e7c9e8e" name="xmysqlnd/xmysqlnd_stmt_execution_state.cc" role="src" />
+   <file md5sum="9cb2ce0f90213e6c8b40b46fcc3fff1b" name="xmysqlnd/xmysqlnd_stmt_execution_state.h" role="src" />
+   <file md5sum="d099ceb814feb1897f765f434b357559" name="xmysqlnd/xmysqlnd_structs.h" role="src" />
+   <file md5sum="10e345911e417845c455353594517698" name="xmysqlnd/xmysqlnd_table_create.cc" role="src" />
+   <file md5sum="204992f63ac2644f4b0c8a2e02be83f0" name="xmysqlnd/xmysqlnd_table_create.h" role="src" />
+   <file md5sum="0dcea5fc4484a3ff34bb28dcea4a0991" name="xmysqlnd/xmysqlnd_utils.cc" role="src" />
+   <file md5sum="40d314fcd253173a9935123801b5906c" name="xmysqlnd/xmysqlnd_utils.h" role="src" />
+   <file md5sum="6913692a4ecb7b6f947c8e6f581ce1b6" name="xmysqlnd/xmysqlnd_view.cc" role="src" />
+   <file md5sum="beaa1802428145c84cae4a6d745d36fd" name="xmysqlnd/xmysqlnd_view.h" role="src" />
+   <file md5sum="7b0f3ddf19954b3295d2c2d3544e45c1" name="xmysqlnd/xmysqlnd_warning_list.cc" role="src" />
+   <file md5sum="360d6ad5c518e7c733a662dd724aea4a" name="xmysqlnd/xmysqlnd_warning_list.h" role="src" />
+   <file md5sum="bcf400bf78c3571d0e4f1b25f99f80b9" name="xmysqlnd/xmysqlnd_wireprotocol.cc" role="src" />
+   <file md5sum="a4df2e7809a5567597f68426f4000731" name="xmysqlnd/xmysqlnd_wireprotocol.h" role="src" />
+   <file md5sum="811916affc7be730976b7cf009c14cb4" name="xmysqlnd/xmysqlnd_zval2any.cc" role="src" />
+   <file md5sum="087eb54523df42c9a1a400294978d117" name="xmysqlnd/xmysqlnd_zval2any.h" role="src" />
+   <file md5sum="09b61d90fca296339087aee0e12eb8bf" name="CREDITS" role="doc" />
+   <file md5sum="b602636d46a61c0ac0432bbf5c078fe4" name="LICENSE" role="doc" />
+   <file md5sum="eeb7aabdd052cf1dbbdea2c5f471d2ec" name="Makefile.frag" role="src" />
+   <file md5sum="e7e4bf92af1cb176bd75413d326f751e" name="README" role="doc" />
+   <file md5sum="5ece578f61e640b408e7bb5d4ad1f551" name="config-win.h" role="src" />
+   <file md5sum="f23a7ccfaa350fef19ca3f01fa093040" name="config.m4" role="src" />
+   <file md5sum="1e0bfac920924a471272f456dc7781a2" name="config.w32" role="src" />
+   <file md5sum="9ded8f71509184f715dacb9b41eff0b8" name="examples.php" role="doc" />
+   <file md5sum="14c3473dd7f67d6090c94c593e028752" name="mysql_xdevapi.def" role="src" />
+   <file md5sum="73cd6f1dab68481330932c4f2ccf738f" name="mysqlx_base_session.cc" role="src" />
+   <file md5sum="ab653a22bff9df966ad4f42f72e939b5" name="mysqlx_base_session.h" role="src" />
+   <file md5sum="fa2fdf25106386022003c535929495da" name="mysqlx_class_properties.cc" role="src" />
+   <file md5sum="ca6db7a73eb3ffeb32eda98c956debcf" name="mysqlx_class_properties.h" role="src" />
+   <file md5sum="9bfa8a8cd777e81286b7975dfcd207a9" name="mysqlx_crud_operation_bindable.cc" role="src" />
+   <file md5sum="d25614c0819179ee4d2257b8f0f45aa3" name="mysqlx_crud_operation_bindable.h" role="src" />
+   <file md5sum="708a95b8009a7a9b9ca7a2053d314a1a" name="mysqlx_crud_operation_limitable.cc" role="src" />
+   <file md5sum="b19757f318ea2dac9aeb295f90355286" name="mysqlx_crud_operation_limitable.h" role="src" />
+   <file md5sum="f411914d28e4c1d0c26715589ec4e74e" name="mysqlx_crud_operation_skippable.cc" role="src" />
+   <file md5sum="72d7e63fa1f0dc0a4e901cf9a2f5fc0b" name="mysqlx_crud_operation_skippable.h" role="src" />
+   <file md5sum="6b5c145d71f2a00ca66349cf3eec0c2f" name="mysqlx_crud_operation_sortable.cc" role="src" />
+   <file md5sum="44ef427c46a0060bd57a363e3caa53eb" name="mysqlx_crud_operation_sortable.h" role="src" />
+   <file md5sum="5aeaf464a36c2c825a0b62567b9c2dbc" name="mysqlx_database_object.cc" role="src" />
+   <file md5sum="4b26fef496d63fc4bf2f986bf2f83e62" name="mysqlx_database_object.h" role="src" />
+   <file md5sum="1ab6236859ebd943821767b8fdeafe77" name="mysqlx_driver.cc" role="src" />
+   <file md5sum="dc67268be3417ecaddf2da7f10ba1903" name="mysqlx_driver.h" role="src" />
+   <file md5sum="e49c31b750c3255a3618ec523ef831c4" name="mysqlx_exception.cc" role="src" />
+   <file md5sum="171a5723eb41d1f848c69d4ff9698127" name="mysqlx_exception.h" role="src" />
+   <file md5sum="ae7193483ed85401a0bd0af084b43936" name="mysqlx_executable.cc" role="src" />
+   <file md5sum="08f60dfae3f2c98208f2bde593d3f0ba" name="mysqlx_executable.h" role="src" />
+   <file md5sum="0ddb6b36ebe2310d9e76b97493ef89bc" name="mysqlx_execution_status.cc" role="src" />
+   <file md5sum="217ea0ab12653e8c50a89778e825bd83" name="mysqlx_execution_status.h" role="src" />
+   <file md5sum="f5cc094c66a4dad94e0c58884c9505aa" name="mysqlx_expression.cc" role="src" />
+   <file md5sum="46fccac301e8e20b88dd97e956abb01b" name="mysqlx_expression.h" role="src" />
+   <file md5sum="cbfcac43bb7a98e42cc960838dc83020" name="mysqlx_field_metadata.cc" role="src" />
+   <file md5sum="d1279c1e29c9834dbbb85f39d29871b8" name="mysqlx_field_metadata.h" role="src" />
+   <file md5sum="2b4975d21f02c7088311c183bce8b813" name="mysqlx_node_base_result.cc" role="src" />
+   <file md5sum="31a4fcb4912e5beda16d8f06bf1cea72" name="mysqlx_node_base_result.h" role="src" />
+   <file md5sum="4822849b7de964021c4b82291206f8b0" name="mysqlx_node_base_result_iterator.cc" role="src" />
+   <file md5sum="8e847dedd4bbddfa4fb13f2c83d34d9e" name="mysqlx_node_base_result_iterator.h" role="src" />
+   <file md5sum="beb6687b70def627ba3fabbca3284bba" name="mysqlx_node_collection.cc" role="src" />
+   <file md5sum="5f60de677a927424a6bcb6fe8fd5a0a4" name="mysqlx_node_collection.h" role="src" />
+   <file md5sum="59742a88be39fa80560f3128f7d8ff8b" name="mysqlx_node_collection__add.cc" role="src" />
+   <file md5sum="6fd1eb52f59bc0adf014355e255cba4d" name="mysqlx_node_collection__add.h" role="src" />
+   <file md5sum="d7d837535bc3e3a0dcdd4a3c1e3a03f7" name="mysqlx_node_collection__create_index.cc" role="src" />
+   <file md5sum="aedde15b1536533352dba9f2ff09a840" name="mysqlx_node_collection__create_index.h" role="src" />
+   <file md5sum="d0ab9ea80cd28e6b22443dd25e8bdda2" name="mysqlx_node_collection__find.cc" role="src" />
+   <file md5sum="7dcd26e3912f0def62c773cd8d24edc2" name="mysqlx_node_collection__find.h" role="src" />
+   <file md5sum="faf15ae948d1d4ac1b3445030726eae3" name="mysqlx_node_collection__modify.cc" role="src" />
+   <file md5sum="40a4db097eaab75b656cbb7e7ede4257" name="mysqlx_node_collection__modify.h" role="src" />
+   <file md5sum="bbd238304b08bf3d18d059518613edfb" name="mysqlx_node_collection__remove.cc" role="src" />
+   <file md5sum="582f12d527f9350592e6bea4abd8d647" name="mysqlx_node_collection__remove.h" role="src" />
+   <file md5sum="96f82a7ee4b1371aacc153491522dcb9" name="mysqlx_node_column_result.cc" role="src" />
+   <file md5sum="9ef32af4c0d8704dcf4fc4e558dd6251" name="mysqlx_node_column_result.h" role="src" />
+   <file md5sum="9e968c423a0eb663c847e6a52f0a643a" name="mysqlx_node_doc_result.cc" role="src" />
+   <file md5sum="b3bab9317179818814fd72b5e21dadd6" name="mysqlx_node_doc_result.h" role="src" />
+   <file md5sum="e85697f22862742269def6389d0a7479" name="mysqlx_node_doc_result_iterator.cc" role="src" />
+   <file md5sum="c64738006c4c023de19141a152cc0ce3" name="mysqlx_node_doc_result_iterator.h" role="src" />
+   <file md5sum="dc22329e918a737433904e4703e4f83c" name="mysqlx_node_result.cc" role="src" />
+   <file md5sum="2effa35982754c887a398a1d89ee2e57" name="mysqlx_node_result.h" role="src" />
+   <file md5sum="ee439094ce083b465d4fb3ec84261703" name="mysqlx_node_result_iterator.cc" role="src" />
+   <file md5sum="27be6975dc368b6455e297a064a68c4c" name="mysqlx_node_result_iterator.h" role="src" />
+   <file md5sum="0b8766c1b01083a54afed805b4f35061" name="mysqlx_node_row_result.cc" role="src" />
+   <file md5sum="be0054e6d0a6c07c85fb038f4a430a9f" name="mysqlx_node_row_result.h" role="src" />
+   <file md5sum="06abb79b0d3fdfa3a7b63c6cf357e21b" name="mysqlx_node_row_result_iterator.cc" role="src" />
+   <file md5sum="c00ae1f865f894516f450fcd184f930d" name="mysqlx_node_row_result_iterator.h" role="src" />
+   <file md5sum="ccbac4b8db24efd307de268a1744fdb8" name="mysqlx_node_schema.cc" role="src" />
+   <file md5sum="2fc4e3809e44847484422c27c2d98b91" name="mysqlx_node_schema.h" role="src" />
+   <file md5sum="686d2bb759c755416cbc7337aa8dc392" name="mysqlx_node_session.cc" role="src" />
+   <file md5sum="a0ffa58994cdc1472e42099cefd0fc11" name="mysqlx_node_session.h" role="src" />
+   <file md5sum="ca515288aefe8a141ecce0c7578c738d" name="mysqlx_node_session_configuration.cc" role="src" />
+   <file md5sum="2177a68e26881091b52767a2cf6855a6" name="mysqlx_node_session_configuration.h" role="src" />
+   <file md5sum="786c17602f8b6bc0f6c4e2ef6ba4c804" name="mysqlx_node_sql_statement.cc" role="src" />
+   <file md5sum="b402202bd93e9e8d92cc70ac4074044e" name="mysqlx_node_sql_statement.h" role="src" />
+   <file md5sum="38905f5d418500a4065eaf55899a3cdf" name="mysqlx_node_sql_statement_result.cc" role="src" />
+   <file md5sum="4f5a410c582ec762acc6d4931e91414b" name="mysqlx_node_sql_statement_result.h" role="src" />
+   <file md5sum="2397f665eb67d3879f573d942a1ddc8a" name="mysqlx_node_sql_statement_result_iterator.cc" role="src" />
+   <file md5sum="df19a6e9675f556f2e3f7dc465ab0a34" name="mysqlx_node_sql_statement_result_iterator.h" role="src" />
+   <file md5sum="1c9e0e343600e158f3eb85ce78a516a7" name="mysqlx_node_table.cc" role="src" />
+   <file md5sum="f4fbebc3382899e6be318de164262924" name="mysqlx_node_table.h" role="src" />
+   <file md5sum="057d7e63bfe3aa5c305ec3aa6e4dad85" name="mysqlx_node_table__delete.cc" role="src" />
+   <file md5sum="e40ce804aeffa786ab2d499504ff54bd" name="mysqlx_node_table__delete.h" role="src" />
+   <file md5sum="2ff6525fbdff2645aa879be0efcdf36d" name="mysqlx_node_table__insert.cc" role="src" />
+   <file md5sum="150ba6d2731aab399a9123577203e45d" name="mysqlx_node_table__insert.h" role="src" />
+   <file md5sum="512cd5b201000ac70a92d744c6eb1433" name="mysqlx_node_table__select.cc" role="src" />
+   <file md5sum="3cb545aa8d4b1f35b21b994553ad4368" name="mysqlx_node_table__select.h" role="src" />
+   <file md5sum="cfe7977726dcff51b858a275d8c8888e" name="mysqlx_node_table__update.cc" role="src" />
+   <file md5sum="eee2d91ea4b87d6b548d1eb3643dd50a" name="mysqlx_node_table__update.h" role="src" />
+   <file md5sum="5328472bfb8594914f8f3b78abce557d" name="mysqlx_object.cc" role="src" />
+   <file md5sum="890971290163c3c0f32471a8bb529a6d" name="mysqlx_object.h" role="src" />
+   <file md5sum="c5af2dfcd82158b3ec64a98135119803" name="mysqlx_schema_object.cc" role="src" />
+   <file md5sum="62f76ddf866d0fb5e6045a2143e9f114" name="mysqlx_schema_object.h" role="src" />
+   <file md5sum="96572163e49ba213ba151eb2614c9a9b" name="mysqlx_session.cc" role="src" />
+   <file md5sum="e8508d7dba078d63b938b4cec5e314e9" name="mysqlx_session.h" role="src" />
+   <file md5sum="caae98dcef67ef8d15798545fc711a39" name="mysqlx_table_create.cc" role="src" />
+   <file md5sum="47068ffa9cdac39a48b5fdc237b6bd8a" name="mysqlx_table_create.h" role="src" />
+   <file md5sum="daa5efda00207d0dd3fa3911ee613579" name="mysqlx_table_create_column_def.cc" role="src" />
+   <file md5sum="56147b3d23ba4cb8ad051016392e6b19" name="mysqlx_table_create_column_def.h" role="src" />
+   <file md5sum="19a5b647528a4f9f6ea38bc664d798fc" name="mysqlx_table_create_column_def_base.cc" role="src" />
+   <file md5sum="95990d82a6daa5dfd3a33ed90b1b9811" name="mysqlx_table_create_column_def_base.h" role="src" />
+   <file md5sum="a7979e9d500bfc9a4b69549a5b8162db" name="mysqlx_table_create_foreign_key_def.cc" role="src" />
+   <file md5sum="344694fd1d2b0607ab45375446d01958" name="mysqlx_table_create_foreign_key_def.h" role="src" />
+   <file md5sum="655e93234d7323428cbd2fc6b391bd67" name="mysqlx_table_create_generated_column_def.cc" role="src" />
+   <file md5sum="41f1aff22dc6f631d0e46744c1cb4a71" name="mysqlx_table_create_generated_column_def.h" role="src" />
+   <file md5sum="1b4ca53b9826bd6c32160c9c56a9a895" name="mysqlx_view_alter.cc" role="src" />
+   <file md5sum="4fe9ef4483302342920025a1f06d18f6" name="mysqlx_view_alter.h" role="src" />
+   <file md5sum="b21fb5aa9e0d88b360ac89cfed6cba53" name="mysqlx_view_create.cc" role="src" />
+   <file md5sum="6fa519616c3b419e6a8db52bd1ba70c8" name="mysqlx_view_create.h" role="src" />
+   <file md5sum="4c3077f1f03c103c6c4b49023811e126" name="mysqlx_view_drop.cc" role="src" />
+   <file md5sum="5b4f464071ab07b31c2a54e94a1305a0" name="mysqlx_view_drop.h" role="src" />
+   <file md5sum="bbbc11aecfb84a3acc554cc7e00fabd5" name="mysqlx_warning.cc" role="src" />
+   <file md5sum="3b8b7129290386ecf3a4a28310368ae1" name="mysqlx_warning.h" role="src" />
+   <file md5sum="17b55a26721eefbf3359b28f63138d33" name="mysqlx_x_session.cc" role="src" />
+   <file md5sum="0793d2790a53a20e4052ba9ed9186084" name="mysqlx_x_session.h" role="src" />
+   <file md5sum="e4e5ce66e86ecca7ea7ab83fe46c1a61" name="php_mysql_xdevapi.h" role="src" />
+   <file md5sum="cd5730cc1b7e7b1dff7fc1e8561c581b" name="php_mysqlx.cc" role="src" />
+   <file md5sum="63c2f782604ed2aa6488ac1f6f1e5037" name="php_mysqlx.h" role="src" />
+   <file md5sum="983085f133f96f936cae7605a39894ff" name="php_mysqlx_ex.cc" role="src" />
+   <file md5sum="ef10df31b509caaaa47a3d2f754f7234" name="php_mysqlx_ex.h" role="src" />
+   <file md5sum="0d4d429524666963da14edc3f86c1077" name="php_xmysqlnd.cc" role="src" />
+   <file md5sum="08ceb412adb3a7b72379e2e4956534eb" name="php_xmysqlnd.h" role="src" />
+   <file md5sum="5f20124eab3c568f229ac8595029ad89" name="product_data.txt" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.1.0-dev</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>mysql_xdevapi</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="enable-mysql-xdevapi" prompt="Enable MySQL X DevAPI" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <date>2017-03-13</date>
+   <time>23:42:05</time>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Added support for View DDL
+- Added support for X DevAPI unified connection string
+- Added support for Unix Domain Sockets
+- Added table.isView()
+- Added Core TLS/SSLL options
+- Internal refacotoring
+- Fixed a few bugs
+   </notes>
+  </release>
+  <release>
+   <date>2016-12-08</date>
+   <time>12:00:00</time>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Initial release
+   </notes>
+  </release>
+ </changelog>
+</package>

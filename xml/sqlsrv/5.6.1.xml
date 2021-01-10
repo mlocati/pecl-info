@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sqlsrv</name>
+ <channel>pecl.php.net</channel>
+ <summary>Microsoft Drivers for PHP for SQL Server (SQLSRV)</summary>
+ <description>The Microsoft Drivers for PHP for SQL Server are PHP extensions that allow for the reading and writing of SQL Server data from within PHP scripts. The SQLSRV extension provides a procedural interface while the PDO_SQLSRV extension implements PDO for accessing data in all editions of SQL Server 2008 R2 and later (including Azure SQL DB). These drivers rely on the Microsoft ODBC Driver for SQL Server to handle the low-level communication with SQL Server.
+*This package contains only the SQLSRV driver.*
+ </description>
+ <lead>
+  <name>Meet Bhagdev</name>
+  <user>meetbhagdev</user>
+  <email>meetb@microsoft.com</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Jay Kint</name>
+  <user>jkint</user>
+  <email>jaykint@microsoft.com</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Marie Barwin</name>
+  <user>mbar</user>
+  <email>v-mabarw@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Jenny Tam</name>
+  <user>yitam</user>
+  <email>v-yitam@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>David Puglielli</name>
+  <user>dapugl</user>
+  <email>v-dapugl@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2019-03-19</date>
+ <time>14:33:42</time>
+ <version>
+  <release>5.6.1</release>
+  <api>5.6.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/mit">The MIT License (MIT)</license>
+ <notes>
+[Fixed]
+- Issue [#937](https://github.com/Microsoft/msphpsql/issues/937) - fixed assumptions made when calculating field or column metadata which may have resulted in application termination
+- Issue [#955](https://github.com/Microsoft/msphpsql/issues/955) - modified sqlsrv config file such that it can be compiled independently of pdo_sqlsrv
+[Limitations]
+- No support for inout / output params when using sql_variant type
+- No support for inout / output params when formatting decimal values
+- In Linux and macOS, setlocale() only takes effect if it is invoked before the first connection. Attempting to set the locale after connecting will not work
+- Always Encrypted requires [MS ODBC Driver 17+](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-2017)
+  - Only Windows Certificate Store and Azure Key Vault are supported. Custom Keystores are not yet supported
+  - Issue [#716](https://github.com/Microsoft/msphpsql/issues/716) - With Always Encrypted enabled, named parameters in subqueries are not supported
+  - [Always Encrypted limitations](https://docs.microsoft.com/en-us/sql/connect/php/using-always-encrypted-php-drivers?view=sql-server-2017#limitations-of-the-php-drivers-when-using-always-encrypted)
+[Known Issues]
+- Connection pooling on Linux or macOS is not recommended with [unixODBC](http://www.unixodbc.org/) &lt; 2.3.7
+- When pooling is enabled in Linux or macOS
+  - unixODBC &lt;= 2.3.4 (Linux and macOS) might not return proper diagnostic information, such as error messages, warnings and informative messages
+  - due to this unixODBC bug, fetch large data (such as xml, binary) as streams as a workaround. See the examples [here](https://github.com/Microsoft/msphpsql/wiki/Features#pooling)
+- With ColumnEncryption enabled, calling stored procedure with XML parameter does not work (Issue [#674](https://github.com/Microsoft/msphpsql/issues/674))
+- In SUSE 15, Azure Active Directory connections may fail if PHP is installed from packages (Issue [#934](https://github.com/Microsoft/msphpsql/issues/934))
+</notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="5a9e43c6d3ab180fcc1aa74fc3565323" name="config.m4" role="src" />
+   <file md5sum="ee72cd51213e24e536465fc4f3c2ae58" name="config.w32" role="src" />
+   <file md5sum="4548cf786028903f657e87b5cb0989a0" name="conn.cpp" role="src" />
+   <file md5sum="da4d3c1d4392f2e63b36250266cdf9b4" name="CREDITS" role="doc" />
+   <file md5sum="4089dbaa3a4fe1357c0bac0e330ed9a7" name="init.cpp" role="src" />
+   <file md5sum="d24567cb39fb26ca7b004cdd3247228b" name="LICENSE" role="doc" />
+   <file md5sum="85d88305a16ecae592be4f4642d8dc20" name="php_sqlsrv.h" role="src" />
+   <file md5sum="7e7ad66e27a48a449ab4ae066344db2a" name="php_sqlsrv_int.h" role="src" />
+   <file md5sum="b3fcce51cefccb1798112452f1a4c5e8" name="shared/core_conn.cpp" role="src" />
+   <file md5sum="e4823fdb10c8c5392bc3a95dc570d2e3" name="shared/core_init.cpp" role="src" />
+   <file md5sum="73bf006f2bbad9c6b0b7499980270a22" name="shared/core_results.cpp" role="src" />
+   <file md5sum="e7cfb9968473367b98d6507d9463b1b4" name="shared/core_sqlsrv.h" role="src" />
+   <file md5sum="29ef737f57bc88fe4d8d567d234585aa" name="shared/core_stmt.cpp" role="src" />
+   <file md5sum="d6faa60555193a161d201dab7651b538" name="shared/core_stream.cpp" role="src" />
+   <file md5sum="ce559c5ecb9bad67f204877e7f239d4f" name="shared/core_util.cpp" role="src" />
+   <file md5sum="b70324f8fc98b08e7762dd1dc24a1408" name="shared/FormattedPrint.cpp" role="src" />
+   <file md5sum="c8cd2f614df29e68ba49612467d84840" name="shared/FormattedPrint.h" role="src" />
+   <file md5sum="2d016c64847bae6b0966fcadc8b6d3f4" name="shared/globalization.h" role="src" />
+   <file md5sum="f8a948990604fc17dcb0007459b67602" name="shared/interlockedatomic_gcc.h" role="src" />
+   <file md5sum="312099c865670eebf00ea005c6fbbd9d" name="shared/interlockedatomic.h" role="src" />
+   <file md5sum="6c46325a28508160072d3f592085e68d" name="shared/interlockedslist.h" role="src" />
+   <file md5sum="ce4084954f19aa1b3afafc5bb201085e" name="shared/localization.hpp" role="src" />
+   <file md5sum="f26b6f906fc9a0d310becdb1597211ee" name="shared/localizationimpl.cpp" role="src" />
+   <file md5sum="b8d1487f21a4447bc6633e3ac366dd9a" name="shared/msodbcsql.h" role="src" />
+   <file md5sum="9d4b4ab44c7195583d1c73e5c882065c" name="shared/sal_def.h" role="src" />
+   <file md5sum="87807d3f827ee2aebb86690014c5d1f6" name="shared/StringFunctions.cpp" role="src" />
+   <file md5sum="876ec706d7688ed8b13ed73a42454510" name="shared/StringFunctions.h" role="src" />
+   <file md5sum="7147f824d2868194459f15855c07dc59" name="shared/typedefs_for_linux.h" role="src" />
+   <file md5sum="67d63b404b2b33b0476c47d3b0e48016" name="shared/version.h" role="src" />
+   <file md5sum="5c9645278b4b836d659cc739ad10f9d6" name="shared/xplat.h" role="src" />
+   <file md5sum="c1358a841265682dfe74ec05c57f2abe" name="shared/xplat_intsafe.h" role="src" />
+   <file md5sum="792c04041fe87f7cc3fa08db207feacc" name="shared/xplat_winerror.h" role="src" />
+   <file md5sum="c2dd76f8261f59678609069407f10afe" name="shared/xplat_winnls.h" role="src" />
+   <file md5sum="93d1552e165859385ee9a3589c93d661" name="stmt.cpp" role="src" />
+   <file md5sum="eae501206a45ccdc6cc9554e8a8eb71a" name="template.rc" role="src" />
+   <file md5sum="282f53979264d393b6fcb96941dc98f8" name="util.cpp" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+   <arch>
+    <pattern>linux-*-i?86-*</pattern>
+    <conflicts/>
+   </arch>   
+  </required>
+ </dependencies>
+ <providesextension>sqlsrv</providesextension>
+ <extsrcrelease />
+</package>

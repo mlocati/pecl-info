@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>zmq</name>
+ <channel>pecl.php.net</channel>
+ <summary>ZeroMQ messaging</summary>
+ <description>ZeroMQ is a software library that lets you quickly design and implement a fast message-based applications.</description>
+ <lead>
+  <name>Mikko Koppanen</name>
+  <user>mkoppanen</user>
+  <email>mkoppanen@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2016-02-01</date>
+ <time>01:50:43</time>
+ <version>
+  <release>1.1.3</release>
+  <api>1.1.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license>BSD License</license>
+ <notes>
+- Introduces PHP7 support. PHP5 compilation should work but receives no updates.
+- Added new methods:
+  * ZMQSocket::monitor (and related ZMQSocket::recvEvent)
+  * ZMQ::z85Encode/Decode
+  * ZMQ::has
+- Socket options are now restricted to their valid socket types
+- Usage pthreads extension is now better supported and tested
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="a9a8f5232021fe84b281900b2abc4c3b" name="php5/zmq.c" role="src" />
+   <file md5sum="bc4270a5920b1c76498857a9bd87ecde" name="php5/zmq_device.c" role="src" />
+   <file md5sum="e14ab58caf6d233c08223448ef9554ce" name="php5/zmq_fd_stream.c" role="src" />
+   <file md5sum="004daef053ad7ec91b23203fdc5852df" name="php5/zmq_pollset.c" role="src" />
+   <file md5sum="e3740e49f1b7a0022cce7e2bf1dc004f" name="php5/zmq_sockopt.c" role="src" />
+   <file md5sum="529586edb00a6cfe937cc2eaf18d73aa" name="php5/zmq_clock.c" role="src" />
+   <file md5sum="363dda2060d0680db5ca4e120a51359f" name="php5/php_zmq.h" role="src">
+    <tasks:replace from="@PACKAGE_VERSION@" to="version" type="package-info" />
+   </file>
+   <file md5sum="7a6b9eefe907d9d2857c74b1e34c055f" name="php5/php_zmq_private.h" role="src" />
+   <file md5sum="721ad02952ff68b2f0a1eb212858c949" name="php5/php_zmq_pollset.h" role="src" />
+   <file md5sum="883ba03820c9263477a92909420f721c" name="tests/001-send.phpt" role="test" />
+   <file md5sum="de9e0dd8af81a79746e4aec495443ab5" name="tests/002-test-binary.phpt" role="test" />
+   <file md5sum="799d6f02ecbf40f2616efa5b3a2733f3" name="tests/003-getpersistentid.phpt" role="test" />
+   <file md5sum="ddeee84be958a5a760230c0d10aaf07f" name="tests/004-getendpoints.phpt" role="test" />
+   <file md5sum="29e42bf92579bf73d1d778c41c3c9055" name="tests/005-forceconnectarg.phpt" role="test" />
+   <file md5sum="06df6206f4a82139f60f600a3f936ef8" name="tests/006-sockopt.phpt" role="test" />
+   <file md5sum="b5b866615d4b0225c89eeb680d3b08f2" name="tests/007-addremovepoll.phpt" role="test" />
+   <file md5sum="f3f7b7ff031a09fa211a6db0b851dc40" name="tests/008-twowaystoconstruct.phpt" role="test" />
+   <file md5sum="6d703518cd23e8923eed21f791b6f525" name="tests/009-ispersistent.phpt" role="test" />
+   <file md5sum="76bb6ab891d0f9352f88de04e08fdaef" name="tests/010-pollsetinvalidargs.phpt" role="test" />
+   <file md5sum="98af3d65d91dd781d841203c4e2c0ae6" name="tests/011-exceptions.phpt" role="test" />
+   <file md5sum="01c8b4f6aae3b899240aa2abefb6b9d5" name="tests/012-pollsetremoveinvalid.phpt" role="test" />
+   <file md5sum="09efec8a34cd0efa79a3f2d7f9e20777" name="tests/013-pollclearandreuse.phpt" role="test" />
+   <file md5sum="a150eeda2b908895fd2e59cc9245ba53" name="tests/014-setsockoptparam.phpt" role="test" />
+   <file md5sum="ab0f86f9039a4ff20a05a9325e334597" name="tests/015-callback.phpt" role="test" />
+   <file md5sum="7a0753ebd8c406276241a869e6c1a118" name="tests/016-callbackinvalidargs.phpt" role="test" />
+   <file md5sum="7eea3724ee75f336fafe46a44fe382fd" name="tests/017-callbackonlyonnewsocket.phpt" role="test" />
+   <file md5sum="00ab5d456c469ac090cad11c7a776f46" name="tests/018-callbackpersistent.phpt" role="test" />
+   <file md5sum="814de4be9cbf817c0bc0844226588805" name="tests/019-callbackinvalidsignature.phpt" role="test" />
+   <file md5sum="d75aac6ddaf2d5ea6457506944c08df0" name="tests/020-exceptionincallback.phpt" role="test" />
+   <file md5sum="a98731bd3d80feb736fc9dd032a6a2b3" name="tests/021-callbackwarning.phpt" role="test" />
+   <file md5sum="17121228b8e79d87538c2b87c5e41f83" name="tests/022-highwatermark.phpt" role="test" />
+   <file md5sum="2bd7d81fd18a69d1e51db92766b4fbbc" name="tests/023-failedcallback.phpt" role="test" />
+   <file md5sum="d81d033d0ddaf901cd27930ee3b8e313" name="tests/024-versionconstant.phpt" role="test" />
+   <file md5sum="14bf56f4d87efaaa0e4c72639bb040f4" name="tests/025-sendrecvmulti.phpt" role="test" />
+   <file md5sum="5045aa3cef3bd3a4d8216ee5f1b1844b" name="tests/026-sockettype.phpt" role="test" />
+   <file md5sum="44e62acb2739b1f6e8dabc8007dfa47b" name="tests/027-getset.phpt" role="test" />
+   <file md5sum="018b4b43e1351ef22ae8eeccf40ee186" name="tests/028-xpub.phpt" role="test" />
+   <file md5sum="489ac5eab15f21f727ed752e0472f2f5" name="tests/029-xrepxreqdevice.phpt" role="test" />
+   <file md5sum="28d5e96d06ef7a685a260c9bf29460ec" name="tests/030-xrepmanualqueue.phpt" role="test" />
+   <file md5sum="4728561878a52fcf7590213328169741" name="tests/031-lastendpoint.phpt" role="test" />
+   <file md5sum="ecc62ad9a2118f97de828533a2630e21" name="tests/032-contextopt.phpt" role="test" />
+   <file md5sum="8f9dd1c8f561d52f5cf88323e8174095" name="tests/033-disconnect.phpt" role="test" />
+   <file md5sum="ad023eaaa5b9abc43f3611f6303690f1" name="tests/034-unbind.phpt" role="test" />
+   <file md5sum="3f89e22339557a6aa644851dd20febab" name="tests/035-capture.phpt" role="test" />
+   <file md5sum="2b18b653f2dab5f6a6318dfd22aaea84" name="tests/036-device.phpt" role="test" />
+   <file md5sum="54fa6b043e9205afdb992e6493bee702" name="tests/037-device-deprecated.phpt" role="test" />
+   <file md5sum="04ddcfcec832bc3fe81f14bce3ee65a0" name="tests/038-cert-construct.phpt" role="test" />
+   <file md5sum="ca6a1fde25ec9cb66853bf442e50a37c" name="tests/039-cert-equals.phpt" role="test" />
+   <file md5sum="42ad15ece6cd473aefc49b9b0eb596c0" name="tests/040-cert-clone.phpt" role="test" />
+   <file md5sum="6c726114eb7d191fdd1785d771f27aae" name="tests/041-cert-meta.phpt" role="test" />
+   <file md5sum="62d0e2ea62cdb9978f0aac7a57a23505" name="tests/042-cert-save.phpt" role="test" />
+   <file md5sum="4b0c88ad77d64cbcb3a75f6e3d5256cb" name="tests/043-cert-load.phpt" role="test" />
+   <file md5sum="9b4a32533f460c7774fab81366471f2b" name="tests/044-auth-construct.phpt" role="test" />
+   <file md5sum="c444fb05297915e09c61f3b4bcbb9e0d" name="tests/045-auth-allow-deny.phpt" role="test" />
+   <file md5sum="2af8019ba55b57d11d3cb860f138b10f" name="tests/046-cert-apply.phpt" role="test" />
+   <file md5sum="d50d543abf96f2876f81a81f0fd2bff6" name="tests/047-auth-configure.phpt" role="test" />
+   <file md5sum="049b848fd18a9e6f8e638c166b0099bf" name="tests/048-pollsetitems.phpt" role="test" />
+   <file md5sum="6e8e22ba52791cbe4a05697cdd683e86" name="tests/049-events.phpt" role="test" />
+   <file md5sum="6e0b78ad7cc5020b0ee26bfc061d2306" name="tests/050-sharedcontext.phpt" role="test" />
+   <file md5sum="2d85df7d7ff618406a68d79b621c652b" name="tests/051-socketcount.phpt" role="test" />
+   <file md5sum="89065f9a6e3927678fa824c508ef6820" name="tests/052-pthreads.phpt" role="test" />
+   <file md5sum="a25dd7dcbb40b144265acf18426b66cb" name="tests/053-z85.phpt" role="test" />
+   <file md5sum="7f29ef8d8dbb136eb717c89da59a962c" name="tests/054-curvekeypair.phpt" role="test" />
+   <file md5sum="ef50cc7b8abc1433457a24d24f175c2f" name="tests/bug_gh_156.phpt" role="test" />
+   <file md5sum="e7e22dbfa9852d7c67a83fdab3ec8e9d" name="tests/bug_gh_43.phpt" role="test" />
+   <file md5sum="94450fb75836a1eff4a90a2e5c452646" name="tests/bug_gh_49.phpt" role="test" />
+   <file md5sum="7b1b73fed3e487cd31f41f4c019ff5ed" name="tests/bug_gh_50.phpt" role="test" />
+   <file md5sum="e0f7ef8d9a724dd57e3cd314a1e6c7c1" name="tests/bug_gh_59_2.phpt" role="test" />
+   <file md5sum="7c51b097cd83b162858c2df1701bb765" name="tests/bug_gh_59.phpt" role="test" />
+   <file md5sum="8039e89210dc10dd7ad5ba3b0f6852f5" name="tests/bug_gh_165.phpt" role="test" />
+   <file md5sum="025c616dc530b3387c2d5f313816da09" name="tests/rose.jpg" role="test" />
+   <file md5sum="49f07dab9d903e8c743c4ed4a888e6db" name="tests/skipif.inc" role="test" />
+   <file md5sum="f0c12098ce7a3689bff73b046714c2a2" name="tests/skipif-czmq2.inc" role="test" />
+   <file md5sum="ad064c930514861c2feb4c246edc2367" name="tests/skipif-libzmq2.inc" role="test" />
+   <file md5sum="75a871f17f19549f6adc747cc61b26eb" name="tests/skipif-libzmq3.inc" role="test" />
+   <file md5sum="2088fe956cad0cb67f3903823a8f7222" name="tests/skipif-libzmq4.inc" role="test" />
+   <file md5sum="d8c54ec3cd52199ded7ec1bae19ddaa5" name="tests/libzmq2-sockopt.phpt" role="test" />
+   <file md5sum="589862497c21f822450981a989a149cd" name="tests/libzmq3-sockopt.phpt" role="test" />
+   <file md5sum="d9b7b5ffeb4b3218c7ee53a95142f68b" name="tests/libzmq4-sockopt.phpt" role="test" />
+   <file md5sum="c206e2da1d638ad82198ade745b02892" name="tests/zeromq_test_helper.inc" role="test" />
+   <file md5sum="461d8d52b859d1b27839780e2d1439d0" name="config.m4" role="src" />
+   <file md5sum="c104ea2a36d8f068bf95b7ba4d77ace8" name="config.w32" role="src" />
+   <file md5sum="909beb6ff26910f926c0cfaf5cfbd1bd" name="php-zmq.spec" role="src">
+    <tasks:replace from="@PACKAGE_VERSION@" to="version" type="package-info" />
+   </file>
+   <file md5sum="363dda2060d0680db5ca4e120a51359f" name="php_zmq.h" role="src">
+    <tasks:replace from="@PACKAGE_VERSION@" to="version" type="package-info" />
+   </file>
+   <file md5sum="2b15b916a69877ed3930b3667fa5356e" name="php_zmq_private.h" role="src" />
+   <file md5sum="0ff53a90c06e4eb612e136c2aa6153ca" name="php_zmq_pollset.h" role="src" />
+   <file md5sum="706a428bc6d23e19e51eba24facd1462" name="zmq.c" role="src" />
+   <file md5sum="e226bfdfcc2cfa858ac4b89c50995376" name="zmq_device.c" role="src" />
+   <file md5sum="cf658374be2374d503998e8004de3917" name="zmq_fd_stream.c" role="src" />
+   <file md5sum="37f96f18e33c3f16d42b5c6ea9f75770" name="zmq_pollset.c" role="src" />
+   <file md5sum="b105659b7949dd4465eb91972a274a91" name="zmq_sockopt.c" role="src" />
+   <file md5sum="529586edb00a6cfe937cc2eaf18d73aa" name="zmq_clock.c" role="src" />
+   <file md5sum="6edda871938a42ee8e5ca669e47bda81" name="zmq_object_access.c" role="src" />
+   <file md5sum="697834b0ec4c09149c72291cae63a3bb" name="zmq_helpers.c" role="src" />
+   <file md5sum="956e2a3eb37b1a554e8b80d300a3183d" name="zmq_shared_ctx.c" role="src" />
+   <file md5sum="065b05ada808755fbcf2725978734c59" name="README.md" role="doc" />
+   <file md5sum="e16070bfb88153b5beb69f1d95104949" name="LICENSE" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>zmq</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-zmq" prompt="Please provide the prefix of libzmq installation" />
+ </extsrcrelease>
+</package>

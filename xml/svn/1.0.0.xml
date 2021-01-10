@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>svn</name>
+ <channel>pecl.php.net</channel>
+ <summary>PHP Bindings for the Subversion Revision control system.</summary>
+ <description>Bindings for the Subversion revision control system, providing a method for manipulating
+	a working copy or repository with PHP.</description>
+ <lead>
+  <name>Scott MacVicar</name>
+  <user>scottmac</user>
+  <email>scottmac@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Alan Knowles</name>
+  <user>alan_k</user>
+  <email>alan@akbkhome.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Wez Furlong</name>
+  <user>wez</user>
+  <email>wez@omniti.com</email>
+  <active>no</active>
+ </lead>
+ <date>2010-05-13</date>
+ <time>11:02:59</time>
+ <version>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>Bumped release to stable, as not much is really changing and the API is pretty steady.
+
+
+- not handling SVN_REVISION_COMMITTED, SVN_REVISION_PREV, SVN_REVISION_BASE properly 
+  (svn_ls, svn_info, svn_update, svn_export) (Chung, Hyung-Hwan)
+- not handling utf8 failure  (Chung, Hyung-Hwan)
+ (svn_update, svn_export, svn_repos_create, svn_commit, svn_add, svn_status, svn_blame)
+- using a wrong type for the &apos;l&apos; parameter that can cause a problem on architectures where 
+   sizeof(int) != sizeof(long) - ( svn_info, svn_ls ) (Chung, Hyung-Hwan)
+- multiple utf8 check fixes - (Chung, Hyung-Hwan)
+- add revision parameter to svn_propget and svn_proplist, do utf8 checks (Chung, Hyung-Hwan)
+- fix bug #17080 - svn_mkdir requires log message, also added utf8 checks (Ivan P)
+- req #14360 - support svn_export with revisions  (lostoutfrog)
+- php 5.3.0 TSRMLS_CC additions (Thomas Krause)
+- update package xml to v2 (Pierre Joye)</notes>
+ <contents>
+  <dir name="/">
+   <file baseinstalldir="/" md5sum="10cfd4f5d8376bb8f05a70ffae767a64" name="examples/hook_copycommit.php" role="doc" />
+   <file baseinstalldir="/" md5sum="f09ab458959250dc5f03741701b8b7de" name="examples/hook_emailcommit.php" role="doc" />
+   <file md5sum="d238380a74185218c21fad6c4c5000a5" name="config.m4" role="src" />
+   <file md5sum="9a659f3c84c467fb3955ac3c4818dfef" name="config.w32" role="src" />
+   <file md5sum="8ce7032975ff856d334d4e06942a10e5" name="CREDITS" role="doc" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL" role="doc" />
+   <file md5sum="837d6430460a121a7502fbc94e8c478b" name="php_svn.h" role="src" />
+   <file md5sum="b05f3af66162c2b2153520916b8db479" name="svn.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.0.0</min>
+    <max>6.0.0</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>svn</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-svn" prompt="Please provide the prefix of Subversion installation" />
+  <configureoption default="autodetect" name="with-svn-apr" prompt="Please provide the prefix of the APR installation used with Subversion" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <date>2008-09-24</date>
+   <version>
+    <release>0.5.1</release>
+    <api>0.5.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>fix for  libsvn 1.6.2</notes>
+  </release>
+  <release>
+   <date>2008-10-09</date>
+   <version>
+    <release>0.5.0</release>
+    <api>0.5.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>- Add svn_lock()/svn_unlock()
+- Add svn_config_ensure() for setting up a .svn storage directory
+- Disable password storing unless a password is explicitly set
+- Allow svn_auth_set_parameter() to unset an option with NULL
+- svn_blame() returned -1 for a revision number
+- Fix segfault caused by using an already destroyed pool
+- Fix segfault when certain data types aren&apos;t returned from a commit
+- Add check on module load that the APR version matches.
+- Fix fatal error when the location of the HOME enviromental variable can&apos;t be read</notes>
+  </release>
+  <release>
+   <date>2008-06-24</date>
+   <version>
+    <release>0.4.1</release>
+    <api>0.4.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>- Add recurse option to svn_ls()
+- Change array keys returned from svn_ls() to be filename
+- Potential BC break with some lower case constants, these are now uppercase.</notes>
+  </release>
+  <release>
+   <date>2008-06-04</date>
+   <version>
+    <release>0.4</release>
+    <api>0.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>- Fix bug #13414 - Crash when SVN environment fails to initialise.
+- Fix bug #13677,#13162 - Several functions fail to canonicalized resulting in an abort() call.
+- Revert change that prevented libsvn 1.3 from being used.
+- Add check during configure for minimum libsvn version.
+- Add support for svn_delete(), svn_mkdir(), svn_move(), svn_proplist() and svn_propget().
+- Allow svn_commit() to take a string instead of an array for paths.
+- Revert backwards compatible break with svn_log()</notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3</release>
+    <api>0.3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2008-02-09</date>
+   <license uri="http://www.php.net/licence">PHP Licence</license>
+   <notes>Backward Compatibilty Breaks:
+Minimum subversion version is 1.4.
+svn_status call arguments have changed - it now uses Flags.
+
+New Constants:
+
+SVN_REVISION_INITIAL
+SVN_REVISION_HEAD
+SVN_REVISION_BASE
+SVN_REVISION_COMMITTED
+SVN_REVISION_PREV
+
+SVN_NON_RECURSIVE
+SVN_DISCOVER_CHANGED_PATHS
+SVN_OMIT_MESSAGES
+SVN_STOP_ON_COPY
+SVN_ALL
+SVN_SHOW_UPDATES
+SVN_NO_IGNORE
+
+All constants are also available as Svn::REVISON_HEAD.
+
+Win32 Compatibility:
+Most functions have been fixed to work with Win32 paths.
+
+- Fix bug #11153 - svn diff uses utf8 paths
+- Fix bug #11157 - missing constants needed for svn_status
+- Rewrite configure script to find APR and its compile flags
+- Add support for svn_info() - patch by Marco Tabini
+- Add support for svn_export() - patch by Scott MacVicar
+- Add support for svn_copy() and svn_switch() - patch by Conny Dahlgren
+- Add support for svn_blame() / svn_revert() - patch by Jerome Renard
+- Add support for limiting results with svn_log() - patch by Edward Z. Yang
+- Add support for limiting svn_checkout() - patch by Devlar
+- Add constants for use as parameters to svn_cat() - patch by Devlar
+- Add an OO interface to the extension - patch by Devlar</notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2</release>
+    <api>0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2006-03-20</date>
+   <license uri="http://www.php.net/licence">PHP Licence</license>
+   <notes>- Compiles on Win32 + Netware (Thanks to Guenter Knauf)
+- dependancy on svn-config removed (as recommended by Subversion developers)
+- Pretty complete implementation.
+
+Bugs
+    #6893 - correct types for strict compilers
+
+
+Known issues:
+    There are bug reports about commit / checkout functionality. Any help
+    reproducing and fixing these is welcome.</notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1</release>
+    <api>0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-05-28</date>
+   <license uri="http://www.php.net/licence">PHP Licence</license>
+   <notes>- First working release (works ok here!)</notes>
+  </release>
+ </changelog>
+</package>

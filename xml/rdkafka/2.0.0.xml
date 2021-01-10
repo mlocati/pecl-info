@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.1" version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd">
+ <name>rdkafka</name>
+ <channel>pecl.php.net</channel>
+ <summary>Kafka client based on librdkafka</summary>
+ <description>This extension is a librdkafka binding providing a working client for Kafka 0.8, 0.9, 0.10</description>
+ <lead>
+  <name>Arnaud Le Blanc</name>
+  <user>lbarnaud</user>
+  <email>arnaud.lb@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2016-09-09</date>
+ <time>10:03:37</time>
+ <version>
+  <release>2.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+ <notes>
+This version of rdkafka is indented for php version 7. To compile rdkafka for
+older versions of php, use the pecl package version 1.
+
+ * Added high level consumer: Rdkafka\KafkaConsumer (librdkafka 0.9)
+ * RD_KAFKA_VERSION now reports the runtime librdkafka version
+ * Added RD_KAFKA_BUILD_VERSION
+ * Export runtime-provided constants from librdkafka (librdkafka 0.9)
+ * Added rd_kafka_get_err_descs() (librdkafka 0.9)
+ * Improve reflection/arginfo
+ * Rdkafka::metadata() is now a deprecated alias to Rdkafka::getMetadata()
+ * Rdkafka::outqLen() is now a deprecated alias to Rdkafka::getOutQLen()
+ * Rdkafka now throws Rdkafka\Exception instances
+ * Added Rdkafka\Conf::setDefaultTopicConf() (librdkafka 0.9)
+ * Added Rdkafka\Conf::setDrMsgCb() (librdkafka 0.9)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="5058666587d0aaf474158eb44dcf9f06" name="examples/consumer.php" role="doc" />
+   <file md5sum="d4c64739e1d04f3198aba62e1e1c5660" name="examples/producer.php" role="doc" />
+   <file md5sum="d3409dd8b8baf41ec95c830698aa2730" name="CREDITS" role="doc" />
+   <file md5sum="3957792c293a3cd3a4a49ca5c9035ec7" name="LICENSE" role="doc" />
+   <file md5sum="1c3ca5cc6650bc00036fd000cbc354f2" name="README.md" role="doc" />
+   <file md5sum="44836b234d340aa9fbd45a6248d1150c" name="compat.c" role="src" />
+   <file md5sum="459770eaf2f09174ab54b84a31dd12c4" name="compat.h" role="src" />
+   <file md5sum="d8769906b5d86f270fc0aab014237d62" name="conf.c" role="src" />
+   <file md5sum="628a46123e5e35f2757b2cd2851c2140" name="conf.h" role="src" />
+   <file md5sum="37d90e3fd33a1eabba598a89ada1c106" name="config.m4" role="src" />
+   <file md5sum="5fe9c43976477073a06abe8d74965871" name="config.w32" role="src" />
+   <file md5sum="8ee8bde8a686973cb8d32b248420147f" name="fun.c" role="src" />
+   <file md5sum="12f6e7caa5d4fb46b2f528cdf8fb4c4b" name="fun.h" role="src" />
+   <file md5sum="3a50d6d1c9d4b9aeca4674ce46f5e534" name="kafka_consumer.c" role="src" />
+   <file md5sum="ad43ae88b9c75020fda357362d7c4642" name="kafka_consumer.h" role="src" />
+   <file md5sum="ab1508a62c0648cd466530dea3dae87a" name="message.c" role="src" />
+   <file md5sum="3fa8eeaf567c54eeaff67788230f779a" name="message.h" role="src" />
+   <file md5sum="b2e0d40903bf4348de8576273ab6fc3d" name="metadata.c" role="src" />
+   <file md5sum="6f41e3585db18b3c7ec99eeccc87eec4" name="metadata.h" role="src" />
+   <file md5sum="8a15f865ab81ce6a6133a607abb890a7" name="metadata_broker.c" role="src" />
+   <file md5sum="034f72cf0d0c1ee5b03b456fd14b888b" name="metadata_broker.h" role="src" />
+   <file md5sum="81603fe5bc0635214ecc212f4db6243a" name="metadata_collection.c" role="src" />
+   <file md5sum="e1f37c3f507057d7386e60f935813f96" name="metadata_collection.h" role="src" />
+   <file md5sum="39bc46c1d3a62247c8ed030aed614093" name="metadata_partition.c" role="src" />
+   <file md5sum="9c8a82181e269cd8900d5a285f19a792" name="metadata_partition.h" role="src" />
+   <file md5sum="479470abadfaab6335d912fc2babd805" name="metadata_topic.c" role="src" />
+   <file md5sum="d0811c08c6e7738cffc6cc437a0dc1d4" name="metadata_topic.h" role="src" />
+   <file md5sum="cf427960d9fc3b714eb119f35ba00580" name="php_rdkafka.h" role="src" />
+   <file md5sum="0330131353f74782d3eb3cb7e03e042f" name="php_rdkafka_priv.h" role="src" />
+   <file md5sum="753459ceaacf7c54b9533bbfdbcc4694" name="queue.c" role="src" />
+   <file md5sum="379879dfd80f13e44c87949843d00e10" name="queue.h" role="src" />
+   <file md5sum="769532c6177915bef1deff197c2311e5" name="rdkafka.c" role="src" />
+   <file md5sum="a65d863b5c612cc8b3d1a8e12a189d50" name="topic.c" role="src" />
+   <file md5sum="0453036259ecc006e9183e8520790048" name="topic.h" role="src" />
+   <file md5sum="05636274442ecb582cc0317e692dcd55" name="topic_partition.c" role="src" />
+   <file md5sum="013eaca19133d386edb43f1242a13e72" name="topic_partition.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>rdkafka</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2016-01-11</date>
+   <time>10:30:00</time>
+   <version>
+    <release>0.9.1</release>
+    <api>0.9.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Allow to build against librdkafka master/0.9.x
+   </notes>
+  </release>
+  <release>
+   <date>2016-01-09</date>
+   <time>14:00:00</time>
+   <version>
+    <release>0.9.0</release>
+    <api>0.9.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Metadata API
+* Consistent partitioner
+* Fix ZTS build
+   </notes>
+  </release>
+  <release>
+   <date>2015-05-13</date>
+   <time>16:26:12</time>
+   <version>
+    <release>0.0.2</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <notes>
+Fixed package
+   </notes>
+  </release>
+ </changelog>
+</package>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.9" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sqlite3</name>
+ <channel>pecl.php.net</channel>
+ <summary>SQLite v3 Database Bindings.</summary>
+ <description>SQLite3 is a PHP extension for use with the SQLite database system.
+	This extension bundles SQLite 3.5.4 though the minimum requirement is 3.3.9.</description>
+ <lead>
+  <name>Scott MacVicar</name>
+  <user>scottmac</user>
+  <email>scottmac@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2008-01-31</date>
+ <time>11:47:16</time>
+ <version>
+  <release>0.3</release>
+  <api>0.3</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>- Upgraded bundled SQLite to 3.5.4
+- Added
+  . SQLITE3_NUM, SQLITE3_NUM and SQLITE3_BOTH constants for fetch_array
+  . SQLITE3_INTEGER, SQLITE3_FLOAT, SQLITE3_TEXT, SQLITE3_BLOB, SQLITE3_NULL constants for parameter binding
+  . Added columnName method
+  . Added encryption support if the library supports it
+  . Added stream support for blob datatype
+- Changed
+  . numColumn to numColumns for consistency
+  . Cast values to prepared statements prior to execution
+- Removed
+  . Unused case from SQLite authorizer
+  . sqlite3.enable_extensions INI option in favour of sqlite3.extension_dir
+- Performance
+  . Check if a return value is used before allocating zvals
+  . Fix memory leaks in non prepared statements
+- Building
+  . Check for SQLite 3.3.9+ in external versions
+  . Build debug version of libsqlite when using debug build of PHP
+- Added unit tests
+- Fixed PHP 5.3 support</notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="522fbd6d5b8ac698b18bf595a3bbfa26" name="libsqlite/alter.c" role="src" />
+   <file md5sum="7b37aa7d90ec2fc14203d630fb56f240" name="libsqlite/analyze.c" role="src" />
+   <file md5sum="343842770264ce5d9b526d3d0768ee8c" name="libsqlite/attach.c" role="src" />
+   <file md5sum="c19469246cb4086068593c3605d39da9" name="libsqlite/auth.c" role="src" />
+   <file md5sum="650d17e02ae9d3b8201cce4822f96496" name="libsqlite/btmutex.c" role="src" />
+   <file md5sum="18ae1748ae4640b173efb1a32627a88a" name="libsqlite/btree.c" role="src" />
+   <file md5sum="5a3e779aad82d5a51923577b3bfca052" name="libsqlite/btree.h" role="src" />
+   <file md5sum="437b10179f850c5b69adc6942fa27acf" name="libsqlite/btreeInt.h" role="src" />
+   <file md5sum="be290ccb6e4af87a12aa2c9bf2a774a2" name="libsqlite/build.c" role="src" />
+   <file md5sum="8153186f194965cec4053797a3657896" name="libsqlite/callback.c" role="src" />
+   <file md5sum="c6c623951252511ff7c3fdd26e4279eb" name="libsqlite/complete.c" role="src" />
+   <file md5sum="a7a7bbf560a68de3e2e622b2058b00d2" name="libsqlite/config.h" role="src" />
+   <file md5sum="38cb26306819ce0c28ed5ce24f689086" name="libsqlite/date.c" role="src" />
+   <file md5sum="463c40da5af80246271cf62f7e2a224c" name="libsqlite/delete.c" role="src" />
+   <file md5sum="4ea2eceab03f9c7bc00ad39daa869288" name="libsqlite/expr.c" role="src" />
+   <file md5sum="1453e87b81f49f359d8bc4a20bf010f4" name="libsqlite/func.c" role="src" />
+   <file md5sum="926422ca7eb236317a49d6829c0ad81c" name="libsqlite/hash.c" role="src" />
+   <file md5sum="55b3f2189e710d079629d08adc4a6f10" name="libsqlite/hash.h" role="src" />
+   <file md5sum="967a7183d0559496ae1d975194eff6d1" name="libsqlite/insert.c" role="src" />
+   <file md5sum="afbde71488bb25e051ba42a2fdd1a4b3" name="libsqlite/journal.c" role="src" />
+   <file md5sum="65c4ab74895a75078994cd79e3c7eac9" name="libsqlite/keywordhash.h" role="src" />
+   <file md5sum="838dcce4f291cbc8a5cb50253665fcd5" name="libsqlite/legacy.c" role="src" />
+   <file md5sum="9c09d6bcc3cea446905c06d114987dd4" name="libsqlite/loadext.c" role="src" />
+   <file md5sum="a7fe80e570445bba7900a5aedf6d3d5e" name="libsqlite/main.c" role="src" />
+   <file md5sum="0c1bbcadacc0ac3ae81ab04dbcfd22b7" name="libsqlite/malloc.c" role="src" />
+   <file md5sum="be6da16beddba316b76368d9e5efabc2" name="libsqlite/mem1.c" role="src" />
+   <file md5sum="bcc3944bff233c49774ebaaa32646720" name="libsqlite/mem2.c" role="src" />
+   <file md5sum="0d709090474d1c6d0bd3df89f8724b36" name="libsqlite/mem3.c" role="src" />
+   <file md5sum="995dc6746308250efccd4a5cf5ccd7c1" name="libsqlite/mem4.c" role="src" />
+   <file md5sum="0a5a21e2272b8698b0426df762914110" name="libsqlite/mutex.c" role="src" />
+   <file md5sum="ca735c1b96dedfce081917ee4de577bf" name="libsqlite/mutex.h" role="src" />
+   <file md5sum="874602d61eb7d4cffc4ceb11cad9b805" name="libsqlite/mutex_os2.c" role="src" />
+   <file md5sum="ffff8e5b99ef9dedf89c5577aa062435" name="libsqlite/mutex_unix.c" role="src" />
+   <file md5sum="174fd38d3c8e9d2fd416f7410e046b90" name="libsqlite/mutex_w32.c" role="src" />
+   <file md5sum="9f2a3e343552dcc010ecc3217469ab7d" name="libsqlite/opcodes.c" role="src" />
+   <file md5sum="524f228c5744e704fa2b6e67c9f43291" name="libsqlite/opcodes.h" role="src" />
+   <file md5sum="d66003ee2b0ca3395f9a23b11f466257" name="libsqlite/os.c" role="src" />
+   <file md5sum="03f724b9d6e78d6d030ad2f0dbd196c2" name="libsqlite/os.h" role="src" />
+   <file md5sum="d9f8fd8c3958c5fb852d7c683a937640" name="libsqlite/os_common.h" role="src" />
+   <file md5sum="e706c315e9073870f5211624ddf6d045" name="libsqlite/os_os2.c" role="src" />
+   <file md5sum="66f3d1e5a6cc563a0af444a532fb6bfc" name="libsqlite/os_unix.c" role="src" />
+   <file md5sum="810e6df7fb2bff1cf5b50a0b99697f9d" name="libsqlite/os_win.c" role="src" />
+   <file md5sum="3eb3da160c2dbb5b093006f9c7f0b533" name="libsqlite/pager.c" role="src" />
+   <file md5sum="e3f8995d13c4e0a57ea01296d7dfaba7" name="libsqlite/pager.h" role="src" />
+   <file md5sum="b1953500edc61a494b0b8b5948c8f7a6" name="libsqlite/parse.c" role="src" />
+   <file md5sum="eda9a459d64bd341477e14d91981af2a" name="libsqlite/parse.h" role="src" />
+   <file md5sum="eedf3f931818ade4fd01697fddacf468" name="libsqlite/pragma.c" role="src" />
+   <file md5sum="4f99ba8a45179708400612f9610656dc" name="libsqlite/prepare.c" role="src" />
+   <file md5sum="bc1f562689856556f608466ba4362c5c" name="libsqlite/printf.c" role="src" />
+   <file md5sum="b4c42de8ce71cc1586538406ccac0966" name="libsqlite/random.c" role="src" />
+   <file md5sum="02484392fed67cd7539c9e6cf8c9bb9d" name="libsqlite/select.c" role="src" />
+   <file md5sum="8c03651684e5a46f371d841eee6f83f2" name="libsqlite/sqlite3.h" role="src" />
+   <file md5sum="6bb59b75cc208f5d88490338251ab8a0" name="libsqlite/sqlite3ext.h" role="src" />
+   <file md5sum="b001c4614bf1ad378545c245050732bf" name="libsqlite/sqliteInt.h" role="src" />
+   <file md5sum="9ce5bc246c108996da1df99fdd433cc6" name="libsqlite/sqliteLimit.h" role="src" />
+   <file md5sum="19ce658e04fd60f2ff3958cf5bc82993" name="libsqlite/table.c" role="src" />
+   <file md5sum="448677ccd3f248cf3de1f6a450747552" name="libsqlite/tokenize.c" role="src" />
+   <file md5sum="51df81ab8a141b707a5f6b054e955d44" name="libsqlite/trigger.c" role="src" />
+   <file md5sum="f552ab28ceca6a9698a9d4148151302a" name="libsqlite/update.c" role="src" />
+   <file md5sum="552769d2996eccc12e53b5edb060699e" name="libsqlite/utf.c" role="src" />
+   <file md5sum="fe2e2b19a39e7f5c4dc111d8391f1463" name="libsqlite/util.c" role="src" />
+   <file md5sum="3f8e086019ac084ea1c014e99e7d7ab1" name="libsqlite/vacuum.c" role="src" />
+   <file md5sum="c9e1cabc95ec47ce50a7669094e19a9c" name="libsqlite/vdbe.c" role="src" />
+   <file md5sum="8bac585ff8f09162719f8207bfd92802" name="libsqlite/vdbe.h" role="src" />
+   <file md5sum="fda74c59c9c9a1bf0a9dc61b3c419557" name="libsqlite/vdbeapi.c" role="src" />
+   <file md5sum="329a5be29be42cd08fddbff83660714e" name="libsqlite/vdbeaux.c" role="src" />
+   <file md5sum="aa0851a0ab0681eb44437a97c263a01b" name="libsqlite/vdbeblob.c" role="src" />
+   <file md5sum="9c8b1ea541d840d6654aa3e8ce66c911" name="libsqlite/vdbefifo.c" role="src" />
+   <file md5sum="cf617feef70c96861f94fb917e9b642d" name="libsqlite/vdbeInt.h" role="src" />
+   <file md5sum="8fa89bc43952c7c846b43258dd19ec7f" name="libsqlite/vdbemem.c" role="src" />
+   <file md5sum="2d7c9a7d8413bfd68f956c76abc1777e" name="libsqlite/vtab.c" role="src" />
+   <file md5sum="8e42e27418af641c307fc773315a3617" name="libsqlite/where.c" role="src" />
+   <file md5sum="bfacb6db4362e421504dfea0d2b5134f" name="tests/new_db.inc" role="test" />
+   <file md5sum="761fe32762b7b8274f1f41a040ee80f3" name="tests/skipif.inc" role="test" />
+   <file md5sum="e409acde40b10ec843a3c747ab1047eb" name="tests/stream_test.inc" role="test" />
+   <file md5sum="1076e5463506a095c23554213be0d4ed" name="tests/sqlite3_01_open.phpt" role="test" />
+   <file md5sum="f8cef96901fac0bdb3fc27cd3e386460" name="tests/sqlite3_02_create.phpt" role="test" />
+   <file md5sum="5ae438418c2e7cb63232f87002e7351a" name="tests/sqlite3_03_insert.phpt" role="test" />
+   <file md5sum="5806788c8d8232635ca00c4dc32ada45" name="tests/sqlite3_04_update.phpt" role="test" />
+   <file md5sum="03cd011a226cdf64f3807d552ff07f84" name="tests/sqlite3_05_delete.phpt" role="test" />
+   <file md5sum="dadea39a15fe7fd0a6b9b9c5e9577096" name="tests/sqlite3_06_prepared_stmt.phpt" role="test" />
+   <file md5sum="f55fb3454106ca23c93170e9ed9e0dbb" name="tests/sqlite3_07_prepared_stmt.phpt" role="test" />
+   <file md5sum="e0b5edd4269c7659725d083ccb59b935" name="tests/sqlite3_08_udf.phpt" role="test" />
+   <file md5sum="ae8c226206bdc692895ce605274b1135" name="tests/sqlite3_09_blob_bound_param.phpt" role="test" />
+   <file md5sum="db43a4df3074b7bfc866478820cf162f" name="tests/sqlite3_10_bound_value_name.phpt" role="test" />
+   <file md5sum="0eaf6fd977fcfe2cc8774ee1d97c49b5" name="config.m4" role="src" />
+   <file md5sum="ad35765becbaa821ed6e1b92d98d1dc8" name="config.w32" role="src" />
+   <file md5sum="20b5bc1b4ad83adc86867b91721e8aa4" name="CREDITS" role="doc" />
+   <file md5sum="a3854cfc818e76f4bf41f4e566df9dab" name="INSTALL" role="doc" />
+   <file md5sum="32294e877e85607b50718db4ddf21162" name="NEWS" role="doc" />
+   <file md5sum="04cf2cc0e79eec27581f9390690e1a23" name="php_sqlite3.h" role="src" />
+   <file md5sum="2ed141b7ebf2b372ec1dc988161f3739" name="sqlite3.c" role="src">
+    <tasks:replace from="@PACKAGE_VERSION@" to="version" type="package-info" />
+   </file>
+   <file md5sum="e0d514bd03f5d6a170de9c3fa3a599fa" name="TODO" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.1.3</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>sqlite3</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-sqlite3" prompt="Optionally provide the path to the libsqlite3 library" />
+ </extsrcrelease>
+</package>

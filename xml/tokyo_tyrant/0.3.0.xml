@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.8.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>tokyo_tyrant</name>
+ <channel>pecl.php.net</channel>
+ <summary>Provides a wrapper to the Tokyo Tyrant client library.</summary>
+ <description>tokyo_tyrant extension provides object oriented API for communicating
+with Tokyo Tyrant key-value store.
+
+This extension requires Tokyo Cabinet, Tokyo Tyrant and PHP version 5.2.0+.</description>
+ <lead>
+  <name>Mikko Koppanen</name>
+  <user>mkoppanen</user>
+  <email>mkoppanen@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2010-02-28</date>
+ <time>12:18:08</time>
+ <version>
+  <release>0.3.0</release>
+  <api>0.3.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Added multiget for tables. Thanks to Devin
+- Fixed binary safety on table methods
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="739520b6910b860b46cbd22bdf2c5ae1" name="config.m4" role="src" />
+   <file md5sum="8788a030a8233cf0f9d6abe11dc97d5e" name="connection.c" role="src" />
+   <file md5sum="614698f415d22d6988112f25dc3d9468" name="failover.c" role="src" />
+   <file md5sum="675242269e02105c02f6ee2659f48cea" name="server_pool.c" role="src" />
+   <file md5sum="74541f18f45ac6131ff6895ba6bd1e96" name="session.c" role="src" />
+   <file md5sum="3422d4d08d63fd41c7485f02f58239ed" name="session_funcs.c" role="src" />
+   <file md5sum="faab177ff923d5b183018b8f55ca350b" name="tokyo_tyrant.c" role="src" />
+   <file md5sum="3b2a3593bb303b9aa67971ca94347446" name="tokyo_tyrant_funcs.c" role="src" />
+   <file md5sum="7bedb5e088e8a3b53eca72881e6db8dd" name="php_tokyo_tyrant.h" role="src">
+    <tasks:replace from="@PACKAGE_VERSION@" to="version" type="package-info" />
+   </file>
+   <file md5sum="5cac3926547450fd25dacbaeb4bb80d8" name="php_tokyo_tyrant_connection.h" role="src" />
+   <file md5sum="b4384de5bd33c43eb8f8786b92574521" name="php_tokyo_tyrant_failover.h" role="src" />
+   <file md5sum="5bba045f57c2912ae66eeee3423ce52e" name="php_tokyo_tyrant_funcs.h" role="src" />
+   <file md5sum="57573bef8f7225af937f35527a9f9dd6" name="php_tokyo_tyrant_private.h" role="src" />
+   <file md5sum="0ce33c677ecf6e436cac232fc0f19ec7" name="php_tokyo_tyrant_server_pool.h" role="src" />
+   <file md5sum="c1aaa810dcebecb2621dae34d189198a" name="php_tokyo_tyrant_session.h" role="src" />
+   <file md5sum="7af48c49ccfb6a3cc107b3342a6ce684" name="php_tokyo_tyrant_session_funcs.h" role="src" />
+   <file md5sum="d0c66d58b83dbbed1eac070bafcf41ae" name="CREDITS" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>tokyo_tyrant</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-tokyo-tyrant" prompt="Please provide the prefix of Tokyo Tyrant installation" />
+  <configureoption default="autodetect" name="with-tokyo-cabinet-dir" prompt="Please provide the prefix of Tokyo Cabinet installation" />
+ </extsrcrelease>
+</package>

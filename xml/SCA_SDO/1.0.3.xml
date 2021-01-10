@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0" packagerversion="1.4.9">
+ <name>sdo</name>
+ <summary>Service Data Objects (SDOs) for PHP</summary>
+ <description>Service Data Objects (SDOs) enable PHP applications to work with data from different sources (like a database query, an XML file, or a spreadsheet) using a single interface.
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>gcc</user>
+   <name>Graham Charters</name>
+   <email>charters@uk.ibm.com</email>
+   <role>lead</role>
+  </maintainer>
+  <maintainer>
+   <user>cem</user>
+   <name>Caroline Maynard</name>
+   <email>caroline.maynard@uk.ibm.com</email>
+   <role>lead</role>
+  </maintainer>
+  <maintainer>
+   <user>mfp</user>
+   <name>Matthew Peters</name>
+   <email>matthew_peters@uk.ibm.com</email>
+   <role>lead</role>
+  </maintainer>
+  <maintainer>
+   <user>slaws</user>
+   <name>Simon Laws</name>
+   <email>simonslaws@googlemail.com</email>
+   <role>lead</role>
+  </maintainer>
+  </maintainers>
+ <release>
+  <version>1.0.3</version>
+  <date>2006-08-09</date>
+  <license>Apache 2.0</license>
+  <state>stable</state>
+  <notes>Compatibility with Tuscany C++/SDO M1 release and some bug fixes over 1.0.2
+ - Update the base C++/SDO implementation to be the Tuscany CPP Milestone 1 release: cpp-0.1.incubating-M1
+ - Tested with Linux AMD 64-bit architecture
+ - new 3-argument version of SDO_DAS_XML::createDocument() allows an SDO_DAS_XML_Document to be created from an SDO
+ - fix defect 7878 Silent failure with malformed SQL
+ - fix defect 7879 Improve error message in SDO_DAS_Relational_DatabaseHelper:executeStatement
+ - fix defect 8280 Remove spaces from source files
+ - fix defect 8300 Optimistic concurrency failure
+ - fix defect 8374 Exception hierarchy (temporary fix)
+  </notes>
+  <deps>
+   <dep type="php" rel="ge" version="5.1.0" optional="no"/>
+  </deps>
+  <provides type="function" name="findCompany" />
+  <provides type="function" name="writeBack" />
+  <provides type="function" name="findCompanies" />
+  <provides type="function" name="findCompanyCDE" />
+  <provides type="function" name="writeBackCDE" />
+  <provides type="class" name="TestContainmentReference" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestContainmentReference::testParentMustBePresent" />
+  <provides type="function" name="TestContainmentReference::testParentMustBeAString" />
+  <provides type="function" name="TestContainmentReference::testChildMustBePresent" />
+  <provides type="function" name="TestContainmentReference::testChildMustBeAString" />
+  <provides type="class" name="TestDatabaseModel" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestDatabaseModel::testForeignKeysPointToValidTables" />
+  <provides type="class" name="TestDataObjectHelper" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestDataObjectHelper::setUp" />
+  <provides type="function" name="TestDataObjectHelper::testGetPrimitiveSettings_NVPairsContainsNullWhenValueIsNull" />
+  <provides type="function" name="TestDataObjectHelper::testGetPrimitiveSettings_NVPairsContainsBlankWhenValueIsBlank" />
+  <provides type="function" name="TestDataObjectHelper::testGetPrimitiveSettings_NVPairsContainsZeroWhenValueIsZero" />
+  <provides type="class" name="TestDeleteAction" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestDeleteAction::setUp" />
+  <provides type="function" name="TestDeleteAction::testConstructor_TakesObjectModelAndDataObjectAndOldValues" />
+  <provides type="function" name="TestDeleteAction::testOldEqualsString" />
+  <provides type="function" name="TestDeleteAction::testOldEqualsNull" />
+  <provides type="function" name="TestDeleteAction::testNCRefOldEqualsObject" />
+  <provides type="function" name="TestDeleteAction::testNCRefOldEqualsNull" />
+  <provides type="class" name="TestForeignKey" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestForeignKey::testFKMustBeAnArray" />
+  <provides type="function" name="TestForeignKey::testFKMustContainFrom" />
+  <provides type="function" name="TestForeignKey::testFKFromMustBeAValidColumn" />
+  <provides type="function" name="TestForeignKey::testFKMustContainTo" />
+  <provides type="function" name="TestForeignKey::testFKMustContainOnlyFromAndTo" />
+  <provides type="class" name="TestInsertAction" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestInsertAction::setUp" />
+  <provides type="function" name="TestInsertAction::testConstructor_TakesObjectModelAndDataObject" />
+  <provides type="function" name="TestInsertAction::testToSQL_ContainsPropertyNameAndPlaceholder" />
+  <provides type="function" name="TestInsertAction::testToSQL_ContainsPropertyNameAndPlaceholderWhenValueIsNull" />
+  <provides type="function" name="TestInsertAction::testToSQL_ContainsPropertyNameAndPlaceholderWhenValueIsBlank" />
+  <provides type="function" name="TestInsertAction::testToSQL_ContainsPropertyNameAndPlaceholderWhenValueIsZero" />
+  <provides type="function" name="TestInsertAction::testToSQL_FK_created" />
+  <provides type="class" name="TestObjectModel" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestObjectModel::testAppRootTypeNotInModel" />
+  <provides type="function" name="TestObjectModel::testAnyParentMustBeATable" />
+  <provides type="function" name="TestObjectModel::testNoSupportingFKFound" />
+  <provides type="class" name="UnitTestException" extends="Exception" />
+  <provides type="class" name="UnitTestAction" extends="SDO_DAS_Relational_Action" />
+  <provides type="class" name="TestPlan" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="UnitTestAction::execute" />
+  <provides type="function" name="UnitTestAction::toString" />
+  <provides type="function" name="TestPlan::testConstruct" />
+  <provides type="function" name="TestPlan::testInsertAnAction" />
+  <provides type="function" name="TestPlan::testSimpleToString" />
+  <provides type="function" name="TestPlan::testExecuteRecursivelyCallsExecuteOnSteps" />
+  <provides type="class" name="TestReferencesModel" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestReferencesModel::testActiveTypesCorrectlyDetermined" />
+  <provides type="function" name="TestReferencesModel::testNoCycles" />
+  <provides type="class" name="TestRelational" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestRelational::testConstructor_ThrowsExceptionIfNoDatabaseMetadata" />
+  <provides type="function" name="TestRelational::testConstructor_CanOmitApplicationRootTypeIfExactlyOneTable" />
+  <provides type="function" name="TestRelational::testConstructor_ThrowsExceptionIfApplicationRootTypeNullAndMoreThanOneTable" />
+  <provides type="function" name="TestRelational::testConstructor_CanOmitReferencesMetadataIfExactlyOneTable" />
+  <provides type="function" name="TestRelational::testExecuteQuery_SQLStatementMustBeAString" />
+  <provides type="function" name="TestRelational::testExecuteQuery_ColumnSpeciferMustBeAnArray" />
+  <provides type="function" name="TestRelational::testExecuteQuery_ColumnSpeciferMustContainStrings" />
+  <provides type="function" name="TestRelational::testExecuteQuery_ColumnSpecifersMustBeValidTableAndColumnNames" />
+  <provides type="function" name="TestRelational::testPreparedExecuteQuery_ValueListMustBeNullOrAnArray" />
+  <provides type="class" name="SDO_DAS_Relational_TestSuite" />
+  <provides type="function" name="SDO_DAS_Relational_TestSuite::suite" />
+  <provides type="class" name="TestTable" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestTable::testNameMustBePresent" />
+  <provides type="function" name="TestTable::testNameMustBeAString" />
+  <provides type="function" name="TestTable::testColumnsMustBePresent" />
+  <provides type="function" name="TestTable::testColumnListMustBeAnArray" />
+  <provides type="function" name="TestTable::testColumnNamesMustBeStrings" />
+  <provides type="function" name="TestTable::testColumnNamesMustBeUnique" />
+  <provides type="function" name="TestTable::testPKMustBePresent" />
+  <provides type="function" name="TestTable::testPKMustBeAString" />
+  <provides type="function" name="TestTable::testPKNameMustBeOneOfTheColumns" />
+  <provides type="function" name="TestTable::testOnlyFourValidSettingsForTable" />
+  <provides type="class" name="TestUpdateAction" extends="PHPUnit2_Framework_TestCase" />
+  <provides type="function" name="TestUpdateAction::setUp" />
+  <provides type="function" name="TestUpdateAction::testConstructor_TakesObjectModelAndDataObjectAndOldValues" />
+  <provides type="function" name="TestUpdateAction::testOldEqualsStringAndNewEqualsDifferentString" />
+  <provides type="function" name="TestUpdateAction::testNoUpdateWhenNewEqualsOld" />
+  <provides type="function" name="TestUpdateAction::testOldEqualsNullAndNewEqualsString" />
+  <provides type="function" name="TestUpdateAction::testOldEqualsStringAndNewEqualsNull" />
+  <provides type="function" name="TestUpdateAction::testOldEqualsNullAndNewEqualsNullCausesNoUpdate" />
+  <provides type="function" name="TestUpdateAction::testOldEqualsBlankAndNewEqualsNull" />
+  <provides type="function" name="TestUpdateAction::testOldEqualsNullAndNewEqualsBlank" />
+  <provides type="function" name="TestUpdateAction::testNCRefSetClauseContainsNewAndWhereClauseContainsOld" />
+  <provides type="function" name="TestUpdateAction::testNCRefNoUpdateWhenNewEqualsOld" />
+  <provides type="function" name="TestUpdateAction::testNCRefOldEqualsNullAndNewEqualsObject" />
+  <provides type="function" name="TestUpdateAction::testNCRefOldEqualsObjectAndNewEqualsNull" />
+  <provides type="class" name="MYResultPrinter" extends="PHPUnit2_TextUI_ResultPrinter" />
+  <provides type="function" name="MYResultPrinter::write" />
+  <provides type="class" name="SDO_DAS_Relational_Action" />
+  <provides type="function" name="SDO_DAS_Relational_Action::execute" />
+  <provides type="function" name="SDO_DAS_Relational_Action::toString" />
+  <provides type="class" name="SDO_DAS_Relational_ContainmentReference" />
+  <provides type="function" name="SDO_DAS_Relational_ContainmentReference::getParentName" />
+  <provides type="function" name="SDO_DAS_Relational_ContainmentReference::getChildName" />
+  <provides type="function" name="SDO_DAS_Relational_ContainmentReference::getReferenceName" />
+  <provides type="class" name="SDO_DAS_Relational_ContainmentReferencesModel" />
+  <provides type="function" name="SDO_DAS_Relational_ContainmentReferencesModel::getActiveContainmentReferences" />
+  <provides type="function" name="SDO_DAS_Relational_ContainmentReferencesModel::getFullSetContainmentReferences" />
+  <provides type="function" name="SDO_DAS_Relational_ContainmentReferencesModel::getActiveTypes" />
+  <provides type="function" name="SDO_DAS_Relational_ContainmentReferencesModel::getApplicationRootType" />
+  <provides type="function" name="SDO_DAS_Relational_ContainmentReferencesModel::isValidParentName" />
+  <provides type="function" name="SDO_DAS_Relational_ContainmentReferencesModel::getReferenceByParentAndChild" />
+  <provides type="function" name="SDO_DAS_Relational_ContainmentReferencesModel::getReferenceByChild" />
+  <provides type="class" name="SDO_DAS_Relational_DatabaseHelper" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseHelper::executeStatementTestForError" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseHelper::executeStatementTestForCollision" />
+  <provides type="class" name="SDO_DAS_Relational_DatabaseModel" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseModel::checkFKsPointToValidTables" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseModel::getAllTableNames" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseModel::isValidTableName" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseModel::isValidTableAndColumnPair" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseModel::getTableByName" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseModel::getColumns" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseModel::getForeignKeys" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseModel::getForeignKeyByFromTableNameAndColumnName" />
+  <provides type="function" name="SDO_DAS_Relational_DatabaseModel::getPrimaryKeyFromTableName" />
+  <provides type="class" name="SDO_DAS_Relational_DataObjectHelper" />
+  <provides type="function" name="SDO_DAS_Relational_DataObjectHelper::getCurrentPrimitiveSettings" />
+  <provides type="function" name="SDO_DAS_Relational_DataObjectHelper::getApplicationType" />
+  <provides type="function" name="SDO_DAS_Relational_DataObjectHelper::getPrimaryKeyFromDataObject" />
+  <provides type="function" name="SDO_DAS_Relational_DataObjectHelper::listNameValuePairs" />
+  <provides type="class" name="SDO_DAS_Relational_DeleteAction" extends="SDO_DAS_Relational_Action" />
+  <provides type="function" name="SDO_DAS_Relational_DeleteAction::execute" />
+  <provides type="function" name="SDO_DAS_Relational_DeleteAction::convertNonContainmentReferencesFromObjectToPK" />
+  <provides type="function" name="SDO_DAS_Relational_DeleteAction::buildValueList" />
+  <provides type="function" name="SDO_DAS_Relational_DeleteAction::toSQL" />
+  <provides type="function" name="SDO_DAS_Relational_DeleteAction::constructWhereClauseFromOriginalValues" />
+  <provides type="function" name="SDO_DAS_Relational_DeleteAction::makeAnSQLCompare" />
+  <provides type="function" name="SDO_DAS_Relational_DeleteAction::toString" />
+  <provides type="function" name="SDO_DAS_Relational_DeleteAction::getSQL" />
+  <provides type="function" name="SDO_DAS_Relational_DeleteAction::getValueList" />
+  <provides type="class" name="SDO_DAS_Relational_Exception" extends="SDO_Exception" />
+  <provides type="class" name="SDO_DAS_Relational_ForeignKey" />
+  <provides type="function" name="SDO_DAS_Relational_ForeignKey::getToTableName" />
+  <provides type="function" name="SDO_DAS_Relational_ForeignKey::getFromTableName" />
+  <provides type="function" name="SDO_DAS_Relational_ForeignKey::getFromColumnName" />
+  <provides type="class" name="SDO_DAS_Relational_InsertAction" extends="SDO_DAS_Relational_Action" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::computeSettingsForInsert" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::convertNonContainmentReferencesFromObjectToPK" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::execute" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::buildValueList" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::addFKToParentToSettings" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::spawnLaterUpdatesForNonContainmentReferences" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::toSQL" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::storeThisObjectsPrimaryKey" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::toString" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::getValueList" />
+  <provides type="function" name="SDO_DAS_Relational_InsertAction::getSQL" />
+  <provides type="class" name="SDO_DAS_Relational_KeyObjectMap" />
+  <provides type="function" name="SDO_DAS_Relational_KeyObjectMap::storeObjectByKeyAndType" />
+  <provides type="function" name="SDO_DAS_Relational_KeyObjectMap::findObjectByKeyAndType" />
+  <provides type="class" name="SDO_DAS_Relational_NonContainmentReference" />
+  <provides type="function" name="SDO_DAS_Relational_NonContainmentReference::getTypeName" />
+  <provides type="function" name="SDO_DAS_Relational_NonContainmentReference::getPropertyName" />
+  <provides type="function" name="SDO_DAS_Relational_NonContainmentReference::getToTypeName" />
+  <provides type="class" name="SDO_DAS_Relational_ObjectModel" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::getDatabaseModel" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::getPropertyRepresentingPrimaryKeyFromType" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::getContainingReferenceFromChildType" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::getTheFKSupportingAContainmentReference" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::getTypesByColumnNameIgnoreCase" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::isPrimitive" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::isNonContainmentReferenceProperty" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::isContainmentReferenceProperty" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::getToTypeOfNonContainmentReferenceProperty" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::ensureBothModelsAgreeWithOneAnother" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::ensureTheApplicationRootTypeIsAValidTable" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::ensureTypesInReferencesModelAreValidTableNames" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::ensureEachReferenceIsSupportedByAForeignKey" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::defineToSDO" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::defineTheRootTypeToSDO" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::addAllTheActiveTypesToSDO" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::addTopLevelContainmentPropertyToSDO" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::addAllTheColumnsAsPropertiesToSDO" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::addContainmentRef" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::addNonContainmentRef" />
+  <provides type="function" name="SDO_DAS_Relational_ObjectModel::addPrimitive" />
+  <provides type="class" name="SDO_DAS_Relational_Plan" />
+  <provides type="function" name="SDO_DAS_Relational_Plan::addAction" />
+  <provides type="function" name="SDO_DAS_Relational_Plan::countSteps" />
+  <provides type="function" name="SDO_DAS_Relational_Plan::toString" />
+  <provides type="function" name="SDO_DAS_Relational_Plan::execute" />
+  <provides type="class" name="SDO_DAS_Relational_PrimaryKey" />
+  <provides type="function" name="SDO_DAS_Relational_PrimaryKey::getColumnName" />
+  <provides type="function" name="SDO_DAS_Relational_PrimaryKey::getAutoGenerated" />
+  <provides type="class" name="SDO_DAS_Relational_ReferencesModel" />
+  <provides type="function" name="SDO_DAS_Relational_ReferencesModel::checkTableNamesAreValid" />
+  <provides type="function" name="SDO_DAS_Relational_ReferencesModel::checkAgainstForeignKeys" />
+  <provides type="function" name="SDO_DAS_Relational_ReferencesModel::isValidParentName" />
+  <provides type="function" name="SDO_DAS_Relational_ReferencesModel::getNeighbours" />
+  <provides type="class" name="SDO_DAS_Relational_SettingListHelper" />
+  <provides type="function" name="SDO_DAS_Relational_SettingListHelper::getSettingsAsArray" />
+  <provides type="class" name="SDO_DAS_Relational_Table" />
+  <provides type="function" name="SDO_DAS_Relational_Table::getTableName" />
+  <provides type="function" name="SDO_DAS_Relational_Table::getColumns" />
+  <provides type="function" name="SDO_DAS_Relational_Table::getPrimaryKey" />
+  <provides type="class" name="SDO_DAS_Relational_UpdateAction" extends="SDO_DAS_Relational_Action" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::computeSettingsForSetAndWhereClauses" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::convertNonContainmentReferencesFromObjectToPK" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::toSQL" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::buildValueList" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::constructSetClauseFromChangedValues" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::constructWhereClauseFromOriginalValues" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::makeAnSQLSetting" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::makeAnSQLCompare" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::execute" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::toString" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::getValueList" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateAction::getSQL" />
+  <provides type="class" name="SDO_DAS_Relational_UpdateNonContainmentReferenceAction" extends="SDO_DAS_Relational_Action" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateNonContainmentReferenceAction::execute" />
+  <provides type="function" name="SDO_DAS_Relational_UpdateNonContainmentReferenceAction::toString" />
+  <provides type="class" name="SDO_DAS_Relational" />
+  <provides type="function" name="SDO_DAS_Relational::createRootDataObject" />
+  <provides type="function" name="SDO_DAS_Relational::ensureStatementIsAString" />
+  <provides type="function" name="SDO_DAS_Relational::ensureValueListIsNullOrAnArray" />
+  <provides type="function" name="SDO_DAS_Relational::ensureColumnSpecifierIsNullOrAnArrayContainingOnlyValidTableAndColumnNames" />
+  <provides type="function" name="SDO_DAS_Relational::executeQuery" />
+  <provides type="function" name="SDO_DAS_Relational::executePreparedQuery" />
+  <provides type="function" name="SDO_DAS_Relational::normaliseResultSet" />
+  <provides type="function" name="SDO_DAS_Relational::breakRowIntoObjectsUsingPDOColumnNames" />
+  <provides type="function" name="SDO_DAS_Relational::breakRowIntoObjectsAccordingToColumnSpecifier" />
+  <provides type="function" name="SDO_DAS_Relational::applyChanges" />
+  <provides type="function" name="SDO_DAS_Relational::displaySettingsList" />
+  <provides type="function" name="SDO_DAS_Relational::displayChangeSummary" />
+  <provides type="function" name="SDO_DAS_Relational::goUpTheTreeToTheRoot" />
+  <provides type="function" name="SDO_DAS_Relational::isRoot" />
+  <provides type="function" name="SDO_DAS_Relational::createRoot" />
+  <provides type="function" name="SDO_DAS_Relational::getObjectModel" />
+  <filelist>
+   <file role="src" baseinstalldir="SDO" md5sum="a9101c45bb6067703db9f401ce422525" name="commonj/sdo/ChangedDataObjectList.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="0602cfda4b1ba8de228c958d56cd02e8" name="commonj/sdo/ChangedDataObjectListImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="72bb72da09887023d2058231b5546190" name="commonj/sdo/ChangedDataObjectListImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="bc98ae33070f968253f3b1b375664ad9" name="commonj/sdo/ChangeSummary.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="126191a60793ff548ce74009b1c0dfae" name="commonj/sdo/ChangeSummary.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6bb72f7070b22e58df40c1fce933e00d" name="commonj/sdo/ChangeSummaryBuilder.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="fef18ec788905f9e5ed37f51842b3ed2" name="commonj/sdo/ChangeSummaryBuilder.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="5c457f22edbd51e5f1f25143fbbd8bd5" name="commonj/sdo/ChangeSummaryImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="29a34830e439018057c13184ba9dd91d" name="commonj/sdo/ChangeSummaryImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="4482bf2b525dae8730333a7175c971ad" name="commonj/sdo/CopyHelper.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="eba37e2ffc71d2ff857fb0f1f4a48219" name="commonj/sdo/CopyHelper.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="b649585ec1b0d1c7dd0cf8fb0072e125" name="commonj/sdo/DASProperty.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="9ee70a9a322be8e585d43936a7e1a574" name="commonj/sdo/DASProperty.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="f8f2c8df14de82ef94003d3f0d086d0d" name="commonj/sdo/DASType.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="29140a46b77ec89075e6f804245285a7" name="commonj/sdo/DASType.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="a59c40538d9eb38ecfd71efc822cf734" name="commonj/sdo/DASValue.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="41b4f8d073596cd2cd98b0ff05d42bb7" name="commonj/sdo/DASValue.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="04664b15fb38975a407e85b32ef8902a" name="commonj/sdo/DASValues.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="ebeab7fa59c6eab0d7f6c324bdff057a" name="commonj/sdo/DASValues.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="69f7963b65f47b75cd919c9be72e294c" name="commonj/sdo/DataFactory.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="a0180b4c020c5f9d748afff441dfea29" name="commonj/sdo/DataFactory.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="8631b1f8e7c70a5ba57ac21a4f84eae0" name="commonj/sdo/DataFactoryImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="208b48efdab39eed1aea2cd1f3f9dbd0" name="commonj/sdo/DataFactoryImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="035c19ecc320c7ab01b210d76a0e9062" name="commonj/sdo/DataGraph.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="30feec5092981400b928d98229d5c593" name="commonj/sdo/DataGraph.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="a054ca5d03f6773291b4f7bcdf7fe70f" name="commonj/sdo/DataGraphImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="72bede47a6ce9c3009aa178432031636" name="commonj/sdo/DataGraphImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="f8662d516c395260426649f69c31e380" name="commonj/sdo/DataObject.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="24c0fa8d71163570c02bdca9c32892ca" name="commonj/sdo/DataObject.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="d49de329cbf38cbd099c6f7256832389" name="commonj/sdo/DataObjectImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="97559a27e97255bf9618d501a07338b0" name="commonj/sdo/DataObjectImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c3f80b779b3ab8d89d151643a3739e6a" name="commonj/sdo/DataObjectInstance.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="0ec5e6de4ff2463e14614ddf457f0f60" name="commonj/sdo/DataObjectInstance.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="321f8c67ae63b039781162db4a5cee2a" name="commonj/sdo/DataObjectList.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="60b2b25690dae165561d54b5d514b556" name="commonj/sdo/DataObjectList.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6420f67ab5230bb32b977008208387f7" name="commonj/sdo/DataObjectListImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="468712fa2121b8fbd1ac9733e836bd07" name="commonj/sdo/DataObjectListImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="97dc5a8262805b754e54add816f94416" name="commonj/sdo/DefaultLogWriter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="e5f21cf51a960f5c7c509133ae03b910" name="commonj/sdo/DefaultLogWriter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6b4d4839e03ef1885faac034756db38c" name="commonj/sdo/disable_warn.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="3755de67cdacd4f512d473cc64ebc022" name="commonj/sdo/EqualityHelper.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="8e7f22a34f6a6751e14abeb8e1dc134b" name="commonj/sdo/EqualityHelper.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="db3b7f83bb95e1bd20e621c170e61ebd" name="commonj/sdo/export.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="85303ae8b72f77fb5009cb13f26c3249" name="commonj/sdo/GroupDefinition.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="746652be016667c57a21edf2343f8de0" name="commonj/sdo/GroupDefinition.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="eea46ccceb72db27280fcc5ae816c3f4" name="commonj/sdo/GroupEvent.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c7b651a5ed1087d6826a592f85d2a60f" name="commonj/sdo/GroupEvent.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="2b6decd98ec7484080720e37186a3bc1" name="commonj/sdo/HelperProvider.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="7495e3511470e6f7a1b948fd44251da4" name="commonj/sdo/HelperProvider.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="34b1b72888f83a893b20250ebb2e938b" name="commonj/sdo/Logger.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="fef083a4cbea3ccd1a18f6ce0e6cd590" name="commonj/sdo/Logger.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="1e5d5ff5328377823339207c27bf519f" name="commonj/sdo/Logging.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="4a7146b5e497247064ddc9b286372908" name="commonj/sdo/LogWriter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="7e8903dc4455a8c5bbb8e92d1e11fa4f" name="commonj/sdo/LogWriter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="4d5d443e94ccf8c69ad6f9f3e4549590" name="commonj/sdo/ParserErrorSetter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c02b0dde3009444ad05b296d7b7faf24" name="commonj/sdo/ParserErrorSetter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="294ddd7c3216df106bb440beb8e968c4" name="commonj/sdo/Property.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c243bb9a1363af371290bde302485678" name="commonj/sdo/Property.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="af998cc3f1045519854fe9acc44c72be" name="commonj/sdo/PropertyDefinition.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="7228942ab1f292057440b79b2abded50" name="commonj/sdo/PropertyDefinition.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="540d9f2af393eb13cd3785cbeb1cc9e6" name="commonj/sdo/PropertyDefinitionImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="8971b2f66cb14bfaa423a6742eaa25e9" name="commonj/sdo/PropertyDefinitionImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="18eb492ccd7142f75119ecb87167a788" name="commonj/sdo/PropertyImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="ae106a9528b6677538c1efee10ee27ec" name="commonj/sdo/PropertyImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="fab7186d006f384478ad0457776b2fd7" name="commonj/sdo/PropertyList.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="78cfb2962d6ceaafc068cedec85442ce" name="commonj/sdo/PropertyList.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="9386140c70c0ca59dcf95491289cbd48" name="commonj/sdo/PropertySetting.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="746cd0fedb53c07f6b647b8e0525d8bf" name="commonj/sdo/PropertySetting.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c5665c2fd0ab8f0e59e21d3981fd4167" name="commonj/sdo/RefCountingObject.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="b579431ee25638938252cf9aa0d5262e" name="commonj/sdo/RefCountingObject.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="e92e48ea395c58634fd5f713f8e24f23" name="commonj/sdo/RefCountingPointer.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="5702bbce661cda953d7da660434c1cc0" name="commonj/sdo/RefCountingPointer.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="5768d4e06c4eb5edee18f483d8497f34" name="commonj/sdo/SAX2Attribute.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="22df21266ba8ddbe7a0926793ae7ffae" name="commonj/sdo/SAX2Attribute.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="d82d09a5964d83f4f034fe1639a972f0" name="commonj/sdo/SAX2Attributes.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="02fc3e92fe29d73a65d4d921b5708841" name="commonj/sdo/SAX2Attributes.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="9ea51b684f2db6a8efb10edad1a721bb" name="commonj/sdo/SAX2Namespaces.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="ecc97a4f3e8176d07a1957f0d07b16d7" name="commonj/sdo/SAX2Namespaces.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="5529984e0fe7e4aa250132efacd1cbc7" name="commonj/sdo/SAX2Parser.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="75917800310afd83c1a35a74cb791ad1" name="commonj/sdo/SAX2Parser.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="46d1dca832d5519264ef4eb88ab9cadc" name="commonj/sdo/SchemaInfo.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="e376ead23ef4f121684f135ad56a1749" name="commonj/sdo/SchemaInfo.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="e28aecf334a748f349a31e4d9ccaeaee" name="commonj/sdo/SDO.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="8a6e2be842db9ec53f2a589e0680fac8" name="commonj/sdo/SdoCheck.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="ac6d698eae58103411c0359d09365750" name="commonj/sdo/SdoCheck.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="938bec757be8a5013315968e6ee2440d" name="commonj/sdo/SDODate.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="d5c0d7f0b79ffdaa08c5631ec5ac5990" name="commonj/sdo/SDODate.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="4f39e1e645cab6de37f30338a59a34af" name="commonj/sdo/SdoRuntime.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="9d9db719db019559620964953e321e8c" name="commonj/sdo/SdoRuntime.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="d68ed8d5d51569fe4e237ca1fc634884" name="commonj/sdo/SDORuntimeException.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="f4b8fa375f41aebf1158e9c98e790943" name="commonj/sdo/SDORuntimeException.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6782f6ee36568b1e7b96b2d1e6f48df5" name="commonj/sdo/SDOSAX2Parser.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="e8830e817f17f0c644c4fdb9dac7e92c" name="commonj/sdo/SDOSAX2Parser.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="479ae6c41b2441866fb158bb0e5075b1" name="commonj/sdo/SDOSchemaSAX2Parser.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="bdb5484fae5b4d1f0419a2b4adb67aa1" name="commonj/sdo/SDOSchemaSAX2Parser.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c6307725106fa8b2ebc0433515b70a13" name="commonj/sdo/SDOSPI.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="48a34db030119eacf039cdd0faa82983" name="commonj/sdo/SDOString.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="5435b0fa6bcbfe5944e5aa7dd315f88c" name="commonj/sdo/SDOString.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="a210cb8413f4baf35998458cc0b63932" name="commonj/sdo/SDOUtils.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c0ed640a2152fc09a5a7a33b73c625bf" name="commonj/sdo/SDOUtils.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="75c0245b8d1226c5ca0888b05fee434a" name="commonj/sdo/SDOXMLBufferWriter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="0c6ab081f7b8677f71743ced428314ce" name="commonj/sdo/SDOXMLBufferWriter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="eb2ee49acc445261ada661ccbd160f0f" name="commonj/sdo/SDOXMLFileWriter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="18982099bcd26da8259366bbe7aa34a7" name="commonj/sdo/SDOXMLFileWriter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="79e3e4a62663d84969aedf0cdd628214" name="commonj/sdo/SDOXMLStreamWriter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="8853f36c704621ec4bb5cb9eb0155ade" name="commonj/sdo/SDOXMLStreamWriter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6ca3f94572f58437d9e94dc0fd4cf9dd" name="commonj/sdo/SDOXMLString.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="e6cec816bc3e8922d32ecc3dc1a7f8b6" name="commonj/sdo/SDOXMLString.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="d850d125a729d724ac92e2b0f00ebcc4" name="commonj/sdo/SDOXMLWriter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="598bb1766d7f6adf07aa768784d403a4" name="commonj/sdo/SDOXMLWriter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="319340c03965fb9a70461cd1396c16cf" name="commonj/sdo/SDOXSDBufferWriter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="84ca344b04bad9bb157467a1d6969659" name="commonj/sdo/SDOXSDBufferWriter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="fb56b05cad95941df04f5eeef3418395" name="commonj/sdo/SDOXSDFileWriter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6ae0914e1bdcfa7eb453664cf5997ccb" name="commonj/sdo/SDOXSDFileWriter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="1da3d2bb0368b661dac67f97aacd37d9" name="commonj/sdo/SDOXSDStreamWriter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="a138522ae3fa1f3697301ff093db1c33" name="commonj/sdo/SDOXSDStreamWriter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="0f7754bb851d443fcdb6f07a6a14095e" name="commonj/sdo/SDOXSDWriter.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c443ccfbb9b8b13a9e9e723c5cd9f871" name="commonj/sdo/SDOXSDWriter.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="f9feca3233075026c092a2675f03e861" name="commonj/sdo/Sequence.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="d1452084a367bc2ffbbe620874a5d4fd" name="commonj/sdo/Sequence.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="956d0857336492e25fcfaf52085920c5" name="commonj/sdo/SequenceImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="05f2fb0c5bcf53d191d1d0a99017fb05" name="commonj/sdo/SequenceImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="287553df0b23d59d2433c311488aabb2" name="commonj/sdo/Setting.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="9d5dde1fd139bffbe70f753f684cee6d" name="commonj/sdo/Setting.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c5d929680e07bc19dc2763b2f02535e6" name="commonj/sdo/SettingList.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="ad0e6a381b29413b5f50cf811a08dc4e" name="commonj/sdo/SettingList.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="a46c82c3fd45a79086c21afddcedece4" name="commonj/sdo/Type.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="f2c673928024bf1f6b731f3c0ed78216" name="commonj/sdo/Type.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="b5b456cf1887ad74c8d821d57eb62509" name="commonj/sdo/TypeDefinition.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="69a711e1d7523e1cf1d4fe45338057e7" name="commonj/sdo/TypeDefinition.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="86ae5d9a0344f740d1ea1c4cbedc339e" name="commonj/sdo/TypeDefinitionImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="bbf8759188997752757079ff70cbee36" name="commonj/sdo/TypeDefinitionImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="a964ef7cce9376a92ea812cde00917c2" name="commonj/sdo/TypeDefinitions.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="b88ce35e54d2b335d68014e2b303adb4" name="commonj/sdo/TypeDefinitions.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6ea27402a7f2d11c82afba920f5d1670" name="commonj/sdo/TypeDefinitionsImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="9ec2df7b5c614b6a922ae9066e1a1907" name="commonj/sdo/TypeDefinitionsImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="035346f6694066202715e979c28b3ca2" name="commonj/sdo/TypeImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="70684caf7d522b75a79be483365e9620" name="commonj/sdo/TypeImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="d11283b90800c1727aaae91f332c435f" name="commonj/sdo/TypeList.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="53d05fadb111e7a156cb96a055cf8423" name="commonj/sdo/TypeList.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="0d2f7e7032d2de03306f379fbde05b5e" name="commonj/sdo/XMLDocument.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="28fd4d5ba911317ee618a52c1127c0b9" name="commonj/sdo/XMLDocument.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="4fdbb4f69b6a4f1c394e65903451181d" name="commonj/sdo/XMLDocumentImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="a7413374c2772ce52aa201d8dbc14525" name="commonj/sdo/XMLDocumentImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="5c1283d30d44f437566ddb3dda9332c2" name="commonj/sdo/XMLHelper.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="618b922d9dad615b780ca35192118d57" name="commonj/sdo/XMLHelper.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="607616157e70a241ccb0e1d08cec107f" name="commonj/sdo/XMLHelperImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="4cea448e878040a530485ecc15f9f43a" name="commonj/sdo/XMLHelperImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="94aba6a6438dd24ff1fcd7a17f888557" name="commonj/sdo/XMLQName.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6079a8c9dd9f66c25190740b0724205c" name="commonj/sdo/XMLQName.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="63c7442c1ef1165ab42a89abacffe33d" name="commonj/sdo/XpathHelper.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="b4043277497d223d2512d3fc512c8320" name="commonj/sdo/XpathHelper.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="e4d707e8d6122387de6ef1e65151f943" name="commonj/sdo/XSDHelper.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="e358e1b974ad6d99a5a5e6480126c75a" name="commonj/sdo/XSDHelper.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="a426f213074cbf1649f6fac416fec92b" name="commonj/sdo/XSDHelperImpl.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="03c450eeff1c4db4509769cbc1ca6be1" name="commonj/sdo/XSDHelperImpl.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="860d8908210e3ae95e2cf933b34378d4" name="commonj/sdo/XSDPropertyInfo.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="a4da7edd3e4c1b444587367180a3a1a6" name="commonj/sdo/XSDPropertyInfo.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="da5a744822b3dd7f1793d6ad07a4b837" name="commonj/sdo/XSDTypeInfo.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="836844812cc14a58ebb8323c3cad7c08" name="commonj/sdo/XSDTypeInfo.h"/>
+   <file role="php" baseinstalldir="SDO" md5sum="1d9a28f8eb20d4096af63a9ad12b15f7" name="DAS/Relational/Scenarios/1c-C.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="a76c74c5bcda52823dc84226a82a0ca2" name="DAS/Relational/Scenarios/1c-CD.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="169342f8765e0b4f328f6bf5e8e0540f" name="DAS/Relational/Scenarios/1c-CRU.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="0f40de26b4f721fc969135a875018872" name="DAS/Relational/Scenarios/1c-CRUCollisionD.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="2572fe7a1e14ea04c3b7064f255dacfb" name="DAS/Relational/Scenarios/1c-CRUD.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="f953c88695f09c7e76ca615ecfaf24b4" name="DAS/Relational/Scenarios/1c-CRUDDuffSQL.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="e9d03bea78c6eb87a00daa2db8fb5f16" name="DAS/Relational/Scenarios/1c-DCsamePK.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="906d87829653f063d4aedb374a2df3c0" name="DAS/Relational/Scenarios/1c-R.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="90feb2846c80b4d64833d12c64123680" name="DAS/Relational/Scenarios/1c-RA.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="5ea0683d211875029177a70898a8c37a" name="DAS/Relational/Scenarios/1c-RD.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="de31c1846d3291e5db91bfdc9d96f66f" name="DAS/Relational/Scenarios/1c-RU.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="82999e989acf67d63c225c109e449466" name="DAS/Relational/Scenarios/1c-RUnull.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="be05e0a62dcebfb54a85a9b53815e617" name="DAS/Relational/Scenarios/1c-RUunsetPrimitive.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="a6eb3b914805120b5137da65974ebe54" name="DAS/Relational/Scenarios/1cd-C.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="7baa8217d2aee9d9a9c9ee458adb88cc" name="DAS/Relational/Scenarios/1cd-CRUD.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="6eec699e21e856ed20503bfe02ffdd33" name="DAS/Relational/Scenarios/1cd-CRUDnull.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="140266714d883bc4f1b7afa698494002" name="DAS/Relational/Scenarios/1cd-RA.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="5dcc7ac752e60cf9c5bb2749769e0f4d" name="DAS/Relational/Scenarios/1cde-C.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="78c9b856b7eb0bceae9c6f59d9ce3bfa" name="DAS/Relational/Scenarios/1cde-CRU.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="6f28f6deed3a75d3afbfd63c2586a709" name="DAS/Relational/Scenarios/1cde-CRUD.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="28e8b45cf578d4f4a345da2f2b33ddf6" name="DAS/Relational/Scenarios/1cde-CRUDdetach.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="681e8c390c9698a2dd0d643cd94bf6de" name="DAS/Relational/Scenarios/1cde-CRUDnull.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="7b33d9a4594a3255a3d9dadb8c85b27e" name="DAS/Relational/Scenarios/1cde-R.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="07265f357742a44d4c0e5198a7505676" name="DAS/Relational/Scenarios/1e-CRUD.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="9c1b0a31dc4b2487c3a99e967b0fc68b" name="DAS/Relational/Scenarios/companydb_db2.sql"/>
+   <file role="php" baseinstalldir="SDO" md5sum="1d442c8b53bf2201a96ee716eff94e83" name="DAS/Relational/Scenarios/companydb_mysql.sql"/>
+   <file role="php" baseinstalldir="SDO" md5sum="1915b79d89326968189093b81895b4f1" name="DAS/Relational/Scenarios/company_metadata.inc.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="a93e5daf1cb1aacffc09e527aa45dd6e" name="DAS/Relational/Scenarios/mc-C.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="a9727cde4a6f627a42fe5440bdeda29b" name="DAS/Relational/Scenarios/mc-R.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="1e5b20d4fdcdfe7bc868ee6e51401a09" name="DAS/Relational/Scenarios/mc-RD.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="5b6efe897d0e449e84b2fec37546b4d6" name="DAS/Relational/Scenarios/mc-RU.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="d03b53d9118f321927046e6b938c20eb" name="DAS/Relational/Scenarios/runAllScenarios.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="e5b1a28e32fc650026d9818c6faec426" name="DAS/Relational/Tests/TestContainmentReference.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="6ec9a57f85613f3de3430bee600b83e1" name="DAS/Relational/Tests/TestDatabaseModel.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="99c5de31318cbc532ca0596a94b13bc0" name="DAS/Relational/Tests/TestDataObjectHelper.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="7d5d4e4bace36cfb17f81c1e5d02fd7c" name="DAS/Relational/Tests/TestDeleteAction.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="33d0707956b34bcc5414f68f9a5cf4cd" name="DAS/Relational/Tests/TestForeignKey.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="59d241187cf36796f1b869e2e8660258" name="DAS/Relational/Tests/TestInsertAction.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="9fc7c4fe2f40643593d9ec29c78dc531" name="DAS/Relational/Tests/TestObjectModel.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="2ca6e3629f7fe8dfdf8a77d43be111b2" name="DAS/Relational/Tests/TestPlan.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="da7e1b9230319ad7147488a1f4920a7f" name="DAS/Relational/Tests/TestReferencesModel.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="c32e3482abbbee769836809812220b4c" name="DAS/Relational/Tests/TestRelational.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="ba5631e000d78e4e539ed98d571dbb1d" name="DAS/Relational/Tests/TestSuite.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="39b12ec60c1c82558ed12f517a5b679a" name="DAS/Relational/Tests/TestTable.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="1083dca48f83d0eb50607d9bfa55941b" name="DAS/Relational/Tests/TestUpdateAction.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="256a725544c1c5d0f0d6bb12fc468d1f" name="DAS/Relational/Tests/ZDERunner.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="71ce16e0c688d3e249f180d21b172dd6" name="DAS/Relational/Action.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="a393f652946252382c3165393d2e29f0" name="DAS/Relational/ContainmentReference.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="1e9a4384c56d95d424e38a20ab071cd2" name="DAS/Relational/ContainmentReferencesModel.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="7202261673c5e684728d965561a0fe7b" name="DAS/Relational/DatabaseHelper.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="52adefcae4f3da0ceda00745a0a4bb2c" name="DAS/Relational/DatabaseModel.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="dfa97c309a387254ee2c3c79f9ab93ae" name="DAS/Relational/DataObjectHelper.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="8506e064405ed4ed2e7df829a254cd65" name="DAS/Relational/DeleteAction.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="29eee3bda011e1e6bc4fa0ac21f487d1" name="DAS/Relational/Exception.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="618d35b116487aa01155f528996875c5" name="DAS/Relational/ForeignKey.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="c27ad5a5eab23b333530b4ccc0251beb" name="DAS/Relational/InsertAction.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="367a38f37e5af389d444a182d2f20d02" name="DAS/Relational/KeyObjectMap.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="3bae54dcb06f7bb7a1a0f646b1c080cf" name="DAS/Relational/NonContainmentReference.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="5901899f0c12bddf66509ba1ec83c96a" name="DAS/Relational/ObjectModel.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="f8f84ec1358f558d3d9a8a89f4c436ff" name="DAS/Relational/PDOConstants.colon.inc.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="ead9c48813837609cf14846462f1faad" name="DAS/Relational/PDOConstants.underscore.inc.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="83e5e890a5a41381f453b62f0b520e3e" name="DAS/Relational/Plan.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="1457822634253c9ab8d0303cfe735779" name="DAS/Relational/PrimaryKey.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="e818372428ca979a9364048dc42a96ac" name="DAS/Relational/ReferencesModel.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="930788ab9faa92b37272b291ca113342" name="DAS/Relational/SettingListHelper.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="dcb9bd734945d4cc2a1d3b4950e27836" name="DAS/Relational/Table.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="304960f75b6848ad280421df829606b0" name="DAS/Relational/UpdateAction.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="07cc5e530e26aee6026b8f733e002c9a" name="DAS/Relational/UpdateNonContainmentReferenceAction.php"/>
+   <file role="php" baseinstalldir="SDO" md5sum="057c6764d22c847d93d1fdf53e95e653" name="DAS/Relational.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="f249902f1e00423dc3afca57c00a96f3" name="scenarios/contacts/confirm.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="4a89458121e077122ce4da111a01bd21" name="scenarios/contacts/contactdb_mysql.sql"/>
+   <file role="test" baseinstalldir="SDO" md5sum="ff6f06cc8f0e723159c687261a3a1215" name="scenarios/contacts/contacts_config.inc.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="8195176b32c2188537835b0a1523752f" name="scenarios/contacts/contacts_data.inc.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="8b82de5c88c70537f9d19c28dcc86023" name="scenarios/contacts/contacts_schema.inc.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="b45d5206ddd655d238d7f72146d957e7" name="scenarios/contacts/db_config.inc.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="e1a4a0132353798ab391ec5839af32f2" name="scenarios/contacts/edit.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="c6edbb44a24674fb5b63a12dcee2f768" name="scenarios/contacts/welcome.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="14841dc22d2a36ec235ed856837690f4" name="scenarios/jungle/animalTypes.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="87785833f89af51bd3e8e216b03d0b42" name="scenarios/jungle/jungle.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="a8afc34d97b97b914a07289e4493c547" name="scenarios/jungle/populate_jungle.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="03abbabccc59d5c66a80a1f1eb041e81" name="scenarios/letter/letter.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="78efef6cb834f6f7e9ca8a82f7356a53" name="scenarios/letter/letter.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="f6fe9c1cc9192c9340d278fb389bb3ed" name="scenarios/letter/show_letter.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="fce7c5bc10afdcf2c80e2013dc7e2fde" name="scenarios/rss-media/additem.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="ed8e884d4eba4ea6e03c9074f5598ba3" name="scenarios/rss-media/base.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="49ecf553881a180ef1a1fb2c33700438" name="scenarios/rss-media/blog.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="a095a198136bf95ecc8cb87f3b9fb4af" name="scenarios/rss-media/blog.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="343cf46e4c3ba32b04e7eef631a5ccc2" name="scenarios/rss-media/handle_upload.inc.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="4a931d971da6ab3d8aa96b4bdc2c555e" name="scenarios/rss-media/newitem.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="d1f15c708b6265df99e77e1ab5518e44" name="scenarios/rss-media/rss.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="24db43c0a768667feeee9ae8ff8fa81b" name="scenarios/rss-media/rss.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="e179225361738381931fb3091916d8f8" name="scenarios/rss-media/showitem.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="374b1f811dbdb1b76d698eac33eb4b33" name="scenarios/sdo-api/contacts.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="73998f4eb540477c2a937ee5fe95176b" name="scenarios/sdo-api/contacts.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="f6b13533c60d5c5bdbc3ba17a1bd51e5" name="scenarios/sdo-api/sdo_api.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="e9c48c60d89b89bb6ae08e5ca841882f" name="scenarios/index.html"/>
+   <file role="test" baseinstalldir="SDO" md5sum="245c40d7e3aeb68f389f0c1b48a3acaf" name="tests/XMLDAS/Examples/animalTypes.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="f1de6ca1c22949b82b6cdc6b997a0d41" name="tests/XMLDAS/Examples/Example1.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="e82c84fcaba40c19635135154fbced83" name="tests/XMLDAS/Examples/Example2.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="c0c37261c8c5eb11e0566db22ee06a42" name="tests/XMLDAS/Examples/Example3.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="4556078919cfd82784977177fa3777cb" name="tests/XMLDAS/Examples/Example4.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="f6e319894cb5e3aa80141394675b0d13" name="tests/XMLDAS/Examples/Example5.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="b07322e32f870abd1176ca520793bdc3" name="tests/XMLDAS/Examples/Example6.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="2d095210bc123f0c32b6541a4f19642f" name="tests/XMLDAS/Examples/jungle.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="b5091b37f42ea9ebeae55fe5dccbf960" name="tests/XMLDAS/Examples/letter.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="4edb1c05c7bdab889fa37115f45d7a97" name="tests/XMLDAS/Examples/letter.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="faf3a50e3707aef62b0aa786016b12ef" name="tests/XMLDAS/PHPUnitTests/abstractComplexType/abstract.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="14841dc22d2a36ec235ed856837690f4" name="tests/XMLDAS/PHPUnitTests/anyElement/animalTypes.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="8af5c7a48db1d7e564133da2f495a13e" name="tests/XMLDAS/PHPUnitTests/anyElement/jungle.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="3daa3c4f3460f1c4fa48e8f76424c421" name="tests/XMLDAS/PHPUnitTests/extendedComplexType/person.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="a4d9a0b19c423dfaafddbed42038742a" name="tests/XMLDAS/PHPUnitTests/extendedComplexType/person.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="cca97b18d3556e1c0dba2b73965c5fac" name="tests/XMLDAS/PHPUnitTests/missingType/company_missing_type.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="82fac784d9212fb2e3dec14f50aeabe1" name="tests/XMLDAS/PHPUnitTests/nillable/company_with_nillable_SN.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="47d870468094c10f0f1ed7bc2a7411c5" name="tests/XMLDAS/PHPUnitTests/nillable/company_with_nillable_SN.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="c5d9ec8c295e56b8009b4acb8f7fe211" name="tests/XMLDAS/PHPUnitTests/parseErrors/parse_errors.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="fdd671843b09b77d40408826cee4d123" name="tests/XMLDAS/PHPUnitTests/parseErrors/parse_errors.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="639b80e4c443a68021bf6cab3fd66bc6" name="tests/XMLDAS/PHPUnitTests/restrictedComplexType/name.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="fea34ea3b0a178b1a41260e6e1726d63" name="tests/XMLDAS/PHPUnitTests/restrictedComplexType/name.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="67fa96321df9b3db0f05514ce6071e3e" name="tests/XMLDAS/PHPUnitTests/company.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="6d594649b374e715f55abcdeaabc5dde" name="tests/XMLDAS/PHPUnitTests/company.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="f9461f5fa5ad37e1c431c38c382aa126" name="tests/XMLDAS/PHPUnitTests/XMLDASTest.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="32f1ab2aea98c5b19bb56bbdcb5969f4" name="tests/001.phpt"/>
+   <file role="test" baseinstalldir="SDO" md5sum="9bbd1bc0d38b6c68a78f24771f862d34" name="tests/002.phpt"/>
+   <file role="test" baseinstalldir="SDO" md5sum="c09bafdb2b6d70f85df3652e2e6ef1b0" name="tests/003.phpt"/>
+   <file role="test" baseinstalldir="SDO" md5sum="be2bb95bba95babfc2277253a232b1d0" name="tests/004.phpt"/>
+   <file role="test" baseinstalldir="SDO" md5sum="9d65d36123fe04a1a6bd4f03eefdc600" name="tests/005.phpt"/>
+   <file role="test" baseinstalldir="SDO" md5sum="abcc5fd5a109914cad3e7ebb8d75c62b" name="tests/006.phpt"/>
+   <file role="test" baseinstalldir="SDO" md5sum="f6bab0ff2eb56ccb3ef2f4a5f70828d9" name="tests/008.phpt"/>
+   <file role="test" baseinstalldir="SDO" md5sum="67fa96321df9b3db0f05514ce6071e3e" name="tests/company.xml"/>
+   <file role="test" baseinstalldir="SDO" md5sum="6d594649b374e715f55abcdeaabc5dde" name="tests/company.xsd"/>
+   <file role="test" baseinstalldir="SDO" md5sum="c1c72dd228292733ecff1ae939b616d1" name="tests/SDOAPITest.php"/>
+   <file role="test" baseinstalldir="SDO" md5sum="6cb706341484b572c1247a62b916bc14" name="tests/test.inc"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6772b8c8857dd8a84b97a8dde8072c62" name="CLA"/>
+   <file role="src" baseinstalldir="SDO" md5sum="1a25878b265370286f02ebca44d0e46d" name="config.m4"/>
+   <file role="src" baseinstalldir="SDO" md5sum="b07a56bd1e0ea00f30ecbc9934348196" name="config.w32"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6a59a7567daaec18fb326010812bfc38" name="CREDITS"/>
+   <file role="src" baseinstalldir="SDO" md5sum="e86569eeb14ae888f3d1654791bff88b" name="das_xml.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="ef178ae50bf0e1e2ee3c4d05372ab15f" name="INSTALL"/>
+   <file role="src" baseinstalldir="SDO" md5sum="3dd822164c3e2e56c2a01b56e1aad035" name="php_sdo.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="01beaa231c31e597d8a52feb41d11095" name="php_sdo_das_xml.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="449783f31392b7a4c56dbcbfea55cf56" name="php_sdo_das_xml_int.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c5b681dff35903e47ca92dfaafd45369" name="php_sdo_int.h"/>
+   <file role="src" baseinstalldir="SDO" md5sum="bcde771c55de7d2bd61b55d1be5498c4" name="README"/>
+   <file role="src" baseinstalldir="SDO" md5sum="6762ce2df4d546092d0ba619f7300fba" name="sdo.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="0bb8d6e6110fe35dab83b9cf0a7706c3" name="SDO_CPPException.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="eff118fc5ee267b0ec6bed2d61dd6fe7" name="SDO_DAS_ChangeSummary.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="3df3483777c81ad0bfeb97083985ef78" name="SDO_DAS_DataFactory.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="14a3e0cc823f9f3c2dcfe16fc4f10fd2" name="SDO_DAS_Setting.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="be4fb1a86989f1b58459729469570c6e" name="SDO_DAS_XML.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="dda61ff7a1b169b33c16348749dcc76f" name="SDO_DAS_XML_Document.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="bbdbed5df71aaa02a84735bf2c6b05e9" name="SDO_DataObject.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="640af06cabba61f1f0dfd9e140ca38af" name="SDO_Exception.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="f365e58e134dc89d0d2540f415c39c37" name="SDO_List.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="7aa7bf71c36b14ad1dbc2aa1da9a4c9f" name="SDO_Model_Property.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="ba56fd72b2f07642aa8e3b64bb17d784" name="SDO_Model_ReflectionDataObject.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="d5f54dcd98ecb97cd9f87040e5b60357" name="SDO_Model_Type.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="c3453db42ba8408267b1a5b01d661e79" name="SDO_Sequence.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="8318dbdc66cd6c569830b4c3e0605305" name="sdo_utils.cpp"/>
+   <file role="src" baseinstalldir="SDO" md5sum="751e677a25362d12c33cf2fe9fe3ccdb" name="xmldas_utils.cpp"/>
+  </filelist>
+ </release>
+ <changelog>
+   <release>
+    <version>0.5.0</version>
+    <date>2005-07-22</date>
+    <license>Apache 2.0</license>
+    <state>beta</state>
+    <notes>This is the first release of SDO for PHP. It contains the core SDO extension and two Data Access Services: an XML DAS written in C and a Relational DAS to work with relational databases, which is written in PHP and uses PDO. The SDO extension requires a recent version of PHP 5.1. It has been tested on both 5.1.0b2 and 5.1.0b3. The core SDO extension and XML DAS work with 5.1.0b2. The Relational DAS requires PHP 5.1.0b3.
+    </notes>
+   </release>
+   <release>
+    <version>0.5.1</version>
+    <date>2005-08-08</date>
+    <license>Apache 2.0</license>
+    <state>beta</state>
+    <notes>Now includes support for DB2 on both Windows and Linux as well as MySQL.
+Added some tests for the XML DAS.
+    </notes>
+   </release>
+   <release>
+    <version>0.5.2</version>
+    <date>2005-10-06</date>
+    <license>Apache 2.0</license>
+    <state>beta</state>
+    <notes>This release fixes a number of bugs:
+- The XML DAS now throws a more meaningful exception when the xsd or xml file is not found
+- The interface to SDO_DAS_DataFactory::addPropertyToType has changed and the previous interface is deprecated
+- The interface to SDO_DAS_DataFactory::addProperty now supports the setting of default values
+- The unit tests for the XML DAS have been added to
+- The Relational DAS adapts to whether PDO constants are using old-style PDO_* or new-style PDO::*
+- The Relational DAS contains a workaround for a problem with PDO_Statement::RowCount and ODBC driver
+- Some SDO_DAS_ChangeSummary* constants, which were probably only used by the Relational DAS, have been changed
+    </notes>
+   </release>
+   <release>
+    <version>0.6.0</version>
+    <date>2005-10-19</date>
+    <license>Apache 2.0</license>
+    <state>beta</state>
+    <notes>This release adds a small number of new features:
+- The Relational DAS now supports nulls: an SQL NULL in the database is represented as a PHP null in the data object and vice versa
+- The important SDO classes all support toString()
+- The SDO_DataObject class now supports clone()
+    </notes>
+   </release>
+   <release>
+    <version>0.6.1</version>
+    <date>2005-11-21</date>
+    <license>Apache 2.0</license>
+    <state>beta</state>
+    <notes>Improved reporting of Schema and XML parse errors (libxml2 errors surfaced in an XML Data Access Service SDO_DAS_XML_ParserException).
+Various bug fixes, including PECL bugs 6002 and 6006.
+Support for XML Schema &apos;nillable&apos;.
+Support to build and run against PHP 6.0 (only with unicode semantics off).
+    </notes>
+   </release>
+   <release>
+    <version>0.7.0</version>
+    <date>2005-12-02</date>
+    <license>Apache 2.0</license>
+    <state>beta</state>
+    <notes>This release adds support for reflection on a data object. The SDO_Model_ReflectionDataObject gives the programmer access to the type and structure information in a data object&apos;s model. This can help with debugging, or be used in dynamic user interface generation.
+    </notes>
+   </release>
+   <release>
+    <version>0.7.1</version>
+    <date>2006-01-17</date>
+    <license>Apache 2.0</license>
+    <state>beta</state>
+    <notes>This release adds support for open types. These are types which can have additional properties added to a runtime instance, for example to support an XML &lt;any/&gt; element.
+Also various bug fixes.
+    </notes>
+   </release>
+   <release>
+    <version>0.9.0</version>
+    <date>2006-02-20</date>
+    <license>Apache 2.0</license>
+    <state>beta</state>
+    <notes>The following changes have been made between 0.7.1 and this release:
+A) The changes which are visible at the programming interface are:
+ 1) The interface to the XML Data Access Service has been revised:
+   a) The names of the methods to load and save documents have changed to improve consistency with other packages.
+   b) A new method, createDocument(), has been added to enable creation of a document from scratch.
+   c) The saveDataObjectToFile()/String() methods have been replaced by saveFile() and saveString() methods on the XML DAS object.
+   d) Some getters and setters on the Document have been fixed or removed.
+   e) The XML Data Access Service has added support for the following XML Schema:
+    - Open types: support for &lt;any&gt; element and &lt;anyAttribute&gt;
+    - Type inheritance: both simple and complex types can be derived by restriction or extension
+    - Abstract types: the use of abstract types in the schema is supported
+  2) The XML DAS now supports printing its SDO type and property model using print or echo.
+  3) The XML DAS can now produce formatted Document (see optional formatting argument on saveFile() and saveString())
+  4) The getType() method on a DataObject has been replaced with getTypeName() and getTypeNamespaceURI() methods.
+
+B) Other changes in this release:
+ 1) The memory management in the sdo and sdo_das_xml extensions has been overhauled to squeeze out any memory leaks
+ 2) Exception messages from the extension have been improved so that they never refer to the underlying C/C++ code
+ 3) PropertyNotSetException has been improved so that it replicates the way arrays and objects behave as closely as possible
+ 4) The parsing that the XML DAS performs on both XML Schema and instance documents has been improved so that problems are picked up and reported earlier.
+    </notes>
+   </release>
+   <release>
+    <version>1.0.0</version>
+    <date>2006-03-01</date>
+    <license>Apache 2.0</license>
+    <state>stable</state>
+    <notes>First stable release.
+Minor improvements and fixes over 0.9.0.
+    </notes>
+   </release>
+   <release>
+    <version>1.0.1</version>
+    <date>2006-03-20</date>
+    <license>Apache 2.0</license>
+    <state>stable</state>
+    <notes>Minor increments and fixes over 1.0.0:
+- allow data objects to be copied between data factories
+- remove memory leaks in _get_properties methods
+- remove memory leak reading value from Sequence
+    </notes>
+   </release>
+   <release>
+    <version>1.0.2</version>
+    <date>2006-06-30</date>
+    <license>Apache 2.0</license>
+    <state>stable</state>
+    <notes>Minor increments and fixes over 1.0.1:
+- fix defect 7458
+- eliminate use of the C++ XMLDAS implementation
+- fix build errors with PHP 5.2
+    </notes>
+   </release>
+   <release>
+    <version>1.0.3</version>
+    <date>2006-08-09</date>
+    <license>Apache 2.0</license>
+    <state>stable</state>
+    <notes>Compatibility with Tuscany C++/SDO M1 release and some bug fixes over 1.0.2
+ - Update the base C++/SDO implementation to be the Tuscany CPP Milestone 1 release: cpp-0.1.incubating-M1
+ - Tested with Linux AMD 64-bit architecture
+ - new 3-argument version of SDO_DAS_XML::createDocument() allows an SDO_DAS_XML_Document to be created from an SDO
+ - fix defect 7878 Silent failure with malformed SQL
+ - fix defect 7879 Improve error message in SDO_DAS_Relational_DatabaseHelper:executeStatement
+ - fix defect 8280 Remove spaces from source files
+ - fix defect 8300 Optimistic concurrency failure
+ - fix defect 8374 Exception hierarchy (temporary fix)
+    </notes>
+   </release>
+ </changelog>
+</package>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>zendopcache</name>
+ <channel>pecl.php.net</channel>
+ <summary>The Zend OPcache provides faster PHP execution through opcode caching and optimization.</summary>
+ <description>The Zend OPcache provides faster PHP execution through opcode caching and
+  optimization. It improves PHP performance by storing precompiled script
+  bytecode in the shared memory. This eliminates the stages of reading code from
+  the disk and compiling it on future access. In addition, it applies a few
+  bytecode optimization patterns that make code execution faster.</description>
+ <lead>
+  <name>Dmitry Stogov</name>
+  <user>dmitry</user>
+  <email>dmitry@zend.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Zeev Suraski</name>
+  <user>zeev</user>
+  <email>zeev@zend.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Hannes Magnusson</name>
+  <user>bjori</user>
+  <email>bjori@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Xinchen Hui</name>
+  <user>laruence</user>
+  <email>laruence@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2013-06-05</date>
+ <time>06:28:53</time>
+ <version>
+  <release>7.0.2</release>
+  <api>7.0.2</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Fixed issue #26 (added opcache_invalidate(string $filename [, bool $force = false]) function)
+- Fixed issue #74 (Allowed per request OPcache disabling)
+- Fixed issue #76 (actually we don&apos;t need zend_shared_meory_block_header at all)
+- Fixed issue #78 (incorrect file path validation)
+- Fixed issue #79 (Optimization Problem/Bug)
+- Fixed issue #82 (allow comments in blacklist file, lines started with &quot;;&quot;)
+- Fixed issue #91 (fix x64 fixed addresses)
+- Fxied issue #92 (Compilation warnings)
+- Fixed issue #97 (Use size_t instead of int to support a cache larger than 2G)
+- Fixed bug (Avoid possible conditional jump depended on uninitialised value)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="d6966343834dfba7752aea0c37637aef" name="Optimizer/pass3.c" role="src" />
+   <file md5sum="4baf542d54519d422807ab2a494c7707" name="Optimizer/zend_optimizer.h" role="src" />
+   <file md5sum="265cf1747bf060f848d312e9f154dd10" name="Optimizer/nop_removal.c" role="src" />
+   <file md5sum="358a263bf5eb28062408ec0101f01bb6" name="Optimizer/pass10.c" role="src" />
+   <file md5sum="b507b12a3467d097ad31aeb36a8945bd" name="Optimizer/optimize_temp_vars_5.c" role="src" />
+   <file md5sum="98a51a1a38d446504859bf2da6b16b8f" name="Optimizer/zend_optimizer_internal.h" role="src" />
+   <file md5sum="492fa3d86fe3e2265c14098408639750" name="Optimizer/pass2.c" role="src" />
+   <file md5sum="7c2b7cde04efa3b2d09acf75548a70b5" name="Optimizer/zend_optimizer.c" role="src" />
+   <file md5sum="4831fe355f8fe552ed0a841157bc3cfa" name="Optimizer/pass9.c" role="src" />
+   <file md5sum="361c03d52a06d9d3190dc362ff3c1c4c" name="Optimizer/pass1_5.c" role="src" />
+   <file md5sum="325a7731a390016c8ee64c2d4886fa44" name="Optimizer/block_pass.c" role="src" />
+   <file md5sum="d003e99f6b008affc7da42a9872cf331" name="Optimizer/pass5.c" role="src" />
+   <file md5sum="320fa7d1efc050aaaa4f729ce7ec6627" name="tests/001_cli.phpt" role="src" />
+   <file md5sum="7a0f0e4697f83364d30c26c80f10185e" name="tests/skipif.inc" role="src" />
+   <file md5sum="7d39842dbb4210f6364faac68a0f2db8" name="tests/bug64353.phpt" role="src" />
+   <file md5sum="d0836c2a8a8b623485ec7777b1b8e009" name="tests/bug64482.phpt" role="src" />
+   <file md5sum="6ff6cf77bf40806d206a4b23269a356b" name="tests/bug64482.inc" role="src" />
+   <file md5sum="b9b3b7946300bc77c6994d1ca2c53bcc" name="tests/issue0057.phpt" role="src" />
+   <file md5sum="1eefd4d718fb1ec545a240d2b878f90a" name="tests/issue0079.phpt" role="src" />
+   <file md5sum="7c319aa27875c8fe86071585c9bcd211" name="tests/blacklist.phpt" role="src" />
+   <file md5sum="812822e74f305ae823e4e01cccba0362" name="tests/opcache-1.blacklist" role="src" />
+   <file md5sum="b9456301add581c0a915e1a67f7d8c89" name="tests/opcache-2.blacklist" role="src" />
+   <file md5sum="08a1b2159fe84043ab7d9343aa08fba3" name="README" role="doc" />
+   <file md5sum="5bb09683f8f09b15b7076f4b4c31d61f" name="LICENSE" role="doc" />
+   <file md5sum="8a2f90733f54ce61f438476f4f261daa" name="config.w32" role="src" />
+   <file md5sum="8e152f4a1d51e6395fe97645be88cca0" name="config.m4" role="src" />
+   <file md5sum="c0d8abe889b270dbf5afbdb8df1498a6" name="zend_accelerator_util_funcs.c" role="src" />
+   <file md5sum="dc4c074cc1c26d649857f51eb0f3826f" name="zend_persist_calc.c" role="src" />
+   <file md5sum="fa1ca700431d77b6482f50a6a35274c5" name="ZendAccelerator.c" role="src" />
+   <file md5sum="78eabf76465f87fc19c3c2b47dcc8f54" name="shared_alloc_mmap.c" role="src" />
+   <file md5sum="9ded043a220dbcc3048842e3ce76cbc5" name="zend_accelerator_debug.c" role="src" />
+   <file md5sum="d8013649d0eddeef8ad009e749beee3c" name="zend_accelerator_blacklist.c" role="src" />
+   <file md5sum="ff422c2fb308e18d50b61002fdea6918" name="shared_alloc_shm.c" role="src" />
+   <file md5sum="70bf27dcbd1b3d4de00f08a8ab48d0ba" name="zend_accelerator_util_funcs.h" role="src" />
+   <file md5sum="e217a7eb788a598e23824131c8e53c30" name="zend_accelerator_module.h" role="src" />
+   <file md5sum="e93cd5a13bc2d62ca14e6497f593886c" name="zend_shared_alloc.h" role="src" />
+   <file md5sum="7b276ca249f22a512510b433b19cc3d3" name="zend_persist.h" role="src" />
+   <file md5sum="06d6b6fb7d372c4908aea20a07620f7a" name="shared_alloc_win32.c" role="src" />
+   <file md5sum="1ccfab8c1ad6f0fe627e633f0c880ef2" name="zend_shared_alloc.c" role="src" />
+   <file md5sum="8fd2d7f23177870e8ddf1f48f4f9e694" name="ZendAccelerator.h" role="src" />
+   <file md5sum="acd7d5ff9f835f70f4817d72d97c74f9" name="zend_persist.c" role="src" />
+   <file md5sum="fd22848abc5daf471d4a61860fd1aaff" name="shared_alloc_posix.c" role="src" />
+   <file md5sum="164b6621d17bc741c607d37bffe95b86" name="zend_accelerator_module.c" role="src" />
+   <file md5sum="f1b5a864128ef55029461de100453ed9" name="zend_accelerator_blacklist.h" role="src" />
+   <file md5sum="d63f9357bedf0ee984ad0c659b6a3472" name="zend_accelerator_hash.c" role="src" />
+   <file md5sum="0f3fb1744af52069250ce801001108a0" name="zend_accelerator_debug.h" role="src" />
+   <file md5sum="3163fa346340b58040973cb46de98315" name="zend_accelerator_hash.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>zendopcache</providesextension>
+ <zendextsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>7.0.1</release>
+    <api>7.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2013-03-25</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed Bug #64490 (add __FreeBSD_kernel__ to allowed FreeBSD defs)
+- Fixed Bug #64482 (Opcodes for dynamic includes should not be cached)
+- Fixed Bug #64353 (Built-in classes can be unavailable with dynamic includes and Optimizer+)
+- Fixed compatibility with ext/phar
+- Fixed Issue #58 (PHP-5.2 compatibility)
+- Fixed Issue #57 (segfaults in drupal7)
+- Fixed Issue #54 (PECL install adds extension= instead of zend_extension= to php.ini)-iii
+- Allows exclusion of large files from being cached
+- Save a stat() call by calling sapi_module.get_stat()
+- Add optional flag to opcache_get_status()
+- Separate &quot;start_time&quot; from &quot;last_restart_time&quot;
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>7.0.1</release>
+    <api>7.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2013-03-25</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed Bug #64490 (add __FreeBSD_kernel__ to allowed FreeBSD defs)
+- Fixed Bug #64482 (Opcodes for dynamic includes should not be cached)
+- Fixed Bug #64353 (Built-in classes can be unavailable with dynamic includes and Optimizer+)
+- Fixed compatibility with ext/phar
+- Fixed Issue #58 (PHP-5.2 compatibility)
+- Fixed Issue #57 (segfaults in drupal7)
+- Fixed Issue #54 (PECL install adds extension= instead of zend_extension= to php.ini)-iii
+- Allows exclusion of large files from being cached
+- Save a stat() call by calling sapi_module.get_stat()
+- Add optional flag to opcache_get_status()
+- Separate &quot;start_time&quot; from &quot;last_restart_time&quot;
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>7.0.0</release>
+    <api>7.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2013-03-04</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Initial release.
+   </notes>
+  </release>
+ </changelog>
+</package>

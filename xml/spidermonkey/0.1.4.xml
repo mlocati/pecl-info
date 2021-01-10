@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>spidermonkey</name>
+ <channel>pecl.php.net</channel>
+ <summary>JavaScript engine for PHP</summary>
+ <description>This extension allow you to embed Mozilla&apos;s Javascript engine Spidermonkey in PHP.</description>
+ <lead>
+  <name>Christophe Robin</name>
+  <user>crobin</user>
+  <email>crobin@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2010-02-23</date>
+ <time>13:20:57</time>
+ <version>
+  <release>0.1.4</release>
+  <api>0.1.4</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+* Fixed bugs 16866, 16876, 16890, 16983:
+  * Bug 16866: Returning empty string from static function causes segmentation fault
+  * Bug 16876: Empty string as a parameter causes segfault ( same as 16866 )
+  * Bug 16890: Variable is cleaned while being used in JS
+  * Bug 16983: Problems with registering classes containing __get()
+* Added compatibility with spidermonkey 1.9
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="120722ac328447294083a64f651c3ddc" name="LICENSE" role="doc" />
+   <file md5sum="5ee5738c2e1104332380103472886e35" name="config.m4" role="src" />
+   <file md5sum="9abdc22355360fbd85514a299215cd59" name="spidermonkey.c" role="src" />
+   <file md5sum="c4021ff0f4ea89b9fc4deed34c05479f" name="spidermonkey_context.c" role="src" />
+   <file md5sum="af8a32255f786e45c3853b2343e62b62" name="spidermonkey_external.c" role="src" />
+   <file md5sum="1e0392501f3f83470f589504b281f53a" name="spidermonkey_streams.c" role="src" />
+   <file md5sum="e0837038cdc8ac1dfb4f65493fae0e48" name="php_spidermonkey.h" role="src">
+    <tasks:replace from="@PACKAGE_VERSION@" to="version" type="package-info" />
+   </file>
+   <file md5sum="3efdd9a891e7e91e9ffb30458520bcac" name="tests/js_functions.phpt" role="test" />
+   <file md5sum="a85873185a09324cc9966faafae42ff5" name="tests/js_objects.phpt" role="test" />
+   <file md5sum="203f9504b64cd7ac243583951c70b87a" name="tests/js_streams.phpt" role="test" />
+   <file md5sum="0401791177129182404eea2d26225e90" name="tests/js_types.phpt" role="test" />
+   <file md5sum="53e989047a23d37a390848054a1bab37" name="tests/bug16866.phpt" role="test" />
+   <file md5sum="e2a7c225b859229148197dfcb3d84341" name="tests/bug16876.phpt" role="test" />
+   <file md5sum="2c9a0b5459fbc463754ac0e9b834ab72" name="tests/bug16890.phpt" role="test" />
+   <file md5sum="a49f85937a3e2ecf5f24ac56edbac085" name="tests/bug16983.phpt" role="test" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>spidermonkey</providesextension>
+ <extsrcrelease />
+ <changelog />
+</package>

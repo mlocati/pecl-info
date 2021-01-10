@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.5" version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd">
+ <name>mongodb</name>
+ <channel>pecl.php.net</channel>
+ <summary>MongoDB driver for PHP</summary>
+ <description>The purpose of this driver is to provide exceptionally thin glue between MongoDB
+and PHP, implementing only fundemental and performance-critical components
+necessary to build a fully-functional MongoDB driver.</description>
+ <lead>
+  <name>Hannes Magnusson</name>
+  <user>bjori</user>
+  <email>bjori@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Jeremy Mikola</name>
+  <user>jmikola</user>
+  <email>jmikola@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Derick Rethans</name>
+  <user>derick</user>
+  <email>derick@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2015-10-06</date>
+ <time>05:49:19</time>
+ <version>
+  <release>1.0.0beta2</release>
+  <api>1.0.0beta2</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+ <notes>
+* PHPC-442: report PHP version in debug info
+* PHPC-409: $readPreference is no longer sent to non-mongos nodes
+* PHPC-438: Debug handler should display null for no WC error
+* PHPC-436: Handle new writeConcernErrors array in mongoc_write_result_t
+* PHPC-415: Add testcase
+* PHPC-415: SSL/TLS already set-up for this stream
+* PHPC-393: Ignore non-public properties when encoding BSON
+* PHPC-430, PHPC-377: Do not convert Query filter arg to an object
+* PHPC-377: Eliminate object casting and whole lot of zend hash helpers
+* PHPC-373: Get rid of MAKE_STD_ZVAL() and use bson_t instead
+* PHPC-430: Regression tests for Query arg corruption
+* PHPC-379: I broke PHP5.3 build. Thats OK, since we don&apos;t support it.
+* PHPC-427: Fix parsing of null WC journal param for PHP 5.4
+* PHPC-428: Remove support for WriteConcern fsync option
+* PHPC-427: Do not set WC journal/fsync to false for NULL args
+* PHPC-423: WriteConcern should report default &quot;w&quot; option as null
+* PHPC-426: WC ctor should throw for invalid $w and $wtimeout args
+* PHPC-425: WC ctor should accept int/string $w args w/o casting
+* PHPC-412: HHVM does not do SSL peer verification like PHP
+* PHPC-410: Make BSON exception message consistent with HHVM
+* PHPC-410: zval_to_bson() should throw on non-Serializable Type objects
+* PHPC-410: object_to_bson() should throw on unsupported BSON\Type objects
+* PHPC-410: object_to_bson() should encode non-stdClass objects
+* PHPC-418: Getters for WriteConcern properties
+* PHPC-418: Getters for ReadPreference properties
+* PHPC-417: Return value objects from Manager RP/WC getters
+* PHPC-408: Ensure object_to_bson() always creates a BSON document
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="b301ead064e031b76fa08488a1055594" name="scripts/centos/ldap/Domain.ldif" role="test" />
+   <file md5sum="4daa783214593b6d7deb42f35c6e027c" name="scripts/centos/ldap/Users.ldif" role="test" />
+   <file md5sum="001e9cfe2c64b4afe413c12da3a75103" name="scripts/centos/ldap/basics.ldif" role="test" />
+   <file md5sum="624db776065d2ce0e76c3dd252c86c27" name="scripts/centos/ldap/install.sh" role="test" />
+   <file md5sum="3373471c13615482fcb5abd156a99013" name="scripts/centos/ldap/mongod.ldif" role="test" />
+   <file md5sum="79641e9055dc9a4c810cdc580d420ccf" name="scripts/centos/ldap/pw.ldif" role="test" />
+   <file md5sum="7069ce3fbf9612eb20df4de56e2915e7" name="scripts/centos/ldap/saslauthd.conf" role="test" />
+   <file md5sum="c2d1c7b3b12d970c295ebceda4bd429f" name="scripts/centos/ldap/users" role="test" />
+   <file md5sum="9add0018a9ebebb32e6f9d689d53ce14" name="scripts/centos/essentials.sh" role="test" />
+   <file md5sum="43a925c212fc965e90d89951d04945c1" name="scripts/freebsd/essentials.sh" role="test" />
+   <file md5sum="18b03fd810bde00c7493002a94e24865" name="scripts/freebsd/phongo.sh" role="test" />
+   <file md5sum="b5c14f08571fcfe2aa5641a7a18d4c3f" name="scripts/presets/replicaset.json" role="test" />
+   <file md5sum="d850cacbf5527fd7b4a46958e66ed5c9" name="scripts/presets/standalone-24.json" role="test" />
+   <file md5sum="d9b0cfc2035c3d5c0baae6959a90c36e" name="scripts/presets/standalone-26.json" role="test" />
+   <file md5sum="ba63caea531b0a2df65c50cfe531d650" name="scripts/presets/standalone-30.json" role="test" />
+   <file md5sum="b8cc887e5bccc9bc1f715d041d2d657b" name="scripts/presets/standalone-auth.json" role="test" />
+   <file md5sum="2bc383470aa5dfc60185ef19a8a80276" name="scripts/presets/standalone-plain.json" role="test" />
+   <file md5sum="82e65a04030826c41d713787833fb52a" name="scripts/presets/standalone-ssl.json" role="test" />
+   <file md5sum="c5acd3fbc060927121ff626f3b730cfa" name="scripts/presets/standalone-x509.json" role="test" />
+   <file md5sum="17927182a5fb8fb9d1ad8c8571c32b29" name="scripts/presets/standalone.json" role="test" />
+   <file md5sum="06b59105c25447470ca9f7c589b80b46" name="scripts/ssl/ca.pem" role="test" />
+   <file md5sum="6bdc883fdbe5a1c736518e5ec5f67964" name="scripts/ssl/client.pem" role="test" />
+   <file md5sum="94a4db9c47b58aa3d00b70b4bd178601" name="scripts/ssl/crl.pem" role="test" />
+   <file md5sum="bfccd366ca201a01f8f5bea8c900abc9" name="scripts/ssl/server.pem" role="test" />
+   <file md5sum="cb636b47cf37dace58be73272a74efc3" name="scripts/ubuntu/ldap/install.sh" role="test" />
+   <file md5sum="c4c1a6c234d983da8fe0382bcb8c1420" name="scripts/ubuntu/ldap/saslauthd.conf" role="test" />
+   <file md5sum="b199baa1ee52bc252773485de56b10f6" name="scripts/ubuntu/essentials.sh" role="test" />
+   <file md5sum="fefde11a27118cb45aa12337a2455a62" name="scripts/ubuntu/mongo-orchestration.sh" role="test" />
+   <file md5sum="903c38a7e9d59fec770c1138de85d7be" name="scripts/ubuntu/phongo.sh" role="test" />
+   <file md5sum="a51616233fb311f458391b668e0254e9" name="scripts/vmware/kernel.sh" role="test" />
+   <file md5sum="aa682e21ebb527a2240061f14db08c13" name="scripts/convert-mo-tests.php" role="test" />
+   <file md5sum="35671ea9b24b02610710ef676bc539a2" name="scripts/list-servers.php" role="test" />
+   <file md5sum="25eb31006782a1b6f2b59b38a5d70ff7" name="scripts/start-servers.php" role="test" />
+   <file md5sum="bdf8acd6a1beace8e6d4b7cf8c46caf1" name="src/BSON/Binary.c" role="src" />
+   <file md5sum="86d1074cecfcee3b16cb20f3d952d8e4" name="src/BSON/Javascript.c" role="src" />
+   <file md5sum="d714dcdd1e1fe429c2d1b2ce33a0850e" name="src/BSON/MaxKey.c" role="src" />
+   <file md5sum="ffe7d9dcb0e53bcb0ada98473ac003cb" name="src/BSON/MinKey.c" role="src" />
+   <file md5sum="d915e2cf3d8c35b18f96da019b393f12" name="src/BSON/ObjectID.c" role="src" />
+   <file md5sum="72126a76a258de87232509920af48ef2" name="src/BSON/Persistable.c" role="src" />
+   <file md5sum="90299536e31bde5874730da43ab043da" name="src/BSON/Regex.c" role="src" />
+   <file md5sum="36869e001a518cd8b39d59fd1298fbb2" name="src/BSON/Serializable.c" role="src" />
+   <file md5sum="5459cd753dd72e55fd3f0bfa623dc822" name="src/BSON/Timestamp.c" role="src" />
+   <file md5sum="ea65791b65f91f4071101d78e7fef85f" name="src/BSON/Type.c" role="src" />
+   <file md5sum="e1cfa8c0e0d191b56e92f928272fa6bd" name="src/BSON/UTCDateTime.c" role="src" />
+   <file md5sum="a1b17e2c935bfef0365ac60f589c37de" name="src/BSON/Unserializable.c" role="src" />
+   <file md5sum="07acb3126323699a468c968ca62691e3" name="src/MongoDB/Exception/AuthenticationException.c" role="src" />
+   <file md5sum="5f4237106b4426fa8bbef91beacecfb5" name="src/MongoDB/Exception/BulkWriteException.c" role="src" />
+   <file md5sum="bd2330c6ad5e97e3e3e2eb14c6b5db2e" name="src/MongoDB/Exception/ConnectionException.c" role="src" />
+   <file md5sum="6d9a9bc240e5569112f297149f87c093" name="src/MongoDB/Exception/ConnectionTimeoutException.c" role="src" />
+   <file md5sum="5edf93fa684072a4b1e9e409a5577e15" name="src/MongoDB/Exception/DuplicateKeyException.c" role="src" />
+   <file md5sum="32a30824a1e1f46d6b9b7f9da12f5d1e" name="src/MongoDB/Exception/Exception.c" role="src" />
+   <file md5sum="15754c763e4ed612e17c9c364754d927" name="src/MongoDB/Exception/ExecutionTimeoutException.c" role="src" />
+   <file md5sum="1b10a01c93b7fc96787ab7e33875dab8" name="src/MongoDB/Exception/InvalidArgumentException.c" role="src" />
+   <file md5sum="70c71cc3bb54fce10691ea9af45ab6e3" name="src/MongoDB/Exception/LogicException.c" role="src" />
+   <file md5sum="2ae874614c340b82385aa02b44da4691" name="src/MongoDB/Exception/RuntimeException.c" role="src" />
+   <file md5sum="f13246b99c2242808e630937fe8f5ca0" name="src/MongoDB/Exception/SSLConnectionException.c" role="src" />
+   <file md5sum="edcb9f4ded59abc36958ecab7329377c" name="src/MongoDB/Exception/UnexpectedValueException.c" role="src" />
+   <file md5sum="befc49478f83d8b2093ca25bd226ebf8" name="src/MongoDB/Exception/WriteConcernException.c" role="src" />
+   <file md5sum="39a3b7dfa6cff4ccb9a79532872d9f54" name="src/MongoDB/Exception/WriteException.c" role="src" />
+   <file md5sum="3d8925bb148fd0bf2c668ec4b779b78b" name="src/MongoDB/BulkWrite.c" role="src" />
+   <file md5sum="c6069d67d4fdf839cbcd0d5059863846" name="src/MongoDB/Command.c" role="src" />
+   <file md5sum="7fec62ebea03054a39fbccefe742e47d" name="src/MongoDB/Cursor.c" role="src" />
+   <file md5sum="aececb1873f4bbe133d2795570023736" name="src/MongoDB/CursorId.c" role="src" />
+   <file md5sum="f8a0d9960783eddbfbdb21ce7664eee6" name="src/MongoDB/Manager.c" role="src" />
+   <file md5sum="6ef1b007030a3656f78a5a5d7a96db7b" name="src/MongoDB/Query.c" role="src" />
+   <file md5sum="1a4baaf4c04e4b34db6bf78897ca25ac" name="src/MongoDB/ReadPreference.c" role="src" />
+   <file md5sum="78b7769a6aca66e8d4fbc10532759ad1" name="src/MongoDB/Server.c" role="src" />
+   <file md5sum="41048a36a8a732d9566eac74ef945811" name="src/MongoDB/WriteConcern.c" role="src" />
+   <file md5sum="68f1f52165f1a7f6b6ae5eabf5419676" name="src/MongoDB/WriteConcernError.c" role="src" />
+   <file md5sum="a795c1fa3cfa22dd561477215a85b0c9" name="src/MongoDB/WriteError.c" role="src" />
+   <file md5sum="175665f133573c474fefa255f5b3ec83" name="src/MongoDB/WriteResult.c" role="src" />
+   <file md5sum="89a912487cd3f1962d3fe6e2dffb2b9f" name="src/contrib/php-ssl.c" role="src" />
+   <file md5sum="e2f74b8b4053c218b6b21cda31dcade2" name="src/contrib/php-ssl.h" role="src" />
+   <file md5sum="9fd1dc303001d25c58f31d529e7107ca" name="src/contrib/php_array_api.h" role="src" />
+   <file md5sum="1066d5c9a05b1b1cb8f4de5a7e291574" name="src/libbson/build/autotools/m4/ac_check_typedef.m4" role="src" />
+   <file md5sum="e40a5f02f4d82a68b3df43d99dd92ed6" name="src/libbson/build/autotools/m4/ac_compile_check_sizeof.m4" role="src" />
+   <file md5sum="b96bb8fad4ea5d66c6b3af718186e2e0" name="src/libbson/build/autotools/m4/ac_create_stdint_h.m4" role="src" />
+   <file md5sum="7b5ee49855c90a9da6a0b1f1f0b8ef8f" name="src/libbson/build/autotools/m4/as-compiler-flag.m4" role="src" />
+   <file md5sum="8d942f69b5f3c15ecae4b75bb7e80614" name="src/libbson/build/autotools/m4/ax_check_compile_flag.m4" role="src" />
+   <file md5sum="05bd24609268702a36d50d5edd3661ac" name="src/libbson/build/autotools/m4/ax_check_link_flag.m4" role="src" />
+   <file md5sum="5535e823ec44002b522873b9c0e2e0bf" name="src/libbson/build/autotools/m4/ax_pthread.m4" role="src" />
+   <file md5sum="8da3d096c9292293461773a8633ddfe1" name="src/libbson/build/autotools/m4/ax_python.m4" role="src" />
+   <file md5sum="ad8d52d54e0f97c0e4e385376ea73bc0" name="src/libbson/build/autotools/m4/pkg.m4" role="src" />
+   <file md5sum="ff788a8b5eea35b1cc226bb2686c3537" name="src/libbson/build/autotools/m4/silent.m4" role="src" />
+   <file md5sum="eed82d92d773f81cdd1e8e72566630ef" name="src/libbson/build/autotools/AutoHarden.m4" role="src" />
+   <file md5sum="c78c5e9b49b67a725e831823492642da" name="src/libbson/build/autotools/CheckAtomics.m4" role="src" />
+   <file md5sum="33c0e73d71ead46ce5a11eda4ce160b6" name="src/libbson/build/autotools/CheckCompiler.m4" role="src" />
+   <file md5sum="926469dedde20e75214b528528ba25ae" name="src/libbson/build/autotools/CheckHeaders.m4" role="src" />
+   <file md5sum="81b2b641c597d18daa4066ed7c37d7b7" name="src/libbson/build/autotools/CheckHost.m4" role="src" />
+   <file md5sum="27fa10f3bd99992d90b2104273749b28" name="src/libbson/build/autotools/CheckProgs.m4" role="src" />
+   <file md5sum="fa4a5cc1c9475999c468488eb19e4ffe" name="src/libbson/build/autotools/CheckTarget.m4" role="src" />
+   <file md5sum="3154e253512bd82d0dd51898d5cfde90" name="src/libbson/build/autotools/Coverage.m4" role="src" />
+   <file md5sum="46768d326c5f994af7e1ffbb0db32a4e" name="src/libbson/build/autotools/Endian.m4" role="src" />
+   <file md5sum="c4ebca05c6a45424529a9581bf28f5fd" name="src/libbson/build/autotools/FindDependencies.m4" role="src" />
+   <file md5sum="7cb405e39a2f8c5c5fa2ffa4315df98a" name="src/libbson/build/autotools/LDVersionScript.m4" role="src" />
+   <file md5sum="71cf2e639791835caf686cafb2e0a131" name="src/libbson/build/autotools/MaintainerFlags.m4" role="src" />
+   <file md5sum="5ae18b04cb846bed07e8798f96ff29d2" name="src/libbson/build/autotools/Optimizations.m4" role="src" />
+   <file md5sum="a6662de25208d013d07a579ac46762d7" name="src/libbson/build/autotools/PrintBuildConfiguration.m4" role="src" />
+   <file md5sum="df1f1d6350331a810792faacd28c1120" name="src/libbson/build/autotools/ReadCommandLineArguments.m4" role="src" />
+   <file md5sum="f757183a1c0e7e9943f2bf99f64576f8" name="src/libbson/build/autotools/SetupAutomake.m4" role="src" />
+   <file md5sum="f229599b4333a2cdf5be29136cc6f2e2" name="src/libbson/build/autotools/SetupLibtool.m4" role="src" />
+   <file md5sum="777c900a1ff4b49adb4962b395f1d65f" name="src/libbson/build/autotools/Versions.m4" role="src" />
+   <file md5sum="60d5834d66c34c59c0a12a7eecbf84ab" name="src/libbson/src/bson/b64_ntop.h" role="src" />
+   <file md5sum="70cebe2a7a17de7d489317b7a1db7c73" name="src/libbson/src/bson/b64_pton.h" role="src" />
+   <file md5sum="e17c31c1be9c672a1d564a1a241d471b" name="src/libbson/src/bson/bcon.c" role="src" />
+   <file md5sum="fbb4052f1010a23cdf0de32907d942c8" name="src/libbson/src/bson/bcon.h" role="src" />
+   <file md5sum="390455394d8d976b6b3b472845cdd6c2" name="src/libbson/src/bson/bson-atomic.c" role="src" />
+   <file md5sum="856879445ac2386229a090dec800c38e" name="src/libbson/src/bson/bson-atomic.h" role="src" />
+   <file md5sum="e005ee43ff5516ada7a8afb103310f5c" name="src/libbson/src/bson/bson-clock.c" role="src" />
+   <file md5sum="c0e771385f32369c59ba3de570b854c9" name="src/libbson/src/bson/bson-clock.h" role="src" />
+   <file md5sum="8c702c6d8b4193776ee7982a15b823bc" name="src/libbson/src/bson/bson-compat.h" role="src" />
+   <file md5sum="425f44f6d797ef197bd89d973093dd8b" name="src/libbson/src/bson/bson-config.h" role="src" />
+   <file md5sum="dcec812670266fdb9cb5ef13f7de72a8" name="src/libbson/src/bson/bson-config.h.in" role="src" />
+   <file md5sum="11177a64ea0d8136b73312d0e9313dae" name="src/libbson/src/bson/bson-context-private.h" role="src" />
+   <file md5sum="26bbea92a38eb020f99c31006fe8e1cc" name="src/libbson/src/bson/bson-context.c" role="src" />
+   <file md5sum="bc4ed2208b0f062619391e27c35b3716" name="src/libbson/src/bson/bson-context.h" role="src" />
+   <file md5sum="a8d2b6f9a285e267c372ec7e3def2258" name="src/libbson/src/bson/bson-endian.h" role="src" />
+   <file md5sum="94281be1939683f40c2e4b8eb869a385" name="src/libbson/src/bson/bson-error.c" role="src" />
+   <file md5sum="c6aac7116527ebd525bd04d2c5675ce4" name="src/libbson/src/bson/bson-error.h" role="src" />
+   <file md5sum="be7c0192246dad6a30b0f3835380c343" name="src/libbson/src/bson/bson-iso8601-private.h" role="src" />
+   <file md5sum="bcbaf2a59bc63350978d2be3401118bb" name="src/libbson/src/bson/bson-iso8601.c" role="src" />
+   <file md5sum="1822df11997a072bac645885340bc3a1" name="src/libbson/src/bson/bson-iter.c" role="src" />
+   <file md5sum="9820ad956c26006311cb6d3a5ab6bf37" name="src/libbson/src/bson/bson-iter.h" role="src" />
+   <file md5sum="31540a5f9b1c6bb7182e679a640970e4" name="src/libbson/src/bson/bson-json.c" role="src" />
+   <file md5sum="53a9cbbe5c9a58fc4790c1e995e2db29" name="src/libbson/src/bson/bson-json.h" role="src" />
+   <file md5sum="30bfe359c194f01ffbf1afe053c4f16c" name="src/libbson/src/bson/bson-keys.c" role="src" />
+   <file md5sum="360489fa7642c546ad50ccacf6fa7b7d" name="src/libbson/src/bson/bson-keys.h" role="src" />
+   <file md5sum="f855d84b0a51f3b1f145ddf3630b27b2" name="src/libbson/src/bson/bson-macros.h" role="src" />
+   <file md5sum="016da785f4bd6ed2654a1dd6e7e20711" name="src/libbson/src/bson/bson-md5.c" role="src" />
+   <file md5sum="a25556f4057e5366dd4b9f72705fac46" name="src/libbson/src/bson/bson-md5.h" role="src" />
+   <file md5sum="b6516065288b9d39daec78b83111601d" name="src/libbson/src/bson/bson-memory.c" role="src" />
+   <file md5sum="031c3330610a564ac5c95f61c4fe4cd5" name="src/libbson/src/bson/bson-memory.h" role="src" />
+   <file md5sum="71aadcb44d35f3ff2e7a11f39732d46d" name="src/libbson/src/bson/bson-oid.c" role="src" />
+   <file md5sum="1717085c9b662b4a351823b1b3687a49" name="src/libbson/src/bson/bson-oid.h" role="src" />
+   <file md5sum="79fcf67477764ea451076437d4ec717c" name="src/libbson/src/bson/bson-private.h" role="src" />
+   <file md5sum="4d876db12b4b19f17ffcafc1b6488861" name="src/libbson/src/bson/bson-reader.c" role="src" />
+   <file md5sum="fa9d0dcbb77842c38f75deba2531b154" name="src/libbson/src/bson/bson-reader.h" role="src" />
+   <file md5sum="d4277ba8b3bc0f7753931062eb0cd5eb" name="src/libbson/src/bson/bson-stdint-win32.h" role="src" />
+   <file md5sum="01dce16965855e4a092a8d5188e40312" name="src/libbson/src/bson/bson-stdint.h" role="src" />
+   <file md5sum="13f704fafd7731c5e7f64c977de22406" name="src/libbson/src/bson/bson-string.c" role="src" />
+   <file md5sum="4ecbd4e7bf09ede19374cd87d4155164" name="src/libbson/src/bson/bson-string.h" role="src" />
+   <file md5sum="2a16019c51864483f27676c83e12b293" name="src/libbson/src/bson/bson-thread-private.h" role="src" />
+   <file md5sum="bbe5863f79868d0a153f9eb591f09f20" name="src/libbson/src/bson/bson-timegm-private.h" role="src" />
+   <file md5sum="b27b64de5376b5b4b53721d96bf331e9" name="src/libbson/src/bson/bson-timegm.c" role="src" />
+   <file md5sum="6ac9daeee445b35fc73363beca0967f9" name="src/libbson/src/bson/bson-types.h" role="src" />
+   <file md5sum="2569921096086498f3b7e84dd37aea1b" name="src/libbson/src/bson/bson-utf8.c" role="src" />
+   <file md5sum="82b66ce5a87930b09a0b7ec8bf20e2f1" name="src/libbson/src/bson/bson-utf8.h" role="src" />
+   <file md5sum="ee95977dddde8a36cf53007dfd221c49" name="src/libbson/src/bson/bson-value.c" role="src" />
+   <file md5sum="34889442e7c5e4c54c3c60b2e0f77ebd" name="src/libbson/src/bson/bson-value.h" role="src" />
+   <file md5sum="f80a6f4a82a8c86f63eaccc1c8d147ee" name="src/libbson/src/bson/bson-version-functions.c" role="src" />
+   <file md5sum="b60ecb89018a8fa6ca6d16fd089ce952" name="src/libbson/src/bson/bson-version-functions.h" role="src" />
+   <file md5sum="6be35c59937e555a71f97dae6c77246b" name="src/libbson/src/bson/bson-version.h" role="src" />
+   <file md5sum="a55d252de7f0a706794b02ba8335c510" name="src/libbson/src/bson/bson-version.h.in" role="src" />
+   <file md5sum="8108f0a5dd05650f53c3c2eca95d587c" name="src/libbson/src/bson/bson-writer.c" role="src" />
+   <file md5sum="0aea55fb0deab9311812eefc9a0291d5" name="src/libbson/src/bson/bson-writer.h" role="src" />
+   <file md5sum="9d2ba895e72972ee046ffd9ad97175f2" name="src/libbson/src/bson/bson.c" role="src" />
+   <file md5sum="1a1612a74a8628aa1912c400c5948592" name="src/libbson/src/bson/bson.h" role="src" />
+   <file md5sum="cf5990b5d3ad3eafa329f4e6884582c5" name="src/libbson/src/yajl/yajl.c" role="src" />
+   <file md5sum="1c55df90c4d949c316e6e6e7498ec15c" name="src/libbson/src/yajl/yajl_alloc.c" role="src" />
+   <file md5sum="f3f9167846f7260138bd38021f9bb189" name="src/libbson/src/yajl/yajl_alloc.h" role="src" />
+   <file md5sum="289df9f01dc8865130659219e517a4b4" name="src/libbson/src/yajl/yajl_buf.c" role="src" />
+   <file md5sum="505cbe3ad7cbbb5579cecc86c8f93087" name="src/libbson/src/yajl/yajl_buf.h" role="src" />
+   <file md5sum="0963d85f30e3afa40fb4ae813ab046c1" name="src/libbson/src/yajl/yajl_bytestack.h" role="src" />
+   <file md5sum="d661bd5df38065b1de3e9b75309cb78b" name="src/libbson/src/yajl/yajl_common.h" role="src" />
+   <file md5sum="b60b45eb35dd40f2b3825233fa9661bc" name="src/libbson/src/yajl/yajl_encode.c" role="src" />
+   <file md5sum="5644d79572411e06f808ee0c9e76a41b" name="src/libbson/src/yajl/yajl_encode.h" role="src" />
+   <file md5sum="7b647b5ae0eca31484d0543e969cbaa4" name="src/libbson/src/yajl/yajl_gen.c" role="src" />
+   <file md5sum="e57e21bda1283a3a6a178845096b5d9c" name="src/libbson/src/yajl/yajl_gen.h" role="src" />
+   <file md5sum="c1e82830be32f2027d9936244237b3f9" name="src/libbson/src/yajl/yajl_lex.c" role="src" />
+   <file md5sum="dcada0f60f8121bf68b73d56f32273b6" name="src/libbson/src/yajl/yajl_lex.h" role="src" />
+   <file md5sum="ebd7e4faccaa0f454945be170f447eef" name="src/libbson/src/yajl/yajl_parse.h" role="src" />
+   <file md5sum="a975a6d331f72f5c481c828cbf549788" name="src/libbson/src/yajl/yajl_parser.c" role="src" />
+   <file md5sum="927906b0423c3d1412188b6686821f2e" name="src/libbson/src/yajl/yajl_parser.h" role="src" />
+   <file md5sum="a0ee19c679c295449de6bbdae05ef82d" name="src/libbson/src/yajl/yajl_tree.c" role="src" />
+   <file md5sum="69650cd70a46ddf7541401203b22f00d" name="src/libbson/src/yajl/yajl_tree.h" role="src" />
+   <file md5sum="8d8be470862bf4c55ee6344530e8eb38" name="src/libbson/src/yajl/yajl_version.c" role="src" />
+   <file md5sum="4194a43380dfaef3ca94cb2ba30da1f2" name="src/libbson/src/yajl/yajl_version.h" role="src" />
+   <file md5sum="1066d5c9a05b1b1cb8f4de5a7e291574" name="src/libmongoc/build/autotools/m4/ac_check_typedef.m4" role="src" />
+   <file md5sum="e40a5f02f4d82a68b3df43d99dd92ed6" name="src/libmongoc/build/autotools/m4/ac_compile_check_sizeof.m4" role="src" />
+   <file md5sum="b96bb8fad4ea5d66c6b3af718186e2e0" name="src/libmongoc/build/autotools/m4/ac_create_stdint_h.m4" role="src" />
+   <file md5sum="7b5ee49855c90a9da6a0b1f1f0b8ef8f" name="src/libmongoc/build/autotools/m4/as-compiler-flag.m4" role="src" />
+   <file md5sum="8d942f69b5f3c15ecae4b75bb7e80614" name="src/libmongoc/build/autotools/m4/ax_check_compile_flag.m4" role="src" />
+   <file md5sum="05bd24609268702a36d50d5edd3661ac" name="src/libmongoc/build/autotools/m4/ax_check_link_flag.m4" role="src" />
+   <file md5sum="5535e823ec44002b522873b9c0e2e0bf" name="src/libmongoc/build/autotools/m4/ax_pthread.m4" role="src" />
+   <file md5sum="8da3d096c9292293461773a8633ddfe1" name="src/libmongoc/build/autotools/m4/ax_python.m4" role="src" />
+   <file md5sum="ad8d52d54e0f97c0e4e385376ea73bc0" name="src/libmongoc/build/autotools/m4/pkg.m4" role="src" />
+   <file md5sum="ff788a8b5eea35b1cc226bb2686c3537" name="src/libmongoc/build/autotools/m4/silent.m4" role="src" />
+   <file md5sum="eed82d92d773f81cdd1e8e72566630ef" name="src/libmongoc/build/autotools/AutoHarden.m4" role="src" />
+   <file md5sum="33c0e73d71ead46ce5a11eda4ce160b6" name="src/libmongoc/build/autotools/CheckCompiler.m4" role="src" />
+   <file md5sum="81b2b641c597d18daa4066ed7c37d7b7" name="src/libmongoc/build/autotools/CheckHost.m4" role="src" />
+   <file md5sum="7ffbc1a2d2472d7c017f86d2ef096c12" name="src/libmongoc/build/autotools/CheckProgs.m4" role="src" />
+   <file md5sum="5311dc948526452f2fd3635c2f214aee" name="src/libmongoc/build/autotools/CheckSSL.m4" role="src" />
+   <file md5sum="b5f6144096cac452140b12d3dcf94fdb" name="src/libmongoc/build/autotools/CheckSasl.m4" role="src" />
+   <file md5sum="fa4a5cc1c9475999c468488eb19e4ffe" name="src/libmongoc/build/autotools/CheckTarget.m4" role="src" />
+   <file md5sum="3154e253512bd82d0dd51898d5cfde90" name="src/libmongoc/build/autotools/Coverage.m4" role="src" />
+   <file md5sum="e8fb530e79b3212551151dd9fef1e92a" name="src/libmongoc/build/autotools/FindDependencies.m4" role="src" />
+   <file md5sum="7cb405e39a2f8c5c5fa2ffa4315df98a" name="src/libmongoc/build/autotools/LDVersionScript.m4" role="src" />
+   <file md5sum="a8977370dbf28d606e4a6628bba94fca" name="src/libmongoc/build/autotools/Libbson.m4" role="src" />
+   <file md5sum="00d73a290be3d6ad39c986fbe09279b8" name="src/libmongoc/build/autotools/MaintainerFlags.m4" role="src" />
+   <file md5sum="c53a87eaf94d5220c9f4101a5b9dba0a" name="src/libmongoc/build/autotools/Optimizations.m4" role="src" />
+   <file md5sum="c34fbb0c7fddb55ab8d3a6a1732953d6" name="src/libmongoc/build/autotools/PrintBuildConfiguration.m4" role="src" />
+   <file md5sum="61018e1ff1ffc8f6f6c3f3ba3accd226" name="src/libmongoc/build/autotools/ReadCommandLineArguments.m4" role="src" />
+   <file md5sum="0b83f96ccc494be935d4fcc2996473c4" name="src/libmongoc/build/autotools/SetupAutomake.m4" role="src" />
+   <file md5sum="f229599b4333a2cdf5be29136cc6f2e2" name="src/libmongoc/build/autotools/SetupLibtool.m4" role="src" />
+   <file md5sum="f3f3c54c6b31bc14154baef244620479" name="src/libmongoc/build/autotools/Versions.m4" role="src" />
+   <file md5sum="cebe632a500714618bcd504042665d06" name="src/libmongoc/src/mongoc/mongoc-array-private.h" role="src" />
+   <file md5sum="62bb69dffa4d2756c43bb06276cc6cc9" name="src/libmongoc/src/mongoc/mongoc-array.c" role="src" />
+   <file md5sum="b90b9c2c441ef50589aa5b4a40322fdb" name="src/libmongoc/src/mongoc/mongoc-async-cmd-private.h" role="src" />
+   <file md5sum="00a186adfa8f453adf73b72f5fb17280" name="src/libmongoc/src/mongoc/mongoc-async-cmd.c" role="src" />
+   <file md5sum="aee92f5c2e025fd3dc8da9637824a072" name="src/libmongoc/src/mongoc/mongoc-async-private.h" role="src" />
+   <file md5sum="1d94a4dad26b26d3fa18e8012ebaa413" name="src/libmongoc/src/mongoc/mongoc-async.c" role="src" />
+   <file md5sum="ddce6cc55b0dc69c11da1c8706462e1e" name="src/libmongoc/src/mongoc/mongoc-b64-private.h" role="src" />
+   <file md5sum="6bcdf787033705c8d56d5ab6d2d5f152" name="src/libmongoc/src/mongoc/mongoc-b64.c" role="src" />
+   <file md5sum="4671ed096a020fe21ba8342fb16abb0c" name="src/libmongoc/src/mongoc/mongoc-buffer-private.h" role="src" />
+   <file md5sum="4190e1c4e5c039a33779dfd235c298ce" name="src/libmongoc/src/mongoc/mongoc-buffer.c" role="src" />
+   <file md5sum="5088b11f57354f9acbe2d72fbad98367" name="src/libmongoc/src/mongoc/mongoc-bulk-operation-private.h" role="src" />
+   <file md5sum="1fef8968428695836c59c43503b6cad0" name="src/libmongoc/src/mongoc/mongoc-bulk-operation.c" role="src" />
+   <file md5sum="fbbff31e229df92599b3b8dd1c63c32f" name="src/libmongoc/src/mongoc/mongoc-bulk-operation.h" role="src" />
+   <file md5sum="58d77a197aac11accb0b0337ccfaafde" name="src/libmongoc/src/mongoc/mongoc-client-pool-private.h" role="src" />
+   <file md5sum="613f9b49facb6afd34720cee032777bd" name="src/libmongoc/src/mongoc/mongoc-client-pool.c" role="src" />
+   <file md5sum="157c8b070899d5ccb1af77a881c37b49" name="src/libmongoc/src/mongoc/mongoc-client-pool.h" role="src" />
+   <file md5sum="e83ff8c0b8aefc80893e42e656cd9b31" name="src/libmongoc/src/mongoc/mongoc-client-private.h" role="src" />
+   <file md5sum="d3c64d48aa8212b8a878a686d4868ae2" name="src/libmongoc/src/mongoc/mongoc-client.c" role="src" />
+   <file md5sum="a54cd7fd7cff59fe728e08c6d1a41879" name="src/libmongoc/src/mongoc/mongoc-client.h" role="src" />
+   <file md5sum="498762cf9d5587ca9042a58a23863edb" name="src/libmongoc/src/mongoc/mongoc-cluster-private.h" role="src" />
+   <file md5sum="936e8f926f30d167fed7f0a1085e9a75" name="src/libmongoc/src/mongoc/mongoc-cluster.c" role="src" />
+   <file md5sum="33ebe02cad9c784c96e648b24a4fa96c" name="src/libmongoc/src/mongoc/mongoc-collection-private.h" role="src" />
+   <file md5sum="8058a00cb92e2c98ea2b0d6a66e5d67f" name="src/libmongoc/src/mongoc/mongoc-collection.c" role="src" />
+   <file md5sum="9aa7d2ca3252606e4f3e09c99e5e1da4" name="src/libmongoc/src/mongoc/mongoc-collection.h" role="src" />
+   <file md5sum="df29ac736f5b1d5d350023bca4f717ee" name="src/libmongoc/src/mongoc/mongoc-config.h" role="src" />
+   <file md5sum="1951aa305736df4c4a0331fd0e911389" name="src/libmongoc/src/mongoc/mongoc-config.h.in" role="src" />
+   <file md5sum="1f31f3242a56bde2eda583777e9be5d0" name="src/libmongoc/src/mongoc/mongoc-counters-private.h" role="src" />
+   <file md5sum="0b0f0940265bd265554b09c36f0d5bd8" name="src/libmongoc/src/mongoc/mongoc-counters.c" role="src" />
+   <file md5sum="4bf259bbc90203a8a52270f2c9c473f7" name="src/libmongoc/src/mongoc/mongoc-counters.defs" role="src" />
+   <file md5sum="ceccc892c37f993661c9aec2f31305b7" name="src/libmongoc/src/mongoc/mongoc-cursor-array-private.h" role="src" />
+   <file md5sum="6350f66b26cb4cc7ef21698e787b5965" name="src/libmongoc/src/mongoc/mongoc-cursor-array.c" role="src" />
+   <file md5sum="91561986161832d9eb9a2cd1602555c9" name="src/libmongoc/src/mongoc/mongoc-cursor-cursorid-private.h" role="src" />
+   <file md5sum="6f7dfa9564d99eada2ea6dfe22800e67" name="src/libmongoc/src/mongoc/mongoc-cursor-cursorid.c" role="src" />
+   <file md5sum="bdb590afc13f889acc4dfb969882ebf6" name="src/libmongoc/src/mongoc/mongoc-cursor-private.h" role="src" />
+   <file md5sum="9cbe4f04279d1d3c6e1c6c3b878c9e11" name="src/libmongoc/src/mongoc/mongoc-cursor-transform-private.h" role="src" />
+   <file md5sum="2700b1f603ffb52c0e22d04f437f983e" name="src/libmongoc/src/mongoc/mongoc-cursor-transform.c" role="src" />
+   <file md5sum="e94edaeaf261b36db2b1702043345fef" name="src/libmongoc/src/mongoc/mongoc-cursor.c" role="src" />
+   <file md5sum="5ed1e6c070f8a04b182c01559f95fc1e" name="src/libmongoc/src/mongoc/mongoc-cursor.h" role="src" />
+   <file md5sum="f24fc32c9102719f6887dc43aed6d5ce" name="src/libmongoc/src/mongoc/mongoc-database-private.h" role="src" />
+   <file md5sum="ce8ff28790fdf2874c05994b52b52403" name="src/libmongoc/src/mongoc/mongoc-database.c" role="src" />
+   <file md5sum="a13f82d66070be83e847867d96694b19" name="src/libmongoc/src/mongoc/mongoc-database.h" role="src" />
+   <file md5sum="f2f66f58d8c27cd003ef25f7382d7b21" name="src/libmongoc/src/mongoc/mongoc-errno-private.h" role="src" />
+   <file md5sum="8d3d749cd83eb3e5a72bf69f340734eb" name="src/libmongoc/src/mongoc/mongoc-error.h" role="src" />
+   <file md5sum="a451f9575924b096df541a3159876a7e" name="src/libmongoc/src/mongoc/mongoc-flags.h" role="src" />
+   <file md5sum="7221be0c03bcf8197100ee592bcd0421" name="src/libmongoc/src/mongoc/mongoc-gridfs-file-list-private.h" role="src" />
+   <file md5sum="c381845c1aecd1f0c753c69038204f44" name="src/libmongoc/src/mongoc/mongoc-gridfs-file-list.c" role="src" />
+   <file md5sum="8d7a1b16810791074fe071d8d75a7374" name="src/libmongoc/src/mongoc/mongoc-gridfs-file-list.h" role="src" />
+   <file md5sum="b01b4b03a27f8a659bfa27413f4326e5" name="src/libmongoc/src/mongoc/mongoc-gridfs-file-page-private.h" role="src" />
+   <file md5sum="2c43dbbe9fd441880275f09675d29923" name="src/libmongoc/src/mongoc/mongoc-gridfs-file-page.c" role="src" />
+   <file md5sum="bd1c523d758a24e137e3ab9073e22664" name="src/libmongoc/src/mongoc/mongoc-gridfs-file-page.h" role="src" />
+   <file md5sum="9a01b495ed8dfdf716d18941eccda180" name="src/libmongoc/src/mongoc/mongoc-gridfs-file-private.h" role="src" />
+   <file md5sum="35b1b7042a747e1c43724dc2e0c16b11" name="src/libmongoc/src/mongoc/mongoc-gridfs-file.c" role="src" />
+   <file md5sum="00b70108474e3a3cff6ecc11e8b36b85" name="src/libmongoc/src/mongoc/mongoc-gridfs-file.h" role="src" />
+   <file md5sum="5b58027f4adfe99b4dd02d74845674e6" name="src/libmongoc/src/mongoc/mongoc-gridfs-private.h" role="src" />
+   <file md5sum="3bb5c56c2ebd0ef317a0246ffdbfef84" name="src/libmongoc/src/mongoc/mongoc-gridfs.c" role="src" />
+   <file md5sum="0411f5526c8bdc64ce67b45037d9c402" name="src/libmongoc/src/mongoc/mongoc-gridfs.h" role="src" />
+   <file md5sum="8bd20311f40c16cb97314e788152d2f1" name="src/libmongoc/src/mongoc/mongoc-host-list-private.h" role="src" />
+   <file md5sum="b5239b9aa68b2c5d3a0eab62f19d539a" name="src/libmongoc/src/mongoc/mongoc-host-list.c" role="src" />
+   <file md5sum="77d731fbadb49693cd81efead9cfa2ee" name="src/libmongoc/src/mongoc/mongoc-host-list.h" role="src" />
+   <file md5sum="a3fd05422c8a74bf0b25066ee67ab034" name="src/libmongoc/src/mongoc/mongoc-index.c" role="src" />
+   <file md5sum="4ee01fa59b56688359203b930333a861" name="src/libmongoc/src/mongoc/mongoc-index.h" role="src" />
+   <file md5sum="c278a5ff07c3eb8647d0cd1b1248c8ec" name="src/libmongoc/src/mongoc/mongoc-init.c" role="src" />
+   <file md5sum="2e7f045a0b31e9e7f0b1dcbdcf994dde" name="src/libmongoc/src/mongoc/mongoc-init.h" role="src" />
+   <file md5sum="952d463b654e44a66123cd8883b59748" name="src/libmongoc/src/mongoc/mongoc-iovec.h" role="src" />
+   <file md5sum="e5896d28954c789851bdc41a354137e3" name="src/libmongoc/src/mongoc/mongoc-list-private.h" role="src" />
+   <file md5sum="01f733a69d79f45e7a8b7a01fd9b61e1" name="src/libmongoc/src/mongoc/mongoc-list.c" role="src" />
+   <file md5sum="f22dd13ca5baf5f077957ad69f1980f7" name="src/libmongoc/src/mongoc/mongoc-log-private.h" role="src" />
+   <file md5sum="abacf25ff3cda28e023de709d1e4df73" name="src/libmongoc/src/mongoc/mongoc-log.c" role="src" />
+   <file md5sum="c5cb2612a9de7a5547e346c56f73fce1" name="src/libmongoc/src/mongoc/mongoc-log.h" role="src" />
+   <file md5sum="e810e7f6c293f7ec50087199489e4d1b" name="src/libmongoc/src/mongoc/mongoc-matcher-op-private.h" role="src" />
+   <file md5sum="51028e2129d9bbe7bde77ee31ba73645" name="src/libmongoc/src/mongoc/mongoc-matcher-op.c" role="src" />
+   <file md5sum="95c2c9fabd8b98d069bf991bd4ab09c2" name="src/libmongoc/src/mongoc/mongoc-matcher-private.h" role="src" />
+   <file md5sum="34d9b266424c63145eb1b9fa4f8e4d49" name="src/libmongoc/src/mongoc/mongoc-matcher.c" role="src" />
+   <file md5sum="a9e677fe170476c72c6e4761ce9a62c4" name="src/libmongoc/src/mongoc/mongoc-matcher.h" role="src" />
+   <file md5sum="a85087cd67361993a945ecddce1b8ff3" name="src/libmongoc/src/mongoc/mongoc-opcode-private.h" role="src" />
+   <file md5sum="2fd75713af0b61664ca7947837b00282" name="src/libmongoc/src/mongoc/mongoc-opcode.c" role="src" />
+   <file md5sum="cb8c7ee22278ab7c4e17223deb233dcf" name="src/libmongoc/src/mongoc/mongoc-opcode.h" role="src" />
+   <file md5sum="1f331502e7732bf78818f6c091edc0a0" name="src/libmongoc/src/mongoc/mongoc-queue-private.h" role="src" />
+   <file md5sum="32104ba20ad54be40b325e16b12d9c00" name="src/libmongoc/src/mongoc/mongoc-queue.c" role="src" />
+   <file md5sum="629eb2e4cb793d3df56eccad22fda408" name="src/libmongoc/src/mongoc/mongoc-rand-private.h" role="src" />
+   <file md5sum="2aac2e1c9ad4562ac60b1cd9fecc1dd5" name="src/libmongoc/src/mongoc/mongoc-rand.c" role="src" />
+   <file md5sum="8df03b94f2f9f6579c18df1e638ce104" name="src/libmongoc/src/mongoc/mongoc-rand.h" role="src" />
+   <file md5sum="cf44b3e4f3098644ff54dc5ee2ff6ac7" name="src/libmongoc/src/mongoc/mongoc-read-prefs-private.h" role="src" />
+   <file md5sum="adc6ebfc5c78abceb360f71df33fd902" name="src/libmongoc/src/mongoc/mongoc-read-prefs.c" role="src" />
+   <file md5sum="461ac5979473d51f5f48c13fb44e0a29" name="src/libmongoc/src/mongoc/mongoc-read-prefs.h" role="src" />
+   <file md5sum="be3d4e379829dea1f1b9fc32d03ea615" name="src/libmongoc/src/mongoc/mongoc-rpc-private.h" role="src" />
+   <file md5sum="4523431379e1a12000a0682c134f5487" name="src/libmongoc/src/mongoc/mongoc-rpc.c" role="src" />
+   <file md5sum="d4dce2c0eae43640d837886d6859d731" name="src/libmongoc/src/mongoc/mongoc-sasl-private.h" role="src" />
+   <file md5sum="b7f4ba6d5da7444f0a1f756580537c5f" name="src/libmongoc/src/mongoc/mongoc-sasl.c" role="src" />
+   <file md5sum="316a128390a4effb8679c93001d5a81f" name="src/libmongoc/src/mongoc/mongoc-scram-private.h" role="src" />
+   <file md5sum="da8958eff4d6d85bbb6ff825943a5ac1" name="src/libmongoc/src/mongoc/mongoc-scram.c" role="src" />
+   <file md5sum="c282c281e66911f3bddefeb3662f6012" name="src/libmongoc/src/mongoc/mongoc-server-description-private.h" role="src" />
+   <file md5sum="8ee13cbc6c14769f564299fe4e4cefed" name="src/libmongoc/src/mongoc/mongoc-server-description.c" role="src" />
+   <file md5sum="e890f31a55697373a0fe78779d6f6a1b" name="src/libmongoc/src/mongoc/mongoc-server-description.h" role="src" />
+   <file md5sum="662fc9143927a3e30b29f8123865811a" name="src/libmongoc/src/mongoc/mongoc-set-private.h" role="src" />
+   <file md5sum="daadc014a1e66580f3c3719a68c21446" name="src/libmongoc/src/mongoc/mongoc-set.c" role="src" />
+   <file md5sum="83783d033809df281750fb753a46a19c" name="src/libmongoc/src/mongoc/mongoc-socket-private.h" role="src" />
+   <file md5sum="181c5b1d45ec8c6b61b39bdc74ad4817" name="src/libmongoc/src/mongoc/mongoc-socket.c" role="src" />
+   <file md5sum="fad2ef691dada43693e23258ce38edd1" name="src/libmongoc/src/mongoc/mongoc-socket.h" role="src" />
+   <file md5sum="f7ef8d9af5b819c487ecea62556c7cb0" name="src/libmongoc/src/mongoc/mongoc-ssl-private.h" role="src" />
+   <file md5sum="a0f3b695c8cf5b4d78acce2b52b99a54" name="src/libmongoc/src/mongoc/mongoc-ssl.c" role="src" />
+   <file md5sum="31994e5f8251ec608848ae77c3e4bc0f" name="src/libmongoc/src/mongoc/mongoc-ssl.h" role="src" />
+   <file md5sum="cec9870de7bcad60452190be1810299c" name="src/libmongoc/src/mongoc/mongoc-stream-buffered.c" role="src" />
+   <file md5sum="219b98e834e09f07cc30531e23e5196e" name="src/libmongoc/src/mongoc/mongoc-stream-buffered.h" role="src" />
+   <file md5sum="40728e6d49f64fef38adf55eb005b285" name="src/libmongoc/src/mongoc/mongoc-stream-file.c" role="src" />
+   <file md5sum="251e3ad92a9e7c848cd969bf11f36224" name="src/libmongoc/src/mongoc/mongoc-stream-file.h" role="src" />
+   <file md5sum="acb34825ac1914c7887459e4bb29bd0b" name="src/libmongoc/src/mongoc/mongoc-stream-gridfs.c" role="src" />
+   <file md5sum="7466a71b6513a5c2ecc28944a2d7cc07" name="src/libmongoc/src/mongoc/mongoc-stream-gridfs.h" role="src" />
+   <file md5sum="8a5bd28c3854d5737d2008ac2f431c5e" name="src/libmongoc/src/mongoc/mongoc-stream-private.h" role="src" />
+   <file md5sum="ca854886b6c2de590271ed84ee375727" name="src/libmongoc/src/mongoc/mongoc-stream-socket.c" role="src" />
+   <file md5sum="a244649d298edb48b3b7e84693526861" name="src/libmongoc/src/mongoc/mongoc-stream-socket.h" role="src" />
+   <file md5sum="325d7e566c3242eb04602ff9757094dd" name="src/libmongoc/src/mongoc/mongoc-stream-tls.c" role="src" />
+   <file md5sum="3eea101670cf42b867d5a61597548f36" name="src/libmongoc/src/mongoc/mongoc-stream-tls.h" role="src" />
+   <file md5sum="33b6c5d06f5413c2a88df95e499d2921" name="src/libmongoc/src/mongoc/mongoc-stream.c" role="src" />
+   <file md5sum="40bdf55f52281c74e6c9c1a876e77637" name="src/libmongoc/src/mongoc/mongoc-stream.h" role="src" />
+   <file md5sum="253de4f17c51e2d4a2a76d4fd6d4db68" name="src/libmongoc/src/mongoc/mongoc-thread-private.h" role="src" />
+   <file md5sum="2d44201124f67cb62c0cef9a3a721f86" name="src/libmongoc/src/mongoc/mongoc-topology-description-private.h" role="src" />
+   <file md5sum="aabd8e8d12c21b7d1bbdb40a7ca1463e" name="src/libmongoc/src/mongoc/mongoc-topology-description.c" role="src" />
+   <file md5sum="de8a8428c1ed923170b273300f477b18" name="src/libmongoc/src/mongoc/mongoc-topology-private.h" role="src" />
+   <file md5sum="fa0c4c686d95e29b97f39db6e88a3c44" name="src/libmongoc/src/mongoc/mongoc-topology-scanner-private.h" role="src" />
+   <file md5sum="5559f710a8164892230f1656b0909a80" name="src/libmongoc/src/mongoc/mongoc-topology-scanner.c" role="src" />
+   <file md5sum="791eb0599ff90ffd4afcdff448047241" name="src/libmongoc/src/mongoc/mongoc-topology.c" role="src" />
+   <file md5sum="674d6059be6f711f9293b9d545680b05" name="src/libmongoc/src/mongoc/mongoc-trace.h" role="src" />
+   <file md5sum="f2d7142c7e850f3f242154e729ab07eb" name="src/libmongoc/src/mongoc/mongoc-uri-private.h" role="src" />
+   <file md5sum="2b4171e96f340c170ad7d0db4c82320c" name="src/libmongoc/src/mongoc/mongoc-uri.c" role="src" />
+   <file md5sum="3f5da18bd522ef08a0a7ee6f4c94ffe2" name="src/libmongoc/src/mongoc/mongoc-uri.h" role="src" />
+   <file md5sum="f83736584cb32b0b49bc10d9ea5d4afb" name="src/libmongoc/src/mongoc/mongoc-util-private.h" role="src" />
+   <file md5sum="2ef9a66879f7136c13d361bccf97310e" name="src/libmongoc/src/mongoc/mongoc-util.c" role="src" />
+   <file md5sum="e699d508bdb2d3f5220bbc5bf413bae1" name="src/libmongoc/src/mongoc/mongoc-version-functions.c" role="src" />
+   <file md5sum="13165cf1b16ef34ec8d72cb980705477" name="src/libmongoc/src/mongoc/mongoc-version-functions.h" role="src" />
+   <file md5sum="b5d9b37ce4c629673c7fac50915d1d6f" name="src/libmongoc/src/mongoc/mongoc-version.h" role="src" />
+   <file md5sum="446935a1e9c4bf10aa290081bc35041b" name="src/libmongoc/src/mongoc/mongoc-version.h.in" role="src" />
+   <file md5sum="3a9d63f537e51de00a614c5f76c07c0d" name="src/libmongoc/src/mongoc/mongoc-write-command-private.h" role="src" />
+   <file md5sum="0b72f5398cd8eee6844cf9a8d1fd4805" name="src/libmongoc/src/mongoc/mongoc-write-command.c" role="src" />
+   <file md5sum="a85e113e3ebedb5db35c3d34ab7e7453" name="src/libmongoc/src/mongoc/mongoc-write-concern-private.h" role="src" />
+   <file md5sum="0053735d8cf299420785e858f5314f31" name="src/libmongoc/src/mongoc/mongoc-write-concern.c" role="src" />
+   <file md5sum="f4d70867c1f3ef046a36e8d46a12d693" name="src/libmongoc/src/mongoc/mongoc-write-concern.h" role="src" />
+   <file md5sum="78ceb5e92fa9f74562553680b32ce907" name="src/libmongoc/src/mongoc/mongoc.h" role="src" />
+   <file md5sum="ed1890accd7d9a1426fdac121ed42ad4" name="src/libmongoc/src/mongoc/op-delete.def" role="src" />
+   <file md5sum="9af88adf2ef432761bbe81db2f9bdce7" name="src/libmongoc/src/mongoc/op-get-more.def" role="src" />
+   <file md5sum="242fff22640f143ae262e363e8552a7e" name="src/libmongoc/src/mongoc/op-header.def" role="src" />
+   <file md5sum="2efe34631dd0d540d0f1d2fdb2d57813" name="src/libmongoc/src/mongoc/op-insert.def" role="src" />
+   <file md5sum="79ab986cb49a47e7c9bccdc4005a9697" name="src/libmongoc/src/mongoc/op-kill-cursors.def" role="src" />
+   <file md5sum="25dd34248b0000465c7e2ac769fc509a" name="src/libmongoc/src/mongoc/op-msg.def" role="src" />
+   <file md5sum="a986d22cb495d652dc6059d722bb3266" name="src/libmongoc/src/mongoc/op-query.def" role="src" />
+   <file md5sum="dd22bb15cb70d35fe25192f0f304871b" name="src/libmongoc/src/mongoc/op-reply.def" role="src" />
+   <file md5sum="03c6179a4fe8b51c606b03a763529d55" name="src/libmongoc/src/mongoc/op-update.def" role="src" />
+   <file md5sum="94cc18fabf34abc9acbff2ec6c5293f6" name="src/libmongoc/src/mongoc/utlist.h" role="src" />
+   <file md5sum="4d63ac710d0b97385df4ee002cafbe24" name="src/bson.c" role="src" />
+   <file md5sum="bebc35732bfee1cc066e6b69179372f4" name="tests/bson/bson-binary-001.phpt" role="test" />
+   <file md5sum="23d700ccdf85be88ba90ade89c280e20" name="tests/bson/bson-binary_error-001.phpt" role="test" />
+   <file md5sum="a24affdc861cf1f852132176382d3f9b" name="tests/bson/bson-decode-001.phpt" role="test" />
+   <file md5sum="4601ef879a00a3f5d292ce02d397ac83" name="tests/bson/bson-decode-002.phpt" role="test" />
+   <file md5sum="0464160c1c9d7944eb73d9d9591937c6" name="tests/bson/bson-encode-001.phpt" role="test" />
+   <file md5sum="809e6edcf382893ee73f8284ebedfb32" name="tests/bson/bson-encode-002.phpt" role="test" />
+   <file md5sum="3a9e1730a0e95c9b56d87d90cf05370d" name="tests/bson/bson-encode-003.phpt" role="test" />
+   <file md5sum="cecc8a8e855571287fffe7ed99c9ee43" name="tests/bson/bson-encode-004.phpt" role="test" />
+   <file md5sum="31e2e2bba761f0b40870344955365015" name="tests/bson/bson-encode-005.phpt" role="test" />
+   <file md5sum="9f55401972a1fec4e2e3e2fe51a93cda" name="tests/bson/bson-fromPHP-001.phpt" role="test" />
+   <file md5sum="b2c107d47a52d68f23996e347801a286" name="tests/bson/bson-fromPHP-002.phpt" role="test" />
+   <file md5sum="65ad004cffe9c745ccad21abaac1cc44" name="tests/bson/bson-fromPHP-003.phpt" role="test" />
+   <file md5sum="1b5e765a75dd2a3dc9da924ccd14533b" name="tests/bson/bson-fromPHP_error-001.phpt" role="test" />
+   <file md5sum="e2fc4c4382076d28ff0b73831a76e052" name="tests/bson/bson-fromPHP_error-002.phpt" role="test" />
+   <file md5sum="19c7f5b78a1cee1a33db608ce9cb023c" name="tests/bson/bson-fromPHP_error-003.phpt" role="test" />
+   <file md5sum="ad1c9a4f8af9bccaf3ce3a97d2007e75" name="tests/bson/bson-generate-document-id.phpt" role="test" />
+   <file md5sum="786d13fade1d06628539b0d531f7beed" name="tests/bson/bson-javascript-001.phpt" role="test" />
+   <file md5sum="201a4b0e0502669dd9a2f88fcb79e6d2" name="tests/bson/bson-javascript-002.phpt" role="test" />
+   <file md5sum="2f035a4f305d3273cc716d26637f4cf1" name="tests/bson/bson-javascript_error-001.phpt" role="test" />
+   <file md5sum="3f90ee154574175d38dc4e5f5ec5d0cf" name="tests/bson/bson-maxkey-001.phpt" role="test" />
+   <file md5sum="c10d9f780bb8ba4439b034e1340d9d76" name="tests/bson/bson-minkey-001.phpt" role="test" />
+   <file md5sum="a950b10013aea4fee6e484dfa4454677" name="tests/bson/bson-objectid-001.phpt" role="test" />
+   <file md5sum="06e8e2ee8b9b0d7e6c14925a08560eda" name="tests/bson/bson-objectid_error-001.phpt" role="test" />
+   <file md5sum="4e41ffff00e31969c5bf7c038e372a4a" name="tests/bson/bson-ods-001.phpt" role="test" />
+   <file md5sum="1f05b118b7588c98fa8529d951961712" name="tests/bson/bson-ods-002.phpt" role="test" />
+   <file md5sum="bb2c9e6bff9ae8362b7d150f2d282cc2" name="tests/bson/bson-regex-001.phpt" role="test" />
+   <file md5sum="e66c17b47715dccfc3a0e2f987ce61da" name="tests/bson/bson-regex-002.phpt" role="test" />
+   <file md5sum="de4df90c9ee5b40559e9edfed627f9d8" name="tests/bson/bson-regex_error-001.phpt" role="test" />
+   <file md5sum="f6fd1c46cf896f9982b1db26fd536cba" name="tests/bson/bson-timestamp-001.phpt" role="test" />
+   <file md5sum="8067d16233d25829749ad212b66e2c64" name="tests/bson/bson-timestamp-002.phpt" role="test" />
+   <file md5sum="69e996eb6cbaaec323c3eda792b7438f" name="tests/bson/bson-timestamp_error-001.phpt" role="test" />
+   <file md5sum="77c57776452ba9bbcb5f6abbe360391f" name="tests/bson/bson-toPHP-001.phpt" role="test" />
+   <file md5sum="4d1e09c1b3458bb26c54b3d8ce8b11da" name="tests/bson/bson-toPHP-002.phpt" role="test" />
+   <file md5sum="5f9521d0dcfb6c38de8fd349f0e5f0a2" name="tests/bson/bson-toPHP-003.phpt" role="test" />
+   <file md5sum="5db3929a04f1a0d705dc7fe26deddf64" name="tests/bson/bson-toPHP_error-001.phpt" role="test" />
+   <file md5sum="6c0f49e220988f9bf9168841df4e4231" name="tests/bson/bson-toPHP_error-002.phpt" role="test" />
+   <file md5sum="191fed9e085f5ad6b0c99fd2fff0e55d" name="tests/bson/bson-unknown-001.phpt" role="test" />
+   <file md5sum="cd4540225532158908813bd6b3ddb6b9" name="tests/bson/bson-utcdatetime-001.phpt" role="test" />
+   <file md5sum="d4e3f0f5f81f36340ba1bab833dc0d1b" name="tests/bson/bson-utcdatetime-002.phpt" role="test" />
+   <file md5sum="2b60a43dd5ef6ea63a58c15d305b05cc" name="tests/bson/bson-utcdatetime-003.phpt" role="test" />
+   <file md5sum="c351628e8162ba357d2c8149b3742765" name="tests/bson/bson-utcdatetime-todatetime-001.phpt" role="test" />
+   <file md5sum="e1196daddbe4dbb675ccf1662b8f5b79" name="tests/bson/bson-utcdatetime-tostring-001.phpt" role="test" />
+   <file md5sum="edef347cbb01369c592ef199e7ff00bf" name="tests/bson/bson-utcdatetime_error-001.phpt" role="test" />
+   <file md5sum="cf9a63f20ee1f04a2fadb6a01ea698db" name="tests/bson/bug0274.phpt" role="test" />
+   <file md5sum="3b098061a8551c3f854cffea73f2d05f" name="tests/bson/bug0325.phpt" role="test" />
+   <file md5sum="5b9d36885e7a3701f1f54ae92fd81ff9" name="tests/bson/bug0334-001.phpt" role="test" />
+   <file md5sum="c4f2ea95fb457c338e2c53f25c2ef32c" name="tests/bson/bug0334-002.phpt" role="test" />
+   <file md5sum="53a43be600eea2408ee6a418b50f5374" name="tests/bson/bug0341.phpt" role="test" />
+   <file md5sum="57242d53c1e3eba449230809e66b861f" name="tests/bson/bug0347.phpt" role="test" />
+   <file md5sum="88ccbdfcfed14ea6d219a94f0066fd27" name="tests/bson/typemap-001.phpt" role="test" />
+   <file md5sum="a93d7daea93f380b8bd24a4085e08a1e" name="tests/bson/typemap-002.phpt" role="test" />
+   <file md5sum="62b3bc67aa25f05a6f5f357096fb36a1" name="tests/bulk/write-0001.phpt" role="test" />
+   <file md5sum="d0e55a6a576cc15fe0dd90eacab1b002" name="tests/bulk/write-0002.phpt" role="test" />
+   <file md5sum="02e74cf0ff0e2240901dfe918d6cbeab" name="tests/connect/replicaset-seedlist-001.phpt" role="test" />
+   <file md5sum="60392dab08a5778d885aac6984bc4a5a" name="tests/connect/replicaset-seedlist-002.phpt" role="test" />
+   <file md5sum="5782cb975ced7a0d028d9f8c36cfffc4" name="tests/connect/standalone-auth-0001.phpt" role="test" />
+   <file md5sum="13b4c81631c4fe5b2826b3943b65d481" name="tests/connect/standalone-auth-0002.phpt" role="test" />
+   <file md5sum="d31ed516811f559e1f9ecd9a557fd0be" name="tests/connect/standalone-plain-0001.phpt" role="test" />
+   <file md5sum="e8f9688845ac3a1b8f5da6b3d056f2f1" name="tests/connect/standalone-plain-0002.phpt" role="test" />
+   <file md5sum="a39ac1f4f670cc6f48cbba0e6caf79bf" name="tests/connect/standalone-ssl-0001.phpt" role="test" />
+   <file md5sum="348c6609676853409a355b5aa7ff7a87" name="tests/connect/standalone-ssl-0002.phpt" role="test" />
+   <file md5sum="2235e8264cb413b5ffee7da73c70d181" name="tests/connect/standalone-ssl-0003.phpt" role="test" />
+   <file md5sum="642d62586a60c60e24959f6581f55f5b" name="tests/connect/standalone-ssl-0004.phpt" role="test" />
+   <file md5sum="14fd196ca9fd966fa83bd7c6b9971d9d" name="tests/connect/standalone-ssl-0005.phpt" role="test" />
+   <file md5sum="12a9fc685f801ce67bcc408c127a4dc5" name="tests/connect/standalone-ssl-0006.phpt" role="test" />
+   <file md5sum="e847d0e991e4755c3c4f3f7e668d4578" name="tests/connect/standalone-x509-0001.phpt" role="test" />
+   <file md5sum="cfee23d2370751ee8459599dc73c8312" name="tests/connect/standalone-x509-0002.phpt" role="test" />
+   <file md5sum="202989b2a3388f26ae6e81d866200304" name="tests/connect/standalone-x509-0003.phpt" role="test" />
+   <file md5sum="74923adf9f04d40d06738e5c9f63dd4f" name="tests/connect/standalone-x509-0004.phpt" role="test" />
+   <file md5sum="4a14d25c4c695258d43f1a915e239947" name="tests/connect/standalone-x509-error-0001.phpt" role="test" />
+   <file md5sum="dea3f769b6ea7a7cb6f4ff15ed072059" name="tests/functional/cursor-001.phpt" role="test" />
+   <file md5sum="47be0591e6e7506e859fac86494d7b29" name="tests/functional/cursorid-001.phpt" role="test" />
+   <file md5sum="6b4b2c27fb5fd3a59af12b30ad7e875c" name="tests/functional/phpinfo-1.phpt" role="test" />
+   <file md5sum="b65a28921bbe4a801dc43c8f3d1614f2" name="tests/functional/phpinfo-2.phpt" role="test" />
+   <file md5sum="2a66545653e7035f281c701a4a5bfa1f" name="tests/functional/query-sort-001.phpt" role="test" />
+   <file md5sum="ee0ff92d6d48e5c624e7043cc4728a0c" name="tests/functional/query-sort-002.phpt" role="test" />
+   <file md5sum="2cb40b7ecb263d9838aac260382f649d" name="tests/functional/query-sort-003.phpt" role="test" />
+   <file md5sum="a3f3c941b1ce04e5a9dce9af9b2f1bd7" name="tests/functional/query-sort-004.phpt" role="test" />
+   <file md5sum="ecb33ae022fb182187ad5ab617d30f8d" name="tests/manager/manager-ctor-001.phpt" role="test" />
+   <file md5sum="52e2a1bf042ed7a89a51e19e16a035c8" name="tests/manager/manager-ctor_error-001.phpt" role="test" />
+   <file md5sum="097406cf2525d804cef1d0b9630c3821" name="tests/manager/manager-ctor_error-002.phpt" role="test" />
+   <file md5sum="1fc3fc1f16f3845176760797cc34e061" name="tests/manager/manager-ctor_error-003.phpt" role="test" />
+   <file md5sum="ec2dc47bad99221bbb91caada48545fb" name="tests/manager/manager-ctor_error-004.phpt" role="test" />
+   <file md5sum="2314fdd5b4bc565ea9e05616994f361f" name="tests/manager/manager-debug-001.phpt" role="test" />
+   <file md5sum="510484a4463fc51f247a94e1fb872e60" name="tests/manager/manager-debug-002.phpt" role="test" />
+   <file md5sum="68d4a2e5f42415a1fade5d27e7c5723d" name="tests/manager/manager-debug-003.phpt" role="test" />
+   <file md5sum="3d3113f3e6b5056a41853242094b978f" name="tests/manager/manager-destruct-001.phpt" role="test" />
+   <file md5sum="eb865c94e36cb45d30deaa1fef6f6b61" name="tests/manager/manager-executeBulkWrite-001.phpt" role="test" />
+   <file md5sum="27673198c3dd5d9c96ba814e0c5983e0" name="tests/manager/manager-executeBulkWrite-002.phpt" role="test" />
+   <file md5sum="9a84e8fc4fb92a5bc87acad254c2fb00" name="tests/manager/manager-executeBulkWrite-003.phpt" role="test" />
+   <file md5sum="429c551e6fe38bbc54edb785fbdc53f7" name="tests/manager/manager-executeBulkWrite-004.phpt" role="test" />
+   <file md5sum="9f9c2120c7aba1749f3949f439a741d2" name="tests/manager/manager-executeCommand-001.phpt" role="test" />
+   <file md5sum="a4eec99aed10485885b5ea3176eaddac" name="tests/manager/manager-executeDelete-001.phpt" role="test" />
+   <file md5sum="2deaa3852301e6247bfc5b513d64db9c" name="tests/manager/manager-executeDelete-002.phpt" role="test" />
+   <file md5sum="b4b487f9e817f94035cb927566352f5c" name="tests/manager/manager-executeDelete_error-001.phpt" role="test" />
+   <file md5sum="8381e363a3c3e5619636d0b87ae7f9ba" name="tests/manager/manager-executeDelete_error-002.phpt" role="test" />
+   <file md5sum="7a311ecfd8e7e605abc31eb58d9689cb" name="tests/manager/manager-executeInsert-001.phpt" role="test" />
+   <file md5sum="7ba925dde0fc9994bd80ed49f1674908" name="tests/manager/manager-executeInsert-002.phpt" role="test" />
+   <file md5sum="f4a8476570bf51444f10cf9e1260626a" name="tests/manager/manager-executeInsert_error-001.phpt" role="test" />
+   <file md5sum="2e864584da0211a8a7c9ed27c1b64aef" name="tests/manager/manager-executeInsert_error-002.phpt" role="test" />
+   <file md5sum="194a0bc5bffab4279947664b44efed6e" name="tests/manager/manager-executeQuery-001.phpt" role="test" />
+   <file md5sum="b9fb3a1425e783bada38e4dc1e8357b0" name="tests/manager/manager-executeQuery-005.phpt" role="test" />
+   <file md5sum="928d6739a6551295e3aa249fc5708f63" name="tests/manager/manager-executeUpdate-001.phpt" role="test" />
+   <file md5sum="2af1c17c3bacb5dd39b0da81597db152" name="tests/manager/manager-executeUpdate-002.phpt" role="test" />
+   <file md5sum="74046ecca970f91db81f068d82af747f" name="tests/manager/manager-executeUpdate-003.phpt" role="test" />
+   <file md5sum="c2775ff5a333d0ef6145c59677819c8e" name="tests/manager/manager-executeUpdate-004.phpt" role="test" />
+   <file md5sum="85f09cb4450f8a21408490aebf0d74d4" name="tests/manager/manager-executeUpdate_error-001.phpt" role="test" />
+   <file md5sum="d96db931329ab24c7d4abd8036d6273d" name="tests/manager/manager-executeUpdate_error-002.phpt" role="test" />
+   <file md5sum="037e0442404a54bfa883c6a49aac3307" name="tests/manager/manager-executequery-without-assignment.phpt" role="test" />
+   <file md5sum="311a1b98e6ec0983bdaaa71d1b3ac12a" name="tests/manager/manager-getreadpreference-001.phpt" role="test" />
+   <file md5sum="984a06de0d8857e1df125babdfac1fef" name="tests/manager/manager-getservers-001.phpt" role="test" />
+   <file md5sum="99314dc63ca0a4abc49e5a56dc2c6025" name="tests/manager/manager-getservers-002.phpt" role="test" />
+   <file md5sum="b9f7e97b6e68277a4877995fff51e647" name="tests/manager/manager-getwriteconcern-001.phpt" role="test" />
+   <file md5sum="b5a47e688c3c5f744e3de6c527ebdc94" name="tests/manager/manager-invalidnamespace.phpt" role="test" />
+   <file md5sum="d6958dfe7978d07cb51fc4d81c86b1e9" name="tests/manager/manager-selectserver-001.phpt" role="test" />
+   <file md5sum="1b44b8daec032ca66d24b26f3a43f1ee" name="tests/manager/manager-set-uri-options-001.phpt" role="test" />
+   <file md5sum="31098091db5117a73880a689d1b22a69" name="tests/manager/manager-set-uri-options-002.phpt" role="test" />
+   <file md5sum="e1bc8c3b5e84c2f8d6333dbbd63a5041" name="tests/manager/manager-var-dump-001.phpt" role="test" />
+   <file md5sum="34f2067a0a6c77bb0d5d928baf93e639" name="tests/manager/manager-wakeup.phpt" role="test" />
+   <file md5sum="c10e5ac4eb2b31b04352e765d2c29520" name="tests/readPreference/bug0146.phpt" role="test" />
+   <file md5sum="a319543f45cd0d04a2aad1eb67000f61" name="tests/readPreference/readpreference-ctor-001.phpt" role="test" />
+   <file md5sum="e0509842811f6372fb751e61330db4e9" name="tests/readPreference/readpreference-ctor_error-001.phpt" role="test" />
+   <file md5sum="e8b32dbdd507c31820def47a24a44080" name="tests/readPreference/readpreference-getMode-001.phpt" role="test" />
+   <file md5sum="4d991b10065eba468053506b77820aeb" name="tests/readPreference/readpreference-getTagSets-001.phpt" role="test" />
+   <file md5sum="75a4ec8e23ef050d7057e855fff2f5f6" name="tests/server/server-constants.phpt" role="test" />
+   <file md5sum="464e62d83581dcf1c208634f2542a763" name="tests/server/server-construct-001.phpt" role="test" />
+   <file md5sum="f431e28728e94946f296a489ca4ee5a4" name="tests/server/server-debug.phpt" role="test" />
+   <file md5sum="d38a111b8fe29155d2e5d25072907dda" name="tests/server/server-errors.phpt" role="test" />
+   <file md5sum="d394fde992b6bbfd89d732f217806529" name="tests/server/server-executeBulkWrite-001.phpt" role="test" />
+   <file md5sum="34116ca1ab4ad524bfd7f79838ea8703" name="tests/server/server-executeBulkWrite-002.phpt" role="test" />
+   <file md5sum="87771b6bfe5910d05c45d5d6152cfbda" name="tests/server/server-executeBulkWrite-003.phpt" role="test" />
+   <file md5sum="42f4e11675da0b4e7d42c90f95571152" name="tests/server/server-executeBulkWrite-004.phpt" role="test" />
+   <file md5sum="114b77fc8d26158df96b5c3820142cc5" name="tests/server/server-executeBulkWrite-005.phpt" role="test" />
+   <file md5sum="7ab4ee27eca71b4bb8acc85745cb1730" name="tests/server/server-executeCommand-001.phpt" role="test" />
+   <file md5sum="7333556b26e0fadce6eb03c16d0bccbf" name="tests/server/server-executeCommand-002.phpt" role="test" />
+   <file md5sum="4b9fb5c82943288d5155129327f3299f" name="tests/server/server-executeCommand_error-001.phpt" role="test" />
+   <file md5sum="f2e023f40ea3af5b1fd4b555948e7143" name="tests/server/server-executeQuery-001.phpt" role="test" />
+   <file md5sum="4fb14745659a9389c1a483d7edf2b93c" name="tests/server/server-executeQuery-002.phpt" role="test" />
+   <file md5sum="e5cb7df3413213e2d2cfb2d3e0339d37" name="tests/server/server-executeQuery-003.phpt" role="test" />
+   <file md5sum="21e3b54e831b0be62e3bfa631b71589c" name="tests/server/server-executeQuery-004.phpt" role="test" />
+   <file md5sum="1ec790576f972249249e51534f3f14a1" name="tests/server/server-executeQuery-005.phpt" role="test" />
+   <file md5sum="f2e3d061825cd2bbed68de882d4c6bd8" name="tests/server/server-executeQuery_error-001.phpt" role="test" />
+   <file md5sum="ef31e8b9f59a396d435badf3c9a653c3" name="tests/standalone/bug0159.phpt" role="test" />
+   <file md5sum="3ff56796c1e87ea6a07ae574ea64aaf4" name="tests/standalone/bug0166.phpt" role="test" />
+   <file md5sum="87bb7dffe9a182e72322a74ffcbf7cb6" name="tests/standalone/bug0231.phpt" role="test" />
+   <file md5sum="508f7f23c5b80875cf8893f11fd636b0" name="tests/standalone/bug0357.phpt" role="test" />
+   <file md5sum="727192fdd6f1dc71751a2831b0603583" name="tests/standalone/connectiontimeoutexception-001.phpt" role="test" />
+   <file md5sum="d1b6e3057856667e03b515c117cc6e01" name="tests/standalone/executiontimeoutexception-001.phpt" role="test" />
+   <file md5sum="18a8835a80982d575d574ef50c40a383" name="tests/standalone/executiontimeoutexception-002.phpt" role="test" />
+   <file md5sum="6bc5f1fba6c3ad151704fd8500d50183" name="tests/standalone/query-errors.phpt" role="test" />
+   <file md5sum="44b4e6b77317abb6704c77db30dfe9fe" name="tests/standalone/update-multi-001.phpt" role="test" />
+   <file md5sum="a8e621cc17c022522a2cec477783d591" name="tests/standalone/write-error-001.phpt" role="test" />
+   <file md5sum="33a44688d2423bbe22227cb7f7969e2a" name="tests/standalone/writeresult-isacknowledged-001.phpt" role="test" />
+   <file md5sum="082bf318af96dc2134ea6e242989f6b2" name="tests/standalone/writeresult-isacknowledged-002.phpt" role="test" />
+   <file md5sum="4225d9713d6f319061701d7b9bbe08d8" name="tests/standalone/writeresult-isacknowledged-003.phpt" role="test" />
+   <file md5sum="59adebd29ef983f00c4d55cfc4b2d10d" name="tests/utils/PHONGO-FIXTURES.json.gz" role="test" />
+   <file md5sum="8eb155fe0ba18304305ec5e7095ac938" name="tests/utils/basic-skipif.inc" role="test" />
+   <file md5sum="fb5b8ff3eb58dffe11d12ec794d4a2d6" name="tests/utils/basic.inc" role="test" />
+   <file md5sum="e56764b93eec80768bab873e5bfd383a" name="tests/utils/classes.inc" role="test" />
+   <file md5sum="602bc276bfef6abf409b35fcc55bba7a" name="tests/utils/tools.php" role="test" />
+   <file md5sum="364b6092a91f4bf8761fc554aa8062cb" name="tests/writeConcern/writeconcern-constants.phpt" role="test" />
+   <file md5sum="defadce8161c38d99237f581358e6d96" name="tests/writeConcern/writeconcern-ctor-001.phpt" role="test" />
+   <file md5sum="9d8a5d5fbb5180c1e1a73b4885f256fd" name="tests/writeConcern/writeconcern-ctor_error-001.phpt" role="test" />
+   <file md5sum="2289c85f5949de397ae42f93082ecf7a" name="tests/writeConcern/writeconcern-ctor_error-002.phpt" role="test" />
+   <file md5sum="56e3baaa054aadf32901781a09d330e1" name="tests/writeConcern/writeconcern-ctor_error-003.phpt" role="test" />
+   <file md5sum="9ca99acf66a4972b548678347236c25f" name="tests/writeConcern/writeconcern-ctor_error-004.phpt" role="test" />
+   <file md5sum="1d863ece698c49dff7b3cbf254e21a2a" name="tests/writeConcern/writeconcern-debug-001.phpt" role="test" />
+   <file md5sum="62ae7ce0a7f173df20339fb043ed9ffa" name="tests/writeConcern/writeconcern-debug-002.phpt" role="test" />
+   <file md5sum="afc708c9f9d830d1c3b7cf60333f1fce" name="tests/writeConcern/writeconcern-getjournal-001.phpt" role="test" />
+   <file md5sum="d4c305c451a28b591db0160e9f851ee5" name="tests/writeConcern/writeconcern-getw-001.phpt" role="test" />
+   <file md5sum="ddb88acb62b9b89316f92e3bb6076a48" name="tests/writeConcern/writeconcern-getwtimeout-001.phpt" role="test" />
+   <file md5sum="e9f9796cf151e0a08d9e7616786e445b" name="win32/bson-config.h" role="src" />
+   <file md5sum="ea43ce70051fcdebc2c4435ff30d540c" name="win32/bson-version.h" role="src" />
+   <file md5sum="a48e0f7388bbb65ea5be67c0a4b95d26" name="win32/mongoc-config.h" role="src" />
+   <file md5sum="da90315b6d70e48f4b940bd80ac63abe" name="win32/mongoc-version.h" role="src" />
+   <file md5sum="6dc0025b111fa5945f05746196d408ba" name="ChangeLog" role="doc" />
+   <file md5sum="b1e01b26bacfc2232046c90a330332b3" name="LICENSE" role="doc" />
+   <file md5sum="a99a5eb03f75b98476026e381ba56932" name="Makefile.frag" role="src" />
+   <file md5sum="02b09fc146e30663a8c08f0b9bc89902" name="README.md" role="doc" />
+   <file md5sum="f99c580b04875fa6d39a302ad8110ebd" name="RELEASE-0" role="doc" />
+   <file md5sum="488b5657973103a65159fae8ec162b1b" name="RELEASE-1.0" role="doc" />
+   <file md5sum="06e9ecca35559d34abfcc097418218ff" name="RELEASE-1.0.0beta2" role="doc" />
+   <file md5sum="5522cd375c5fab89c690677282fe7399" name="Vagrantfile" role="test" />
+   <file md5sum="285cbda3787319ba5819f09329b2de6b" name="config.m4" role="src" />
+   <file md5sum="98c88fda5d1f19b9dd281976166a651e" name="config.w32" role="src" />
+   <file md5sum="c491a340f74c1a0cd0d1de2b7b08ac5d" name="phongo_compat.h" role="src" />
+   <file md5sum="b15eaf278990979fdc0b4d9e4249e5da" name="php_bson.h" role="src" />
+   <file md5sum="482155cc97a1f835946e9ec1f30cf799" name="php_phongo.c" role="src" />
+   <file md5sum="448d0eb1937dc206da31dad9b35d081c" name="php_phongo.h" role="src" />
+   <file md5sum="8b6977d29f759e0ce227e2b0d30a13bd" name="php_phongo_classes.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.4.0</min>
+    <max>5.99.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>mongodb</providesextension>
+ <extsrcrelease />
+</package>

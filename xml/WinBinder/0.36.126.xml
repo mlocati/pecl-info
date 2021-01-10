@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<package version="1.0">
+   <name>WinBinder</name>
+   <summary>A Native Windows binding for PHP</summary>
+   <description>WinBinder is a new extension that allows PHP programmers to build native Windows applications. It wraps the Windows API in a lightweight, easy-to-use library so that program creation is quick and straightforward.</description>
+   <maintainers>
+      <maintainer>
+         <user>rubs</user>
+         <name>Rubem Pechansky</name>
+         <email>pechansky@hypervisual.com</email>
+         <role>lead</role>
+      </maintainer>
+   </maintainers>
+   <release>
+      <version>0.36.126</version>
+      <date>2005-02-09</date>
+      <license>BSD</license>
+      <state>alpha</state>
+      <notes>
+This release consolidates all patches, has many user-requested changes, several new functions an sereval enhancements in the manual. Please see below for a reasonable complete list.
+
+------------------------------------------------------------------------------
+Changes in library
+------------------------------------------------------------------------------
+
+- "plus" string accepted as accelerator in menus or in wb_create_control($mainwin, Accel, ...)
+- All styles that can be set with wb_set_style() can now be set on wb_create_control() too (but not vice-versa yet)
+- Arrow keys will change pages of a tab control with the keyboard focus (Part of item #353)
+- Edit controls send the WBC_KEYPRESS notification message when a key is pressed. lparam2 contains the key code
+- Fixed function wb_set_style(), was broken
+- Fixed inconsistency in WBC_DBLCLICK: was being tested in style instead of lparam (thanks Alexandre)
+- Item #300 (resize toolbars automatically) - already implemented
+- ListView: header selection goes now through WBC_HEADERSEL notification message in $lparam1; Header number is $lparam2. Thus WBC_HEADERSEL must be included as lparam in wb_create_window(). CAUTION: THIS CHANGE MAY BREAK EXISTING CODE.
+- Message WBC_HEADERSEL is sent to callback function when a ListView header is clicked
+- More options in wb_wait(): WBC_MOUSEUP, WBC_KEYUP
+- Moved the OOi interface to a separate file
+- New aliases accepted as accelerators in menus or in wb_create_control($mainwin, Accel, ...): "ESC", "PGDN", "PGUP", "INS", "DEL"
+- New constant WBC_KEYDOWN, used in wb_wait()
+- New constant WBC_KEYUP, used in wb_wait()
+- New constant: FTA_REGULAR (Same as FTA_NORMAL)
+- New constant: WBC_HEADERSEL
+- New function wb_wait() can be used as a simple delay or to verify if a key or mouse button was pressed, useful for lengthy operations
+- New function: wb_draw_image() (Issue #138)
+- New function: wb_draw_text()
+- New function: wb_get_focus(), returns the control or window that has the focus
+- New notification: WBC_KEYPRESS
+- New wb_get_system_info() parameters (part of item #276):
+	- "commandline": The original Windows command line including the executable file (PHP.EXE)
+	- "consolemode": A boolean indicating whether console (DOS box) is active or not
+	- "computername": The name of the computer, in a network
+	- "username":  The name of the user, in a network
+	- "screenarea": The total area (x, y, width, height) of the screen, in pixels
+	- "workarea": The valid area (x, y, width, height) of the screen, in pixels
+	- "exepath": Path to the main executable (PHP.EXE)
+	- "systemfont": The default interface font, which will be used in the controls
+- No need to include notification messages as lparam when creating a window
+- Parameter linewidth works correctly in wb_draw_rect() now
+- Solved bug #399, "Menu access keys won't work in some apps"
+- Solved issue #299, "Optional dotted lines in treeviews", using wb_set_style()
+- Solved serious leakage in some wb_draw* functions
+- Some resource leaks solved
+- Tab control: tab selection goes now through WBC_HEADERSEL notification message in $lparam1; Tab number is $lparam2. Thus WBC_HEADERSEL must be included as lparam in wb_create_window(). CAUTION: THIS CHANGE MAY BREAK EXISTING CODE.
+- wb_create_font() had undefined values for optional parameters, fixed
+- wb_create_image(): two optional, extra parameters for use with image libraries (like FreeImage): bmi, bits
+- wb_draw_text() can accept flags WBC_CENTER, WBC_LEFT, WBC_RIGHT, WBC_LINES, WBC_ELLIPSIS
+- wb_draw_text() now accepts three different vertical alignments: new constants WBC_TOP, WBC_BOTTOM, WBC_MIDDLE
+- wb_exec() will give a warning if the executable/target file does not exist
+- wb_exec(): new 'o' parameter will "shell execute" a phpw file instead of running it. It will usually run it anyway, except if the user has changed the .phpw association.
+- wb_exec(): new parameters 'c' or 'w' run a phpw file in console or windowed mode, respectively
+- wb_poke(): an incorrect NULL test was improperly invalidating some results. Fixed.
+- wb_send_message(): 0xFFFF (65535) can be used as first parameter (HWND_BROADCAST in Windows API)
+- wb_set_style(): changed parameter to set/unset style (bool)
+- wb_wait: changed parameter order, now flags is last
+- Bug fix: wb_wait was always returning upon keyboard events regardless of flags: fixed.
+- Other changes
+
+------------------------------------------------------------------------------
+Changes in applications and examples
+------------------------------------------------------------------------------
+
+- /Code/tests directory renamed to /Code/Samples
+- Changed default Setup directory to C:\WINBINDER
+- Changes and fixes in listview_sort.phpw, dblclick.phpw, ttfreader.phpw, tabcontrol.phpw and others
+- Code page data in application dll_functions.phpw
+- Code samples from /Code/Hello, /Code/minimal, /Code/calc, /Code/TTFReader moved to /Code/Samples
+- Corrections and small changes to make_release.phpw
+- In listview_sort.phpw, handler was not processing IDCLOSE. Fixed.
+- In test_struct.phpw, STRUCT_WBOBJ and STRUCT_WBOBJ_SIZE are undefined constants.
+- More examples: wait.phpw
+- New DB interface by Hans (see doc)
+- New OOi by Alexandre (see doc), moved to separate archive
+- New SA (SQLAdmin) app by Hans (see doc)
+- New examples: combobox.phpw, wait.phpw, sysinfo.phpw, accel.phpw
+- New sample: dib.phpw, needs freeimage.inc.php
+- Removed some PHPW sample files, added some, renamed some
+- Script freeimage.inc.php added to the distribution
+- To Do changed so it can be called from anywhere
+- Two new small bitmaps (edit, note) (no big deal)
+- Welcome has a new button to call the To Do app
+- manytests_main.phpw: renamed some files, other small tweaks
+- ttfreader.phpw: one phpw source file only, new accelerators, double-click now closes the Font Select dialog, several small fixes
+- Other fixes
+
+------------------------------------------------------------------------------
+Changes in documentation
+------------------------------------------------------------------------------
+
+- Corrected/enhanced/added at least the following help topics:
+	- wb_call_function()
+	- wb_create_control()
+	- wb_create_font()
+	- wb_create_image()
+	- wb_create_window()
+	- wb_get_function_address()
+	- wb_draw_line
+	- wb_draw_rect
+	- wb_draw_text()
+	- wb_exec()
+	- wb_get_focus()
+	- wb_get_function_address()
+	- wb_get_size()
+	- wb_get_system_info()
+	- wb_load_library()
+	- wb_send_message()
+	- wb_set_focus()
+	- wb_set_size()
+	- wb_set_style()
+	- wb_set_visible()
+	- wb_wait()
+- Many new tips, new sample code, more corrections, more keywords
+- More info on Callback functions and window handlers, Windows messages, and others
+- New default position for help window (winbinder_help.chm)
+- Other changes
+
+------------------------------------------------------------------------------
+Changes in C code
+------------------------------------------------------------------------------
+
+- A call to wbSetStyle() was added to wbCreateControl(), replaces some existing code
+- Added parameter bSet to wbSetStyle()
+- Assignments to hCurrentDlg in the application window were removed in wb_window.c. This helps to solve part of bug #399
+- EditBox was subclassed to notify keystrokes to main window
+- New C funtions: wbDrawBitmap(), wbGetFont(), wbDrawText()
+- New static function EditProc() in wb_control.c
+- Removed wbGetWindowStyle(), wbSetWindowStyle() (low-level functions)
+- Removed wbIsWBObj() call in DrawEnd(): this solves leakage in wb_draw* functions
+- SetFocus() call was removed in TabPageProc: This solves bug #399
+- Some new WBC_* constants in wb.h, changed phpwb_export.c accordingly
+- Tab controls have style WS_TABSTOP as before with no visible problems. This restores the right/left arrow functionality, but does not yet give the focus to other controls with tab/alt+tab
+- WBC_GETFOCUS, WBC_HEADERSEL values changed
+- wbDrawRect() now uses MoveTo / LineTo instead of FrameRect()
+- wbDrawText() now processes text flags
+- wbExec() calls WB apps, param may be "windowed", "console" or nothing
+- wbGetSystemInfo() changed to LONG
+- wbMakeAccelFromString(): buffer increased to 99 characters, strings added
+- wb_window.c: DefaultWBProc(): WBWM_KEYPRESS callback
+- Many other changes
+
+      </notes>
+      <filelist>
+         <file role="src" md5sum="0ba5bc0ec8f637b1a0ed1596d169c281" name="license-php.txt"/>
+         <file role="src" md5sum="be2f96db76cd76d8b33f2ca08ea5bd0d" name="license.txt"/>
+         <file role="src" md5sum="0ef350ba1b381f53a0f89f8753fc96fe" name="package.xml"/>
+         <file role="src" md5sum="601ef228cd48eb44cf8ec56be046c472" name="winbinder_manual.chm"/>
+         <file role="src" md5sum="4994c962239386baf896fa257313c23b" name="changelog.txt"/>
+         <file role="src" md5sum="7c4bf916ad9e35b29a4890ae5b3b4d7b" name="code\sa\inc\ooi\changelog.txt"/>
+         <file role="src" md5sum="f8720a39f0c114892d129d18d5d96620" name="release_notes.txt"/>
+         <file role="src" md5sum="48878ff30b0220074bdb73227fe0163b" name="readme.txt"/>
+         <file role="src" md5sum="e74958b7b8860b85f663a97f955cbeca" name="compilers\lcc-win32\readme_lccwin32.txt"/>
+         <file role="src" md5sum="0a1ba33be2165a734634adb032c0ced7" name="compilers\mingw\readme_mingw.txt"/>
+         <file role="src" md5sum="6851e9090ede13714ae39dcac2dc8474" name="compilers\msvc\readme_msvc.txt"/>
+         <file role="src" md5sum="9ac8db7f658f85994ad30ffebfe53b89" name="compilers\pellesc\readme_pelles.txt"/>
+         <file role="src" md5sum="34130f42159f97020673c9b197b9a177" name="compilers\lcc-win32\php4\winbinder_php4.prj"/>
+         <file role="src" md5sum="190914f1d9069eba3672586e0cfab370" name="compilers\lcc-win32\php5\winbinder_php5.prj"/>
+         <file role="src" md5sum="68c3c398f03330cb3fb0b783df9a8130" name="compilers\pellesc\winbinder.ppj"/>
+         <file role="src" md5sum="0e8eca1ae77a8e37054dd0c854534b21" name="compilers\mingw\winbinder.msp"/>
+         <file role="src" md5sum="42c800c7dce0a5d9886ab9ad3f9f8c65" name="compilers\lcc-win32\php4\makefile"/>
+         <file role="src" md5sum="6b82bfc4edeb63157f583b30ba5e2271" name="compilers\lcc-win32\php5\makefile"/>
+         <file role="src" md5sum="006b8e4d13c50331251b9df76681cf99" name="source\phpwb.h"/>
+         <file role="src" md5sum="74629ce8d8a594934fb80792bce37359" name="source\phpwb_bitmap.c"/>
+         <file role="src" md5sum="538f9ee304d637216f63a7d283e21926" name="source\phpwb_control.c"/>
+         <file role="src" md5sum="8978d4e0f5052a191e0d26f01e7cd0e0" name="source\phpwb_control_listview.c"/>
+         <file role="src" md5sum="cc879bcab7eb6c6bde082520f305509b" name="source\phpwb_control_menu.c"/>
+         <file role="src" md5sum="2819c2a22edcba0ea83855535a44a229" name="source\phpwb_control_toolbar.c"/>
+         <file role="src" md5sum="0e0ec7223019877f327e5d49cf640f80" name="source\phpwb_control_treeview.c"/>
+         <file role="src" md5sum="b4ae77eaa672f25394d07a192ba5b582" name="source\phpwb_draw.c"/>
+         <file role="src" md5sum="4b9eeb2adca630fdd1437b4af7cc20b9" name="source\phpwb_export.c"/>
+         <file role="src" md5sum="132aaed6efa9ae79f7073ac300c65979" name="source\phpwb_font.c"/>
+         <file role="src" md5sum="5491527a06582dc618444658f87fb3e0" name="source\phpwb_generic.c"/>
+         <file role="src" md5sum="9d021119ea9ca080cce2371195b1fc86" name="source\phpwb_lowlevel.c"/>
+         <file role="src" md5sum="30b2aba13203499be6d3f7a3aabfddb7" name="source\phpwb_sysdlg.c"/>
+         <file role="src" md5sum="62e5e12b8e2881e9fb778099e1f2afdf" name="source\phpwb_wb_lib.c"/>
+         <file role="src" md5sum="5eff7ec9e77f74bf87f354aa2ba996bd" name="source\phpwb_window.c"/>
+         <file role="src" md5sum="1835b5ef803a40b0e300dd79348fbd6b" name="source\phpwb_winsys.c"/>
+         <file role="src" md5sum="4f6b3a002afbf83c5cbbfc861380eb11" name="source\wb\wb.h"/>
+         <file role="src" md5sum="5f35a55bfaee203c2cb31bc26f2d30e2" name="source\wb\wb_bitmap.c"/>
+         <file role="src" md5sum="8ff148eb3e1a44eb82bee8504c1e69e5" name="source\wb\wb_control.c"/>
+         <file role="src" md5sum="8d3700be46750ae3898b432dbddae2f4" name="source\wb\wb_control_listview.c"/>
+         <file role="src" md5sum="94d8bd1d91093da77dea4d716eac0892" name="source\wb\wb_control_menu.c"/>
+         <file role="src" md5sum="57f0d84ec105a8066eeeea5d352c3a9a" name="source\wb\wb_control_tab.c"/>
+         <file role="src" md5sum="042df8ce5b92e627ed0969fd9a52407f" name="source\wb\wb_control_toolbar.c"/>
+         <file role="src" md5sum="940bc1138d53545c46ae37156405de03" name="source\wb\wb_control_treeview.c"/>
+         <file role="src" md5sum="991fb79c8c7fe5e9a11f872056df13dd" name="source\wb\wb_draw.c"/>
+         <file role="src" md5sum="8a20249d7e11464401d92bbb8956b28b" name="source\wb\wb_font.c"/>
+         <file role="src" md5sum="6508468cdcc7d64171b25b244cd46a75" name="source\wb\wb_generic.c"/>
+         <file role="src" md5sum="92366cf583d7f01969fc242471151880" name="source\wb\wb_lowlevel.c"/>
+         <file role="src" md5sum="fc79e811ccef07816d8a3139cfc3aa33" name="source\wb\wb_sysdlg.c"/>
+         <file role="src" md5sum="f8ff7b7f896f00972c8f2043bcbb98a8" name="source\wb\wb_version.h"/>
+         <file role="src" md5sum="365338603ff478e125acb24cdb8a7f7c" name="source\wb\wb_window.c"/>
+         <file role="src" md5sum="fe4f7512db58043c7a1b9d9850507118" name="source\wb\wb_winsys.c"/>
+         <file role="src" md5sum="07e005eedaa3363a5dd4d131e10a1986" name="tools\html_help\manual.hhk"/>
+         <file role="src" md5sum="166979fdedd6a172e3086e1950716f0f" name="tools\html_help\manual.hhp"/>
+         <file role="src" md5sum="2176328099b750eaaca36acc86c6a1fa" name="tools\html_help\readme_help.txt"/>
+         <file role="src" md5sum="6cb2537b8d169cf5279bbb6798fd1c75" name="tools\html_help\stoplist.txt"/>
+         <file role="src" md5sum="44c3f951c267e9e2aa85dda3474364e3" name="tools\html_help\toc.hhc"/>
+         <file role="src" md5sum="cf361fd78970a956aba83758f233d817" name="tools\inno_setup\wb.iss"/>
+         <file role="src" md5sum="ae6679abea018232d460fbc975d21e3c" name="tools\inno_setup\wb_debug.iss"/>
+         <file role="src" md5sum="d9144173216f82b73f7b6b4eb76c4257" name="tools\textpad\php_winbinder.syn"/>
+         <file role="src" md5sum="e612ed5fbaccb8cfdf078c58fa14b22d" name="tools\textpad\readme_textpad.txt"/>
+         <file role="src" md5sum="9cf50ea2e882925456a69229a2a1ac94" name="tools\winzip\develop_zipme.txt"/>
+         <file role="src" md5sum="bda186f08d1344649385f3ad8984e3ed" name="tools\winzip\develop_zipmenot.txt"/>
+         <file role="src" md5sum="8db9c3a43f9c3a6984b88b5c337821c6" name="tools\winzip\php4_zipme.txt"/>
+         <file role="src" md5sum="8a0c87568c5299ee4f45276b690f14f0" name="tools\winzip\php4_zipmenot.txt"/>
+         <file role="src" md5sum="bec5c033d4c9ed207e54daed4b441373" name="tools\winzip\php5_zipme.txt"/>
+         <file role="src" md5sum="8a0c87568c5299ee4f45276b690f14f0" name="tools\winzip\php5_zipmenot.txt"/>
+         <file role="src" md5sum="0142c9d0786a047386de22ffdafa9ed0" name="tools\winzip\readme_winzip.txt"/>
+         <file role="src" md5sum="80f79235f6293551e7f5f7f99b4173aa" name="tools\winzip\release_zipme.txt"/>
+         <file role="src" md5sum="fc1e33f9180ee31c7abf236117cda8c5" name="tools\winzip\release_zipmenot.txt"/>
+         <file role="src" md5sum="2e8943131e0c272513ae61681e52fe3b" name="tools\winzip\snapshot_zipme.txt"/>
+         <file role="src" md5sum="64f30ceaa2eaa457b0683d90f95878aa" name="tools\winzip\snapshot_zipmenot.txt"/>
+         <file role="src" md5sum="700fc1e9d093d6f4eb0d8edfc3c86bf7" name="code\inc\db_common.inc.php"/>
+         <file role="src" md5sum="ebc01244a9ab577b542382aa5c136343" name="code\inc\db_mysql.inc.php"/>
+         <file role="src" md5sum="c94c17c2392a3d606ba2a05ecc7e1947" name="code\inc\db_sqlite.inc.php"/>
+         <file role="src" md5sum="7627195b386148907f41dd11231dff7b" name="code\inc\freeimage.inc.php"/>
+         <file role="src" md5sum="67729bfbc1724ce0887c2ccac33a9c24" name="code\inc\wb_generic.inc.php"/>
+         <file role="src" md5sum="5b4aa4d4b7d5a547a7539fb71d0ba270" name="code\inc\wb_resources.inc.php"/>
+         <file role="src" md5sum="ffeb9d62e46446d5d5758d3dd46217b1" name="code\inc\wb_windows.inc.php"/>
+         <file role="src" md5sum="3113278e10d911310b7bcd4eca67924e" name="code\inc\winbinder.php"/>
+         <file role="src" md5sum="3671a8f60cfccc3840282baa2f7c8df1" name="code\layout_editor\dlg_controls.rc"/>
+         <file role="src" md5sum="bc2c1ad8aeff03be6ac487b14eb8e105" name="code\layout_editor\dlg_controls.rc.php"/>
+         <file role="src" md5sum="6760dc3ef67703fb3f2ac17acf64f8a6" name="code\layout_editor\le_controls.inc.php"/>
+         <file role="src" md5sum="239a4ddc176547f3950866f15383d691" name="code\layout_editor\le_main.ini"/>
+         <file role="src" md5sum="69b75e39ee94b915a347fc4825b064ed" name="code\layout_editor\le_main.phpw"/>
+         <file role="src" md5sum="8587c71b2ee3107b28e933a1ab7843f7" name="code\layout_editor\le_main.rc"/>
+         <file role="src" md5sum="6e1f3cdb0a5ffbdacfc75e74fa93fe32" name="code\layout_editor\le_main.rc.php"/>
+         <file role="src" md5sum="3f46dd42389027969cdf773d507a285d" name="code\layout_editor\le_main.wap"/>
+         <file role="src" md5sum="341bd8bc529fdfadac179d1b4a7166e9" name="code\layout_editor\res\ctrl_checkbox.bmp"/>
+         <file role="src" md5sum="d5522a72c92820483f4a452b6401bbaf" name="code\layout_editor\res\ctrl_editbox.bmp"/>
+         <file role="src" md5sum="6af3d41096eaa9665604a6c340759cab" name="code\layout_editor\res\ctrl_frame.bmp"/>
+         <file role="src" md5sum="7b0487ac867dfbd083125957898dab46" name="code\layout_editor\res\ctrl_pushbutton.bmp"/>
+         <file role="src" md5sum="dab5233726a45926015c577134f72563" name="code\layout_editor\res\ctrl_radiobutton.bmp"/>
+         <file role="src" md5sum="19b990e4142df97f9538e0aefcdfe0ac" name="code\make_release\filelist.txt"/>
+         <file role="src" md5sum="77be4c328722e980418cb2a37e892764" name="code\make_release\make.rc"/>
+         <file role="src" md5sum="e58ac33150daa37c53f0cee82ffb30f2" name="code\make_release\make.rc.php"/>
+         <file role="src" md5sum="b532b128e45f4bd2bf9d42d766b88662" name="code\make_release\make.wap"/>
+         <file role="src" md5sum="0f86dce2573b7b0299c8b3c5d04a5c35" name="code\make_release\make_release.ini"/>
+         <file role="src" md5sum="b675507fc1ecef92f17047b880b990b8" name="code\make_release\make_release.phpw"/>
+         <file role="src" md5sum="f1688f1c6f01a620e27e4a1cf4a01b69" name="code\make_release\template.xml"/>
+         <file role="src" md5sum="7621a9ce79fad249a70b58f7ce91bf36" name="code\res\cancel.bmp"/>
+         <file role="src" md5sum="88310619dfc9f477314086b5a09b042e" name="code\res\cassini.jpg"/>
+         <file role="src" md5sum="7ff316dcddad159c1ef919e0754a5161" name="code\res\dn_arrow.bmp"/>
+         <file role="src" md5sum="66408a1c84f9ec2d0628dfbf461bcd06" name="code\res\edit.bmp"/>
+         <file role="src" md5sum="7a4f71b5e9c452e24760c66183e6e57d" name="code\res\hyper.ico"/>
+         <file role="src" md5sum="9bc93d2e33ab42fd2e595785b6389427" name="code\res\icon2.png"/>
+         <file role="src" md5sum="602078501e6e0adafec9528e84a6c467" name="code\res\icon24.png"/>
+         <file role="src" md5sum="652a882444a14ee457144bccd5db8c3a" name="code\res\icon4.png"/>
+         <file role="src" md5sum="bbf915b58316de3c62875da2da7092d8" name="code\res\icon8t.gif"/>
+         <file role="src" md5sum="e533c2a48690f2a1370ae8efde50a3e2" name="code\res\icon8t.png"/>
+         <file role="src" md5sum="0fa3432f2ad14ee38497c8dea7a696fa" name="code\res\menu_edit.bmp"/>
+         <file role="src" md5sum="6fc7789017b53de7b7ea67888a48bd3d" name="code\res\menu_exit.bmp"/>
+         <file role="src" md5sum="6b4231305a001ff4197fcc2034884bb5" name="code\res\menu_help.bmp"/>
+         <file role="src" md5sum="b26835ffcbd9bc3df8f8d538838e7ebe" name="code\res\menu_new.bmp"/>
+         <file role="src" md5sum="3286337117cc9ff3c9de7df1c90fa345" name="code\res\menu_open.bmp"/>
+         <file role="src" md5sum="7517056ba0aaa68185cc2b277eb10d7f" name="code\res\menu_print.bmp"/>
+         <file role="src" md5sum="85995c11295f730f581fa0ef2a20c42e" name="code\res\menu_save.bmp"/>
+         <file role="src" md5sum="0ee3549e59838e3e77379a2c8838321a" name="code\res\menu_send.bmp"/>
+         <file role="src" md5sum="b77d491bdce868cddd7d702919f3ee4f" name="code\res\note.bmp"/>
+         <file role="src" md5sum="2fad3346d63374a55feafda527968cca" name="code\res\ok.bmp"/>
+         <file role="src" md5sum="e794691e75a3fb26a191c5aab3e4d20f" name="code\res\toolbar.bmp"/>
+         <file role="src" md5sum="b2736a16f03dd3c339582631e1481dc3" name="code\res\treeview.bmp"/>
+         <file role="src" md5sum="a1c167c3b4f1519c8314fe7269e617de" name="code\res\ttf.ico"/>
+         <file role="src" md5sum="e1f13b470bea68d03ef9398d8bdb867b" name="code\res\up_arrow.bmp"/>
+         <file role="src" md5sum="70b205625416aea5f5cb3420e2d72d5a" name="code\sa\data\sqlite_dbg2.db"/>
+         <file role="src" md5sum="8741a38b3b1ef41fd6ce5af78a59d042" name="code\sa\inc\db_common.inc.php"/>
+         <file role="src" md5sum="2e6bd9621b38be3187416aa51c1d31d3" name="code\sa\inc\db_mysql.inc.php"/>
+         <file role="src" md5sum="84ede91ff59a8968d5118d010c0a0034" name="code\sa\inc\db_sqlite.inc.php"/>
+         <file role="src" md5sum="79257cdfce887d63688598807f722d8c" name="code\sa\inc\db_used_function.php"/>
+         <file role="src" md5sum="522d1310ac1f11c06080f98677952d7a" name="code\sa\inc\ooi\desc.txt"/>
+         <file role="src" md5sum="7271997965573db447f4dacf7088ce6d" name="code\sa\inc\ooi\failed_attemp_parserc.php"/>
+         <file role="src" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="code\sa\inc\sqlite_-- here filename --.db"/>
+         <file role="src" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="code\sa\inc\sqlite_choose.db"/>
+         <file role="src" md5sum="e9a92cb9ceef9cee3ce7ab28cc45e723" name="code\sa\inc\wb_generic.inc.php"/>
+         <file role="src" md5sum="e1fe57cb3dc30b4153b779ada81f70cb" name="code\sa\inc\wb_resources.inc.php"/>
+         <file role="src" md5sum="a62641d8e096871a671b793b63c03d29" name="code\sa\inc\wb_resources.incorg.php"/>
+         <file role="src" md5sum="38d3e2f85ab31e3a3209d8dbb88bf4a6" name="code\sa\inc\wb_resources2.inc.php"/>
+         <file role="src" md5sum="dde4cdd0784eeea01512945b91d039f5" name="code\sa\inc\wb_windows.inc.php"/>
+         <file role="src" md5sum="c95e7580086ff26095aab6e9509b7133" name="code\sa\inc\winbinder.php"/>
+         <file role="src" md5sum="d693c237ac44ef86468153ad49bd5dc6" name="code\sa\inc\winbinder2.php"/>
+         <file role="src" md5sum="66ffb99224e23461b268557d94269c77" name="code\sa\rc\create_ctr_define.inc.php"/>
+         <file role="src" md5sum="b913338ecb734dfd7cb88099c25dab3f" name="code\sa\rc\def_gui.phpw"/>
+         <file role="src" md5sum="e912ae3d8064929e95c7802fcd8b4673" name="code\sa\rc\main_gui.ctr.php"/>
+         <file role="src" md5sum="2604cdd6ae1742fe3380da3d7f0a0b78" name="code\sa\rc\main_gui.rc.php"/>
+         <file role="src" md5sum="2afa65aec8f04447acb797e9bd81643a" name="code\sa\rc\main_gui_temp.ctr.php"/>
+         <file role="src" md5sum="df8c4d973833a3ce2e56f7db6bd70a86" name="code\sa\rc\main_gui_temp.rc.php"/>
+         <file role="src" md5sum="dd2305dcf716cc16ebfc04c217276250" name="code\sa\rc\menu_toolbar.rc.php"/>
+         <file role="src" md5sum="49d71c1ba5227e5366535a6f54e7246e" name="code\sa\rc\sa4.wap"/>
+         <file role="src" md5sum="66e0c1fab8a5a1553c264bbcca0ebe13" name="code\sa\rc\sqlad.rc"/>
+         <file role="src" md5sum="2b5e1a9a789abe71b8a9783f82194e8e" name="code\sa\rc\sqladcont.rc"/>
+         <file role="src" md5sum="eed03a08ad485fcbdc2b7a63e59d5103" name="code\sa\rc\tabdb.rc"/>
+         <file role="src" md5sum="734079fdfbf514bcd55e86a636fbb55d" name="code\sa\rc\tabdt.rc"/>
+         <file role="src" md5sum="872509226d26912d2199e12f9b870b58" name="code\sa\rc\tabidx.rc"/>
+         <file role="src" md5sum="eec305af02ffac3046b838f9f5a2e38d" name="code\sa\rc\tabopt.rc"/>
+         <file role="src" md5sum="821b044d6d2b335b3d5d4a1ba4ad4083" name="code\sa\rc\tabtb.rc"/>
+         <file role="src" md5sum="5e3802b0ae5f9960e7e0155667c4cad5" name="code\sa\rc\tabvi.rc"/>
+         <file role="src" md5sum="7621a9ce79fad249a70b58f7ce91bf36" name="code\sa\res\cancel.bmp"/>
+         <file role="src" md5sum="7ff316dcddad159c1ef919e0754a5161" name="code\sa\res\dn_arrow.bmp"/>
+         <file role="src" md5sum="7a4f71b5e9c452e24760c66183e6e57d" name="code\sa\res\hyper.ico"/>
+         <file role="src" md5sum="0fa3432f2ad14ee38497c8dea7a696fa" name="code\sa\res\menu_edit.bmp"/>
+         <file role="src" md5sum="6fc7789017b53de7b7ea67888a48bd3d" name="code\sa\res\menu_exit.bmp"/>
+         <file role="src" md5sum="6b4231305a001ff4197fcc2034884bb5" name="code\sa\res\menu_help.bmp"/>
+         <file role="src" md5sum="b26835ffcbd9bc3df8f8d538838e7ebe" name="code\sa\res\menu_new.bmp"/>
+         <file role="src" md5sum="3286337117cc9ff3c9de7df1c90fa345" name="code\sa\res\menu_open.bmp"/>
+         <file role="src" md5sum="7517056ba0aaa68185cc2b277eb10d7f" name="code\sa\res\menu_print.bmp"/>
+         <file role="src" md5sum="85995c11295f730f581fa0ef2a20c42e" name="code\sa\res\menu_save.bmp"/>
+         <file role="src" md5sum="0ee3549e59838e3e77379a2c8838321a" name="code\sa\res\menu_send.bmp"/>
+         <file role="src" md5sum="2fad3346d63374a55feafda527968cca" name="code\sa\res\ok.bmp"/>
+         <file role="src" md5sum="e794691e75a3fb26a191c5aab3e4d20f" name="code\sa\res\toolbar.bmp"/>
+         <file role="src" md5sum="f33b410da373c6c4688e809ea98cc40c" name="code\sa\res\treeview.bmp"/>
+         <file role="src" md5sum="f33b410da373c6c4688e809ea98cc40c" name="code\sa\res\tree_db.bmp"/>
+         <file role="src" md5sum="a1c167c3b4f1519c8314fe7269e617de" name="code\sa\res\ttf.ico"/>
+         <file role="src" md5sum="e1f13b470bea68d03ef9398d8bdb867b" name="code\sa\res\up_arrow.bmp"/>
+         <file role="src" md5sum="b2736a16f03dd3c339582631e1481dc3" name="code\sa\res\_treeview.bmp"/>
+         <file role="src" md5sum="29e41166211f3b786e32927c303115f3" name="code\sa\sqlad.ini"/>
+         <file role="src" md5sum="5f7f2e1f5cae7279af64f428bfeaf1e7" name="code\sa\sqladgui.phpw"/>
+         <file role="src" md5sum="7cebfd22af6313b663f1b8058ef5d162" name="code\sa\sqlinc\sqlad_import_export.inc.php"/>
+         <file role="src" md5sum="34c49d508122f2262507d9c2c2ca0f15" name="code\sa\sqlinc\sqlfunc.inc.php"/>
+         <file role="src" md5sum="b96fc66d778dbeece87788cdaaabfac8" name="code\samples\accel.phpw"/>
+         <file role="src" md5sum="a2761442464ac71f9160357f04d7a1e4" name="code\samples\calc.phpw"/>
+         <file role="src" md5sum="02573a84d4559ea7adc8167143780903" name="code\samples\calc.rc"/>
+         <file role="src" md5sum="33a227f5a4036e312ff8ea8027354244" name="code\samples\combobox.phpw"/>
+         <file role="src" md5sum="2200b1e7ec416d59b523866a406fc56d" name="code\samples\dblclick.phpw"/>
+         <file role="src" md5sum="f5852475a9b5b88127eb953fb2d31422" name="code\samples\dib.phpw"/>
+         <file role="src" md5sum="4c69b4c0caf842e650d8968343f5c0ef" name="code\samples\digiclock.phpw"/>
+         <file role="src" md5sum="1a33caa31e812ed2c0eb91c03ee5f950" name="code\samples\dll_functions.phpw"/>
+         <file role="src" md5sum="310c3b0ab18c181d445d7888882211e1" name="code\samples\foreign_function_tutorial.phpw"/>
+         <file role="src" md5sum="0de47b6fb558ce863472e0a7ba295fe2" name="code\samples\hello.phpw"/>
+         <file role="src" md5sum="4c04c758e0d5e2d07361151eae78664e" name="code\samples\hello_oo.phpw"/>
+         <file role="src" md5sum="ba7d875585ea505e591241b60834d70a" name="code\samples\images.phpw"/>
+         <file role="src" md5sum="c6edf38b56d47d2e9869316220015bfd" name="code\samples\listview.phpw"/>
+         <file role="src" md5sum="4e28c14fb552973abf243aa1f5b43049" name="code\samples\manytests.wap"/>
+         <file role="src" md5sum="0b3b6d82e64e60fa9e93d51b5c7927ee" name="code\samples\manytests_listview.inc.php"/>
+         <file role="src" md5sum="5fa0885aab691301763a71d0ff1c3b90" name="code\samples\manytests_listview.rc"/>
+         <file role="src" md5sum="8267f654f36e69dbe298be6f326423fb" name="code\samples\manytests_lowlevel.inc.php"/>
+         <file role="src" md5sum="42eae24a85e5883f1f2cc2c2bba60064" name="code\samples\manytests_lowlevel.rc"/>
+         <file role="src" md5sum="500e2c9c48575990c5d4690984605647" name="code\samples\manytests_main.phpw"/>
+         <file role="src" md5sum="3ecf9401a4d7b408dcf3748bd235e410" name="code\samples\manytests_main.rc"/>
+         <file role="src" md5sum="a569e9422fe079927de81933352072ce" name="code\samples\manytests_main.rc.php"/>
+         <file role="src" md5sum="481687e3041cd2944c5bd41346db0559" name="code\samples\manytests_static.inc.php"/>
+         <file role="src" md5sum="ade92ca3522a1cfd0c4c820cdef297e7" name="code\samples\manytests_static.rc"/>
+         <file role="src" md5sum="69d6057e9474f0e4665225ad48ec74c5" name="code\samples\manytests_tabs.rc.php"/>
+         <file role="src" md5sum="4d5a36d2b28070429571c5f1438712e1" name="code\samples\manytests_treeview.inc.php"/>
+         <file role="src" md5sum="6a3c4c100ad97fc459325805142c829e" name="code\samples\manytests_treeview.rc"/>
+         <file role="src" md5sum="389be7128dcea6b2ccfcdd90711b366d" name="code\samples\manytests_values.inc.php"/>
+         <file role="src" md5sum="fe26c4982616d4f9f9c688fa3958a43f" name="code\samples\manytests_values.rc"/>
+         <file role="src" md5sum="1ca470160a90c3d1d0118f8330e6eee5" name="code\samples\minimal.phpw"/>
+         <file role="src" md5sum="9ea29db988627c552481b2e2f1758751" name="code\samples\mouse.phpw"/>
+         <file role="src" md5sum="0118f504fb9f4fa3283c084df65d729d" name="code\samples\no_main_loop.phpw"/>
+         <file role="src" md5sum="b1223cd88c2dce1121b183a3f9845ddd" name="code\samples\set_style.phpw"/>
+         <file role="src" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="code\samples\sqlite_todo.db"/>
+         <file role="src" md5sum="a57d63845ed47d2196bd809bb54959b2" name="code\samples\sysinfo.phpw"/>
+         <file role="src" md5sum="8703ee4f2c8919eff202c81ae966c4d5" name="code\samples\tabcontrol.phpw"/>
+         <file role="src" md5sum="9cac44639f8fc3d70ace87157afa5dc3" name="code\samples\treeview.phpw"/>
+         <file role="src" md5sum="09a9a1529b1119f7ca7bff90ea47924a" name="code\samples\ttfreader.phpw"/>
+         <file role="src" md5sum="932a177efa6538060fbb102fdb18e30d" name="code\samples\wait.phpw"/>
+         <file role="src" md5sum="e3cf51e6f8e02daa78d18ae46ae24264" name="code\samples\welcome.phpw"/>
+         <file role="src" md5sum="fb739e9f4d9003b029b18b35a9a0fae3" name="code\samples\window_tutorial.phpw"/>
+         <file role="src" md5sum="de8a1b29b9febf37fc748e68738ddecc" name="code\todo\dlg_cat.rc"/>
+         <file role="src" md5sum="3fabe829bc9fbf8b3f75153f31275f07" name="code\todo\dlg_cat.rc.php"/>
+         <file role="src" md5sum="bbdf8f8210f733eb560bf8fe1b2bc2cf" name="code\todo\dlg_item.rc"/>
+         <file role="src" md5sum="5b5ef886ca2ffb4553302a6f35ba90d1" name="code\todo\dlg_item.rc.php"/>
+         <file role="src" md5sum="6da31c2195eb7d45ede4e913d5d656c4" name="code\todo\dlg_prior.rc"/>
+         <file role="src" md5sum="dc277d221d382798ef80863329654d1f" name="code\todo\dlg_prior.rc.php"/>
+         <file role="src" md5sum="83518f409adbdf21cc7daac2f5786cf0" name="code\todo\dlg_sever.rc"/>
+         <file role="src" md5sum="9152e3caf6bd4d711e5c9cb24cf2a17f" name="code\todo\dlg_sever.rc.php"/>
+         <file role="src" md5sum="830fddebc3349e04b0a16e65d0466c15" name="code\todo\sqlite_todo.db"/>
+         <file role="src" md5sum="4663710599604c828043a7f37c442bd6" name="code\todo\todo.ini"/>
+         <file role="src" md5sum="754508672215b23aa50829b2713efb16" name="code\todo\todo.phpw"/>
+         <file role="src" md5sum="e8eaa36ade94e3b405cdcb9d83323dfc" name="code\todo\todo.rc"/>
+         <file role="src" md5sum="302b42bb878ce1967e5144dd99c46f38" name="code\todo\todo.rc.php"/>
+         <file role="src" md5sum="6194c2fa0bb194e5949ea450b201150d" name="code\todo\todo.wap"/>
+         <file role="src" md5sum="9727a8bb985146c7a914658be93d2a28" name="code\todo\todo_dlg_cat.inc.php"/>
+         <file role="src" md5sum="60574bad05f679fb8a12ba2776230f73" name="code\todo\todo_dlg_item.inc.php"/>
+         <file role="src" md5sum="3237ce20d9d6aa94a2d5d38d95d57205" name="code\todo\todo_dlg_prior.inc.php"/>
+         <file role="src" md5sum="4de0e9a3412059a0f87fe115eed0b495" name="code\todo\todo_dlg_sever.inc.php"/>
+         <file role="src" md5sum="0753d6699d3a7b8a7df83f4d8701badc" name="code\todo\todo_import_export.inc.php"/>
+         <file role="src" md5sum="ac4a04ea4a1d1a0659f9ac60a2d8931e" name="php\php4\php-win.exe"/>
+         <file role="src" md5sum="6f537c6e2d6a4a17f0cd35bdd11c4553" name="php\php4\ext\php_winbinder.dll"/>
+         <file role="src" md5sum="e3de4e2a08aa7f634a8bf3eacfcc74c0" name="php\php4\php.ini"/>
+         <file role="src" md5sum="17bb776c0fbfd5ae89c6e1d0025e137c" name="php\php4\php-win.exe.manifest"/>
+         <file role="src" md5sum="0751b73aff6e0740691e765aa6ef0a34" name="php\php4\php.exe.manifest"/>
+         <file role="src" md5sum="7f1e21cce2a94ed28486b1682d01b7fc" name="php\php5\ext\php_winbinder.dll"/>
+         <file role="src" md5sum="c5dc647fca40c556dc88d7298c1d4b2c" name="php\php5\php.ini"/>
+         <file role="src" md5sum="17bb776c0fbfd5ae89c6e1d0025e137c" name="php\php5\php-win.exe.manifest"/>
+         <file role="src" md5sum="0751b73aff6e0740691e765aa6ef0a34" name="php\php5\php.exe.manifest"/>
+
+      </filelist>
+   </release>
+</package>

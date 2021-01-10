@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>bcompiler</name>
+ <channel>pecl.php.net</channel>
+ <summary>A bytecode compiler</summary>
+ <description>bcompiler enables you to encode your scripts in phpbytecode, enabling you to protect the source code. 
+bcompiler could be used in the following situations
+  
+- to create a exe file of a PHP-GTK application (in conjunction with other software)
+- to create closed source libraries
+- to provide clients with time expired software (prior to payment)
+- to deliver close source applications
+- for use on embedded systems, where disk space is a priority.
+
+For install instructions see the manual at pear.php.net</description>
+ <lead>
+  <name>val khokhlov</name>
+  <user>val</user>
+  <email>val@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Alan Knowles</name>
+  <user>alan_k</user>
+  <email>alan@akbkhome.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-06-08</date>
+ <time>09:33:46</time>
+ <version>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+Finally a stable release - Many thanks for Val for looking after the package.
+
+- sources split to several files
+- bcompiler.debug and bcompiler.debugfile ini entries to control debugging
+- interfaces are serialized
+- reflection info is serialized
+- try to detect __FILE__ and __DIR__, bcompiler.detect_filedir=0 turns it off
+- bug with not looking for gz/bz2 compressed sources in include_path fixed
+- bug with handling classes when classname+filename &gt; 127 bytes fixed
+- bcompiled files are properly displayed in get_included_files()
+- support for new superglobals
+- fix segfault in bc_serialize_Filedir
+ </notes>
+ <contents>
+  <dir name="/">
+   <file baseinstalldir="/" md5sum="ad3b909c4a192af961ca3d4f27a796a2" name="examples/embed/Makefile" role="src" />
+   <file baseinstalldir="/" md5sum="7a17095a507dc5c7dc5c464c013a90ce" name="examples/embed/Makefile.win" role="src" />
+   <file baseinstalldir="/" md5sum="1f26b51deb874e467982e5abeb75ecde" name="examples/embed/phpe.c" role="src" />
+   <file baseinstalldir="/" md5sum="b26eaf99e655c3736be88983c299a4e5" name="examples/bcompiler.php" role="doc" />
+   <file baseinstalldir="/" md5sum="466cf55d15d5912e3eccd8c184be93f8" name="examples/bcompiler_compile.php" role="doc" />
+   <file baseinstalldir="/" md5sum="e7dbdd06edd3112e136b740a4372fe0e" name="examples/bcompiler_parse.php" role="doc" />
+   <file baseinstalldir="/" md5sum="1ed0e176145534634b618bf7a52ed5bd" name="examples/bcompiler_read.php" role="doc" />
+   <file md5sum="69e3832a9cb93cf5cd24c1d386f775cf" name="tests/a10-include.phpt" role="test" />
+   <file md5sum="f26dd6f76ff50bd2759289e80f17a7a6" name="tests/a11-include_empty.phpt" role="test" />
+   <file md5sum="eff65afa3d462535b88b0e20048a9a8c" name="tests/a12-include_bc.phpt" role="test" />
+   <file md5sum="3330d49009d1ef7b172f613cb33b47af" name="tests/a13-include_gz.phpt" role="test" />
+   <file md5sum="f9a549503b6437b99430e79fec2ee42b" name="tests/a14-include_bz2.phpt" role="test" />
+   <file md5sum="7a20675512e660bd01967786098387eb" name="tests/a15-included_files.phpt" role="test" />
+   <file md5sum="4c9377928a3f386aacdedd66c1f3da62" name="tests/a20-basic.phpt" role="test" />
+   <file md5sum="0b60a23812ca6e5b6d6ffae52228349b" name="tests/a21-const.phpt" role="test" />
+   <file md5sum="7dffae84a95148613291624802852e3b" name="tests/a22-vars.phpt" role="test" />
+   <file md5sum="9bdba84269a1000cc309541e4935ed0f" name="tests/a22-vars_php6.phpt" role="test" />
+   <file md5sum="761a40a765ca8f87edc3233f7b7306fe" name="tests/a23-func.phpt" role="test" />
+   <file md5sum="e983dfe06547ab46d900f7ecc7423c37" name="tests/a24-php6_encoding.phps" role="test" />
+   <file md5sum="67a4f2fc62b419dca5cbbd28042e79b0" name="tests/a24-php6_encoding.phpt" role="test" />
+   <file md5sum="1548c8d56f14c4ae2cf083df23a93c4b" name="tests/a25-goto.phpt" role="test" />
+   <file md5sum="9fe08753dcd49c65380ffc6859329927" name="tests/a26-brk_cont.phpt" role="test" />
+   <file md5sum="0360c7237c7973c87c10cb8d0e2885f6" name="tests/a29-exceptions.phpt" role="test" />
+   <file md5sum="bd9c91d0cce37cefd9ba9dc594f93fdf" name="tests/a30-class.phpt" role="test" />
+   <file md5sum="59f9f5ae54b9030a60b722c563e0d10f" name="tests/a31-class_extends.phpt" role="test" />
+   <file md5sum="a4075bc89e08d37d2d4d85c7367e5f97" name="tests/a32-class_Base.phps" role="test" />
+   <file md5sum="9358b76bff4eda3618e1f3dfd0bc3ada" name="tests/a32-class_extends.phpt" role="test" />
+   <file md5sum="f43356761895bb9f2448c38a5f9c017f" name="tests/a33-class_const.phpt" role="test" />
+   <file md5sum="4a6b2538861cb96208a63e1ad1ea928b" name="tests/a34-constructor.phpt" role="test" />
+   <file md5sum="d8635e4a1a63171a449893a7bc420153" name="tests/a35-class_static.phpt" role="test" />
+   <file md5sum="b6441d33168f68bcba719277fff915e0" name="tests/a36-abstract.phpt" role="test" />
+   <file md5sum="41aeeaa98b04fa6074c0c2d67a1ee20c" name="tests/a37-overloading.phpt" role="test" />
+   <file md5sum="84b97a6b84c6c0a35e37dc9660e41226" name="tests/a38-iteration.phpt" role="test" />
+   <file md5sum="46315fb6cf86913da457c04d8ab0a722" name="tests/a39-typehint.phpt" role="test" />
+   <file md5sum="eaafa0d75539a833de060fbd3bba03c5" name="tests/a40-late_binding.phpt" role="test" />
+   <file md5sum="f9ee26e543fb7c05b1bd93e8e71c9f89" name="tests/a41-ext_internal.phpt" role="test" />
+   <file md5sum="b664af0a4e6be3c2b9729eb697c3ac8c" name="tests/a42-ezctestcase.php" role="test" />
+   <file md5sum="e45fae7505b8d580f739a391b4040944" name="tests/a42-parent-errors-with-a-really-long-filename-that-causes-issues-and-things.phpt" role="test" />
+   <file md5sum="5e32ea4036ef03d8e3ffbe65d17a7d3a" name="tests/a50-class.phps" role="test" />
+   <file md5sum="474b8e4a7a9bfcbebb5dda6d406e2a1d" name="tests/a50-class_scope.phpt" role="test" />
+   <file md5sum="da3ab014901694cb1bbf8c8a7dca5e87" name="tests/a51-class_protvar.phpt" role="test" />
+   <file md5sum="3043578c0f893d3825f51a19c8e7a625" name="tests/a52-class_privvar.phpt" role="test" />
+   <file md5sum="ef5983d42916ba8e4c98bbd3372390ac" name="tests/a53-class_protfunc.phpt" role="test" />
+   <file md5sum="f57e26fff6d9b933b3db10a0272c35d4" name="tests/a54-class_privfunc.phpt" role="test" />
+   <file md5sum="6c30c9bf48d2ca7c5d985d2ced257867" name="tests/a55-class_privfunc.phpt" role="test" />
+   <file md5sum="87a539bb0f285ad401ee3bf5dccd77e3" name="tests/a56-class_privvar.phpt" role="test" />
+   <file md5sum="191a149c77f843db37b57663e013cd83" name="tests/a57-inherit-array-object.phpt" role="test" />
+   <file md5sum="48d398247dfebaff4710a6b96229d3f8" name="tests/a58-reflection-file.phpt" role="test" />
+   <file md5sum="54b2af2135131185672597c893a2f4c8" name="tests/a59-reflection-docblocks.phpt" role="test" />
+   <file md5sum="5fe2df73bcfc10490ee2134ddb634564" name="tests/a60-namespace.phpt" role="test" />
+   <file md5sum="b8524b31a8bee5524d173a60b49f7275" name="tests/a61-subnamespace.phpt" role="test" />
+   <file md5sum="dde9dba3d27723d2be2fa136b19b230d" name="tests/a62-use.phpt" role="test" />
+   <file md5sum="a74365e9f21a94e719c8e7affc599a96" name="tests/bug-16978.phpt" role="test" />
+   <file md5sum="7423306ce5b74fdd9169cf1c49ab8d5c" name="tests/bug-17043.phpt" role="test" />
+   <file md5sum="cd16cce2947e33bc0fcd894af61e743c" name="tests/bug-5693.phpt" role="test" />
+   <file md5sum="19374a42aa1247366e649704b3fba319" name="tests/filename_handler.phpt" role="test" />
+   <file md5sum="41b31122e6b6dfdd45e927f1a5ee3f5c" name="tests/test-helper.php" role="test" />
+   <file md5sum="d6d0a04ac26109d8a7706af4f55b6732" name="php_bcompiler.h" role="src" />
+   <file md5sum="79c76fa0cb856197d8d973f3e8399615" name="php_bcompiler.c" role="src" />
+   <file md5sum="2d7c6d2e8a51cdebff61442f32c49e24" name="bcompiler.c" role="src" />
+   <file md5sum="0a555416b842798871ab1300ea44147f" name="bcompiler_debug.c" role="src" />
+   <file md5sum="5de8d5abda6dc91c5e8a92887ec20350" name="bcompiler_zend.c" role="src" />
+   <file md5sum="8b4fcf3e3701de2ad89dcd96e5aebc97" name="config.m4" role="src" />
+   <file md5sum="4c0bb10d9621ae01ff790002b0ebf58d" name="config.w32" role="src" />
+   <file md5sum="eabdf180afe5b7fb9597195a80c67daf" name="bcompiler.dsp" role="src" />
+   <file md5sum="166da9d1ca1592449859ab66986a24cb" name="CREDITS" role="doc" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>bcompiler</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2010-11-23</date>
+   <time>21:50:00</time>
+   <version>
+    <release>0.9.5</release>
+    <api>0.9.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- sources split to several files
+- bcompiler.debug and bcompiler.debugfile ini entries to control debugging
+- interfaces are serialized
+- reflection info is serialized
+- try to detect __FILE__ and __DIR__, bcompiler.detect_filedir=0 turns it off
+- bug with not looking for gz/bz2 compressed sources in include_path fixed
+- bug with handling classes when classname+filename &gt; 127 bytes fixed
+- bcompiled files are properly displayed in get_included_files()
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9.3</release>
+    <api>0.9.3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-02-06</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- critical bugs fixed
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9.2</release>
+    <api>0.9.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-12-30</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- bcompiler_set_filename_handler() to change filename written into the bytecode
+- test suite
+- bugfixes
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9.1</release>
+    <api>0.9.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-11-29</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- PHP 5.3 and 6.0-dev support
+- bugfixes
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.8</release>
+    <api>0.8</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2006-10-04</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- bugfix release
+- preliminary PHP6 support
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.7</release>
+    <api>0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-07-28</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- APC-bcompiler interaction (so, you can use both at the same time)
+- many bugs were fixed
+- some code clean-up
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.6</release>
+    <api>0.6</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-02-15</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- added bcompiler_write_file() function to compile entire .php script
+- added support for gzip compressed bytecodes and auto-detect of the bz2 and zlib extensions
+- Zend Engine 2 and 2.1 support (for PHP versions 5.0.x and 5.1.x)
+- bug with incorrect handling include_once() and require_once() fixed
+- many memory leaks fixed
+- added support for stand-alone executables creating
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.5</release>
+    <api>0.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2003-06-06</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Added Functional Compiling (Valentin Solop)
+- Added Included file list - alpha
+- Lots of Windows Build fixes (Ernani Joppert Pontes Martins)
+- short tags and thread safety fixes (Edin Kadribasic)
+- bug #23981 &amp; #23852 fixed some bz2 checking (per at nobolt dot com)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.4</release>
+    <api>0.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2002-09-07</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- It actually works now! (decompiler fixed so it doesnt segfault)
+- Added compiler script to convert groups of php files/classes to bytecodes
+- Lots of Windows Build fixes, hopefully a windows version will be available soon.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3</release>
+    <api>0.3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2002-07-23</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+First Release in PECL
+   </notes>
+  </release>
+ </changelog>
+</package>

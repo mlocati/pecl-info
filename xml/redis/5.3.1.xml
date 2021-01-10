@@ -1,0 +1,1087 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.10.9" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>redis</name>
+ <channel>pecl.php.net</channel>
+ <summary>PHP extension for interfacing with Redis</summary>
+ <description>This extension provides an API for communicating with Redis servers.</description>
+ <lead>
+  <name>Michael Grunder</name>
+  <user>mgrunder</user>
+  <email>michael.grunder@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Pavlo Yatsukhnenko</name>
+  <user>yatsukhnenko</user>
+  <email>p.yatsukhnenko@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Nicolas Favre-Felix</name>
+  <user>nff</user>
+  <email>n.favrefelix@gmail.com</email>
+  <active>no</active>
+ </lead>
+ <date>2020-07-07</date>
+ <time>18:52:40</time>
+ <version>
+  <release>5.3.1</release>
+  <api>5.3.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+phpredis 5.3.1
+
+This is a small bugfix release that fixes a couple of issues in 5.3.0.
+
+You should upgrade if you&apos;re using persistent_id in session.save_path or
+of if you&apos;re having trouble building 5.3.0 because the php_hash_bin2hex
+symbol is missing.
+
+You can find a detailed list of changes in Changelog.md and package.xml
+
+* Sponsors
+  ~ Audiomack - https://audiomack.com
+  ~ BlueHost - https://bluehost.com
+  ~ Redis Cache Pro for WordPress - https://wprediscache.com
+  ~ Avtandil Kikabidze - https://github.com/akalongman
+
+---
+* Properly clean up on session start failure [066cff6a] (Michael Grunder)
+* Treat NULL as a failure for redis_extract_auth_info [49428a2f, 14ac969d]
+  (Michael Grunder)
+* Don&apos;t dereference a NULL zend_string or efree one [ff2e160f, 7fed06f2]
+  (Michael Grunder)
+* Fix config.m4 messages and test for and include php_hash.h [83a1b7c5,
+  3c56289c, 08f202e7] (Remi Collet)
+* Add openSUSE installation instructions [13a168f4] (Pavlo Yatsukhnenko)
+* Remove EOL Fedora installation instructions [b4779e6a] (Remi Collet)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="7d8cd4a383dc44cb3899ded5ce12f869" name="liblzf/LICENSE" role="doc" />
+   <file md5sum="551f9008e79f35cad9c5cd0354e53da1" name="liblzf/README" role="doc" />
+   <file md5sum="68942338136ce96eed98e2512cb8a36e" name="liblzf/lzf.h" role="src" />
+   <file md5sum="91a34efea468bc5c6796275f30b12c4b" name="liblzf/lzfP.h" role="src" />
+   <file md5sum="f56a91842e1a56820efe3f35fcfa486e" name="liblzf/lzf_c.c" role="src" />
+   <file md5sum="ef8f82dbd4bad7b83629c02724afcfd0" name="liblzf/lzf_d.c" role="src" />
+   <file md5sum="fc0a6dafce83ba9245ab7f074490b484" name="tests/RedisArrayTest.php" role="test" />
+   <file md5sum="cc4f326e6808f3b80f6da3677d8bef86" name="tests/RedisClusterTest.php" role="test" />
+   <file md5sum="bded559e9591a76ba7185446fa29fc29" name="tests/RedisSentinelTest.php" role="test" />
+   <file md5sum="f6d649e4941bd948953a2c0ed545b937" name="tests/RedisTest.php" role="test" />
+   <file md5sum="11be96db34a61ad8c6cd0851736a6085" name="tests/TestRedis.php" role="test" />
+   <file md5sum="b1594a4ffe4f51a8af0a5687dc09d942" name="tests/TestSuite.php" role="test" />
+   <file md5sum="54008d9b652609b7f8761347633768b9" name="tests/getSessionData.php" role="test" />
+   <file md5sum="41d74e22d416b8f211e9faa54c91f028" name="tests/regenerateSessionId.php" role="test" />
+   <file md5sum="1e8ead4f836caf9ddb07694c38c65f21" name="tests/startSession.php" role="test" />
+   <file md5sum="68bbc32df6f9ac6952c1929a9a65d984" name="tests/make-cluster.sh" role="test" />
+   <file md5sum="e9ddcb5f7abcef8507c394d8386f4742" name="tests/mkring.sh" role="test" />
+   <file md5sum="cb564efdf78cce8ea6e4b5a4f7c05d97" name="COPYING" role="doc" />
+   <file md5sum="d56374bf738d2b10cb1f97cd7c9cfb30" name="CREDITS" role="doc" />
+   <file md5sum="fe920bcef04549085e8b35ae2016aaa0" name="README.markdown" role="doc" />
+   <file md5sum="cea6dcf863a9dffb1772187d65a0ea2c" name="INSTALL.markdown" role="src" />
+   <file md5sum="89d0886085e6a4bcc43ef77948620814" name="arrays.markdown" role="doc" />
+   <file md5sum="b6274105b997027e409f941ec63b8a1e" name="cluster.markdown" role="doc" />
+   <file md5sum="dc17c1ecdcca469aed66aadf54735e67" name="sentinel.markdown" role="doc" />
+   <file md5sum="1cdf70b621b0debfdbc1aa66cae8f393" name="cluster_library.c" role="src" />
+   <file md5sum="e65f9208a6362033f9430d49557fd3c9" name="cluster_library.h" role="src" />
+   <file md5sum="35d5820842dabe3a9a118fbfae2a29e7" name="common.h" role="src" />
+   <file md5sum="09aac94ea95df47359e98dd019312c9c" name="config.m4" role="src" />
+   <file md5sum="f434a1c16ff547fe903529b178e95095" name="config.w32" role="src" />
+   <file md5sum="b21982c70ca8292b4ac540a76cd3bac4" name="crc16.h" role="src" />
+   <file md5sum="c4bf2b37f97e9f6803fe4eef19e91d0e" name="library.c" role="src" />
+   <file md5sum="16bbef53483fc581ef19e0307370112e" name="library.h" role="src" />
+   <file md5sum="332b9581ff7f776cb1349764bb58cc9f" name="php_redis.h" role="src" />
+   <file md5sum="8cd90bca20a3de10c8f3cc474cf14d54" name="redis.c" role="src" />
+   <file md5sum="fc8998c90a6f12f0a247245270df76bc" name="redis_array.c" role="src" />
+   <file md5sum="c8be8aeb60f4ec2c594af4189a55c855" name="redis_array.h" role="src" />
+   <file md5sum="fac822ca583152f754c1dfc3f46c6a50" name="redis_array_impl.c" role="src" />
+   <file md5sum="842f455fa52de820d693723e05fa4e6e" name="redis_array_impl.h" role="src" />
+   <file md5sum="3a6e574914248060c7c1a1a25f635d85" name="redis_cluster.c" role="src" />
+   <file md5sum="1621c2b47868539556207373e6e106e5" name="redis_cluster.h" role="src" />
+   <file md5sum="343cbc85fe2f4a47717f613030dcaa86" name="redis_commands.c" role="src" />
+   <file md5sum="ffe46c3601f747ea94fa48a6afebd8a8" name="redis_commands.h" role="src" />
+   <file md5sum="f021eff4fa40d043f48c9b92c0af13e8" name="redis_session.c" role="src" />
+   <file md5sum="460f37ce69ec58a24537ac1e914f85e2" name="redis_session.h" role="src" />
+   <file md5sum="1c53fc49e2f48ad59d3832b92ef6441d" name="redis_sentinel.c" role="src" />
+   <file md5sum="c49385b26166b5f6e0673ccff35c3fde" name="redis_sentinel.h" role="src" />
+   <file md5sum="45a1e96163214425cd9a0425ea5b5808" name="sentinel_library.c" role="src" />
+   <file md5sum="d8ce14c367d313d9086f2f24f71a77cb" name="sentinel_library.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+    <max>7.9.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>redis</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="enable-redis-igbinary" prompt="enable igbinary serializer support?" />
+  <configureoption default="no" name="enable-redis-lzf" prompt="enable lzf compression support?" />
+  <configureoption default="no" name="enable-redis-zstd" prompt="enable zstd compression support?" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>5.3.0</release>
+    <api>5.3.0</api>
+   </version>
+   <date>2020-06-30</date>
+   <notes>
+phpredis 5.3.0
+
+This release contains initial support for Redis 6 ACLs, LZ4 compression,
+and many more fixes and improvements.
+
+You can find a detailed list of changes in Changelog.md and package.xml
+
+A special thanks to BlueHost for sponsoring ACL support \o/
+
+* Sponsors
+  ~ Audiomack - https://audiomack.com
+  ~ BlueHost - https://bluehost.com
+  ~ Redis Cache Pro for WordPress - https://wprediscache.com
+  ~ Avtandil Kikabidze - https://github.com/akalongman
+
+phpredis 5.3.0
+
+- There were no changes between 5.3.0RC2 and 5.3.0.
+
+---
+
+phpredis 5.3.0RC2
+
+---
+
+* Fix LZ4 configuration and use pkg-config if we have it [df398cb0]
+  (Remi Collet)
+* Make sure persistent pool ID is NULL terminated [0838b5bd, 57bb95bf]
+  (Michael Grunder)
+* Run LZ4 tests in Travis [3ba3f06d] (Michael Grunder)
+
+phpredis 5.3.0RC1
+
+---
+
+* Support for Redis 6 ACLs [a311cc4e] (Michael Grunder)
+* LZ4 Compression [04def9fb] (Ilia Alshanetsky)
+* Support for new Redis 6 arguments (XINFO FULL, SET KEEPTTL) [a0c53e0b,
+  f9c7bb57] (Michael Grunder, Victor Kislov)
+* Support for TLS connections [890ee0e6, b0671296] (Pavlo Yatsukhnenko)
+* New option Redis::SCAN_PREFIX, Redis::SCAN_NOPREFIX [e80600e2] (Pavlo
+  Yatsukhnenko)
+* Configurable unit test authentication arguments [e37f38a3, 201a9759]
+  (Pavlo Yatsukhnenko, Michael Grunder)
+* Improved cluster slot caching mechanism to fix a couple of bugs and make
+  it more efficient. [5ca4141c] (Michael Grunder)
+* Stop calling Redis constructor when creating a RedisArray [e41e19a8]
+  (Pavlo Yatsukhnenko)
+* Use ZEND_LONG_FMT instead of system `long` [5bf88124] (Michael Grunder)
+* Use long for SCAN iteration to fix potential overflow [f13f9b7c]
+  (Victor Kislov)
+* Fix config.m4 to test for the variable $PHP_REDIS_JSON and not the
+  literal PHP_REDIS_JSON [20a3dc72] (Mizuki Nakano)
+* Fix compiler warnings [b9b383f4, 215828e] (Remi Collet),
+  Pavlo Yatsukhnenko)
+* Avoid use-after-free of RediSock [8c45816d] (Pavlo Yatsukhnenko)
+* Fixed ZADD arginfo [a8e2b021] (Pavlo Yatsukhnenko)
+* Store AUTH information in flags RedisSock rather than duplicating
+  information. [58dab564] (Pavlo Yatsukhnenko)
+* Refactor redis_sock_get_connection_pool logic. [73212e1]
+  (Pavlo Yatsukhnenko)
+* Updated documentation to show LPUSH and RPUSH are variadic and fixed DEL
+  documentation. [92f8dde1] (Michael Grunder)
+* Authenticate in redis_server_sock_open [4ef465b5] (Pavlo Yatsukhnenko)
+* Dynamically include json.so in unit tests based on configuration
+  [0ce7ca2f] (Michael Grunder)
+* Update save_path logic in Redis Cluster session unit tests [dd66fce]
+  (Pavlo Yatsukhnenko)
+* Refactoring various bits of logic [bbcf32a3, a42cf189, 460c8f29,
+  b7f9df75] (Pavlo Yatsukhnenko)
+* Use the portable `ZEND_LONG_FORMAT` family instead of C format specifiers
+  [b9b383f4](Remi Collet)
+* PHP 8 compatibility [9ee94ca4, 7e4c7b3e] (Pavlo Yatsukhnenko)
+* Refactor PHPREDIS_GET_OBJECT macro [d5dadaf6, 190c0d34]
+  (Pavlo Yatsukhnenko)
+* Fix documentation showing lPush and rPush are variadic [6808cd6a]
+  (Michael Grunder)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>5.2.2</release>
+    <api>5.2.2</api>
+   </version>
+   <date>2020-05-05</date>
+   <notes>
+phpredis 5.2.2
+
+This is a bugfix release that contains a fix for authentication
+when using persistent connections, and an option to make the
+ECHO challenge response logic optional.
+
+* Inexpensive liveness check, and making ECHO optional [56898f81] (Pavlo Yatsukhnenko)
+* Move `AUTH` to `redis_sock_server_open` [80f2529b](Pavlo Yatsukhnenko)
+
+* Sponsors
+  ~ Audiomack.com - https://audiomack.com
+  ~ Till Kruss - https://github.com/tillkruss
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>5.2.1</release>
+    <api>5.2.1</api>
+   </version>
+   <date>2020-03-19</date>
+   <notes>
+phpredis 5.2.1
+
+This is a bugfix release that fixes `redis-&gt;zAdd` arginfo as well as a
+segfault when closing persistent connections.
+
+* Fix arginfo for Redis::zadd [a8e2b021] (Pavlo Yatsukhnenko)
+* Fix segfault on closing persistent stream [b7f9df75] (Pavlo Yatsukhnenko)
+
+* Sponsors
+  ~ Audiomack.com - https://audiomack.com
+  ~ Till Kruss - https://github.com/tillkruss
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>5.2.0</release>
+    <api>5.2.0</api>
+   </version>
+   <date>2020-03-02</date>
+   <notes>
+phpredis 5.2.0
+
+- There were no changes between 5.2.0RC2 and 5.2.0.
+
+phpredis 5.2.0RC2
+
+* Include RedisSentinelTest.php in package.xml! [eddbfc8f] (Michael Grunder)
+* Fix -Wmaybe-uninitialized warning [740b8c87] (Remi Collet)
+* Fix improper destructor when zipping values and scores [371ae7ae]
+  (Michael Grunder)
+* Use php_rand instead of php_mt_rand for liveness challenge string
+  [9ef2ed89] (Michael Grunder)
+
+phpredis 5.2.0RC1
+
+This release contains initial support for Redis Sentinel as well as many
+smaller bug fixes and improvements.  It is especially of interest if you
+use persistent connections, as we&apos;ve added logic to make sure they are in
+a good state when retreving them from the pool.
+
+IMPORTANT: Sentinel support is considered experimental and the API
+           will likely change based on user feedback.
+
+* Sponsors
+  ~ Audiomack.com - https://audiomack.com
+  ~ Till Kruss - https://github.com/tillkruss
+
+---
+
+* Initial support for RedisSentinel [90cb69f3, c94e28f1, 46da22b0, 5a609fa4,
+  383779ed] (Pavlo Yatsukhnenko)
+
+* Houskeeping (spelling, doc changes, etc) [23f9de30, d07a8df6, 2d39b48d,
+  0ef488fc, 2c35e435, f52bd8a8, 2ddc5f21, 1ff7dfb7, db446138] (Tyson Andre,
+  Pavlo Yatsukhnenko, Michael Grunder, Tyson Andre)
+
+* Fix for ASK redirections [ba73fbee] (Michael Grunder)
+* Create specific &apos;test skipped&apos; exception [c3d83d44] (Michael Grunder)
+* Fixed memory leaks in RedisCluster [a107c9fc] (Michael Grunder)
+* Fixes for session lifetime values that underflow or overflow  [7a79ad9c,
+  3c48a332] (Michael Grunder)
+* Enables slot caching for Redis Cluster [23b1a9d8] (Michael Booth)
+
+* Support TYPE argument for SCAN [8eb39a26, b1724b84, 53fb36c9, 544e641b]
+  (Pavlo Yatsukhnenko)
+
+* Added challenge/response mechanism for persistent connections [a5f95925,
+  25cdaee6, 7b6072e0, 99ebd0cc, 3243f426] (Pavlo Yatsukhnenko, Michael Grunder)
+phpredis 5.2.0RC2
+
+* Include RedisSentinelTest.php in package.xml! [eddbfc8f] (Michael Grunder)
+* Fix -Wmaybe-uninitialized warning [740b8c87] (Remi Collet)
+* Fix improper destructor when zipping values and scores [371ae7ae]
+  (Michael Grunder)
+* Use php_rand instead of php_mt_rand for liveness challenge string
+  [9ef2ed89] (Michael Grunder)
+
+phpredis 5.2.0RC1
+
+This release contains initial support for Redis Sentinel as well as many
+smaller bug fixes and improvements.  It is especially of interest if you
+use persistent connections, as we&apos;ve added logic to make sure they are in
+a good state when retreving them from the pool.
+
+IMPORTANT: Sentinel support is considered experimental and the API
+           will likely change based on user feedback.
+
+* Sponsors
+  ~ Audiomack.com - https://audiomack.com
+  ~ Till Kruss - https://github.com/tillkruss
+
+---
+
+* Initial support for RedisSentinel [90cb69f3, c94e28f1, 46da22b0, 5a609fa4,
+  383779ed] (Pavlo Yatsukhnenko)
+
+* Houskeeping (spelling, doc changes, etc) [23f9de30, d07a8df6, 2d39b48d,
+  0ef488fc, 2c35e435, f52bd8a8, 2ddc5f21, 1ff7dfb7, db446138] (Tyson Andre,
+  Pavlo Yatsukhnenko, Michael Grunder, Tyson Andre)
+
+* Fix for ASK redirections [ba73fbee] (Michael Grunder)
+* Create specific &apos;test skipped&apos; exception [c3d83d44] (Michael Grunder)
+* Fixed memory leaks in RedisCluster [a107c9fc] (Michael Grunder)
+* Fixes for session lifetime values that underflow or overflow  [7a79ad9c,
+  3c48a332] (Michael Grunder)
+* Enables slot caching for Redis Cluster [23b1a9d8] (Michael Booth)
+
+* Support TYPE argument for SCAN [8eb39a26, b1724b84, 53fb36c9, 544e641b]
+  (Pavlo Yatsukhnenko)
+
+* Added challenge/response mechanism for persistent connections [a5f95925,
+  25cdaee6, 7b6072e0, 99ebd0cc, 3243f426] (Pavlo Yatsukhnenko, Michael Grunder)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>5.1.1</release>
+    <api>5.1.0</api>
+   </version>
+   <date>2019-11-11</date>
+   <notes>
+phpredis 5.1.1
+
+This release contains only bugfix for unix-socket connection.
+
+* Fix fail to connect to redis through unix socket [2bae8010, 9f4ededa] (Pavlo Yatsukhnenko, Michael Grunder)
+* Documentation improvements (@fitztrev)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>5.1.0</release>
+    <api>5.1.0</api>
+   </version>
+   <date>2019-10-31</date>
+   <notes>
+This release contains important bugfixes and improvements.
+
+phpredis 5.1.0
+
+* Allow to specify scheme for session handler [53a8bcc7] (Pavlo Yatsukhnenko)
+* Add documentation for hyperloglog [75a6f3fa, 96a0f0c3, 9686757a] (@rlunar)
+
+phpredis 5.1.0RC2
+
+* Fix missing null byte in PHP_MINFO_FUNCTION [8bc2240c] (Remi Collet)
+* Remove dead code generic_unsubscribe_cmd [8ee4abbc] (Pavlo Yatsukhnenko)
+* Add documentation for zpopmin and zpopmax [99ec24b3, 4ab1f940] (@alexander-schranz)
+
+phpredis 5.1.0RC1
+
+* Fix regression for multihost_distribute_call added in 112c77e3 [fbe0f804] (Pavlo Yatsukhnenko)
+* Fix regression for conntecting to unix sockets with relative path added in 1f41da64 [17b139d8, 7ef17ce1] (Pavlo Yatsukhnenko)
+* Fix unix-socket detection logic broken in 418428fa [a080b73f] (Pavlo Yatsukhnenko)
+* Fix memory leak and bug with getLastError for redis_mbulk_reply_assoc and redis_mbulk_reply_zipped. [7f42d628, 3a622a07] (Pavlo Yatsukhnenko), (Michael Grunder)
+* Fix bug with password contain &quot;#&quot; for redis_session [2bb08680] (Pavlo Yatsukhnenko)
+* Add optional support for Zstd compression, using --enable-redis-ztsd. This requires libzstd version &gt;= 1.3.0 [2abc61da] (Remi Collet)
+* Fix overallocation in RedisCluster directed node commands [cf93649] (Michael Grunder)
+* Also attach slaves when caching cluster slots [0d6d3fdd, b114fc26] (Michael Grunder)
+* Use zend_register_persistent_resource_ex for connection pooling [fdada7ae, 7c6c43a6] (Pavlo Yatsukhnenko)
+* Refactor redis_session [91a8e734, 978c3074] (Pavlo Yatsukhnenko)
+* Documentation improvements (@Steveb-p, @tangix, @ljack-adista, @jdreesen, Michael Grunder)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>5.0.0</release>
+    <api>5.0.0</api>
+   </version>
+   <date>2019-07-02</date>
+   <notes>
+This release contains important improvements and breaking changes.
+The most interesting are: drop PHP5 support, RedisCluster slots caching,
+JSON and msgpack serializers, soft deprecation of non-Redis commands.
+
+phpredis 5.0.0
+
+* Remove HAVE_SPL [55c5586c] (@petk)
+* Update Fedora installation instructions [90aa067c] (@remicollet)
+
+phpredis 5.0.0RC2
+
+* Allow compilation without JSON serialization enabled and fixes for deprecated
+  helper methods.  [235a27] (Pavlo Yatsukhnenko)
+* Fix php msgpack &gt;= 2.0.3 version requirement. [6973478..a537df8] (Michael Grunder)
+
+phpredis 5.0.0RC1
+
+* Enable connection pooling by default [8206b147] (Pavlo Yatsukhnenko)
+* Soft deprecate methods that aren&apos;t actually Redis commands [a81b4f2d, 95c8aab9] (Pavlo Yatsukhnenko, Michael Grunder)
+* Enable pooling for cluster slave nodes [17600dd1] (Michael Grunder)
+* xInfo response format [4852a510, ac9dca0a] (Pavlo Yatsukhnenko)
+* Make the XREADGROUP optional COUNT and BLOCK arguments nullable [0c17bd27] (Michael Grunder)
+* Allow PING to take an optional argument [6e494170] (Michael Grunder)
+* Allow ZRANGE to be called either with `true` or `[&apos;withscores&apos; =&gt; true]` [19f3efcf] (Michael Grunder)
+* Allow to specify server address as schema://host [418428fa] (Pavlo Yatsukhnenko)
+* Allow persistent_id to be passed as NULL with strict_types enabled [60223762] (Michael Grunder)
+* Add server address to exception message [e8fb49be, 34d6403d] (Pavlo Yatsukhnenko)
+* Adds OPT_REPLY_LITERAL for rawCommand and EVAL [5cb30fb2] (Michael Grunder)
+* JSON serializer [98bd2886, 96c57139] (Pavlo Yatsukhnenko, Michael Grunder)
+* Add support for STREAM to the type command [d7450b2f, 068ce978, 8a45d18c] (Michael Grunder, Pavlo Yatsukhnenko)
+* Fix TypeError when using built-in constants in `setOption` [4c7643ee] (@JoyceBabu)
+* Handle references in MGET [60d8b679] (Michael Grunder)
+* msgpack serializer [d5b8f833, 545250f3, 52bae8ab] (@bgort, Pavlo Yatsukhnenko, Michael Grunder)
+* Add RedisCluster slots caching [9f0d7bc0, ea081e05] (Michael Grunder)
+* Drop PHP5 support [f9928642, 46a50c12, 4601887d, 6ebb36ce, fdbe9d29] (Michael Grunder)
+* Documentation improvements (@alexander-schranz, @cookieguru, Pavlo Yatsukhnenko, Michael Grunder)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>4.3.0</release>
+    <api>4.3.0</api>
+   </version>
+   <date>2019-03-13</date>
+   <notes>
+phpredis 4.3.0
+
+This is probably the last release with PHP 5 suport!!!
+
+* Proper persistent connections pooling implementation [a3703820, c76e00fb, 0433dc03, c75b3b93] (Pavlo Yatsukhnenko)
+* RedisArray auth [b5549cff, 339cfa2b, 6b411aa8] (Pavlo Yatsukhnenko)
+* Use zend_string for storing key hashing algorithm [8cd165df, 64e6a57f] (Pavlo Yatsukhnenko)
+* Add ZPOPMAX and ZPOPMIN support [46f03561, f89e941a, 2ec7d91a] (@mbezhanov, Michael Grunder)
+* Implement GEORADIUS_RO and GEORADIUSBYMEMBER_RO [22d81a94] (Michael Grunder)
+* Add callback parameter to subscribe/psubscribe arginfo [0653ff31] (Pavlo Yatsukhnenko)
+* Don&apos;t check the number affected keys in PS_UPDATE_TIMESTAMP_FUNC [b00060ce] (Pavlo Yatsukhnenko)
+* Xgroup updates [15995c06] (Michael Grunder)
+* RedisCluster auth [c5994f2a] (Pavlo Yatsukhnenko)
+* Cancel pipeline mode without executing commands [789256d7] (Pavlo Yatsukhnenko)
+* Use zend_string for pipeline_cmd [e98f5116] (Pavlo Yatsukhnenko)
+* Different key hashing algorithms from hash extension [850027ff] (Pavlo Yatsukhnenko)
+* Breaking the lock acquire loop in case of network problems [61889cd7] (@SkydiveMarius)
+* Implement consistent hashing algorithm for RedisArray [bb32e6f3, 71922bf1] (Pavlo Yatsukhnenko)
+* Use zend_string for storing RedisArray hosts [602740d3, 3e7e1c83] (Pavlo Yatsukhnenko)
+* Update lzf_compress to be compatible with PECL lzf extension [b27fd430] (@jrchamp)
+* Fix RedisCluster keys memory leak [3b56b7db] (Michael Grunder)
+* Directly use return_value in RedisCluster::keys method [ad10a49e] (Pavlo Yatsukhnenko)
+* Fix segfault in Redis Cluster with inconsistent configuration [72749916, 6e455e2e] (Pavlo Yatsukhnenko)
+* Masters info leakfix [91bd7426] (Michael Grunder)
+* Refactor redis_sock_read_bulk_reply [bc4dbc4b] (Pavlo Yatsukhnenko)
+* Remove unused parameter lazy_connect from redis_sock_create [c0793e8b] (Pavlo Yatsukhnenko)
+* Remove useless ZEND_ACC_[C|D]TOR. [bc9b5597] (@twosee)
+* Documentation improvements (@fanjiapeng, @alexander-schranz, @hmc, Pavlo Yatsukhnenko, Michael Grunder)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>4.2.0RC3</release>
+    <api>4.2.0RC3</api>
+   </version>
+   <date>2018-11-08</date>
+   <notes>
+phpredis 4.2.0RC3
+
+The main feature of this release is new Streams API implemented by Michael Grunder.
+
+4.2.0RC3:
+
+* Optimize close method [2a1ef961] (fanjiapeng)
+* Prevent potential infinite loop for sessions [4e2de158] (Pavlo Yatsukhnenko)
+* Fix coverty warnings [6f7ddd27] (Pavlo Yatsukhnenko)
+* Fix session memory leaks [071a1d54, 92f14b14] (Pavlo Yatsukhnenko, Michael Grunder)
+* Fix XCLAIM on 32-bit installs [18dc2aac] (Michael Grunder)
+* Build warning fixes [b5093910, 51027044, 8b0f28cd] (Pavlo Yatsukhnenko, Remi Collet, twosee)
+
+4.2.0RC2:
+
+* Fix incorrect arginfo for `Redis::sRem` and `Redis::multi` [25b043ce] (Pavlo Yatsukhnenko)
+* Update STREAM API to handle STATUS -&gt; BULK reply change [0b97ec37] (Michael Grunder)
+* Treat a -1 response from cluster_check_response as a timeout. [27df9220, 07ef7f4e, d1172426] (Michael Grunder)
+* Use a ZSET insted of SET for EVAL tests [2e412373] (Michael Grunder)
+* Missing space between command and args [0af2a7fe] (@remicollet)
+
+4.2.0RC1:
+
+* Streams API [2c9e0572] (Michael Grunder)
+* Reset the socket after a timeout to make sure no wrong data is received [cd6ebc6d] (@marcdejonge)
+* Modify session testing logic [bfd27471] (Michael Grunder)
+* Allow &apos;-&apos; and &apos;+&apos; arguments and add tests for zLexCount and zRemRangeByLex [d4a08697] (Michael Grunder)
+* Fix printf format warnings [dcde9331] (Pavlo Yatsukhnenko)
+* Session module is required [58bd8cc8] (@remicollet)
+* Set default values for ini entries [e206ce9c] (Pavlo Yatsukhnenko)
+* Display ini entries in output of phpinfo [908ac4b3] (Pavlo Yatsukhnenko)
+* Persistant connections can be closed via close method + change reconnection logic [1d997873] (Pavlo Yatsukhnenko)
+* Documentation improvements (@mg, @elcheco, @lucascourot, @nolimitdev, Michael Grunder)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>4.1.1</release>
+    <api>4.1.1</api>
+   </version>
+   <date>2018-08-01</date>
+   <notes>
+phpredis 4.1.1
+
+This release contains only bugfixes and documentation improvements
+
+* Fix arginfo for Redis::set method [0c5e7f4d] (Pavlo Yatsukhnenko)
+* Fix compression in RedisCluster [a53e1a34] (Pavlo Yatsukhnenko)
+* Fix TravisCI builds [9bf32d30] (@jrchamp)
+* Highlight php codes in documentation [c3b023b0] (@ackintosh)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>4.1.0</release>
+    <api>4.1.0</api>
+   </version>
+   <date>2018-01-10</date>
+   <notes>
+phpredis 4.1.0
+
+The primary new feature of this release is session locking functionality. Thanks to @SkydiveMarius!
+
+* Add callbacks validate_sid and update_timestamp to session handler [aaaf0f23] (@hongboliu)
+* Call cluster_disconnect before destroying cluster object. [28ec4322] (Pavlo Yatsukhnenko)
+* Bulk strings can be zero length. (Michael Grunder)
+* Handle async parameter for flushDb and flushAll [beb6e8f3,acd10409,742cdd05] (Pavlo Yatsukhnenko)
+* Split INSTALL and add more instructions [43613d9e,80d2a917] (@remicollet, Pavlo Yatsukhnenko)
+* Only the first arg of connect and pconnect is required [063b5c1a] (@mathroc)
+* Add session locking functionality [300c7251] (@SkydiveMarius, Michael Grunder, Pavlo Yatsukhnenko)
+* Fix compression in RedisCluster [1aed74b4] (Pavlo Yatsukhnenko)
+* Refactor geo* commands + documentation improvements (Michael Grunder)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>4.0.2</release>
+    <api>4.0.2</api>
+   </version>
+   <date>2018-04-25</date>
+   <notes>
+phpredis 4.0.2
+
+This release contains only fix of exists method to take multiple keys
+and return integer value (was broken in 4.0.1) Thanks @RanjanRohit!
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>4.0.1</release>
+    <api>4.0.1</api>
+   </version>
+   <date>2018-04-18</date>
+   <notes>
+phpredis 4.0.1
+
+* Fix arginfo for connect/pconnect issue #1337 [c3b228] (@mathroc)
+* Don&apos;t leak a ZVAL [278232] (Michael Grunder)
+* Fix config.m4 for lzf issue #1325 [20e173] (Pavlo Yatsukhnenko)
+* Updates EXISTS documentation and notes change in 4.0.0 [bed186] (Michael Grunder)
+* Fix typo in notes [0bed36] (@szepeviktor)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>4.0.0</release>
+    <api>4.0.0</api>
+   </version>
+   <date>2018-03-17</date>
+   <notes>
+phpredis 4.0.0
+
+*** WARNING! THIS RELEASE CONTAINS BREAKING API CHANGES! ***
+
+* Add proper ARGINFO for all methods. (Pavlo Yatsukhnenko, Michael Grunder)
+* Let EXISTS take multiple keys [cccc39] (Michael Grunder)
+* Use zend_string as returning value for ra_extract_key and ra_call_extractor [9cd05911] (Pavlo Yatsukhnenko)
+* Implement SWAPDB and UNLINK commands [84f1f28b, 9e65c429] (Michael Grunder)
+* Return real connection error as exception [5b9c0c60] (Pavlo Yatsukhnenko, Michael Grunder)
+* Disallow using empty string as session name. [485db46f] (Pavlo Yatsukhnenko)
+* Use zend_string for storing auth and prefix members [4b8336f7] (Pavlo Yatsukhnenko)
+* The element of z_seeds may be a reference on php7 [367bc6aa, 1e63717a] (@janic716)
+* Avoid connection in helper methods [91e9cfe1] (Pavlo Yatsukhnenko)
+* Add tcp_keepalive option to redis sock [68c58513, 5101172a, 010336d5, 51e48729] (@git-hulk, Michael Grunder)
+* More robust GEORADIUS COUNT validation [f7edee5d] (Michael Grunder)
+* Add LZF compression (experimental) [e2c51251, 8cb2d5bd, 8657557] (Pavlo Yatsukhnenko)
+* Allow to use empty string as persistant_id [ec4fd1bd] (Pavlo Yatsukhnenko)
+* Don&apos;t use convert_to_string in redis_hmget_cmd [99335d6] (Pavlo Yatsukhnenko)
+* Allow mixing MULTI and PIPELINE modes (experimental) [5874b0] (Pavlo Yatsukhnenko)
+* PHP &gt;=7.3.0 uses zend_string to store `php_url` elements [b566fb44] (@fmk)
+* Documentation improvements (Michael Grunder, @TomA-R)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.6</release>
+    <api>3.1.6</api>
+   </version>
+   <date>2018-01-03</date>
+   <notes>
+phpredis 3.1.6
+
+This release conains only fix of RedisArray distributor hashing function
+which was broken in 3.1.4. Huge thanks to @rexchen123
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.5</release>
+    <api>3.1.5</api>
+   </version>
+   <date>2017-12-20</date>
+   <notes>
+phpredis 3.1.5
+
+This is interim release which contains only bug fixes.
+
+* Fix segfault when extending Redis class in PHP 5 [d23eff] (Pavlo Yatsukhnenko)
+* Fix RedisCluster constructor with PHP 7 strict scalar type [5c21d7] (Pavlo Yatsukhnenko)
+* Allow to use empty string as persistant_id [344de5] (Pavlo Yatsukhnenko)
+* Fix cluster_init_seeds. [db1347] (@adlagares)
+* Fix z_seeds may be a reference [42581a] (@janic716)
+* PHP &gt;=7.3 uses zend_string for php_url elements [b566fb] (@fmk)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.4</release>
+    <api>3.1.4</api>
+   </version>
+   <date>2017-09-27</date>
+   <notes>
+phpredis 3.1.4
+
+The primary new feature phpredis 3.1.4 is the ability to send MULTI .. EXEC blocks in pipeline mode.  There are
+also many bugfixes and minor improvements to the api, listed below:
+
+* Allow mixing MULTI and PIPELINE modes (experimental)!  [5874b0] (Pavlo Yatsukhnenko)
+
+* Added integration for coverty static analysis and fixed several warnings
+  [faac8b0, eff7398, 4766c25, 0438ab4, 1e0b065, 733732a, 26eeda5, 735025, 42f1c9, af71d4] (Pavlo Yatsukhnenko)
+* Added arginfo inrospection structures [81a0303, d5609fc, e5660be, 3c60e1f, 50dcb15, 6c2c6fa,
+  212e323, e23be2c, 682593d, f8de702, 4ef3acd, f116be9, 5c111dd, 9caa029, 0d69650, 6859828, 024e593,
+  3643ab6, f576fab, 122d41f, a09d0e6] (Tyson Andre, Pavlo Yatsukhnenko)
+* Fixed link to redis cluster documentation [3b0b06] (Pavlo Yatsukhnenko)
+* Remove unused PHP_RINIT and PHP_RSHUTDOWN functions [c760bf] (Pavlo Yatsukhnenko)
+* Removed duplicate HGET in redis array hash table, formatting [d0b9c5] (Pavlo Yatsukhnenko)
+* Treat NULL bulk as success for session read [659450] (Pavlo Yatsukhnenko)
+* Refactor redis_send_discard [ea15ce] (Pavlo Yatsukhnenko)
+* Updated runtime exception handling [8dcaa4, 7c1407] (Pavlo Yatsukhnenko)
+* Added a github issue template [61aba9] (Pavlo Yatsukhnenko)
+* Initialize gc member of zend_string [37f569) (Pavlo Yatsukhnenko)
+* Fix valgrind warnings [471ce07, 1ab89e1, b624a8b] (Pavlo Yatsukhnenko)
+* Fix php5/php7 compatibility layer [1ab89e, 4e3225] (Pavlo Yatsukhnenko)
+* Fix typo in README.markdown [e47e44] (Mark Shehata)
+* Improve redis array rehash [577a91] (Pavlo Yatsukhnenko)
+* Change redis array pure_cmds from zval to hashtable [a56ed7] (Pavlo Yatsukhnenko)
+* Don&apos;t try to set TCP_NODELAY on a unix socket and don&apos;t warn on multiple
+  calls to pipeline [d11798, 77aeba] (Michael Grunder)
+* Use zend_string rather than char* for various context fields (err, prefix, etc) [2bf7b2] (Pavlo Yatsukhnenko)
+* Various other library fixes [142b51, 4452f6, e672f4, 658ee3, c9df77, 4a0a46] (Pavlo Yatsukhnenko)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.3</release>
+    <api>3.1.3</api>
+   </version>
+   <date>2017-07-15</date>
+   <notes>
+phpredis 3.1.3
+
+This release contains two big improvements:
+  1. Adding a new printf like command construction function with additionaly format specifiers specific to phpredis.
+  2. Implementation of custom objects for Redis and RedisArray wich eliminates double hash lookup.
+Also many small improvements and bug fixes were made.
+
+* A printf like method to construct a Redis RESP command [a4a0ed, d75081, bdd287, 0eaeae, b3d00d] (Michael Grunder)
+* Use custom objects instead of zend_list for storing Redis/RedisArray [a765f8, 8fa85a] (Pavlo Yatsukhnenko)
+* Make sure redisCluster members are all initialized on (re)creation [162d88] (Michael Grunder)
+* Fix Null Bulk String response parsing in cluster library [058753] (Alberto Fernández)
+* Add hStrLen command [c52077, fb88e1] (Pavlo Yatsukhnenko)
+* Add optional COUNT argument to sPop [d2e203] (Michael Grunder)
+* Allow sInterStore to take one arg [26aec4, 4cd06b] (Michael Grunder)
+* Allow MIGRATE to accept multiple keys [9aa3db] (Michael Grunder)
+* Allow using numeric string in zInter command [ba0070] (Pavlo Yatsukhnenko)
+* Use crc32 table from PHP distro [f81694] (Pavlo Yatsukhnenko)
+* Use ZVAL_DEREF macros for dereference input variables [ad4596] (Pavlo Yatsukhnenko)
+* Add configureoption tag to package.xml [750963] (Pavlo Yatsukhnenko)
+* Fix read_timeout [18149e, b56dc4] (Pavlo Yatsukhnenko)
+* Fix zval_get_string impl for PHP5 [4e56ba] (Pavlo Yatsukhnenko)
+* Fix Redis/RedisArray segfaults [be5c1f, 635c3a, 1f8dde, 43e1e0] (Pavlo Yatsukhnenko)
+* Fix memory leak and potential segfault [aa6ff7, 88efaa] (Michael Grunder)
+* Throw exception for all non recoverable errors [e37239] (Pavlo Yatsukhnenko)
+* Assume &quot;NULL bulk&quot; reply as success (empty session data) [4a81e1] (Pavlo Yatsukhnenko)
+* Increase read buffers size [520e06] (Pavlo Yatsukhnenko)
+* Better documentation [f0c25a, c5991f, 9ec9ae] (Michael Grunder)
+* Better TravisCI integration [e37c08] (Pavlo Yatsukhnenko)
+* Refactoring (Pavlo Yatsukhnenko, Michael Grunder)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.2</release>
+    <api>3.1.2</api>
+   </version>
+   <date>2017-03-16</date>
+   <notes>
+phpredis 3.1.2
+
+* RedisArray segfault fix [564ce3] (Pavlo Yatsukhnenko)
+* Small memory leak fix [645888b] (Mike Grunder)
+* Segfault fix when recreating RedisCluster objects [abf7d4] (Michael Grunder)
+* Fix for RedisCluster bulk response parsing [4121c4] (Alberto Fernández)
+* Re allow single array for sInterStore [6ef0c2, d01966] (Michael Grunder)
+* Better TravisCI integration [4fd2f6] (Pavlo Yatsukhnenko)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>3.1.1RC2</release>
+    <api>3.1.1RC2</api>
+   </version>
+   <date>2017-01-16</date>
+   <notes>
+phpredis 3.1.1RC2
+
+* Additional test updates for 32 bit systems (@remicollet)
+* ARM rounding issue in tests (@remicollet)
+* Use new zend_list_close instead of zend_list_delete when reconnecting.
+* Refactoring of redis_boolean_response_impl and redis_sock_write (@yatsukhnenko)
+
+phpredis 3.1.1.RC1
+
+This release contains mostly fixes for issues introduced when merging
+the php 5 and 7 codebase into a single branch.
+
+* Fixed a segfault in igbinary serialization (@yatsukhnenko)
+* Restore 2.2.8/3.0.0 functionality to distinguish between an error
+  and simply empty session data. (@remicollet)
+* Fix double to string conversion function (@yatsukhnenko)
+* Use PHP_FE_END definition when available (@remicollet)
+* Fixed various &apos;static function declared but not used&apos; warnings
+* Fixes to various calls which were typecasting pointers to the
+  wrong size. (@remicollet)
+
+* Added php session unit test (@yatsukhnenko)
+* Added explicit module dependancy for igbinary (@remicollet)
+* Added phpinfo serialization information (@remicollet)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.0</release>
+    <api>3.1.0</api>
+   </version>
+   <date>2016-12-14</date>
+   <notes>
+phpredis 3.1.0
+
+In this version of phpredis codebase was unified to work with all versions of php \o/
+Also many bug fixes and some improvements has been made.
+
+--- Improvements ---
+
+* Support the client to Redis Cluster just having one master (andyli) [892e5646]
+* Allow both long and strings that are longs for zrangebyscore offset/limit (Michael Grunder) [bdcdd2aa]
+* Process NX|XX, CH and INCR options in zAdd command (Pavlo Yatsukhnenko) [71c9f7c8]
+
+--- Fixes ---
+
+* Fix incrby/decrby for large integers (Michael Grunder) [3a12758a]
+* Use static declarations for spl_ce_RuntimeException decl (Jeremy Mikola) [a9857d69]
+* Fixed method call problem causes session handler to display two times (ZiHang Gao) [24f86c49]
+* psetex method returns &apos;+OK&apos; on success, not true (sitri@ndxbn) [afcd8445]
+* Fix integer overflow for long (&gt;32bit) increments in hIncrBy (iyesin) [58e1d799]
+* Move zend_object handler to the end (Michael Grunder) [34107966]
+* Using setOption on redis array causes immediate connection (Pavlo Yatsukhnenko) [f1a85b38]
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.8</release>
+    <api>2.2.8</api>
+   </version>
+   <date>2016-06-02</date>
+   <notes>
+phpredis 2.2.8
+
+The main improvement in this version of phpredis is support for Redis
+Cluster.  This version of phpredis is intended for versions of php older
+than 7.
+
+In addition there have been many bug fixes and improvements to non cluster
+related commands, which are listed below.
+
+I&apos;ve attempted to include everyone who contribued to the project in each fix
+description and have included names or github user ids.
+
+Thanks to everyone for submitting bug reports and pull requests.  A special
+thanks to Remi Collet for helping with any and all packaging related issues
+
+\o/
+
+--- Improvements ---
+
+* Added randomization to our seed nodes to balance which instance is used
+  to map the keyspace (Vitaliy Stepanyuk) [32eb1c5f]
+* Added support for IPv6 addresses
+
+--- Fixes ---
+
+* PHP liveness checking workaround (Shafreeck Sea) [c18d58b9]
+* Various documentation and code formatting and style fixes (ares333,
+  sanpili, Bryan Nelson, linfangrong, Romero Malaquias, Viktor Szépe)
+* Fix scan reply processing to use long instead of int to avoid overflow
+  (mixiaojiong).
+* Fix potential segfault in Redis Cluster session storage (Sergei Lomakov)
+  [cc15aae]
+* Fixed memory leak in discard function [17b1f427]
+* Sanity check for igbinary unserialization (Maurus Cuelenaere) [3266b222,
+  5528297a]
+* Fix segfault occuring from unclosed socket connection for Redis Cluster
+  (CatKang) [04196aee]
+* Case insensitive zRangeByScore options
+* Fixed dreaded size_t vs long long compiler warning
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.7</release>
+    <api>2.2.7</api>
+   </version>
+   <date>2015-03-03</date>
+   <notes>
+phpredis 2.2.7
+
+ -- Improvements ---
+
+ * Implemented PFADD, PFMERGE, and PFCOUNT command handling
+ * Implemented ZRANGEBYLEX command (holding off on ZREVRANGEBYLEX
+   as that won&apos;t be out until 3.0)
+ * Implemented getMode() so clients can detect whether we&apos;re in
+   ATOMIC/MULTI/PIPELINE mode.
+ * Implemented rawCommand() so clients can send arbitrary things to
+   the redis server
+ * Implemented DEBUG OBJECT (@michael-grunder, @isage)
+ * Added/abide by connect timeout for RedisArray
+ * Select to the last selected DB when phpredis reconnects
+
+ -- Fixes ---
+
+ * Fix a possible invalid free in _serialize
+ * Added SAVE and BGSAVE to &quot;distributable&quot; commands for RedisArray
+ * @welting -- Fixed invalid &quot;argc&quot; calculation re HLL commands
+ * Allow clients to break out of the subscribe loop and return context.
+ * Fixes a memory leak in SCAN when OPT_SCAN_RETRY id.
+ * @remicollet -- Fix possible segfault when igbinary is enabled.
+ * Add a couple of cases where we throw on an error (LOADING/NOAUTH/MASTERDOWN)
+ * Fix several issues with serialization NARY
+ * @itcom -- Fix missing TSRMLS_CC and a TSRMLS_DC/TSRMLS_CC typo
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.5</release>
+    <api>2.2.5</api>
+   </version>
+   <date>2014-03-15</date>
+   <notes>
+phpredis 2.2.5
+
+This is a minor release with several bug fixes as well as additions to support
+new commands that have been introduced to Redis since our last release.
+
+A special thanks to everyone who helps the project by commenting on issues and
+submitting pull requests!  :)
+
+[NEW] Support for the BITPOS command
+[NEW] Connection timeout option for RedisArray (@MikeToString)
+[NEW] A _serialize method, to complement our existing _unserialize method
+[NEW] Support for the PUBSUB command
+[NEW] Support for SCAN, SSCAN, HSCAN, and ZSCAN
+[NEW] Support for the WAIT command
+
+[FIX] Handle the COPY and REPLACE arguments for the MIGRATE command
+
+[DOC] Fix syntax error in documentation for the SET command (@mithunsatheesh)
+[DOC] Homebrew documentation instructions (@mathias)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.4</release>
+    <api>2.2.4</api>
+   </version>
+   <date>2013-09-01</date>
+   <notes>
+**
+** Features / Improvements
+**
+
+* Randomized reconnect delay for RedisArray @mobli
+  This feature adds an optional parameter when constructing a RedisArray object
+  such that a random delay will be introduced if reconnections are made,
+  mitigating any &apos;thundering herd&apos; type problems.
+
+* Lazy connections to RedisArray servers @mobli
+  By default, RedisArray will attempt to connect to each server you pass in
+  the ring on construction.  This feature lets you specify that you would
+  rather have RedisArray only attempt a connection when it needs to get data
+  from a particular node (throughput/performance improvement).
+
+* Allow LONG and STRING keys in MGET/MSET
+* Extended SET options for Redis &gt;= 2.6.12
+* Persistent connections and UNIX SOCKET support for RedisArray
+* Allow aggregates for ZUNION/ZINTER without weights @mheijkoop
+* Support for SLOWLOG command
+* Reworked MGET algorithm to run in linear time regardless of key count.
+* Reworked ZINTERSTORE/ZUNIONSTORE algorithm to run in linear time
+
+**
+** Bug fixes
+**
+
+* C99 Compliance (or rather lack thereof) fix @mobli
+* Added ZEND_ACC_CTOR and ZEND_ACC_DTOR @euskadi31
+* Stop throwing and clearing an exception on connect failure @matmoi
+* Fix a false positive unit test failure having to do with TTL returns
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.3</release>
+    <api>2.2.3</api>
+   </version>
+   <date>2013-04-29</date>
+   <notes>
+First release to PECL
+   </notes>
+  </release>
+ </changelog>
+</package>

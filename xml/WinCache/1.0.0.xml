@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.8.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>WINCACHE</name>
+ <channel>pecl.php.net</channel>
+ <summary>Windows Cache Extension for PHP</summary>
+ <description>Windows Cache Extension for PHP is a PHP accelerator that is used to increase the speed of PHP applications running on Windows and Windows Server. Once the Windows Cache Extension for PHP is enabled and loaded by the PHP engine, PHP applications can take advantage of the functionality without any code modifications. The extension includes PHP opcode cache, file system cache and relative path cache.</description>
+ <lead>
+  <name>Ruslan Yakushev</name>
+  <user>ruslany</user>
+  <email>ruslany@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Venkat Raman Don</name>
+  <user>donraman</user>
+  <email>don.raman@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Kanwaljeet Singla</name>
+  <user>ksingla</user>
+  <email>ksingla@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <helper>
+  <name>Pierre-Alain Joye</name>
+  <user>pajoye</user>
+  <email>pajoye@php.net</email>
+  <active>yes</active>
+ </helper>
+ <date>2009-11-19</date>
+ <time>10:29:55</time>
+ <version>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD License</license>
+ <notes>
+- Setting absentry and same_value in rplist_value under writelock.
+- Final v1 RTW build is version 1117.
+- Updated the wincache.php to show a warning if opcode cache size is too small and it has been automatically increased.
+- Changed minimum/maximum values of fcachesize, ocachesize. Added olocaltest. Forced ocachesize to be atleast 3 times fcachesize.
+- Prevent rplist_value same_value field from pointing to itself, else deleteval does double free on same rplist value.
+- Rplist, fcache, ocache entries are deleted by same process. Only marking rplist entries deleted when needed.
+- Made strings in rplist_value aligned to dword boundary. Other miscellaneous code improvements.
+- Converting opened_path to lowercase makes case-sensitive comparison of __FILE__ with realpath() fail. Fixed.
+- Process with local opcode cache never does complete remove_aplist_entry now. Added debuglevel 501 and warning codes. Modified asserts.
+- Changed cache size default values. Default size of file cache is 32 MB and opcode cache is 96 MB.
+- WINCACHE.PHP will now display files in Output cache and File cache in lexicographical sorted way. The same holds true for relative path cache tab.
+- First file executed appears duplicate in included_files list because WinCache adds the file in lowercase which is different from PHP core.
+- Taken care of zend bailout properly.
+- Removing the local entry when an entry in global aplist gets created.
+- Scavenger gets disabled if ttlmax value is 0. Also disabled scavenger in processes which create local opcode cache.
+- Fix VC6 compatibility.
+- Added total memory row for the file cache and opcode cache overview tables. Also re-ordered the colums in the file cache list to be consistent with opcode cache list.
+- Added tooltip for statistics column in wincache.php file.
+- Added memory usage pie charts to wincache.php file.
+- Minor changes to php_wincache. Made is_free unsigned int. Made used_header similar to free_header by adding two dummy size_t.
+- Implemented new INI directive FCENABLEDFILER for file cache which is similar to OCENABLEDFILTER for output cache.
+- Fixed the wincache.php authenticaiton logic to not conflict with IIS built-in authentication.
+- Added the &quot;filelist&quot; id&apos;s to the file list tables to allow usage of page anchors in navigation.
+- Modified the chart in wincache.php to display the numbers rounded to 2 digits after decimal point.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="33198b1aa98c7401ca5377932876ea63" name="config.w32" role="doc" />
+   <file md5sum="164b10da8aa64d4f305e529bb6d2fb34" name="INSTALL" role="doc" />
+   <file md5sum="1c64bd0f2de4ff7396a2cc7ec3847c55" name="LICENSE" role="doc" />
+   <file md5sum="962101be9674c239891b131b1b240521" name="php_wincache.c" role="src" />
+   <file md5sum="bf62285bafe8520f8ae6dd92200ccbed" name="php_wincache.h" role="src" />
+   <file md5sum="181f43c5160903088ead71f330a13477" name="precomp.h" role="src" />
+   <file md5sum="a8699164feaa426443f8eaaeaf1924b9" name="template.rc" role="src" />
+   <file md5sum="9270fe95acd12840b936164e25288f95" name="wincache_alloc.c" role="src" />
+   <file md5sum="a60c71f1d5c5c70f1b92442c2fc59142" name="wincache_alloc.h" role="src" />
+   <file md5sum="0597c9f5a1502d03b7ee3de8f096fa61" name="wincache_aplist.c" role="src" />
+   <file md5sum="50e9b1a9018ff802ea025b6ad9350c51" name="wincache_aplist.h" role="src" />
+   <file md5sum="2548e7f0bec6a5ac1b99b7098b28f51f" name="wincache_debug.c" role="src" />
+   <file md5sum="3ce216da2bb9e3842f1d6f54404d4a87" name="wincache_debug.h" role="src" />
+   <file md5sum="516badb29f760a5225ffdfaa974062bb" name="wincache_error.c" role="src" />
+   <file md5sum="5256ea138ab3ed010a5b4296716e4ec4" name="wincache_error.h" role="src" />
+   <file md5sum="f09aaca27dcfb1946d15d2aebb02d07c" name="wincache_fcache.c" role="src" />
+   <file md5sum="ac46d37fcf8dfd93c1d1d3aab7c490aa" name="wincache_fcache.h" role="src" />
+   <file md5sum="cec0ce83421ddf2dbeb27475aa7bf7d1" name="wincache_filemap.c" role="src" />
+   <file md5sum="49b7f43950f017039cbae743e7412100" name="wincache_filemap.h" role="src" />
+   <file md5sum="d53283e3849c72d25cfb77584f28414b" name="wincache_lock.c" role="src" />
+   <file md5sum="8a8045dcd757b335cdbafa2608dac87f" name="wincache_lock.h" role="src" />
+   <file md5sum="267bb7f6f0a3db450c56a02a67307d08" name="wincache_ocache.c" role="src" />
+   <file md5sum="50457d36ba905ce1a1d8c3e28069e971" name="wincache_ocache.h" role="src" />
+   <file md5sum="64c0e6ebd62884a853f59d5e3ef71224" name="wincache_opcopy.c" role="src" />
+   <file md5sum="b18bbbd9a2952da94a3246fc88348437" name="wincache_opcopy.h" role="src" />
+   <file md5sum="18f0fe12f096bd55409c333fe2a99dc8" name="wincache_rplist.c" role="src" />
+   <file md5sum="1082507e9c97668b04bdf837f1346292" name="wincache_rplist.h" role="src" />
+   <file md5sum="cae6b212e617bfce731533b127fec543" name="wincache_utils.c" role="src" />
+   <file md5sum="4370cbc0536ce22873bc243c11ff8ff4" name="wincache_utils.h" role="src" />
+   <file md5sum="e7359cfe725695c44401fabe390a4f60" name="wincache.php" role="php" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>wincache</providesextension>
+ <extsrcrelease />
+ <changelog />
+</package>

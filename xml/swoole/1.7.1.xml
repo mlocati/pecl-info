@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>swoole</name>
+ <channel>pecl.php.net</channel>
+ <summary>PHP&apos;s asynchronous concurrent distributed networking framework</summary>
+ <description>PHP&apos;s asynchronous concurrent distributed networking framework.
+- event-driven
+- full asynchronous non-blocking
+- multi-thread reactor
+- multi-process worker
+- millisecond timer
+- async MySQL
+- async task
+- async read/write file system
+- async dns lookup
+- support IPv4/IPv6/UnixSocket/TCP/UDP</description>
+ <lead>
+  <name>Tianfeng Han</name>
+  <user>tianfenghan</user>
+  <email>mikan.tenny@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Shen Zhe</name>
+  <user>shenzhe</user>
+  <email>shenzhe163@gmail.com</email>
+  <active>yes</active>
+ </developer>
+ <date>2014-04-30</date>
+ <time>05:07:25</time>
+ <version>
+  <release>1.7.1</release>
+  <api>1.7.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</license>
+ <notes>
+- Check close fd is not timer_fd
+- TCP_DEFER_ACCEPT option
+- socket LINGER option
+- Fixed eof_check memory error
+- Added swoole_event_set
+- Added swoole_client out_buffer
+- Added socket linger option
+- Fixed the swoole_server-&gt;close destroy out_buffer bug
+- Using php_error_docref
+- Fixed swoole_async_dns_lookup warning
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="ae78294842ed7bf0c3a4dec826c3cd5c" name="include/swoole.h" role="src" />
+   <file md5sum="64560504688f0eb29074bb67b1e1b1f4" name="include/Server.h" role="src" />
+   <file md5sum="f2c7a4b7647e056b58640823cb15feef" name="include/Client.h" role="src" />
+   <file md5sum="50e6cff255be80795dababdaad6fe4f5" name="include/atomic.h" role="src" />
+   <file md5sum="179435a5a525b9c500087d35efd29d9c" name="include/buffer.h" role="src" />
+   <file md5sum="d6e0b51b26d72672909d865a1921ce2d" name="include/hashmap.h" role="src" />
+   <file md5sum="7ea6ff746305b1b0ca3f51f0b4afd077" name="include/list.h" role="src" />
+   <file md5sum="cabf0fc85c39d9adae9facd81bc282b8" name="include/RingQueue.h" role="src" />
+   <file md5sum="34a669d527e0a1aecaaa7853f989f466" name="include/uthash.h" role="src" />
+   <file md5sum="3500a58f16a9fba4c032598fda146488" name="include/tests.h" role="src" />
+   <file md5sum="b45614a73d00d1f7dec2e1e5d9c1f267" name="include/array.h" role="src" />
+   <file md5sum="fcff73289c86e2d4815c48573ae4ed0a" name="include/async.h" role="src" />
+   <file md5sum="5a86312de391d8f025a7d14fc3f402ce" name="examples/async/read.php" role="src" />
+   <file md5sum="bff0fc19498842ed8bc02680481fd5fb" name="examples/async/readfile.php" role="src" />
+   <file md5sum="db9b90c08a2256674e07f29cf8eadc98" name="examples/async/write.php" role="src" />
+   <file md5sum="f2527f5e315e7c7ee1b8b2397db0c3ba" name="examples/async/dns_lookup.php" role="src" />
+   <file md5sum="2a3f9258dd37eb89537b8ac6a0578ce2" name="examples/client/async.php" role="src" />
+   <file md5sum="8ccf1421e59f376087f8558e8e4fd786" name="examples/client/long_tcp.php" role="src" />
+   <file md5sum="720fb55a584bae2963d759c11597f77b" name="examples/server/echo.php" role="src" />
+   <file md5sum="fb53eca314bed617869b89205d0a8c43" name="examples/server/unix_dgram.php" role="src" />
+   <file md5sum="2c719b3be2dcd7cf22a5847dfb7073d3" name="examples/server/ipv6.php" role="src" />
+   <file md5sum="dae572b5edb321e91d8fcf983f1564e6" name="examples/server/eof_client.php" role="src" />
+   <file md5sum="cf7aa3fa358685fcfc2bc6c22df1bb11" name="examples/server/eof_server.php" role="src" />
+   <file md5sum="8ce0848e04b5456ca8322162ca3b098c" name="examples/server/unix_stream.php" role="src" />
+   <file md5sum="dae391cf478d48737da39bc6f3651050" name="examples/event/stream.php" role="src" />
+   <file md5sum="15ce9ad763e5591643af2852981bd92a" name="examples/event/sockets.php" role="src" />
+   <file md5sum="1e430732bb7803183f4b3e17c4e330b7" name="examples/server.php" role="src" />
+   <file md5sum="e194af675fc03bb43f32fe443d6ac938" name="examples/mysql_proxy_server.php" role="src" />
+   <file md5sum="a065ffcf51aa772bc98aa10dab7cea98" name="examples/async_mysql2.php" role="src" />
+   <file md5sum="94409cd91138f07c61339bbaa34ba3e1" name="examples/client.php" role="src" />
+   <file md5sum="4f48c12109b2955616f563643293d5b6" name="examples/proxy.php" role="src" />
+   <file md5sum="388176ae6488b2fcedd535ab9cec2b36" name="examples/proxy_sync.php" role="src" />
+   <file md5sum="cc4536fa149bf87bf3e0cb3ded84daab" name="examples/udp_server.php" role="src" />
+   <file md5sum="6528c0bb7fb670ff8f434909df0d78a1" name="examples/udp_client.php" role="src" />
+   <file md5sum="46ea9dd31ef48d3c99b0d6325d7066c2" name="examples/eof_check_server.php" role="src" />
+   <file md5sum="9645d6ca89d2c80a01c626dfaab9c9da" name="examples/eof_check_client.php" role="src" />
+   <file md5sum="ad74998fe8e03fb0786519c53d4322f2" name="examples/task.php" role="src" />
+   <file md5sum="c58d4e5e2c3b1a0b97e78b8aa33b9234" name="examples/sendfile_server.php" role="src" />
+   <file md5sum="3ff8758b0b0760e99318301f500e2115" name="examples/recv_file.php" role="src" />
+   <file md5sum="64a42b4c0f3c65a14c23b60d3880a917" name="examples/test.jpg" role="doc" />
+   <file md5sum="fb20564bda13720dbb8de91447e373b0" name="src/core/Base.c" role="src" />
+   <file md5sum="c6e5656fa641328be148105d49a9198a" name="src/core/log.c" role="src" />
+   <file md5sum="9b04ba763eeb85b7a1d58dad0264701c" name="src/core/hashmap.c" role="src" />
+   <file md5sum="d6ae79c5f1cea477e6785f486fe17369" name="src/core/RingQueue.c" role="src" />
+   <file md5sum="374225df5b0c617743c10c2163866e21" name="src/core/Channel.c" role="src" />
+   <file md5sum="00c3d411c2df1cf7a4d73d562d24606d" name="src/core/string.c" role="src" />
+   <file md5sum="0c96c620e5531bbfb2cfaae6af220cd1" name="src/core/array.c" role="src" />
+   <file md5sum="56802be08dfa505a5a7459fb8ba81e1f" name="src/memory/ShareMemory.c" role="src" />
+   <file md5sum="0b80493254cbaa5884e6cd5d2ba368de" name="src/memory/MemoryGlobal.c" role="src" />
+   <file md5sum="cbec09f7f8fa377b89c5429e81bbae87" name="src/memory/FixedPool.c" role="src" />
+   <file md5sum="328bd2966ed0dbfb620dbf0e04ad111d" name="src/memory/RingBuffer.c" role="src" />
+   <file md5sum="0fe5e03e8bdc10c08408a17e98240aff" name="src/factory/Factory.c" role="src" />
+   <file md5sum="d488b0f74e1b5497c3400b58e758a504" name="src/factory/FactoryThread.c" role="src" />
+   <file md5sum="61d247cc7ddcf1126beccad703382b0e" name="src/factory/FactoryProcess.c" role="src" />
+   <file md5sum="0f11d9d1a3b8d999126a904b38cd3b43" name="src/reactor/ReactorBase.c" role="src" />
+   <file md5sum="748a29f514ea66fbf546ae5dba820282" name="src/reactor/ReactorSelect.c" role="src" />
+   <file md5sum="d976157fa8751761cfd29b75d81dee1c" name="src/reactor/ReactorPoll.c" role="src" />
+   <file md5sum="39c3dc29819732c9dbde4d32be33ee16" name="src/reactor/ReactorEpoll.c" role="src" />
+   <file md5sum="f210b9f6b769d7b389ce453a1c5c3422" name="src/reactor/ReactorKqueue.c" role="src" />
+   <file md5sum="f9670f8004b44a281f3a4b1f74e1feca" name="src/os/base.c" role="src" />
+   <file md5sum="42fc0a68dd0bdd31a79cb5cc2cb4b6bd" name="src/os/gcc_aio.c" role="src" />
+   <file md5sum="1fa9887a9e525ecf9f6aa1e7a3787ac7" name="src/os/linux_aio.c" role="src" />
+   <file md5sum="3f4af3214cc848f8a7ccd87b0fd62214" name="src/os/sendfile.c" role="src" />
+   <file md5sum="3e285905f269393369059be467dbd61e" name="src/os/signal.c" role="src" />
+   <file md5sum="1c20be9d094bf9b9e82cecb777db40e5" name="src/os/timer.c" role="src" />
+   <file md5sum="26a3739385f608402d68cec144922639" name="src/pipe/PipeBase.c" role="src" />
+   <file md5sum="bf283e6f06fd6d8f715d62b37470eb52" name="src/pipe/PipeEventfd.c" role="src" />
+   <file md5sum="d3dd312b7b813a307e611092699fe3c6" name="src/pipe/PipeUnsock.c" role="src" />
+   <file md5sum="f11fb5a074d61e56d137855519cb3649" name="src/queue/Msg.c" role="src" />
+   <file md5sum="f5434f952033a3cb99e7576ef6592fed" name="src/lock/Semaphore.c" role="src" />
+   <file md5sum="3db205217e1889281e2b8da78cda9864" name="src/lock/Mutex.c" role="src" />
+   <file md5sum="450a2aba2c8ba031c06c7f993e47f496" name="src/lock/RWLock.c" role="src" />
+   <file md5sum="03b97a0fe1d7cca8c0c3614349d26556" name="src/lock/SpinLock.c" role="src" />
+   <file md5sum="61d5abd378e32ed53ee7364e98921531" name="src/lock/FileLock.c" role="src" />
+   <file md5sum="b38a1119d236a82057b6ee735479aa94" name="src/network/Server.c" role="src" />
+   <file md5sum="eea8342f5fdc232279ff0c6571cf8512" name="src/network/Client.c" role="src" />
+   <file md5sum="4c3a2d2f3e316ebacdfe75d3cda8ddc1" name="src/network/Buffer.c" role="src" />
+   <file md5sum="ed08dfbb4afe0c70cf045c8591f7684a" name="src/network/ProcessPool.c" role="src" />
+   <file md5sum="5d088f986c064e04d6191707ccd05611" name="src/network/ThreadPool.c" role="src" />
+   <file md5sum="acc02f0a45a3be3215dec656a6b180af" name="src/network/ReactorThread.c" role="src" />
+   <file md5sum="20d5974c523041b69b11d5fc396c393a" name="src/network/Connection.c" role="src" />
+   <file md5sum="9f2d1c4c628380bea3a3ba1350535274" name="CREDITS" role="doc" />
+   <file md5sum="67d2be79fd662299405527305e42cbfc" name="LICENSE" role="doc" />
+   <file md5sum="17643e4a23e131258e51f9cac98a7d91" name="README.md" role="doc" />
+   <file md5sum="1988723873fd35f2e42456fdca7106d1" name="config.m4" role="src" />
+   <file md5sum="18f02f505a599209522d9094d99e40d4" name="php_swoole.h" role="src" />
+   <file md5sum="ad07686b86d38610273f1f9155966bef" name="swoole_config.h" role="src" />
+   <file md5sum="05a4c3be95c171e8a80a8d100ad4485f" name="swoole.c" role="src" />
+   <file md5sum="1eec660612a8f8a24a5ef1bfdd8cb005" name="swoole_lock.c" role="src" />
+   <file md5sum="062a932a8fce12eaa06b9b6b56a55048" name="swoole_client.c" role="src" />
+   <file md5sum="72c92728c7699663b00d4617876f1366" name="swoole_async.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.10</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>swoole</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2014-04-16</date>
+   <time>19:51:51</time>
+   <version>
+    <release>1.7.0</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</license>
+   <notes>
+- Fixed compile error.
+   </notes>
+  </release>
+  <release>
+   <date>2014-04-11</date>
+   <time>10:51:51</time>
+   <version>
+    <release>1.6.12</release>
+    <api>1.6.12</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</license>
+   <notes>
+- Added connection out_buffer
+- Added async file read/write
+- Added async dns lookup
+- Added long tcp connection
+- Added client timer
+- Added swoole_server-&gt;sendfile
+- Added signalfd usage
+    - Fixed some bugs
+   </notes>
+  </release>
+  <release>
+   <date>2014-02-27</date>
+   <version>
+    <release>1.6.11</release>
+    <api>1.6.11</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</license>
+   <notes>
+- Disable by default async_mysql
+- Disable by default sockets
+- Added event onWorkerError
+- Added event onWorkerStart for task_worker
+- swoole_server-&gt;task can assign worker_id
+- swoole_server-&gt;set() save params to swoole_server::$setting
+- swoole_client-&gt;send will check data length
+- swoole_server-&gt;connection_info for udp
+   </notes>
+  </release>
+  <release>
+   <date>2014-01-26</date>
+   <version>
+    <release>1.6.10</release>
+    <api>1.6.10</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</license>
+   <notes>
+- Enabled by default async_mysql
+- Add tcp heartbeat mechanism
+- UDP send no require from_id
+- swoole_client on::Receive and on::Close no need to call recv/close
+- Add last_time and connect_time to tcp connection_info
+- rebuild data_buffer
+   </notes>
+  </release>
+  <release>
+   <date>2014-01-02</date>
+   <version>
+    <release>1.6.9</release>
+    <api>1.6.9</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</license>
+   <notes>
+- use &quot;pecl package&quot;
+   </notes>
+  </release>
+ </changelog>
+</package>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd">
+ <name>krb5</name>
+ <channel>pecl.php.net</channel>
+ <summary>Features:</summary>
+ <description>+ An interface for maintaining credential caches (KRB5CCache),
+   that can be used for authenticating against a kerberos5 realm
++ Bindings for nearly the complete GSSAPI (RFC2744)
++ The administrative interface (KADM5)
++ Support for HTTP Negotiate authentication via GSSAPI
+
+Documentation:
++ see docs/ for the API documentation
++ there are several pieces of example code in the examples/ directory
++ see below for install instructions</description>
+ <lead>
+  <name>Moritz Bechler</name>
+  <user>mbechler</user>
+  <email>mbechler@eenterphace.org</email>
+  <active>yes</active>
+ </lead>
+ <date>2014-03-01</date>
+ <time>16:45:38</time>
+ <version>
+  <release>1.0.0</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+ <notes>
+- [CLEANUP] Remove bundled kadmin headers, drop support for mit-krb5 &lt;1.8
+- [FEATURE] Support use of the krb5-config tool to determine library paths
+- [CLEANUP] Remove KRB5CCache-&gt;setConfig method as this is no longer supported by libraries
+- [BUG] Fix null-deref in isValid for uninitialized KRB5CCache
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="1f2f4ed48051a7b71cb16b1390a2f986" name="examples/kadm/ex1.php" role="doc" />
+   <file md5sum="75fe2d9536bdacd5e12104c1b850aee5" name="examples/kadm/ex2.php" role="doc" />
+   <file md5sum="2f4eefd089ec927ff9d40557a2d13da7" name="examples/kadm/ex3.php" role="doc" />
+   <file md5sum="0db4b2cdc95b8093bd7460280b2b7305" name="examples/kadm/ex4.php" role="doc" />
+   <file md5sum="52d9728e8ddbad93b29bb6df1e9e5559" name="examples/kadm/ex5.php" role="doc" />
+   <file md5sum="7367ef4df144f34c7b9aa92ea7434a86" name="examples/kadm/ex6.php" role="doc" />
+   <file md5sum="ecbef49c2f072b0a39f8c2d3203bafcf" name="examples/spnego.php" role="doc" />
+   <file md5sum="7b31eb9dacc4992358f4641f587707b6" name="tests/001.phpt" role="test" />
+   <file md5sum="b009c2843a1601ee82b5768090cb2afd" name="tests/002.phpt" role="test" />
+   <file md5sum="13842e8d4cd02e9bee5b18ee67f892c5" name="tests/003.phpt" role="test" />
+   <file md5sum="8d1851933a0246dd40b2e7ad6fb66071" name="tests/004.phpt" role="test" />
+   <file md5sum="e2eb1adfedb0c9c608c6bfeab06b7632" name="tests/005.phpt" role="test" />
+   <file md5sum="6e378632ac0aa7f0c3c36ee725c8f40a" name="tests/config.php.dist" role="test" />
+   <file md5sum="9f4262184a31eee76b7a321d69b73acb" name="README" role="doc" />
+   <file md5sum="850072add741c923992f38096aebc01a" name="INSTALL" role="doc" />
+   <file md5sum="388c989bb4bd7260fcc759af04751147" name="LICENSE" role="doc" />
+   <file md5sum="946501adaf6cdc0700a88296b8d0b25f" name="CREDITS" role="doc" />
+   <file md5sum="989d500f3dec23898a4723dd4170ae0e" name="config.m4" role="src" />
+   <file md5sum="61198a6825c22428bc179630525e9b5b" name="php_krb5.h" role="src" />
+   <file md5sum="f7a0e971f9903c7ff771c2303447e7fb" name="php_krb5_kadm.h" role="src" />
+   <file md5sum="0952178d4d1781513ee75e41875e8dc5" name="php_krb5_gssapi.h" role="src" />
+   <file md5sum="20c15e6ec8f2425029943affcf1118b6" name="krb5.c" role="src" />
+   <file md5sum="c0e440204e6f7aa78224dff3680d3785" name="gssapi.c" role="src" />
+   <file md5sum="44394834789e26b550e28456b4393e46" name="kadm.c" role="src" />
+   <file md5sum="f4822727f96aca816dc2d3882fa279ba" name="kadm5_policy.c" role="src" />
+   <file md5sum="55ae5eff972c1038333bfbbff9b1135f" name="kadm5_principal.c" role="src" />
+   <file md5sum="c68004ca725f758e1eb82db53a5a623c" name="negotiate_auth.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>krb5</providesextension>
+ <extsrcrelease />
+</package>

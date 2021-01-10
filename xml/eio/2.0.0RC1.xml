@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>eio</name>
+ <channel>pecl.php.net</channel>
+ <summary>Provides interface to the libeio library</summary>
+ <description>This extension provides interface to the libeio library written by Marc Lehmann
+    &lt;libeio at schmorp dot de&gt;(see http://software.schmorp.de/pkg/libeio.html).
+
+    Libeio is a an asynchronous I/O library. Features basically include
+    asynchronous versions of POSIX API(read, write, open, close, stat, unlink,
+    fdatasync, mknod, readdir etc.); sendfile (native on Solaris, Linux, HP-UX,
+    FreeBSD); readahead. libeio itself emulates the system calls, if they are not
+    available on specific(UNIX-like) platform.
+
+    Currently this extension supports GNU/Linux and BSD platforms only. But you can
+    try it on any UNIX OS.</description>
+ <lead>
+  <name>Ruslan Osmanov</name>
+  <user>osmanov</user>
+  <email>osmanov@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2015-11-19</date>
+ <time>17:20:58</time>
+ <version>
+  <release>2.0.0RC1</release>
+  <api>1.1.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">php</license>
+ <notes>
+PHP 7 support
+Fix: uid/gid validation in eio_fchown
+Fix: compilation issue on OS X 10.11
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="ddde7d04e23d69bb4a0fa0baf157f7b0" name="libeio/LICENSE" role="doc" />
+   <file md5sum="c4dc3837a83aa31eada367489917650d" name="libeio/ecb.h" role="src" />
+   <file md5sum="dcc4ddcf5f6ddbe446c685d9083da159" name="libeio/eio.c" role="src" />
+   <file md5sum="5f93bfe22cf150b49c1087956f083071" name="libeio/eio.h" role="src" />
+   <file md5sum="8ec8a9ab71c384861d87ee81330680a0" name="libeio/libeio.m4" role="src" />
+   <file md5sum="eb109adfcdd25715ff66f585536d1afb" name="libeio/xthread.h" role="src" />
+   <file md5sum="06cec09b1ad2e28ae62333dabf1183f0" name="tests/bug65293.phpt" role="test" />
+   <file md5sum="3ad80f38b20d20e145e97f1c55abcf6e" name="tests/eio001.phpt" role="test" />
+   <file md5sum="82082abae08d2feac07fd40736a1e871" name="tests/eio_cancel_basic.phpt" role="test" />
+   <file md5sum="3c61dbd5674f9c846933e9b82c1ef248" name="tests/eio_chmod_basic.phpt" role="test" />
+   <file md5sum="a877e9741ab47c5db2238fb32c5dbe5a" name="tests/eio_chown_variation.phpt" role="test" />
+   <file md5sum="6c8aff0e024fdf1618d2553945110e95" name="tests/eio_custom_basic.phpt" role="test" />
+   <file md5sum="9dcc4ac93ce90f76e445cfdef04c5e4b" name="tests/eio_fallocate_basic.phpt" role="test" />
+   <file md5sum="27184bc6e03f9908ff1d8f94b8794097" name="tests/eio_grp_add.phpt" role="test" />
+   <file md5sum="b54035eaa4064656b684f5c09f940c35" name="tests/eio_link.phpt" role="test" />
+   <file md5sum="88bbff39979ed5ef7e3147dbeff47954" name="tests/eio_mkdir_basic.phpt" role="test" />
+   <file md5sum="06a203518089e39ba519a39c504e2a77" name="tests/eio_mknod_basic.phpt" role="test" />
+   <file md5sum="db260ecf76588cb385e1ea47759648b5" name="tests/eio_open_basic.phpt" role="test" />
+   <file md5sum="bae742d8f528acc5c22354072d545616" name="tests/eio_open_error.phpt" role="test" />
+   <file md5sum="3686619c6041b7a9507acc1c8916a761" name="tests/eio_read_basic.phpt" role="test" />
+   <file md5sum="2b026e5725602d183ef680ce342d1f04" name="tests/eio_readdir.phpt" role="test" />
+   <file md5sum="b83be4835c5bf4a63a901d1d78daadb6" name="tests/eio_rename_basic.phpt" role="test" />
+   <file md5sum="68d32d1749d30c46dcaa4be088d6a18e" name="tests/eio_rmdir_basic.phpt" role="test" />
+   <file md5sum="777c1bb977756016dac19483f164fa3c" name="tests/eio_seek.phpt" role="test" />
+   <file md5sum="83b4f7da59c72695e42427ca0d8b7d9d" name="tests/eio_sendfile_basic.phpt" role="test" />
+   <file md5sum="c66be5b03f0b97ef1fee5a97e36f25e7" name="tests/eio_sendfile_sockets.phpt" role="test" />
+   <file md5sum="fbbb7e7a2da810566f3296b3975464ac" name="tests/eio_stat_basic.phpt" role="test" />
+   <file md5sum="8357b3659ea2c4f2dc70882fdd42c848" name="tests/eio_stat_error.phpt" role="test" />
+   <file md5sum="4835f23b2c63975c0b8625296a0c4e8c" name="tests/eio_sync.phpt" role="test" />
+   <file md5sum="89ccf27b66ab7c7a1dd5169f7bd209b9" name="tests/eio_truncate_basic.phpt" role="test" />
+   <file md5sum="31645d6ab509a7c56ef5ca40a27c73a2" name="tests/eio_write_variation.phpt" role="test" />
+   <file md5sum="76e9dac8eb0b7e7f4f95fef61d721f32" name="tests/eio_unlink_basic.phpt" role="test" />
+   <file md5sum="b8bab9d88f1d95f3d4ed8733477c9790" name="tests/eio_utime_basic.phpt" role="test" />
+   <file md5sum="72f9f8d72488a3969f7d8d046e21aab8" name="tests/fork.phpt" role="test" />
+   <file md5sum="2a60f987c2c50f9f14bf40690320ce0e" name="php5/php_eio.c" role="src" />
+   <file md5sum="f89d7c55485dcd8c39cda22b13b9b7ed" name="php5/eio_fe.c" role="src" />
+   <file md5sum="8d84b06b0307a9a4f52561a3d923a417" name="php5/eio_fe.h" role="src" />
+   <file md5sum="b27e23aaa3de8a43454070dbd5ce7bc4" name="php5/eio_priv.h" role="src" />
+   <file md5sum="d0907a0c8a61ff1c93166b0f2c68cb23" name="php5/php_eio.h" role="src" />
+   <file md5sum="2c0045e82e132f3e335df8e2dc4d385f" name="php7/php_eio.c" role="src" />
+   <file md5sum="c9ad41e489d63d9c7654dd9eb6f23b10" name="php7/eio_fe.c" role="src" />
+   <file md5sum="81346bad0e2ff3da0c5bbdd210e315da" name="php7/eio_fe.h" role="src" />
+   <file md5sum="864018e9e896f50e36ebe9229be69766" name="php7/eio_priv.h" role="src" />
+   <file md5sum="67394c8cb62aa08301f23141cb9591e5" name="php7/php_eio.h" role="src" />
+   <file md5sum="77a30323efb9fe20c2ce021d9509ced0" name="CREDITS" role="doc" />
+   <file md5sum="54a890afd0fa6696515449a6348c57cb" name="INSTALL.md" role="doc" />
+   <file md5sum="52dd90569008fee5bcdbb22d945b1108" name="LICENSE" role="doc" />
+   <file md5sum="13df5db8aa8f6e328b5e3cf5f784d3e7" name="README.md" role="doc" />
+   <file md5sum="8e8b9ef16638f872a91acacb857ad825" name="config.m4" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+   <os>
+    <name>unix</name>
+   </os>
+  </required>
+ </dependencies>
+ <providesextension>eio</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="enable-eio-debug" prompt="Enable internal debugging in Eio" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <version>
+    <release>2.0.0RC1</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">php</license>
+   <notes>
+PHP 7 support
+Fix: uid/gid validation in eio_fchown
+Fix: compilation issue on OS X 10.11
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.6</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">php</license>
+   <notes>
+Fix: uid/gid validation in eio_fchown
+Fix: compilation issue on OS X 10.11
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.5</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">php</license>
+   <notes>
+Fix: Bitbucket issue #2: Static build fails
+Fix: build failed when EVENTFD was not available
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.4</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">php</license>
+   <notes>
+Fix: Bitbucket issue #1: eio_open fails when file is owned by root
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.3</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">php</license>
+   <notes>
+Fix: bug #65293 where eio functions failed to process file descriptor equal to 0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.4.0</release>
+    <api>0.4.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">php</license>
+   <notes>
+Change: libeio is now embedded, no need to install it separately
+Change: functions call info and call info cache used instead of zvals
+Fix: segmentation fault on 32-bit platforms with the default 4-bit LFS
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.1</release>
+    <api>0.3.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">php</license>
+   <notes>
+Change: eio_get_event_stream returns stream resource
+Fix: package dependencies didn&apos;t allow pecl install eio-alpha
+Fix: redundant MS/NETWARE platform checks
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">php</license>
+   <notes>
+Change: mutex switch that used in communications with libeio replaced with
+eventfd; the same descriptor exported to userspace to bind with existing
+event loops
+Add: eio_get_eventfd function to get eventfd descriptor
+Add: header checks in configuration
+Change: libeio initialization moved to the MINIT phase, but unfinished
+requests are still handled in the RSHUTDOWN phase
+Change: simplified libeio callbacks
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: heavy bulk requests damaged event loop causing much CPU consumption
+Fix: in a threaded SAPI libeio in a single process might initialize mutex multiple times
+Change: switch from semaphore to mutex
+Change: dropped --with-eio-shm* configuration options
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: eio_poll had been out of sync with the IPC
+Fix: pathnames in tests
+Change: dropped preprocessor checks on non-UNIX platforms, i.e. no plans to
+support non-UNIX
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Change: refactored some tests
+Add: request types have readable values in error messages
+Add: errno replaced with the meaningful string in error messages
+Fix: eio_chown denied uid -1 value
+Fix: message about required libeio
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Change: Shared memory permissions are set to 0660 by default
+Change: Removed redundant code and comments
+Add: Tests: eio_read_basic.phpt, eio_stat_basic.phpt
+Fix: the package XML
+Fix: docs
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.1dev</release>
+    <api>0.0.1dev</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Initial development release.
+   </notes>
+  </release>
+  <version>
+   <release>1.2.2</release>
+   <api>1.1.0</api>
+  </version>
+  <version>
+   <release>1.2.1</release>
+   <api>1.1.0</api>
+  </version>
+  <version>
+   <release>1.2.0</release>
+   <api>1.1.0</api>
+  </version>
+  <version>
+   <release>1.1.0</release>
+   <api>1.1.0</api>
+  </version>
+  <version>
+   <release>1.0.0</release>
+   <api>1.0.0</api>
+  </version>
+  <version>
+   <release>0.5.0</release>
+   <api>0.5.0</api>
+  </version>
+  <stability>
+   <release>stable</release>
+   <api>stable</api>
+  </stability>
+  <stability>
+   <release>stable</release>
+   <api>stable</api>
+  </stability>
+  <stability>
+   <release>stable</release>
+   <api>stable</api>
+  </stability>
+  <stability>
+   <release>stable</release>
+   <api>stable</api>
+  </stability>
+  <stability>
+   <release>stable</release>
+   <api>stable</api>
+  </stability>
+  <stability>
+   <release>beta</release>
+   <api>stable</api>
+  </stability>
+  <license uri="http://www.php.net/license">php</license>
+  <license uri="http://www.php.net/license">php</license>
+  <license uri="http://www.php.net/license">php</license>
+  <license uri="http://www.php.net/license">php</license>
+  <license uri="http://www.php.net/license">php</license>
+  <license uri="http://www.php.net/license">php</license>
+  <notes>Fix: 3rd argument of eio_custom callback assigned as a resource instead of mixed
+Fix: eio_custom used incorrect way of zval-to-zval copying</notes>
+  <notes>Fix: build failed without sockets extension
+Fix: eio_write failed when buffer length was lesser than size + offset</notes>
+  <notes>Add: BSD support
+Change: internal event notification uses pipe() when eventfd() is not available.
+Del: some redundant code
+Fix: use libeio&apos;s EIO_FALLOC_FL_KEEP_SIZE instead of the system constant</notes>
+  <notes>Change: eio_init() deprecated. Will be removed in future. We use pthread_atfork() to re-init eio after a fork
+Add: phpt test for the fork support
+Fix: tsrm_ls is not initialized in php_eio_init()
+Fix: EFD_NONBLOCK and EFD_CLOEXEC used despite the flags were not available until kernel 2.6.7. For the old kernels we call fcntl.
+Refact: set FD_CLOEXEC flag for file descriptor opened with eio_open()
+Refact: no need to copy zval when passing request resource to eio_grp_*()
+Fix: eio_grp_*() didn&apos;t initialize eio automatically</notes>
+  <notes>Fix: eio_write() wrote garbage when &apos;str&apos; arg passed by ref in a nested call with &apos;use&apos; keyword
+Fix: eio_write() wrote garbage when &apos;str&apos; arg passed by value
+Add: eio_init(). You must call eio_init() before using Eio in a forked child process.
+Change: Cut &apos;st_&apos; prefix in result of eio_*stat for the sake of simplicity and better &apos;compatability&apos; with stat()
+Change: Cut &apos;f_&apos; prefix in result of eio_*statvfs
+Add: eio_get_last_error()
+Add: eio_req resource argument as the third optional callback argument
+Add: phpt tests for the changes since 0.5.0b
+Removed: warnings having no much sense even in debug mode
+Refact: no separation for callbacks</notes>
+  <notes>Refact: libeio upgraded
+Fix: bug #62392 where eio_*stat functions didn&apos;t return st_size
+Fix: package.xml referenced to some nonexistent files
+Fix: garbage in result arg of the callbacks in case of error
+Change: warn about failed op in cb only when compiled with debug support
+Add: test for stat on nonexistent files
+Add: sockets support(eio_sendfile, eio_readahead etc.), enabled by default
+Add: eio_seek function
+Change: numeric fd arguments are now mixed(stream, Socket, or number)</notes>
+ </changelog>
+</package>

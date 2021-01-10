@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0" packagerversion="1.4.0a4">
+ <name>pecl_http</name>
+ <summary>Extended HTTP support</summary>
+ <description>* Building absolute URIs
+* RFC compliant HTTP redirects
+* RFC compliant HTTP date handling
+* Parsing of HTTP headers and messages
+* Caching by &quot;Last-Modified&quot; and/or ETag
+  (with 'on the fly' option for ETag generation from buffered output)
+* Sending data/files/streams with (multiple) ranges support
+* Negotiating user preferred language/charset
+* Convenient request functions built upon libcurl
+* HTTP auth hooks (Basic)
+* PHP5 classes: HttpUtil, HttpResponse, HttpRequest, HttpMessage
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>mike</user>
+   <name>Michael Wallner</name>
+   <email>mike@php.net</email>
+   <role>lead</role>
+  </maintainer>
+  </maintainers>
+ <release>
+  <version>0.8.0</version>
+  <date>2005-06-06</date>
+  <license>PHP License 3.0</license>
+  <state>beta</state>
+  <notes>* renamed ob_httpetaghandler to ob_etaghandler
+* http_chunked_decode() now silently passes through apparently not encoded data
+* added HttpMessage class and HttpException (PHP5 only)
+* added http.cache_log INI directive
+* added throttling capability to http_send()/HttpResponse
+* added hooks for custom request methods
+* added PUT support
+* added http_match_request_header()
+* added clean_ob parameter to HttpResponse::send()
+  </notes>
+  <filelist>
+   <file role="doc" md5sum="34424c2609dd8fc6fe5516cc7e557da9" name="CREDITS"/>
+   <file role="doc" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL"/>
+   <file role="doc" md5sum="49470610ae5c8c61774f838223d66e9d" name="docs/functions.html"/>
+   <file role="src" md5sum="2d7203fb40b602b4d8c759fc74e776ce" platform="windows" name="http.dsp"/>
+   <file role="src" md5sum="9382b5b7fda9997601ae0d8d3d45acae" platform="windows" name="config.w32"/>
+   <file role="src" md5sum="c83b9d7a94bd5e809ec8fcb2487190ed" name="config.m4"/>
+   <file role="src" md5sum="f070f2805bdbb20f4796d82e8da66b82" name="phpstr/phpstr.h"/>
+   <file role="src" md5sum="9fa0cc83f53cca43f63a6e4ad7ddba6f" name="phpstr/phpstr.c"/>
+   <file role="src" md5sum="33303acdb619f2564be4c1e03d5d6e4b" name="php_http.h"/>
+   <file role="src" md5sum="876a9645670b2e458e29d1a26facb2e9" name="php_http_std_defs.h"/>
+   <file role="src" md5sum="6039b44a03900a309c466b27ed5c55c4" name="php_http_api.h"/>
+   <file role="src" md5sum="d0b85a34720858b7e36cf701d2697add" name="php_http_auth_api.h"/>
+   <file role="src" md5sum="fb5366e4d3775ba90536f26063f6618d" name="php_http_cache_api.h"/>
+   <file role="src" md5sum="714596aa259802459b54fe6ac5fd90ba" name="php_http_date_api.h"/>
+   <file role="src" md5sum="53f923a35c69949e0a8cd0074ef1dd71" name="php_http_headers_api.h"/>
+   <file role="src" md5sum="ead3ca13f50a3d2566e1ce96ae88e1dc" name="php_http_message_api.h"/>
+   <file role="src" md5sum="79423c183ca5adb266c5e138426be5f2" name="php_http_request_api.h"/>
+   <file role="src" md5sum="a36ea2a743f4f958ea8345e3f40fbbef" name="php_http_send_api.h"/>
+   <file role="src" md5sum="8b6a992f432fc63b8498312f904bb869" name="php_http_url_api.h"/>
+   <file role="src" md5sum="e2b60c1ce3a0a85bbeda4652ee0c8678" name="php_http_util_object.h"/>
+   <file role="src" md5sum="c627382958cf299a43c58afb9c49899a" name="php_http_message_object.h"/>
+   <file role="src" md5sum="e500d8adaed8e3f94837fd49fdf43fc5" name="php_http_request_object.h"/>
+   <file role="src" md5sum="27358e2ea5b69c30798c29aacfeeb51a" name="php_http_response_object.h"/>
+   <file role="src" md5sum="291d57603d5b63efc0d9aa99944014cc" name="php_http_exception_object.h"/>
+   <file role="src" md5sum="65d447d993fe6a2311a579036d6a042f" name="http.c"/>
+   <file role="src" md5sum="8531d1ab34166ac8435de058df5a7aa9" name="http_functions.c"/>
+   <file role="src" md5sum="68c585fad1e67e012cb646a8e115cf0a" name="http_methods.c"/>
+   <file role="src" md5sum="9e43473300877f0e0dbc43eec7e3a45d" name="http_api.c"/>
+   <file role="src" md5sum="fdbaaf7a2939f46c90cc0355aa7f5cca" name="http_auth_api.c"/>
+   <file role="src" md5sum="e7388005089decf1a7705922f2da76ac" name="http_cache_api.c"/>
+   <file role="src" md5sum="22b01dfb2d628dc5b16f7102189d019a" name="http_date_api.c"/>
+   <file role="src" md5sum="943242fc8118506efdfba97be07aaa85" name="http_headers_api.c"/>
+   <file role="src" md5sum="42d035f66f11fc71358eefe6f72cb3c4" name="http_message_api.c"/>
+   <file role="src" md5sum="13157e46096da3dc810f33564af6d4bc" name="http_request_api.c"/>
+   <file role="src" md5sum="709e882a67b2eb6368b271fc38bd727a" name="http_send_api.c"/>
+   <file role="src" md5sum="a34d1e2f3da62314ef2158955391d689" name="http_url_api.c"/>
+   <file role="src" md5sum="e4a42884c0aca944413ae341fa3d1e31" name="http_util_object.c"/>
+   <file role="src" md5sum="0eebbc38ecc896ab94efee21c99e8663" name="http_message_object.c"/>
+   <file role="src" md5sum="18d1893a1260c756123f66e866636eaa" name="http_request_object.c"/>
+   <file role="src" md5sum="6c75d620bbbf6ead972f34d5f1dbc1ef" name="http_response_object.c"/>
+   <file role="src" md5sum="498f242a3a2b7dc595c6e7281fa86a3d" name="http_exception_object.c"/>
+  </filelist>
+ </release>
+</package>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.11" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>filter</name>
+ <channel>pecl.php.net</channel>
+ <summary>Extension for safely dealing with input parameters</summary>
+ <description>The Input Filter extension is meant to address this issue by implementing a set
+of filters and mechanisms that users can use to safely access their input data.</description>
+ <lead>
+  <name>Pierre-Alain Joye</name>
+  <user>pajoye</user>
+  <email>pierre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Derick Rethans</name>
+  <user>derick</user>
+  <email>derick@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Rasmus Lerdorf</name>
+  <user>rasmus</user>
+  <email>rasmus@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2006-09-01</date>
+ <time>03:10:45</time>
+ <version>
+  <release>0.10.0</release>
+  <api>0.10.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>- Fixed PECL bug #6136, ini_set should not be able to change the filter.default (Pierre)
+- Fixed PECL bug #6639: uppercase hexadecimal digits are not supported
+- Fixed PECL bug #7733, Float exponential weird result (Pierre)
+- Fixed PECL bug #7715, Input_get float error (Pierre)
+- Fixed PECL bug #8316, empty string with FILTER_VALIDATE_INT returns 0
+- Fixed Possible leak in internal sapi_filter (Pierre)
+- Fixed an issue with multiple calls using the same input type (Tony)
+- Fixed leak in sapi filter (Tony, Ilia)
+- Fixed magic_quotes_gpc from being applied when RAW filter is used (Ilia)
+- Added support for custom decimal separator (Pierre)
+- Added support for php pcre expressions (Pierre)
+- Added input_get_args, fetches all input in one call (Pierre)
+- Added FILTER_FLAG_SCALAR and FILTER_FLAG_ARRAY, allows or not array values (Pierre)
+- Basic IPv6 (no option yet, only the syntax is verified) (Pierre)
+- INT, Float and boolean filters trim the values before the validations (default trim()) (Pierre)
+- input_get and input_get_args returns now FALSE when the validation failed
+  and NULL when the variable has not been found (Pierre)
+- Added JIT support</notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="5d6014597dd2744612167c8b916ba975" name="tests/001.phpt" role="test" />
+   <file md5sum="fb1a55b760a5c538e78b10e7d9667653" name="tests/002.phpt" role="test" />
+   <file md5sum="98ff5b572a60e3e50404d8552d289ce3" name="tests/003.phpt" role="test" />
+   <file md5sum="09902c61a3da03eb5e8744ba051d9179" name="tests/004.phpt" role="test" />
+   <file md5sum="055add842d0899ca613dd6d10719b008" name="tests/005.phpt" role="test" />
+   <file md5sum="0bcc93a451972d336fa90f326e71bdf4" name="tests/006.phpt" role="test" />
+   <file md5sum="5dce7a8226996a6c7478c815ca78688b" name="tests/007.phpt" role="test" />
+   <file md5sum="6d580fa50ba0b3ac90f599dea0129fe6" name="tests/008.phpt" role="test" />
+   <file md5sum="edf6af518d05bff5b3c64530f4ef77cd" name="tests/009.phpt" role="test" />
+   <file md5sum="c2021155cfa0496b675236ef235d9e3c" name="tests/010.phpt" role="test" />
+   <file md5sum="2a9e3a027758e9ea95a91e26e927367d" name="tests/011.phpt" role="test" />
+   <file md5sum="3a0626c83605266d741b6a1fb38c732e" name="tests/012.phpt" role="test" />
+   <file md5sum="c4286f3ed654a69b658608d93bccf20f" name="tests/013.phpt" role="test" />
+   <file md5sum="30f789fa0c7415303ea33b4f4c1375ff" name="tests/014.phpt" role="test" />
+   <file md5sum="3e5d770647f7b9e6de90efdf66fa2813" name="tests/015.phpt" role="test" />
+   <file md5sum="b8f18757b06d339fa3f3d13f22f1a349" name="tests/016.phpt" role="test" />
+   <file md5sum="752ad733ff9a80c4ebd4fcef02434b09" name="tests/017.phpt" role="test" />
+   <file md5sum="e2186b8e76d3725f6c07a5d6929b634a" name="tests/018.phpt" role="test" />
+   <file md5sum="91da8effdc4f293dd9ae4b6aa2305924" name="tests/019.phpt" role="test" />
+   <file md5sum="75db4b1f9cdbdf42c23fd40e7eb1868f" name="tests/020.phpt" role="test" />
+   <file md5sum="619bfaeac96c60c08f47a9f2a1d88a59" name="tests/021.phpt" role="test" />
+   <file md5sum="57b17c3feb249cd17a3c9fe2fb25210e" name="tests/022.phpt" role="test" />
+   <file md5sum="d8722755ca05c0fc9d981c04ba78d70f" name="tests/023.phpt" role="test" />
+   <file md5sum="3cfe4e0dafbdcfdbb7eaf0bcfb21aeea" name="tests/024.phpt" role="test" />
+   <file md5sum="472534c634473e1e36e36813a77cd5d2" name="tests/025.phpt" role="test" />
+   <file md5sum="38098836931d970b8495cb0f96ef0dca" name="tests/026.phpt" role="test" />
+   <file md5sum="350492b6f6b60e7d3fc3c9c2ad5465f8" name="tests/027.phpt" role="test" />
+   <file md5sum="6d2dd1f8a1ec2600f8aa36d1a53cb6e0" name="tests/028.phpt" role="test" />
+   <file md5sum="88cc36b1c3c2c90380bf061dcdb2e1e4" name="tests/029.phpt" role="test" />
+   <file md5sum="276b93847d9d4450faa784b939214d81" name="tests/030.phpt" role="test" />
+   <file md5sum="ad94cc2a2b9dbd777b00fc63e49e43f8" name="tests/031.phpt" role="test" />
+   <file md5sum="d8d9dee16a514362bd76d1bd8807bf97" name="tests/032.phpt" role="test" />
+   <file md5sum="7cc22c73c2bf22e9b4d6338545218ae9" name="tests/033.phpt" role="test" />
+   <file md5sum="faf00377b8e61ab66b5db90f18558241" name="tests/034.phpt" role="test" />
+   <file md5sum="af8d82510694fe20546cbfc036c18a72" name="tests/035.phpt" role="test" />
+   <file md5sum="54c35c8c4d0edf9130692e1cb52d02e6" name="tests/036.phpt" role="test" />
+   <file md5sum="0bb76c60cb0b6326dd93fd6c731a58a5" name="tests/bug7715.phpt" role="test" />
+   <file md5sum="c4a09ccc695449e84624ea604a9a297d" name="tests/bug8315.phpt" role="test" />
+   <file md5sum="df7a9bba706c6d27ddd1f38fa3a5cef0" name="tests/bug7586.phpt" role="test" />
+   <file md5sum="f79159c5c81cae71e74e3d223dd1ba72" name="callback_filter.c" role="src" />
+   <file md5sum="15c57b0336ce2822520459a715a80077" name="config.m4" role="src" />
+   <file md5sum="b91cad307cf15baceb09dd92b8af7bc9" name="config.w32" role="src" />
+   <file md5sum="9221ca95ef560f0a388c5e013921a3d9" name="CREDITS" role="doc" />
+   <file md5sum="38ec69f5d78c6d82fd5d2a2ea204ec5f" name="filter.c" role="src" />
+   <file md5sum="cdb37ea4f262738c15c5bb4e5ce0f7c0" name="filter_private.h" role="src" />
+   <file md5sum="16631cdc3b156bd08afaab35faa89fd8" name="logical_filters.c" role="src" />
+   <file md5sum="1798a5ded84cea196d7218f51ed7cf85" name="php_filter.h" role="src" />
+   <file md5sum="bb0056c8063fd8062b6362c2e39921d3" name="sanitizing_filters.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>filter</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2006-01-23</date>
+   <time>10:04:15</time>
+   <version>
+    <release>0.9.4</release>
+    <api>0.9.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <notes>- Reimplement php_filter_callback() as exception-safe and without memleaks
+- Renamed all constants.
+- Fixed PECL bug #6124: Crash on HTML tags when using FS_STRING</notes>
+  </release>
+ </changelog>
+</package>

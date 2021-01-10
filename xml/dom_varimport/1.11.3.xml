@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0   http://pear.php.net/dtd/tasks-1.0.xsd   http://pear.php.net/dtd/package-2.0   http://pear.php.net/dtd/package-2.0.xsd">
+ <name>dom_varimport</name>
+ <channel>pecl.php.net</channel>
+ <summary>Convert nested arrays into DOMDocument</summary>
+ <description>The extension converts nested PHP arrays and objects into DOMDocument.
+  Some of projects use XSLT as a templating engine. To build XML for such engines,
+  we need a very fast and memory efficient way to convert PHP nested arrays and
+  objects into DOMDocument object. Also, produced XML should be straight-forward
+  and as simple as it could be (BTW XMLRPC, SOAP and other XML-based formats are quite
+  sloppy in this case). So dom_varimport has been introduced: it produces DOMDocument
+  from a nested array near 20 times faster than a hand-made code in native PHP
+  (1 MB XML with thousands of nodes could be generated in 1-2 ms).</description>
+ <lead>
+  <name>Dmitry Koterov</name>
+  <user>dmitrykoterov</user>
+  <email>dmitry.koterov@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2015-08-05</date>
+ <time>14:13:52</time>
+ <version>
+  <release>1.11.3</release>
+  <api>1.11.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+** Minor
+    * Typos in config.m4, fix test files role [remicollet]
+    * Relax a little test 003 - may help with tests &quot;false-negatives&quot; [remicollet]
+    * Update README, link to TravisCI integration
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="4b705ad4d2c61717b20d497b82f1052a" name="tests/001.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c58d37fedbc7195cc5c64a97fda85282" name="tests/002_formats.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ae7ca1b557dc0dd8a732589e46cc86f4" name="tests/003_mem_leaks.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="caa8f87ec37f480f711a825190d9a393" name="tests/004_recursion.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ccc7085a9c798e57f9faea411ec580fe" name="tests/005_arrayobject.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a87e39d70cb835f1fe51c01b9de8cd99" name="tests/006_custom_root.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d6ea33a5dd1dd7a676f8558c16d1daa6" name="tests/009_custom_badname_element.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="12fa0620f5a7b82629b84cbab39efe8a" name="tests/010_custom_key_attr.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e5f1b51c7cad79aa396801f32914055d" name="tests/011_warnings.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4d0470bcb2b8e57803c6dc644455bf31" name="tests/012_notices.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7eb02481869a18f05dc8e51a5655484a" name="tests/013_attributes.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ec67c5263246b1d009c2d52164d73a64" name="tests/014_domelement.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5ef8fe61bcec8f92fa08e567a561aa1b" name="tests/900_stress.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b288da4653d16c9bda989d5d26204a7e" name="tests/init.inc" role="test" />
+   <file baseinstalldir="/" md5sum="61efcb60e3a3cbfaa145afbd220ebd3a" name="tests/skipif.inc" role="test" />
+   <file baseinstalldir="/" md5sum="29c5a998bd4a0d431d26749c74992af9" name="CREDITS" role="doc" />
+   <file baseinstalldir="/" md5sum="dd34a70236f008af999de817b93a5e3a" name="LICENSE" role="doc" />
+   <file baseinstalldir="/" md5sum="4269fa478bb739045a04c44f0a32fc2f" name="README.md" role="doc" />
+   <file baseinstalldir="/" md5sum="bc9b96c86d44f2bcdc98e01335acbd0e" name="config.m4" role="src" />
+   <file baseinstalldir="/" md5sum="b16d71526dba19e045c8e33bd6cca2b6" name="config.w32" role="src" />
+   <file baseinstalldir="/" md5sum="4b7a7a88de9343a357a0fd006acad5a5" name="dom_varimport.c" role="src" />
+   <file baseinstalldir="/" md5sum="fcc9ee40963ca4bb7eed96dab14ea9f3" name="php_dom_varimport.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.3</min>
+   </pearinstaller>
+   <extension>
+    <name>dom</name>
+   </extension>
+   <extension>
+    <name>libxml</name>
+   </extension>
+  </required>
+ </dependencies>
+ <providesextension>dom_varimport</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2015-08-04</date>
+   <time>15:25:00</time>
+   <version>
+    <release>1.11.2</release>
+    <api>1.11.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+** Bug
+    * @attribute: rare bug with numeric keys processing, more errors checks and tests
+   </notes>
+  </release>
+  <release>
+   <date>2015-08-04</date>
+   <time>13:00:00</time>
+   <version>
+    <release>1.11.1</release>
+    <api>1.11.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+** Typo
+    * Remove an outdated test (expired after the version is migrated from README to package.xml)
+   </notes>
+  </release>
+  <release>
+   <date>2015-08-04</date>
+   <time>12:00:00</time>
+   <version>
+    <release>1.11.0</release>
+    <api>1.11.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+** New Feature
+    * Special key @attributes to set predefined attributes, ability to populate DOMElement [Dimasik]
+    * Support for different types in @attributes array [Dimasik]
+    * Tests for special attribute and DOMElement [Dimasik]
+    * Enable Win32 build (ZTS support)
+   </notes>
+  </release>
+  <release>
+   <date>2014-04-22</date>
+   <time>20:00:00</time>
+   <version>
+    <release>1.10.0</release>
+    <api>1.10.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+** Improvement
+    * Cleanup before PECL publishing
+    * Add &quot;dom&quot; extension dependency in tests
+   </notes>
+  </release>
+  <release>
+   <date>2014-04-18</date>
+   <time>18:00:00</time>
+   <version>
+    <release>1.2.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+** New Feature
+    * Double values serialization improvement
+    * A sample for root element name customization in README
+    * Support for root element name customization
+    * ArrayObject test added
+    * Test to check recursion protection
+   </notes>
+  </release>
+ </changelog>
+</package>

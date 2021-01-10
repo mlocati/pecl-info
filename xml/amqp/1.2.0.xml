@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>amqp</name>
+ <channel>pecl.php.net</channel>
+ <summary>Communicate with any AMQP compliant server</summary>
+ <description>This extension can communicate with any AMQP spec 0-9-1 compatible server, such as RabbitMQ, OpenAMQP and Qpid, giving you the ability to create and delete exchanges and queues, as well as publish to any exchange and consume from any queue.</description>
+ <lead>
+  <name>Pieter de Zwart</name>
+  <user>pdezwart</user>
+  <email>pdezwart@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2013-05-28</date>
+ <time>06:54:55</time>
+ <version>
+  <release>1.2.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+1.2.0 Release:
+    * New methods AMQPChannel::getPrefetchCount() and AMQPChannel::getPrefetchSize()
+    * Deprecate AMQPQueue::declare() in favor of AMQPQueue::declareQueue()
+    * Deprecate AMQPExchange::declare() in favor of AMQPExchange::declareExchange()
+    * Smaller fixes to our stubs
+
+    For a complete list of changes see:
+    https://github.com/pdezwart/php-amqp/compare/v1.0.10...v1.2.0
+
+1.0.10 Release:
+    * report correct version in module info (Lars Strojny)
+    * fix class interface definitions (Vladimir Kartaviy)
+    * add ability to bind a queue with an empty routing key (Vladimir Kartaviy)
+    * fix constant AMQP_IFUNUSED (Florin Patan, Bernhard Weisshuhn)
+    * added stubs for ide use (Vladimir Kartaviy, Bernhard Weisshuhn)
+    * Fixed memory leak in queue-&gt;declareQueue (Ilya a.k.a. coodix)
+    * support for php 5.5 (Lars Strojny)
+    * add support for read and write timeouts (Bogdan Padalko)
+    * fix memory leak in queue-&gt;consume (Dmitry Vinogradov)
+    * add support for custom exchange types (empi89)
+    * support for nested custom headers (Bernhard Weisshuhn)
+    * fix memory (Bernhard Weisshuhn)
+
+    For a complete list of changes see:
+    https://github.com/pdezwart/php-amqp/compare/v1.0.9...v1.0.10
+
+1.0.9 Release:
+    * Fix pecl relase
+
+1.0.8 Release:
+    * Skip var_dump test on PHP 5.2
+    * Initialize consumer tag string length to zero
+    * Support connection time outs
+    * Adding consumer_tag parameter to AMQPQueue::cancel
+    * Clean up error code handling
+
+1.0.6 Release:
+    * 62354: Segmentation fault when printing or dumping an object that contains an AMQP object
+    * Adding in missing tests
+    * Fixing release number in PHP information
+    * Adding .gitignore info for Git users
+    * Cleaning up debug handling
+
+1.0.5 Release:
+    * 62696: Incorrect exchange type
+    * Handles server connections being closed during consume and publish correctly
+    * 62628: Exception thrown in consume will lock PHP
+    * 61533: Segmentation fault when instantiating channel, queue or exchange with wrong object, then using it
+
+1.0.4 Release:
+    * 62549: Fixing broken persistent connection
+    * 62412: Fixing segfault due to destruction order
+    * 62411: Fixing declaration overload bug
+    * 62410: Fixing declaration overload for 5.4
+    * 61337: Adding License file
+    * 61749: Fixing handling for binary content in envelope
+    * 62087: Adding appropriate version information
+    * 62354: Enabling debugging dumping of objects
+    * 61351: Updating min PHP version requirements to 5.2.0
+
+1.0.3 Release:
+    * Fixing compilation issue with PHP 5.4
+
+1.0.2 Release:
+Fixed bug:
+    * Memory leak when using AMQPQueue::get from a queue with no messages
+
+1.0.1 Release:
+Fixed bug:
+    * 61247: Allow queue creation with empty queue name, and return auto generated name
+    * 61127: Segmentation fault when cleaning up an AMQPChannel without calling AMQPConnection::connect first
+
+1.0.0 Release:
+Changed/finalized API signature:
+    * Exposing AMQPChannel
+    * Exposing AMQPEnvelope
+    * Exposing more queue and exchange arguments and flags
+    * Exposing basic.qos
+Added persistent connections
+Cleaned up codebase
+Fixed memory leaks and segmentation faults
+
+0.3.1 Release:
+Fixed bug:
+    * 24323: Cannot get the name for auto-named reply-to queues
+
+0.3.0 Release:
+Fixed memory leaks in many functions (courtesy Jonathan Tansavatdi and Andy Wick)
+Fixed consume method to return proper values
+Cleaned up variable usage
+Fixed bugs:
+    * 22638: Unexpected exit code 1 with AMQPQueue::consume()
+    * 22698: AMQPQueue::consume
+
+0.2.2 Release:
+Made extension compatible with PHP lt 5.3 (courtesy John Skopis)
+Fixed wrong typing of message properties (courtesy John Skopis)
+
+0.2.1 Release:
+Fixed refcount decrementing bug causing segfaults.
+
+0.2.0 Release:
+Works with AMQP 0-8 and 0-9-1 (used by RabbitMQ 2.*)
+Modified AMQPConnection object:
+    * Requires call to &apos;connect&apos; method to connect (no longer connects on instantiation)
+    * Added support for disconnect and reconnect
+    * Added helper setters for port, host, vhost, login and password
+Improved consume method to block for MIN messages, and try to get MAX messages if available
+Fixed zval descoping bugs
+Fixed bugs:
+    * 17809: Couldn&apos;t compile pecl extension under PHP 5.3
+    * 17831: Segmentation fault when the exchange doesn&apos;t exists
+    * 19707: AMQPQueue::get() doesn&apos;t return the message
+    * 19840: Connection Exception
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="240eec032f7522ff7809d7e984660852" name="amqp.c" role="src" />
+   <file md5sum="69531edb720c4414ce99a67463053581" name="amqp_connection.c" role="src" />
+   <file md5sum="40e9cbe528c3df6117482a2242601c24" name="amqp_channel.c" role="src" />
+   <file md5sum="52bed293999591ced89f95cb2dd6a036" name="amqp_exchange.c" role="src" />
+   <file md5sum="3fda2e9a99f0824003c63f8a56897bdc" name="amqp_queue.c" role="src" />
+   <file md5sum="e18fd93f2e060f05d32ac0a5227e369f" name="amqp_envelope.c" role="src" />
+   <file md5sum="0ef3603b8a6883c6bd1801253ffbc80d" name="amqp_object_store.c" role="src" />
+   <file md5sum="ddb3a94cdfcaf4e474331e7ebc065be4" name="config.m4" role="src" />
+   <file md5sum="8610418c380f465455ca57970806e42f" name="CREDITS" role="doc" />
+   <file md5sum="b3e70313289e3ea66cae3089b7e571b8" name="LICENSE" role="doc" />
+   <file md5sum="8be0443ab952d4b684f1b2715c741768" name="php_amqp.h" role="src" />
+   <file md5sum="88d4478257b4d6bc45daaed2fe4e2466" name="amqp_connection.h" role="src" />
+   <file md5sum="4084a1026b57afbeecaf1c522c3d00fb" name="amqp_channel.h" role="src" />
+   <file md5sum="1d89bb34ec2e867173a61ffc3a7e414a" name="amqp_exchange.h" role="src" />
+   <file md5sum="681a9f88ef7666c59d48738e26bee073" name="amqp_queue.h" role="src" />
+   <file md5sum="5e84967d3642c45730286ab3e5bd5215" name="amqp_envelope.h" role="src" />
+   <file md5sum="ddb57bd20a3b14932317c42112dc4e33" name="amqp_object_store.h" role="src" />
+   <file md5sum="924369bf1147970f066bb4642f0f85cf" name="tests/amqpexchange_invalid_type.phpt" role="test" />
+   <file md5sum="2d69ed985ca1aeb689aaf2f916dfd8e8" name="tests/bug_19707.phpt" role="test" />
+   <file md5sum="60e8e9b52c86af790244cc57967e770a" name="tests/amqpenvelope_get_accessors.phpt" role="test" />
+   <file md5sum="c42e8fb7c264bbe890572d270d4f3b63" name="tests/amqpqueue_get_empty_body.phpt" role="test" />
+   <file md5sum="696fc2fa21bc481eedadd87818bb1e40" name="tests/amqpqueue_get_basic.phpt" role="test" />
+   <file md5sum="d0cd2aa004803b2f05ab467edf4f1036" name="tests/amqpconnection_setTimeout_out_of_range.phpt" role="test" />
+   <file md5sum="678e3e1d750bb3f884f2e45b1b51ca46" name="tests/bug_gh53.phpt" role="test" />
+   <file md5sum="2fc0d97c30d609f40b7c85f529d3f752" name="tests/amqpqueue_construct_basic.phpt" role="test" />
+   <file md5sum="f5b4b1447ce743f0b9bf52d0fb359406" name="tests/amqpqueue_var_dump.phpt" role="test" />
+   <file md5sum="c27cb1e1de860be4fd4cbc6005ebb4cf" name="tests/amqpenvelope_var_dump.phpt" role="test" />
+   <file md5sum="977f81cbd4431c61d5292f91d21d4b61" name="tests/amqpconnection_construct_basic.phpt" role="test" />
+   <file md5sum="804eb9007733180f4300197288e7cd30" name="tests/amqpchannel_construct_basic.phpt" role="test" />
+   <file md5sum="10edf3abcfe32f00b7edd5dd0b05b668" name="tests/amqpqueue_nack.phpt" role="test" />
+   <file md5sum="2887356c3bd4544d08f97f1266e9028d" name="tests/amqpconnection_setTimeout_deprecated.phpt" role="test" />
+   <file md5sum="40dfd77c4c08f8528951d47e42cda7fb" name="tests/amqpconnection_setTimeout_int.phpt" role="test" />
+   <file md5sum="7c24ac91124bd6bbffd3ef302cfd1721" name="tests/amqpconnection_setPort_out_of_range.phpt" role="test" />
+   <file md5sum="9fcbd81eb6d5cc8f9a860473428c1885" name="tests/amqpqueue_consume_timeout.phpt" role="test" />
+   <file md5sum="abaf080a5feab914919e8bcf837e9d83" name="tests/amqpqueue_purge_basic.phpt" role="test" />
+   <file md5sum="71943060ef1010289ab73222cc098cb0" name="tests/amqpconnection_construct_with_timeout.phpt" role="test" />
+   <file md5sum="3933cdd88bc5a7a7588a6296e8c14667" name="tests/bug_gh50-2.phpt" role="test" />
+   <file md5sum="264ccdb3607c298729a885f75a14dd4a" name="tests/bug_gh53-2.phpt" role="test" />
+   <file md5sum="1557d33bc6c620c3cb6f64aefec95eb6" name="tests/amqpconnection_setWriteTimeout_out_of_range.phpt" role="test" />
+   <file md5sum="fca046c775db1ea3087458a1561c227a" name="tests/amqpconnection_setTimeout_float.phpt" role="test" />
+   <file md5sum="ea4be64cac6c0e4801a470856e603351" name="tests/amqpqueue_get_headers.phpt" role="test" />
+   <file md5sum="8393a7fea7816e107d3e1c56d6511a6b" name="tests/amqpconnection_setReadTimeout_int.phpt" role="test" />
+   <file md5sum="042f944723f5ba549dc37dbd8548637c" name="tests/amqpqueue_declare_basic.phpt" role="test" />
+   <file md5sum="f3851993f5d2be8bfd6093825c308b8e" name="tests/amqpconnection_setPort_string.phpt" role="test" />
+   <file md5sum="6e7be2cf0ba67bdbd51b4549d4a05d95" name="tests/amqpconnection_construct_with_write_timeout.phpt" role="test" />
+   <file md5sum="63efc639ba17621d65facd6a957e4a3e" name="tests/amqpconnection_setWriteTimeout_string.phpt" role="test" />
+   <file md5sum="6fdfabf622aba434f51dea65dac48e6e" name="tests/amqpqueue_empty_name.phpt" role="test" />
+   <file md5sum="8fcdfa08eebf0fe0b8dc1879797bf73a" name="tests/amqpexchange_var_dump.phpt" role="test" />
+   <file md5sum="01d45f7bd3a1c41cb967ff0e1008b968" name="tests/amqpchannel_multi_channel_connection.phpt" role="test" />
+   <file md5sum="b734fa81a4bb70550ef447ec2dadb5a4" name="tests/bug_61533.phpt" role="test" />
+   <file md5sum="eb34d68a4069135dac436bf2b3cf2b8f" name="tests/amqpconnection_setWriteTimeout_int.phpt" role="test" />
+   <file md5sum="c791ab105f32830962f2961745dc433e" name="tests/bug_gh50-4.phpt" role="test" />
+   <file md5sum="5e6235fbdbc75cbd99cad1c0617a3269" name="tests/amqpconnection_construct_ini_timeout.phpt" role="test" />
+   <file md5sum="8f3d1d22f5af666600b19ec4d20e72d2" name="tests/amqpconnection_setReadTimeout_string.phpt" role="test" />
+   <file md5sum="ba5feea042dc933f64efd6ee9311355d" name="tests/amqpconnection_persistent.phpt" role="test" />
+   <file md5sum="ffcdee4c571fdfea35135872275b3f9d" name="tests/amqpconnection_toomanychannels.phpt" role="test" />
+   <file md5sum="31806616cf43edf703aefea22ac7a06a" name="tests/package-version.phpt" role="test" />
+   <file md5sum="5f18a47bb128691f4c5f1bdbfee6c065" name="tests/amqpexchange_declare_basic.phpt" role="test" />
+   <file md5sum="58ee8d5384f7589b07ed2fc6ea41451d" name="tests/bug_17831.phpt" role="test" />
+   <file md5sum="97e9d595eab5d25db6bcbb050f9c5f19" name="tests/amqpconnection_construct_ini_timeout_and_read_timeout.phpt" role="test" />
+   <file md5sum="ab90f066a1d7415863b1b16388c536fb" name="tests/amqpqueue_unbind_basic_empty_routing_key.phpt" role="test" />
+   <file md5sum="e14bc6d3e6bf2db658522fd880ff8342" name="tests/amqpexchange_construct_basic.phpt" role="test" />
+   <file md5sum="28ef38b64e446ac2dfcc748862387ceb" name="tests/amqpconnection_setTimeout_string.phpt" role="test" />
+   <file md5sum="5c0c19fbe0080234182f77b88f8a3b49" name="tests/amqpexchange_channel_refcount.phpt" role="test" />
+   <file md5sum="5824298e6564f6e9231d196114d1c77e" name="tests/amqpconnection_construct_ini_read_timeout.phpt" role="test" />
+   <file md5sum="d9cd97a82e18d022031f65316a33900e" name="tests/amqpexchange_set_flag.phpt" role="test" />
+   <file md5sum="b76f43a0fcda211dc574e408a5ef5396" name="tests/amqpconnection_var_dump.phpt" role="test" />
+   <file md5sum="b0d4fff032394ffac3b1f723eaa5aef3" name="tests/amqpconnection_setPort_int.phpt" role="test" />
+   <file md5sum="251f182e831e2ccfaf02fdc2f7babd58" name="tests/amqpconnection_construct_with_timeout_and_read_timeout.phpt" role="test" />
+   <file md5sum="1fd14aabe325434ecaf8fdad329d32e9" name="tests/amqpexchange_publish_basic.phpt" role="test" />
+   <file md5sum="32bb9600df2e7a5a60537d00ea1ce8fd" name="tests/amqpqueue_nested_headers.phpt" role="test" />
+   <file md5sum="76f95d0207d32edbf89d89bd03fe93c0" name="tests/amqpqueue_consume_basic.phpt" role="test" />
+   <file md5sum="45c1a3a59347263a3af6b9c19501587e" name="tests/amqpqueue_bind_basic.phpt" role="test" />
+   <file md5sum="6f4c7378b1e889b9812942bb2a710878" name="tests/bug_62354.phpt" role="test" />
+   <file md5sum="8121b64dc0f440f7b6461ea171070b2a" name="tests/bug_19840.phpt" role="test" />
+   <file md5sum="d0665eb3088d59629fa05a1f16ce4c4e" name="tests/bug_gh50-1.phpt" role="test" />
+   <file md5sum="1b5380a431ebf72b2c0b8a5f6e370721" name="tests/amqpconnection_setWriteTimeout_float.phpt" role="test" />
+   <file md5sum="8223be5940730e6ca06f80d2a7e7460e" name="tests/amqpconnection_setReadTimeout_float.phpt" role="test" />
+   <file md5sum="002fa96081424990e6e11eff782f0bac" name="tests/bug_gh50-3.phpt" role="test" />
+   <file md5sum="196ebe8c97b90bf2d5b49878c5300391" name="tests/amqpexchange_publish_empty_routing_key.phpt" role="test" />
+   <file md5sum="9b39051f8ef3472bb23b9748da28314d" name="tests/amqpqueue_cancel.phpt" role="test" />
+   <file md5sum="fb6fb258fbeea506dfc37897b860c8b7" name="tests/amqpqueue_nested_arrays.phpt" role="test" />
+   <file md5sum="acc371cda24e1225060e2be3635e96c4" name="tests/amqpconnection_setReadTimeout_out_of_range.phpt" role="test" />
+   <file md5sum="5177828a424efbee0b652c9fcffdc0bb" name="tests/amqpqueue_bind_basic_empty_routing_key.phpt" role="test" />
+   <file md5sum="c2ec62cd20aea11a2ef8a03e02fb89b9" name="tests/amqpchannel_var_dump.phpt" role="test" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>amqp</providesextension>
+ <extsrcrelease />
+</package>

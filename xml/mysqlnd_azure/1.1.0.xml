@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.5" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>mysqlnd_azure</name>
+ <channel>pecl.php.net</channel>
+ <summary>mysqlnd_azure - a redirection plugin for mysqlnd</summary>
+ <description>mysqlnd extension for azure</description>
+ <lead>
+  <name>Hang Zhang</name>
+  <user>ymr674</user>
+  <email>haz@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Qianqian Bu</name>
+  <user>bqq</user>
+  <email>Qianqian.Bu@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2020-02-14</date>
+ <time>07:03:04</time>
+ <version>
+  <release>1.1.0</release>
+  <api>1.1.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- 1. Rename option mysqlnd_azure.enabled to mysqlnd_azure.enableRedirect.
+- 2. Add a new option choice &quot;preferred&quot;.
+- 3. When enableRedirect is &quot;on&quot;, ssl is off, no connection will be made, return error &quot;mysqlnd_azure.enableRedirect is on, but SSL option is not set in connection string. Redirection is only possible with SSL.&quot;
+- 4. When enableRedirect is &quot;on&quot;, but on server side redirection is not available, abort the first connection and return error &quot;Connection aborted because redirection is not enabled on the MySQL server or the network package doesn&apos;t meet meet redirection protocol.&quot;
+- 5. When enableRedirect is &quot;on&quot; and server supports redirection, but the redirected connection failed for any reason, also abort the first proxy connection. Return the error of the redirected connection.
+- 6. When enableRedirect is &quot;preferred&quot;, it will use redirection if possible. 
+     If connection does not use SSL, or server does not support redirection, or redirected connection fails to connect for any non-fatal reason while the proxy connection is still a valid one, it will fallback to the first proxy connection.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="6d473de497966da011b1b1a60b2285c8" name="config.m4" role="src" />
+   <file md5sum="5afc590b5c2da3920337849073de0c4b" name="config.w32" role="src" />
+   <file md5sum="a27cce328e9bc1cd9fbe7101356cd04e" name="mysqlnd_azure.c" role="src" />
+   <file md5sum="929b1c901dc95970adb82e246f83722b" name="php_mysqlnd_azure.c" role="src" />
+   <file md5sum="08ccfc4c9b688262ea20c00e61eccf16" name="redirect_cache.c" role="src" />
+   <file md5sum="35a747701799535fa2f8f8ec3f38dc94" name="mysqlnd_azure.h" role="src" />
+   <file md5sum="08c40a81baa54ff8e094e727ffcc6b86" name="php_mysqlnd_azure.h" role="src" />
+   <file md5sum="1149f2a245aa7a36d707fcad69802d65" name="tests/mysqli_azure_redirection_on.phpt" role="test" />
+   <file md5sum="4d8ff8e1720e5302d7d3a5167ac0d461" name="tests/mysqli_azure_redirection_off.phpt" role="test" />
+   <file md5sum="be9ebc83aae33164ac2c0aae42799ea8" name="tests/mysqli_azure_redirection_preferred.phpt" role="test" />
+   <file md5sum="1db8f29098fcb7814854807de75bdb5e" name="tests/mysqli_azure_option_test.phpt" role="test" />
+   <file md5sum="edf6aeb2b0831c0856b3765c777457d0" name="tests/connect.inc" role="test" />
+   <file md5sum="6836a4ce5c77a905b6bc164ac676ed80" name="tests/skipif.inc" role="test" />
+   <file md5sum="f89363febd6c0832348b1fd477befd7e" name="tests/skipif_mysqli.inc" role="test" />
+   <file md5sum="86d932037d113c6347716e199ebbbfcc" name="tests/server.inc" role="test" />
+   <file md5sum="9ea1274c2f3671b32bbf727ab870a4d5" name="tests/skipif_pdo.inc" role="test" />
+   <file md5sum="9ecaa780d20d362faeae7df543a0d38f" name="tests/skipif_server.inc" role="test" />
+   <file md5sum="f73a3bc6870e95be20516e37f27f5501" name="tests/server_basic_mysqli.phpt" role="test" />
+   <file md5sum="99b2798830ff80a8ca03196f4a3b7fb7" name="tests/server_basic_mysqli_testcase.php" role="test" />
+   <file md5sum="9d4405de304574472323f7bf4eca7278" name="tests/server_basic_pdo.phpt" role="test" />
+   <file md5sum="3ecbaa64420825c64615076c1107b3f2" name="tests/server_basic_pdo_testcase.php" role="test" />
+   <file md5sum="a898ba9138cb8ebe9751d0629ebdcd87" name="LICENSE.txt" role="doc" />
+   <file md5sum="e2568b0f26ff06f7dd6f9efc40a1405e" name="Notes.txt" role="doc" />
+   <file md5sum="2e6b1acdbd3ea3056847cbd5d8042153" name="CREDITS" role="doc" />
+   <file md5sum="cee352b66bc1587c4da32edadccc9e3e" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.2.15</min>
+    <exclude>7.3.0</exclude>
+    <exclude>7.3.1</exclude>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>mysqlnd_azure</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2020-02-14</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- 1. Rename option mysqlnd_azure.enabled to mysqlnd_azure.enableRedirect, and add a new option value &quot;preferred&quot;.
+- 2. When enableRedirect is &quot;on&quot;, ssl is off, no connection will be made, return error &quot;mysqlnd_azure.enableRedirect is on, but SSL option is not set in connection string. Redirection is only possible with SSL.&quot;
+- 3. When enableRedirect is &quot;on&quot;, but on server side redirection is not available, abort the first connection and return error &quot;Connection aborted because redirection is not enabled on the MySQL server or the network package doesn&apos;t meet meet redirection protocol.&quot;
+- 4. When enableRedirect is &quot;on&quot; and server supports redirection, but the redirected connection failed for any reason, also abort the first proxy connection. Return the error of the redirected connection.
+- 5. A new option for mysqlnd_azure.enableRedirect is introduced with name &quot;preferred&quot;. When enableRedirect is &quot;preferred&quot;, it will use redirection if possible. 
+     If connection does not use SSL, or server does not support redirection, or redirected connection fails to connect for any non-fatal reason while the proxy connection is still a valid one, it will fallback to the first proxy connection.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2020-02-10</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Remove the use of is_using_redirect flag. More strict validation and test cases with php built-in web server.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.3RC</release>
+    <api>1.0.3RC</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2020-01-16</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+apply fix for the crash problem when working with PDO interface with flag PDO::ATTR_PERSISTENT=&gt;false.
+avoid redirect when ssl is false. Other performance improvement and refactor.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2019-11-20</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+apply fix for database null/empty problem change in https://github.com/php/php-src/pull/4340 in MYSQLND_METHOD(mysqlnd_conn_data, connect) to MYSQLND_METHOD(mysqlnd_azure_data, connect)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2019-11-01</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Update package folder name for pecl install, and README.md
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2019-10-17</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Initial package release.
+   </notes>
+  </release>
+ </changelog>
+</package>

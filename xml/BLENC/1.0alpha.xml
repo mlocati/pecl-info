@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>blenc</name>
+  <summary>Transparent PHP Script Encryption using Blowfish</summary>
+  <description>BLENC is an extension which hooks into the Zend Engine, allowing for
+transparent encryption and execution of PHP scripts using the blowfish
+algorithm. It is not designed for complete security (it is still
+possible to disassemble the script into op codes using a package such
+as XDebug), however it does keep people out of your code and make
+reverse engineering difficult.</description>
+  <maintainers>
+    <maintainer>
+      <user>john</user>
+      <name>John Coggeshall</name>
+      <email>john@php.net</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>1.0alpha</version>
+    <date>2004-06-01</date>
+    <license>PHP</license>
+    <state>alpha</state>
+    <notes>Initial Release.</notes>
+    <deps>
+      <dep type="php" rel="ge" version="4.3.0"/>
+    </deps>
+    <configureoptions>
+      <configureoption name="enable-blenc" default="autodetect" prompt="Enable BLENC?"/>
+    </configureoptions>
+    <filelist>
+      <file role="src" name="config.m4"/>
+      <file role="src" name="config.w32"/>
+      <file role="src" name="blenc.c"/>
+      <file role="src" name="php_blenc.h"/>
+      <file role="src" name="bf_algo.c"/>
+      <file role="src" name="bf_algo.h"/>
+      <file role="doc" name="CREDITS"/>
+      <file role="test" name="tests/001.phpt"/>
+    </filelist>
+  </release>
+</package>

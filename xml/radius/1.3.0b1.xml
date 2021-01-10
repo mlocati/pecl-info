@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>radius</name>
+ <channel>pecl.php.net</channel>
+ <summary>Radius client library</summary>
+ <description>This package is based on the libradius of FreeBSD, with some modifications and extensions. 
+This PECL provides full support for RADIUS authentication (RFC 2865) and RADIUS accounting (RFC 2866), 
+works on Unix and on Windows. Its an easy way to authenticate your users against the user-database of your 
+OS (for example against Windows Active-Directory via IAS).</description>
+ <lead>
+  <name>Michael Bretterklieber</name>
+  <user>mbretter</user>
+  <email>mbretter@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Adam Harvey</name>
+  <user>aharvey</user>
+  <email>aharvey@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2013-07-05</date>
+ <time>06:08:26</time>
+ <version>
+  <release>1.3.0b1</release>
+  <api>1.3.0b1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+ <notes>
+This release adds several new features:
+
+- Support for CoA and disconnect packets.
+- Support for tagged attributes.
+- Support for salt-encrypted attributes.
+- Support for Juniper vendor specific attributes.
+
+These features are based on code written by Gabriel Blanchard in his fork of
+PECL radius: https://github.com/gblanchard/pecl-radius.
+
+Three new functions have been added to handle these features:
+
+- radius_get_tagged_attr_data(string attr)
+  This function returns the data from a tagged attribute.
+- radius_get_tagged_attr_tag(string attr)
+  This function returns the tag from a tagged attribute.
+- radius_salt_encrypt_attr(resource radius_handle, string attr)
+  This function salt-encrypts the given attribute. This shouldn&apos;t normally need
+  to be called manually, but is available for unusual use cases.
+
+Salt encryption is generally achieved through the use of the new
+RADIUS_OPTION_SALT option. All put functions have been extended to accept an
+optional options bitfield and an optional tag value, which will be used to tag
+an attribute if the RADIUS_OPTION_TAGGED option is set.
+
+There should be no backward compatibility breaks with this release; however
+existing users are encouraged to test their code against this release and to
+report any issues that they find.
+
+The next beta is expected in around two weeks from today (approximately July
+18, 2013).
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="1a8f43c22c7615cc509387e1a0b8f097" name="examples/des.php" role="doc" />
+   <file md5sum="075635ba5bf71bb420a1d1ca8d027285" name="examples/mschap.php" role="doc" />
+   <file md5sum="e237b87a64f1b47ac3b7efb1fe836280" name="examples/mschaptest.php" role="doc" />
+   <file md5sum="f17f9a4ec3f19e1eca79b02c7412aef8" name="examples/radius-acct.php" role="doc" />
+   <file md5sum="5406af0402f693082e729167300a7700" name="examples/radius-auth.php" role="doc" />
+   <file md5sum="9f61f6a56c08d89da871bf90cefb68bd" name="tests/server/fake_server.php" role="test" />
+   <file md5sum="c7cba91a917d1a99f15873b9b9580d1f" name="tests/coa.phpt" role="test" />
+   <file md5sum="31d652b27962ab03b8f06dffe537ceab" name="tests/disconnect.phpt" role="test" />
+   <file md5sum="d81a22d057602b283cf6f2fd659f3a98" name="tests/radius_acct_open.phpt" role="test" />
+   <file md5sum="aa16a8ae9502fdb61232da918cf7859c" name="tests/radius_auth_open.phpt" role="test" />
+   <file md5sum="dbb9a3ec2f437cc7232ac365c9217a73" name="tests/radius_close.phpt" role="test" />
+   <file md5sum="9f7356ecd45ff9703e4e9e698b9e1fa7" name="tests/radius_cvt_addr.phpt" role="test" />
+   <file md5sum="f3a786f6b11f24951d801ff0635129b0" name="tests/radius_cvt_int.phpt" role="test" />
+   <file md5sum="06c536aa1ee5e2200b21b56241af8df9" name="tests/radius_cvt_string.phpt" role="test" />
+   <file md5sum="f3de6a009a87baa246bbea756d2141a4" name="tests/radius_get_attr.phpt" role="test" />
+   <file md5sum="8e7ce7ea5394cb4fd900c22372522daf" name="tests/radius_get_tagged_attr_data.phpt" role="test" />
+   <file md5sum="ee48ddd8d3537a9ede3fada3684c3a4d" name="tests/radius_get_tagged_attr_tag.phpt" role="test" />
+   <file md5sum="61c7abbe5ad4fbafb2e20f41345d2bc6" name="tests/radius_get_vendor_attr.phpt" role="test" />
+   <file md5sum="76ac42a8e59c7fe0d3211b4388bba818" name="tests/radius_put_addr.phpt" role="test" />
+   <file md5sum="530686c42604e754cb1b5f62c444654a" name="tests/radius_put_addr_tag.phpt" role="test" />
+   <file md5sum="0a7f8e9ff6fa35b303a4714f6dc52cf4" name="tests/radius_put_attr.phpt" role="test" />
+   <file md5sum="2228991cded383e547bd20f5207ad612" name="tests/radius_put_attr_tag.phpt" role="test" />
+   <file md5sum="cadb3dc5c0c300f5a7ea25093ebe6fba" name="tests/radius_put_int.phpt" role="test" />
+   <file md5sum="c0810ee5802b549f5f49d74a73b5ae34" name="tests/radius_put_int_tag.phpt" role="test" />
+   <file md5sum="c06b0790fba7c96d393ced9159601464" name="tests/radius_put_string.phpt" role="test" />
+   <file md5sum="37a6c6be13a2f0490374a8ee74508903" name="tests/radius_put_string_tag.phpt" role="test" />
+   <file md5sum="ca00251a9a7977f24288ad08313d896d" name="tests/radius_put_vendor_addr.phpt" role="test" />
+   <file md5sum="452c37d25c6234167cb7a26f8b22d393" name="tests/radius_put_vendor_addr_tag.phpt" role="test" />
+   <file md5sum="e228e3bfa6beb5a188d5b8eaa518e807" name="tests/radius_put_vendor_attr.phpt" role="test" />
+   <file md5sum="15fd511b3720327f368733d9fdb0bf6d" name="tests/radius_put_vendor_attr_tag.phpt" role="test" />
+   <file md5sum="1a8588e9b60bf061fd7ff3bcb88bb484" name="tests/radius_put_vendor_int.phpt" role="test" />
+   <file md5sum="41f3fa5d71ba717e06b835f3272938b7" name="tests/radius_put_vendor_int_tag.phpt" role="test" />
+   <file md5sum="c97e6d7b5e2a07c3f33506ac619e8891" name="tests/radius_put_vendor_string.phpt" role="test" />
+   <file md5sum="5329e17d637d1c55d731b185fd64bb6e" name="tests/radius_put_vendor_string_tag.phpt" role="test" />
+   <file md5sum="a39bc5b4464f8503db16a551090ad31d" name="tests/radius_request_authenticator.phpt" role="test" />
+   <file md5sum="0a797f58f32f0b2eddcee23c3677c399" name="tests/radius_salt_encrypt_attr.phpt" role="test" />
+   <file md5sum="8612d249e2611a260960f24d0950709c" name="tests/radius_server_secret.phpt" role="test" />
+   <file md5sum="9c23f62808ee602a889ac6b2ff7c561e" name="tests/radius_server_secret_config.phpt" role="test" />
+   <file md5sum="52b1f8bab8ceef10d52f80c1242f37d1" name="config.m4" role="src" />
+   <file md5sum="9ab005d49da8ea33b4fddb62a7ba374c" name="CREDITS" role="src" />
+   <file md5sum="9e30411dec8d2c49b771d48750927202" name="Makefile.in" role="src" />
+   <file md5sum="c510231e33f0842b9745400088157c5c" name="php_radius.h" role="src" />
+   <file md5sum="48eb523792a9acfdc6660b0e8da9a893" name="radius.c" role="src" />
+   <file md5sum="32314145ab4a36966dade15c2261a51a" name="radius.conf" role="src" />
+   <file md5sum="a01a9e5453ddccebc5efe87099c24b73" name="radius.dsp" role="src" />
+   <file md5sum="c7b1fcf55179bf615e35742eb3f3769c" name="radius.dsw" role="src" />
+   <file md5sum="bc43e393a7c2a747b5964a9c5aee0d8c" name="radius_init_const.h" role="src" />
+   <file md5sum="3feafe670018cb923a827b620e641116" name="radlib.c" role="src" />
+   <file md5sum="67315cdd8a1fb01f714a0fe66e6ae9ea" name="radlib.h" role="src" />
+   <file md5sum="732ba9cd1657b19cd8479fc1e7081249" name="radlib_compat.c" role="src" />
+   <file md5sum="539592925e7623a5fa962118e3d953a4" name="radlib_compat.h" role="src" />
+   <file md5sum="99603d0ebaada124f170275804c45b01" name="radlib_md5.h" role="src" />
+   <file md5sum="6306e4a5505e89b072f1095ad1589a75" name="radlib_private.h" role="src" />
+   <file md5sum="ba0b5365fd1acaacb836743e434cd913" name="radlib_vs.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>radius</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>1.3.0b1</release>
+    <api>1.3.0b1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2013-07-04</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+This release adds several new features:
+
+- Support for CoA and disconnect packets.
+- Support for tagged attributes.
+- Support for salt-encrypted attributes.
+- Support for Juniper vendor specific attributes.
+
+These features are based on code written by Gabriel Blanchard in his fork of
+PECL radius: https://github.com/gblanchard/pecl-radius.
+
+Three new functions have been added to handle these features:
+
+- radius_get_tagged_attr_data(string attr)
+  This function returns the data from a tagged attribute.
+- radius_get_tagged_attr_tag(string attr)
+  This function returns the tag from a tagged attribute.
+- radius_salt_encrypt_attr(resource radius_handle, string attr)
+  This function salt-encrypts the given attribute. This shouldn&apos;t normally need
+  to be called manually, but is available for unusual use cases.
+
+Salt encryption is generally achieved through the use of the new
+RADIUS_OPTION_SALT option. All put functions have been extended to accept an
+optional options bitfield and an optional tag value, which will be used to tag
+an attribute if the RADIUS_OPTION_TAGGED option is set.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.7</release>
+    <api>1.2.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2013-06-27</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+This release fixes a security issue in radius_get_vendor_attr(). It is strongly
+recommended that users using vendor specific attributes upgrade immediately,
+with other users encouraged to upgrade when practical.
+
+- Fix a security issue in radius_get_vendor_attr() by enforcing checks of the
+  VSA length field against the buffer size. (Adam)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.6</release>
+    <api>1.2.6</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2013-06-20</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Support added for PHP 5.4 and 5.5. (Johannes)
+- Fixed bug #60885 (Radius module causing Apache segmentation fault). (Adam)
+- Fixed a crash when calling radius_server_secret() with no servers configured.
+  (Adam)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.5</release>
+    <api>1.2.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-03-18</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Release 1.2.5
+- amd64 arch fixes
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.4</release>
+    <api>1.2.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2003-11-17</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Release 1.2.4
+- Forgot including updated radius_init_const.h
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.3</release>
+    <api>1.2.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2003-11-04</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Release 1.2.3
+- Fixed a typo in radius_init_const.h wich caused RADIUS_ACCT_STATUS_TYPE to be undefined.
+- Re-added Makefile.in
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.2</release>
+    <api>1.2.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2003-07-17</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Release 1.2.2 
+- Changed role for example-files to doc
+- Removed deprecated files
+- Added IPv6 related attributes defined in RFC3162
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.1</release>
+    <api>1.2.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2003-05-02</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Release 1.2.1   
+- Change License to BSD
+- BugFix: The MS-CHAPv2 Authenticator-Challenge has 16 Bytes and not 8 Bytes
+- BugFix: build under Solaris
+- Generate better challenges
+- Many source-code-style fixes
+- Removed unneeded sources
+- Some cleanup&apos;s
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2</release>
+    <api>1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2003-01-11</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Release 1.2    
+- BugFix: a to short challenge was generated sometimes (MS-CHAPv1, MS-CHAPv2)
+- New functions:
+    radius_demangle: demangles radius passwords and mppe MS-CHAPv1 Keys
+    radius_demangle_mppe_key: demangles mppe send- and recvkey (MS-CHAPv2)
+- Provide examples for radius-accounting
+- Replaced mcrypt-functions with own des-ecb-encryption function
+- Some minor changes in radius-auth.php
+- Added php-script for testing MS-CHAP functions
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1</release>
+    <api>1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2002-12-22</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Release 1.1
+- Fixed source code style
+- added examples directory
+- added examples for MS-CHAPv1 and MS-CHAPv2
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2002-12-17</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Release 1.0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.9</release>
+    <api>0.9</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2002-12-11</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Well tested under Linux, FreeBSD and Windows
+   </notes>
+  </release>
+ </changelog>
+</package>

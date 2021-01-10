@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>pdo_sqlsrv</name>
+ <channel>pecl.php.net</channel>
+ <summary>Microsoft Drivers for PHP for SQL Server (PDO_SQLSRV)</summary>
+ <description>The Microsoft Drivers for PHP for SQL Server are PHP extensions that allow for the reading and writing of SQL Server data from within PHP scripts. The SQLSRV extension provides a procedural interface while the PDO_SQLSRV extension implements PDO for accessing data in all editions of SQL Server 2005 and later (including Azure SQL DB). These drivers rely on the Microsoft ODBC Driver for SQL Server to handle the low-level communication with SQL Server.
+*This package contains only the PDO_SQLSRV driver.*
+ </description>
+ <lead>
+  <name>Meet Bhagdev</name>
+  <user>meetbhagdev</user>
+  <email>meetb@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Jay Kint</name>
+  <user>jkint</user>
+  <email>jaykint@microsoft.com</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Marie Barwin</name>
+  <user>mbar</user>
+  <email>v-mabarw@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Hadis Kakanejadi Fard</name>
+  <user>hadisfard</user>
+  <email>v-hakaka@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2017-04-10</date>
+ <time>12:55:16</time>
+ <version>
+  <release>4.1.8preview</release>
+  <api>4.1.8</api>
+ </version>
+ <stability>
+  <release>devel</release>
+  <api>devel</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/mit">The MIT License (MIT)</license>
+ <notes>
+[Added]
+- Connection Resiliency now supported in Windows
+- Connection pooling now works in MAC
+[Fixed]
+- Added a workaround for a bug in unixODBC 2.3.4 when connection pooling is enabled
+- Fixed the issue in MAC such that the order of which drivers are loaded first no longer matters
+- Improved performance by implementing a cache to store column SQL types and display sizes (issue #189)
+- Fixed issue with the unsupported attribute PDO::ATTR_PERSISTENT in connection (issue #65)
+- Fixed issue when deleting on something that doesn't exist (issue #336)
+[Known Issues]
+- User defined data types and SQL_VARIANT
+- Binary column binding with emulate prepare (issue #140)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="7cf10d38e2c59fc86f97e4379d1bb571" name="config.m4" role="src" />
+   <file md5sum="5842a89c791da5daf560151fdb872a6e" name="config.w32" role="src" />
+   <file md5sum="8beaae08d2c3d000c72c78870e720a97" name="CREDITS" role="doc" />
+   <file md5sum="061c9665b46b4db81317457288e2ef9c" name="LICENSE" role="doc" />
+   <file md5sum="928617d2bd150bce2aab2bb2493d61d1" name="pdo_dbh.cpp" role="src" />
+   <file md5sum="99ee68de0465174f97724e34c2d90a49" name="pdo_init.cpp" role="src" />
+   <file md5sum="d11ee315b50d1418ee611f815efae022" name="pdo_parser.cpp" role="src" />
+   <file md5sum="f6236336f5b80a3d00f9b7b114135cf4" name="pdo_stmt.cpp" role="src" />
+   <file md5sum="0a178e854130cf9a5deb71bfab238831" name="pdo_util.cpp" role="src" />
+   <file md5sum="00ce46f821927022ebf47255027d4bde" name="php_pdo_sqlsrv.h" role="src" />
+   <file md5sum="e7ece79585f344fdd2e1a831594a2973" name="shared/core_conn.cpp" role="src" />
+   <file md5sum="303ca6b1a1f56020a28db748ed733621" name="shared/core_init.cpp" role="src" />
+   <file md5sum="b3657ab0f69a50294a9edd913660c885" name="shared/core_results.cpp" role="src" />
+   <file md5sum="f4a46ed8f26603e7b25826803a8bc943" name="shared/core_sqlsrv.h" role="src" />
+   <file md5sum="89470af7ef0d1b3f578396c46bb6bc82" name="shared/core_stmt.cpp" role="src" />
+   <file md5sum="7276cd2d04874b7709650da4d36fac5e" name="shared/core_stream.cpp" role="src" />
+   <file md5sum="a347b23abcd4701b5dacf977bb89e510" name="shared/core_util.cpp" role="src" />
+   <file md5sum="39e3eaa1e82102bd13648405c9325e0b" name="shared/FormattedPrint.cpp" role="src" />
+   <file md5sum="c4a83833d2a41280eec236fd66d9a8a0" name="shared/FormattedPrint.h" role="src" />
+   <file md5sum="ca28c3be63d4a592ed07f52d46590f4c" name="shared/globalization.h" role="src" />
+   <file md5sum="cc65c9654de01e66e691675b652c1259" name="shared/interlockedatomic_gcc.h" role="src" />
+   <file md5sum="8f7ac979b361b08483df804e9ac2db04" name="shared/interlockedatomic.h" role="src" />
+   <file md5sum="3f8857e6702e74b4d706feb6edb3ac67" name="shared/interlockedslist.h" role="src" />
+   <file md5sum="94b8145e7a9d532376b1ea545b266cdc" name="shared/localization.hpp" role="src" />
+   <file md5sum="8e8064b73f3abf59ed9d521ed365bda4" name="shared/localizationimpl.cpp" role="src" />
+   <file md5sum="b1050fe718db2305b89f6d186dcd5407" name="shared/msodbcsql.h" role="src" />
+   <file md5sum="b71f1a8f6e24eb69efae0a80bf4302e6" name="shared/sal_def.h" role="src" />
+   <file md5sum="f967cbebf4713e209c5ced726ec19352" name="shared/StringFunctions.cpp" role="src" />
+   <file md5sum="f3f7df2a0bee824bdb823aa64387b90d" name="shared/StringFunctions.h" role="src" />
+   <file md5sum="bff0e88c65ca97f744bbd172f5d232d7" name="shared/typedefs_for_linux.h" role="src" />
+   <file md5sum="c3333f1c85cd2de20cee4168ea7e0b7d" name="shared/version.h" role="src" />
+   <file md5sum="8968ea46df6b21e3caa20ed1cf6c8139" name="shared/xplat.h" role="src" />
+   <file md5sum="9df1c78dd7dcdc84273ca25753edec44" name="shared/xplat_intsafe.h" role="src" />
+   <file md5sum="6fc764d7d61a7f4894562af02ecc151e" name="shared/xplat_winerror.h" role="src" />
+   <file md5sum="83c6e11f145558a0f89996ef9d34118c" name="shared/xplat_winnls.h" role="src" />
+   <file md5sum="e941522acd49d3342171318f50c3e035" name="template.rc" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+   <arch>
+    <pattern>linux-*-i?86-*</pattern>
+    <conflicts/>
+   </arch>   
+  </required>
+ </dependencies>
+ <providesextension>pdo_sqlsrv</providesextension>
+ <extsrcrelease />
+</package>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>event</name>
+ <channel>pecl.php.net</channel>
+ <summary>Provides interface to libevent library</summary>
+ <description>This is an extension to efficiently schedule I/O, time and signal based
+  events using the best I/O notification mechanism available for specific platform.
+  This is a port of libevent to the PHP infrastructure.
+  
+  Version 1.0.0 introduces:
+  * new OO API breaking backwards compatibility
+  * support of libevent 2+ including HTTP, DNS, OpenSSL and the event listener.
+
+  Note, event-1.0.0 and greater is not compatible with previous versions.</description>
+ <lead>
+  <name>Ruslan Osmanov</name>
+  <user>osmanov</user>
+  <email>osmanov@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2013-02-27</date>
+ <time>19:45:21</time>
+ <version>
+  <release>1.2.6</release>
+  <api>1.3.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+Fix: with OpenSSL turned off got error: undefined symbol: zim_EventUtil_sslRandPoll
+Add: implemented get_properties property handler(is called when one casts an object to array)
+Refact: removed memory alloc for empty property hashtables
+Fix: heap corruption caused by EventBufferEvent callbacks(thanks to Marco Schuster)
+Fix: continuous calls to EventBufferEvent::setCallbacks didn&apos;t free old fci/fcc(thanks to Marco Schuster)
+Fix: possible heap corruption in EventListener&apos;s callback
+Add: EventBase::resume method
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="71e236c9f8a60eb06cfff0aee051bce7" name="classes/base.c" role="src" />
+   <file md5sum="330d22b3f67ef92462d97554450fa990" name="classes/buffer.c" role="src" />
+   <file md5sum="3405456cd93345f80c0ec9d4ffecf2dd" name="classes/buffer_event.c" role="src" />
+   <file md5sum="2917e4339bc84277e5564521a8b1b269" name="classes/buffer_pos.c" role="src" />
+   <file md5sum="28c69466d0c66195a8871ea527476bd9" name="classes/dns.c" role="src" />
+   <file md5sum="efb971f68b182a075c6fa032b8ebf704" name="classes/event.c" role="src" />
+   <file md5sum="85c1366480fa99e68201bb099f0a5a23" name="classes/event_config.c" role="src" />
+   <file md5sum="bdf18f7e8d6a151ee73d9be196f84c6f" name="classes/event_util.c" role="src" />
+   <file md5sum="c7cbe833e054fde6fbebce6ccd0d9346" name="classes/http.c" role="src" />
+   <file md5sum="d0bc3b4b5291976b067d9eb67df174c2" name="classes/http_connection.c" role="src" />
+   <file md5sum="f22749afaa5f1152cfff58d2f0434cff" name="classes/listener.c" role="src" />
+   <file md5sum="7fcb40d55e38b69ddd20656debfdd0be" name="classes/ssl_context.h" role="src" />
+   <file md5sum="6ae7fedc6de00f77fcde30c92c46e1a9" name="classes/ssl_context.c" role="src" />
+   <file md5sum="65b8922df4047006c7c91ab5f5d1ee4e" name="examples/ssl-echo-server/server.php" role="doc" />
+   <file md5sum="b520d8a3880aeb7c5087b478a4a7e8b7" name="examples/buffer_proxy.php" role="doc" />
+   <file md5sum="e4c1e151fe9c4538abe37b9c89ae6208" name="examples/eio.php" role="doc" />
+   <file md5sum="41ce8e9c32c9087f0ab8a3ee769890d3" name="examples/fibonacci_buffer.php" role="doc" />
+   <file md5sum="d93bface15928918cca19d3899eeeb4d" name="examples/httpv0client.php" role="doc" />
+   <file md5sum="8f22877a8e711c0b999e07adc232448d" name="examples/httpv0client2.php" role="doc" />
+   <file md5sum="00567210e63aec6e7bdd202905c6cc37" name="examples/listener.php" role="doc" />
+   <file md5sum="00571702944b382cdf947b75fd13c37d" name="examples/misc.php" role="doc" />
+   <file md5sum="f8a010a7a725b2078ebe84973fac9b76" name="examples/signal.php" role="doc" />
+   <file md5sum="1d5f65d730f5448adb29e0ee30ef9b76" name="examples/uppercase_proxy.php" role="doc" />
+   <file md5sum="0d28e1c75ba82f6407c241355275ecd8" name="src/common.h" role="src" />
+   <file md5sum="9d08b8abb119ba2cf4028064e5aafe45" name="src/fe.c" role="src" />
+   <file md5sum="ddcc583e18e4763046d4ddc1e8b98953" name="src/fe.h" role="src" />
+   <file md5sum="4a05030788062407c790af8073220166" name="src/pe.c" role="src" />
+   <file md5sum="c51e028e1c373a054ce22dc90d43701f" name="src/priv.h" role="src" />
+   <file md5sum="8106359df3de80057843e4645d8fb1a7" name="src/structs.h" role="src" />
+   <file md5sum="15961be9a398760a1165bab4bf9a370c" name="src/util.c" role="src" />
+   <file md5sum="d63c81dad3a486a58ee916205f2bd47f" name="src/util.h" role="src" />
+   <file md5sum="55908c601e52fbd6757972830518768f" name="tests/01-load.phpt" role="src" />
+   <file md5sum="402b25bc4c97d41707e3f5ef9490ea59" name="tests/02-features.phpt" role="src" />
+   <file md5sum="b3129aea602209ddcf071bf4ff3d704c" name="tests/03-event-del.phpt" role="src" />
+   <file md5sum="86377f6079256684a1a0a5ec8dadb3dd" name="tests/04-bevent-socket.phpt" role="src" />
+   <file md5sum="546a61aaed6e77d96bdbf515be2821cd" name="CREDITS" role="doc" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL" role="doc" />
+   <file md5sum="7526ba862df26f2df5675eb3c8919738" name="INSTALL.md" role="doc" />
+   <file md5sum="24724cd72b38c576dd281731b53d2316" name="README.md" role="doc" />
+   <file md5sum="9a119d9a9afa0f99ed4d4c27661db665" name="config.m4" role="src" />
+   <file md5sum="e2f0cb774346d1946dcada4f89cfbaea" name="php_event.c" role="src" />
+   <file md5sum="2ed45ef87cf0d203c48fdc6e43320876" name="php_event.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.4.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0a1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>event</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="enable-event-debug" prompt="Enable internal debugging in event" />
+  <configureoption default="/usr" name="with-event-libevent-dir" prompt="libevent installation prefix" />
+  <configureoption default="yes" name="with-event-extra" prompt="Include libevent protocol-specific functionality support including HTTP, DNS, and RPC" />
+  <configureoption default="yes" name="with-event-openssl" prompt="Include libevent OpenSSL support" />
+  <configureoption default="no" name="with-openssl-dir" prompt="openssl installation prefix" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <version>
+    <release>1.2.6</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: with OpenSSL turned off got error: undefined symbol: zim_EventUtil_sslRandPoll
+Add: implemented get_properties property handler(is called when one casts an object to array)
+Refact: removed memory alloc for empty property hashtables
+Fix: heap corruption caused by EventBufferEvent callbacks(thanks to Marco Schuster)
+Fix: continuous calls to EventBufferEvent::setCallbacks didn&apos;t free old fci/fcc(thanks to Marco Schuster)
+Fix: possible heap corruption in EventListener&apos;s callback
+Add: EventBase::resume method
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.3</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: build errors
+Fix: undefined symbol SSLv2_*_method when SL_OP_NO_SSLv2 defined
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: non-static zend_always_inline function failed to compile with some (non-zts) php setups
+Change: static EventBuffer::addBuffer made non-static with one argument
+Add: EventBuffer expand, prepend, prependBuffer, drain, copyout, readLine, search,
+setPosition methods
+Add: EventBufferPosition class
+Fix: configure error in FreeBSD
+Add: OpenSSL support: EventBufferEvent methods: sslFilter, sslSocket, sslError, sslRenegotiate; EventSslContext class
+Add: EventBuffer::pullup method
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.1</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: the installer failed to determine location of src/common.h
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Procedural API converted to OOP API
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: crash due to destruction of the internal bufferevent buffers (synced with oop branch)
+Fix: extra memory consumption caused by continuous calls to bufferevent_get_input/_output
+Fix: memory violation while parsing event_config_set_max_dispatch_interval parameters
+   </notes>
+  </release>
+  <release>
+   <date>2013-01-19</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Libevent 2+ support added
+   </notes>
+  </release>
+  <release>
+   <date>2004-12-16</date>
+   <lead>
+    <name>Wez Furlong</name>
+    <user>wez</user>
+    <email>wez@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.1</release>
+    <api>0.9.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added event_timeout() function for easily scheduling a callback after a certain
+period of time.  The timeout may be persistent to make the callback a recurrent
+event.
+
+Fixed an issue with timercmp() on windows that caused a busy wait when the
+scheduler could have performed a sleep.
+
+Windows scheduling engine now also processes the message queue while
+waiting; useful for COM/GUI based scripts.
+
+Fixed build for threaded systems with real signals.
+
+Supports epoll(4), poll(2) and select(2) IO notification engines.
+Support for /dev/poll and kqueue is pending.
+
+On Windows, currently only sockets can participate in the IO notification engine.
+   </notes>
+   <deps>
+    <dep rel="ge" type="php" version="4.3.0" />
+   </deps>
+  </release>
+  <version>
+   <release>1.2.5</release>
+   <api>1.2.1</api>
+  </version>
+  <version>
+   <release>1.2.4</release>
+   <api>1.2.1</api>
+  </version>
+  <stability>
+   <release>alpha</release>
+   <api>alpha</api>
+  </stability>
+  <stability>
+   <release>alpha</release>
+   <api>alpha</api>
+  </stability>
+  <license uri="http://www.php.net/license">PHP</license>
+  <license uri="http://www.php.net/license">PHP</license>
+  <notes>Fix: unneeded Z_ADDREF_P() calls in EventListener, EventBufferEvent constructors and factory methods
+Fix: EventListener cached file descriptor for all connections
+Change: EventBufferEvent enable/disable methods return bool now
+Change: instead of stream pass numeric file descriptor to EventListener&apos;s accept-connection callback
+Add: callbacks and the callback arg are now passed to EventBufferEvent::__construct as optional arguments</notes>
+  <notes>Fix: deleted redundant len argument of EventBuffer::readLine
+Fix: EventBuffer::readLine returned non-dup&apos;d string. Caused bugs with pointers.</notes>
+ </changelog>
+</package>

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>APM</name>
+ <channel>pecl.php.net</channel>
+ <summary>Alternative PHP Monitor</summary>
+ <description>Monitoring extension for PHP, collects error events and statistics and send them to one of his drivers:
+SQLite and MariaDB/MySQL drivers are storing those in a database.
+StatsD driver sends them to StatsD using UDP.
+Socket driver sends them via UDP or TCP socket using its dedicated protocol.
+More drivers to come (SNMP, e-mail, Hadoop,...).
+
+A web frontend exists for manipulating the data stored in database at: https://github.com/patrickallaert/php-apm-web</description>
+ <lead>
+  <name>Patrick Allaert</name>
+  <user>patrickallaert</user>
+  <email>patrickallaert@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Davide Mendolia</name>
+  <user>dmendolia</user>
+  <email>dmendolia@php.net</email>
+  <active>no</active>
+ </lead>
+ <developer>
+  <name>Olivier Garcia</name>
+  <user>oliviergarcia</user>
+  <email>oliviergarcia@php.net</email>
+  <active>yes</active>
+ </developer>
+ <date>2015-03-09</date>
+ <time>21:03:50</time>
+ <version>
+  <release>2.0.2</release>
+  <api>2.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+Fixed:
+- Compilation issue on non ZTS setup
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="c5d204d4e660a2ed99070d815d5be6f7" name="apm.c" role="src" />
+   <file md5sum="ff4533d25a7d54ad44348326e1eeea1f" name="apm.ini" role="doc" />
+   <file md5sum="fb23be1607ea11d233f9437b40ab1d15" name="AUTHORS" role="doc" />
+   <file md5sum="7ee6c8c2db4c67949105fb336fe80b8d" name="backtrace.c" role="src" />
+   <file md5sum="0b11f1d5a8c43124f84dd7044cbe590c" name="backtrace.h" role="src" />
+   <file md5sum="335e4514061bd2367e353aa1b2411f20" name="config.m4" role="src" />
+   <file md5sum="5009d9776b673d0f051ea1f6ebb1f7d6" name="config.w32" role="src" />
+   <file md5sum="28eef50f14e51108e44400089b5ed339" name="driver_mysql.c" role="src" />
+   <file md5sum="eb4043b517bec6a2f2a6dc7feb9dd810" name="driver_mysql.h" role="src" />
+   <file md5sum="712f6cba87229ee07393f533b6fd11df" name="driver_socket.c" role="src" />
+   <file md5sum="371c2f8fbf245784250c96b73bf608cc" name="driver_socket.h" role="src" />
+   <file md5sum="22e4d0addb046e171f404d564a5330fd" name="driver_sqlite3.c" role="src" />
+   <file md5sum="692e7d3580dcee0d198e7077319f27c9" name="driver_sqlite3.h" role="src" />
+   <file md5sum="b65f9ba4220091a7edfdbd65046dbb42" name="driver_statsd.c" role="src" />
+   <file md5sum="b411500c67092f0caae691585b7b654c" name="driver_statsd.h" role="src" />
+   <file md5sum="f6ee2e22ea6fe0b6b505a327b305d425" name="CONTRIBUTORS" role="doc" />
+   <file md5sum="694f49a7e1f276ba75a3dd2c5acd580d" name="LICENSE" role="doc" />
+   <file md5sum="040bb00941f03f668cb65474c300e104" name="NEWS" role="doc" />
+   <file md5sum="ba799e53b8f8ea4bac8e5a99373711e0" name="php_apm.h" role="src" />
+   <file md5sum="d06ca49415d4d57f766320a76b838830" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>apm</providesextension>
+ <extsrcrelease>
+  <configureoption default="yes" name="with-sqlite3" prompt="Enable Sqlite3 support" />
+  <configureoption default="yes" name="with-mysql" prompt="Enable MariaDB/MySQL support" />
+  <configureoption default="yes" name="enable-socket" prompt="Enable Socket support" />
+  <configureoption default="yes" name="enable-statsd" prompt="Enable Statsd support" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <version>
+    <release>2.0.2</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2015-03-09</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed:
+- Compilation issue on non ZTS setup
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.1</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2015-03-09</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed:
+- #10: Bad configure message (thx @RemiCollet)
+- #11: Bad version reported (thx @RemiCollet)
+- #13: ZTS build is broken (thx @RemiCollet)
+- APM not working with XDebug
+  If Xdebug is enabled as in xdebug_enable() or xdebug.default_enable, APM error callback will not be called.
+  Use xdebug.default_enable=0 or xdebug_disable() to go through APM error handling.
+
+Improved:
+- #12: Installation of files via pecl install
+- StatsD driver (thanks @0livier for the discovery!)
+
+Changed:
+- Web frontend located on its own repository: https://github.com/patrickallaert/php-apm-web
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2015-02-20</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+New drivers:
+- StatsD
+- Socket
+
+Added:
+- Per-driver option &apos;apm.&lt;storage driver&gt;_store_silenced_events that lets you toggle whether to store silenced (@-ed) errors (thanks Mathieu Kooiman (@mathieuk))
+- apm.*_exception_mode configuration to control exception collection
+- Auto creation of SQLite and MariaDB/MySQL schemas
+- Stats:
+  - User and System CPU time
+  - Memory Peak Usage
+  - HTTP response code
+- &apos;application_id&apos; field to categorize the issues per application/server/environment/...
+- Support for compilation on Ubuntu (thanks Olivier Garcia (@0livier))
+
+Changed:
+- Deep refactoring:
+  - New DB schema
+  - No more native functions, retrieval of data is directly made in PHP
+- SQLite drivder attempts to create the directory structure by himself
+- Renamed &apos;slow request&apos; to &apos;stats&apos;
+- Connect to MySQL once and reconnect if needed
+- Small UI improvements
+- Avoiding int / uint conversion
+- MariaDB/MySQL driver activated by default
+
+Fixed:
+- Parse error test failing on PHP 5.4
+- Possible segfault with APM_DEBUG used outside RINIT/RSHUTDOWN phases
+- Missing disconnect from SQLite DB if changed with ini_set()
+- Too few arguments to sprintf() with MariaDB/MySQL backend
+- Possible segfault with PHP 5.5
+- Segmentation fault with &quot;zend_mm_heap corrupted&quot; message.
+- Missing zval reference incrementing
+- Out of memory error in backtrace generation
+- Removed hard-coded limit of 64kB json data
+- Do not activate silence handler if APM is not enabled
+- Some compiler warnings
+- Incorrect status propagation for PHP_RSHUTDOWN_FUNCTION
+- Several memory leaks
+
+Removed:
+- Deffered processing (can&apos;t be easily implemented in a generic and driver
+  agnostic way. Depending on the drivers, some deffered processing will
+  happen inside them.)
+- Reference SQL files, see source code for that ;-)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0alpha1</release>
+    <api>2.0.0alpha1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2013-06-07</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Changed:
+ - Deep refactoring:
+   - New DB schema
+   - No more native functions, retrieval of data is directly made in PHP
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0RC2</release>
+    <api>1.1.0RC2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2013-05-11</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Changed:
+- upgraded UI by using tweeter boostrap and upgrading jqGrid
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0RC1</release>
+    <api>1.1.0RC1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-10-19</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added:
+- --with-debugfile[=FILE] option to permit debugging of APM
+
+Changed:
+- Lazy loading the connection to the SQLite database
+
+Fixed:
+- Ordering by URL not working
+- Decouple mysql backend from sqlite3 (#62288)
+- Invalid UTF-8 may cause backtrace to be truncated in MySQL driver (#62244)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0beta4</release>
+    <api>1.1.0beta4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-06-07</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added:
+- Referer
+
+Changed:
+- Storing all ts in SQLite as integers
+
+Fixed:
+- Bug #62187: The MySQL driver does not store a timestamp for an event (Thanks to mathieu at mollie dot nl, HMWiesinger at gmx dot at).
+- Bug #62012: No data collected
+- Missing post_vars column definition in SQL creation scripts.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0beta3</release>
+    <api>1.1.0beta3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-05-27</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed:
+- Possible memory not being freed
+- Segmentation fault preventing the collection of data (#62012)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0beta2</release>
+    <api>1.1.0beta2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-05-06</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed:
+- Version 1.1.0beta* should be marked as &quot;beta&quot; and not as &quot;stable&quot;
+- APM-1.1.0beta1.tgz file contains only package.xml (#61937)
+- Some GCC warnings when built with PHP 5.4
+- Error callback arguments must be copied in every cases
+- Prevent calling the original error handler if Xdebug is loaded
+- Possible segfault if MySQL server connection link is gone
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0beta1</release>
+    <api>1.1.0beta1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-04-02</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added:
+- New information stored: IP, host, POST data, cookies
+- Configuration to limit the depth when dumping variables (apm.dump_max_depth)
+
+Removed:
+- JSON flag for apm_get_*_events and apm_get_*_slow_requests
+
+Changed:
+- Some UI refactoring
+- Minor optimizations
+
+Fixed:
+- Installation failing because of config file being named &quot;config.php&quot;
+  pecl/pear installer issue?
+- Some compilation warnings
+- Deffered mode taking only the *mysql* error_reporting into account
+- APM not correctly linking to libmysqlclient
+- Possible buffer overflows
+- Compilation issues related to timelib with PHP &gt;= 5.3.9
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-11-12</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Changed:
+- Base install dir for web files, now in php/PECL/APM
+
+Fixed:
+- Bug #60276 pecl install fail installing APM
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-06-14</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+This is the initial stable release of APM.
+
+Fixed:
+- Script filename could possibly not be filled in case of slow request.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0beta3</release>
+    <api>1.0.0beta3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-11-07</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added:
+- MySQL driver
+- Per driver error reporting level
+- Asynchronous processing of events (config option: apm.deffered_processing)
+
+Changed:
+- Code refactored to make use of &apos;APM drivers&apos;
+
+Fixed:
+- APM cannot be compiled with PHP &lt; 5.2.2.
+- Bug #17502: Drivers&apos; rshutdown run only when slow_request tracking is enabled.
+- Bug #17512: Sqlite connections aren&apos;t closed at the end of the request.
+- Bug #17513: Using MySQL driver, only events of the first incoming request are stored.
+- Bug #19421: apm.*_error_reporting is ignored.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0beta2</release>
+    <api>1.0.0beta2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-01-30</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Second beta release.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0beta1</release>
+    <api>1.0.0beta1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-11-29</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Initial beta release.
+   </notes>
+  </release>
+ </changelog>
+</package>

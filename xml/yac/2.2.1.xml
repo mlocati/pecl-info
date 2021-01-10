@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>yac</name>
+ <channel>pecl.php.net</channel>
+ <summary>lockless user data cache</summary>
+ <description>yac is a fast, lock-free, shared memory user data cache for PHP. it can be used to replace APC or local memcached.</description>
+ <lead>
+  <name>Xinchen Hui</name>
+  <user>laruence</user>
+  <email>laruence@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2020-05-15</date>
+ <time>04:17:14</time>
+ <version>
+  <release>2.2.1</release>
+  <api>2.2.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+- Refactor key manipulation, avoding memory allocation
+- Refactor Yac::__set/__get by using native objects_handler
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="3b66d8c8e7316c67f7c5cd90821a53e2" name="storage/allocator/allocators/createfilemapping.c" role="src" />
+   <file md5sum="ba23da7a1141b5b0b1222641f9948d46" name="storage/allocator/allocators/mmap.c" role="src" />
+   <file md5sum="d719e0643e649a89ad307ee41b82e0fd" name="storage/allocator/allocators/shm.c" role="src" />
+   <file md5sum="5aa4302988e0a26b7673741de836a4d2" name="storage/allocator/yac_allocator.h" role="src" />
+   <file md5sum="65411ac45fa24b952f0fe8a570b5f2b8" name="storage/allocator/yac_allocator.c" role="src" />
+   <file md5sum="38742caebaa3a6cad4e298c9f7dd1ec4" name="storage/yac_storage.h" role="src" />
+   <file md5sum="fb944b23ed1d05c06e76e5317f3c5136" name="storage/yac_storage.c" role="src" />
+   <file md5sum="2c7bdae5e04ba2dbd2dfd95b9545b320" name="storage/yac_atomic.h" role="src" />
+   <file md5sum="543b3b1b8571c4b9c02eafee4a6f3fa3" name="compressor/fastlz/LICENSE" role="doc" />
+   <file md5sum="4c76809627c49a1b1082a20699fb4482" name="compressor/fastlz/README.TXT" role="doc" />
+   <file md5sum="d49275e3dcc1d23d6ce0041648be8e14" name="compressor/fastlz/fastlz.h" role="src" />
+   <file md5sum="89384a08695fc238e9fbc41b0a14b5a7" name="compressor/fastlz/fastlz.c" role="src" />
+   <file md5sum="ceccb8a1237d9291ed527b12184cac7c" name="serializer/yac_serializer.h" role="src" />
+   <file md5sum="6bb7b710c83d297c24a6bb7b6d906235" name="serializer/php.c" role="src" />
+   <file md5sum="eb1f7ba8afb1d199e108ea2a8ed5ef9e" name="serializer/msgpack.c" role="src" />
+   <file md5sum="f4433aa570612f012eb1a9b57d4ce889" name="serializer/json.c" role="src" />
+   <file md5sum="292f300c457afe1c5d7b6c52dd7a9b6d" name="serializer/igbinary.c" role="src" />
+   <file md5sum="4ff407df4fb138f1fdefa97a72e4769f" name="tests/001.phpt" role="test" />
+   <file md5sum="702ee40db31edb24c2c633ae6ce9a29e" name="tests/002.phpt" role="test" />
+   <file md5sum="809b97bbef7dd58aafd905660043446b" name="tests/003.phpt" role="test" />
+   <file md5sum="69b6eab19f3e907097fd41ec6dfc024a" name="tests/004.phpt" role="test" />
+   <file md5sum="0c45c663d4bb4580344278d93d72697c" name="tests/005.phpt" role="test" />
+   <file md5sum="44354a5ac454a1bce3b00d8f5f9d6c4c" name="tests/006.phpt" role="test" />
+   <file md5sum="10ec3265916ceaeb4cdd56efce701eb0" name="tests/007.phpt" role="test" />
+   <file md5sum="f567e7205b3eb0ea757cb09dcd55cc7e" name="tests/008.phpt" role="test" />
+   <file md5sum="c9000c4ff1b00520cfb14c0e45508b30" name="tests/009.phpt" role="test" />
+   <file md5sum="1bf41dadf4a96d8730d37d89fb8257a6" name="tests/010.phpt" role="test" />
+   <file md5sum="0f47511cd434d57d01f78ad8a65a13cb" name="tests/011.phpt" role="test" />
+   <file md5sum="4c3a616f6563f090ccf781ed6a4671af" name="tests/012.phpt" role="test" />
+   <file md5sum="59924bf44844ea20bf3ab073e9bd28e3" name="tests/013.phpt" role="test" />
+   <file md5sum="07101b0387d80a78d298472b50e10fc7" name="tests/014.phpt" role="test" />
+   <file md5sum="5493a51288d0b3950c3bb2013eb54571" name="tests/015.phpt" role="test" />
+   <file md5sum="e8be5f292141214466103bf22d38c93e" name="tests/016.phpt" role="test" />
+   <file md5sum="6c78da4fb6a77aa333d60c12aeec3e10" name="tests/017.phpt" role="test" />
+   <file md5sum="d9f4f5ce592bffa74cb2a41cedadea0d" name="tests/018.phpt" role="test" />
+   <file md5sum="6c8431543f431d8805dcceada3ab944f" name="tests/019.phpt" role="test" />
+   <file md5sum="2705ab4cd8d284adcc48ee9afcd8d482" name="tests/020.phpt" role="test" />
+   <file md5sum="6bb18debb309f320cd2061ba103f7e67" name="tests/021.phpt" role="test" />
+   <file md5sum="544fd003bea3e33b8c4ed4dc1e5126b3" name="tests/022.phpt" role="test" />
+   <file md5sum="bd7b561c2df8c52bdec8c52fa2909733" name="tests/023.phpt" role="test" />
+   <file md5sum="4c4242640be3dfdccf4b46600dbe3682" name="tests/issue012.phpt" role="test" />
+   <file md5sum="ac36c858a802d2d8c791b4de479adb59" name="config.w32" role="src" />
+   <file md5sum="dd34a70236f008af999de817b93a5e3a" name="LICENSE" role="doc" />
+   <file md5sum="e4313698b2307a62bdbac09fd596ae53" name="CREDITS" role="doc" />
+   <file md5sum="655d9ecb38f3f2fb2025d8f1202ca243" name="config.m4" role="src" />
+   <file md5sum="05be4e0f96781cb052139b4dc5bd0148" name="yac.c" role="src" />
+   <file md5sum="8ea02c4b57d3b2faa1ad89ecaf929a6d" name="php_yac.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>yac</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="enable-igbinary" prompt="enable igbinary serializer support?" />
+  <configureoption default="no" name="enable-json" prompt="enable json serializer support?" />
+  <configureoption default="no" name="enable-msgpack" prompt="enable msgpack serializer support?" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <date>2020-03-31</date>
+   <version>
+    <release>2.2.1</release>
+    <api>2.2.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Refactor key manipulation, avoding memory allocation
+- Refactor Yac::__set/__get by using native objects_handler
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-31</date>
+   <version>
+    <release>2.2.0</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Added json serializer
+- Added igbinary serializer
+- change yac.serilalizer to string, &quot;php&quot;, &quot;json&quot; etc
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-27</date>
+   <version>
+    <release>2.1.2</release>
+    <api>2.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed compiler warning of redefinition of macros
+- Fixed crc32c only pick the first byte
+- Also use crc32_u32 in 64 bits
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-25</date>
+   <version>
+    <release>2.1.1</release>
+    <api>2.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed Build in 32bits
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-25</date>
+   <version>
+    <release>2.1.0</release>
+    <api>2.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Implemnented CAS based lock-free protection
+- Use SSE4.2 _mm_crc32 instead of normal crc32 to make speedup
+- Some optimization to avoding memory usage
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-19</date>
+   <version>
+    <release>2.0.4</release>
+    <api>2.0.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed PHP-7.4 windows build
+   </notes>
+  </release>
+  <release>
+   <date>2020-01-06</date>
+   <version>
+    <release>2.0.3</release>
+    <api>2.0.3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed PHP-7.4 Compatiblity
+   </notes>
+  </release>
+  <release>
+   <date>2017-07-27</date>
+   <version>
+    <release>2.0.2</release>
+    <api>2.0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed PHP-7.2 Compatiblity
+   </notes>
+  </release>
+  <release>
+   <date>2016-07-02</date>
+   <version>
+    <release>2.0.1</release>
+    <api>2.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed issue #63 (include smart_str.h)
+   </notes>
+  </release>
+  <release>
+   <date>2015-10-27</date>
+   <version>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Release yac for PHP7
+   </notes>
+  </release>
+  <release>
+   <date>2014-10-22</date>
+   <version>
+    <release>0.9.2</release>
+    <api>0.9.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Add --with-system-fastlz option
+   </notes>
+  </release>
+  <release>
+   <date>2014-07-25</date>
+   <version>
+    <release>0.9.1</release>
+    <api>0.9.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Try to fix windows build
+   </notes>
+  </release>
+  <release>
+   <date>2014-07-24</date>
+   <version>
+    <release>0.9.0</release>
+    <api>0.9.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- first release
+   </notes>
+  </release>
+ </changelog>
+</package>

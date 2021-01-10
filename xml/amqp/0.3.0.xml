@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.9" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>amqp</name>
+ <channel>pecl.php.net</channel>
+ <summary>Communicate with any AMQP compliant server</summary>
+ <description>This extension can communicate with any AMQP spec 0-9-1 compatible server, such as RabbitMQ, OpenAMQP and Qpid, giving you the ability to create and delete exchanges and queues, as well as publish to any exchange and consume from any queue.</description>
+ <lead>
+  <name>Pieter de Zwart</name>
+  <user>pdezwart</user>
+  <email>pdezwart@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-06-09</date>
+ <time>19:06:07</time>
+ <version>
+  <release>0.3.0</release>
+  <api>0.3.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>0.3.0 Release:
+Fixed memory leaks in many functions (courtesy Jonathan Tansavatdi and Andy Wick)
+Fixed consume method to return proper values
+Cleaned up variable usage
+Fixed bugs:
+    * 22638: Unexpected exit code 1 with AMQPQueue::consume()
+    * 22698: AMQPQueue::consume
+
+0.2.2 Release:
+Made extension compatible with PHP lt 5.3 (courtesy John Skopis)
+Fixed wrong typing of message properties (courtesy John Skopis)
+
+0.2.1 Release:
+Fixed refcount decrementing bug causing segfaults.
+
+0.2.0 Release:
+Works with AMQP 0-8 and 0-9-1 (used by RabbitMQ 2.*)
+Modified AMQPConnection object:
+    * Requires call to &apos;connect&apos; method to connect (no longer connects on instantiation)
+    * Added support for disconnect and reconnect
+    * Added helper setters for port, host, vhost, login and password
+Improved consume method to block for MIN messages, and try to get MAX messages if available
+Fixed zval descoping bugs
+Fixed bugs:
+    * 17809: Couldn&apos;t compile pecl extension under PHP 5.3
+    * 17831: Segmentation fault when the exchange doesn&apos;t exists
+    * 19707: AMQPQueue::get() doesn&apos;t return the message
+    * 19840: Connection Exception</notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="282bc8424b20a2ff54bb7b9803a25105" name="amqp.c" role="src" />
+   <file md5sum="e37b832be4e1f3f292cc80c34b8d0e3b" name="amqp_connection.c" role="src" />
+   <file md5sum="6c1a54be02a8c0ab69c580334d6e88e5" name="amqp_exchange.c" role="src" />
+   <file md5sum="abd285e4b870574b8a8e455ba57bbc5d" name="amqp_queue.c" role="src" />
+   <file md5sum="1612a274fcddd3c76100f73de032fd14" name="config.m4" role="src" />
+   <file md5sum="49137b62d701c88f717d1595b1fd69fb" name="CREDITS" role="doc" />
+   <file md5sum="ad1368e56e096d65a699ccefc5605717" name="php_amqp.h" role="src" />
+   <file md5sum="e1fc85f8227e85c0a07436e8bc0d3d65" name="amqp_connection.h" role="src" />
+   <file md5sum="d25c28abb29e3386be8904bed5dabeb9" name="amqp_exchange.h" role="src" />
+   <file md5sum="0333500d5d9fe3bc5f7c4b035ba0d0fc" name="amqp_queue.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>amqp</providesextension>
+ <extsrcrelease />
+</package>

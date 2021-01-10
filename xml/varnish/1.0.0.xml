@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://ww  w.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks  -1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>varnish</name>
+ <channel>pecl.php.net</channel>
+ <summary>Varnish Cache bindings</summary>
+ <description>Varnish Cache is an open source, state of the art web application accelerator. The extension makes it possible to interact with a running varnish instance through TCP socket or shared memory.</description>
+ <lead>
+  <name>Anatoliy Belsky</name>
+  <user>ab</user>
+  <email>ab@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2012-08-05</date>
+ <time>18:06:52</time>
+ <version>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+ <notes>
+- added windows compatibility, though VarnishLog, VarnishStat and auth with ident isn&apos;t available there
+- fixed socket closing for VarnishAdmin
+* added VarnishAdmin::disconnect()
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="823478f8f7546c89a89fb740130f2186" name="tests/001.phpt" role="test" />
+   <file md5sum="0fc8c43ced0d36ca8be27181605ae4a2" name="tests/002.phpt" role="test" />
+   <file md5sum="55e915179d4851a79523c72f459743fb" name="tests/003.phpt" role="test" />
+   <file md5sum="9f3b0e349321e5f5a8db11fe22179330" name="tests/004.phpt" role="test" />
+   <file md5sum="162eb77e6d59663833cf62e8791ef0b0" name="tests/005.phpt" role="test" />
+   <file md5sum="95a4f8f1de33792656aa3e3812dcd47c" name="tests/006.phpt" role="test" />
+   <file md5sum="5cbb6fa9b05df9afa8a907d708077ce1" name="tests/007.phpt" role="test" />
+   <file md5sum="b6cf630bb5d6754e32b103cd82d9e234" name="tests/008.phpt" role="test" />
+   <file md5sum="73e4ffd999303158bd05da2a5ba95b39" name="tests/config.php-dist" role="test" />
+   <file md5sum="eb84d7d5ea9abed9a5c76d730464a100" name="exception.h" role="src" />
+   <file md5sum="ba06594522bead780b0407a6e902c4d9" name="php_varnish.h" role="src" />
+   <file md5sum="5672e3f14117e6de81ab1a9b94b6c118" name="sha2.h" role="src" />
+   <file md5sum="cef65601b6a40d06448126102f0b71fd" name="varnish_lib.h" role="src" />
+   <file md5sum="995a4601069a3b934ae3c94510c9b5fb" name="adm.c" role="src" />
+   <file md5sum="31184d25ba9a792061ef0e43cc24654a" name="log.c" role="src" />
+   <file md5sum="50d7d4170ad06e561b1cf57ca31b4e60" name="exception.c" role="src" />
+   <file md5sum="5b946ffd294ea7d818662539b2794b9f" name="sha2.c" role="src" />
+   <file md5sum="f13ee8962b028fc78effe8e6fb2260c1" name="stat.c" role="src" />
+   <file md5sum="b4bb30e91e38c5018b9d1761c160fa59" name="varnish.c" role="src" />
+   <file md5sum="ad2bde8ac66fabc092daa9aab2e8771e" name="varnish_lib.c" role="src" />
+   <file md5sum="c23bd2a0047189e89aa9bea67adbc1f0" name="CREDITS" role="doc" />
+   <file md5sum="a687b0cc82bafd5bc6a3a3da359be1cb" name="config.w32" role="src" />
+   <file md5sum="664f733ab186e57762d67e4497de846c" name="config.m4" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+   <os>linux</os>
+  </required>
+ </dependencies>
+ <providesextension>varnish</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2012-06-01</date>
+   <version>
+    <release>0.9.3</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Added PHP-5.4 compatibility
+- Implemented VarnishAdmin functionality
+* VarnishAdmin::getVclList()
+* VarnishAdmin::vclUse()
+- multiple leak and bug fixes
+   </notes>
+  </release>
+  <release>
+   <date>2011-10-06</date>
+   <version>
+    <release>0.9.2</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Added Varnish 2 compatibility
+* Configuration option and a setter for VarnishAdmin
+* Ban/purge varnish 2/3 compatibility
+   </notes>
+   <dependencies>
+    <required>
+     <php>
+      <min>5.3</min>
+     </php>
+     <pearinstaller>
+      <min>1.4.0</min>
+     </pearinstaller>
+     <os>linux</os>
+    </required>
+   </dependencies>
+  </release>
+  <release>
+   <date>2011-09-24</date>
+   <version>
+    <release>0.9.1</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- constructor params with wrong type get appropriately converted
+- a couple more tests
+   </notes>
+   <dependencies>
+    <required>
+     <php>
+      <min>5.3</min>
+     </php>
+     <pearinstaller>
+      <min>1.4.0</min>
+     </pearinstaller>
+     <os>linux</os>
+    </required>
+   </dependencies>
+  </release>
+  <release>
+   <date>2011-09-23</date>
+   <version>
+    <release>0.9</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- more exceptions on appropriate places
+- minor fixes
+- beta documentation is available
+   </notes>
+  </release>
+  <release>
+   <date>2011-09-02</date>
+   <version>
+    <release>0.8</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- configuration array is now optional
+- ident param, if not given, will be set automatically based on the current hostname
+- added setters for the VarnishAdmin configuration
+- VarnishAdmin improved with sanity checks for connection and auth
+- Ident vs. host/port are mutually exclusive
+   </notes>
+  </release>
+  <release>
+   <date>2011-08-30</date>
+   <version>
+    <release>0.7</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- ZTS related fixes by Felipe Pena
+- Parameter parsing and other improvements by Hannes Magnusson
+- A lot of memory allocation/deallocation fixes
+- Added a couple of tests
+   </notes>
+  </release>
+  <release>
+   <date>2011-08-28</date>
+   <version>
+    <release>0.6</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- VarnishAdmin
+	* VarnishAdmin:ban() bases on the vcl ban commando
+	* VarnishAdmin::banUrl() bases on the vcl ban.url commando
+	* Arguments are passed to the varnish as given, which is probably a better idea than parsing
+	them on the php side one more time. The return status value can be used to check if the command
+	was successful.
+	* improved VarnishAdmin::isRunning()
+- added VarnishLog class
+	* VarnishLog::getLine()
+	* VarnishLog::getTagName()
+	* Varnish log tag list
+	* Can now read log records from a running varnishd SHM. Not sure, whether more functionality would be sensible, as it requires to run as daemon.
+   </notes>
+  </release>
+  <release>
+   <date>2011-08-26</date>
+   <version>
+    <release>0.4.1</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+Fix for the package to build
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.4</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+- Fixed sereval odd things:
+	* Missing exceptions
+	* Varnish param parsing
+	* Command out reading
+- Added clear/get panic methods
+   </notes>
+  </release>
+  <release>
+   <date>2011-08-23</date>
+   <version>
+    <release>0.3</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+   <notes>
+Implemented VarnishAdmin and VarnishStat classes with an minimal set on functionality.
+VarnishAdmin:
+* connect on varnish administration interface
+* authenticate on a varnish instance
+* read/write varnish configuration
+* ban urls
+* start/stop varnish slave
+* check varnish slave status
+VarnishStat:
+* connect to the shared memory
+* snapshot the current varnish statistics
+There is no documentation for this package yet, please take a look at the tests and sources.
+The extension is being currently developed with varnish 3.0 and php 5.3.6, so if you have any issues with older versions, please file a bug.
+   </notes>
+  </release>
+ </changelog>
+</package>

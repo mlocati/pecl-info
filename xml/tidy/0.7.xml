@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>tidy</name>
+  <summary>Tidy HTML Repairing and Parsing</summary>
+  <description>Tidy is a binding for the Tidy HTML clean and repair utility which
+allows you to not only clean and otherwise manipluate HTML documents,
+but also traverse the document tree using the Zend Engine 2 OO semantics.</description>
+  <maintainers>
+    <maintainer>
+      <user>john</user>
+      <name>John Coggeshall</name>
+      <email>john@php.net</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.7</version>
+    <date>2003-05-07</date>
+    <license>PHP</license>
+    <state>beta</state>
+    <notes>The tidy extension now works in PHP4 for most tasks, only the parsing
+abilities of the extension are not available (ZE2 only). The OO portions
+of the extension have been completely re-written and are now stable and
+work quite well. 
+The way all tidy functions work has also changed slightly. Instead of
+calling tidy_create() to create a tidy resource, the tidy resource is
+stored internally and used as needed. Thus, all tidy functions no longer
+need the initial $tidy parameter to function. If you'd like to reset
+tidy to an initial state, you can still call tidy_create(). This change
+was done to make tidy faster per-request. Special Thanks to Ilia 
+Alshanetsky for his work in this respect (among other things)!</notes>
+    <deps>
+      <dep type="php" rel="ge">4.3.0</dep>
+    </deps>
+    <configureoptions>
+      <configureoption name="with-tidy" default="autodetect" prompt="Tidy library installation dir?"/>
+    </configureoptions>
+    <filelist>
+      <file role="src" md5sum="c3ac14819e789172e85dead3b9f4d762" name="config.m4"/>
+      <file role="src" md5sum="385309e4504a1659da1a4f0395734c94" name="tidy.c"/>
+      <file role="src" md5sum="a2363c55aca64305492bb30a1b67ef6d" name="php_tidy.h"/>
+      <file role="doc" md5sum="4dbadce2ed68da8c10ad1b9c20a5a85a" name="CREDITS"/>
+      <file role="doc" md5sum="2b8ba2c0f9b101701a5360050726773c" name="README"/>
+      <file role="doc" md5sum="e6ec4027ff086c4ebabce877b383c06a" name="TODO"/>
+      <file role="doc" md5sum="d05ec3d7b33dcd7d4143177e333085d4" name="examples/cleanhtml.php"/>
+      <file role="doc" md5sum="a28bf69281e9bf2856543557ea565ecc" name="examples/dumpit.php"/>
+      <file role="doc" md5sum="f12cda8c8db5b7d382c5149ee9a1e4d9" name="examples/urlgrab.php"/>
+      <file role="test" md5sum="7ce76321e16d2f1c7cfe14e41d3b47b3" name="tests/001.phpt"/>
+      <file role="test" md5sum="350bdfcb309562ff21209a9e23a93f33" name="tests/002.phpt"/>
+      <file role="test" md5sum="27606aeee500b314236719e7c812a20a" name="tests/003.phpt"/>
+      <file role="test" md5sum="5781cc683c5f60f7f087864785dfcd0a" name="tests/004.phpt"/>
+      <file role="test" md5sum="d7011239daa211285c3c8c82a111dd2a" name="tests/005.phpt"/>
+      <file role="test" md5sum="2fec2ed6221e46de05f4d4ff43d0ed4c" name="tests/005.html"/>
+      <file role="test" md5sum="c4b9c68f715ce0d9d19a6c6b859cca3a" name="tests/006.phpt"/>
+      <file role="test" md5sum="1d44c80c560090f880a97f87f1ab02f6" name="tests/007.phpt"/>
+    </filelist>
+  </release>
+</package>

@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>couchbase</name>
+ <channel>pecl.php.net</channel>
+ <summary>Couchbase Server PHP extension</summary>
+ <description>The PHP client library provides fast access to documents stored in a Couchbase Server.</description>
+ <lead>
+  <name>Brett Lawson</name>
+  <user>brett19</user>
+  <email>brett@couchbase.com</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Sergey Avseyev</name>
+  <user>avsej</user>
+  <email>sergey@couchbase.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2017-09-05</date>
+ <time>08:51:41</time>
+ <version>
+  <release>2.4.0</release>
+  <api>2.3.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+ <notes>
+* Add more examples (XATTRs and RBAC user management).
+* PCBC-505: Enable error maps for libcouchbase 2.8.0. For higher versions it will be enabled by libcouchbase.
+* PCBC-499: Expose more query options on N1QL query for advanced tuning query performance
+* PCBC-485: Expose enhanced error message. The server might fill properties &quot;context&quot; and &quot;ref&quot; of the error.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="doc" />
+   <file md5sum="daee6123121e0d2559ec4ba9113ddff8" name="README.md" role="doc" />
+   <file md5sum="b602636d46a61c0ac0432bbf5c078fe4" name="contrib/php_array.h.LICENSE" role="doc" />
+   <file md5sum="27c1d6f7ab409bd994b011fdbe16cd20" name="api/couchbase.php" role="doc" />
+   <file md5sum="6cb01393576e6b162c18ac003b451586" name="api/toplevel.php" role="doc" />
+   <file md5sum="107e4bb3b2781dcd24a479afd096bf58" name="examples/api/couchbase.Authenticator.php" role="doc" />
+   <file md5sum="94e7bf3a41d8f1e3bd956eab10b129e6" name="examples/api/couchbase.LookupInBuilder.execute.php" role="doc" />
+   <file md5sum="e04a9becc789dde111db4c58e6b0d8c5" name="examples/api/couchbase.MutateInBuilder.execute.php" role="doc" />
+   <file md5sum="eb666d4e046284f3cf6de3752156f765" name="examples/api/couchbase.N1qlQuery.consistentWith.php" role="doc" />
+   <file md5sum="6301840a9d7bf58cd0b058e0d96b46cd" name="examples/api/couchbase.N1qlQuery.crossBucket.php" role="doc" />
+   <file md5sum="b3e1507eca7a6d4e051ef5f157f3456d" name="examples/api/couchbase.N1qlQuery.namedParams.php" role="doc" />
+   <file md5sum="9c535d663609646622a53a993294f29d" name="examples/api/couchbase.N1qlQuery.positionalParams.php" role="doc" />
+   <file md5sum="3c0ec7c98fa6b1daaf9d9b3309b95c0e" name="examples/api/couchbase.passthruDecoder.php" role="doc" />
+   <file md5sum="175b6c3fbc332ebc2c5ed8bf25a6b2a5" name="examples/cache_request/index.php" role="doc" />
+   <file md5sum="88438bb967845ad5135a9765d29409a2" name="examples/cas/cas_replace.php" role="doc" />
+   <file md5sum="fb342f999b966b7a99dfaa33cf8c45ec" name="examples/scan_consistency/request_plus.php" role="doc" />
+   <file md5sum="0b3bce6a832fbc8be57dd7fb915f1f86" name="examples/transcoders/index.php" role="doc" />
+   <file md5sum="543b3b1b8571c4b9c02eafee4a6f3fa3" name="fastlz/LICENSE.txt" role="doc" />
+   <file md5sum="5993fbb4e33c69073c5c036cccae2757" name="config.m4" role="src" />
+   <file md5sum="d3afa24351510f07dca888db13955f48" name="config.w32" role="src" />
+   <file md5sum="6280a1f3c9d9c6cc208c4547895ab085" name="contrib/php_array.h" role="src" />
+   <file md5sum="6f9cb8b0d70e40e2e9ccb0ea02131fac" name="couchbase.c" role="src" />
+   <file md5sum="2a64930e160ecf8eba2b20df8be4382e" name="couchbase.h" role="src" />
+   <file md5sum="3a2a14108a6c3a4b6a15c5a5c87522f4" name="datainfo.h" role="src" />
+   <file md5sum="0094d8348cccb0f6cdcae9284186d046" name="exception.c" role="src" />
+   <file md5sum="ce0227eec7f5144b1a4e9cf5afe6d25d" name="fastlz/fastlz.c" role="src" />
+   <file md5sum="490f867fd91c1e26567a041a410db526" name="fastlz/fastlz.h" role="src" />
+   <file md5sum="a5970d85eef6d5994357d0335b9b5db0" name="log.c" role="src" />
+   <file md5sum="d3de7bb7d198401c1d719a1cf2418747" name="log.h" role="src" />
+   <file md5sum="68a8e0f34ddea2aaa531ae2c69b7836d" name="opcookie.c" role="src" />
+   <file md5sum="d61e3955d1dd48f7ff767d0afb9e14a0" name="paramparser.c" role="src" />
+   <file md5sum="b014f9f7b61bd2fef50fcd532a462837" name="php_couchbase.h" role="src" />
+   <file md5sum="459937886f10907a9a44bff8352ebea9" name="src/couchbase/analytics_query.c" role="src" />
+   <file md5sum="8d963258cae408116557bf3ea88dec40" name="src/couchbase/authenticator.c" role="src" />
+   <file md5sum="7f3a027fb31b64d937dec0b6322ff7c9" name="src/couchbase/classic_authenticator.c" role="src" />
+   <file md5sum="c789620d896e3db95cfa3a584f9f8cf5" name="src/couchbase/password_authenticator.c" role="src" />
+   <file md5sum="0efdf2821cc43c8f4c718507dcdb095a" name="src/couchbase/base36.c" role="src" />
+   <file md5sum="16d3d0dc3f9376fe0283c51cf96e056d" name="src/couchbase/bucket.c" role="src" />
+   <file md5sum="3eb27b2015b780f761bd9f65f2a48431" name="src/couchbase/bucket/cbft.c" role="src" />
+   <file md5sum="d466fe219386eb11af30541fec1b4311" name="src/couchbase/bucket/counter.c" role="src" />
+   <file md5sum="2fdf008bc916f64230460e1cba9fadca" name="src/couchbase/bucket/durability.c" role="src" />
+   <file md5sum="d09e04c0d4c5b914b9fece40b0156724" name="src/couchbase/bucket/get.c" role="src" />
+   <file md5sum="ecf89a4cdb60619307290eb7f88babbc" name="src/couchbase/bucket/http.c" role="src" />
+   <file md5sum="7e33efd418352713c58c17777c3dbfd1" name="src/couchbase/bucket/n1ql.c" role="src" />
+   <file md5sum="5e1858178f2364cef4b74140853c9ca7" name="src/couchbase/bucket/remove.c" role="src" />
+   <file md5sum="8ce6df4a7a63348c8b0e5570fbf0a500" name="src/couchbase/bucket/store.c" role="src" />
+   <file md5sum="309bd1e23d20cbab3378be1448c8d219" name="src/couchbase/bucket/subdoc.c" role="src" />
+   <file md5sum="b5520ea3d66c121825a2e7a655c75970" name="src/couchbase/bucket/touch.c" role="src" />
+   <file md5sum="a3a17f5166bcf4580b0fb8cb53561fa3" name="src/couchbase/bucket/unlock.c" role="src" />
+   <file md5sum="24e7c6a215e11e59516f3eac26dd57d4" name="src/couchbase/bucket/view.c" role="src" />
+   <file md5sum="b6ad522e6ef8c65912b8d5b50c405d03" name="src/couchbase/bucket_manager.c" role="src" />
+   <file md5sum="9c7132448f2c89960aacebef0f333ab4" name="src/couchbase/bucket_manager/n1ix_create.c" role="src" />
+   <file md5sum="46c9afda938139bbf3b6ba3f72668c2b" name="src/couchbase/bucket_manager/n1ix_drop.c" role="src" />
+   <file md5sum="8c8e351924e4a107b867ed3e3501cef2" name="src/couchbase/bucket_manager/n1ix_list.c" role="src" />
+   <file md5sum="4d5bf1eca4a73063afae446a2ccf6a13" name="src/couchbase/cluster.c" role="src" />
+   <file md5sum="5e1ba8f4e6d8441bd4672192f7138b0c" name="src/couchbase/cluster_manager.c" role="src" />
+   <file md5sum="24e5dfc796836a2792aab6350623c0ff" name="src/couchbase/cluster_manager/user_settings.c" role="src" />
+   <file md5sum="91d0449de85ed526c8c21061f815ad3a" name="src/couchbase/document.c" role="src" />
+   <file md5sum="d02b3ca194a96be12c1829c38b172142" name="src/couchbase/document_fragment.c" role="src" />
+   <file md5sum="9f1bb3c36bf3dc121743aeb83aa1b65f" name="src/couchbase/log_formatter.c" role="src" />
+   <file md5sum="5ff1000d98b0ea304ce4e261c6b7ea50" name="src/couchbase/lookup_in_builder.c" role="src" />
+   <file md5sum="46fe2bfa9e95e3e2bee6ed48ac4494ad" name="src/couchbase/mutate_in_builder.c" role="src" />
+   <file md5sum="98893783fa1f115ec8d53ec30c5c70b6" name="src/couchbase/mutation_state.c" role="src" />
+   <file md5sum="7b07f4e0deb375ded0a3120b7ef9541a" name="src/couchbase/mutation_token.c" role="src" />
+   <file md5sum="bb4cc3ca79afceafebf1342420ef6720" name="src/couchbase/n1ql_index.c" role="src" />
+   <file md5sum="d9b036940487600a017203055f54fd60" name="src/couchbase/n1ql_query.c" role="src" />
+   <file md5sum="4d05ad29139cc0406f93c891b03ffa2c" name="src/couchbase/pool.c" role="src" />
+   <file md5sum="ed07dd19164daecba695e59073617dbc" name="src/couchbase/search/boolean_field_query.c" role="src" />
+   <file md5sum="3815ef2deab1a0d13ceeb4555c019d8d" name="src/couchbase/search/boolean_query.c" role="src" />
+   <file md5sum="ac3e5a2b1596a459521625e2882805d8" name="src/couchbase/search/conjunction_query.c" role="src" />
+   <file md5sum="212c8be4644a789f50aaf2924f5b4b28" name="src/couchbase/search/date_range_facet.c" role="src" />
+   <file md5sum="82fb3929bcafa13811581a39b345461b" name="src/couchbase/search/date_range_query.c" role="src" />
+   <file md5sum="a65037fb13512f4a2f82a002d09a2215" name="src/couchbase/search/disjunction_query.c" role="src" />
+   <file md5sum="1959104f99d2fc04f36044728dae14fb" name="src/couchbase/search/doc_id_query.c" role="src" />
+   <file md5sum="e4bc29b39c228a99c57f81b035467389" name="src/couchbase/search/geo_bounding_box_query.c" role="src" />
+   <file md5sum="ca12115510c86cf7d1343eed93ec7936" name="src/couchbase/search/geo_distance_query.c" role="src" />
+   <file md5sum="23778e8a4f5888a1f1566edec8f52ccf" name="src/couchbase/search/facet.c" role="src" />
+   <file md5sum="0195c41273c8d7d0524d080eb15a98eb" name="src/couchbase/search/match_all_query.c" role="src" />
+   <file md5sum="c13a5f21948626b8e230b3f647c270e3" name="src/couchbase/search/match_none_query.c" role="src" />
+   <file md5sum="aa5106e030b5b6bc6be646c52ff576b3" name="src/couchbase/search/match_phrase_query.c" role="src" />
+   <file md5sum="4b741f99b778e1aa8f37be6f02e017f6" name="src/couchbase/search/match_query.c" role="src" />
+   <file md5sum="390754cbecac4cec09db2a6d2ba513b9" name="src/couchbase/search/numeric_range_facet.c" role="src" />
+   <file md5sum="c627a707ca2785a2ee86c82c7ef8b75f" name="src/couchbase/search/numeric_range_query.c" role="src" />
+   <file md5sum="a04393faf03c6ad5a3404cfc41657bef" name="src/couchbase/search/phrase_query.c" role="src" />
+   <file md5sum="fbcaf22ce50c42b5e3473abd6a60d0f8" name="src/couchbase/search/prefix_query.c" role="src" />
+   <file md5sum="87aa797b437012f2af72ed53759a10c9" name="src/couchbase/search/query_part.c" role="src" />
+   <file md5sum="992b9839241f5e29b764b5ee23ea7490" name="src/couchbase/search/query_string_query.c" role="src" />
+   <file md5sum="2142e3af0df8da82952122b7ab45dcd1" name="src/couchbase/search/regexp_query.c" role="src" />
+   <file md5sum="b4012c5d9239eed386f735917d0e05a3" name="src/couchbase/search/term_facet.c" role="src" />
+   <file md5sum="642bf0b8fa98bb02d22dfc3f2de96cec" name="src/couchbase/search/term_query.c" role="src" />
+   <file md5sum="d6f72c465deb3aad0c5ac8cf7342841b" name="src/couchbase/search/term_range_query.c" role="src" />
+   <file md5sum="2a41ccb1b151d5729e1f4bf49c279db1" name="src/couchbase/search/wildcard_query.c" role="src" />
+   <file md5sum="220c4a21bd208b0f28f7f20fd3541986" name="src/couchbase/search_query.c" role="src" />
+   <file md5sum="f28475c9870cc7fd23c39d7f04f5abac" name="src/couchbase/spatial_view_query.c" role="src" />
+   <file md5sum="9e253781b02a4e0aef6e83c2e0a3a95f" name="src/couchbase/view_query.c" role="src" />
+   <file md5sum="98699575e48ec8b098f0d6122fc8280d" name="src/couchbase/view_query_encodable.c" role="src" />
+   <file md5sum="f891225d5c885d688e361ebf97883489" name="transcoding.c" role="src" />
+   <file md5sum="cbcc77222db3a244e5ceaeff6933b9c0" name="integration/MockTest.php" role="test" />
+   <file md5sum="3b06da70eda8a7598656a4939e77ce56" name="integration/CrossBucketN1qlQueryTest.php" role="test" />
+   <file md5sum="7ea540ea4d70424934ae76a0e5fa750f" name="integration/DnsSrvTest.php" role="test" />
+   <file md5sum="67751e8562d358139dfac2ad572b6858" name="integration/SearchTest.php" role="test" />
+   <file md5sum="dec8e65156fead5b1675dbd65a4f4f3e" name="tests/AliasesTest.php" role="test" />
+   <file md5sum="18193aaf8a4403b73ac5b7000ca5e907" name="tests/BucketManagerTest.php" role="test" />
+   <file md5sum="a79fcd0d6cab01703224411019e669a9" name="tests/BucketTest.php" role="test" />
+   <file md5sum="37a5879d4be6ee40458ed105d02ec73e" name="tests/ClusterManagerTest.php" role="test" />
+   <file md5sum="400a4e20878f63e7ec5576f9144ad1af" name="tests/ClusterTest.php" role="test" />
+   <file md5sum="e3554cc3c1c980b16092a0fc9e756613" name="tests/CouchbaseTestCase.php" role="test" />
+   <file md5sum="a64927881fd6e51bd56706fff68d80f5" name="tests/DatastructuresTest.php" role="test" />
+   <file md5sum="9647ef8a6b3b73213cbf7447738c3950" name="tests/N1qlQueryTest.php" role="test" />
+   <file md5sum="44e69c1d25434bf12d36d71cfbb7036f" name="tests/TranscoderTest.php" role="test" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.6.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+  <optional>
+   <package>
+    <name>igbinary</name>
+    <channel>pecl.php.net</channel>
+    <providesextension>igbinary</providesextension>
+   </package>
+  </optional>
+ </dependencies>
+ <providesextension>couchbase</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2017-07-19</date>
+   <version>
+    <release>2.3.4</release>
+    <api>2.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+* PCBC-495: update user management APIs
+* PCBC-478: add tests for Error Map using CouchbaseMock
+   </notes>
+  </release>
+  <release>
+   <date>2017-05-31</date>
+   <version>
+    <release>2.3.3</release>
+    <api>2.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+* PCBC-487: Fix adhoc vs prepared query logic. It should be inversed manually before 2.3.3.
+* PCBC-494: Fix double free error in passthruEncoder
+* PCBC-475: Add support for Term Range Query (full text search).
+* PCBC-475: Add support for geo search queries.
+* PCBC-468: Add support for user CRUD in ClusterManager
+* PCBC-489: Add shortcut for PasswordAuthenticator as Cluster-&gt;authenticateAs($username, $password)
+   </notes>
+  </release>
+  <release>
+   <date>2017-05-02</date>
+   <version>
+    <release>2.3.2</release>
+    <api>2.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+* PCBC-473: fix incorrect bucket reference copy in subdocument
+mutation/lookup builders, which might lead to segfault.
+* PCBC-474: fix segfault when using ViewQuery::keys()
+* PCBC-476: do not call destructors on unintialized ZVALs. Fixes possible
+segfaults with view queries on PHP 5.x.
+* PCBC-477: lookup JsonSerializable interface in run time, instead of compile time
+using php_json_serializable_ce symbol. This fixes support on some 5.4-5.5 builds.
+* PCBC-479: do not allow to create objects in invalid state. For example Cluster
+might return an instance, and only show PHP warning on invalid arguments.
+* PCBC-481: Bucket-&gt;counter() without specifying delta value results in
+null pointer dereference.
+* PCBC-482: mapSize/setExists/setRemove methods of Bucket did not check if &apos;get&apos;
+sub-request had thrown exception. This cause segfault, if operation executed on
+keys which do not exist.
+* PCBC-453: verify that ClusterManager supports ephemeral buckets
+* PCBC-451: add RBAC support in \Couchbase\PasswordAuthenticator class (Couchbase
+Server 5.x feature).
+* PCBC-440: add experimental support of extended attributes for subdocument operations.
+   </notes>
+  </release>
+  <release>
+   <date>2017-04-05</date>
+   <version>
+    <release>2.3.1</release>
+    <api>2.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+* PCBC-459: restore \Couchbase\Bucket::unlock() method, which has been
+  lost in refactoring
+* PCBC-460: prefer managed strings to persistent when storing document
+  values.
+* PCBC-461: deallocate intermediate results when using encoder compression
+* PCBC-462: replace new lines in log entries with space
+* PCBC-464: fix NumericRangeFacet with NULL boundary on PHP 5.4
+* PCBC-463: fix incorrect reference counting on Search API. (might lead to
+  segfaults and leaks)
+* PCBC-465: check encoded ViewQuery before sending to libcouchbase
+* PCBC-467: intermediate values in Datastructures API might leak.
+  (e.g. result of internal &quot;get&quot; to find out size of the list)
+* PCBC-469: implement SearchQuery-&gt;sort() function to support sorting FTS
+  results, which is accessible in Couchbase Server 4.6+
+* PCBC-471: fixed issue, when the library always use credentials for the
+  first bucket in Authenticator.
+* PCBC-441: add experimental support of Analytics query.
+  https://developer.couchbase.com/documentation/server/4.5/analytics/introduction.html
+   </notes>
+  </release>
+  <release>
+   <date>2017-03-07</date>
+   <version>
+    <release>2.3.0</release>
+    <api>2.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+* PCBC-443: Remove PCS dependency and rewrite PHP stubs using Zend C API
+* PCBC-382: Implement cluster-level authorization using ClassicAuthenticator
+* Migrate API to \Couchbase namespace (old API still available on toplevel as aliases,
+  see tests/AliasesTest.php)
+* PCBC-383: Cross-bucket joins for N1QL (see examples/api/couchbase.N1qlQuery.crossBucket.php)
+* Refresh API documentation, describe all input options, put everything into single file
+  (see api/*.php), and prepare them for PHPStorm (https://github.com/JetBrains/phpstorm-stubs/pull/180)
+* PCBC-386: Implement Datastructures API: List, Set, Map and Queue (see tests/DatastructuresTest.php)
+* Improve connection management, persistent connections by default, track and close idle connections.
+   </notes>
+  </release>
+  <release>
+   <date>2016-12-26</date>
+   <version>
+    <release>2.2.4</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+This is the GA release of the 2.2.4 SDK. It is a maitenance release
+with several fixes:
+
+Changes:
+* PCBC-401: embed PHP classes using pcs. This fixes performance issue,
+  where the extension spending time during each request to evaluate
+  and load Couchbase classes written in PHP. The pecl/pcs extension
+  have to be installed and loaded before loading couchbase SDK.
+* PCBC-439: reset MCISCOMPRESSED before type detection.
+  This fixes decoding compressed values.
+* PCBC-438: install callback for replica read command.
+  This fixes getFromReplica() returning NULL.
+* Documentation updates and bug fixes
+   </notes>
+  </release>
+  <release>
+   <date>2016-10-04</date>
+   <version>
+    <release>2.2.3</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+This is the GA release of the 2.2.3 SDK. It is a maitenance release
+with several fixes:
+
+Changes:
+* PCBC-389: deserialize legacy docs as JSON with falling back to old behaviour
+* PCBC-428: use correct exception when credentials missing for CouchbaseClusterManager
+* Documentation updates and bug fixes
+   </notes>
+  </release>
+  <release>
+   <date>2016-09-06</date>
+   <version>
+    <release>2.2.2</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+This is the GA release of the 2.2.2 SDK. It is a maitenance release
+with several fixes:
+
+Changes:
+* PCBC-410: consolidate libcouchbase and extension loggers, and expose them through PHP logger
+* PCBC-409: bubble errors from server on view upsert
+* PCBC-417: do not send duplicated requests for multi-get
+* PCBC-423: report N1QL error details via logger
+* Documentation updates and bug fixes
+   </notes>
+  </release>
+  <release>
+   <date>2016-08-08</date>
+   <version>
+    <release>2.2.1</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+This is the GA release of the 2.2.1 SDK. It is a maitenance release
+with several fixes:
+
+Changes:
+* PCBC-416: fix segfault on multi-get for duplicated keys.
+* PCBC-414: return $this from N1qlQuery methods
+* Documentation updates and bug fixes
+   </notes>
+  </release>
+  <release>
+   <date>2016-07-06</date>
+   <version>
+    <release>2.2.0</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+This is the GA release of the 2.2.0 SDK. It includes more features
+to support new Couchbase Server 4.5 release and bug fixes.
+
+Changes:
+* PCBC-393: Support for enhanced durability
+* PCBC-398: expose methods for parameterized N1QL queries
+* PCBC-382: cluster level authentication
+* Expose meta for N1QL and Search queries
+* Documentation updates and bug fixes
+   </notes>
+  </release>
+  <release>
+   <date>2016-06-29</date>
+   <version>
+    <release>2.2.0beta4</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+This is the fourth beta release of the 2.2.0 SDK. It includes more features
+to support new Couchbase Server 4.5 release and bug fixes.
+
+Changes:
+* PCBC-380: support AT_PLUS consistency
+* PCBC-381: support for Full Text Search queries
+* Various minor fixes and improvements
+   </notes>
+  </release>
+  <release>
+   <date>2016-05-25</date>
+   <version>
+    <release>2.2.0beta3</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+This is third beta release of 2.2.0 SDK. It includes more features
+to support upcoming Couchbase Server release, stability fixes and
+smaller improvements.
+
+Changes:
+* PCBC-379: Support for Subdocument API
+* PCBC-385: Support for Index Management
+* PCBC-394: Expose CAS as a bytestring
+* PCBC-392: Client announce its version in the server logs
+* PCBC-397: Additive connection string options are not clobbered anymore
+* PCBC-395: Type checks properly enforced for booleans
+* Various minor changes
+   </notes>
+  </release>
+  <release>
+   <date>2016-04-19</date>
+   <version>
+    <release>2.2.0beta2</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+This is a minor update to the PHP 2.2.0 Beta SDK.
+
+It includes fixes in package manifest and build script.
+   </notes>
+  </release>
+  <release>
+   <date>2016-04-19</date>
+   <version>
+    <release>2.2.0beta1</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache V2</license>
+   <notes>
+This is a major update to the PHP 2.2 SDK.
+
+Changes:
+* PCBC-360: refactoring to support PHP 7
+* PCBC-376: reentrant transcoders
+* PCBC-369: allow to use system fastlz
+* PCBC-373: ensure view query values are properly url encoded
+* Various minor changes
+   </notes>
+  </release>
+  <release>
+   <date>2015-11-04</date>
+   <version>
+    <release>2.1.0</release>
+    <api>2.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+This is a minor update to the PHP 2.1 SDK.
+
+Changes:
+* PCBC-356: Added support for N1QL prepared statements.
+* PCBC-363: Fix issue related to passing invalid ID arguments.
+* PCBC-366: Correct issue with legacy transcoder compression.
+* Various minor changes
+   </notes>
+  </release>
+  <release>
+   <date>2014-04-28</date>
+   <version>
+    <release>2.0.0dp1</release>
+    <api>2.0.0dp1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <notes>
+First developer preview release of 2.0 version of PHP client.
+   </notes>
+  </release>
+  <release>
+   <date>2014-06-24</date>
+   <version>
+    <release>2.0.0dp2</release>
+    <api>2.0.0dp2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <notes>
+This is a minor update to the existing PHP 2.0 developer
+preview.
+
+New features in a nutshell:
+* Cluster constructor now accepts a Couchbase Connection String.
+* Support for cross-SDK compatible data-type flags.
+* Client-side support for SSL connections.
+   </notes>
+  </release>
+  <release>
+   <date>2014-08-21</date>
+   <version>
+    <release>2.0.0beta</release>
+    <api>2.0.0beta</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <notes>
+This is a minor update to the existing PHP 2.0 developer preview
+2.
+
+Changes:
+* Added uncommited by stable management APIs.
+* Made minor changes to various methods to allow easier use.
+   </notes>
+  </release>
+  <release>
+   <date>2014-09-16</date>
+   <version>
+    <release>2.0.0beta2</release>
+    <api>2.0.0beta2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <notes>
+This is a minor update to the existing PHP 2.0 beta.
+
+Changes:
+* Added support for cross-sdk data storage/retrieval.
+* Added method to debug generated view queries.
+* Fixed numerous minor bugs since beta.
+   </notes>
+  </release>
+  <release>
+   <date>2014-09-19</date>
+   <version>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+This is the first GA release of the new 2.0 PHP SDK.
+
+No changes since release 2.0.0beta2.
+   </notes>
+  </release>
+  <release>
+   <date>2014-11-04</date>
+   <version>
+    <release>2.0.1</release>
+    <api>2.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+This is a patch update to the PHP 2.0 SDK.
+
+Changes:
+* PCBC-303: Allow JSON decoding as associative array.
+* Added missing append/prepend forwarders.
+* Fixed various issues with query creation and execution.
+* Corrected various build issues.
+   </notes>
+  </release>
+  <release>
+   <date>2014-12-02</date>
+   <version>
+    <release>2.0.2</release>
+    <api>2.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+This is a patch update to the PHP 2.0 SDK.
+
+Changes:
+* PCBC-310: Corrected segfault occuring in some cases when
+    running under Apache and IIS.
+* Updated PHP script executer to provide accurate error
+    information in Exception stack traces.
+* Refactored code base for better maintainability.
+   </notes>
+  </release>
+  <release>
+   <date>2015-01-05</date>
+   <version>
+    <release>2.0.3</release>
+    <api>2.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+This is a patch update to the PHP 2.0 SDK.
+
+Changes:
+* PCBC-318: Fix append/prepend operations failing on new libcouchbase.
+* PCBC-319: Correct segfault when using persist_to/replicate_to.
+* Corrected typo in N1QL query interface.
+   </notes>
+  </release>
+  <release>
+   <date>2015-02-03</date>
+   <version>
+    <release>2.0.4</release>
+    <api>2.0.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+This is a patch update to the PHP 2.0 SDK.
+
+Changes:
+* PCBC-321: Corrected issue when passing incorrect option parameter type.
+* Corrected issue related to setting timeouts.
+* PCBC-317: Updated N1QL querying to support DP4.
+* Fixed issue with design document management methods.
+   </notes>
+  </release>
+  <release>
+   <date>2015-03-03</date>
+   <version>
+    <release>2.0.5</release>
+    <api>2.0.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+This is a patch update to the PHP 2.0 SDK.
+
+Changes:
+* Orphan: Corrected issue where durability checking may not propagate errors.
+* PCBC-327: group_level semantics now support server 3.x.
+* Orphan: Corrected issue with some ViewQuery methods.
+* PCBC-326: Zero-length strings no longer decode as NULL.
+   </notes>
+  </release>
+  <release>
+   <date>2015-04-07</date>
+   <version>
+    <release>2.0.6</release>
+    <api>2.0.6</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+This is a patch update to the PHP 2.0 SDK.
+
+Changes:
+* PCBC-331: CouchbaseBucketManager now has a flush operation to clear a bucket.
+* Orphan: Minor fix to view management return values.
+* Orphan: ViewQuery::group_level now can be chained as expected.
+* PCBC-334: PHP 5.4 transcoder compatibility issues have been fixed.
+* PHP 5.3 support has been deprecated and PHP 5.6 is now fully supported.
+* Corrected various memory leaks and segfaults.
+   </notes>
+  </release>
+  <release>
+   <date>2015-04-22</date>
+   <version>
+    <release>2.0.7</release>
+    <api>2.0.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+This is a patch update to the PHP 2.0 SDK.
+
+Changes:
+* PCBC-339: Add support for using N1QL with CB Server 4.0.0.
+* PCBC-343: Added missing touch method to CouchbaseBucket.
+   </notes>
+  </release>
+  <release>
+   <date>2015-11-04</date>
+   <version>
+    <release>2.1.0</release>
+    <api>2.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+This is a minor update to the PHP SDK.
+
+Changes:
+* PCBC-356: Added support for N1QL prepared statements.
+* PCBC-363: Fix issue related to passing invalid ID arguments.
+* PCBC-366: Correct issue with legacy transcoder compression.
+* Various minor changes
+   </notes>
+  </release>
+ </changelog>
+</package>

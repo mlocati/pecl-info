@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sqlsrv</name>
+ <channel>pecl.php.net</channel>
+ <summary>Microsoft Drivers for PHP for SQL Server (SQLSRV)</summary>
+ <description>The Microsoft Drivers for PHP for SQL Server are PHP extensions that allow for the reading and writing of SQL Server data from within PHP scripts. The SQLSRV extension provides a procedural interface while the PDO_SQLSRV extension implements PDO for accessing data in all editions of SQL Server 2008 R2 and later (including Azure SQL DB). These drivers rely on the Microsoft ODBC Driver for SQL Server to handle the low-level communication with SQL Server.
+*This package contains only the SQLSRV driver.*
+ </description>
+ <lead>
+  <name>Meet Bhagdev</name>
+  <user>meetbhagdev</user>
+  <email>meetb@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Jay Kint</name>
+  <user>jkint</user>
+  <email>jaykint@microsoft.com</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Marie Barwin</name>
+  <user>mbar</user>
+  <email>v-mabarw@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Hadis Kakanejadi Fard</name>
+  <user>hadisfard</user>
+  <email>v-hakaka@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2017-07-05</date>
+ <time>14:25:44</time>
+ <version>
+  <release>4.3.0</release>
+  <api>4.3.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/mit">The MIT License (MIT)</license>
+ <notes>
+[Added]
+- Added Unicode Column name support (issue #138). 
+- Support for Always On Availability groups via Transparent Network IP Resolution (TNIR)  
+- Added support for sql_variant data type with limitation (issue #51 and issue #127) 
+- Support drivers on Debian Jessie (tested on Debian 8.7) 
+- Connection Resiliency support in Windows 
+- Connection pooling support for Linux and macOS  
+- Support for Mac(El Capitan and above) 
+- Azure Active Directory Authentication with ActiveDirectoryPassword and SqlPassword 
+[Fixed]
+- Fixed issues with sqlsrv_has_rows() to prevent it from moving statement cursor (issue #37). 
+- Fixed sqlsrv client buffer size to only allow positive integers (issue #228). 
+- Fixed PECL installation errors when PHP was installed from source (issue #213). 
+- Fixed the assertion error (Linux) when fetching data from a binary column using the binary encoding (issue #226). 
+- Fixed issue output parameters bound to empty string (issue #182). 
+- Fixed issue with SQLSRV_ATTR_FETCHES_NUMERIC_TYPE when column return type is set on statement (issue #173). 
+- Fixed a memory leak in closing connection resources. 
+- Fixed load ordering issue in MacOS (issue #417) 
+- Added a workaround for a bug in unixODBC 2.3.4 when connection pooling is enabled. 
+- Fixed the issue with driver loading order in macOS 
+- Fixed null returned when an empty string is set to an output parameter (issue #308). 
+- Fixed incorrectly binding of unicode parameter when emulate prepare is on and the encoding is set at the statement level (issue #92). 
+- Fixed binary column binding when emulate prepare is on (issue #140). 
+- Fixed sqlsrv_num_rows() when the client buffered result is null (issue #330). 
+- Fixed conversion warnings because of some const chars (issue #332). 
+- Fixed debug abort error when building the driver in debug mode with PHP 7.1. 
+- Fixed string truncation when binding varchar(max), nvarchar(max), varbinary(max), and xml types (issue #231). 
+- Fixed fatal error when fetching empty nvarchar (issue #69). 
+- Fixed fatal error when calling sqlsrv_fetch() with an out of bound offset for SQLSRV_SCROLL_ABSOLUTE (issue #223). 
+[Limitation]
+- Limited support for inout / output params when using sql_variant type
+[Known Issues]
+- When pooling is enabled in Linux or MAC
+  - unixODBC 2.3.4 or prior (Linux and MAC) might not return proper diagnostics information, such as error messages, warnings and informative messages
+  - due to this unixODBC bug, fetch large data (such as xml, binary) as streams as a workaround. See the examples (https://github.com/Microsoft/msphpsql/wiki/Connection-Pooling-on-Linux-and-Mac)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="6903b6e4c2a4b262d4c6a32036831573" name="config.m4" role="src" />
+   <file md5sum="d45ff2a2069f713398045903be503c1d" name="config.w32" role="src" />
+   <file md5sum="4f7a9bb9d1d6a2c4bddd8b4482039cb8" name="conn.cpp" role="src" />
+   <file md5sum="da4d3c1d4392f2e63b36250266cdf9b4" name="CREDITS" role="doc" />
+   <file md5sum="b850c1022cd437ed50e51dc392026d45" name="init.cpp" role="src" />
+   <file md5sum="061c9665b46b4db81317457288e2ef9c" name="LICENSE" role="doc" />
+   <file md5sum="a441793bd60b8d66cc8eefd840a1415a" name="php_sqlsrv.h" role="src" />
+   <file md5sum="123ffd3c0ac0401bb83806624fb8929f" name="shared/core_conn.cpp" role="src" />
+   <file md5sum="8bf1457a0eef8983f5f60e0e2498c4e7" name="shared/core_init.cpp" role="src" />
+   <file md5sum="fe0c6952bc4f7f871c4e62467f8b35c3" name="shared/core_results.cpp" role="src" />
+   <file md5sum="38aad0a617a3c3728cb73592a5562664" name="shared/core_sqlsrv.h" role="src" />
+   <file md5sum="a0fac8d2cbd18cf4e08ba49e66157912" name="shared/core_stmt.cpp" role="src" />
+   <file md5sum="1e7524ad95fb33c3524c0ee49b5fee93" name="shared/core_stream.cpp" role="src" />
+   <file md5sum="5de98f83124bd94a61aa17667ae86624" name="shared/core_util.cpp" role="src" />
+   <file md5sum="e2135fd7c469bc6c5e1685776152b8c1" name="shared/FormattedPrint.cpp" role="src" />
+   <file md5sum="638e894e4056d186f653d3e0473bde93" name="shared/FormattedPrint.h" role="src" />
+   <file md5sum="717375e96a1d20feaf012adffecca927" name="shared/globalization.h" role="src" />
+   <file md5sum="4c222782b5d63cbb4046859d12262452" name="shared/interlockedatomic_gcc.h" role="src" />
+   <file md5sum="855dc35868be7cac78d2ab87a8c8e0b0" name="shared/interlockedatomic.h" role="src" />
+   <file md5sum="f268180bbdc8c72ebbc1ab8425d85788" name="shared/interlockedslist.h" role="src" />
+   <file md5sum="8214394c47fd43fdb70ae41a5e8dd137" name="shared/localization.hpp" role="src" />
+   <file md5sum="06d5e3692f95b0e01a816da046bb70ae" name="shared/localizationimpl.cpp" role="src" />
+   <file md5sum="155bef372bfcb31c886a8da1cfa2529d" name="shared/msodbcsql.h" role="src" />
+   <file md5sum="34059b042c60cb5cee54e7d27365f8a9" name="shared/sal_def.h" role="src" />
+   <file md5sum="8990b47eb2144de343a3c236a3ad6ab6" name="shared/StringFunctions.cpp" role="src" />
+   <file md5sum="a279a2581ce3f7521f102ddf352edd66" name="shared/StringFunctions.h" role="src" />
+   <file md5sum="144929e31ad821368babf81474115c6a" name="shared/typedefs_for_linux.h" role="src" />
+   <file md5sum="1862391bfb478420597eb5c8c24d30d2" name="shared/version.h" role="src" />
+   <file md5sum="db681886b78b8322e2aba6e631b6df81" name="shared/xplat.h" role="src" />
+   <file md5sum="80e7ac3133d7e4c44df2edfb9e7ae06d" name="shared/xplat_intsafe.h" role="src" />
+   <file md5sum="05a155b29ee750dad670bf05650be685" name="shared/xplat_winerror.h" role="src" />
+   <file md5sum="bcbb340ce0d58865deb3a74cd6762c8f" name="shared/xplat_winnls.h" role="src" />
+   <file md5sum="cc922b39a8460ed9d27504228a8c3be9" name="stmt.cpp" role="src" />
+   <file md5sum="d3289a073debc0ecc8582829328df1c0" name="template.rc" role="src" />
+   <file md5sum="927b1f7ceec01614d87cb30b79205e0f" name="util.cpp" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+   <arch>
+    <pattern>linux-*-i?86-*</pattern>
+    <conflicts/>
+   </arch>   
+  </required>
+ </dependencies>
+ <providesextension>sqlsrv</providesextension>
+ <extsrcrelease />
+</package>

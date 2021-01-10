@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>event</name>
+  <summary>Event Scheduling Engine</summary>
+  <description>This is an extension to efficiently schedule IO, time and signal based
+events using the best available IO notification mechanism for your system.
+This is a port of libevent to the PHP infrastructure; the API is similar
+but not identical.</description>
+  <maintainers>
+    <maintainer>
+      <user>wez</user>
+      <name>Wez Furlong</name>
+      <email>wez@php.net</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.9</version>
+    <date>2004-12-12</date>
+    <license>PHP</license>
+    <state>beta</state>
+    <notes>Supports epoll(4), poll(2) and select(2) IO notification engines.
+Support for /dev/poll and kqueue is pending.
+
+On Windows, currently only sockets can participate in the IO notification engine.</notes>
+    <deps>
+      <dep type="php" rel="ge" version="4.3.0"/>
+    </deps>
+    <filelist>
+      <file role="src" name="config.m4"/>
+      <file role="src" name="config.w32"/>
+      <file role="src" name="event.c"/>
+      <file role="src" name="select.c"/>
+      <file role="src" name="poll.c"/>
+      <file role="src" name="epoll.c"/>
+      <file role="src" name="win32.c"/>
+      <file role="src" name="php_event.h"/>
+      <file role="src" name="php_event_int.h"/>
+      <file role="src" name="sys_queue.h"/>
+      <file role="src" name="sys_tree.h"/>
+      <file role="doc" name="CREDITS"/>
+      <file role="doc" name="sample.php"/>
+      <file role="doc" name="EXPERIMENTAL"/>
+    </filelist>
+  </release>
+</package>

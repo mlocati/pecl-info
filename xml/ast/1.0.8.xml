@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>ast</name>
+ <channel>pecl.php.net</channel>
+ <summary>Extension exposing PHP 7 abstract syntax tree</summary>
+ <description>php-ast exports the AST internally used by PHP 7.
+     php-ast is significantly faster than PHP-Parser, because the AST construction is implemented in C.
+     However, php-ast may only parse code that is syntactically valid on the version of PHP it runs on.</description>
+ <lead>
+  <name>Nikita Popov</name>
+  <user>nikic</user>
+  <email>nikic@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Tyson Andre</name>
+  <user>tandre</user>
+  <email>tandre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2020-08-05</date>
+ <time>13:58:25</time>
+ <version>
+  <release>1.0.8</release>
+  <api>1.0.8</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+ <notes>
+- Recommend using the new constant `ast\flags\PARAM_MODIFIER_*` when checking if parameters use constructor property promotion.
+  The values of `ast\flags\MODIFIER_*` and `ast\flags\PARAM_VARIADIC` had some overlap in some php 7 versions.
+  The new constants will have the same values as `ast\flags\MODIFIER_*` in PHP 8.0+, but different values in PHP 7
+  (and these flags will never be set in php 7).
+- Support PHP 8.0&apos;s named arguments.
+- Support PHP 8.0&apos;s nullsafe operator (`?-&gt;`).
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="246dca079d6ce840d953d97b498249d2" name="tests/001.phpt" role="test" />
+   <file md5sum="8e9b4e3d0404b8a74eea2de751f3a7ff" name="tests/array_destructuring_old.phpt" role="test" />
+   <file md5sum="7e2a1f915a38a9c94633c525713cf196" name="tests/array_destructuring.phpt" role="test" />
+   <file md5sum="ee4c1067b55fd6f60ac959d6b6e7ac80" name="tests/assign_ops.phpt" role="test" />
+   <file md5sum="5365d941731521a2aef21cc9b037d696" name="tests/ast_dump_with_linenos.phpt" role="test" />
+   <file md5sum="90433a63fdb80665ec33146817b2a953" name="tests/attributes_01.phpt" role="test" />
+   <file md5sum="3b0dff06156a9241b49bb57438c39058" name="tests/attributes_02.phpt" role="test" />
+   <file md5sum="a71b0b888cdde9dbb1dc53104a9965c3" name="tests/binary_ops.phpt" role="test" />
+   <file md5sum="8d07cc640120826e097dea7e95124139" name="tests/by_ref_destructuring.phpt" role="test" />
+   <file md5sum="206b940e2fdadc540d67aed3f9cab522" name="tests/class_consts.phpt" role="test" />
+   <file md5sum="21d896c0dce45dd880d6a985212c1461" name="tests/class_consts_80.phpt" role="test" />
+   <file md5sum="382e5168064b9607dc7298fff98a496b" name="tests/class_name_version_50.phpt" role="test" />
+   <file md5sum="4af310df2ee5e2aad2c76d0c5c8a21ec" name="tests/class_name_version_70.phpt" role="test" />
+   <file md5sum="6cb10af8172348711685691aae8820c2" name="tests/class_on_objects.phpt" role="test" />
+   <file md5sum="526f9c70fc3b649a7d0faf7d572d4656" name="tests/class.phpt" role="test" />
+   <file md5sum="fb5009b860f550ee45833877b34abf37" name="tests/class_types.phpt" role="test" />
+   <file md5sum="504a4e551be214b348cb6aed991d62f8" name="tests/closure_use_vars.phpt" role="test" />
+   <file md5sum="ff11ed136dfec31ef01b0ea68d2c3a51" name="tests/coalesce.phpt" role="test" />
+   <file md5sum="ca473d674a77ae6c6e485e9e49a971bf" name="tests/concat.phpt" role="test" />
+   <file md5sum="37804b438ed9a4a333ea75d9b655b4b2" name="tests/constructor.phpt" role="test" />
+   <file md5sum="eee13eb99fdd30692a648ae6180a080d" name="tests/decl_ids.phpt" role="test" />
+   <file md5sum="6b049d852ca0189d69abf647b6cee38a" name="tests/decl_normalization.phpt" role="test" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="tests/empty_file.php" role="test" />
+   <file md5sum="c906c013c70ee2c4ade38e02e5788377" name="tests/empty_file_parse.phpt" role="test" />
+   <file md5sum="b9d7955449e4c51fdaa5c814a908516b" name="tests/eval_include.phpt" role="test" />
+   <file md5sum="d3bbb45292048b1a0654944660b35163" name="tests/functions_dont_use.phpt" role="test" />
+   <file md5sum="583f01a97027e3168db1fbdb1815358b" name="tests/generator_flag.phpt" role="test" />
+   <file md5sum="b98e424e041c20002af34ccaf0f1ca6f" name="tests/get_kind_name.phpt" role="test" />
+   <file md5sum="37b8d7bd65e255aad86353e27748c5dd" name="tests/get_supported_versions.phpt" role="test" />
+   <file md5sum="cdbf90b3588c1b7f947005296a485d98" name="tests/invalid_file.php" role="test" />
+   <file md5sum="a1efdd9765ed0b0ea2c8874dcbfbddac" name="tests/magic_constants.phpt" role="test" />
+   <file md5sum="94812124e7f94ffbc944e3cc6f4f6d5a" name="tests/match_expression.phpt" role="test" />
+   <file md5sum="064237aae0ea13abe78afa1ea9310b12" name="tests/metadata.phpt" role="test" />
+   <file md5sum="df15f48f9afad2d016d527d3be7d178f" name="tests/mixed_type.phpt" role="test" />
+   <file md5sum="2799fdd8aa4b592f08c990db2308adf0" name="tests/multi_catch.phpt" role="test" />
+   <file md5sum="9ed65466036380f4b992b8bf837e3010" name="tests/multiple_final_modifiers.phpt" role="test" />
+   <file md5sum="02b3dcefe1990e5504e887f54ef1fd4b" name="tests/named_children.phpt" role="test" />
+   <file md5sum="03856e531bab73013b81fdfba4bf3de9" name="tests/name_node.phpt" role="test" />
+   <file md5sum="099e18f03f43ef709237ec7e462f1058" name="tests/nested_stmt_lists.phpt" role="test" />
+   <file md5sum="f4485e57728f93315ba7333c78ad7c29" name="tests/nop_statements.phpt" role="test" />
+   <file md5sum="48e39bf0826acc23aba278580981630e" name="tests/nullable_types.phpt" role="test" />
+   <file md5sum="594f895c05910f2c52ccd86ba70cbeba" name="tests/object_type.phpt" role="test" />
+   <file md5sum="1fd5b491db87cdbbb5cab32d3f85efe3" name="tests/params.phpt" role="test" />
+   <file md5sum="6a2a08e51a51641b848a93a18c1c70a9" name="tests/parse_code_parse_error.phpt" role="test" />
+   <file md5sum="b077f39c92aeca7bbe4ab8c5c480ffc4" name="tests/parse_file_not_existing.phpt" role="test" />
+   <file md5sum="832cdefc77a7fef96bfc02aacb7eab96" name="tests/parse_file_parse_error.phpt" role="test" />
+   <file md5sum="e46d16819474fe0a8b28404780b273b3" name="tests/parse_file.phpt" role="test" />
+   <file md5sum="ffb5be0ae5282537449a813e8f874e77" name="tests/php74_ast_assign_coalesce.phpt" role="test" />
+   <file md5sum="007bc8779fea5eb7a4668ebcde6fed8b" name="tests/php74_dim_alternative_syntax.phpt" role="test" />
+   <file md5sum="9823224f7b0f524820753def4ff9a823" name="tests/php74_ordinary_class.phpt" role="test" />
+   <file md5sum="2a44b04bad3efd91956fdca89e77c87a" name="tests/php74_parenthesized_conditional.phpt" role="test" />
+   <file md5sum="a4145139da84cf7ea0164b2344c98a78" name="tests/php74_type_hints.phpt" role="test" />
+   <file md5sum="bb4e706b85890217ca2ae09321653355" name="tests/php80_named_params.phpt" role="test" />
+   <file md5sum="fc0a85cd646557d1b72f39cfc9ed0089" name="tests/php80_noncapturing_catch.phpt" role="test" />
+   <file md5sum="7edfb364aa71c3fc94685548430b8a16" name="tests/php80_nullsafe_operator.phpt" role="test" />
+   <file md5sum="63a59e54708cf9c2e0afbaab19d911a1" name="tests/php80_promotion.phpt" role="test" />
+   <file md5sum="75f2d9761b537cbf859303a7ecc5829b" name="tests/php80_static_type.phpt" role="test" />
+   <file md5sum="c197685f3aaa2371b20691f2d3433e38" name="tests/php80_union_types.phpt" role="test" />
+   <file md5sum="a06ef306725606f3ff634cf98f7122a0" name="tests/php80_union_types_false.phpt" role="test" />
+   <file md5sum="be7cefaa2f6f36b3a924f3adc178b8ce" name="tests/php80_union_types_nullable.phpt" role="test" />
+   <file md5sum="3d94472402ab88ec5a90a3e33a0bdde4" name="tests/prop_doc_comments.phpt" role="test" />
+   <file md5sum="4c3a56ffd6161e7c03aa01638765ea72" name="tests/short_arrow_function.phpt" role="test" />
+   <file md5sum="0e7fcf0421539ead10bbe8b8875f2ad3" name="tests/short_arrow_function_return.phpt" role="test" />
+   <file md5sum="38b6294bef532daeed418d2fbbca60b5" name="tests/stmt_list.phpt" role="test" />
+   <file md5sum="6ce522a570b55c0bf11263d96847aff4" name="tests/try_catch_finally.phpt" role="test" />
+   <file md5sum="e38823cfbf96f785d0473d36069466a5" name="tests/type_hints.phpt" role="test" />
+   <file md5sum="1b251dbac52d2885f1eb538e89d9fe31" name="tests/unary_ops.phpt" role="test" />
+   <file md5sum="b17f2c3c2575db98c053b5596e7773fe" name="tests/use_declarations.phpt" role="test" />
+   <file md5sum="76ed7f04c0a8f5d84fd3aab03e410709" name="tests/valid_file.php" role="test" />
+   <file md5sum="afa1bd7b7f520e3d98c827aacb25dad0" name="tests/version_errors.phpt" role="test" />
+   <file md5sum="0a4d5ec80d91e06f84fc8db36dd04023" name="tests/zpp_errors.phpt" role="test" />
+   <file md5sum="f1408f6b42a84424216cd6c704d9703e" name="config.m4" role="src" />
+   <file md5sum="23bd6a8832d6e2fccd4e9ca26fa9b08e" name="config.w32" role="src" />
+   <file md5sum="f67b856c6de64c954f539166e5db9351" name="util.php" role="doc" />
+   <file md5sum="4049a0b1d2039bbd8be6f08fc2b15d2b" name="ast.c" role="src" />
+   <file md5sum="e3ac797a6a3fba0d2bf25eba7f49de7a" name="ast_data.c" role="src" />
+   <file md5sum="424aca6880eb8be5c6ccad8a5b87b4b2" name="ast_str_defs.h" role="src" />
+   <file md5sum="eabadb357308db52ee4af85b1a008cfd" name="ast_stub.php" role="doc" />
+   <file md5sum="a5c6446acfd7f3170fa312948076b516" name="LICENSE" role="doc" />
+   <file md5sum="0ffd7bdbedc6b21dfec333afaf68c326" name="php_ast.h" role="src" />
+   <file md5sum="71710e883035bea2e0c73fc0ec36d5a8" name="README.md" role="doc" />
+   <file md5sum="0ffd7bdbedc6b21dfec333afaf68c326" name="php_ast.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>ast</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2020-07-11</date>
+   <version>
+    <release>1.0.7</release>
+    <api>1.0.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+- Add the experimental AST version 80
+- In AST version 80, support returning `mixed` types as an `AST_TYPE` with type `TYPE_MIXED` instead of an `AST_NAME`.
+- In AST version 80, support PHP 8.0 attributes for declarations.
+- Support PHP 8.0&apos;s Match expressions.
+- Support PHP 8.0 constructor property promotion, and allow indicating visibility on AST nodes.
+  Note that `MODIFIER_PUBLIC` and `ast\AST_PARAM` modifiers had overlap in php 7.4,
+  so the `MODIFIER_*` modifiers are only included in the provided metadata for php 8.0+
+   </notes>
+  </release>
+  <release>
+   <date>2020-02-22</date>
+   <version>
+    <release>1.0.6</release>
+    <api>1.0.6</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+- Support TYPE_STATIC for the php 8.0 static return type.
+   </notes>
+  </release>
+  <release>
+   <date>2019-11-23</date>
+   <version>
+    <release>1.0.5</release>
+    <api>1.0.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+- Add ast\flags\TYPE_FALSE to support PHP 8.0 Union Types.
+   </notes>
+  </release>
+  <release>
+   <date>2019-11-10</date>
+   <version>
+    <release>1.0.4</release>
+    <api>1.0.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+- Add AST_TYPE_UNION to support PHP 8.0 Union Types.
+   </notes>
+  </release>
+  <release>
+   <date>2019-07-27</date>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+- Fix build error in php 7.4.0alpha3.
+- Add `DIM_ALTERNATIVE_SYNTAX` as a flag of `AST_DIM` for `$x{&apos;offset&apos;}` (for php 7.4+)
+- Add `PARENTHESIZED_CONDITIONAL` as a flag of `AST_CONDITIONAL` for `($a ? $b : $c)` (for php 7.4+)
+- Bugfix: Make `ast\kind_uses_flags(ast\AST_ARROW_FUNC)` true in php 7.3 and lower.
+   </notes>
+  </release>
+  <release>
+   <date>2019-06-30</date>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+- Fix compatibility with (currently) PHP 7.4 and PHP 8.0.
+- Support AST_ARROW_FUNC for PHP 7.4.
+- Make $version a required parameter for `ast\parse_*`. Previously, the absence would throw a LogicException.
+- Make AST version 70 the current version.
+   </notes>
+  </release>
+  <release>
+   <date>2019-02-11</date>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+- Fix compatibility with (currently) PHP 7.4 and PHP 8.0.
+- Support BINARY_COALESCE as a flag of AST_ASSIGN_OP for the `??=` operator added in PHP 7.4.
+- Add AST version 70 (experimental):
+- Version 70 adds AST_PROP_GROUP with type information for property groups.
+- Version 70 adds AST_CLASS_NAME for `Foo::class`. Previously this used AST_CLASS_CONST
+   </notes>
+  </release>
+  <release>
+   <date>2018-10-21</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+This release is the same as version 0.1.7 with obsolete and deprecated functionality removed.
+
+- Removed AST versions prior to version 50.
+- Removed ast\Node\Decl class, which is no longer used.
+- Removed AST kinds AST_AND, AST_COALESCE, AST_GREATER, AST_GREATER_EQUAL, AST_OR, AST_SILENCE,
+  AST_UNARY_MINUS, and AST_UNARY_PLUS, which are no longer used.
+- Removed ASSIGN_* AST flags, which are no longer used.
+   </notes>
+  </release>
+  <release>
+   <date>2018-10-06</date>
+   <version>
+    <release>0.1.7</release>
+    <api>0.1.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+- Added AST version 60 with the following changes:
+  - `AST_FUNC_DECL` and `AST_METHOD` no longer generate a `uses` child. Previously this child was
+    always `null`.
+  - `AST_CONST_ELEM` now always has a `docComment` child. Previously it was absent on PHP 7.0.
+    On PHP 7.0 the value is always `null`.
+- Added `ARRAY_ELEM_REF` flag, which is used by `AST_ARRAY_ELEM` for by-reference array elements
+  and (since PHP 7.3) for by-reference destructuring. Previously this flag was represented simply
+  by the value `1`.
+- Deprecated AST versions 40 and 45.
+- Fix build against PHP 7.4-dev.
+   </notes>
+  </release>
+  <release>
+   <date>2017-10-08</date>
+   <version>
+    <release>0.1.6</release>
+    <api>0.1.6</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+- Added ast\get_metadata() function, which returns an array of ast\Metadata objects, one for each
+  AST kind. The metadata contains information such as the supported flags for the kind.
+- Added ast\get_supported_versions() function, which provides an array of currently supported AST
+  versions.
+   </notes>
+  </release>
+  <release>
+   <date>2017-07-19</date>
+   <version>
+    <release>0.1.5</release>
+    <api>0.1.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+- Fix issue #51: Make nullable array/callable have a flag of 0 in inner element, in version 40.
+- Added a constructor for the ast\Node class.
+- Added ast\flags\FUNC_GENERATOR constant, which is used since PHP 7.1.
+- Added ast\flags\FUNC_RETURNS_REF constant, intended to supersede ast\flags\RETURNS_REF.
+- Added ast\flags\CLOSURE_USE_REF constant, used by AST_CLOSURE_VAR nodes. Previously &quot;1&quot; was used.
+- Added version 45 with the following changes (PHP 7.2 support):
+  - An `object` type annotation now returns an `AST_TYPE` with `TYPE_OBJECT` flag, rather than
+    treating `object` as a class name.
+- Added version 50 with the following changes:
+  - `ast\Node\Decl` nodes are no longer generated. AST kinds `AST_FUNCTION`, `AST_METHOD`,
+    `AST_CLOSURE` and `AST_CLASS` now also use the normal `ast\Node` class. The `name` and
+    `docComment` properties are now represented as children. The `endLineno` is still represented as
+    an (undeclared) property.
+  - An integer `__declId` has been added to declaration nodes of kind `AST_FUNCTION`, `AST_METHOD`,
+    `AST_CLOSURE` and `AST_CLASS`. The `__declId` uniquely identifies a declaration within the
+	parsed code and will remain the same if the code is parsed again. This is useful to distinguish
+	closures declared on the same line, or multiple conditional declarations using the same name.
+	The ID is not unique across different codes/files.
+  - `\ast\parse_file` will now consistently return an empty statement list (similar to
+    `\ast\parse_code`) if it is was passed a zero-byte file. Previously, it would return `null`.
+   </notes>
+  </release>
+  <release>
+   <date>2017-01-25</date>
+   <version>
+    <release>0.1.4</release>
+    <api>0.1.4</api>
+   </version>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+0.1.4 release
+   </notes>
+  </release>
+  <release>
+   <date>2017-01-18</date>
+   <version>
+    <release>0.1.3</release>
+    <api>0.1.3</api>
+   </version>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+0.1.3 release
+   </notes>
+  </release>
+  <release>
+   <date>2017-08-04</date>
+   <version>
+    <release>0.1.2</release>
+    <api>0.1.2</api>
+   </version>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+0.1.2 release
+   </notes>
+  </release>
+  <release>
+   <date>2017-12-04</date>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+0.1.1 release
+   </notes>
+  </release>
+  <release>
+   <date>2017-12-04</date>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <license uri="https://github.com/nikic/php-ast/blob/master/LICENSE">BSD-3-Clause</license>
+   <notes>
+0.1.0 release
+   </notes>
+  </release>
+ </changelog>
+</package>

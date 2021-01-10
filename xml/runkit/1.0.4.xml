@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>runkit</name>
+ <channel>pecl.php.net</channel>
+ <summary>For all those things you.... probably shouldn&apos;t have been doing anyway....</summary>
+ <description>Replace, rename, and remove user defined functions and classes.
+Define customized superglobal variables for general purpose use.
+Execute code in restricted environment (sandboxing).</description>
+ <lead>
+  <name>Dmitry Zenovich</name>
+  <user>dzenovich</user>
+  <email>dzenovich@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Sara Golemon</name>
+  <user>pollita</user>
+  <email>pollita@php.net</email>
+  <active>no</active>
+ </lead>
+ <date>2015-10-19</date>
+ <time>07:47:58</time>
+ <version>
+  <release>1.0.4</release>
+  <api>1.0.4</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/BSD-3-Clause">BSD License (3 Clause)</license>
+ <notes>
+New features:
+    + PHP 5.4, 5.5, and 5.6 are now fully supported
+    - PHP 4.x is not supported anymore
+    + Closures are now accepted by runkit_function_add, runkit_function_redefine, runkit_method_add, and runkit_method_redefine
+      This feature works in PHP 5.3 and above.
+    + Introduced new function &quot;runkit_default_property_remove&quot; (Thanks to Juhan Kundla)
+    + Ability to add non-scalar default properties was added
+    + Magic methods __isset, __unset, __callStatic, serialize, unserialize, debugInfo and __toString are now supported.
+    + Functions runkit_class_adopt &amp; runkit_class_emancipate now change class-hierarchy (issue #13)
+    + Adding and redefining functions and methods, which return references, were fully implemented
+      New optional argument &apos;return_ref&apos; of functions runkit_function_add and runkit_function_redefine was introduced
+      New constant RUNKIT_ACC_RETURN_REFERENCE was introduced for use with functions runkit_method_add and runkit_method_redefine
+    + Properties adding, removing, and importing were reworked for proper inheritance (including objects in PHP5+)
+    + A new constant RUNKIT_OVERRIDE_OBJECTS was introduced. Use it by bitwise adding to the flags parameter
+      of functions runkit_default_property_add and runkit_import to add (and remove) properties of existing objects.
+      This feature works in PHP 5.x and above and it is switched off by default.
+    + New (the third one) parameter remove_from_objects of boolean type was introduced
+      in runkit_default_property_remove function. Pass the TRUE value to remove property from existing objects.
+      This feature works in PHP 5.x and above. The default value for this parameter is FALSE.
+    + Namespaces are fully supported by constants manipulation functions (Thanks to Antony Dovgal)
+    + Allow disabling of allow_url_include in a Runkit_Sandbox (PHP &gt;= 5.2) (Thanks to Sara Golemon)
+    + New optional argument &apos;doc_comment&apos; of functions runkit_method_add, runkit_method_redefine, runkit_function_add,
+      and runkit_function_redefine was introduced to specify doc_comments.
+    + Preserve doc_comments on copying and redefining functions and methods.
+
+Critical fixes:
+    * Highly probable crashes on using Reflection objects after modifying removing or renaming of functions, methods, and properties,
+      for which those Reflection objects have been instantiated, were eliminated
+    * Crash on sandbox creation when register_globals is switched on was fixed
+    * Building and working with PHP4 were fixed
+    * Crash on syntax error in source file importing with runkit_import was fixed
+    * The possible crash on manipulating constants having length less than two characters was eliminated
+    * Crash after using runkit_class_adopt when inherited methods access properties of the parent class (issue #59)
+    * Crash on calling renamed private/protected method (issue #64)
+    * Crash when copied function contains finally (issue #77) (Thanks to Antony Dovgal)
+    * Lists of directories in open_basedir sandbox setting are now supported
+
+Fixes:
+    * All ways of adding and removing magic methods and old-style constructors
+      were reworked and corrected (Thanks to Anthony Dovgal for issues #35, #57, and #79).
+    * Side effect of redefining, adding and removing class constant (Issue #25) was eliminated
+    * Adding of non-lowercase default properties was fixed (removed lowercasing)
+    * Skip the leading slash in class names
+    * Copying, redefining, and renaming of functions were reworked
+    * Converting of input parameters (class names &amp; function names) to lowecase was eliminated
+    * runkit_method_redefine function now sets the &apos;prototype&apos; field for the method
+      and its descendants (Thanks to Anthony Dovgal)
+    * Freeing already freed memory on importing of a non-existent file was eliminated
+    * A test for correctness of runkit.superglobals feature was added
+    * Tests for correctness of inheritance of properties were added
+    * Tests for correctness of adding static properties were added
+    * Bug 57649 (https://bugs.php.net/bug.php?id=57649) has been fixed without apathy ;)
+      Thanks to Sara Golemon for tests.
+    * Importing class extending another class was fixed (Issue #48) (thanks to mido0258)
+    * User-defined functions should remain after Runkit&apos;s shutdown
+      (thanks to Sara Golemon for code and to https://github.com/cobrafast for test)
+    * Restoring of misplaced internal functions was corrected (issue #63)
+    * Delete temporary function on errors of adding/redefining methods
+    * runkit_method_add, runkit_method_copy, and runkit_method_rename now override derived methods (issue #62)
+
+Build system improvements:
+    * PEAR Channel zenovich.github.io/pear was introduced for releasing new packages
+    * Declarations after statement were restricted during compiling
+    * Warnings now will be treated as errors
+    * All tests now succeed under valgrind
+    * A compilation bug (with gcc 4.3+), caused by wrong definition of internal function,
+      was fixed (Thanks to Reeze Xia)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="c29ad0e68daf0db4792b23971f2ddd5c" name="tests/_fcgi.inc" role="test" />
+   <file md5sum="2baded9a9fe191ff3d4115c8c38a4bfd" name="tests/_fpm_include.inc" role="test" />
+   <file md5sum="bb2d63a793288beb3f9e5daff815cf20" name="tests/_fpm_skipif.inc" role="test" />
+   <file md5sum="ee6822262c56be5a612cfeae17d674f6" name="tests/runkit_add_magic_methods.phpt" role="test" />
+   <file md5sum="fbebfdb1b2f0790bad631ae897129f91" name="tests/runkit_add_magic_serialize_method_ignored_for_common_classes.phpt" role="test" />
+   <file md5sum="8dd6159399892ebbe26cdb99d5e4d2d3" name="tests/runkit_add_old_style_ctor.phpt" role="test" />
+   <file md5sum="f27f34d6edeeee151cd19e3271e99061" name="tests/runkit_add_old_style_ctor1.phpt" role="test" />
+   <file md5sum="06dee7611b24aebe1e412eecd5a6d326" name="tests/runkit_add_old_style_ctor_by_adopting.phpt" role="test" />
+   <file md5sum="051a7b33bca316121b73f7aac580d05c" name="tests/runkit_add_old_style_ctor_by_copying.phpt" role="test" />
+   <file md5sum="e14e8278c19a85050ca18a26113af93f" name="tests/runkit_add_old_style_ctor_by_importing.inc" role="test" />
+   <file md5sum="c2e427da289f6213f2d8804fafe4cdd8" name="tests/runkit_add_old_style_ctor_by_importing.phpt" role="test" />
+   <file md5sum="95db715535428d99c93536094cb3dfbc" name="tests/runkit_adopt_emancipate_and_inheritance.phpt" role="test" />
+   <file md5sum="c93b1664952c8f3a71f4be87aee1bdf8" name="tests/runkit_and_superglobals.phpt" role="test" />
+   <file md5sum="c502dcdcd9490a06c3e9837157a2dc94" name="tests/runkit_class_adopt.phpt" role="test" />
+   <file md5sum="40cee3c1e188baec12d9c72d21fc9637" name="tests/runkit_class_adopt_and_properties.phpt" role="test" />
+   <file md5sum="656ede7c5bab2f47fd6cb3402fc5ec13" name="tests/runkit_class_emancipate.phpt" role="test" />
+   <file md5sum="453d118ff184d2d30573f39545f6882a" name="tests/runkit_class_emancipate_and_reflection.phpt" role="test" />
+   <file md5sum="d0fde0325fdb35e3f3c95e014c5b1153" name="tests/runkit_constant_add.phpt" role="test" />
+   <file md5sum="3a550bffddffd9e352a69496fa829582" name="tests/runkit_constant_add_to_class.phpt" role="test" />
+   <file md5sum="b2bd31332585c9e38daba3a0855b764b" name="tests/runkit_constant_redefine.phpt" role="test" />
+   <file md5sum="1942f0f3b81ae7c7b66ac95d5260466f" name="tests/runkit_constant_redefine_in_class.phpt" role="test" />
+   <file md5sum="f6eae0aece08ec09a47ba555a9229cde" name="tests/runkit_constant_remove.phpt" role="test" />
+   <file md5sum="e5b1ecea13b329940ccb5d7f2d980716" name="tests/runkit_constant_remove_from_class.phpt" role="test" />
+   <file md5sum="c9963174a4c2cb7ec2346618da883508" name="tests/runkit_constants_manipulations_and_cache.phpt" role="test" />
+   <file md5sum="750f5948d5f20a4f9251a04c56e1058b" name="tests/runkit_finally.phpt" role="test" />
+   <file md5sum="2fa9dd08040e1bec4a005647e67d1a75" name="tests/runkit_function_redefine_and_reflection.phpt" role="test" />
+   <file md5sum="bd7bad3efc1cc6827ad8e68765d359e7" name="tests/runkit_function_redefine_and_revert.phpt" role="test" />
+   <file md5sum="da7d804dec26a0dca0c3b9282d20836b" name="tests/runkit_function_add.phpt" role="test" />
+   <file md5sum="c216868eae6e1333216b94640fb5b7ef" name="tests/runkit_function_add_and_doc_comment.phpt" role="test" />
+   <file md5sum="db15af5d7b82d70f859d9d0677b8a53f" name="tests/runkit_function_add_closure.phpt" role="test" />
+   <file md5sum="41f40607843ecdd0d25201cba4b8c710" name="tests/runkit_function_add_closure_and_doc_comment.phpt" role="test" />
+   <file md5sum="8c1847cd613cc4802ec7bddfd75e792e" name="tests/runkit_function_add_closure_and_doc_comment_from_closure.phpt" role="test" />
+   <file md5sum="fd6195f54e59694e456408e0e6b7232a" name="tests/runkit_function_copy.phpt" role="test" />
+   <file md5sum="967f73a085167ec33770c750903072ce" name="tests/runkit_function_redefine.phpt" role="test" />
+   <file md5sum="8965d94cbf50413ec03e6303f4863c38" name="tests/runkit_function_redefine_and_doc_comment.phpt" role="test" />
+   <file md5sum="2d3aa50585e4cb74eb251051d3421d6b" name="tests/runkit_function_redefine_closure.phpt" role="test" />
+   <file md5sum="8c5177b1c6c5cde91b5f64485337b1d5" name="tests/runkit_function_redefine_closure_and_doc_comment.phpt" role="test" />
+   <file md5sum="91a13fa818a5a4e4332329e25db58ca2" name="tests/runkit_function_redefine_closure_and_doc_comment_from_closure.phpt" role="test" />
+   <file md5sum="cb6d39d9d3437d9fd718ef85c28de477" name="tests/runkit_function_redefine_from_anonymous.phpt" role="test" />
+   <file md5sum="499f60ddfcc210fea439bbee9e8cc5a8" name="tests/runkit_function_remove.phpt" role="test" />
+   <file md5sum="5362345e4510ef063d4c87ed07cac790" name="tests/runkit_function_remove_and_reflection_parameter.phpt" role="test" />
+   <file md5sum="9470be966bf9f12db778f0e7e8f374ac" name="tests/runkit_function_remove_and_reflection.phpt" role="test" />
+   <file md5sum="9a94273a8e1e607c79fa88ea6b845850" name="tests/runkit_constant_remove_from_ns.phpt" role="test" />
+   <file md5sum="0ba6da77f64b4063873e17dfacbf9abd" name="tests/runkit_function_rename.phpt" role="test" />
+   <file md5sum="52abdf62274c04c452dbfdbf33f2e00f" name="tests/runkit_function_rename_and_reflection.phpt" role="test" />
+   <file md5sum="6e5f7b3815ac0c26f1e800739f7b53b9" name="tests/runkit_function_rename_internal.phpt" role="test" />
+   <file md5sum="159c1447de0ebbaf8d9df39cba1d5c88" name="tests/runkit_function_rename_redefine_add_remove.phpt" role="test" />
+   <file md5sum="525fc0648770124fd92d16e7db69ef26" name="tests/runkit_functions_redefining_and_cache.inc" role="test" />
+   <file md5sum="358e26534e0fd857d11888b3b63980c0" name="tests/runkit_functions_redefining_and_cache.phpt" role="test" />
+   <file md5sum="8280f2187623c917bf6a0625f7f059fb" name="tests/runkit_functions_returning_by_reference.phpt" role="test" />
+   <file md5sum="641c8ce30e45b68b1ba82174c3e2acd7" name="tests/runkit_fpm_internal_function_restore.phpt" role="test" />
+   <file md5sum="75836ce4beccb660515d7c63b17303c1" name="tests/runkit_import_class.inc" role="test" />
+   <file md5sum="a02ce51514285629f8fb6129a490fc94" name="tests/runkit_import_class.phpt" role="test" />
+   <file md5sum="f3ae29b9ad4ab36637d301cd111afe1a" name="tests/runkit_import_class_extend.inc" role="test" />
+   <file md5sum="1477615ab26c7e33004d185a9404fa30" name="tests/runkit_import_class_extend.phpt" role="test" />
+   <file md5sum="a6e7aaf46213bf56f878bce95a76ea42" name="tests/runkit_import_class_property_and_inheritance.inc" role="test" />
+   <file md5sum="69cb81cf69a3f012822167488f6f204d" name="tests/runkit_import_class_property_and_inheritance.phpt" role="test" />
+   <file md5sum="424edd87a066833a2609c9c571bc35b3" name="tests/runkit_import_constant_properties.inc" role="test" />
+   <file md5sum="aba7c65058c8b4d89606bed6b109ef53" name="tests/runkit_import_constant_properties.phpt" role="test" />
+   <file md5sum="ffd092b507bf3fca90d8cbb6a6b134fa" name="tests/runkit_import_constant_static_properties.inc" role="test" />
+   <file md5sum="253cd9de22b0b825d46938bb0cc19a34" name="tests/runkit_import_constant_static_properties.phpt" role="test" />
+   <file md5sum="dab51a802bdad2efafa8d9fbfa43766f" name="tests/runkit_import_constants_and_inheritance.inc" role="test" />
+   <file md5sum="a96797d1229871fdda3e0c7cde42ddfa" name="tests/runkit_import_constants_and_inheritance.phpt" role="test" />
+   <file md5sum="7555390240dc5e7a1705c63750fe2261" name="tests/runkit_import_functions.inc" role="test" />
+   <file md5sum="cfd6489fd0ffcd42f971dea22442fc15" name="tests/runkit_import_functions.phpt" role="test" />
+   <file md5sum="d196c795f55bf27a47b43eba869161a4" name="tests/runkit_import_function_and_reflection.inc" role="test" />
+   <file md5sum="3261177d69b7fc8584d8ec79f6e63b5f" name="tests/runkit_import_function_and_reflection.phpt" role="test" />
+   <file md5sum="8ccf88e0f0316ec6c220bb1f0e852c93" name="tests/runkit_import_function_with_static_var.inc" role="test" />
+   <file md5sum="d82e4c7451bb8c8e8b0fa0161c2da2cb" name="tests/runkit_import_function_with_static_var.phpt" role="test" />
+   <file md5sum="0300f439f768c8be8ddab9e1e338a9b4" name="tests/runkit_import_method_and_reflection.inc" role="test" />
+   <file md5sum="a70c21dbf1227f17a97dbcd0883374c3" name="tests/runkit_import_method_and_reflection.phpt" role="test" />
+   <file md5sum="a0b9b180cb67148a03998b54d314f52e" name="tests/runkit_import_method_with_closure.inc" role="test" />
+   <file md5sum="6d7fb49e58020449949a3572c05adbbf" name="tests/runkit_import_method_with_closure.phpt" role="test" />
+   <file md5sum="11af74752fb5c0987ac1e4520de30608" name="tests/runkit_import_method_with_static_var.inc" role="test" />
+   <file md5sum="1a512abbe5804a5352b36a7ddf222f5c" name="tests/runkit_import_method_with_static_var.phpt" role="test" />
+   <file md5sum="33b0fff0f30ccb94369f3a36e4fecd59" name="tests/runkit_import_properies_modified_via_reflection.inc" role="test" />
+   <file md5sum="9d8d57870203733187fb98b1e1ef3248" name="tests/runkit_import_properies_modified_via_reflection.phpt" role="test" />
+   <file md5sum="9b77ae9ac3e292cc1e1d0a39b019aeae" name="tests/runkit_lint.phpt" role="test" />
+   <file md5sum="c4607805dab866570ac0bc9d74530e4c" name="tests/runkit_method_add.phpt" role="test" />
+   <file md5sum="45de9985699961e2d7bdcb0aeb3ca53d" name="tests/runkit_method_add_and_doc_comment.phpt" role="test" />
+   <file md5sum="c9822e7052b8f246aabf3db6dc695f81" name="tests/runkit_method_add_closure.phpt" role="test" />
+   <file md5sum="c02aab5dc7844d85298bc7713c8e32a3" name="tests/runkit_method_add_closure2.phpt" role="test" />
+   <file md5sum="911be4fe7936d876607ce2519d838b9e" name="tests/runkit_method_add_closure_and_doc_comment.phpt" role="test" />
+   <file md5sum="b1d1903cad29c4b65e8b238d8fd3b368" name="tests/runkit_method_add_closure_and_doc_comment_from_closure.phpt" role="test" />
+   <file md5sum="d084a7abda25a956c191ce99c96f56b9" name="tests/runkit_method_add_closure_and_flags.phpt" role="test" />
+   <file md5sum="8f71fae39eed95a965d604354899a8c8" name="tests/runkit_method_add_overriding_parent_method.phpt" role="test" />
+   <file md5sum="c3e70b954b0dab641b3de7908e12c00e" name="tests/runkit_method_copy.phpt" role="test" />
+   <file md5sum="60309f2c23b1a3bf6deaee6bccf8934e" name="tests/runkit_method_copy_and_doc_comment.phpt" role="test" />
+   <file md5sum="8e3276165a183a21f8e72596c1f193fe" name="tests/runkit_method_copy_uninit_read.phpt" role="test" />
+   <file md5sum="a324a4d0c6e4e061401fe97a06a56e10" name="tests/runkit_method_redefine.phpt" role="test" />
+   <file md5sum="3229bd3ff3a98d5578e16292e1ab0eb8" name="tests/runkit_method_redefine_and_doc_comment.phpt" role="test" />
+   <file md5sum="0c1ab20d842a60fce37252bdd7d636e8" name="tests/runkit_method_redefine_and_reflection.phpt" role="test" />
+   <file md5sum="7b4653e51f1650706ad19ae5c8866078" name="tests/runkit_method_redefine_and_reflection_with_inheritance.phpt" role="test" />
+   <file md5sum="5ada434429aaea401f89a0fca23094ab" name="tests/runkit_method_redefine_closure_and_doc_comment.phpt" role="test" />
+   <file md5sum="cc902b6f397452eff61e929e03891c2c" name="tests/runkit_method_redefine_closure_and_doc_comment_from_closure.phpt" role="test" />
+   <file md5sum="dcdc56b7d79ffb223a546639cd4012bb" name="tests/runkit_method_redefine_protected.phpt" role="test" />
+   <file md5sum="dba292ff0721bd1de76f798fd92dc3cd" name="tests/runkit_method_redefine_update_proto.phpt" role="test" />
+   <file md5sum="4089515ced6c1ce30efceb96e4689646" name="tests/runkit_method_redefine_update_proto2.phpt" role="test" />
+   <file md5sum="fe3096276189f487e72e7cb232855dbb" name="tests/runkit_method_redefine_with_static_vars.phpt" role="test" />
+   <file md5sum="b26a693c9ab6791d58ff311fe0792039" name="tests/runkit_method_remove.phpt" role="test" />
+   <file md5sum="a572f3ba0905896abbeabfc5e3616766" name="tests/runkit_method_remove_and_reflection_parameter.phpt" role="test" />
+   <file md5sum="6f705ee58c5dcc1c854ba797a86b8be6" name="tests/runkit_method_remove_and_reflection_parameter_with_inheritance.phpt" role="test" />
+   <file md5sum="37be1a59eadba6046570d6cb0a2553ff" name="tests/runkit_method_remove_and_reflection.phpt" role="test" />
+   <file md5sum="6d2ef4fc7e3fddc5aa6465eea681bec3" name="tests/runkit_method_remove_and_reflection_with_inheritance.phpt" role="test" />
+   <file md5sum="dcfbbc0e8b1c8fedb6d5c06ed25ac367" name="tests/runkit_method_rename.phpt" role="test" />
+   <file md5sum="d466149d85d58db962f3cb1175a2ce1c" name="tests/runkit_method_rename_and_access.phpt" role="test" />
+   <file md5sum="d71241604b3826aa361ada4ce227f0b0" name="tests/runkit_method_rename_and_reflection.phpt" role="test" />
+   <file md5sum="47070ffc352be06c3805a06a73df2bcb" name="tests/runkit_method_rename_inheritance.phpt" role="test" />
+   <file md5sum="020171e07308ef166429cec01ab2f69e" name="tests/runkit_methods_redefining_and_cache.inc" role="test" />
+   <file md5sum="3963f23a432bebc65f4834932f6c03e8" name="tests/runkit_methods_redefining_and_cache.phpt" role="test" />
+   <file md5sum="7c9df9e92c50d78ddfe7315617cc0af9" name="tests/runkit_methods_returning_by_reference.phpt" role="test" />
+   <file md5sum="d0399712349d539384756b94f56a315b" name="tests/runkit_redefine_old_style_ctor.phpt" role="test" />
+   <file md5sum="64fac76d263e74721c03970169ec1227" name="tests/runkit_remove_magic_call_method.phpt" role="test" />
+   <file md5sum="f180faf233b2cd483218ff4d08cdb9d8" name="tests/runkit_remove_magic_callstatic_method.phpt" role="test" />
+   <file md5sum="1526f1a2143ebbdc063dde6e77d16574" name="tests/runkit_remove_magic_serialize_method.phpt" role="test" />
+   <file md5sum="4696d1fe9611e31bf2498626e290b7ee" name="tests/runkit_remove_magic_tostring_method.phpt" role="test" />
+   <file md5sum="ef06a8764f5d7e7a756ab608c1ee4192" name="tests/runkit_remove_magic_unserialize_method.phpt" role="test" />
+   <file md5sum="ea07952a663d9642ed00d42cf55f2050" name="tests/runkit_return_value_used.phpt" role="test" />
+   <file md5sum="0c8723b8d334b8bee283e504207013bf" name="tests/runkit_zval_inspect.phpt" role="test" />
+   <file md5sum="858b49350d5302718b92381c17677d31" name="tests/runkit_static_vars.phpt" role="test" />
+   <file md5sum="49148ed794d20963842867d3456e7a3f" name="tests/Runkit_Sandbox.allow_url_include.phpt" role="test" />
+   <file md5sum="4baf531b45993dbef3574119327f319b" name="tests/Runkit_Sandbox.open_basedir.phpt" role="test" />
+   <file md5sum="11e43451625f90b1b785ba9509069031" name="tests/Runkit_Sandbox_.active.phpt" role="test" />
+   <file md5sum="e0e3397009d9bdec564a3c234cf2c9ec" name="tests/Runkit_Sandbox_.output_handler.phpt" role="test" />
+   <file md5sum="530812e0855014d5681cbdd0bc5d8703" name="tests/runkit_sandbox_output_handler.phpt" role="test" />
+   <file md5sum="42486108566a92a00bf18a49e3dc0fb9" name="tests/Runkit_Sandbox_Parent1.phpt" role="test" />
+   <file md5sum="aad3e0e8da2dd979799ebef95a2fffe3" name="tests/Runkit_Sandbox_Parent2.phpt" role="test" />
+   <file md5sum="df788bf5111d1afa5acd08d6f9aff4e8" name="tests/Runkit_Sandbox_Parent__.call.access.phpt" role="test" />
+   <file md5sum="af8f5599d3b7bafa4a91d3b1a2050e4c" name="tests/Runkit_Sandbox_Parent__.call.phpt" role="test" />
+   <file md5sum="992de51bc75b6ca1a9f3569257c49846" name="tests/Runkit_Sandbox_Parent__.die.access.phpt" role="test" />
+   <file md5sum="6ed1f9823c13d16407d3dd9125ae5f4e" name="tests/Runkit_Sandbox_Parent__.die.phpt" role="test" />
+   <file md5sum="009fcdd5cf234bb851939760b7bb2bec" name="tests/Runkit_Sandbox_Parent__.echo.access.phpt" role="test" />
+   <file md5sum="ea7172042dd74d261eff416408a4e340" name="tests/Runkit_Sandbox_Parent__.echo.phpt" role="test" />
+   <file md5sum="769b67f7c2ec20747bc44a80144e937a" name="tests/Runkit_Sandbox_Parent__.eval.access.phpt" role="test" />
+   <file md5sum="ab0a463b78fb8bd039a6dae50187b9fe" name="tests/Runkit_Sandbox_Parent__.eval.phpt" role="test" />
+   <file md5sum="62dd805c34b0439657a38406cc706607" name="tests/Runkit_Sandbox_Parent__.read.access.phpt" role="test" />
+   <file md5sum="a1e91e4243ca07c15f9e2a2234ccf11f" name="tests/Runkit_Sandbox_Parent__.read.phpt" role="test" />
+   <file md5sum="ce1297bda64b2aaf280558ff8610bb3c" name="tests/Runkit_Sandbox_Parent__.scope.phpt" role="test" />
+   <file md5sum="01f8c728ae3f0d4750f6a98a85b6cd70" name="tests/Runkit_Sandbox_Parent__.write.access.phpt" role="test" />
+   <file md5sum="3af64a3c949079c91f6d8bd23ec9b1e8" name="tests/Runkit_Sandbox_Parent__.write.phpt" role="test" />
+   <file md5sum="6640271d8776623c90a55bf963454d1b" name="tests/Runkit_Sandbox__call.phpt" role="test" />
+   <file md5sum="2b40237f517a5f3a0d9192f97b670d95" name="tests/Runkit_Sandbox__call_user_func_closure.phpt" role="test" />
+   <file md5sum="768cc143050eaca06763d55e491fce9d" name="tests/Runkit_Sandbox__die.phpt" role="test" />
+   <file md5sum="4771f472b3765f04da930ca1937f8852" name="tests/Runkit_Sandbox__disable_classes.phpt" role="test" />
+   <file md5sum="7500a4ba8d461bc25e00fdfebe132cdc" name="tests/Runkit_Sandbox__disable_functions.phpt" role="test" />
+   <file md5sum="979937c20951bace1d614aa20bc1ab78" name="tests/Runkit_Sandbox__echo.phpt" role="test" />
+   <file md5sum="c09c4d5febb6ba6b5a8be218c5b67512" name="tests/Runkit_Sandbox__eval.phpt" role="test" />
+   <file md5sum="e9db909e9150ade06748bc3d078dc63c" name="tests/Runkit_Sandbox__get.phpt" role="test" />
+   <file md5sum="0b298f688ebf8a3f36384bb3d9d4bf01" name="tests/Runkit_Sandbox__grandchild.phpt" role="test" rolw="test" />
+   <file md5sum="5ec7907bf98bf27ac6adabe25371a8e7" name="tests/Runkit_Sandbox__set.phpt" role="test" />
+   <file md5sum="983e05fc5c7b1449e6b60b6e3e24491e" name="tests/bug10053.phpt" role="test" />
+   <file md5sum="5da45d3fa4dfab3cfa71149d08d258aa" name="tests/bug10300.phpt" role="test" />
+   <file md5sum="ce254816ee3674abddecb6f96122efa5" name="tests/bug4519.inc" role="test" />
+   <file md5sum="d2ad7888314ffee9b6e917f06e184d36" name="tests/bug4519.phpt" role="test" />
+   <file md5sum="a494178f2d1156ed40eb8fc2e2d615d4" name="tests/namespaces.phpt" role="test" />
+   <file md5sum="874b1975280b2bba90810681741a63a8" name="tests/runkit_default_property_add.phpt" role="test" />
+   <file md5sum="432d4fc2a38a72416c14115fbd85a3f4" name="tests/runkit_default_property_add_and_remove_for_class_with_dynamic_properties.phpt" role="test" />
+   <file md5sum="ee8a0a5be299d781e6cd6ce1ca409c44" name="tests/runkit_default_property_add_to_subclasses.phpt" role="test" />
+   <file md5sum="ce4dea785fd836410c73a91e69d5ea17" name="tests/runkit_default_property_remove.phpt" role="test" />
+   <file md5sum="b54a35908aa7a31a0d84c18e3e6ac47e" name="tests/runkit_default_property_remove_and_add_for_class_with_dynamic_properties.phpt" role="test" />
+   <file md5sum="c97c6831d00fb85e96b551dcbb40adb5" name="tests/runkit_default_property_remove_and_reflection.phpt" role="test" />
+   <file md5sum="5738692922fe5a44429caaa5834b01cc" name="tests/runkit_default_property_remove_from_subclasses.phpt" role="test" />
+   <file md5sum="d719c4d0bb7391bbe643e5895eac4292" name="tests/runkit_default_property_remove_inheritance.phpt" role="test" />
+   <file md5sum="8b1ca16cce11a8a559488c987266c807" name="tests/runkit_import_class_property_not_overriding_subclasses.inc" role="test" />
+   <file md5sum="5fa790360a7e81200a0260227a9f84e9" name="tests/runkit_import_class_property_not_overriding_subclasses.phpt" role="test" />
+   <file md5sum="8b1ca16cce11a8a559488c987266c807" name="tests/runkit_import_class_property.inc" role="test" />
+   <file md5sum="f3ad7ee406390fe243b0e208856af20b" name="tests/runkit_import_class_property.phpt" role="test" />
+   <file md5sum="f04cd97a25a56f881d6b067dc2f9f731" name="tests/runkit_import_non_existent_file.phpt" role="test" />
+   <file md5sum="a97fb876567a7e3cd92d0444213f4a76" name="tests/runkit_import_static_properties_override.inc" role="test" />
+   <file md5sum="8748c222d7156e1372832f99eefcb8df" name="tests/runkit_import_static_properties_override.phpt" role="test" />
+   <file md5sum="a586f47653f39cb45509637003fc438d" name="tests/runkit_import_with_syntax_error.inc" role="test" />
+   <file md5sum="fb7eb48b28465cd87fb5fcb9f4a99898" name="tests/runkit_import_with_syntax_error.phpt" role="test" />
+   <file md5sum="72b328338c524b1a6d8f882b75646125" name="tests/runkit_sandbox_with_register_globals.phpt" role="test" />
+   <file md5sum="463e3ebee0de1e5cffa6b7a5a56768c8" name="tests/runkit_static_property_add.phpt" role="test" />
+   <file md5sum="b0eefa1f82414d50fe90da1a64a644ba" name="tests/runkit_static_property_add_existing.phpt" role="test" />
+   <file md5sum="a899aa413300d73d14e55cd4bc632d4a" name="tests/runkit_static_property_add_to_subclasses.phpt" role="test" />
+   <file md5sum="9b8b17570e2383aea06c2d097948617e" name="tests/runkit_superglobals.phpt" role="test" />
+   <file md5sum="36de4770d9839fbe00a6d1966822d4e4" name="tests/runkit_default_property_add_and_remove_for_class_with_dynamic_properties_overriding_in_objects.phpt" role="test" />
+   <file md5sum="a16c3e7c34c8626cf903fb93a5bf835b" name="tests/runkit_default_property_add_overriding_objects.phpt" role="test" />
+   <file md5sum="25f0b77da9f4c04bfff525ba235ea371" name="tests/runkit_default_property_add_to_subclasses_overriding_objects.phpt" role="test" />
+   <file md5sum="e139922e14cfa2db6cf174748b75f91a" name="tests/runkit_default_property_remove_and_add_for_class_with_dynamic_properties_overriding_objects.phpt" role="test" />
+   <file md5sum="3f995f911bdea2bfa291607ed39a1583" name="tests/runkit_default_property_remove_from_subclasses_overriding_objects.phpt" role="test" />
+   <file md5sum="19fa8ea5be29ee58ffe3e9d29190daec" name="tests/runkit_default_property_remove_inheritance_overriding_objects.phpt" role="test" />
+   <file md5sum="448613e17a0b378f9e093cb25d6e5737" name="tests/runkit_default_property_remove_overriding_objects.phpt" role="test" />
+   <file md5sum="3d5f26d1ed0843740b9a618c1e90f003" name="tests/runkit_default_property_remove_private_and_inheritance.phpt" role="test" />
+   <file md5sum="177b2111c2b6f3fb820a41cdd7f39ff1" name="tests/runkit_default_property_remove_private_and_inheritance_overriding_objects.phpt" role="test" />
+   <file md5sum="65f899e10476f27e439eba20439c4b3f" name="tests/runkit_default_property_remove_private_shadow_and_inheritance.phpt" role="test" />
+   <file md5sum="f096d0e836e6f4a69d264500ea0fe700" name="tests/runkit_default_property_remove_private_shadow_and_inheritance54.phpt" role="test" />
+   <file md5sum="758be8cd237b156d7764c9db00e96ab5" name="tests/runkit_default_property_remove_private_shadow_and_inheritance_overriding_objects.phpt" role="test" />
+   <file md5sum="d93b5c9a92fc81e403a9cbfd34916183" name="tests/runkit_import_class_property_and_inheritance_overriding_objects.phpt" role="test" />
+   <file md5sum="d58a110f80765bdbdd08648878ed4f62" name="tests/bug56662.phpt" role="test" />
+   <file md5sum="1ae813d08d3bb2e784a562eeb7e38b32" name="tests/bug56976.phpt" role="test" />
+   <file md5sum="f1fafb2137dc111888d37bba74f927e6" name="tests/bug57249.inc" role="test" />
+   <file md5sum="504588c97f7cc37dd695723034488905" name="tests/bug57249.phpt" role="test" />
+   <file md5sum="e13a2cbcb42427d886e65eb6732342fc" name="tests/bug57649.inc" role="test" />
+   <file md5sum="8e07115a23bc1e680bb10382cc6fd451" name="tests/bug57649.phpt" role="test" />
+   <file md5sum="1751cbdf0fad694bd65a415c5c2a4d3d" name="tests/bug57658.phpt" role="test" />
+   <file md5sum="c23f53f3fcc900d1a69ec2492064d633" name="tests/runkit_import_methods1.inc" role="test" />
+   <file md5sum="59014dbc0595e31548af7a8c683cae01" name="tests/runkit_import_methods2.inc" role="test" />
+   <file md5sum="a17b1f25afa92e60d34325e3aba37a47" name="tests/runkit_import_methods.phpt" role="test" />
+   <file md5sum="5ad27264941f7476bc82ce0cdeb9db62" name="tests/runkit_method_rename_002.phpt" role="test" />
+   <file md5sum="42d4b4830a1c2d5cdb16a6c7f203763d" name="tests/bug64496.phpt" role="test" />
+   <file md5sum="6678f68f13b94fd1536b14663607a7b7" name="tests/runkit_user_functions_on_shutdown.phpt" role="test" />
+   <file md5sum="645537cabe8cf42586fb0de59afc7717" name="config.m4" role="src" />
+   <file md5sum="cb9aa6d916ca9d8c829992e75cdf55b5" name="config.w32" role="src" />
+   <file md5sum="c72a1071564450609fa497dc387a5147" name="php_runkit.h" role="src" />
+   <file md5sum="f06d4e457e94ee497550f42bf62a4ed0" name="php_runkit_hash.h" role="src" />
+   <file md5sum="a9da8760027197f221383298eda4fdab" name="php_runkit_sandbox.h" role="src" />
+   <file md5sum="d9289777a6de3ed341978e729b553ff5" name="php_runkit_zval.h" role="src" />
+   <file md5sum="c43a6976eb4044decba426fafb2e7694" name="LICENSE" role="doc" />
+   <file md5sum="c03e9ea7c241470efd300c1ede1face9" name="README" role="doc" />
+   <file md5sum="65d96eac9bd56605efc81fe9d26468d3" name="README.md" role="doc" />
+   <file md5sum="99f81deff9a944ac385f6a77d9a21ce3" name="runkit.c" role="src" />
+   <file md5sum="d3d86eb4dbd00f48b8b8bf7ac8a47c65" name="runkit.dsp" role="src" />
+   <file md5sum="be5061f4cbd5416d23ee72c4ffcb8061" name="runkit_classes.c" role="src" />
+   <file md5sum="0440498ce143b2d5fbbdc7daddca6fb4" name="runkit_constants.c" role="src" />
+   <file md5sum="74f517a8c84e896065916b16045e510b" name="runkit_functions.c" role="src" />
+   <file md5sum="82301f3301b452e3ebc1fcabfd75ec96" name="runkit_import.c" role="src" />
+   <file md5sum="e5407a801cb3266001aed7109a8d8293" name="runkit_methods.c" role="src" />
+   <file md5sum="ea3b02c4a3c6a0431de73ac2a912a5a3" name="runkit_props.c" role="src" />
+   <file md5sum="e73041410a79c9a049b109d92c3dfd82" name="runkit_sandbox.c" role="src" />
+   <file md5sum="a0aeb0cad5f1bdb67dbc422554a5dee0" name="runkit_sandbox_parent.c" role="src" />
+   <file md5sum="241fbc7b34a0f333db222996b0c1212d" name="tsrm_5.0.diff" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>runkit</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2012-01-02</date>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.opensource.org/licenses/BSD-3-Clause">BSD License (3 Clause)</license>
+   <notes>
+License was changed to the BSD License (3 Clause)
+Main bug-fixes:
+    * Building on windows-platform was fixed.
+    * The issue with inheritance of methods, which have been created by the runkit_method_rename function, was fixed.
+    * Fixed dumb bug in workarounds based on php-version.
+   </notes>
+  </release>
+  <release>
+   <date>2010-10-05</date>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Disappointing incompatibility issue with php 5.3+ in untested code was fixed.
+   </notes>
+  </release>
+  <release>
+   <date>2010-10-03</date>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+New features:
+    + The patch made by David Sklar was applied to support creation and changing of static methods.
+      The new user-level const &quot;RUNKIT_ACC_STATIC&quot; was introduced.
+    + An ability to import static class properties was added.
+      The new user-level const &quot;RUNKIT_IMPORT_CLASS_STATIC_PROPS&quot; was introduced.
+    + An ability to apply a closure to a sandbox in PHP 5.3+ by calling the call_user_func method was added.
+
+Main bug-fixes:
+    * Fixes of issues with importing constant arrays into properties and constants
+    * Fixes of issues with importing functions or methods having static variables inside them
+    * The behaviour that old methods had been always overridden by new ones independently from
+      the RUNKIT_IMPORT_OVERRIDE flag was corrected
+    * Compatibility with 5.3+ in zts mode
+    * runkit_function_* functions were fixed with the patch from Keisial at gmail dot com
+      (see the second comment from http://pecl.php.net/bugs/bug.php?id=14086)
+    * The reverting of protected methods via runkit_method_copy was corrected, the segmentation fault
+      on calling restored method was eliminated
+    * Elimination of the segmentation-fault on exit after restoring modified internal functions
+      (see also http://pecl.php.net/bugs/bug.php?id=11632)
+    * Correction for the situation when a method or function having static variables in itself
+      and copied by runkit crashes afterwards on calling if the original method or function was removed
+    * The issue that the runkit used to create new methods with lowercase names was fixed, tests were extended
+    * Methods&apos; prototype detection was fixed
+   </notes>
+  </release>
+  <release>
+   <date>2010-04-01</date>
+   <version>
+    <release>1.0</release>
+    <api>0.8</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version never was released. It contains all changes from official PHP repository since the release of 0.9:
+    johannes:  function_entry -&gt; zend_function_entry
+    philip:    Fixed test
+    bjori:     Fixed PHP bug#46847 (phpinfo() is missing some settings.)
+    felipe:    &apos;static&apos; was added into ZEND_BEGIN_ARG_INFO_EX macro
+    mlively:   Rework of runkit_import to allow the fixing of 4519.
+    sfox:      Bring the majority of PECL extensions into line with macro/x.x.x versioning.
+    sebastian: Fix #10053: memory exhausted, patch by Stefan Marr.
+               Fix #10300: Segfault when copying __call(), patch by Stefan Marr.
+               Fix #12371. Patch by Stefan Marr &lt;mail@stefan-marr.de&gt;.
+               PHP 5.3+ compatibility.
+    mike:      fix build: use Z_LVAL in assignment as Z_BVAL contains a (zend_bool) cast
+    pollita:   Catch signature change in zend_unmangle_property_name() -- Thanks steph
+   </notes>
+  </release>
+  <release>
+   <date>2006-06-06</date>
+   <version>
+    <release>0.9</release>
+    <api>0.8</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Allow building part of runkit while leaving other functionality out.
+--enable-runkit works as before, building all runkit features
+Individual features may enabled or disable by using
+--enable-runkit-featurename or --disbale-runkit-featurename
+where featurename is any of:
+    modify  - Runtime manipulation
+    super   - Superglobal registration
+    sandbox - Sandboxing
+
+Ex: ./configure --enable-runkit --disable-runkit-modify
+        Enable superglobal registration and sandbox support,
+        but disable runtime manipulation.
+
+    ./configure --disable-runkit --enable-runkit-sandbox
+        Enable only sandboxing support.
+
+This release also:
+- Fixes PHP4 (ZE1) compilation
+- Closes a potential crash-bug in runkit_import()
+  handling of default properties
+- Resolves an output buffering bug in Runkit_Sandbox
+- Resolves Runkit_Sandbox failure when superglobals are defined
+   </notes>
+  </release>
+  <release>
+   <date>2006-05-20</date>
+   <version>
+    <release>0.8.1</release>
+    <api>0.8</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added source file runkit_props.c to package
+   </notes>
+  </release>
+  <release>
+   <date>2006-05-14</date>
+   <version>
+    <release>0.8</release>
+    <api>0.8</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed SAPI handlers for genuinely threaded webservers (e.g. apache2-worker)
+Fixed internal pointer corruption in function/class popping
+Added functions:
+  runkit_zval_inspect()
+  runkit_return_value_used()
+  runkit_default_property_add()
+Implemented class property importing in runkit_import()
+Began refactor for PHP6 compatability
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.7</release>
+    <api>0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-10-30</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Primarily bugfix release, only new functionality is expanded parent_scope setting.
+
+Workaround bug when using runkit_import() with opcode caches by bypassing cache for imported file.
+Fix using runkit_import() with multiple classes (Thanks to Stuart Herbert for the patch)
+Fix various reference issues for parameters passed to manipulation functions.
+Fix C++ compatability in sandbox source files.
+Fix parent_scope support (was only applied to property_read and eval/include/require ops)
+Expand parent_scope setting to allow variable arrays as symbol tables.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.6</release>
+    <api>0.6</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-09-30</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Add ability to modify/rename/remove internal functions.
+Requires PHP_INI_SYSTEM setting runkit.internal_override to be enabled.
+
+Implement Runkit_Sandbox_Parent to give child access to parent&apos;s scope
+Parent must enable $sandbox[&apos;parent_access&apos;] at minimum.
+
+Additional boolean settings include:
+parent_read - Can read properties in parent_scope
+parent_write - Can modify properties in parent_scope
+parent_call - Can call parent&apos;s functions
+parent_eval - Can eval arbitrary code in parent scope
+parent_include - Can include/require code in parent scope
+parent_echo - Can echo/print data (bypass output_handler)
+parent_die - Can kill parent (commiting suicide in the process)
+
+A special parent_scope setting modifies the active symbol table of the parent
+as seen from the child according to:
+0 = Global Scope
+1 = Current active symbol table
+2 = Previously active symbol table
+3 = The one before that...etc...
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.5</release>
+    <api>0.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-09-23</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+NOTICE: This release demotes runkit_sandbox_output_handler() to DEPRECATED.
+Use $sandbox[&apos;output_handler&apos;] = $handler; rather than
+runkit_sandbox_output_handler($sandbox, $handler);
+The procedural version will be removed prior to a 1.0-stable release.
+Other changes include:
+- Major refactor of Runkit_Sandbox OOP Model.
+- Addition of $sandbox[&apos;active&apos;] R/O status indicator.
+- Fixed crash when multiple autoglobals are specified
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.4</release>
+    <api>0.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-07-08</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added runkit_object_id() -- Fetch object handle identifier
+Fixed runkit_import() -- Fold case when adding method keys to ce-&gt;function_table
+Fixed runkit_method_*() to properly return TRUE on success
+Refactored INI overrides in Runkit_Sandbox for readability
+Added INI overrides in Runkit_Sandbox (safe_mode_gid,safe_mode_include_dir)
+Fixed callback parameter to runkit_sandbox_output_handler() to be optional.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-06-03</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Put php_runkit.h back into the package.xml file. (pear install runkit-beta should work now).
+Implement die(), exit(), echo(), and print() and catch bailouts properly.
+Implement output capturing -- runkit_sandbox_output_handler().
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-05-03</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Numerous build fixes in older versions and Win32.
+Fix registration of more than one superglobal.
+Implement include(), require(), include_once(), require_once(), unset(), isset(), and empty() support in Runkit_Sandbox.
+Add runkit.superglobal as &quot;special&quot; ini supported by Runkit_Sandbox.
+Fix runkit_class_*.phpt regression tests to be version agnostic.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-04-29</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Initial Release
+   </notes>
+  </release>
+ </changelog>
+</package>

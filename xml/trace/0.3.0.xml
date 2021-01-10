@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>trace</name>
+ <channel>pecl.php.net</channel>
+ <summary>Trace is a low-overhead tracing tool for PHP</summary>
+ <description>Trace is a low-overhead tracing tool for PHP.
+    It can trace all PHP executing, function calls, request information during
+    run-time. And provides features like Filter, Statistics, Current Status and
+    so on.
+    It is very useful to locate blocking, heavy-load problems and debug in all
+    environments, especially in production environments.</description>
+ <lead>
+  <name>Yuchen Wang</name>
+  <user>monque</user>
+  <email>phobosw@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Anan Zhao</name>
+  <user>flabby</user>
+  <email>flabbyan@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2015-05-22</date>
+ <time>07:27:21</time>
+ <version>
+  <release>0.3.0</release>
+  <api>0.3.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</license>
+ <notes>
+### Added
+
+- Added support for special function calls: `main`, `include`, `require`, `Closure`, `Labmda`, `eval()`
+- Added support for PHP 5.1
+- Keep collecting and sending back trace information after PHP bailout
+- Added duplexing to communication module
+- Compatible with Trait Alias
+- Added checking for ZTS (Thread-safety support) during configuration
+
+### Changed
+
+- Refactor the PHP extension
+- Unified the naming convention of Type, Function, Macro
+- Change License to Apache 2.0
+- Change Extension&apos;s name to &quot;trace&quot; (php is redundant for a PHP extension)
+- Improve representation of `zval` and support for Array, Object
+- Improve performance when trace if off
+- Limit the length of print arguments and retvalue
+
+### Fixed
+
+- Fixed handling of large or small double value that needs scientific notation
+- Fixed memory leaks related with SDS
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="8c5cc796c97a118e0d44d14fefd544c6" name="cmdtool/Makefile" role="src" />
+   <file md5sum="3a684af8a5a17860fe79fb5f97a5c3a2" name="cmdtool/log.c" role="src" />
+   <file md5sum="61c939ccae060f8afd503d44cb400978" name="cmdtool/log.h" role="src" />
+   <file md5sum="ff0dcdeb25c58f612fcef570e928299d" name="cmdtool/phptrace" role="src" />
+   <file md5sum="69a74b6dacc99bfb58c7072b0bf63b85" name="cmdtool/sys_trace.c" role="src" />
+   <file md5sum="a8bddbd13a70da1cb2a0493f64631a8b" name="cmdtool/sys_trace.h" role="src" />
+   <file md5sum="d3e3b65c8a3e7cc5e2cbd273abd48a90" name="cmdtool/trace.c" role="src" />
+   <file md5sum="65f9a14464d7baecaf64b57e25f3a2a7" name="cmdtool/trace.h" role="src" />
+   <file md5sum="acf4364af10f69870b92b503a7a97291" name="cmdtool/trace_count.c" role="src" />
+   <file md5sum="4789ba4a5ef3a0be08b42c4152525a5c" name="cmdtool/trace_count.h" role="src" />
+   <file md5sum="a734ce2dd52e51e82329bd8865b4b52e" name="cmdtool/trace_status.c" role="src" />
+   <file md5sum="3270bca5e9516d7082ed411775a044c0" name="cmdtool/trace_status.h" role="src" />
+   <file md5sum="6956850f97bc5fbe6628d3d159d775b7" name="cmdtool/trace_util.c" role="src" />
+   <file md5sum="9b539486f2902eeaa415dc0891dd6b7b" name="cmdtool/trace_util.h" role="src" />
+   <file md5sum="348a64ec78ac30760c93ec8ab3ebfbe7" name="common/sds/LICENSE" role="doc" />
+   <file md5sum="e475de254d2176ed51b064e94f411c52" name="common/sds/Makefile" role="src" />
+   <file md5sum="a89923fb58fe4eb5c2de45d86649cc44" name="common/sds/README.md" role="doc" />
+   <file md5sum="c07cc8071754c348ec94d1b65d3de731" name="common/sds/sds.c" role="src" />
+   <file md5sum="f48c940af57191afcf8dcf07988ced71" name="common/sds/sds.h" role="src" />
+   <file md5sum="d546b297df7b0d25d6d9a69d5611017b" name="common/sds/testhelp.h" role="src" />
+   <file md5sum="0b28b9d1ea7e3d6c63288a0381cb6334" name="common/trace_comm.c" role="src" />
+   <file md5sum="ac41299ced742687ced5d5548c88a18f" name="common/trace_comm.h" role="src" />
+   <file md5sum="f110dc8bd51afbdd7dd74e5c3870907d" name="common/trace_ctrl.c" role="src" />
+   <file md5sum="1ca926d713243006edd70ae8a672ed52" name="common/trace_ctrl.h" role="src" />
+   <file md5sum="557679d03feae6302c80b051060cff3c" name="common/trace_mmap.c" role="src" />
+   <file md5sum="6b4c4a8009e1fdc74fc2c2ba80d8d7cf" name="common/trace_mmap.h" role="src" />
+   <file md5sum="673219431a89726d2cfe2ddff501479f" name="common/trace_time.h" role="src" />
+   <file md5sum="ea4baf19afb6c90c9b06fff813eee85f" name="common/trace_type.c" role="src" />
+   <file md5sum="9f67eff8773c150e31317c4820ddca31" name="common/trace_type.h" role="src" />
+   <file md5sum="4ebd008d7e78a9de3672608ed7f0db82" name="common/uthash.h" role="src" />
+   <file md5sum="439c12c79bd5cc5c9622db01edbcba78" name="extension/tests/skipif.inc" role="test" />
+   <file md5sum="3bf9be7503c7b12f1b0f9975eb5ce046" name="extension/tests/trace_001.phpt" role="test" />
+   <file md5sum="c284f7b9b68aaee36e34506aecbf10a0" name="extension/tests/trace_002.phpt" role="test" />
+   <file md5sum="e77b78df1378932ea932876b871b7e40" name="extension/tests/trace_002_include.inc" role="test" />
+   <file md5sum="e77b78df1378932ea932876b871b7e40" name="extension/tests/trace_002_require.inc" role="test" />
+   <file md5sum="67f9f25ede01286cde29f0cfacb404b0" name="extension/tests/trace_003.phpt" role="test" />
+   <file md5sum="c398ae40213cf527e946c10ec8fc521b" name="extension/tests/trace_004.phpt" role="test" />
+   <file md5sum="0a5abb3dc088c9830983ab4df6959588" name="extension/tests/trace_005.phpt" role="test" />
+   <file md5sum="4991bde045a737f2d9114d8847b9b12b" name="extension/tests/trace_006.phpt" role="test" />
+   <file md5sum="12bf2657c845a886da99f0ed6b319e3c" name="extension/tests/trace_006_include.inc" role="test" />
+   <file md5sum="863e2ee16be651a448bfcc583b0721d3" name="extension/tests/trace_007.phpt" role="test" />
+   <file md5sum="858b09936f7c05b1d4ee8350bbe69ef5" name="extension/tests/trace_008.phpt" role="test" />
+   <file md5sum="4cad6084f2560cf5d34f5bc70aef6335" name="extension/tests/trace_009.phpt" role="test" />
+   <file md5sum="43f6f6ee4df6b89fb6e7f5d4edc355dd" name="extension/tests/trace_010.phpt" role="test" />
+   <file md5sum="0abc021ae1ab6223f04309c3621f8c8e" name="extension/tests/trace_011.phpt" role="test" />
+   <file md5sum="17deea9d101a51f7b889db21e76e6685" name="extension/tests/trace_012.phpt" role="test" />
+   <file md5sum="8c129475669e35da692ef309d9c44887" name="extension/config.m4" role="src" />
+   <file md5sum="71a5e36ed70d5d761eb42c3c2203681e" name="extension/make_test_on.sh" role="src" />
+   <file md5sum="71624ceded5f3cdc2c4dc56272e74a25" name="extension/php_trace.h" role="src" />
+   <file md5sum="f114c483f1e958f4a1338f11ce0c1992" name="extension/trace.c" role="src" />
+   <file md5sum="868cbf2eb948dab179a60aec1e0f5ae5" name="CHANGES.md" role="doc" />
+   <file md5sum="c5db591d033b84dfe4547c8912ee8b75" name="CHANGES_ZH.md" role="doc" />
+   <file md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="doc" />
+   <file md5sum="c7a9401a4cc089855efddf84a9821d13" name="Makefile" role="src" />
+   <file md5sum="63be8708fc98127ea26364ede8103606" name="README.md" role="doc" />
+   <file md5sum="c14e750f0904c4a4f3cb61f82e0318b9" name="README_ZH.md" role="doc" />
+   <file md5sum="e0f529c2c7712d9dcd8abb4c82402177" name="release.sh" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.1</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>trace</providesextension>
+ <extsrcrelease />
+</package>

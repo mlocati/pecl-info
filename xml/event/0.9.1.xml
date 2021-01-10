@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<package version="1.0">
+  <name>event</name>
+  <summary>Event Scheduling Engine</summary>
+  <description>This is an extension to efficiently schedule IO, time and signal based
+events using the best available IO notification mechanism for your system.
+This is a port of libevent to the PHP infrastructure; the API is similar
+but not identical.</description>
+  <maintainers>
+    <maintainer>
+      <user>wez</user>
+      <name>Wez Furlong</name>
+      <email>wez@php.net</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.9.1</version>
+    <date>2004-12-16</date>
+    <license>PHP</license>
+    <state>beta</state>
+    <notes>Added event_timeout() function for easily scheduling a callback after a certain
+period of time.  The timeout may be persistent to make the callback a recurrent
+event.
+
+Fixed an issue with timercmp() on windows that caused a busy wait when the
+scheduler could have performed a sleep.
+
+Windows scheduling engine now also processes the message queue while waiting;
+useful for COM/GUI based scripts.
+
+Fixed build for threaded systems with real signals.
+
+Supports epoll(4), poll(2) and select(2) IO notification engines.
+Support for /dev/poll and kqueue is pending.
+
+On Windows, currently only sockets can participate in the IO notification engine.</notes>
+    <deps>
+      <dep type="php" rel="ge" version="4.3.0"/>
+    </deps>
+    <filelist>
+      <file role="src" md5sum="bfed906a10c4b337edf5d5380481a436" name="config.m4"/>
+      <file role="src" md5sum="6d229a111c8c86c60212c885b6d06529" name="config.w32"/>
+      <file role="src" md5sum="bc975df8d072489e832970b0a023e009" name="event.c"/>
+      <file role="src" md5sum="86d463b4e3e3cb33bc83e10e6b16f534" name="select.c"/>
+      <file role="src" md5sum="dcfc5ad15aadd28150899ccad6a3ff1d" name="poll.c"/>
+      <file role="src" md5sum="39178877827977ea7b93c43cec0f1165" name="epoll.c"/>
+      <file role="src" md5sum="5127f70d2037c0b2a9e87e8112b9cc6c" name="win32.c"/>
+      <file role="src" md5sum="d1ad6337174a6a86ff09a3f1beaf5ddb" name="php_event.h"/>
+      <file role="src" md5sum="5775a6169e1e6708d4ccfa7ddbeb9e0a" name="php_event_int.h"/>
+      <file role="src" md5sum="421f359fecb9637e4e40e11e6c18ae2d" name="sys_queue.h"/>
+      <file role="src" md5sum="23c5a5b83d5b6a891ac0d7f347e7cff5" name="sys_tree.h"/>
+      <file role="doc" md5sum="12d87ed2fd9ba5799eab827b9ca1261c" name="CREDITS"/>
+      <file role="doc" md5sum="26e161206f1575e5227bcf1ab2938787" name="sample.php"/>
+      <file role="doc" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL"/>
+    </filelist>
+  </release>
+</package>

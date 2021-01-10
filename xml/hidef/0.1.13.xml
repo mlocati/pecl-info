@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>hidef</name>
+ <channel>pecl.php.net</channel>
+ <summary>Constants for real</summary>
+ <description>Allow definition of user defined constants in simple ini files, 
+  which are then processed like internal constants, without any 
+  of the usual performance penalties.</description>
+ <lead>
+  <name>Gopal Vijayaraghavan</name>
+  <user>gopalv</user>
+  <email>gopalv@php.net</email>
+  <active>gopalv</active>
+ </lead>
+ <date>2012-07-12</date>
+ <time>06:53:36</time>
+ <version>
+  <release>0.1.13</release>
+  <api>0.1.10</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Allow -&gt; access on FrozenArrays ala stdClass
+	- globally disable hidef for CLI scripts (hidef.enable_cli) 
+	- allow the PHP memory_limit to be be temporarily increased during startup (hidef.memory_limit)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="f4154676b165c8f4889b3ff762c8b1cb" name="tests/skipif.inc" role="test" />
+   <file md5sum="d4df52890268a7ea310e60e9334bd8be" name="tests/hidef_001.phpt" role="test" />
+   <file md5sum="e9a8252f0739279a4a4b9e3076b905d7" name="tests/hidef_002.phpt" role="test" />
+   <file md5sum="a9ece1effee6415c20317af7726e3ddd" name="tests/hidef_003.phpt" role="test" />
+   <file md5sum="e61ea7ca8dd31f534eded0a3640b94c6" name="tests/hidef_004.phpt" role="test" />
+   <file md5sum="826d5a89228f5ad53ccd544ba3cb5eee" name="tests/hidef_005.phpt" role="test" />
+   <file md5sum="08fe74d14e532ff9b89ae9b108f6111a" name="tests/hidef_006.phpt" role="test" />
+   <file md5sum="4755d33d4fd2d040c8fad15c3615b5c9" name="tests/hidef_007.phpt" role="test" />
+   <file md5sum="16d4af9b61656f342a859f567b2dd6e3" name="tests/hidef_008.phpt" role="test" />
+   <file md5sum="3a8ed5e49319042fc64667769daeefd0" name="tests/hidef_009.phpt" role="test" />
+   <file md5sum="1646e41bf9b8a717ee184b7eb495739f" name="tests/hidef_010.phpt" role="test" />
+   <file md5sum="9cf4af77a8fa03ee950997076a8d45d9" name="tests/hidef_011.phpt" role="test" />
+   <file md5sum="93e12a6775f55fdf9d0db5f97ebc9e27" name="tests/hidef_012.phpt" role="test" />
+   <file md5sum="5fd3f330517ff1be6d6eb0a12e3b1508" name="tests/hidef_013.phpt" role="test" />
+   <file md5sum="0d59f30160db94fa3f61d11136227ea6" name="tests/hidef_014.phpt" role="test" />
+   <file md5sum="3828cdeeb66fc44877db019cd9f0ecf4" name="tests/hidef_015.phpt" role="test" />
+   <file md5sum="60365ac53f76a4b1b8022322468302e3" name="tests/hidef_016.phpt" role="test" />
+   <file md5sum="b3cc3c6568d1b0c80b6c5cde6398f856" name="tests/hidef_test.ini" role="test" />
+   <file md5sum="c9f267fdc2f815304121ce7209258878" name="tests/array1.data" role="test" />
+   <file md5sum="4c1258cd64a9c093a96b8bb5a2a8875c" name="tests/array2.data" role="test" />
+   <file md5sum="9c2d918e0a3322f3ef3ec4a42bdc7332" name="tests/helloworld.data" role="test" />
+   <file md5sum="dcca48101505dd86b703689a604fe3c4" name="tests/null.data" role="test" />
+   <file md5sum="32cfac4093c80b51b1c27267f4dd89d3" name="tests/one.data" role="test" />
+   <file md5sum="651d223640cbf869039ad3856118acf2" name="tests/pi.data" role="test" />
+   <file md5sum="e3bd907cf6eb6cba9e77cc37a1270fcf" name="tests/serializer.php" role="test" />
+   <file md5sum="431014e4a761ea216e9a35f20aaec61c" name="tests/true.data" role="test" />
+   <file md5sum="4294c10c70fcf9620443a12169fb3a59" name="tests/numeric.data" role="test" />
+   <file md5sum="011f9e86581cf360d5e2c70e7e8a8a22" name="tests/assoc.data" role="test" />
+   <file md5sum="c7fc4eba2da1cb1aa4e9862b14d8f1c4" name="tests/empties.data" role="test" />
+   <file md5sum="f43124ac7c452e67843f2e216b440b84" name="config.m4" role="src" />
+   <file md5sum="ee866d67417be6be4b61804e55a0673d" name="hidef.c" role="src" />
+   <file md5sum="aa46fa40ede8ac6c1950bce1a933f49c" name="php_hidef.h" role="src" />
+   <file md5sum="d47c2248aa5068b1eba6b6e98c93253f" name="frozenarray.c" role="src" />
+   <file md5sum="09c13cebb2f8c2f8449d0def7d0afb50" name="frozenarray.h" role="src" />
+   <file md5sum="af74defa090d63c9ec641a5db34a5c6f" name="constdumper.php" role="src" />
+   <file md5sum="ac3a12b47bf1cd9e5b64b6aca6d0d0b3" name="inicreator.php" role="src" />
+   <file md5sum="02280360e1cc0f56e37fa47d2d1c4738" name="CREDITS" role="doc" />
+   <file md5sum="bf69e173d4d8cf855cd43654b8906217" name="INSTALL" role="doc" />
+   <file md5sum="f70e776a66bf42670f1472b535950b3c" name="README" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>hidef</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.1.12</release>
+    <api>0.1.10</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-06-15</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed support on PHP 5.4+
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.11</release>
+    <api>0.1.10</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-12-09</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix segfaults and TSRM builds with hidef_wrap
+- hidef.per_request_ini to load up .ini files in vhosts 
+- allow simplified constants in hidef ini files
+   </notes>
+  </release>
+  <release>
+   <date>2007-02-26</date>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <notes>
+- Initial PECL release
+   </notes>
+  </release>
+  <release>
+   <date>2008-09-24</date>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <notes>
+- hidef_fetch()/frozenarray data stores
+   </notes>
+  </release>
+  <release>
+   <date>2009-08-26</date>
+   <version>
+    <release>0.1.2</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- php 5.3 compat (felipe) 
+- tsrm fixes (felipe)
+- fix empty segv (lbarnaud)
+   </notes>
+  </release>
+  <release>
+   <date>2010-05-31</date>
+   <version>
+    <release>0.1.3</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- ini reader fixes (rrichards) 
+- tsrm/win32 fixes (kalle)
+- build update fixes (kalle, johannes)
+   </notes>
+  </release>
+  <release>
+   <date>2010-06-01</date>
+   <version>
+    <release>0.1.4</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- error reporting for mis-defined constants (Pierre, Kalle)
+   </notes>
+  </release>
+  <release>
+   <date>2010-11-29</date>
+   <version>
+    <release>0.1.5</release>
+    <api>0.1.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- FrozenArray::thaw() function to speed up iterating over data
+- fix arginfo for hidef_fetch() (felipe)
+   </notes>
+  </release>
+  <release>
+   <date>2010-12-10</date>
+   <version>
+    <release>0.1.6</release>
+    <api>0.1.6</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- thaw objects easily with a (array) cast
+- handle string/numeric indexes like an array does
+      - error reporting for unreadable/bad data
+   </notes>
+  </release>
+  <release>
+   <date>2011-04-13</date>
+   <version>
+    <release>0.1.7</release>
+    <api>0.1.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- ensure var_dump() does not SEGV on php-5.2 
+- add an optional thaw=false parameter for hidef_fetch()
+   </notes>
+  </release>
+  <release>
+   <date>2011-05-23</date>
+   <version>
+    <release>0.1.8</release>
+    <api>0.1.8</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix exceptions thrown for FrozenArray set and unset operations
+- add an optional $size byref parameter for FrozenArray-&gt;thaw()
+   </notes>
+  </release>
+  <release>
+   <date>2011-07-01</date>
+   <version>
+    <release>0.1.9</release>
+    <api>0.1.8</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Cache the thawed array in the FrozenArray object (fix leak on array_key_exists())
+- Free memory only in the parent thread/process to prevent pagefaults on free()
+- Trim malloc space before forking to reduce memory hit
+   </notes>
+  </release>
+  <release>
+   <date>2011-11-25</date>
+   <version>
+    <release>0.1.10</release>
+    <api>0.1.10</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Throw exceptions on serialize and do not segfault on unserialize 
+- hidef_wrap to make dev work easier without restarting apache (hidef_wrap(unserialize(...)) to get a FrozenArray
+   </notes>
+  </release>
+ </changelog>
+</package>

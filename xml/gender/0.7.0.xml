@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.8.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>gender</name>
+ <channel>pecl.php.net</channel>
+ <summary>Gender Extension</summary>
+ <description>Gender PHP extension is a port of the gender.c program originally written by Joerg Michael. The main purpose is to find out the gender of firstnames. The actual database contains &gt;40000 firstnames from 54 countries.</description>
+ <lead>
+  <name>Anatoliy Belsky</name>
+  <user>weltling</user>
+  <email>ab@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2009-07-04</date>
+ <time>14:32:17</time>
+ <version>
+  <release>0.7.0</release>
+  <api>1.2</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>stable</api>
+ </stability>
+ <license filesource="/LICENSE">PHP</license>
+ <notes>
+* ported new api version with partial unicode support 
+* updated dictionary file (need to run the postinstall script)
+* several community bugfixes (many thanks rrichards, johannes, kalle)
+* Gender class is now in the Gender namespace on PHP v5.3+
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="1b3094a06978a254a40e69f5f4da1abd" name="scripts/copy_gender_data.php" role="php">
+    <tasks:replace from="@data_dir@" to="data_dir" type="pear-config" />
+    <tasks:postinstallscript>
+     <tasks:paramgroup>
+      <tasks:id>move_data</tasks:id>
+      <tasks:param>
+       <tasks:name>savepath</tasks:name>
+       <tasks:prompt>Where the names dictionary file must be saved?</tasks:prompt>
+       <tasks:type>string</tasks:type>
+      </tasks:param>
+     </tasks:paramgroup>
+    </tasks:postinstallscript>
+   </file>
+   <file md5sum="66eabdcf0bb9ce516a9b47fc56e00322" name="README" role="doc" />
+   <file md5sum="b28167a0076b26b55c686798e906d21e" name="php_gender.h" role="src" />
+   <file md5sum="0e964e9273c606c46afbd311b5ad4d77" name="LICENSE" role="doc" />
+   <file md5sum="540469506d9ab0565ae485eb4d9df7cc" name="gender_functions.c" role="src" />
+   <file md5sum="19031ed02045693d3e1d40cd8589b1fe" name="gender_definitions.h" role="src" />
+   <file md5sum="2c67f5373f2134acfb239e78d184b8d9" name="gender.c" role="src" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL" role="doc" />
+   <file md5sum="29b8cd9f543f2a9136cefbab79cc023e" name="data/nam_dict.txt.bz2" role="data" />
+   <file md5sum="6e9eaafe2f2f5d110abd60ef2ed6c3bd" name="CREDITS" role="doc" />
+   <file md5sum="c7d57f0270ae1990b78d20bb205fd1ed" name="config.w32" role="src" />
+   <file md5sum="ce6657aeadcbce44a4156ed2ae46bbc1" name="config.m4" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.7.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>gender</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2008-12-17</date>
+   <version>
+    <release>0.6.0</release>
+    <api>1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+* first pecl release with basic functionality
+* do not forget to run postinstall script, which copies the names dictionary file
+   </notes>
+  </release>
+  <release>
+   <date>2008-12-31</date>
+   <version>
+    <release>0.6.1</release>
+    <api>1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <notes>
+* fixed package.xml
+   </notes>
+  </release>
+ </changelog>
+</package>

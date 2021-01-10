@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sqlsrv</name>
+ <channel>pecl.php.net</channel>
+ <summary>Microsoft Drivers for PHP for SQL Server (SQLSRV)</summary>
+ <description>The Microsoft Drivers for PHP for SQL Server are PHP extensions that allow for the reading and writing of SQL Server data from within PHP scripts. The SQLSRV extension provides a procedural interface while the PDO_SQLSRV extension implements PDO for accessing data in all editions of SQL Server 2005 and later (including Azure SQL DB). These drivers rely on the Microsoft ODBC Driver for SQL Server to handle the low-level communication with SQL Server.
+*This package contains only the SQLSRV driver.*
+ </description>
+ <lead>
+  <name>Meet Bhagdev</name>
+  <user>meetbhagdev</user>
+  <email>meetb@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Jay Kint</name>
+  <user>jkint</user>
+  <email>jaykint@microsoft.com</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Marie Barwin</name>
+  <user>mbar</user>
+  <email>v-mabarw@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Hadis Kakanejadi Fard</name>
+  <user>hadisfard</user>
+  <email>v-hakaka@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2017-03-06</date>
+ <time>17:45:21</time>
+ <version>
+  <release>4.1.7preview</release>
+  <api>4.1.7</api>
+ </version>
+ <stability>
+  <release>devel</release>
+  <api>devel</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/mit">The MIT License (MIT)</license>
+ <notes>
+[Added]
+- The early technical preview (ETP) with basic functionalities is now available on MAC OS X. Tested on OS versions El Capitan (OS X 10.11) 
+[Fixed]
+- Fixed null returned when an empty string is set to an output parameter (issue #308)
+- Fixed memory leaks in buffered result sets
+- Fixed debug abort error when building the driver in debug mode with PHP 7.1
+- Fixed string truncation when binding varchar(max), nvarchar(max), varbinary(max), and xml types (issue #231)
+- Fixed clang compile errors
+- Fixed fatal error when fetching empty nvarchar (issue #69)
+- Fixed fatal error when calling sqlsrv_fetch() with an out of bound offset for SQLSRV_SCROLL_ABSOLUTE (issue #223)
+[Known Issues]
+- User defined data types and SQL_VARIANT
+- In MAC OS X, if loading both sqlsrv and pdo_sqlsrv, the order matters (even when dynamically). For sqlsrv scripts, load sqlsrv.so first
+- Connection pooling not working in MAC OS X
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="10aed83694ff694b7d8b250c8a1282e3" name="config.m4" role="src" />
+   <file md5sum="7cd5144e9345e0843352371cfb57d00f" name="config.w32" role="src" />
+   <file md5sum="8c5a0e8bfd8d7c77fa0fed80dab77162" name="conn.cpp" role="src" />
+   <file md5sum="da4d3c1d4392f2e63b36250266cdf9b4" name="CREDITS" role="doc" />
+   <file md5sum="b00b0f210efd7e6f0456db54ab27e64c" name="init.cpp" role="src" />
+   <file md5sum="061c9665b46b4db81317457288e2ef9c" name="LICENSE" role="doc" />
+   <file md5sum="06d1e023eea2c38bb425b6441deea153" name="php_sqlsrv.h" role="src" />
+   <file md5sum="c40a69e73a44783c63b2d1348ad676ca" name="shared/core_conn.cpp" role="src" />
+   <file md5sum="bf591248f5632b4f016fe47bf9d74cb8" name="shared/core_init.cpp" role="src" />
+   <file md5sum="1254a7490d0b9c07e53889a43e618899" name="shared/core_results.cpp" role="src" />
+   <file md5sum="ce2c7be78bc3d31c2348edb8917d055e" name="shared/core_sqlsrv.h" role="src" />
+   <file md5sum="d7da64d64baf6f32acd95d6e0b2c2def" name="shared/core_stmt.cpp" role="src" />
+   <file md5sum="03a4b585c841ccb5fc6384f71a2cc208" name="shared/core_stream.cpp" role="src" />
+   <file md5sum="079f606f81d8c530cb10a124508e320f" name="shared/core_util.cpp" role="src" />
+   <file md5sum="0ec8a54e2c5ed16633a878e420227cf3" name="shared/FormattedPrint.cpp" role="src" />
+   <file md5sum="97752d1a1daf34493ee9f4f1683057e1" name="shared/FormattedPrint.h" role="src" />
+   <file md5sum="032d1c28cad8ba018e95b9fb5b0283bc" name="shared/globalization.h" role="src" />
+   <file md5sum="562da0ee580571216d7f2a9f73745d84" name="shared/interlockedatomic_gcc.h" role="src" />
+   <file md5sum="16ad355d0d0dfa074873c7d0c408e109" name="shared/interlockedatomic.h" role="src" />
+   <file md5sum="6cbbff6342ce62a79a30595ecdc4fc4b" name="shared/interlockedslist.h" role="src" />
+   <file md5sum="d69b5d5a3974c1994a7e013815b071a2" name="shared/localization.hpp" role="src" />
+   <file md5sum="4d19f9661244d10852bfb6d842218173" name="shared/localizationimpl.cpp" role="src" />
+   <file md5sum="590d20ed5662064ceeb5048365cdf9c9" name="shared/msodbcsql.h" role="src" />
+   <file md5sum="750e83000e5614604a45cf98186c174c" name="shared/sal_def.h" role="src" />
+   <file md5sum="d89a45b2afbd9ac447a1f4c91636c3c5" name="shared/StringFunctions.cpp" role="src" />
+   <file md5sum="41cb58a11b6f41711b3e232212c7630f" name="shared/StringFunctions.h" role="src" />
+   <file md5sum="f41263354c8619b352e28cfc9c26f7e7" name="shared/typedefs_for_linux.h" role="src" />
+   <file md5sum="8794e41c2ddf2b45530fe78620959cd8" name="shared/version.h" role="src" />
+   <file md5sum="9325c402600efa6c98cebb16a546022e" name="shared/xplat.h" role="src" />
+   <file md5sum="974d903ccc074b00795aa5bd1df679ff" name="shared/xplat_intsafe.h" role="src" />
+   <file md5sum="ce55335639b5c97491891a4b878e3ba9" name="shared/xplat_winerror.h" role="src" />
+   <file md5sum="825694fe677dcfefdb02b7e6a3ea4d9b" name="shared/xplat_winnls.h" role="src" />
+   <file md5sum="b4f952eb47496e2582aa0dfda7d0a4de" name="stmt.cpp" role="src" />
+   <file md5sum="baaf1b8ad75f517f5143ce07e7e40ac2" name="template.rc" role="src" />
+   <file md5sum="f3798d4d972e4fc63273c5ea68424696" name="util.cpp" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+   <arch>
+    <pattern>linux-*-i?86-*</pattern>
+    <conflicts/>
+   </arch>   
+  </required>
+ </dependencies>
+ <providesextension>sqlsrv</providesextension>
+ <extsrcrelease />
+</package>

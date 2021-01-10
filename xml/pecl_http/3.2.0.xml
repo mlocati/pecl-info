@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.5" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="   http://pear.php.net/dtd/tasks-1.0   http://pear.php.net/dtd/tasks-1.0.xsd   http://pear.php.net/dtd/package-2.0   http://pear.php.net/dtd/package-2.0.xsd">
+ <name>pecl_http</name>
+ <channel>pecl.php.net</channel>
+ <summary>Extended HTTP Support</summary>
+ <description>This HTTP extension aims to provide a convenient and powerful
+set of functionality for one of PHPs major applications.
+
+It eases handling of HTTP urls, headers and messages, provides
+means for negotiation of a client&apos;s preferred content type,
+language and charset, as well as a convenient way to send any
+arbitrary data with caching and resuming capabilities.
+
+It provides powerful request functionality with support for
+parallel requests.
+
+Documentation:
+https://mdref.m6w6.name/http</description>
+ <lead>
+  <name>Michael Wallner</name>
+  <user>mike</user>
+  <email>mike@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2018-07-19</date>
+ <time>11:16:49</time>
+ <version>
+  <release>3.2.0</release>
+  <api>3.2.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://copyfree.org/content/standard/licenses/2bsd/license.txt">BSD-2-Clause</license>
+ <notes>
+* Fixed gh-issue #73: build fails with libidn and libidn2
+* Fixed gh-issue #78: PHP-7.3 build crashes
+* Fixed PHP-7.2 build crashes
++ Added brotli compression support
++ Implemented gh-issue #58: Notify observers before any request is built
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="fe74d02bc4c0bf4358d7a910bd3f7d9a" name="autoconf/pecl/pecl.m4" role="src" />
+   <file md5sum="ca68f8ee6332a09220377fa1dede5b39" name="autoconf/pecl/libbrotli.m4" role="src" />
+   <file md5sum="88a872839f1caa1e1a2bfc6c3102abc4" name="autoconf/pecl/libcurl.m4" role="src" />
+   <file md5sum="ecfb0fd50327c2a4ce676a408c39cf9b" name="autoconf/pecl/libevent.m4" role="src" />
+   <file md5sum="2a110b077cb16f0e23b9e3a6feac6bdf" name="autoconf/pecl/zlib.m4" role="src" />
+   <file md5sum="61884c58a7eff730a310bbe9b842b35f" name="src/php_http_api.h" role="src" />
+   <file md5sum="bac242550bd0456dcebe2a0acb0949f3" name="src/php_http_buffer.c" role="src" />
+   <file md5sum="7ca9587cebb20a8463a0c02a198100bd" name="src/php_http_buffer.h" role="src" />
+   <file md5sum="f2cc2bacd4e88b2305610c07d165230e" name="src/php_http.c" role="src" />
+   <file md5sum="48b2fdae33825eb1fbeab602c306b530" name="src/php_http_client.c" role="src" />
+   <file md5sum="e9150ee3ba39fb87e64387d91fed4c82" name="src/php_http_client.h" role="src" />
+   <file md5sum="02e72c52cd755192e84bc1880091bc61" name="src/php_http_client_curl.c" role="src" />
+   <file md5sum="2b59c56896fe9d31af15578d3664e7c5" name="src/php_http_client_curl.h" role="src" />
+   <file md5sum="c2af9cea8453dffc2af8ad9399b02d84" name="src/php_http_client_curl_event.c" role="src" />
+   <file md5sum="e35b0b4fc0e6c89248689219ac3b8255" name="src/php_http_client_curl_event.h" role="src" />
+   <file md5sum="644080e01705ec6996c266d39e24fc66" name="src/php_http_client_curl_user.c" role="src" />
+   <file md5sum="13b54b66fbd3c410d763cdfddda41a91" name="src/php_http_client_curl_user.h" role="src" />
+   <file md5sum="057b1ee20bc89d9df1d2b32b55aae3c7" name="src/php_http_client_request.c" role="src" />
+   <file md5sum="84f4efc8dbaa85d9bfc57af6ebda87a4" name="src/php_http_client_request.h" role="src" />
+   <file md5sum="576bcd30a63dba70200eb62f745d438f" name="src/php_http_client_response.c" role="src" />
+   <file md5sum="da84d96f94f0c8d37a77f80e1e917279" name="src/php_http_client_response.h" role="src" />
+   <file md5sum="96acefa5714885b9e068229142e2977d" name="src/php_http_cookie.c" role="src" />
+   <file md5sum="513d68dc626a97e901ed1ab5e81d7523" name="src/php_http_cookie.h" role="src" />
+   <file md5sum="a2a27571e9b29962d10a782cbaead09f" name="src/php_http_curl.c" role="src" />
+   <file md5sum="f145e60c0e74df3c1028dc1e51e13e11" name="src/php_http_curl.h" role="src" />
+   <file md5sum="5cd331f6480efc1a0792ee43eda03c8c" name="src/php_http_encoding.c" role="src" />
+   <file md5sum="e0e0cb1ca6379709110471b2af90764c" name="src/php_http_encoding.h" role="src" />
+   <file md5sum="495b5a1fb64923d5d7b4705cbaa067a7" name="src/php_http_encoding_zlib.c" role="src" />
+   <file md5sum="e586ed83c80650223e7a15d37df39bc2" name="src/php_http_encoding_zlib.h" role="src" />
+   <file md5sum="46db2397d5703ef72b7b79b44c421bd1" name="src/php_http_encoding_brotli.c" role="src" />
+   <file md5sum="299bb60bfce4ec1924214b12832bb170" name="src/php_http_encoding_brotli.h" role="src" />
+   <file md5sum="fa47f7d51be81a5597162d9d46985c9d" name="src/php_http_env.c" role="src" />
+   <file md5sum="a3911d6fe0cb8da5559f5c1288ce1816" name="src/php_http_env.h" role="src" />
+   <file md5sum="48239c1c4a20badc1227a57cc6fc8f8d" name="src/php_http_env_request.c" role="src" />
+   <file md5sum="f675e6f81486c783c453425d945e928b" name="src/php_http_env_request.h" role="src" />
+   <file md5sum="421daa5b89736d3d0d8b14e761da71e6" name="src/php_http_env_response.c" role="src" />
+   <file md5sum="a9ea1041c57fd93fa0bd9f9862d34bd1" name="src/php_http_env_response.h" role="src" />
+   <file md5sum="1905408d287172e3a86090dbb54c94e8" name="src/php_http_etag.c" role="src" />
+   <file md5sum="a3539e070a0cf2e1dae40e3ee4098274" name="src/php_http_etag.h" role="src" />
+   <file md5sum="0d9e32fb5001306cc160f23346fe5ad7" name="src/php_http_exception.c" role="src" />
+   <file md5sum="9f2e80e21a40bb80b9880304a6563871" name="src/php_http_exception.h" role="src" />
+   <file md5sum="87383d01752d9ca14540e480d2dabe8d" name="src/php_http_filter.c" role="src" />
+   <file md5sum="97587c8806d4e83ac5324bf594d89cb4" name="src/php_http_filter.h" role="src" />
+   <file md5sum="4f71495bf8841eab098ddfecc57f4cda" name="src/php_http_header_parser.c" role="src" />
+   <file md5sum="211e5e00bbf85390b3557805097bfec3" name="src/php_http_header_parser.h" role="src" />
+   <file md5sum="eaff9ea9188f6cbd18b4194f68361a68" name="src/php_http_header.c" role="src" />
+   <file md5sum="a95801a798afc5e1a224597945358723" name="src/php_http_header.h" role="src" />
+   <file md5sum="de583631e9e7a615f402de6da233e970" name="src/php_http_info.c" role="src" />
+   <file md5sum="247b938f3f64b86104083a359ae42799" name="src/php_http_info.h" role="src" />
+   <file md5sum="d982a7a6702f1d797174c1f04a04ee2e" name="src/php_http_message_body.c" role="src" />
+   <file md5sum="1d02c3c4a538a0635a28e3804c69d44c" name="src/php_http_message_body.h" role="src" />
+   <file md5sum="222fc0d10d4780df2794b0fbb4b77981" name="src/php_http_message.c" role="src" />
+   <file md5sum="ec160cbab93b26256f7d471f4a941381" name="src/php_http_message.h" role="src" />
+   <file md5sum="98f261051bd7a8e7ad7b41c93e924344" name="src/php_http_message_parser.c" role="src" />
+   <file md5sum="18a0ed8ab7acfe650a265623c2901bdd" name="src/php_http_message_parser.h" role="src" />
+   <file md5sum="26ebdf277ef163042dc6456214d79ab7" name="src/php_http_misc.c" role="src" />
+   <file md5sum="a137ce1e77aa653270b0113a3baabe3d" name="src/php_http_misc.h" role="src" />
+   <file md5sum="ce35ac9adb78a68ec37ec83aad945394" name="src/php_http_negotiate.c" role="src" />
+   <file md5sum="a854c6d36fdaca1cb3e2de40616b38f9" name="src/php_http_negotiate.h" role="src" />
+   <file md5sum="347d1c90cb4e7b24090fcf72660d5809" name="src/php_http_object.c" role="src" />
+   <file md5sum="f6977b4cebca6323b67b2ed3de39d714" name="src/php_http_object.h" role="src" />
+   <file md5sum="6181b8126231d91f6b125292e2fc1c2e" name="src/php_http_options.c" role="src" />
+   <file md5sum="23035facdd30c41c2f1489fc7f7c5aed" name="src/php_http_options.h" role="src" />
+   <file md5sum="a2c0441086f1c6b0814cdfe80992fa73" name="src/php_http_params.c" role="src" />
+   <file md5sum="4bfadfa6a21ed1dae3ee9622faf6c072" name="src/php_http_params.h" role="src" />
+   <file md5sum="2c608cbc0f022c7686115e592a305edf" name="src/php_http_querystring.c" role="src" />
+   <file md5sum="a7302204608029fb5848f46fe12d5dfd" name="src/php_http_querystring.h" role="src" />
+   <file md5sum="c0fa21c51cbfd3f4e1443b4276545c82" name="src/php_http_response_codes.h" role="src" />
+   <file md5sum="0a56793ee987430fcf15e42dfe4ef51d" name="src/php_http_url.c" role="src" />
+   <file md5sum="71294539f254ad9081de242dd2517eb1" name="src/php_http_url.h" role="src" />
+   <file md5sum="f2e1983aa7201b43acc373cdbe841d1a" name="src/php_http_utf8.h" role="src" />
+   <file md5sum="2d80968380cf0f98621c278fcd8649c5" name="src/php_http_version.c" role="src" />
+   <file md5sum="11c2de1bc3a81f748c0a43c5cfd84697" name="src/php_http_version.h" role="src" />
+   <file md5sum="906f0eefd3f4c42f19a86eb8bcdba786" name="tests/data/bug71719.bin" role="test" />
+   <file md5sum="7e7f3c4f90109972505cba8e529241e7" name="tests/data/message_r_content_range.txt" role="test" />
+   <file md5sum="8663bbdbc0fc7d314832ded2d9b05890" name="tests/data/message_r_multipart_put.txt" role="test" />
+   <file md5sum="7c15f680202a0b871f218a4c848e354f" name="tests/data/message_rr_empty.txt" role="test" />
+   <file md5sum="a8b7e0272b118bab7fee431da9ce9d59" name="tests/data/message_rr_empty_chunked.txt" role="test" />
+   <file md5sum="4299ada5777939f3ef1a152ae9d26341" name="tests/data/message_rr_empty_gzip.txt" role="test" />
+   <file md5sum="56150b9a3c2a99b9d72d7c8a746ab12a" name="tests/data/message_rr_helloworld_chunked.txt" role="test" />
+   <file md5sum="7be0b6198944a391651a9223bce8a31c" name="tests/data/urls.txt" role="test" />
+   <file md5sum="d5c6491e43912fe4bc2727099d3f5517" name="tests/helper/html/index.html" role="test" />
+   <file md5sum="270d0d95b2ec8d50622f8266a6539501" name="tests/helper/cookie.inc" role="test" />
+   <file md5sum="61287086ae9f25adb39d7811a59a2f7c" name="tests/helper/dump.inc" role="test" />
+   <file md5sum="a9a4f3493933c15a4240f35e12a07da4" name="tests/helper/http2.crt" role="test" />
+   <file md5sum="f56134439f4efbab94f067cdacf2398b" name="tests/helper/http2.key" role="test" />
+   <file md5sum="11c36ac8340130b13337c61e28240605" name="tests/helper/pipeline.inc" role="test" />
+   <file md5sum="da071186889a472e51fb3da8b7e4961a" name="tests/helper/proxy.inc" role="test" />
+   <file md5sum="8844c40fdc6b6da36a579eb374b8a33a" name="tests/helper/server.inc" role="test" />
+   <file md5sum="54c3ef7a6dec16cb7a623996f71fc6d9" name="tests/helper/upload.inc" role="test" />
+   <file md5sum="9c8c612da84d45f5d9ea2dcd86215803" name="tests/skipif.inc" role="test" />
+   <file md5sum="e907d68ca5570974ded09ac13c0d2949" name="tests/bug61444.phpt" role="test" />
+   <file md5sum="59bc4fdbb53b6e0bf352faea9f09f81f" name="tests/bug66388.phpt" role="test" />
+   <file md5sum="097e61e401492d4a0c5c7af4adf822ed" name="tests/bug66891.phpt" role="test" />
+   <file md5sum="6585820c90973a735eea408b5006d10d" name="tests/bug67932.phpt" role="test" />
+   <file md5sum="e0fe3e86fc433f4bd997df25f3cc10d1" name="tests/bug69000.phpt" role="test" />
+   <file md5sum="65edb4c7604d6ca054ac6e0e0a98bcc0" name="tests/bug69076.phpt" role="test" />
+   <file md5sum="ca2fbcf2c4c8d997bdc5462a4d2a36d5" name="tests/bug69313.phpt" role="test" />
+   <file md5sum="4896100a0c958e1a919dd3a7f5afc29b" name="tests/bug69357.phpt" role="test" />
+   <file md5sum="6ad6ccd516ce91b1416cc7acca8276e6" name="tests/bug71719.phpt" role="test" />
+   <file md5sum="b5709bf655b54bd398b1d35fdcf8575c" name="tests/bug73055.phpt" role="test" />
+   <file md5sum="f01c4efdf13af7dadf73ae83dfa5e53b" name="tests/client001.phpt" role="test" />
+   <file md5sum="baeea0178b32504be9034f8951f5f4ee" name="tests/client002.phpt" role="test" />
+   <file md5sum="84e4dbd0ee4fdb24b0f6020139e7b5ce" name="tests/client003.phpt" role="test" />
+   <file md5sum="12eee0a4522f567db11b1fbb5595d6af" name="tests/client004.phpt" role="test" />
+   <file md5sum="ce9495a32d78126ed306de012daa6da8" name="tests/client005.phpt" role="test" />
+   <file md5sum="75c4817da33c96166d7db04702d79370" name="tests/client006.phpt" role="test" />
+   <file md5sum="aa07500d3e847ec1ba0594a6cdbabc2b" name="tests/client007.phpt" role="test" />
+   <file md5sum="ff1f47ba071bf8cb304f525fdecab7b3" name="tests/client008.phpt" role="test" />
+   <file md5sum="ee1a9c80344340fcfe06072fb1104240" name="tests/client009.phpt" role="test" />
+   <file md5sum="9bdef2d8737e83ae70d33b72bf17b8dd" name="tests/client010.phpt" role="test" />
+   <file md5sum="b9fe2ee59a9c02910be005f8e6c7a116" name="tests/client011.phpt" role="test" />
+   <file md5sum="764bfcfed7c262dd0295d2447574fc41" name="tests/client012.phpt" role="test" />
+   <file md5sum="5dc996464d71c9bd5654da575a890b25" name="tests/client013.phpt" role="test" />
+   <file md5sum="8f5c3a4ceae69292f44ed3e8c46eb1d2" name="tests/client014.phpt" role="test" />
+   <file md5sum="e8808afda7631f6e95160b3efa0f798a" name="tests/client015.phpt" role="test" />
+   <file md5sum="5f7daf22f12a5466bfea2a9b5e3bb1c4" name="tests/client016.phpt" role="test" />
+   <file md5sum="ee4565ce0e63438ac8235727f3d8b5c1" name="tests/client017.phpt" role="test" />
+   <file md5sum="2514d8171853cd7c4f2477637a6df511" name="tests/client018.phpt" role="test" />
+   <file md5sum="4541b563cf7d17c36db277e8a4a5b5a7" name="tests/client019.phpt" role="test" />
+   <file md5sum="d54662dbd4bdc5f443cced27e1796b98" name="tests/client020.phpt" role="test" />
+   <file md5sum="f75e880dcdda948230ea1c1c63612582" name="tests/client021.phpt" role="test" />
+   <file md5sum="858b81db28c1cda3f13a15019a02b36e" name="tests/client022.phpt" role="test" />
+   <file md5sum="a1a7f6e0b9a877b87ed76c71d7ab81eb" name="tests/client023.phpt" role="test" />
+   <file md5sum="256fd8178e13cbcb02af284aea797bc1" name="tests/client024.phpt" role="test" />
+   <file md5sum="0e0220c10db1dcedd20ed6c33a060616" name="tests/client025.phpt" role="test" />
+   <file md5sum="5d36161377ec46f9780f3b07bfb2ac30" name="tests/client026.phpt" role="test" />
+   <file md5sum="f4039c8b08548b5ecaae86fbb55ac64d" name="tests/client027.phpt" role="test" />
+   <file md5sum="7662730110e194e6440c3839b592d5ee" name="tests/client028.phpt" role="test" />
+   <file md5sum="b0c64e18d0dc4666b72a7e3b8cb4284f" name="tests/client029.phpt" role="test" />
+   <file md5sum="f85db1d7984b70862f4b4463e5158860" name="tests/client030.phpt" role="test" />
+   <file md5sum="b76a980511b542291718d4054166b403" name="tests/clientrequest001.phpt" role="test" />
+   <file md5sum="8d25ac211de4fb0e9a41b1ca4a336970" name="tests/clientrequest002.phpt" role="test" />
+   <file md5sum="6dcb879a07a08592d86b016b733db897" name="tests/clientrequest003.phpt" role="test" />
+   <file md5sum="b38a7a2a642b47b0a0f254f93a40d80c" name="tests/clientrequest004.phpt" role="test" />
+   <file md5sum="c45afcde69fa02e4f1057853dd25c844" name="tests/clientresponse001.phpt" role="test" />
+   <file md5sum="2987a5ebff519aa679f1aaa88da07a2e" name="tests/clientresponse002.phpt" role="test" />
+   <file md5sum="dcb25f696faa4ea90f30fcbb4e6f3d27" name="tests/clientresponse003.phpt" role="test" />
+   <file md5sum="8f00b68bf370c4a79597cce9473dfec4" name="tests/cookie001.phpt" role="test" />
+   <file md5sum="ff16be011dfbcdb5b7338c49a9c4edee" name="tests/cookie002.phpt" role="test" />
+   <file md5sum="be8081af013707813d0759032edd48d5" name="tests/cookie003.phpt" role="test" />
+   <file md5sum="7197a016523929b7d54584c5f111271c" name="tests/cookie004.phpt" role="test" />
+   <file md5sum="6fe324eaced7b958ba08a5ea27e9a274" name="tests/cookie005.phpt" role="test" />
+   <file md5sum="8fda8a9932cbd404b50e311882bda6c1" name="tests/cookie006.phpt" role="test" />
+   <file md5sum="67a7bc3060e227f361feaaf100a607dd" name="tests/cookie007.phpt" role="test" />
+   <file md5sum="d741e5feb1b9faa6a45b0809ff952499" name="tests/cookie008.phpt" role="test" />
+   <file md5sum="a20c241c847556f2d602ddb7265efb95" name="tests/cookie009.phpt" role="test" />
+   <file md5sum="04b46a88a0cad5896b2c0b9a062d1b4e" name="tests/cookie010.phpt" role="test" />
+   <file md5sum="0871db574a4ed63cce7b5309cf9bc110" name="tests/cookie011.phpt" role="test" />
+   <file md5sum="66e24331084d0fec266a9ce3a56b4509" name="tests/cookie012.phpt" role="test" />
+   <file md5sum="3e7ae52b90bc42178d6eebe758168da4" name="tests/encstream001.phpt" role="test" />
+   <file md5sum="a001bd8798b07feff9cdceac48a362a4" name="tests/encstream002.phpt" role="test" />
+   <file md5sum="a0acd1031f4757b9a566d372674a734a" name="tests/encstream003.phpt" role="test" />
+   <file md5sum="89c7a528ceb00214bf2e8109d2fc64ad" name="tests/encstream004.phpt" role="test" />
+   <file md5sum="02115c36fa5afb6187d6801a1d3e0dc2" name="tests/encstream005.phpt" role="test" />
+   <file md5sum="dcd8a0a5c845b563c9430354217760dd" name="tests/encstream006.phpt" role="test" />
+   <file md5sum="e6c9670a1091654f3e3234bebd3e9e86" name="tests/encstream007.phpt" role="test" />
+   <file md5sum="e413f50051592ea2a6f945fab1e7126d" name="tests/encstream008.phpt" role="test" />
+   <file md5sum="fe22f7122e12253b134dbffefdec2314" name="tests/encstream009.phpt" role="test" />
+   <file md5sum="b022133f6cfe69c3e3b98dda43bd38bd" name="tests/encstream015.phpt" role="test" />
+   <file md5sum="5993753abc69b351c5c21b42cc65563e" name="tests/encstream016.phpt" role="test" />
+   <file md5sum="bc86079d0dab138ace92ed069d4964f7" name="tests/encstream017.phpt" role="test" />
+   <file md5sum="632a765752f6a7474c1b3b7c5fda4dbe" name="tests/encstream018.phpt" role="test" />
+   <file md5sum="5dfe112298af72bd82a7c47a5bf68b29" name="tests/encstream019.phpt" role="test" />
+   <file md5sum="cbb84e97303948c7cc3f2568cf07af1a" name="tests/envrequestbody001.phpt" role="test" />
+   <file md5sum="87f862bbff3ed5fe57c76c6e438f939f" name="tests/envrequestcookie001.phpt" role="test" />
+   <file md5sum="e7c238b343a9e05f43aef38ae9aa70c7" name="tests/envrequestfiles001.phpt" role="test" />
+   <file md5sum="c21c15d2f674651b5dedbe0a7f533c71" name="tests/envrequestfiles002.phpt" role="test" />
+   <file md5sum="f6496c2bd73aa85e458cdc1b5f1ac9f7" name="tests/envrequestform.phpt" role="test" />
+   <file md5sum="9b5252e4bd18401495871f20d28976bb" name="tests/envrequestheader001.phpt" role="test" />
+   <file md5sum="e4e45cbd6bb31f5ada6e6b9b13ee4c6a" name="tests/envrequestquery.phpt" role="test" />
+   <file md5sum="bd538c1f6af2ed32eb2199cbff656edf" name="tests/envresponse001.phpt" role="test" />
+   <file md5sum="657fc5398dd7a45ee0126688b838298b" name="tests/envresponse002.phpt" role="test" />
+   <file md5sum="fbf9a16f8035ceec323de6c83dddf5b0" name="tests/envresponse003.phpt" role="test" />
+   <file md5sum="fd05010ff9adc89d1b4cc54f8dea717a" name="tests/envresponse004.phpt" role="test" />
+   <file md5sum="08094372cd55a72a82f693a611eae834" name="tests/envresponse005.phpt" role="test" />
+   <file md5sum="3ea409571cd1b014eb2c65bd90d52c5f" name="tests/envresponse006.phpt" role="test" />
+   <file md5sum="ddd32e744023f5497d0bf7d57040027b" name="tests/envresponse007.phpt" role="test" />
+   <file md5sum="3d1cfcb26a6d8c6034bd8d58a9e152d7" name="tests/envresponse008.phpt" role="test" />
+   <file md5sum="e1915426a0527c56050842d330a05a86" name="tests/envresponse009.phpt" role="test" />
+   <file md5sum="f8df3f9e5ca5c21ef9edba06356de0c7" name="tests/envresponse010.phpt" role="test" />
+   <file md5sum="8a4f96649224133f4fc9f53b1d2e2309" name="tests/envresponse011.phpt" role="test" />
+   <file md5sum="1e0acd7d9a9c2fb275ff250f1577fe14" name="tests/envresponse012.phpt" role="test" />
+   <file md5sum="1ebb73a2e551667031d17127582d3177" name="tests/envresponse013.phpt" role="test" />
+   <file md5sum="2872f09fec2c438c3e345aa6b75c88f9" name="tests/envresponse014.phpt" role="test" />
+   <file md5sum="1ba7d445e1ffa107df8e36607c638399" name="tests/envresponse015.phpt" role="test" />
+   <file md5sum="b628482801f1459129aabbbda26a2b9f" name="tests/envresponse016.phpt" role="test" />
+   <file md5sum="b7214b50d28aacb99dc0a08e53ce6786" name="tests/envresponse017.phpt" role="test" />
+   <file md5sum="14733380ad2b2a4bb89d9746a785c121" name="tests/envresponse018.phpt" role="test" />
+   <file md5sum="ffda6c3bf59b3aa2c1417edb39b066e4" name="tests/envresponsebody001.phpt" role="test" />
+   <file md5sum="8003956683f47502759444c0fcfa7062" name="tests/envresponsebody002.phpt" role="test" />
+   <file md5sum="473f261dcb05dc9d3b868ee3750ef50a" name="tests/envresponsecodes.phpt" role="test" />
+   <file md5sum="35c2ca321d073552a44aa036791cfbfe" name="tests/envresponsecookie001.phpt" role="test" />
+   <file md5sum="12d8ca83f643398c269ecaa11ff6dcf5" name="tests/envresponseheader001.phpt" role="test" />
+   <file md5sum="ac220c0641005a9aefdc67adfb1d9d47" name="tests/envresponseranges001.phpt" role="test" />
+   <file md5sum="71457ea10c55c0f46fff023d380c5db7" name="tests/etag001.phpt" role="test" />
+   <file md5sum="167fcdb13a851e4bad176dff3791c722" name="tests/filterbrotli.phpt" role="test" />
+   <file md5sum="646680d41536f8d5bfdd9ca4d99a7c8f" name="tests/filterchunked.phpt" role="test" />
+   <file md5sum="c4f54fda2e584c24d58e2b915c68bd8f" name="tests/filterzlib.phpt" role="test" />
+   <file md5sum="e6a61ec484fc8327c690fcca15b23866" name="tests/gh-issue6.phpt" role="test" />
+   <file md5sum="9a9b2b2446a0d7db8603ba6e266a67cd" name="tests/gh-issue11.phpt" role="test" />
+   <file md5sum="d3659fb92cb619d0821728168c98c6a2" name="tests/gh-issue12.phpt" role="test" />
+   <file md5sum="eae050e8f4eb12855ef3897a07c722ef" name="tests/gh-issue42.phpt" role="test" />
+   <file md5sum="e50959850ca4da6cc9091b220509ecb4" name="tests/gh-issue47.phpt" role="test" />
+   <file md5sum="7100ef4d80286ba72733efc7c0c787f5" name="tests/gh-issue48.phpt" role="test" />
+   <file md5sum="d47ccda7b86cb6a6b37f36521ddd1231" name="tests/gh-issue50.phpt" role="test" />
+   <file md5sum="8653d84ea24717131d788196c7da6b8e" name="tests/gh-issue63.phpt" role="test" />
+   <file md5sum="3c4b0e6b1e4ee08ff4d227628c057379" name="tests/header001.phpt" role="test" />
+   <file md5sum="3e0e4471626df22bb7f4fc9276cc7cda" name="tests/header002.phpt" role="test" />
+   <file md5sum="3cbc3422ca97194c85a2617facc75bf7" name="tests/header003.phpt" role="test" />
+   <file md5sum="4a8dc9f1df8b5dfe278967030719f4d0" name="tests/header004.phpt" role="test" />
+   <file md5sum="4e8264989b7635cdd9cfea15b474dbfa" name="tests/header005.phpt" role="test" />
+   <file md5sum="9484006568ed21172f7be037d526a58d" name="tests/header006.phpt" role="test" />
+   <file md5sum="c64022540c7b4837971a4a93c1bdd326" name="tests/header007.phpt" role="test" />
+   <file md5sum="c1f08a1a52d0af010a72afd6a2f2e02b" name="tests/header008.phpt" role="test" />
+   <file md5sum="20772cf042e140170375e10b23410b50" name="tests/header009.phpt" role="test" />
+   <file md5sum="f7ee4c3277ccc7c28427f17936dbaae4" name="tests/headerparser001.phpt" role="test" />
+   <file md5sum="1b10207613d81b045eb731d53b381a40" name="tests/headerparser002.phpt" role="test" />
+   <file md5sum="4d9e8ad355adc18114aeaa99da3d0e10" name="tests/headerparser003.phpt" role="test" />
+   <file md5sum="b7508a153c2880f670e6ee2c9f202ede" name="tests/info001.phpt" role="test" />
+   <file md5sum="843a4dcb2f591ba450aabd8ef05f10e1" name="tests/info002.phpt" role="test" />
+   <file md5sum="d0abf1ef7aa9dca2297691dba8b7af29" name="tests/message001.phpt" role="test" />
+   <file md5sum="163074c9a62719c04b95491b77cb79a7" name="tests/message002.phpt" role="test" />
+   <file md5sum="781569b2dfc95f0362feedc1a0ee1764" name="tests/message003.phpt" role="test" />
+   <file md5sum="6bc3288abd90ceea74a3b30415326a33" name="tests/message004.phpt" role="test" />
+   <file md5sum="2fad84ed4fe5d3d4c65cb365e7b1858d" name="tests/message005.phpt" role="test" />
+   <file md5sum="634f9962f3b8c06b3887fd13dec516d3" name="tests/message006.phpt" role="test" />
+   <file md5sum="406d57617d04bbf21817665ebed97e12" name="tests/message007.phpt" role="test" />
+   <file md5sum="1ac6d014eb3f50da9c220eea6753d435" name="tests/message008.phpt" role="test" />
+   <file md5sum="3e60b12c74381854c95131b368f1d3c5" name="tests/message009.phpt" role="test" />
+   <file md5sum="1eeb60824e45ca8dc60edb4d261a30f4" name="tests/message010.phpt" role="test" />
+   <file md5sum="3e86020671c8de8e856db5de692eac68" name="tests/message011.phpt" role="test" />
+   <file md5sum="b8c35dc147c23ebaa0bfeabbbdfa65ee" name="tests/message012.phpt" role="test" />
+   <file md5sum="df6773703776d04120ef2a58593cfada" name="tests/message013.phpt" role="test" />
+   <file md5sum="2e2c203eacfccc85eb6942f7bf52711e" name="tests/message014.phpt" role="test" />
+   <file md5sum="14070a197f7d0f30876aceb54e0228d3" name="tests/message015.phpt" role="test" />
+   <file md5sum="2d49361847276c9e1c33ab48ace1db3f" name="tests/message016.phpt" role="test" />
+   <file md5sum="56a44b367a18a5c9890676cea73fb873" name="tests/messagebody001.phpt" role="test" />
+   <file md5sum="2542a74075bea583e6f47379fed60124" name="tests/messagebody002.phpt" role="test" />
+   <file md5sum="9434937c87cad0bfb386090a54b8f85b" name="tests/messagebody003.phpt" role="test" />
+   <file md5sum="8babef84396ad89e93100b021a3c0823" name="tests/messagebody004.phpt" role="test" />
+   <file md5sum="2775c218936ce546fc1f511b70758735" name="tests/messagebody005.phpt" role="test" />
+   <file md5sum="5c1b685d01e4c6fc4158f5c1499a920a" name="tests/messagebody006.phpt" role="test" />
+   <file md5sum="22bdb71e3769af71fe26fe0b463e8d6c" name="tests/messagebody007.phpt" role="test" />
+   <file md5sum="65fc03d44d8e37a054728480abd9f24c" name="tests/messagebody008.phpt" role="test" />
+   <file md5sum="0f9437a77d72bea4c8686cca2081f396" name="tests/messagebody009.phpt" role="test" />
+   <file md5sum="4c924bf1ab548b7957f1746a05a1b867" name="tests/messagebody010.phpt" role="test" />
+   <file md5sum="5542efffc8c003b83020779ac58b364f" name="tests/messageparser001.phpt" role="test" />
+   <file md5sum="b4b74e703fe7b3051d902c63992b9e92" name="tests/messageparser002.phpt" role="test" />
+   <file md5sum="daed60e9b67c002a03a0319aefb61beb" name="tests/negotiate001.phpt" role="test" />
+   <file md5sum="0fbc5d85f134af4995149c1f8d69905f" name="tests/params001.phpt" role="test" />
+   <file md5sum="33b0e4255c70db9835e803ed0ef2678f" name="tests/params002.phpt" role="test" />
+   <file md5sum="ccde48b09c74eb0eaded2820af0b6225" name="tests/params003.phpt" role="test" />
+   <file md5sum="b1459ee8636b12d0b248a339d0a01eb8" name="tests/params004.phpt" role="test" />
+   <file md5sum="03c4aa53e070efe94c7d86fad7856c4c" name="tests/params005.phpt" role="test" />
+   <file md5sum="3fe107f300d0593f9a3b01f089e56ffe" name="tests/params006.phpt" role="test" />
+   <file md5sum="5c976358e6b9a4133beb08b741d5f9d7" name="tests/params007.phpt" role="test" />
+   <file md5sum="f3a03213db1468b562d8b8c2cf63101c" name="tests/params008.phpt" role="test" />
+   <file md5sum="d5d0f6fef0e602537f4ba01b01543255" name="tests/params009.phpt" role="test" />
+   <file md5sum="0e3e17039cb9604eda10a0ec06111368" name="tests/params010.phpt" role="test" />
+   <file md5sum="e82fecc0dd72b91afaaf6332dedf0c6e" name="tests/params011.phpt" role="test" />
+   <file md5sum="08842c20e92090e8c0ee98359854fe44" name="tests/params012.phpt" role="test" />
+   <file md5sum="5c953321a1d93ee04156dd69e1daad8d" name="tests/params013.phpt" role="test" />
+   <file md5sum="b24582e524f6c6f5482673946ad1e078" name="tests/params014.phpt" role="test" />
+   <file md5sum="a419f203602df15894c7cf5152e3ff90" name="tests/params015.phpt" role="test" />
+   <file md5sum="719c4bfa301d0e2da6a89acfd3cf1275" name="tests/params016.phpt" role="test" />
+   <file md5sum="d615c966de086c2480372c54b81d1750" name="tests/params017.phpt" role="test" />
+   <file md5sum="6118351baf1df68d584c9ca5c9867766" name="tests/phpinfo.phpt" role="test" />
+   <file md5sum="c36dd96a06cf94ff0a5083bd2e4657f7" name="tests/propertyproxy001.phpt" role="test" />
+   <file md5sum="24a5c3cf1c2beb5680561561222cb971" name="tests/querystring001.phpt" role="test" />
+   <file md5sum="b4133215fd6114b7d4204a1825a45826" name="tests/querystring001_a.phpt" role="test" />
+   <file md5sum="6258a40a8b86b9f723a2d7cc8561fa3f" name="tests/querystring002.phpt" role="test" />
+   <file md5sum="041e6d60b5c4526cb7aa3cd508fe9cb4" name="tests/querystring003.phpt" role="test" />
+   <file md5sum="f8527b496d4ee99e7c3b0712db58f449" name="tests/serialize001.phpt" role="test" />
+   <file md5sum="aedeb8bd88ab6558b54c7791e51e0bfe" name="tests/url001.phpt" role="test" />
+   <file md5sum="7b9c91a4748e5620f4ea8e12c6c1bab0" name="tests/url002.phpt" role="test" />
+   <file md5sum="059b0b7cd22d750b17be77b650563ef4" name="tests/url003.phpt" role="test" />
+   <file md5sum="fb0fd37ebd4fa0211718ce3c96664bee" name="tests/url004.phpt" role="test" />
+   <file md5sum="58e2a0ba90a7f806a51a9d73221e039e" name="tests/url005.phpt" role="test" />
+   <file md5sum="9f9d92436f9d872415f7db790b080526" name="tests/urlparser001.phpt" role="test" />
+   <file md5sum="ce917999e10010fb28bac81148157237" name="tests/urlparser002.phpt" role="test" />
+   <file md5sum="c0e1394e27de6929ea0e51585aaac70d" name="tests/urlparser003.phpt" role="test" />
+   <file md5sum="f635de1af2b3e48f28e71ce228a9f2c7" name="tests/urlparser004.phpt" role="test" />
+   <file md5sum="e8b4035afdd6dd5cd301ab01c5248240" name="tests/urlparser005.phpt" role="test" />
+   <file md5sum="260b96d149733ed2800d559c0df837ea" name="tests/urlparser006.phpt" role="test" />
+   <file md5sum="5883d78f99a243918a6a71ff4c518484" name="tests/urlparser007.phpt" role="test" />
+   <file md5sum="93f0907ff3f2ed49ac0b57f6ed6ac314" name="tests/urlparser008.phpt" role="test" />
+   <file md5sum="591611ec63ed5c4df1bf051609ba5e25" name="tests/urlparser009.phpt" role="test" />
+   <file md5sum="e3bc9af156a8baf3074560f85ea9e14c" name="tests/urlparser010.phpt" role="test" />
+   <file md5sum="5327b31079a8110fe6fef6325e9c01fb" name="tests/urlparser011.phpt" role="test" />
+   <file md5sum="794692d5903ebf4900c5414b9184d294" name="tests/urlparser012.phpt" role="test" />
+   <file md5sum="b50c37a5dea55af43455f08d8991b31d" name="tests/urlparser013.phpt" role="test" />
+   <file md5sum="068247059b747ead5c9e7dfae04cc1a7" name="tests/version001.phpt" role="test" />
+   <file md5sum="beba31346a35de030525d2f570750d61" name="scripts/bench_select_vs_event.php" role="src" />
+   <file md5sum="01e7228dcefbb5022ad4af722c917a47" name="scripts/check_package-xml.php" role="src" />
+   <file md5sum="4b96f8420d7cabf9b66645af337b1845" name="scripts/gen_curlinfo.php" role="src" />
+   <file md5sum="93b937bdb1052c7627e0934c97c00a6f" name="scripts/gen_stubs.php" role="src" />
+   <file md5sum="3342eab523d34005ec5edae93a2af7b4" name="scripts/gen_travis_yml.php" role="src" />
+   <file md5sum="e8b5242ce71cee2327acfdd6c5f17a18" name="scripts/gen_utf8.php" role="src" />
+   <file md5sum="f00d3c40b7d279e4f72b8464c2ac08b5" name="AUTHORS" role="doc" />
+   <file md5sum="aee4d1655100aa2ae95303da5945b3a9" name="BUGS" role="doc" />
+   <file md5sum="1fa75b83983847bef0d9f48c9061566e" name="CHANGELOG.md" role="doc" />
+   <file md5sum="e08900397d959898138ad2128935d922" name="CONTRIBUTING.md" role="doc" />
+   <file md5sum="2bb842562134c3a78636d71fceb5f2f7" name="CVE.md" role="doc" />
+   <file md5sum="79d943877ef7b7100451a5eadd05a311" name="CREDITS" role="doc" />
+   <file md5sum="1b2626b64bd4d8e790187b7659b7dffd" name="LICENSE" role="doc" />
+   <file md5sum="b582df584bdf2366a57af1721b59d5f7" name="README.md" role="doc" />
+   <file md5sum="9341b9a2e50ed28eacdcf576aef4742e" name="THANKS" role="doc" />
+   <file md5sum="b2560c830b88ccd5453f76c6c738ff7c" name="TODO" role="doc" />
+   <file md5sum="9d36ebe88c36d2cd5e350ad6b0b5c7c5" name="config.m4" role="src" />
+   <file md5sum="5d0f0992a30db0fdb0c8c2eef9ea95cc" name="config9.m4" role="src" />
+   <file md5sum="d1e6fd1212ba8796b1b829f4fb0a27bd" name="config.w32" role="src" />
+   <file md5sum="e74a8944741c15cebd6dd34b99e95c9b" name="Makefile.frag" role="src" />
+   <file md5sum="d83bfe00c5f319a2340103bea04c93bf" name="php_http.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   <package>
+    <name>raphf</name>
+    <channel>pecl.php.net</channel>
+    <min>2.0.0dev</min>
+    <providesextension>raphf</providesextension>
+   </package>
+   <package>
+    <name>propro</name>
+    <channel>pecl.php.net</channel>
+    <min>2.0.0dev</min>
+    <providesextension>propro</providesextension>
+   </package>
+  </required>
+  <optional>
+   <extension>
+    <name>hash</name>
+   </extension>
+   <extension>
+    <name>iconv</name>
+   </extension>
+  </optional>
+ </dependencies>
+ <providesextension>http</providesextension>
+ <extsrcrelease>
+  <configureoption default="/usr" name="with-http-zlib-dir" prompt="where to find zlib" />
+  <configureoption default="/usr" name="with-http-libcurl-dir" prompt="where to find libcurl" />
+  <configureoption default="/usr" name="with-http-libevent-dir" prompt="where to find libevent" />
+  <configureoption default="/usr" name="with-http-libicu-dir" prompt="where to find libicu" />
+  <configureoption default="/usr" name="with-http-libidn2-dir" prompt="where to find libidn2" />
+  <configureoption default="/usr" name="with-http-libidn-dir" prompt="where to find libidn" />
+  <configureoption default="/usr" name="with-http-libidnkit2-dir" prompt="where to find libidnkit2" />
+  <configureoption default="/usr" name="with-http-libidnkit-dir" prompt="where to find libidnkit" />
+ </extsrcrelease>
+</package>

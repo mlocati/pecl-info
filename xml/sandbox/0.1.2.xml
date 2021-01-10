@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.9" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sandbox</name>
+ <channel>pecl.php.net</channel>
+ <summary>Isolated environment</summary>
+ <description>A sandbox is an isolated environment (a thread in our case); Things may go
+very badly wrong in the sandbox environment and not effect the environment
+that created it. This means that we must try very hard to limit the
+influence each environment has on the other. So the prototype and
+instructions of entry point &quot;Closures&quot; are verified to ensure they will not
+reduce or break isolation.
+
+In practice this means entry point closures must not:
+
+* accept or return by reference
+* accept or return objects
+* execute a limited set of instructions
+
+Instructions prohibited directly in the sandbox are:
+
+* declare (anonymous) function
+* declare (anonymous) class
+* lexical scope access
+* yield
+
+No instructions are prohibited in the files which the sandbox may include,
+but allowing these instructions directly in the code which the sandbox
+executes at entry would break the isolation of the sandbox such that we
+couldn&apos;t be sure the system would remain stable.
+
+With these restrictions in place, we can be sure that a sandbox may do
+anything up to but excluding making PHP segfault, and not effect the
+environment that created it.</description>
+ <lead>
+  <name>Joe Watkins</name>
+  <user>krakjoe</user>
+  <email>krakjoe@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2019-06-14</date>
+ <time>09:53:19</time>
+ <version>
+  <release>0.1.2</release>
+  <api>0.1.1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Fix compatibility with 7.4.0alpha1
+- Display extension version in phpinfo
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="185f99b4c4ce81b06a9c722858f48438" name="src/copy.c" role="src" />
+   <file md5sum="e3690658c9a892cf444db33388fd6c16" name="src/copy.h" role="src" />
+   <file md5sum="be45c9ebf49e1aa02f0d8d722172361d" name="src/monitor.c" role="src" />
+   <file md5sum="6a7c895f99caff915da9cd8d0022cfc7" name="src/monitor.h" role="src" />
+   <file md5sum="fa7716affac537a7161bd08bfd147c44" name="src/sandbox.c" role="src" />
+   <file md5sum="cc58f5c3f36e630a41c40b29fe9a80d5" name="src/sandbox.h" role="src" />
+   <file md5sum="c20b305655a7e3836c468c17c2ef3151" name="tests/001.phpt" role="test" />
+   <file md5sum="5e8ebe8eaeef4f8c9944a8b80e351c13" name="tests/002.phpt" role="test" />
+   <file md5sum="53bc7f875e02abb5cd2b1a5567f3ff9b" name="tests/003.phpt" role="test" />
+   <file md5sum="1182c2c80fd79586faa4e2a80ede4344" name="tests/004.phpt" role="test" />
+   <file md5sum="ceade4f657f48c83f04d14efa409bfbe" name="tests/005.phpt" role="test" />
+   <file md5sum="20cf619633046d04989507e158bf7e7a" name="tests/006.phpt" role="test" />
+   <file md5sum="3c793a94773e3db9b09bb58994c2fba5" name="tests/007.phpt" role="test" />
+   <file md5sum="b703336904044ba2f51bcc2629440483" name="tests/008.phpt" role="test" />
+   <file md5sum="55729b5ed40179b316b05a7a5d8b9a2c" name="tests/009.phpt" role="test" />
+   <file md5sum="37eb802e9c540ad21f46047c64b53c37" name="tests/010.phpt" role="test" />
+   <file md5sum="77c11185bec508d60db09daf90a00582" name="tests/011.phpt" role="test" />
+   <file md5sum="a57a3301f0d4d18bc58f917fb8329c40" name="tests/012.phpt" role="test" />
+   <file md5sum="a339b9a0ba4f039bc88dcd905bfd6bb4" name="tests/013.phpt" role="test" />
+   <file md5sum="66ddfaee1364b32cade27cddacba7592" name="tests/014.phpt" role="test" />
+   <file md5sum="c643d10c8242c0936b4b4e0e92c1d49b" name="tests/015.phpt" role="test" />
+   <file md5sum="d84a49b92b1108e621c86b1b76df1dbb" name="tests/016.phpt" role="test" />
+   <file md5sum="e484112e4e41fdac95b9bc21528488cd" name="tests/017.phpt" role="test" />
+   <file md5sum="85af02f0b8b31fa93bbd3302bd967388" name="tests/018.phpt" role="test" />
+   <file md5sum="0a42f9896982a32d9d43b138ee7d95c4" name="tests/019.phpt" role="test" />
+   <file md5sum="94bda13e5b623051b68b39c4de22edb0" name="tests/020.phpt" role="test" />
+   <file md5sum="af21ec091f22b97f62951093d535228d" name="tests/021.phpt" role="test" />
+   <file md5sum="45c632993f6ea5b956dfddae92e27408" name="tests/022.phpt" role="test" />
+   <file md5sum="eabb61733428b667797159146bf344f3" name="tests/023.phpt" role="test" />
+   <file md5sum="fb433b80f63598a26b599a30f93e37ab" name="tests/024.phpt" role="test" />
+   <file md5sum="351853b091b4d54631e3e6d3e3c02227" name="tests/025.phpt" role="test" />
+   <file md5sum="1e152a6cfcd99c96fd5714b5cb491db1" name="tests/026.phpt" role="test" />
+   <file md5sum="5862c81a2f6b464f23392a76a8b105cf" name="tests/027.phpt" role="test" />
+   <file md5sum="fb07bfc51f6d5e0c30b65d9701233b2e" name="LICENSE" role="doc" />
+   <file md5sum="bb85c8b847d0cdd7dde7fcc8f51c3c20" name="README.md" role="doc" />
+   <file md5sum="00700f6b179feafbf3e78d98c4c88236" name="config.m4" role="src" />
+   <file md5sum="e40885dffdff529a5b0e399ec9cac2ba" name="config.w32" role="src" />
+   <file md5sum="71f20e4fe12aa428b6c2170a747de1ef" name="php_sandbox.h" role="src" />
+   <file md5sum="2c83fd613c91b8bcd8ea97b826980d23" name="Makefile.frag" role="src" />
+   <file md5sum="f4d98ce17d3f283191e7e6e11b72e4b7" name="sandbox.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>sandbox</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2019-01-16</date>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- initial pecl release
+   </notes>
+  </release>
+ </changelog>
+</package>

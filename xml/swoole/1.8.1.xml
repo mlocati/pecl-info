@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.5" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>swoole</name>
+ <channel>pecl.php.net</channel>
+ <summary>Event-driven asynchronous and concurrent networking engine with high performance for PHP.</summary>
+ <description>Event-driven asynchronous and concurrent networking engine with high performance for PHP.
+- event-driven
+- full asynchronous non-blocking
+- multi-thread reactor
+- multi-process worker
+- multi-protocol
+- millisecond timer
+- async mysql client
+- async http/websocket client
+- async redis client
+- async task
+- async read/write file system
+- async dns lookup
+- support IPv4/IPv6/UnixSocket/TCP/UDP
+- support SSL/TLS encrypted transmission</description>
+ <lead>
+  <name>Tianfeng Han</name>
+  <user>tianfenghan</user>
+  <email>mikan.tenny@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Shen Zhe</name>
+  <user>shenzhe</user>
+  <email>shenzhe163@gmail.com</email>
+  <active>yes</active>
+ </developer>
+ <date>2016-02-04</date>
+ <time>02:13:15</time>
+ <version>
+  <release>1.8.1</release>
+  <api>1.8.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</license>
+ <notes>
+- Added psr-4 style namespace classes alias
+- Added swoole_server-&gt;protect methods used to protect the connection will not close by heartbeat thread
+- Added swoole_websocker_server::pack and swoole_websocker_server::unpack static method
+- Added redis subscribe and publish messages supports
+- Added swoole_http_client for gzip content compression support
+- Added swoole_client-&gt;reuse property
+- Fixed async client incidental core dump 
+- Fixed async client memory leak
+- Fixed compile failed with enable-openssl on MacOS
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="095ace9b01138b6fe9cfdd92f7a7e0a9" name="include/swoole.h" role="src" />
+   <file md5sum="9c772a5f59161fb6d58c93dc9a2d7a1c" name="include/Server.h" role="src" />
+   <file md5sum="68c32ada0063d07e10240955e22f4e20" name="include/Client.h" role="src" />
+   <file md5sum="8934619dd7a295f403466d3cc53caea8" name="include/Connection.h" role="src" />
+   <file md5sum="b1b3362f7da02db9aea2986f48f9fad3" name="include/atomic.h" role="src" />
+   <file md5sum="1a23f0a5061dcacb1490a46d99cd2610" name="include/buffer.h" role="src" />
+   <file md5sum="776bdd7a36c08243a90bce2723150cd3" name="include/hashmap.h" role="src" />
+   <file md5sum="39fac6baf04553706f7df98b5ce297e3" name="include/list.h" role="src" />
+   <file md5sum="14e5874dec26f992ad1b345aa43d8726" name="include/RingQueue.h" role="src" />
+   <file md5sum="d55d608271cac87d0fa5474153979fad" name="include/uthash.h" role="src" />
+   <file md5sum="aea96e02e1044ca3b9f306c112fae6cf" name="include/tests.h" role="src" />
+   <file md5sum="822650a97fcba6cc0445d915addccacc" name="include/array.h" role="src" />
+   <file md5sum="429b7959a3cc96e56e8bd62bdeabb054" name="include/async.h" role="src" />
+   <file md5sum="20448fe03a64853f20f4e2e517b94d61" name="include/hash.h" role="src" />
+   <file md5sum="241b30cc7e6a1c1a64bd51df67af4545" name="include/heap.h" role="src" />
+   <file md5sum="7693c546dd8419a3d36167d7a84c4cd2" name="include/table.h" role="src" />
+   <file md5sum="f351fb155b1f8186388be814538e59ef" name="include/Http.h" role="src" />
+   <file md5sum="71b13a74ed82aed554a97bc0e8628810" name="include/websocket.h" role="src" />
+   <file md5sum="0b49921d65a0bb721349401291240e44" name="include/sha1.h" role="src" />
+   <file md5sum="db3d75c68c3817b07ee6cf3e2ac686ac" name="include/base64.h" role="src" />
+   <file md5sum="0b6ac1133807fe7e3ab21c5ca94a27b1" name="include/mqtt.h" role="src" />
+   <file md5sum="0836758a2558bb937842ec3811324ed6" name="include/error.h" role="src" />
+   <file md5sum="43a8c9675d557c3c06101e2cb2cb299f" name="thirdparty/php_http_parser.c" role="src" />
+   <file md5sum="9e4b4ecf2ac4a86057862d0173c03cfa" name="thirdparty/php_http_parser.h" role="src" />
+   <file md5sum="3ce60e673ab1e6d9248c97496bce40df" name="thirdparty/multipart_parser.c" role="src" />
+   <file md5sum="e3be711da7a07da8332d2e6073d273f3" name="thirdparty/multipart_parser.h" role="src" />
+   <file md5sum="203e830280ae25061eff367f94ef07ba" name="src/core/base.c" role="src" />
+   <file md5sum="d130c63d21edb6ea618b60bc9436609a" name="src/core/socket.c" role="src" />
+   <file md5sum="13b855490c36700cee7822a3c3d5b570" name="src/core/log.c" role="src" />
+   <file md5sum="cd2194af492af861273cd88bb1aea98b" name="src/core/hashmap.c" role="src" />
+   <file md5sum="21380b7d4b659ab2d2a5897ca2e28095" name="src/core/RingQueue.c" role="src" />
+   <file md5sum="facc16ccbe6b86056add8770c48611ba" name="src/core/Channel.c" role="src" />
+   <file md5sum="20b44b1c43d0ad4b4c206bba9d88b972" name="src/core/string.c" role="src" />
+   <file md5sum="161ae25ee657bf557439b71ed09c573e" name="src/core/array.c" role="src" />
+   <file md5sum="3a522a82f722f4ce8924d62dc741f97d" name="src/core/list.c" role="src" />
+   <file md5sum="67289bcfb8a5d33e7766cd8196d8c71a" name="src/core/heap.c" role="src" />
+   <file md5sum="ab65a482d604c8aaba5ccd5da0d56636" name="src/memory/ShareMemory.c" role="src" />
+   <file md5sum="d483b5ebec4eab1c1770f439f5af1e55" name="src/memory/MemoryGlobal.c" role="src" />
+   <file md5sum="fad54c7b425c979f387b07924a01b293" name="src/memory/FixedPool.c" role="src" />
+   <file md5sum="9358593a790a657ad56d900680b5e589" name="src/memory/RingBuffer.c" role="src" />
+   <file md5sum="d8a8116b4e23bb492df21577b8729fb0" name="src/memory/Table.c" role="src" />
+   <file md5sum="a867f4865e2766a7c8723ae359cfb5fb" name="src/memory/Malloc.c" role="src" />
+   <file md5sum="f4d342af339d2d01df837ced152d9b81" name="src/memory/Buffer.c" role="src" />
+   <file md5sum="51150596ccb706a07647f295c7e0e3d1" name="src/factory/Factory.c" role="src" />
+   <file md5sum="c9aaf31bd650803ccdea827511c8836f" name="src/factory/FactoryThread.c" role="src" />
+   <file md5sum="fec81dbfb755f11bdd1527a43fd77019" name="src/factory/FactoryProcess.c" role="src" />
+   <file md5sum="e4429ba8265adafe5fcdfd6825c457bf" name="src/reactor/ReactorBase.c" role="src" />
+   <file md5sum="f63adf80cb3f05ed1139a9472ec703ce" name="src/reactor/ReactorSelect.c" role="src" />
+   <file md5sum="65f015cf1d62b3bbe8c8516d2f5e77b9" name="src/reactor/ReactorPoll.c" role="src" />
+   <file md5sum="3b9e9fb7ca7f8278b8dbc8f061d574f8" name="src/reactor/ReactorEpoll.c" role="src" />
+   <file md5sum="f3430684589e9ac2a757ecf9c94e10ec" name="src/reactor/ReactorKqueue.c" role="src" />
+   <file md5sum="12ce1e841501ba56a5333b45089f3941" name="src/pipe/PipeBase.c" role="src" />
+   <file md5sum="5716885cef063754b2713897e7fd7409" name="src/pipe/PipeEventfd.c" role="src" />
+   <file md5sum="e15163c7d4acd77bbce03e1f17cce798" name="src/pipe/PipeUnsock.c" role="src" />
+   <file md5sum="0ef5a4cfc7ec75b36b35214a1e2aa270" name="src/lock/Semaphore.c" role="src" />
+   <file md5sum="2161026bd4e04715b5051b9542743eec" name="src/lock/Mutex.c" role="src" />
+   <file md5sum="f9c29603b50db92684ad19cbff98ad91" name="src/lock/RWLock.c" role="src" />
+   <file md5sum="50b34aa0c83230eb7b8528647b0f84d7" name="src/lock/SpinLock.c" role="src" />
+   <file md5sum="ffce7b956a21b72272cda26789466e1a" name="src/lock/FileLock.c" role="src" />
+   <file md5sum="36e2cc7ec7674821fb275cfdae2d4295" name="src/network/Client.c" role="src" />
+   <file md5sum="ab2bcf0ab2d6ff7d5238c4b21438d3f0" name="src/network/Connection.c" role="src" />
+   <file md5sum="2e4ea224d9d8121c9c543c3a10c39151" name="src/network/ProcessPool.c" role="src" />
+   <file md5sum="0b17ef8222a58ea17650e3519d1e779f" name="src/network/ReactorProcess.c" role="src" />
+   <file md5sum="7feca31412f2fcb6797b7b132f7e0aed" name="src/network/ReactorThread.c" role="src" />
+   <file md5sum="a174e268b81cbc63b018a25f650225c1" name="src/network/Server.c" role="src" />
+   <file md5sum="d0a2de6283d44a0317aebe26d1f3dde1" name="src/network/TaskWorker.c" role="src" />
+   <file md5sum="7c3ccd11e1bca0425d40980c706a15fc" name="src/network/ThreadPool.c" role="src" />
+   <file md5sum="c8f494637b9f1ba2551a114b4a83ffaf" name="src/network/Worker.c" role="src" />
+   <file md5sum="87f5a8cdbfd96cab9dc44cea56302636" name="src/network/Manager.c" role="src" />
+   <file md5sum="d3285da35d45059d9a29aefa23353254" name="src/network/Timer.c" role="src" />
+   <file md5sum="0277f34293fed71652e8faa92b56419c" name="src/network/DNS.c" role="src" />
+   <file md5sum="d4efbd5bc8bea6128f3fce145de5de49" name="src/network/Port.c" role="src" />
+   <file md5sum="f7a5e148b27c20de53a0d7b8e16be4c4" name="src/os/base.c" role="src" />
+   <file md5sum="7c63f1c87862926a118cc2c557258a5b" name="src/os/gcc_aio.c" role="src" />
+   <file md5sum="e1a227c30435b97b7aea1bdcf155f2a6" name="src/os/linux_aio.c" role="src" />
+   <file md5sum="07f1dde1163945b379bc02d2c25adddc" name="src/os/msg_queue.c" role="src" />
+   <file md5sum="afeb9fc9b10b0a8119cbcacf75fd1568" name="src/os/sendfile.c" role="src" />
+   <file md5sum="7e20e11c04fab048fe9ca93f0a39b34c" name="src/os/signal.c" role="src" />
+   <file md5sum="830599e8617ecc34533c92a450f96516" name="src/os/timer.c" role="src" />
+   <file md5sum="63bd5a1f75c97c9a514893b5862ff53d" name="src/protocol/Base.c" role="src" />
+   <file md5sum="0fc0ffc392ba636e805ffec5ab7e39bc" name="src/protocol/SSL.c" role="src" />
+   <file md5sum="5482fb7787a09813e2b2820b0108558f" name="src/protocol/Http.c" role="src" />
+   <file md5sum="7a06e33ee5f9379b3d935cf7c594b2ee" name="src/protocol/WebSocket.c" role="src" />
+   <file md5sum="6c2e6bfdfbdf913cb5405850f4edde48" name="src/protocol/Sha1.c" role="src" />
+   <file md5sum="eff7c0f0f9a937d1436774627bc4c8da" name="src/protocol/Base64.c" role="src" />
+   <file md5sum="55e9b074e554534694e217d7ceddd8aa" name="src/protocol/Mqtt.c" role="src" />
+   <file md5sum="8c900d142f93a95880377ddc2b806aee" name="examples/async/read.php" role="src" />
+   <file md5sum="bff0fc19498842ed8bc02680481fd5fb" name="examples/async/readfile.php" role="src" />
+   <file md5sum="ee08749fdd651dbe9c656f18283f1ab2" name="examples/async/write.php" role="src" />
+   <file md5sum="2048c1b1fece06ade9b47050e06065dc" name="examples/async/dns_lookup.php" role="src" />
+   <file md5sum="19ac7f219aec107fc4ad328c7579de46" name="examples/client/async.php" role="src" />
+   <file md5sum="8ccf1421e59f376087f8558e8e4fd786" name="examples/client/long_tcp.php" role="src" />
+   <file md5sum="984ca40e5fd54215030f48cf19aa37bb" name="examples/client/sync.php" role="src" />
+   <file md5sum="dc8e96dfa7f0870086b302b10176da40" name="examples/client/select.php" role="src" />
+   <file md5sum="347abf259d360899fc18cd508e4b2e86" name="examples/client/udp_async.php" role="src" />
+   <file md5sum="9aa72aaed9698cfb32dc5e0a398355b1" name="examples/client/udp_sync.php" role="src" />
+   <file md5sum="a6fd4f03220d64c00745bd39ef259c19" name="examples/server/echo.php" role="src" />
+   <file md5sum="63f2a1e454cc94f134df6da60140f692" name="examples/server/msgqueue.php" role="src" />
+   <file md5sum="d241631720e6955379ea31574c97c4c8" name="examples/http/server.php" role="src" />
+   <file md5sum="ad0ebb59d5c721ef55c3d416ee3ba4c6" name="examples/http/client.php" role="src" />
+   <file md5sum="e40c7bf2786143ccb1aba34fc593c2ab" name="examples/http/curl.php" role="src" />
+   <file md5sum="35449e4b1012a93f90bfc352a64d5d4f" name="examples/length/server.php" role="src" />
+   <file md5sum="8de5682a794c27d66dc562a0747daf26" name="examples/length/client.php" role="src" />
+   <file md5sum="d44832d7ca2c27d6b28aae64fbf108a4" name="examples/length/async_client.php" role="src" />
+   <file md5sum="06d4a2fe048c2f6148ca3e6c6c2fb84d" name="examples/eof/server.php" role="src" />
+   <file md5sum="b714674dbb7e832765a6d10689361c99" name="examples/eof/client.php" role="src" />
+   <file md5sum="30c929d3ab56b541d524cbe2860815bf" name="examples/eof/async_client.php" role="src" />
+   <file md5sum="841cb14f01ee06a7025988f7a561030a" name="examples/event/stream.php" role="src" />
+   <file md5sum="b6f6f4c0b17142107a739a029e2fb79c" name="examples/event/sockets.php" role="src" />
+   <file md5sum="93a4bdbdbb482e268d16051728f1af39" name="examples/unix/dgram_server.php" role="src" />
+   <file md5sum="6f7a7853c0c5fb14a152b340dd6708dd" name="examples/unix/stream_client.php" role="src" />
+   <file md5sum="6b7811f128045f7ea1ae707e3bda4e08" name="examples/unix/dgram_client.php" role="src" />
+   <file md5sum="801d01f1c377e693692a82c7063825da" name="examples/process/worker.php" role="src" />
+   <file md5sum="548b4e1e5b1e11558f5d1d688de8516f" name="examples/process/exec.php" role="src" />
+   <file md5sum="1ff0a3b7923b2aa28a88f4cecc058ca1" name="examples/process/msgqueue.php" role="src" />
+   <file md5sum="9a7326c7910491514bda036cd2c45269" name="examples/process/echo.py" role="src" />
+   <file md5sum="f48f43e309291a34c88f447f9cffd2c4" name="examples/process/python.php" role="src" />
+   <file md5sum="06b1e8328e47fefaf20224ce9f24bd0f" name="examples/task/task.php" role="src" />
+   <file md5sum="6d0b3eba632fe4868a2cc3a6aeaa84ac" name="examples/task/shared_client.php" role="src" />
+   <file md5sum="29aaf144f3a34b2780d0dabe16f60b58" name="examples/task/shared_server.php" role="src" />
+   <file md5sum="f350a477d11b9325db458ef1a142074d" name="examples/table/iterator.php" role="src" />
+   <file md5sum="9335388e59d9a74c004603c8634f4442" name="examples/table/server.php" role="src" />
+   <file md5sum="27fcbbb91c757030a5aca4ffa254240b" name="examples/table/set.php" role="src" />
+   <file md5sum="6b77215906ed47db14563c3451144670" name="examples/table/simulation.php" role="src" />
+   <file md5sum="316009bbf342192cb20b30129ed34991" name="examples/websocket/server.php" role="src" />
+   <file md5sum="0422cd0456215f7a83bcfd70c0d5da18" name="examples/websocket/client.php" role="src" />
+   <file md5sum="fda6d08ac171167055d4fb7ea86acbec" name="examples/websocket/client.html" role="src" />
+   <file md5sum="bc4dc496b319c547cc9faac691c9d27d" name="examples/websocket/WebSocketClient.php" role="src" />
+   <file md5sum="607e1844c38fb3b005ed8a249edd477a" name="examples/ipv6/tcp_server.php" role="src" />
+   <file md5sum="0425b3888dc0e7131aee7a4566d74ecd" name="examples/ipv6/udp_server.php" role="src" />
+   <file md5sum="3753ccb2a042862fecc60d294193b528" name="examples/ipv6/tcp_client.php" role="src" />
+   <file md5sum="815cd427a2bf1a718eaeebfdeb27b6da" name="examples/ipv6/udp_client.php" role="src" />
+   <file md5sum="107bca39f7e7a7e067d1acf43c8af16b" name="examples/bench/http.js" role="src" />
+   <file md5sum="5e630672caae47f803d84c06e7def4e7" name="examples/bench/tcp.js" role="src" />
+   <file md5sum="c1f9367236a4f7078ab0f8247f5628d9" name="examples/bench/tcp.go" role="src" />
+   <file md5sum="f3ccbbcc485e3547efe94c2ec3ee42e7" name="examples/bench/http.go" role="src" />
+   <file md5sum="df8b504f1fa7ebbdd148eaf7b38c2fda" name="examples/bench/tcp.php" role="src" />
+   <file md5sum="bffcd3a8ce477acf1ab7824289c9ed42" name="examples/bench/udp.php" role="src" />
+   <file md5sum="e260d925507c6c3df1f18170e862d11a" name="examples/bench/http.php" role="src" />
+   <file md5sum="8c55cd0d359da9de6297be138b16043a" name="examples/bench/run.php" role="src" />
+   <file md5sum="794cace17cec1da775dadd9b7eae8ad7" name="examples/timer/after.php" role="src" />
+   <file md5sum="bb28ca3c03b2f81888772956d8703a73" name="examples/timer/tick.php" role="src" />
+   <file md5sum="66f8084c85d37c3670b0e075cc59287e" name="examples/mysql/async_mysql2.php" role="src" />
+   <file md5sum="dd806b523fb109de53bb1a41b83a3f91" name="examples/mysql/real_async.php" role="src" />
+   <file md5sum="0a348ca294b3ea5b7b703b4220839b56" name="examples/redis/client.php" role="src" />
+   <file md5sum="63bd711bcb93a19e0c0cc7fb0672b299" name="examples/server.php" role="src" />
+   <file md5sum="4676ab8861b5d248b1edfca3ebea2023" name="examples/mysql_proxy_server.php" role="src" />
+   <file md5sum="bc195344b52181e172e0c71b202806d6" name="examples/proxy.php" role="src" />
+   <file md5sum="62d143748b0604e15364bb9e98fd4469" name="examples/proxy_sync.php" role="src" />
+   <file md5sum="fa5799519f4e85996b635bfe7d6da270" name="examples/timer.php" role="src" />
+   <file md5sum="7bdbaeaecfc2b291e910f2247c48725f" name="examples/sendfile_server.php" role="src" />
+   <file md5sum="23d49d40c3935f99d85a810624407189" name="examples/recv_file.php" role="src" />
+   <file md5sum="64a42b4c0f3c65a14c23b60d3880a917" name="examples/test.jpg" role="doc" />
+   <file md5sum="9f2d1c4c628380bea3a3ba1350535274" name="CREDITS" role="doc" />
+   <file md5sum="67d2be79fd662299405527305e42cbfc" name="LICENSE" role="doc" />
+   <file md5sum="16e2a4f5541576af0d084b369a182961" name="README.md" role="doc" />
+   <file md5sum="830822a7832649f1c13663e7f6a8d2fe" name="config.m4" role="src" />
+   <file md5sum="9b067bb6a3d3c71ae02ef73803eb9bc3" name="php_swoole.h" role="src" />
+   <file md5sum="3e51e2e8ad1dc97de8bdd79c327abd7e" name="php7_wrapper.h" role="src" />
+   <file md5sum="97fec0dd3f265326e44ec635817283ae" name="swoole_config.h" role="src" />
+   <file md5sum="adc6b687b81b562f53965cf0f4c87832" name="swoole.c" role="src" />
+   <file md5sum="f383b750c9ce3968a931d42fe8bbbde0" name="swoole_server.c" role="src" />
+   <file md5sum="c729c6b29f5d36600f88a091580748f5" name="swoole_server_port.c" role="src" />
+   <file md5sum="25ba0ac0a4cc3d6c9d2ec7a6e8d0fb31" name="swoole_lock.c" role="src" />
+   <file md5sum="8a79844d88fe189b84ef12be6e48db81" name="swoole_client.c" role="src" />
+   <file md5sum="48333875f184bf37a0cc884a99cbb021" name="swoole_event.c" role="src" />
+   <file md5sum="fd16554915d2b52e559f287bd9d865cb" name="swoole_timer.c" role="src" />
+   <file md5sum="f8404a46976415e640809f501b595649" name="swoole_async.c" role="src" />
+   <file md5sum="e7a5126542c69632cc8da33ce6b4bd5a" name="swoole_process.c" role="src" />
+   <file md5sum="944610e25bc6e65faa58ba7339116f89" name="swoole_table.c" role="src" />
+   <file md5sum="a55b77c8157c96e3eab6c7b6c838fc28" name="swoole_buffer.c" role="src" />
+   <file md5sum="eeee14e49777671d50be5fe080163467" name="swoole_http_server.c" role="src" />
+   <file md5sum="e97819e62dc291056e8db25449a5e6ba" name="swoole_http_client.c" role="src" />
+   <file md5sum="4ff743af9d1b21e7dc03620cf0a52a25" name="swoole_http.h" role="src" />
+   <file md5sum="3b4911b2350d7e2966f0263f8ea349dc" name="swoole_websocket_server.c" role="src" />
+   <file md5sum="20b090926db1162fa21634892bf3a57c" name="swoole_atomic.c" role="src" />
+   <file md5sum="8fe13deb8f912ce5e6ab56f75fcae5e1" name="swoole_mysql.c" role="src" />
+   <file md5sum="2e13bc6a5e0e3f9d1596429e327d5824" name="swoole_redis.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.10</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>swoole</providesextension>
+ <extsrcrelease />
+</package>

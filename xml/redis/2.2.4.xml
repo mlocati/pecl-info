@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>redis</name>
+ <channel>pecl.php.net</channel>
+ <summary>PHP extension for interfacing with Redis</summary>
+ <description>This extension provides an API for communicating with Redis servers.</description>
+ <lead>
+  <name>Nicolas Favre-Felix</name>
+  <user>nff</user>
+  <email>n.favrefelix@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Michael Grunder</name>
+  <user>mgrunder</user>
+  <email>michael.grunder@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2013-09-02</date>
+ <time>07:57:58</time>
+ <version>
+  <release>2.2.4</release>
+  <api>2.2.4</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+**
+** Features / Improvements
+**
+
+* Randomized reconnect delay for RedisArray @mobli
+  This feature adds an optional parameter when constructing a RedisArray object
+  such that a random delay will be introduced if reconnections are made, 
+  mitigating any &apos;thundering herd&apos; type problems.
+
+* Lazy connections to RedisArray servers @mobli
+  By default, RedisArray will attempt to connect to each server you pass in
+  the ring on construction.  This feature lets you specify that you would 
+  rather have RedisArray only attempt a connection when it needs to get data
+  from a particular node (throughput/performance improvement).
+
+* Allow LONG and STRING keys in MGET/MSET
+
+* Extended SET options for Redis &gt;= 2.6.12
+
+* Persistent connections and UNIX SOCKET support for RedisArray
+
+* Allow aggregates for ZUNION/ZINTER without weights @mheijkoop
+
+* Support for SLOWLOG command
+
+* Reworked MGET algorithm to run in linear time regardless of key count.
+
+* Reworked ZINTERSTORE/ZUNIONSTORE algorithm to run in linear time
+
+**
+** Bug fixes
+**
+
+* C99 Compliance (or rather lack thereof) fix @mobli
+* Added ZEND_ACC_CTOR and ZEND_ACC_DTOR @euskadi31
+* Stop throwing and clearing an exception on connect failure @matmoi
+* Fix a false positive unit test failure having to do with TTL returns
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="cffff03f03724108d0ed5a58eb0ad999" name="README.markdown" role="doc" />
+   <file md5sum="45ab5b906f4dbe202b607df6a6b2c2fa" name="arrays.markdown" role="doc" />
+   <file md5sum="1fde1c18da2562bfb53ea9e9a388f969" name="CREDITS" role="doc" />
+   <file md5sum="cb564efdf78cce8ea6e4b5a4f7c05d97" name="COPYING" role="doc" />
+   <file md5sum="d06f81b166948f20bca8b16b2a5e9816" name="config.m4" role="src" />
+   <file md5sum="0a608797d5404b5c2d882e812c29819a" name="config.w32" role="src" />
+   <file md5sum="b9599382feebce92405c3e9787601e82" name="common.h" role="src" />
+   <file md5sum="4900c1ddf424115d9a86b57fa21939b9" name="library.c" role="src" />
+   <file md5sum="32a2c359f8e4df34434e9215fe994c17" name="library.h" role="src" />
+   <file md5sum="94333d391cde4e9f61602559b7a30d92" name="php_redis.h" role="src" />
+   <file md5sum="fc45b46c704ea4f52948f807314ec283" name="redis_array.c" role="src" />
+   <file md5sum="f614b672c6697b371ae1f5c5ee616eb1" name="redis_array.h" role="src" />
+   <file md5sum="c36fad5b46ba43abd86a48a2eebce2f8" name="redis_array_impl.c" role="src" />
+   <file md5sum="f9308dc6c2e6561ec024cf4faeb9f214" name="redis_array_impl.h" role="src" />
+   <file md5sum="b6381a344921e1f23fc5ef89dc8b3d92" name="redis.c" role="src" />
+   <file md5sum="64e5bcf35113f01bc692a493dd62b43d" name="redis_session.c" role="src" />
+   <file md5sum="9852b80834e10ebe8a14d957a1eba203" name="redis_session.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+    <max>6.0.0</max>
+    <exclude>6.0.0</exclude>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>redis</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.4</release>
+    <api>2.2.4</api>
+   </version>
+   <date>2013-09-01</date>
+   <notes>
+**
+** Features / Improvements
+**
+
+* Randomized reconnect delay for RedisArray @mobli
+  This feature adds an optional parameter when constructing a RedisArray object
+  such that a random delay will be introduced if reconnections are made, 
+  mitigating any &apos;thundering herd&apos; type problems.
+
+* Lazy connections to RedisArray servers @mobli
+  By default, RedisArray will attempt to connect to each server you pass in
+  the ring on construction.  This feature lets you specify that you would 
+  rather have RedisArray only attempt a connection when it needs to get data
+  from a particular node (throughput/performance improvement).
+
+* Allow LONG and STRING keys in MGET/MSET
+
+* Extended SET options for Redis &gt;= 2.6.12
+
+* Persistent connections and UNIX SOCKET support for RedisArray
+
+* Allow aggregates for ZUNION/ZINTER without weights @mheijkoop
+
+* Support for SLOWLOG command
+
+* Reworked MGET algorithm to run in linear time regardless of key count.
+
+* Reworked ZINTERSTORE/ZUNIONSTORE algorithm to run in linear time
+
+**
+** Bug fixes
+**
+
+* C99 Compliance (or rather lack thereof) fix @mobli
+* Added ZEND_ACC_CTOR and ZEND_ACC_DTOR @euskadi31
+* Stop throwing and clearing an exception on connect failure @matmoi
+* Fix a false positive unit test failure having to do with TTL returns
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.3</release>
+    <api>2.2.3</api>
+   </version>
+   <date>2013-04-29</date>
+   <notes>
+First release to PECL
+   </notes>
+  </release>
+ </changelog>
+</package>

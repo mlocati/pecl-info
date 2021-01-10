@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.5" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>apcu</name>
+ <channel>pecl.php.net</channel>
+ <summary>APCu - APC User Cache</summary>
+ <description>APC User Caching</description>
+ <lead>
+  <name>Joe Watkins</name>
+  <user>krakjoe</user>
+  <email>krakjoe@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Anatol Belski</name>
+  <user>ab</user>
+  <email>ab@php.net</email>
+  <active>yes</active>
+ </developer>
+ <date>2018-03-08</date>
+ <time>04:53:32</time>
+ <version>
+  <release>5.1.11</release>
+  <api>5.1.11</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- fix gh#246 apcu_entry hangs
+- fix gh#259 deadlock in apcu_store
+- fix gh#281 undefined variable in apc.php
+- fix handling of fatal errors in apcu_entry
+- check string lengths when looking up keys
+- many internal C APIs changed
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="98175b979970c2c439f896c18e91a598" name="tests/023-2.inc" role="test" />
+   <file md5sum="e8a3aded4ac390ef36db97dba4d72053" name="tests/024.phpt" role="test" />
+   <file md5sum="67f5eef1e906d033bed15a53b5504caa" name="tests/apc_001.phpt" role="test" />
+   <file md5sum="741e00c81a6eea31682f795a7540e2c9" name="tests/apc_002.phpt" role="test" />
+   <file md5sum="c7401d55da28c00e5a3c01274e2bde22" name="tests/apc_003b.phpt" role="test" />
+   <file md5sum="a0a4317ee4fae17f0244c3215f4af2dd" name="tests/apc_004.phpt" role="test" />
+   <file md5sum="b761730974b6126022fe1882e3d4f336" name="tests/apc_005.phpt" role="test" />
+   <file md5sum="85d95e951a9835c3ccb413d7686353b9" name="tests/apc_005b.phpt" role="test" />
+   <file md5sum="0793c7136b208b9cf16ddba17b9942db" name="tests/apc_005c.phpt" role="test" />
+   <file md5sum="3fbd1d76c5089eb76c9f836d0d86c80f" name="tests/apc_006.phpt" role="test" />
+   <file md5sum="b9156cb2ad845039c1e44e446d13e811" name="tests/apc_006_php73.phpt" role="test" />
+   <file md5sum="8b3820f5e721d51852af7169d508eda5" name="tests/apc_007.phpt" role="test" />
+   <file md5sum="88f383feec5972b857d8d901d79e9845" name="tests/apc_008.phpt" role="test" />
+   <file md5sum="923441dbe3d1aa8647b2870ad9996d89" name="tests/apc_010.phpt" role="test" />
+   <file md5sum="4f79569299cbb1aaf15ee1443c1b87a7" name="tests/apc_011.phpt" role="test" />
+   <file md5sum="1583d36ff05d0c420d12b7ae5f5eaeeb" name="tests/apc_012.phpt" role="test" />
+   <file md5sum="bacffe66e3b6c36904b43c71c70f717f" name="tests/apc_013_exists.phpt" role="test" />
+   <file md5sum="53dbb35a7959b8845de4f50e90ca85fc" name="tests/apc_014_store_ref.phpt" role="test" />
+   <file md5sum="58e265acefce7cffc082a1d755d8ac3c" name="tests/apc_015.phpt" role="test" />
+   <file md5sum="bc37ac5649c2f0b63f077a1c4e988cb5" name="tests/apc_016.phpt" role="test" />
+   <file md5sum="b72d66f975adbc77eee12d61c34302e8" name="tests/apc_017.phpt" role="test" />
+   <file md5sum="d5e133776dcb5afd76848e20aad7e3a7" name="tests/apc_099.phpt" role="test" />
+   <file md5sum="f55af4f32f0ec13f58bd5296bd17072c" name="tests/apc54_014.phpt" role="test" />
+   <file md5sum="40e195a4ac423af5a6a4f80cf7bb95de" name="tests/apc54_018.phpt" role="test" />
+   <file md5sum="c8ad6606ae3374c80782f2a3c11b9168" name="tests/apc_entry_001.phpt" role="test" />
+   <file md5sum="f8c800205a06f3b34ee8ff211e6891aa" name="tests/apc_entry_002.phpt" role="test" />
+   <file md5sum="449946c860501e096e765d27a5df7545" name="tests/apc_entry_003.phpt" role="test" />
+   <file md5sum="b5570c4ee2ccd2b69b97144ff449e719" name="tests/apc_inc_perf.phpt" role="test" />
+   <file md5sum="98342370ed32200c86fa427273ebf53d" name="tests/bug63224.phpt" role="test" />
+   <file md5sum="258cc67a839b35df85d7cdaef57710e9" name="tests/get_included_files_inc1.inc" role="test" />
+   <file md5sum="f1e8b517459a9ebd8dba964d4990fc31" name="tests/get_included_files_inc2.inc" role="test" />
+   <file md5sum="c95a47810e7195ebcc32b36c33d09f87" name="tests/get_included_files_inc3.inc" role="test" />
+   <file md5sum="141948f7468cf81c50265fabf130bbba" name="tests/ghbug176.phpt" role="test" />
+   <file md5sum="b7aa9dcff9b25aa15b39cd5d4b3814e2" name="tests/ghbug168.phpt" role="test" />
+   <file md5sum="d148e8c9a58f6fd65aabcd3656c341d8" name="tests/ghbug185.phpt" role="test" />
+   <file md5sum="3bbd4794965d996c756e73486bce5edd" name="tests/ghbug247.phpt" role="test" />
+   <file md5sum="4cff8b1aa22d96d5923617aba48e660b" name="tests/ghbug248.phpt" role="test" />
+   <file md5sum="cd4619a8a788ea7875ca220d0f85b211" name="tests/iterator_001.phpt" role="test" />
+   <file md5sum="24dfd64d19b7cf5a1de342bc22acbe93" name="tests/iterator_002.phpt" role="test" />
+   <file md5sum="1667b91b00e3f67be3efd947b9df1f16" name="tests/iterator_003.phpt" role="test" />
+   <file md5sum="ce3bf71283dbedd633b9b7464f61ec78" name="tests/iterator_004.phpt" role="test" />
+   <file md5sum="8e3a2af5da00f0445d8582d8731b342f" name="tests/iterator_005.phpt" role="test" />
+   <file md5sum="f8d025112fab5c83d0142ba5953cf261" name="tests/iterator_006.phpt" role="test" />
+   <file md5sum="9358281bfd976ec24463297233e55f12" name="tests/iterator_007.phpt" role="test" />
+   <file md5sum="3fca84a5a69a5ba0e3a5b78b05783b5b" name="tests/iterator_008.phpt" role="test" />
+   <file md5sum="efe5722a33e51887bba7d9b5dcc1d08d" name="tests/iterator_009.phpt" role="test" />
+   <file md5sum="ae5f1d1f1cc43711f76671c2ce09e860" name="tests/server_test.inc" role="test" />
+   <file md5sum="14e70551b840b0cabe01bbc2082ddb6b" name="tests/skipif.inc" role="test" />
+   <file md5sum="28779d87940edb30a1986cc520d5619b" name="tests/data/abc.data" role="test" />
+   <file md5sum="a77d6ee236d985bab7f0d94298aada06" name="tests/bad/abc.data" role="test" />
+   <file md5sum="309f6433ed177c3808a05201a900c02f" name="apc_api.h" role="src" />
+   <file md5sum="b35ff51ebc5dbc035a030793d95e47c5" name="apc_arginfo.h" role="src" />
+   <file md5sum="e8e84121ffa7c7f0eae51f5c06378306" name="apc.c" role="src" />
+   <file md5sum="9adab847041092d3d5c8e5482d368d47" name="apc_cache_api.h" role="src" />
+   <file md5sum="45d7ff3fc7a3b63423a5a171061b4125" name="apc_cache.c" role="src" />
+   <file md5sum="4434e73bf349b717fb11406e922b0174" name="apc_cache.h" role="src" />
+   <file md5sum="0b2eb1cfbbfa5ee40178313c5fbd157c" name="apc_globals.h" role="src" />
+   <file md5sum="c2bd7a77879b10ff24ac2015a642e640" name="apc.h" role="src" />
+   <file md5sum="9bae87362fb326696ec3ae682e8e7e4f" name="apc_iterator.c" role="src" />
+   <file md5sum="7cc615f1c02cb9d14385e34b3e6101e6" name="apc_iterator.h" role="src" />
+   <file md5sum="2848a4e13e84893c3d01233390f1d1f7" name="apc_lock_api.h" role="src" />
+   <file md5sum="89ba2dcc346f6ec8ce844042c81a8e8e" name="apc_lock.c" role="src" />
+   <file md5sum="bb617a55e93af3869b046920c0f45900" name="apc_lock.h" role="src" />
+   <file md5sum="baeb0b1da53be83b99a5a25fe51866e9" name="apc_mmap.c" role="src" />
+   <file md5sum="17c7c220d2240aa91bf2a617eaf79796" name="apc_mmap.h" role="src" />
+   <file md5sum="d4fb9913873b91ee58860e363071c7c6" name="apc.php" role="src" />
+   <file md5sum="627f43d6e795046b710b21483ce59fe1" name="apc_php.h" role="src" />
+   <file md5sum="ed8c2b537d687714f0cd26e71e07c67e" name="apc_pool_api.h" role="src" />
+   <file md5sum="f48be341e2e374784a1964176f836c34" name="apc_pool.c" role="src" />
+   <file md5sum="15c6e3ca3dd37bb7be59ce1a1492ac11" name="apc_pool.h" role="src" />
+   <file md5sum="0d612530456de62c382b30ea99569edf" name="apc_shm.c" role="src" />
+   <file md5sum="4b2c01c2aedd6f501bdb051087ccf24e" name="apc_shm.h" role="src" />
+   <file md5sum="f1fbbe0e69d340f1d0b99d7dcca90368" name="apc_signal.c" role="src" />
+   <file md5sum="1c6f9c40f4870b7e1f128f39726020fa" name="apc_signal.h" role="src" />
+   <file md5sum="a01125d8e1f478bd059e1d310f783687" name="apc_sma_api.h" role="src" />
+   <file md5sum="7f020f593cc4e5df4610d8be6203f72a" name="apc_sma.c" role="src" />
+   <file md5sum="4ec47c167d123e01b81b518054864724" name="apc_sma.h" role="src" />
+   <file md5sum="bb527606f90d4537caaef43aac085ac9" name="apc_stack.c" role="src" />
+   <file md5sum="047139ef3af0cb3ada19a1eaf8e49b67" name="apc_stack.h" role="src" />
+   <file md5sum="b760ae5b38bc5de17817f4ce57994113" name="apc_windows_srwlock_kernel.c" role="src" />
+   <file md5sum="43245b90211fa4bc121b9cb77885a37c" name="apc_windows_srwlock_kernel.h" role="src" />
+   <file md5sum="8c20f5698aba64c8f1bb642f69f8a88d" name="pgsql_s_lock.h" role="src" />
+   <file md5sum="c8e70174e9292b9d8b06563ff196f1ec" name="pgsql_s_lock.c" role="src" />
+   <file md5sum="2c68c2e1adee3a67e3131c76e700712d" name="apc_serializer.h" role="src" />
+   <file md5sum="469a0a832623ff4f0ca05554fb4a5994" name="config.m4" role="src" />
+   <file md5sum="799a57d1db19a0a9d49089f2908d77cc" name="config.w32" role="src" />
+   <file md5sum="d6c836c279b1fbabf69ada700dd5cdfc" name="INSTALL" role="doc" />
+   <file md5sum="52dd90569008fee5bcdbb22d945b1108" name="LICENSE" role="doc" />
+   <file md5sum="155853fb8cb9945c07313f05874866b6" name="Makefile.frag" role="src" />
+   <file md5sum="eea150699d3dffb2cdf7d243854189d7" name="NOTICE" role="doc" />
+   <file md5sum="eaef065219ecb3d5a77e17f4afa0d223" name="php_apc.c" role="src" />
+   <file md5sum="beb93c8d650ec0737dddea6265dfdb11" name="php_apc.h" role="src" />
+   <file md5sum="a5989b59e68a43f21f2eddabe5a0d596" name="README.md" role="doc" />
+   <file md5sum="8159d948b4d05994f7478b5d0e07c371" name="TECHNOTES.txt" role="doc" />
+   <file md5sum="19a56a46925a8196705c34e1d9878a07" name="TODO" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0-dev</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>apcu</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="enable-apcu-debug" prompt="Enable internal debugging in APCu" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <date>2018-02-16</date>
+   <version>
+    <release>5.1.10</release>
+    <api>5.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fix gh#247 when a NUL char is used as key, apcu_fetch(array) truncates the key
+- fix gh#248 apcu_fetch may return values causing zend_mm_corruption or segfaults
+  when custom serializer is used
+- fix gh#260 apcu.serializer=default results in segfault
+- fix gh#274 non-portable shell == in config.m4
+- fix crash when passing bad array to apcu_delete
+- improve fix gh#266 refcounting errors in APCIterator
+- fix for PHP 7.3 compatibility
+   </notes>
+  </release>
+  <release>
+   <date>2018-01-02</date>
+   <version>
+    <release>5.1.9</release>
+    <api>5.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fix gh#234 mmap disabled when configure is called with --enable-apcu-mmap
+- fix gh#226 Warning: apcu_fetch(): apc_fetch() expects a string or array of strings.
+- mitigate gh#223 Fatal error when starting php on windows
+- add support for PCRE2 in 7.3
+- use row formatting for information in phpinfo() tables
+- set IS_STR_PERSISTENT so refcounting failures are reported by -DRC_DEBUG=1
+- fix gh#266 refcounting errors in APCIterator
+   </notes>
+  </release>
+  <release>
+   <date>2017-01-16</date>
+   <version>
+    <release>5.1.8</release>
+    <api>5.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fix gh#207 Segmentation fault in apc_sma_api_free()
+- fix gh#221 memory leak
+- update to apc dashboard (Tyson Andre)
+   </notes>
+  </release>
+  <release>
+   <date>2016-10-21</date>
+   <version>
+    <release>5.1.7</release>
+    <api>5.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fixes gh#19: hung apaches on pthread wrlocks
+- fixes gh#203: segfaults in bailout / longjmp
+   </notes>
+  </release>
+  <release>
+   <date>2016-10-06</date>
+   <version>
+    <release>5.1.6</release>
+    <api>5.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fixes gh#19:  Hung apaches on pthread wrlocks
+- fixes gh#188: Fix Segfault in ZTS build when locking (Tyson Andre)
+- fixes gh#194: apcu_entry ttl not working
+- fixes gh#189: SegFault in apc_copy_zval
+- fixes gh#185: zend_mm_heap corrupted
+- fixes gh#190: memory leak/failed check for duplicates
+   </notes>
+  </release>
+  <release>
+   <date>2016-06-07</date>
+   <version>
+    <release>5.1.5</release>
+    <api>5.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fix version check in control panel page (gh#182, lennartwesdijk)
+- do not create null strings, palloc may fail
+   </notes>
+  </release>
+  <release>
+   <date>2016-05-12</date>
+   <version>
+    <release>5.1.4</release>
+    <api>5.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fix possible memory leak
+- fix gh#168 drop trying to return strings from shm
+- fix gh#170 do not create entries when serialization fails
+   </notes>
+  </release>
+  <release>
+   <date>2016-01-15</date>
+   <version>
+    <release>5.1.3</release>
+    <api>5.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fixed macro using interlocked increment in Windows
+- fix gh#158 apc_inc() with negative step value hangs the process
+- fix gh#164 apc_inc() can take minutes with huge step value
+   </notes>
+  </release>
+  <release>
+   <date>2015-12-02</date>
+   <version>
+    <release>5.1.2</release>
+    <api>5.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- be wholly consistent with APC in use of atomics
+   </notes>
+  </release>
+  <release>
+   <date>2015-11-20</date>
+   <version>
+    <release>5.1.0</release>
+    <api>5.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- PHP 7 compatibility
+- provide APC compatibility in &quot;apc&quot; optional extension
+- move APCIterator to APC compatibility extension
+- add APCuIterator without cache argument
+- drop apcu_bin_* functions
+- add apcu_entry(key, callback, ttl) function
+- fix race on refcount of entry when using rwlocks (or on windows)
+   </notes>
+  </release>
+  <release>
+   <date>2014-10-11</date>
+   <time>17:02:21</time>
+   <version>
+    <release>4.0.7</release>
+    <api>4.0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fix inconsistent member names for entries in userland
+   </notes>
+  </release>
+  <release>
+   <date>2014-06-12</date>
+   <time>13:39:04</time>
+   <version>
+    <release>4.0.6</release>
+    <api>4.0.6</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fix issues with stddef inclusion causing compilation issue
+   </notes>
+  </release>
+  <release>
+   <date>2014-06-11</date>
+   <time>05:48:25</time>
+   <version>
+    <release>4.0.5</release>
+    <api>4.0.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fix compile with 5.6 beta
+   </notes>
+  </release>
+  <release>
+   <date>2014-03-01</date>
+   <time>07:29:53</time>
+   <version>
+    <release>4.0.4</release>
+    <api>4.0.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix deadlocking due to destroyed locks
+- Fix various compatibility bugs
+   </notes>
+  </release>
+  <release>
+   <date>2014-01-27</date>
+   <time>09:00:00</time>
+   <version>
+    <release>4.0.3</release>
+    <api>4.0.3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix various compatibility problems
+- Fix a few lingering faults
+- Remove experimental eval serializer
+- Fix iterator for compatibility
+   </notes>
+  </release>
+  <release>
+   <date>2013-09-14</date>
+   <time>21:00:00</time>
+   <version>
+    <release>4.0.2</release>
+    <api>4.0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed bug #15 APC compatibility option broken (Anatol)
+- Changes to m4/w32, various (Anatol)
+- Fix build is always in debug mode, Related to #15 (Anatol)
+- Fix apc_clear_cache compatibility issues, Issue #18 (Joe)
+- Fix APCIterator compatibility issues, Issue #20 (Anatol)
+- Assert cache clear only when &apos;user&apos; was passed #18 (Anatol)
+- fix type casts time_t vs ulong (Anatol)
+- Fixed the gc routine (Anatol)
+- Restore APC hook for register serializer, Issue #24, #25 (Remi Collet)
+- Compiler warnings avoided, various (Remi Collet)
+- Don&apos;t segfault if mmap() failed, Issue #27 (Anatol)
+- Fix variable typo in config.m4 for php_cv_semun (Kevin Abel)
+- Revert horribleness related to APC_ALIGN (Joe)
+- Fix call to stream open wrapper (Joe)
+- php_apcu.dll does not load anymore under X64, Issue #29 (Anatol)
+- Fix external api functionality (Joe)
+- Bring back fcntl support for FreeBSD, Issue #36 (Joe)
+- Bring back spinlocks, various issues (Joe)
+- Fixed symbol clashing, windows debug mode, again (Anatol)
+- apcu_key_info / apc_cache_stat functions (Joe)
+   </notes>
+  </release>
+  <release>
+   <date>2013-03-27</date>
+   <time>03:10:00</time>
+   <version>
+    <release>4.0.0</release>
+    <api>4.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+All opcode caching abilities removed
+The default locking is now rwlocks
+APCu API installed in build environment
+Please see TECHNOTES/README.md
+   </notes>
+  </release>
+ </changelog>
+</package>

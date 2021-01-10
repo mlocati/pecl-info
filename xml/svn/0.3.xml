@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.6.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>svn</name>
+ <channel>pecl.php.net</channel>
+ <summary>PHP Bindings for the Subversion Revision control system.</summary>
+ <description>Bindings for libsvn,
+
+	for more details, have a look at the examples, or google for FlexySvn</description>
+ <lead>
+  <name>Alan Knowles</name>
+  <user>alan_k</user>
+  <email>alan@akbkhome.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Wez Furlong</name>
+  <user>wez</user>
+  <email>wez@omniti.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Scott MacVicar</name>
+  <user>scottmac</user>
+  <email>scottmac@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2008-02-09</date>
+ <time>14:39:10</time>
+ <version>
+  <release>0.3</release>
+  <api>0.3</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>Backward Compatibilty Breaks:
+Minimum subversion version is 1.4.
+svn_status call arguments have changed - it now uses Flags.
+
+New Constants:
+
+SVN_REVISION_INITIAL
+SVN_REVISION_HEAD
+SVN_REVISION_BASE
+SVN_REVISION_COMMITTED
+SVN_REVISION_PREV
+
+SVN_NON_RECURSIVE
+SVN_DISCOVER_CHANGED_PATHS
+SVN_OMIT_MESSAGES
+SVN_STOP_ON_COPY
+SVN_ALL
+SVN_SHOW_UPDATES
+SVN_NO_IGNORE
+
+All constants are also available as Svn::REVISON_HEAD.
+
+Win32 Compatibility:
+Most functions have been fixed to work with Win32 paths.
+
+- Fix bug #11153 - svn diff uses utf8 paths
+- Fix bug #11157 - missing constants needed for svn_status
+- Rewrite configure script to find APR and its compile flags
+- Add support for svn_info() - patch by Marco Tabini
+- Add support for svn_export() - patch by Scott MacVicar
+- Add support for svn_copy() and svn_switch() - patch by Conny Dahlgren
+- Add support for svn_blame() / svn_revert() - patch by Jerome Renard
+- Add support for limiting results with svn_log() - patch by Edward Z. Yang
+- Add support for limiting svn_checkout() - patch by Devlar
+- Add constants for use as parameters to svn_cat() - patch by Devlar
+- Add an OO interface to the extension - patch by Devlar</notes>
+ <contents>
+  <dir name="/">
+   <file baseinstalldir="/" md5sum="201f9d1a63a24d50e2cfc8f844ad7633" name="examples/hook_copycommit.php" role="doc" />
+   <file baseinstalldir="/" md5sum="f508b9389dd54001fd862ae1d20ec4fa" name="examples/hook_emailcommit.php" role="doc" />
+   <file md5sum="0d524ad043e7ce1a03947e1cfbbbb427" name="config.m4" role="src" />
+   <file md5sum="776202a0e2a72e384c642896b5e31b5a" name="config.w32" role="src" />
+   <file md5sum="0a8ab280f4dc38903e44f33aa5d2c118" name="CREDITS" role="doc" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL" role="doc" />
+   <file md5sum="f989597eea29ec8d7bd6b66e58d8e271" name="php_svn.h" role="src" />
+   <file md5sum="e0ab836cbb3c82237095389b8573b775" name="svn.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.0.0</min>
+    <max>6.0.0</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>svn</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-svn" prompt="Please provide the prefix of Subversion installation" />
+  <configureoption default="autodetect" name="with-svn-apr" prompt="Please provide the prefix of the APR installation used with Subversion" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <version>
+    <release>0.2</release>
+    <api>0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2006-03-20</date>
+   <license uri="http://www.php.net/licence">PHP Licence</license>
+   <notes>- Compiles on Win32 + Netware (Thanks to Guenter Knauf)
+- dependancy on svn-config removed (as recommended by Subversion developers)
+- Pretty complete implementation.
+
+Bugs
+    #6893 - correct types for strict compilers
+
+
+Known issues:
+    There are bug reports about commit / checkout functionality. Any help
+    reproducing and fixing these is welcome.</notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1</release>
+    <api>0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-05-28</date>
+   <license uri="http://www.php.net/licence">PHP Licence</license>
+   <notes>- First working release (works ok here!)</notes>
+  </release>
+ </changelog>
+</package>

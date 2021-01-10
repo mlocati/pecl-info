@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd">
+ <name>intl</name>
+ <channel>pecl.php.net</channel>
+ <summary>Internationalization extension</summary>
+ <description>Internationalization extension implements ICU library functionality in PHP.</description>
+ <lead>
+  <name>Stanislav Malyshev</name>
+  <user>stas</user>
+  <email>stas@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Gustavo Lopes</name>
+  <user>cataphract</user>
+  <email>cataphract@php.net</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Kirti Velankar</name>
+  <user>kirtig</user>
+  <email>kirtig@php.net</email>
+  <active>yes</active>
+ </developer>
+ <developer>
+  <name>Ed Batutis</name>
+  <user>ebatutis</user>
+  <email>ed@batutis.com</email>
+  <active>yes</active>
+ </developer>
+ <date>2012-07-24</date>
+ <time>16:12:39</time>
+ <version>
+  <release>2.0.1</release>
+  <api>5.4.5</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Changed ResourceBundle constructor behavior: null is now accepted for two
+  first (mandatory arguments).
+- Optimization in ext/intl/msgformat: don&apos;t transform the string to make it
+  apostrophe friendly in ICU 4.8+.
+- Fixed bug #55610: ResourceBundle not marked Traversable.
+- Fixed bug #59597: NumberFormatter::parse() with TYPE_INT64 results in a 32 bit
+  integer.
+- Fixed bug #60785: memory leak in IntlDateFormatter constructor.
+- Fixed bug #61829: memory leak when calling MessageFormatter&apos;s constructor
+  twice.
+- Fixed bug #62017: datefmt_create with incorrectly encoded timezone leaks
+  pattern.
+- Fixed bug #62070: Collator::getSortKey() was returning an unterminated string
+  due the length given to RETURN_STRINGL being off by one.
+- Fixed bug #62081: constructor of IntlDateFormatter would leak if called twice.
+- Fixed bug #62082: buffer overflow in internal function
+  get_icu_disp_value_src_php().
+- Fixed bug #62083: memory leak in grapheme_extract().
+- Fixed bug #62564/#62565: call to object_properties_init() missing.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="fd74f72735bb85e16a45554e2074bfee" name="collator/collator.c" role="src" />
+   <file md5sum="4b7a70783c5fd3a6db45652d7cbda99c" name="collator/collator.h" role="src" />
+   <file md5sum="ecea8a6dc59dd952c398a261031d146d" name="collator/collator_attr.c" role="src" />
+   <file md5sum="3f7f9c3c67532675724ae5c8b7ff413a" name="collator/collator_attr.h" role="src" />
+   <file md5sum="fd5cf50a3da4243cb88704e2de4d54ce" name="collator/collator_class.c" role="src" />
+   <file md5sum="55ce0306d94fa497751eeef6751bb559" name="collator/collator_class.h" role="src" />
+   <file md5sum="6c60688ed6cfc9d00f9693e715d3b2c9" name="collator/collator_compare.c" role="src" />
+   <file md5sum="5f5da8d7756b51bc3c636291bbb43f91" name="collator/collator_compare.h" role="src" />
+   <file md5sum="08203ae0dbc86073960d773d22ad869f" name="collator/collator_convert.c" role="src" />
+   <file md5sum="8602c6f9a77b68b50cd3bb4a70d51fa6" name="collator/collator_convert.h" role="src" />
+   <file md5sum="7b9092f07f626e0c7d7b9bb21dafd361" name="collator/collator_create.c" role="src" />
+   <file md5sum="bb4d131102c803a07b2fb9b51abfb147" name="collator/collator_create.h" role="src" />
+   <file md5sum="ddc0d60e87b274cf2ef0cc1739334785" name="collator/collator_error.c" role="src" />
+   <file md5sum="3bf6cdaf5933004ec861b92b054f387d" name="collator/collator_error.h" role="src" />
+   <file md5sum="7210e07c73e33bde332c175d69ac7618" name="collator/collator_is_numeric.c" role="src" />
+   <file md5sum="96a29c7cd5d51bdc9e1ac5a1741ea1ea" name="collator/collator_is_numeric.h" role="src" />
+   <file md5sum="835afba99a641ee39b881f9c57ff6e85" name="collator/collator_locale.c" role="src" />
+   <file md5sum="aa94e3a243fcc0f55c5fac17cfe495c7" name="collator/collator_locale.h" role="src" />
+   <file md5sum="9bb554bf630234fe2c79df9494dff5f2" name="collator/collator_sort.c" role="src" />
+   <file md5sum="3ca1155773a9a7fbe1dbab2c05b53121" name="collator/collator_sort.h" role="src" />
+   <file md5sum="1d4957bc5f14075d46ce0bf022848381" name="common/common_error.c" role="src" />
+   <file md5sum="4498a0f22867341f44766d88f17541e7" name="common/common_error.h" role="src" />
+   <file md5sum="bf08f2aea2f52b54448067e86ee8903a" name="dateformat/dateformat.c" role="src" />
+   <file md5sum="b016c289d7d3ef2c090ca117f1d1c808" name="dateformat/dateformat.h" role="src" />
+   <file md5sum="826f115e1e148740039788299d262066" name="dateformat/dateformat_attr.c" role="src" />
+   <file md5sum="fff2451e2b829b3a11286e3ff02aeaa8" name="dateformat/dateformat_attr.h" role="src" />
+   <file md5sum="e58a87c7e574267327572ec7afcb4e03" name="dateformat/dateformat_class.c" role="src" />
+   <file md5sum="060fe64620c32c7d079c6a613f23a0af" name="dateformat/dateformat_class.h" role="src" />
+   <file md5sum="35f1190ef07da2ab9e52b55e1953b629" name="dateformat/dateformat_data.c" role="src" />
+   <file md5sum="aca6ab0cdf0af4304f30e8b2584f8a76" name="dateformat/dateformat_data.h" role="src" />
+   <file md5sum="0f9f0e8e4b580b1545fafdf8ee30a2c5" name="dateformat/dateformat_format.c" role="src" />
+   <file md5sum="5726ddc59a084c7d2d3eecde5cbce643" name="dateformat/dateformat_format.h" role="src" />
+   <file md5sum="e21e153164b0bc476c8e5b202d65780a" name="dateformat/dateformat_parse.c" role="src" />
+   <file md5sum="e4e91c41449c75a3d9022bc84ca736df" name="dateformat/dateformat_parse.h" role="src" />
+   <file md5sum="fa1b8dc85337a1f87c53e499abd771ce" name="formatter/formatter.c" role="src" />
+   <file md5sum="8547297fe764c0b90b44e247e944ea51" name="formatter/formatter.h" role="src" />
+   <file md5sum="96ee710cecf4c41c25552437d2d3c9b2" name="formatter/formatter_attr.c" role="src" />
+   <file md5sum="9cfb277dad339ca1cd3c31a96f0ff69a" name="formatter/formatter_attr.h" role="src" />
+   <file md5sum="3fd1dddb59e19f0cb2dd61b7ddf79573" name="formatter/formatter_class.c" role="src" />
+   <file md5sum="dc4bae4d5a9a8aab1e153890f1d95da9" name="formatter/formatter_class.h" role="src" />
+   <file md5sum="756f6fa5999cd987ed8301d446a00084" name="formatter/formatter_data.c" role="src" />
+   <file md5sum="cc7020d21a178d4b31a0e386fee916c3" name="formatter/formatter_data.h" role="src" />
+   <file md5sum="3b76da35654cc0ce90774e93921fc774" name="formatter/formatter_format.c" role="src" />
+   <file md5sum="988cb93583b970fb0eadf1bfca070ee4" name="formatter/formatter_format.h" role="src" />
+   <file md5sum="c9eca2d2bb4959b01cb76b0aeb3365da" name="formatter/formatter_main.c" role="src" />
+   <file md5sum="30b2f992c2be399693da38d722c36485" name="formatter/formatter_main.h" role="src" />
+   <file md5sum="c0ac97e032a252a51a36d82c6d11b729" name="formatter/formatter_parse.c" role="src" />
+   <file md5sum="58351cfec0e3cfa9e6ae6dab8472c2f6" name="formatter/formatter_parse.h" role="src" />
+   <file md5sum="0c72d8c92348da5a325e2a9083e1e42d" name="grapheme/grapheme.h" role="src" />
+   <file md5sum="e0a6ab16a65b1feb9c4ec6c0d58292ac" name="grapheme/grapheme_string.c" role="src" />
+   <file md5sum="2be27d526a3baa5d5a66209021db8bcc" name="grapheme/grapheme_util.c" role="src" />
+   <file md5sum="27452d1d728396f394d686ab1f996ee3" name="grapheme/grapheme_util.h" role="src" />
+   <file md5sum="198e223f15792240d01cec0a494d5351" name="idn/idn.c" role="src" />
+   <file md5sum="f6810069c274f0404b2a98472c067930" name="idn/idn.h" role="src" />
+   <file md5sum="58e24ce09a807efa09b6ecd24d8cf7d1" name="locale/locale.c" role="src" />
+   <file md5sum="ce02ab750d8b76d285a7aede87ab5095" name="locale/locale.h" role="src" />
+   <file md5sum="92df251101bd4d9fe74857e5206c50f1" name="locale/locale_class.c" role="src" />
+   <file md5sum="d83441872e05b20e3c81ac811b989070" name="locale/locale_class.h" role="src" />
+   <file md5sum="e33fc1ec507a804c2c10474010907ef7" name="locale/locale_methods.c" role="src" />
+   <file md5sum="c95b49c5699fffdd8782210ae18369b0" name="locale/locale_methods.h" role="src" />
+   <file md5sum="d77bf9e9810b1d4bb7cd9b64d2bfbf1d" name="msgformat/msgformat.c" role="src" />
+   <file md5sum="57b782fce0d19a1b2be73c37445a8a8a" name="msgformat/msgformat.h" role="src" />
+   <file md5sum="1ee441c174b50eb6014886f3d8ed5787" name="msgformat/msgformat_attr.c" role="src" />
+   <file md5sum="b06d7114f34988f0d664f55d40a97341" name="msgformat/msgformat_attr.h" role="src" />
+   <file md5sum="07b8a35893063cf00732dc73efb20fc7" name="msgformat/msgformat_class.c" role="src" />
+   <file md5sum="72bd72c7d18c59e8ed6a3f335c0403fa" name="msgformat/msgformat_class.h" role="src" />
+   <file md5sum="ae3a6f6cff1a9dad925f1e1e03aa0073" name="msgformat/msgformat_data.c" role="src" />
+   <file md5sum="212f3f950cbd0066dc7ea3567e18e619" name="msgformat/msgformat_data.h" role="src" />
+   <file md5sum="1b8f118e82269de265ae4c496ed694c9" name="msgformat/msgformat_format.c" role="src" />
+   <file md5sum="c53f2498ac0a5d3690359c19947750b7" name="msgformat/msgformat_format.h" role="src" />
+   <file md5sum="9ed7cf723917b0cabccff7002d9bd5a4" name="msgformat/msgformat_helpers.h" role="src" />
+   <file md5sum="b792d5edfe22b3239a5499cb9aa4dd2e" name="msgformat/msgformat_parse.c" role="src" />
+   <file md5sum="c43dc5cb2029a8aea688bb0ad9c60fce" name="msgformat/msgformat_parse.h" role="src" />
+   <file md5sum="c06f8147cfc11f787dc1b0b01752e082" name="msgformat/msgformat_helpers.cpp" role="src" />
+   <file md5sum="c6a11dbd983f42d0b7012f98786c3adb" name="normalizer/normalizer.c" role="src" />
+   <file md5sum="2f617a22554b3b5f642ee2957ffc1f4a" name="normalizer/normalizer.h" role="src" />
+   <file md5sum="df1e58609c419616adbe0f83cabf6ac1" name="normalizer/normalizer_class.c" role="src" />
+   <file md5sum="7fba174f1556a78fa729926f66559371" name="normalizer/normalizer_class.h" role="src" />
+   <file md5sum="c73e05d19d0461bc272a651dc1d1ebc9" name="normalizer/normalizer_normalize.c" role="src" />
+   <file md5sum="e8568e1074c52661ff91a9f8c2cd977b" name="normalizer/normalizer_normalize.h" role="src" />
+   <file md5sum="e67bf378ca59ebf29d7299165e5bc1c2" name="resourcebundle/resourcebundle.c" role="src" />
+   <file md5sum="48ac719ba682e60fe46e5f0622d6285f" name="resourcebundle/resourcebundle.h" role="src" />
+   <file md5sum="538fa65daa48be175e7a6c53e415295b" name="resourcebundle/resourcebundle_class.c" role="src" />
+   <file md5sum="af95a6a4e95f046ffa87746b5a79bf95" name="resourcebundle/resourcebundle_class.h" role="src" />
+   <file md5sum="9955374a858c07ec2d205fa7dbd0bd0b" name="resourcebundle/resourcebundle_iterator.c" role="src" />
+   <file md5sum="b93ff5ecfa7cd17508d3d78c4dfb1c19" name="resourcebundle/resourcebundle_iterator.h" role="src" />
+   <file md5sum="4f1568cc0fdd94d7bb1dbb9d7e3d4f82" name="spoofchecker/spoofchecker.c" role="src" />
+   <file md5sum="f849738a7b8c81ce79f0ce7d60765baf" name="spoofchecker/spoofchecker.h" role="src" />
+   <file md5sum="2dfc61973d009facbbed8cedf8c3c40c" name="spoofchecker/spoofchecker_class.c" role="src" />
+   <file md5sum="b26c6087ff4998d52d869be2d466931e" name="spoofchecker/spoofchecker_class.h" role="src" />
+   <file md5sum="48b1e462efbc1d6aa01ae7afb2171727" name="spoofchecker/spoofchecker_create.c" role="src" />
+   <file md5sum="1e41e3c01b6a8adc37e414be46d60d36" name="spoofchecker/spoofchecker_create.h" role="src" />
+   <file md5sum="134951340e21b6f2da71c1b057ba0ebf" name="spoofchecker/spoofchecker_main.c" role="src" />
+   <file md5sum="d2e8444afdc9766fd0b515fa5ee07f1a" name="spoofchecker/spoofchecker_main.h" role="src" />
+   <file md5sum="59dae712be9f4a95a09b29a27c420a33" name="tests/_files/resourcebundle/es.res" role="test" />
+   <file md5sum="cc3b7ff2c29fb2610b06f38292ba60e1" name="tests/_files/resourcebundle/res_index.res" role="test" />
+   <file md5sum="d7639d260d18776b9e0947a5146a136a" name="tests/_files/resourcebundle/root.res" role="test" />
+   <file md5sum="31b340265e3d2c5b3348b4f0855d52bc" name="tests/_files/es-bundle.txt" role="test" />
+   <file md5sum="c95eca7ef138b7614978a3c5bb5d987b" name="tests/_files/resourcebundle.txt" role="test" />
+   <file md5sum="2cd579ecc8cdea5e7a1afd8d8bf94783" name="tests/_files/res_index.txt" role="test" />
+   <file md5sum="6bc00d899d3fabc544f5cda78789b45e" name="tests/badargs.phpt" role="test" />
+   <file md5sum="573cd3e0d6c97fce8868e0f3682d8712" name="tests/bug12887.phpt" role="test" />
+   <file md5sum="4c8945cd7733ceeb4fd8c60edfad6a02" name="tests/bug14562.phpt" role="test" />
+   <file md5sum="1c56ef46980bcc57fc8eef6397593895" name="tests/bug48227.phpt" role="test" />
+   <file md5sum="e94d901008c0d84905fea743514603f7" name="tests/bug50590.phpt" role="test" />
+   <file md5sum="26f365563ba539495ca453810bb44f44" name="tests/bug53512.phpt" role="test" />
+   <file md5sum="a3b4133bdaad47ec5dd198ab807be579" name="tests/bug55562.phpt" role="test" />
+   <file md5sum="f7647e75807e3f2f558b1ae43cc3b927" name="tests/bug59597_32.phpt" role="test" />
+   <file md5sum="746e6ecb43681e1ca2ea2013ee87f810" name="tests/bug59597_64.phpt" role="test" />
+   <file md5sum="9664f85dee9855b75d58c6e1dcfe3b9a" name="tests/bug60192-compare.phpt" role="test" />
+   <file md5sum="2678268d05efee834a1313e680c56724" name="tests/bug60192-getlocale.phpt" role="test" />
+   <file md5sum="fd880cd52872140d915aac84266e1772" name="tests/bug60192-getsortkey.phpt" role="test" />
+   <file md5sum="2ee84bd27b48c8b08121c4f21ab1f09f" name="tests/bug60192-sort.phpt" role="test" />
+   <file md5sum="88832fcd3596219e926314669cc2a4d3" name="tests/bug60192-sortwithsortkeys.phpt" role="test" />
+   <file md5sum="944308ef5f87e71e1aae33b4990d743c" name="tests/bug61487.phpt" role="test" />
+   <file md5sum="5629dcec35ed47c475a6e4098d2b67ed" name="tests/bug62017.phpt" role="test" />
+   <file md5sum="d1cbac32405c685b70efb935b8858236" name="tests/bug62070.phpt" role="test" />
+   <file md5sum="c572a5b29727f0fe87f2720f7b2ebc64" name="tests/bug62081.phpt" role="test" />
+   <file md5sum="337a05f7ef688f602b63bfb92fd144b1" name="tests/bug62082.phpt" role="test" />
+   <file md5sum="a6ef898c05df7061fef391e989c66b11" name="tests/bug62083.phpt" role="test" />
+   <file md5sum="c6411a2fd31b37d3027126b3763ca7d1" name="tests/collation_customization.phpt" role="test" />
+   <file md5sum="076dbac4c7c6950dbe142191f92dff87" name="tests/collator_asort.phpt" role="test" />
+   <file md5sum="0cea06c62a674a173493db8101e65ac1" name="tests/collator_compare.phpt" role="test" />
+   <file md5sum="2a1e80b17ed1005a1caefc548798b0e1" name="tests/collator_create.phpt" role="test" />
+   <file md5sum="ac08599f86484b4c2cf8d5ad1de5502b" name="tests/collator_create2.phpt" role="test" />
+   <file md5sum="f089b86ef34e71e1c18261e8243ace88" name="tests/collator_get_error_code.phpt" role="test" />
+   <file md5sum="b5f6f197e7a3860d5c676ef1b128f413" name="tests/collator_get_error_message.phpt" role="test" />
+   <file md5sum="ddac7fd3a348ede568727790f58d4b9b" name="tests/collator_get_locale.phpt" role="test" />
+   <file md5sum="6af36631a9948bc0032b919962e8d70f" name="tests/collator_get_locale2.phpt" role="test" />
+   <file md5sum="f4e44b7417c0481ee7152201203721e6" name="tests/collator_get_set_attribute.phpt" role="test" />
+   <file md5sum="ea4a32e44b8290a739adfe4d40175fac" name="tests/collator_get_set_strength.phpt" role="test" />
+   <file md5sum="bdc2454eb8b3a8e5df3af32b102af429" name="tests/collator_get_sort_key.phpt" role="test" />
+   <file md5sum="55ca6fe8a846dda5a36dc9b157792929" name="tests/collator_sort.phpt" role="test" />
+   <file md5sum="f64b76ad3321e4a540f61bef71de38ba" name="tests/collator_sort_with_sort_keys.phpt" role="test" />
+   <file md5sum="8d9acdaa5eac38ca7d6acab26d866459" name="tests/dateformat_calendars.phpt" role="test" />
+   <file md5sum="1841cfd74a34a91e080894db0056d9e7" name="tests/dateformat_clone.phpt" role="test" />
+   <file md5sum="828fbddad7afe52c42493bf3e79a9128" name="tests/dateformat_clone2.phpt" role="test" />
+   <file md5sum="4e2d2a8814ae0149f1885d106e17a0d3" name="tests/dateformat_format.phpt" role="test" />
+   <file md5sum="dfafe767216f65abd82a5fb9b2901406" name="tests/dateformat_format52.phpt" role="test" />
+   <file md5sum="4b2e5e609dd4247981b83c4ef5376c84" name="tests/dateformat_format_parse.phpt" role="test" />
+   <file md5sum="9b8d81f37a63d9842bc9a20b740dd005" name="tests/dateformat_get_datetype.phpt" role="test" />
+   <file md5sum="521778af94a401e1cf76c6ef5e411d4b" name="tests/dateformat_get_locale.phpt" role="test" />
+   <file md5sum="b085895c60312bb73f01bca36e443ffe" name="tests/dateformat_get_set_calendar.phpt" role="test" />
+   <file md5sum="9bed27e55bee66cc675005f0ff94c5fa" name="tests/dateformat_get_set_pattern.phpt" role="test" />
+   <file md5sum="06e09ba0a2754b7dd0ba12c3ffcebdc3" name="tests/dateformat_get_set_pattern2.phpt" role="test" />
+   <file md5sum="de90b85ba15b6f13972931f4f03f8658" name="tests/dateformat_get_timetype.phpt" role="test" />
+   <file md5sum="94794c4bcb7d87af9e571b06ba7112b9" name="tests/dateformat_get_timezone_id.phpt" role="test" />
+   <file md5sum="20672b2935b4b7cb190ddd880e886b7f" name="tests/dateformat_is_set_lenient.phpt" role="test" />
+   <file md5sum="df9c9572b2ac2b8c226e795c508f98af" name="tests/dateformat_localtime.phpt" role="test" />
+   <file md5sum="af62fb81a6962ea0b394d9ba1c0c91fc" name="tests/dateformat_parse.phpt" role="test" />
+   <file md5sum="2696338de0af026a750fc17c088a446d" name="tests/dateformat_parse_localtime_parsepos.phpt" role="test" />
+   <file md5sum="6e6d9f83059b9880e8607e4b78d46fae" name="tests/dateformat_parse_timestamp_parsepos.phpt" role="test" />
+   <file md5sum="07e68d791cd0b6c57888503daa6ab509" name="tests/dateformat_set_timezone_id.phpt" role="test" />
+   <file md5sum="38d4bb34d78de79c883396668f9432fc" name="tests/dateformat_set_timezone_id2.phpt" role="test" />
+   <file md5sum="9b30bfac00dddb8acac5a670e5257448" name="tests/formatter_clone.phpt" role="test" />
+   <file md5sum="6b9dbc73b9ea34367653375546f27489" name="tests/formatter_fail.phpt" role="test" />
+   <file md5sum="8751dc35ab55415663257f5068ce442b" name="tests/formatter_format.phpt" role="test" />
+   <file md5sum="0a094df7ae81d70b63818030e9aedd8e" name="tests/formatter_format2.phpt" role="test" />
+   <file md5sum="7796985c01ae2ca9ded46a1fad6da286" name="tests/formatter_format_conv.phpt" role="test" />
+   <file md5sum="50189c01a78ac35b11677fefc7d73558" name="tests/formatter_format_currency.phpt" role="test" />
+   <file md5sum="b6b5ff80bb3092792500e7a576c6c03e" name="tests/formatter_format_currency2.phpt" role="test" />
+   <file md5sum="0d486b3dae8701e3701dd45002bb5c8b" name="tests/formatter_get_error.phpt" role="test" />
+   <file md5sum="be0a2f60679fa5060f2a581273f2a3c9" name="tests/formatter_get_locale.phpt" role="test" />
+   <file md5sum="d5a5b5e58630eb5e417c00e7601addca" name="tests/formatter_get_set_attribute.phpt" role="test" />
+   <file md5sum="122462c8da8cfeb93453f746904767a5" name="tests/formatter_get_set_attribute2.phpt" role="test" />
+   <file md5sum="93f2ea85e1ad5a5de6841af5a2bfc4a2" name="tests/formatter_get_set_pattern.phpt" role="test" />
+   <file md5sum="876f8b7cb58a0996cb471aa1574a31e8" name="tests/formatter_get_set_symbol.phpt" role="test" />
+   <file md5sum="7d668c1054e5b631d39300b0fa6f86a7" name="tests/formatter_get_set_symbol2.phpt" role="test" />
+   <file md5sum="ec6bf3d3a3845e8c1f23c5cb0ecc0a5a" name="tests/formatter_get_set_text_attribute.phpt" role="test" />
+   <file md5sum="a6b9a178ff958b9085868237b30f91d3" name="tests/formatter_parse.phpt" role="test" />
+   <file md5sum="bf3a9420735973ae646c2d60099910de" name="tests/formatter_parse_currency.phpt" role="test" />
+   <file md5sum="605a6f99dfcc4f001d619c36c2199c47" name="tests/grapheme.phpt" role="test" />
+   <file md5sum="93c9593c1cffab5262fcaf327bf8e807" name="tests/idn.phpt" role="test" />
+   <file md5sum="7ed1b1750058c07c337b88566ec3611c" name="tests/idn_uts46_basic.phpt" role="test" />
+   <file md5sum="75e3109deb7586d3102363da04ebb161" name="tests/idn_uts46_errors.phpt" role="test" />
+   <file md5sum="d3e30e1a75e0e14be85d2c4094c2e2bb" name="tests/intl_error_name.phpt" role="test" />
+   <file md5sum="e331a922a214a1d382388d42884390b0" name="tests/intl_get_error_code.phpt" role="test" />
+   <file md5sum="3fe1998d9fe4ed90cb297527a2ebc6f7" name="tests/intl_get_error_message.phpt" role="test" />
+   <file md5sum="a38f30dc052f0b86935efe34284be75e" name="tests/intl_icu_data_version_constant.phpt" role="test" />
+   <file md5sum="fb3e2804078f241ef22cfd03a5630f61" name="tests/intl_icu_version_constant.phpt" role="test" />
+   <file md5sum="b8e48a945ccfda351c3d4b3fd6cb5941" name="tests/intl_is_failure.phpt" role="test" />
+   <file md5sum="c07005c995d9e9f18b5acec172c55e0e" name="tests/locale_accept.phpt" role="test" />
+   <file md5sum="069da24eae7b30852679a50c4da3cc17" name="tests/locale_compose_locale.phpt" role="test" />
+   <file md5sum="dba26a0ea597375da4c8accb54bfe685" name="tests/locale_filter_matches.phpt" role="test" />
+   <file md5sum="939510a99704f9c0e0c398c1cb1a53df" name="tests/locale_filter_matches2.phpt" role="test" />
+   <file md5sum="520abc3cb5a7b53b1385fc5d5ab892ce" name="tests/locale_get_all_variants.phpt" role="test" />
+   <file md5sum="530f05bbc3c687b8b24d7d687af7f25e" name="tests/locale_get_default.phpt" role="test" />
+   <file md5sum="b06c23f03444975b105f386710ead26d" name="tests/locale_get_display_language.phpt" role="test" />
+   <file md5sum="1c1b41ae429dcaec0d86476113c4b17d" name="tests/locale_get_display_name.phpt" role="test" />
+   <file md5sum="16554b998f750980d2dc299451363eaf" name="tests/locale_get_display_name2.phpt" role="test" />
+   <file md5sum="4c506304dcb16ecf6d40a77fc57b1791" name="tests/locale_get_display_region.phpt" role="test" />
+   <file md5sum="80074143e2eae9ee70451b48a3a61563" name="tests/locale_get_display_region2.phpt" role="test" />
+   <file md5sum="ea2c57cd344efd6f753901a1cabaf0a5" name="tests/locale_get_display_script.phpt" role="test" />
+   <file md5sum="6a334c64370125f5058dd26f0e5c55f9" name="tests/locale_get_display_script2.phpt" role="test" />
+   <file md5sum="ac444f6d9ef9a0a32b663daca93bbe48" name="tests/locale_get_display_script3.phpt" role="test" />
+   <file md5sum="27cdd9c88b94843a2b0bbbf18cd0fbb9" name="tests/locale_get_display_variant.phpt" role="test" />
+   <file md5sum="555175cfdf1ce3b0985ed74948b155f4" name="tests/locale_get_display_variant2.phpt" role="test" />
+   <file md5sum="f2b71f0d1c2dab7dec06f080898a2ce5" name="tests/locale_get_keywords.phpt" role="test" />
+   <file md5sum="18c5d9a9e207949338cd675ef503f9a1" name="tests/locale_get_keywords2.phpt" role="test" />
+   <file md5sum="1acdd07f8eee67a4ebffdd7d119a2f75" name="tests/locale_get_primary_language.phpt" role="test" />
+   <file md5sum="a99fe89e9e247e2977d87809bd2da012" name="tests/locale_get_region.phpt" role="test" />
+   <file md5sum="1ddc7b5c8bf67f6cebb6809fdc537c47" name="tests/locale_get_script.phpt" role="test" />
+   <file md5sum="d014a6a619169ed29000a8716555cae1" name="tests/locale_lookup.phpt" role="test" />
+   <file md5sum="3a102c94e5024ef66d743f018b4becd2" name="tests/locale_parse_locale.phpt" role="test" />
+   <file md5sum="054135a504d3f4aef188021d3fd8db6b" name="tests/locale_parse_locale2.phpt" role="test" />
+   <file md5sum="681adb6ad9a2ed10afdd3a68dd68ef9a" name="tests/locale_set_default.phpt" role="test" />
+   <file md5sum="0f0ca087240219dd2cb4b6901b48b6cf" name="tests/msgfmt_clone.phpt" role="test" />
+   <file md5sum="d9020cea5fcfcedd474e8dd8f64d3f07" name="tests/msgfmt_fail.phpt" role="test" />
+   <file md5sum="5d12e14f9e926d2974d02f46dc2c580e" name="tests/msgfmt_fail2.phpt" role="test" />
+   <file md5sum="4962960fd078b2d01d2dcee624588a54" name="tests/msgfmt_format.phpt" role="test" />
+   <file md5sum="afbffdb53e024a35752b92fd4d77071b" name="tests/msgfmt_get_error.phpt" role="test" />
+   <file md5sum="1b72bcda73ab76842d9b1ff406949d40" name="tests/msgfmt_get_locale.phpt" role="test" />
+   <file md5sum="9ab2dddf89c89dd7dc92ca0019df4d3a" name="tests/msgfmt_get_set_pattern.phpt" role="test" />
+   <file md5sum="125d782f13d82d9f6adacc4dfa330f95" name="tests/msgfmt_parse.phpt" role="test" />
+   <file md5sum="5244f4bdb3192fb3df0fdbf9fa67ae4a" name="tests/normalizer_normalize.phpt" role="test" />
+   <file md5sum="e6ba86fe9a118cf842bbc94784b9509a" name="tests/regression_sortwsk_and_cow.phpt" role="test" />
+   <file md5sum="2e794770205da72151fc94767c7462a3" name="tests/regression_sortwsk_eq.phpt" role="test" />
+   <file md5sum="4a5014af986b10ffd5ff10d0eee58c49" name="tests/regression_sort_and_cow.phpt" role="test" />
+   <file md5sum="b37fe7be8c176ea944c303addc8ab11d" name="tests/regression_sort_eq.phpt" role="test" />
+   <file md5sum="660da5ddfe6bee7f383cbb7bad6548fd" name="tests/resourcebundle.build" role="test" />
+   <file md5sum="1b5413ec2683104cb0c85d76615ba9c4" name="tests/resourcebundle.inc" role="test" />
+   <file md5sum="646c804595bc32b122c5e66d0acac0c2" name="tests/resourcebundle_arrayaccess.phpt" role="test" />
+   <file md5sum="f53d593baaab84b2b77bca1bba88dc49" name="tests/resourcebundle_create.phpt" role="test" />
+   <file md5sum="3c65a454176b09887ae939241707124f" name="tests/resourcebundle_individual.phpt" role="test" />
+   <file md5sum="882c5a7f3f58861d7bc462c0c8c7abca" name="tests/resourcebundle_internal.phpt" role="test" />
+   <file md5sum="dc9e8c7117b429d195f5383f38732895" name="tests/resourcebundle_iterator.phpt" role="test" />
+   <file md5sum="7e04e4c286b79e653c5a1c269e6c7f77" name="tests/resourcebundle_locales.phpt" role="test" />
+   <file md5sum="2322aa9489e1ed09e2e22cb05adf9087" name="tests/resourcebundle_null_mandatory_args.phpt" role="test" />
+   <file md5sum="68ff948e3bf058df2eab386ba5bf7ecf" name="tests/resourcebundle_traversable.phpt" role="test" />
+   <file md5sum="59ada47d4fcf47179d51e2f87cf02f39" name="tests/spoofchecker_001.phpt" role="test" />
+   <file md5sum="80553c1e9f12c1384d7dd419ebbfacc4" name="tests/spoofchecker_002.phpt" role="test" />
+   <file md5sum="75d195b7fb7fb0fcf2ba5c0a2addde92" name="tests/spoofchecker_003.phpt" role="test" />
+   <file md5sum="6837c0c6d28da02cd24d470be6736db2" name="tests/spoofchecker_004.phpt" role="test" />
+   <file md5sum="56accea0d2800c11a48a16de47d33d1a" name="tests/transliterator_clone.phpt" role="test" />
+   <file md5sum="a5d7822f79c0acc8d7fb8941c71b2d09" name="tests/transliterator_create_basic.phpt" role="test" />
+   <file md5sum="afd6d39f1d2a0b6706d81789972ea6e7" name="tests/transliterator_create_error.phpt" role="test" />
+   <file md5sum="a86f4aacda37a96f7622dbe488ccf3be" name="tests/transliterator_create_from_rule_basic.phpt" role="test" />
+   <file md5sum="63c9da4fcb83048e955c5efdd1cef5ad" name="tests/transliterator_create_from_rule_error.phpt" role="test" />
+   <file md5sum="73cd37f9b8eaca86b24a7f8592e8f810" name="tests/transliterator_create_inverse_basic.phpt" role="test" />
+   <file md5sum="ae97a0e46553cf6d8e80d3f2b515df04" name="tests/transliterator_create_inverse_error.phpt" role="test" />
+   <file md5sum="36170feca982eb0f352a4767571e717d" name="tests/transliterator_get_error_code_basic.phpt" role="test" />
+   <file md5sum="4a2528f5c78833ba4ead97a916b20028" name="tests/transliterator_get_error_code_error.phpt" role="test" />
+   <file md5sum="664963ce4bc8e3d9fe6b702f48b70348" name="tests/transliterator_get_error_message_basic.phpt" role="test" />
+   <file md5sum="0b082d5c06b598fa99e522cd5a8222a4" name="tests/transliterator_get_error_message_error.phpt" role="test" />
+   <file md5sum="753c9309a309f97e6f28755994df0e74" name="tests/transliterator_list_ids_basic.phpt" role="test" />
+   <file md5sum="7764f629a6a2af50759aec6e080ec2e9" name="tests/transliterator_list_ids_error.phpt" role="test" />
+   <file md5sum="103b94f39f518c96e8a3422743b5b1f7" name="tests/transliterator_property_id.phpt" role="test" />
+   <file md5sum="cbf66b0ed71e2d923724f277d320a89c" name="tests/transliterator_transliterate_basic.phpt" role="test" />
+   <file md5sum="cdee3769e18b1dbe3de3bd6be73af274" name="tests/transliterator_transliterate_error.phpt" role="test" />
+   <file md5sum="1aff04218983493c0d97d730001b332d" name="tests/transliterator_transliterate_variant1.phpt" role="test" />
+   <file md5sum="9f0212c9ad64db1e1b08161cc6156873" name="tests/ut_common.inc" role="test" />
+   <file md5sum="6ea30f96771d4b642fb6f96f8e62ba3a" name="transliterator/transliterator.c" role="src" />
+   <file md5sum="f9b84eee9b2198a2fec5150449f21408" name="transliterator/transliterator.h" role="src" />
+   <file md5sum="2b6685722be57590416548ae173b3be3" name="transliterator/transliterator_class.c" role="src" />
+   <file md5sum="4937c486f6c6ab28c64322ea4b5ecf7a" name="transliterator/transliterator_class.h" role="src" />
+   <file md5sum="88f5056f0c85f92f06425dfc39c39af5" name="transliterator/transliterator_methods.c" role="src" />
+   <file md5sum="f661900c779a4d94f178bde4fb836658" name="transliterator/transliterator_methods.h" role="src" />
+   <file md5sum="0324cd8cc4f0e8c841b637d8f6373d5e" name="config.m4" role="src" />
+   <file md5sum="af093a16458e9c6a7b0c21ca163030e6" name="config.w32" role="src" />
+   <file md5sum="ee54fbd10a0216138706d765580f31e3" name="intl_common.h" role="src" />
+   <file md5sum="e1812de26b0ca45179e1758f18a880d7" name="intl_convert.c" role="src" />
+   <file md5sum="9593fc03cbc2f081bf6fdef14e7710c4" name="intl_convert.h" role="src" />
+   <file md5sum="4b9a53deb7b72c9d3fdc4919b6d419c3" name="intl_data.h" role="src" />
+   <file md5sum="44c1a7a5c0428fd03006de9359ad33d5" name="intl_error.c" role="src" />
+   <file md5sum="178eb9d65fa0230cb1b979c9d3d1e92c" name="intl_error.h" role="src" />
+   <file md5sum="1f0934d4b9ea6f2f57af91c4c1b433ca" name="php_compatshims.h" role="src" />
+   <file md5sum="3a89f7190b916371e6a04de4dff732c3" name="php_intl.c" role="src" />
+   <file md5sum="1f3ccfa43dac9a32dc21b3e15e9621d1" name="php_intl.h" role="src" />
+   <file md5sum="5b4ee4c370da06aa3de0d753d8b4aa32" name="CREDITS" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.4</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>intl</providesextension>
+ <extsrcrelease>
+  <configureoption default="DEFAULT" name="with-icu-dir" prompt="Specify where ICU libraries and headers can be found" />
+ </extsrcrelease>
+</package>

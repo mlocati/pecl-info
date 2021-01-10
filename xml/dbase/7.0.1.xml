@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>dbase</name>
+ <channel>pecl.php.net</channel>
+ <summary>dBase database file access functions</summary>
+ <description>These functions allow you to access records stored 
+in dBase-format (dbf) databases.
+
+There is no support for indexes or memo fields. 
+The databases are automatically locked with blocking flock()s.
+
+dBase files are simple sequential files of fixed length records. 
+Records are appended to the end of the file and deleted records 
+are kept until you call dbase_pack().</description>
+ <lead>
+  <name>Jim Winstead</name>
+  <user>jimw</user>
+  <email>jimw@php.net</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Alan Knowles</name>
+  <user>alan_k</user>
+  <email>alan@roojs.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Christoph M. Becker</name>
+  <user>cmb</user>
+  <email>cmbecker69@gmx.de</email>
+  <active>yes</active>
+ </lead>
+ <date>2019-10-20</date>
+ <time>13:09:53</time>
+ <version>
+  <release>7.0.1</release>
+  <api>7.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+Security Fixes
+
+  - Fixed #78668 (Out-of-bounds Read in dbase.c)
+
+Bug Fixes
+
+  - Fixed #78070 (dbase functions may modify passed array)
+  - Fixed #78594 (compile error: &apos;LOCK_EX&apos; undeclared)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="452386da48e8f3eadb8fb23aeb5a9df9" name="tests/001.phpt" role="test" />
+   <file md5sum="86c332d8129c67ebb6067dee5718968a" name="tests/002.phpt" role="test" />
+   <file md5sum="81f61f704e62cb0e1c081915a02cac57" name="tests/bug31754.phpt" role="test" />
+   <file md5sum="bdb4261cafeb0e5dbd8ac9a141627a45" name="tests/bug39305.phpt" role="test" />
+   <file md5sum="57188c20bc948fc17c96c58070b2c884" name="tests/bug52112.phpt" role="test" />
+   <file md5sum="74289ddfce27aed9ef830175a82ac6d3" name="tests/bug73391.phpt" role="test" />
+   <file md5sum="da39077ae034b7b4baa24ce0054ade1d" name="tests/bug73395.phpt" role="test" />
+   <file md5sum="bc5f5c12b3afa793bd37fd9c2d8bf12a" name="tests/bug73411.phpt" role="test" />
+   <file md5sum="fa663bfbf15d30ce33ae755266bcfefe" name="tests/bug73414.dbf" role="test" />
+   <file md5sum="2bd538043c1e376fbcab820942b89421" name="tests/bug73414.phpt" role="test" />
+   <file md5sum="6c48e7c16a7b6b771a1eb2560e0744f1" name="tests/bug73442.phpt" role="test" />
+   <file md5sum="dc7ccba120d93c5feb2649023fb35051" name="tests/bug73447.phpt" role="test" />
+   <file md5sum="3dbb27fd99792ffd192fd63ae3a73d8b" name="tests/bug78070.phpt" role="test" />
+   <file md5sum="787c20559f2a5679fc7c87e2823eb2a3" name="tests/bug78668.phpt" role="test" />
+   <file md5sum="736539aeea8b15e52d6f320c31c4942b" name="tests/bug78668.dbf" role="test" />
+   <file md5sum="ac763c395084e2524835ad79d34872c1" name="tests/dbase_add_record_basic.phpt" role="test" />
+   <file md5sum="f0ef4fd40a6f77bc4ef53db97e2f5f23" name="tests/dbase_add_record_error.phpt" role="test" />
+   <file md5sum="8dd78527fad6fc07b2379a710b82e03f" name="tests/dbase_add_record_variation1.phpt" role="test" />
+   <file md5sum="c2712e54f6c902b6f1c894c310f008a8" name="tests/dbase_add_record_variation2.phpt" role="test" />
+   <file md5sum="1d046b4179f58d277553bc40c856ca06" name="tests/dbase_add_record_variation3.phpt" role="test" />
+   <file md5sum="cac3adc651aeeae555027d1a0aebc986" name="tests/dbase_add_record_variation4.phpt" role="test" />
+   <file md5sum="a98af5368b1c476471f5f2832583a04a" name="tests/dbase_close_error.phpt" role="test" />
+   <file md5sum="dc5f0f15805d6c881d483fb090c16542" name="tests/dbase_create_basic.phpt" role="test" />
+   <file md5sum="d3873652750751ea31ae504080db5a6a" name="tests/dbase_create_error.phpt" role="test" />
+   <file md5sum="d3a7b1086e890741eeab02d089515444" name="tests/dbase_create_error_open_basedir.phpt" role="test" />
+   <file md5sum="085ca004372fc3ce15d961c7082ed1e0" name="tests/dbase_create_variation1.phpt" role="test" />
+   <file md5sum="5fa57385e62c8c2378b28aed089d59c3" name="tests/dbase_create_variation2.phpt" role="test" />
+   <file md5sum="56cf69239eff240b73ec490a688677c3" name="tests/dbase_create_variation3.phpt" role="test" />
+   <file md5sum="7cf95a3e9878057983e618ab913c2b29" name="tests/dbase_delete_record_basic.phpt" role="test" />
+   <file md5sum="ee28cab032c5b0a3a9003c5211701290" name="tests/dbase_delete_record_error_32bit.phpt" role="test" />
+   <file md5sum="490d943b610421f75971f86ce0dfe53d" name="tests/dbase_delete_record_error_64bit.phpt" role="test" />
+   <file md5sum="e560b68deebdaf4cd27d3ce58f80143d" name="tests/dbase_delete_record_variation1.phpt" role="test" />
+   <file md5sum="cb6b40635298fc871a697cde65345189" name="tests/dbase_get_header_info_basic.phpt" role="test" />
+   <file md5sum="f333220de1f68a520fb19793f4951891" name="tests/dbase_get_header_info_error.phpt" role="test" />
+   <file md5sum="79b4e9899584a5be6787b9efd536f436" name="tests/dbase_get_record_basic.phpt" role="test" />
+   <file md5sum="b62b0eaced003d30ab1324744cdf9d1f" name="tests/dbase_get_record_error_32bit.phpt" role="test" />
+   <file md5sum="a53a846e0613e076341ab94d34dcb7be" name="tests/dbase_get_record_error_64bit.phpt" role="test" />
+   <file md5sum="51bff6fdd2dcb5e11c944555ac815e44" name="tests/dbase_get_record_with_names_basic.phpt" role="test" />
+   <file md5sum="93d78f83d7d0fd11ce0cc1b83d77cde6" name="tests/dbase_get_record_with_names_error_32bit.phpt" role="test" />
+   <file md5sum="197fe5384e7befc65d119b056042b8f4" name="tests/dbase_get_record_with_names_error_64bit.phpt" role="test" />
+   <file md5sum="7877985633843cd3b4676372eadcf474" name="tests/dbase_get_record_with_names_variation1.phpt" role="test" />
+   <file md5sum="1ebcdd04635dae07026e6eb72cfba7a3" name="tests/dbase_numfields_basic.phpt" role="test" />
+   <file md5sum="83a6cff259153c8bec0f2d883f3b0f1e" name="tests/dbase_numfields_error.phpt" role="test" />
+   <file md5sum="f06121c1b99ccecf5bd7c2e19631958a" name="tests/dbase_numrecords_basic.phpt" role="test" />
+   <file md5sum="20e14c27589a0e45e50979afb25b4444" name="tests/dbase_numrecords_error.phpt" role="test" />
+   <file md5sum="96bbb1bd4f4b8a423873fe747254e4bd" name="tests/dbase_open_error.phpt" role="test" />
+   <file md5sum="5edd2f59cd1049755f5861aae2009e9a" name="tests/dbase_open_error1.dbf" role="test" />
+   <file md5sum="c19bb22d7934cb0bb4b3a6921512d70d" name="tests/dbase_open_error1.phpt" role="test" />
+   <file md5sum="9afa5a737dfa9cadfc0a90d822f2075c" name="tests/dbase_open_error2.dbf" role="test" />
+   <file md5sum="380af654000478b925b308eed7de29e9" name="tests/dbase_open_error2.phpt" role="test" />
+   <file md5sum="964626f5ad2d704fb23e69135e3d1b4d" name="tests/dbase_open_error3.dbf" role="test" />
+   <file md5sum="11b2c0c2bbfc3487e4569c9312feb5b8" name="tests/dbase_open_error3.phpt" role="test" />
+   <file md5sum="1deae7d23181308dcf382b5fe394a305" name="tests/dbase_open_error_open_basedir.phpt" role="test" />
+   <file md5sum="6c97b7db10c7142f34a4cdae2a4d4eea" name="tests/dbase_pack_basic.phpt" role="test" />
+   <file md5sum="7310087153cc9c6f11275fce3abfdf20" name="tests/dbase_pack_error.phpt" role="test" />
+   <file md5sum="1ea711b286840f76885c40d63e634e25" name="tests/dbase_pack_variation1.phpt" role="test" />
+   <file md5sum="1f4c280e420b49658a1ba827e3216412" name="tests/dbase_pack_variation2.phpt" role="test" />
+   <file md5sum="78b86eb6bcb54ae45df91e1b745c503d" name="tests/dbase_replace_record_basic.phpt" role="test" />
+   <file md5sum="2d923d9eac27ffda657882ef564c283c" name="tests/dbase_replace_record_error.phpt" role="test" />
+   <file md5sum="0dd84e43920ede56da43ba7ba3f02b0e" name="tests/dbase_replace_record_error_1_32bit.phpt" role="test" />
+   <file md5sum="31e054c056ee9b28ea36760b0c5712f4" name="tests/dbase_replace_record_error_1_64bit.phpt" role="test" />
+   <file md5sum="62831986d2193c7113018ba41d0bda6d" name="tests/dbase_replace_record_variation1.phpt" role="test" />
+   <file md5sum="cfbded8479e39d2ce812cbf75c522901" name="tests/dbase_replace_record_variation2.phpt" role="test" />
+   <file md5sum="0d45f0060f308596af4c7c52b822782d" name="tests/dbase_replace_record_variation3.phpt" role="test" />
+   <file md5sum="ca3cd9cfe3c1a9e56d3fe9cdcfe542a4" name="tests/example.dbf" role="test" />
+   <file md5sum="728b85336430bf1f751fd14c184dfef9" name="tests/nullable.phpt" role="test" />
+   <file md5sum="e9fe042af66f261a339f13f76c354afb" name="tests/type_datetime.phpt" role="test" />
+   <file md5sum="b9afde8beda71f7a7320913695c47840" name="tests/type_logical.phpt" role="test" />
+   <file md5sum="45e733e934e2707c5dd7f641bf9d30c5" name="tests/type_numeric_int_32bit.phpt" role="test" />
+   <file md5sum="c0e65d7b269fae52d51946be0f51387c" name="tests/type_numeric_int_64bit.phpt" role="test" />
+   <file md5sum="a8bb229aac535dd184019c6bc7ac9f79" name="config.m4" role="src" />
+   <file md5sum="fa9453d506e2a837033bdc7df177a74e" name="config.w32" role="src" />
+   <file md5sum="793ff617fe81032256e6cf88d58f8fcd" name="CREDITS" role="doc" />
+   <file md5sum="b43714ea34ab54e18eb5892b69038f25" name="dbase.c" role="src" />
+   <file md5sum="c9bc44d23f16ecfad82cd8e0313b1b6e" name="dbf.h" role="src" />
+   <file md5sum="c3d5d6eb94bb616ce749fed71c5230ef" name="dbf_head.c" role="src" />
+   <file md5sum="625a21868eac8fb25ac8656aa0a42cc7" name="dbf_head.h" role="src" />
+   <file md5sum="ac304dbae6b8ab65f60d2cfdf8655d77" name="dbf_misc.c" role="src" />
+   <file md5sum="17de705e9bc19bb47f39737be12ff3b4" name="dbf_misc.h" role="src" />
+   <file md5sum="967fadb0f0f707679077f94fa131fb85" name="dbf_ndx.c" role="src" />
+   <file md5sum="fb69a5117899b5a5618774ac17c936b2" name="dbf_ndx.h" role="src" />
+   <file md5sum="5d43c829f1f3bd40ae0fe4be587f0cb8" name="dbf_rec.c" role="src" />
+   <file md5sum="610397fb1244627aa5fa52595c377486" name="dbf_rec.h" role="src" />
+   <file md5sum="0d724a2bdd4a49c761dd9179b43cd798" name="dbf_sdncal.h" role="src" />
+   <file md5sum="80c8521ded532d114773a3b43bfc62c5" name="gregor.c" role="src" />
+   <file md5sum="52dd90569008fee5bcdbb22d945b1108" name="LICENSE" role="doc" />
+   <file md5sum="af753b3cb27ddca111a51fefe8594687" name="php_dbase.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>dbase</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2019-04-17</date>
+   <version>
+    <release>7.0.0</release>
+    <api>7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Backward Incompatible Changes
+
+  - database link identifiers are now proper resources instead of integers
+  - logical values are now retrieved as booleans instead of integers
+
+New Features
+
+  - FoxPro datetime fields (&apos;T&apos;) are now supported as &quot;YYYYMMDDhhmmss.uuu&quot;
+  - Uninitialized logical fields are now supported as NULL
+  - base_create() now supports an optional $type parameter (either DBASE_TYPE_DBASE
+    or DBASE_TYPE_FOXPRO) to define the type of database to be created
+  - FoxPro nullable fields are now transparently supported
+  - The $mode of dbase_open() can now be specified as DBASE_RDONLY or DBASE_RDWR
+  - The version of the dbase extension is now available as DBASE_VERSION
+  - Basic database locking has been implemented
+  - Internally the Zend memory manager is now used
+  - Error reporting has been improved; e.g. unsupported field type now raise a
+    warning
+
+Bug Fixes
+
+  - Fixed #39305 (Use of decimal point in different countries)
+  - Fixed #52112 (dbase_get_record() returns integer instead of decimal values)
+  - Fixed #68289 (wrong strlcpy call)
+  - Fixed #72812 (dbase_create does not close the FD on failure)
+  - Fixed #72815 (zend_get_parameters_ex() is deprecated)
+  - Fixed #73391 (Writing of floats can cause OOB reads)
+  - Fixed #73395 (failing dbase_create() may leak memory)
+  - Fixed #73411 (dbase_pack() returns TRUE on failure)
+  - Fixed #73414 (Unsupported field types may cause dbase_open() to leak memory)
+  - Fixed #73442 (Float fields always have precision 0)
+  - Fixed #73447 (Floats written to character fields are truncated to integer)
+  - Fixed #74983 (SIGABRT when function put_dbf_field is called)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>7.0.0RC1</release>
+    <api>7.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2019-04-04</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Backward Incompatible Changes
+
+  - database link identifiers are now proper resources instead of integers
+  - logical values are now retrieved as booleans instead of integers
+
+New Features
+
+  - FoxPro datetime fields (&apos;T&apos;) are now supported as &quot;YYYYMMDDhhmmss.uuu&quot;
+  - Uninitialized logical fields are now supported as NULL
+  - base_create() now supports an optional $type parameter (either DBASE_TYPE_DBASE
+    or DBASE_TYPE_FOXPRO) to define the type of database to be created
+  - FoxPro nullable fields are now transparently supported
+  - The $mode of dbase_open() can now be specified as DBASE_RDONLY or DBASE_RDWR
+  - The version of the dbase extension is now available as DBASE_VERSION
+  - Basic database locking has been implemented
+  - Internally the Zend memory manager is now used
+  - Error reporting has been improved; e.g. unsupported field type now raise a
+    warning
+
+Bug Fixes
+
+  - Fixed #73391 (Writing of floats can cause OOB reads)
+  - Fixed #73395 (failing dbase_create() may leak memory)
+  - Fixed #73411 (dbase_pack() returns TRUE on failure)
+  - Fixed #73414 (Unsupported field types may cause dbase_open() to leak memory)
+  - Fixed #73442 (Float fields always have precision 0)
+  - Fixed #73447 (Floats written to character fields are truncated to integer)
+  - Fixed #74983 (SIGABRT when function put_dbf_field is called)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>7.0.0beta1</release>
+    <api>7.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2016-10-26</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- PHP 7 compatibility (use dbase-5 with PHP 5)
+- Fixed #39305 (Use of decimal point in different countries)
+- Fixed #52112 (dbase_get_record() returns integer instead of decimal values)
+- Fixed #68289 (wrong strlcpy call)
+- Fixed #72812 (dbase_create does not close the FD on failure)
+- Fixed #72815 (zend_get_parameters_ex() is deprecated)
+- Fixed #73391 (Writing of floats can cause OOB reads)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>5.1.1</release>
+    <api>5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2016-10-26</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Fixed #39305 (Use of decimal point in different countries)
+- Fixed #52112 (dbase_get_record() returns integer instead of decimal values)
+- Fixed #68289 (wrong strlcpy call)
+- Fixed #72812 (dbase_create does not close the FD on failure)
+- Fixed #73391 (Writing of floats can cause OOB reads)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>5.1.0</release>
+    <api>5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-06-12</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Fixed build on PHP 5.4+
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>5.0.1</release>
+    <api>5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-10-11</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Bug fix release 
+	#18831 - invalid length field when writing date and boolean types.
+   </notes>
+  </release>
+  <release>
+   <date>2009-11-05</date>
+   <version>
+    <release>5.0rc1</release>
+    <api>5.0rc1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+package.xml added to support installation using pear installer
+   </notes>
+  </release>
+ </changelog>
+</package>

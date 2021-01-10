@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sqlsrv</name>
+ <channel>pecl.php.net</channel>
+ <summary>Microsoft Drivers for PHP for SQL Server (SQLSRV)</summary>
+ <description>The Microsoft Drivers for PHP for SQL Server are PHP extensions that allow for the reading and writing of SQL Server data from within PHP scripts. The SQLSRV extension provides a procedural interface while the PDO_SQLSRV extension implements PDO for accessing data in all editions of SQL Server 2008 R2 and later (including Azure SQL DB). These drivers rely on the Microsoft ODBC Driver for SQL Server to handle the low-level communication with SQL Server.
+*This package contains only the SQLSRV driver.*
+ </description>
+ <lead>
+  <name>Meet Bhagdev</name>
+  <user>meetbhagdev</user>
+  <email>meetb@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Jay Kint</name>
+  <user>jkint</user>
+  <email>jaykint@microsoft.com</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Marie Barwin</name>
+  <user>mbar</user>
+  <email>v-mabarw@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Hadis Kakanejadi Fard</name>
+  <user>hadisfard</user>
+  <email>v-hakaka@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2017-07-31</date>
+ <time>13:23:11</time>
+ <version>
+  <release>5.0.0preview</release>
+  <api>5.0.0</api>
+ </version>
+ <stability>
+  <release>devel</release>
+  <api>devel</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/mit">The MIT License (MIT)</license>
+ <notes>
+[Added]
+- Added support for PHP 7.2 Beta 1
+[Removed]
+- No longer support Ubuntu 15
+- Supplying tablename into PDO::lastInsertId($name) no longer return the last inserted row ([lastInsertId](https://github.com/Microsoft/msphpsql/wiki/Features#lastinsertid))
+[Limitation]
+- No support for inout / output params when using sql_variant type
+[Known Issues]
+- When pooling is enabled in Linux or MAC
+  - unixODBC 2.3.4 or prior (Linux and MAC) might not return proper diagnostics information, such as error messages, warnings and informative messages
+  - due to this unixODBC bug, fetch large data (such as xml, binary) as streams as a workaround. See the examples (https://github.com/Microsoft/msphpsql/wiki/Connection-Pooling-on-Linux-and-Mac)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="6903b6e4c2a4b262d4c6a32036831573" name="config.m4" role="src" />
+   <file md5sum="2f97d9310776fc2e97ef6763766223e6" name="config.w32" role="src" />
+   <file md5sum="174f44f023eb8165d82f2601f84ea98f" name="conn.cpp" role="src" />
+   <file md5sum="da4d3c1d4392f2e63b36250266cdf9b4" name="CREDITS" role="doc" />
+   <file md5sum="35b418492550300c7b38aea40650415c" name="init.cpp" role="src" />
+   <file md5sum="061c9665b46b4db81317457288e2ef9c" name="LICENSE" role="doc" />
+   <file md5sum="d47e1b32f41122c0f84aa4e37a192a29" name="php_sqlsrv.h" role="src" />
+   <file md5sum="b2b2a89fc8eabb830fc9f03abdfff225" name="shared/core_conn.cpp" role="src" />
+   <file md5sum="b8f50845d4fa695e718813d32d40d3ab" name="shared/core_init.cpp" role="src" />
+   <file md5sum="d348dc4166960e0253fecb6aa36969ca" name="shared/core_results.cpp" role="src" />
+   <file md5sum="25a8ebd7c634c719d2b1a1e8d1d006d0" name="shared/core_sqlsrv.h" role="src" />
+   <file md5sum="5f7b1ceb39c13a6f7462bc35622c6bba" name="shared/core_stmt.cpp" role="src" />
+   <file md5sum="6950a327add9db11c7d2117bcd485c00" name="shared/core_stream.cpp" role="src" />
+   <file md5sum="fc047e9fec757c0de859e0d6c62fbf83" name="shared/core_util.cpp" role="src" />
+   <file md5sum="0e42e95bca9a8acb879c8cdabb1d8c0f" name="shared/FormattedPrint.cpp" role="src" />
+   <file md5sum="23d7d62dc7a03a87931478873eef435a" name="shared/FormattedPrint.h" role="src" />
+   <file md5sum="19e90f3dd50b521b8404d547baf7bb2d" name="shared/globalization.h" role="src" />
+   <file md5sum="4430b15cdb2e913f640ca56d52c0582d" name="shared/interlockedatomic_gcc.h" role="src" />
+   <file md5sum="6bf21f521752dc12266efc4e3591f73e" name="shared/interlockedatomic.h" role="src" />
+   <file md5sum="82b54632d0dd586d6da9c17ff4a9e48d" name="shared/interlockedslist.h" role="src" />
+   <file md5sum="41a06df1ce4d43cbc6dc771c03fac5cb" name="shared/localization.hpp" role="src" />
+   <file md5sum="e0e175eb91aae54777beff477e45f116" name="shared/localizationimpl.cpp" role="src" />
+   <file md5sum="168f836199a9b479fa6bc08ccbf3452b" name="shared/msodbcsql.h" role="src" />
+   <file md5sum="06a6fa11604ce985f1b99242ccc29aab" name="shared/sal_def.h" role="src" />
+   <file md5sum="2fba6dfc9a370445b3ab9236ed3a6367" name="shared/StringFunctions.cpp" role="src" />
+   <file md5sum="24c0ecba105e1334c0ad08638eef0ad2" name="shared/StringFunctions.h" role="src" />
+   <file md5sum="e95081c0f3ed5119ee9bf755dce35890" name="shared/typedefs_for_linux.h" role="src" />
+   <file md5sum="68eb05017c79a67e11fb056775b5aee5" name="shared/version.h" role="src" />
+   <file md5sum="0c2b309ae6fd848c1f2c793b41a0d6f9" name="shared/xplat.h" role="src" />
+   <file md5sum="39eca425f9ca9cb1f62a2158d3459223" name="shared/xplat_intsafe.h" role="src" />
+   <file md5sum="87b5e2270575bfa458240cb39f419c13" name="shared/xplat_winerror.h" role="src" />
+   <file md5sum="b4ad772a9bf2eccec97c0749e79bea3c" name="shared/xplat_winnls.h" role="src" />
+   <file md5sum="769411b122017ffdadbb3b434bbc3c0d" name="stmt.cpp" role="src" />
+   <file md5sum="a211feb972cfe8c72959d0b5272552e3" name="template.rc" role="src" />
+   <file md5sum="30ba49c6e77b6cdd19e85898c5e3e6a9" name="util.cpp" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+   <arch>
+    <pattern>linux-*-i?86-*</pattern>
+    <conflicts/>
+   </arch>   
+  </required>
+ </dependencies>
+ <providesextension>sqlsrv</providesextension>
+ <extsrcrelease />
+</package>

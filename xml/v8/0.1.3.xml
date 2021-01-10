@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>v8</name>
+ <channel>pecl.php.net</channel>
+ <summary>V8 JavaScript engine API for PHP</summary>
+ <description>This extension brings V8 JavaScript engine API to PHP with some abstraction in mind and provides an accurate native V8 C++ API implementation available from PHP.</description>
+ <lead>
+  <name>Bogdan Padalko</name>
+  <user>pinepain</user>
+  <email>pinepain@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2017-03-05</date>
+ <time>21:01:01</time>
+ <version>
+  <release>0.1.3</release>
+  <api>0.1.3</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/mit">The MIT License (MIT)</license>
+ <notes>
+This release adds low-level optimizations, simplify some internal methods and fix few bugs. For more details see
+change list below.
+
+As of this release, V8 &gt;= 5.9.5 required.
+
+* - BC-breaking or potentially BC-breaking changes
+
+Changes to public API and other important changes which may affect end-user:
+
+- * Replace V8\Isolate::GetCurrentContext with V8\Isolate::GetEnteredContext();
+- * Remove V8\ObjectValue::CreationContext(), use V8\ObjectValue::GetContext();
+- Add V8\PropertyCallbackInfo::ShouldThrowOnError() method;
+- Add V8\FunctionCallbackInfo::NewTarget() method;
+- V8\ReturnValue now explicitly holds isolate and context which could be accessed outside of calling context;
+- Fix potential problems with V8\FunctionCallbackInfo and V8\PropertyCallbackInfo when used outside calling scope;
+- Fix leak when V8\ScriptCompiler::CompileFunctionInContext() invoked with arguments and/or context extensions;
+- Fix segfault when abruptly exiting from isolate which entered multiple time or from multiple nested isolates;
+- Add V8\Exceptions\ValueException to stubs;
+- Remove $global_template and $global_object private props from V8\Context.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="427511975589fe06adcc35add1344b5c" name="src/php_v8_a.cc" role="src" />
+   <file md5sum="c49bd67482cf0a82a6f4e8bc0cbcb46b" name="src/php_v8_a.h" role="src" />
+   <file md5sum="4ab0b43dc7da3825839f9a9eead78d60" name="src/php_v8_access_control.cc" role="src" />
+   <file md5sum="335a575e207cae15a213a9cedd211d6f" name="src/php_v8_access_control.h" role="src" />
+   <file md5sum="2bd3f1ef96c3ec9d7928704c85595c75" name="src/php_v8_access_type.cc" role="src" />
+   <file md5sum="dde2c4150873ac1f0f7769d0d2624d31" name="src/php_v8_access_type.h" role="src" />
+   <file md5sum="4bdf821f54af0484076438626969c132" name="src/php_v8_array.cc" role="src" />
+   <file md5sum="e01c7bde98db2b3b92bc58de237e7057" name="src/php_v8_array.h" role="src" />
+   <file md5sum="7b32687bc1a97392c0a76c053b31298f" name="src/php_v8_boolean.cc" role="src" />
+   <file md5sum="067834b0318f3b2703c7dbb2402d8963" name="src/php_v8_boolean.h" role="src" />
+   <file md5sum="bc8d88012adacf6e762839902cc6b290" name="src/php_v8_boolean_object.cc" role="src" />
+   <file md5sum="b299d720bd548c6f53c2dfc25f87386f" name="src/php_v8_boolean_object.h" role="src" />
+   <file md5sum="bd8920cbbda7105d5526e97c997c8624" name="src/php_v8_cached_data.cc" role="src" />
+   <file md5sum="01a5ba49e39586765f57b65d42808de7" name="src/php_v8_cached_data.h" role="src" />
+   <file md5sum="0300be82a0539facdf18b9c86e1ee5c3" name="src/php_v8_callback_info.cc" role="src" />
+   <file md5sum="68e8a3ac0b305dcae9c0bef02d7e0fd9" name="src/php_v8_callback_info.h" role="src" />
+   <file md5sum="15fcb95603032955c1c8384a7432abf4" name="src/php_v8_callbacks.cc" role="src" />
+   <file md5sum="09e16c903922c9a636e8adc1e0814201" name="src/php_v8_callbacks.h" role="src" />
+   <file md5sum="728078595ff06ee6222b4798b8323e50" name="src/php_v8_compile_options.cc" role="src" />
+   <file md5sum="7a949c8d4b63dcd6fc406c38b0b8b6f5" name="src/php_v8_compile_options.h" role="src" />
+   <file md5sum="4ecf458a6129f9a32c511d200f3b0a2b" name="src/php_v8_context.cc" role="src" />
+   <file md5sum="9e608e8fb99927341a6136afe67dc598" name="src/php_v8_context.h" role="src" />
+   <file md5sum="3bdc3f809c450455a851b4b640c3eb8c" name="src/php_v8_data.cc" role="src" />
+   <file md5sum="4936480392b53dc69a8da9b902f624e9" name="src/php_v8_data.h" role="src" />
+   <file md5sum="443a1463c4c9259de15fafc3a3b15977" name="src/php_v8_date.cc" role="src" />
+   <file md5sum="9624a3cb14f9df929592b4cdf6b5475f" name="src/php_v8_date.h" role="src" />
+   <file md5sum="97fe7b7d721178656249211f699d7664" name="src/php_v8_exception.cc" role="src" />
+   <file md5sum="df6a448be62d1ca6aa72f2abd725bc3c" name="src/php_v8_exception.h" role="src" />
+   <file md5sum="91a0e5834b8fb89a29bef2062be3678e" name="src/php_v8_exceptions.cc" role="src" />
+   <file md5sum="792b1e66ed2a82ecf2aa4f8a0d5436ba" name="src/php_v8_exceptions.h" role="src" />
+   <file md5sum="72a81b84db797df5b15fddc2b1e6ca95" name="src/php_v8_ext_mem_interface.cc" role="src" />
+   <file md5sum="5cd526b9230bb38f9ce679dfadf40e83" name="src/php_v8_ext_mem_interface.h" role="src" />
+   <file md5sum="61d0a1007cae02a8817078af5318d3ae" name="src/php_v8_function.cc" role="src" />
+   <file md5sum="02df55070a0f60c3bec2c86e3c83abcb" name="src/php_v8_function.h" role="src" />
+   <file md5sum="0867803d033689cb3a8f5c9b204de923" name="src/php_v8_function_callback_info.cc" role="src" />
+   <file md5sum="9fc25e0dc51cb148ae01c8dc6c110289" name="src/php_v8_function_callback_info.h" role="src" />
+   <file md5sum="9a120cca2ec5d86e0734d9261195c846" name="src/php_v8_function_template.cc" role="src" />
+   <file md5sum="9cb1423e3c42d051764bd2d6530324c5" name="src/php_v8_function_template.h" role="src" />
+   <file md5sum="07efc0ec65076d034b3938ae156c4686" name="src/php_v8_heap_statistics.cc" role="src" />
+   <file md5sum="eb9bddbfccd16a0e316f2324b8764163" name="src/php_v8_heap_statistics.h" role="src" />
+   <file md5sum="8ffa66a1d6d4eb8d8253023cd9b35eb1" name="src/php_v8_indexed_property_handler_configuration.cc" role="src" />
+   <file md5sum="512ed22c99bc806176a927b01a92f709" name="src/php_v8_indexed_property_handler_configuration.h" role="src" />
+   <file md5sum="301bec800660ba2e0bfd72ab57eac60b" name="src/php_v8_int32.cc" role="src" />
+   <file md5sum="206cd314af78d8c72687adbc6b4cb085" name="src/php_v8_int32.h" role="src" />
+   <file md5sum="7f4b24ef78414845d1e6e5c7263316bb" name="src/php_v8_integer.cc" role="src" />
+   <file md5sum="c9730eef862473dc3545bcf7d9d9e488" name="src/php_v8_integer.h" role="src" />
+   <file md5sum="9a8bfaafe1d2cc74dd2604873fad05ee" name="src/php_v8_integrity_level.cc" role="src" />
+   <file md5sum="8488b68f17490066032dfeea8da51e54" name="src/php_v8_integrity_level.h" role="src" />
+   <file md5sum="52b2bd3170ecc08cb2e80b858b3eeea3" name="src/php_v8_isolate.cc" role="src" />
+   <file md5sum="742cd9b995f4a2354f66100ecc178574" name="src/php_v8_isolate.h" role="src" />
+   <file md5sum="b90923f1dae8441eb31b75b705f871de" name="src/php_v8_isolate_limits.cc" role="src" />
+   <file md5sum="e1d9f5486e5311e6ba00a0864dcfe433" name="src/php_v8_isolate_limits.h" role="src" />
+   <file md5sum="839b96e041f4afdd8dc7072f0f790b40" name="src/php_v8_map.cc" role="src" />
+   <file md5sum="5a55c8d59863fc8933f31e31b88a85c5" name="src/php_v8_map.h" role="src" />
+   <file md5sum="db8e796e753e1ce225e2d8ce4399f019" name="src/php_v8_message.cc" role="src" />
+   <file md5sum="edac7e5512ce44f4cd8e13d8315b7194" name="src/php_v8_message.h" role="src" />
+   <file md5sum="e2b088c4c521799c5f72eae5f605b25f" name="src/php_v8_name.cc" role="src" />
+   <file md5sum="0acbe56dab52ebb3cf5f1c2582cf5689" name="src/php_v8_name.h" role="src" />
+   <file md5sum="6ec9dd78dbcc7460fbddf368f8f4aa6a" name="src/php_v8_named_property_handler_configuration.cc" role="src" />
+   <file md5sum="40c66cd0b3aab4803466e64ed3cae114" name="src/php_v8_named_property_handler_configuration.h" role="src" />
+   <file md5sum="06ca8d3f9e215d6111ad210a8d5c35f1" name="src/php_v8_null.cc" role="src" />
+   <file md5sum="d01529f9d8d9acfbb84e0cff67406f04" name="src/php_v8_null.h" role="src" />
+   <file md5sum="156cd46ad96d5b60d87bfc68c1459424" name="src/php_v8_number.cc" role="src" />
+   <file md5sum="061da12e8084decd7e01519dfc175ab9" name="src/php_v8_number.h" role="src" />
+   <file md5sum="403ee4ef8d9473214d1a74707aa4a35e" name="src/php_v8_number_object.cc" role="src" />
+   <file md5sum="7612d1d9791ab1babc2484c122522efd" name="src/php_v8_number_object.h" role="src" />
+   <file md5sum="2f1aa3a3873fbf8cafe09efed5abc362" name="src/php_v8_object.cc" role="src" />
+   <file md5sum="064485d49a4cb21a8af7b6f0e9ece95a" name="src/php_v8_object.h" role="src" />
+   <file md5sum="e3ca14732ebb349b5c88801fd8c53a65" name="src/php_v8_object_template.cc" role="src" />
+   <file md5sum="0afc9283d500f4f08d778c951fa41bc4" name="src/php_v8_object_template.h" role="src" />
+   <file md5sum="11addc524f5612c4e1fa6169c4d81916" name="src/php_v8_primitive.cc" role="src" />
+   <file md5sum="8efe3ebc66298a314e0b0969fac68b3a" name="src/php_v8_primitive.h" role="src" />
+   <file md5sum="5e627a1eaaf491b9b4853eee73df7438" name="src/php_v8_property_attribute.cc" role="src" />
+   <file md5sum="c6c64d900cee899187778800810af873" name="src/php_v8_property_attribute.h" role="src" />
+   <file md5sum="244a51ef50a79589dd63bf20f71b14d4" name="src/php_v8_property_callback_info.cc" role="src" />
+   <file md5sum="e074efa8ca2310f28596d40a606eb892" name="src/php_v8_property_callback_info.h" role="src" />
+   <file md5sum="d5896561106541c74bd8e6d914a67577" name="src/php_v8_property_handler_flags.cc" role="src" />
+   <file md5sum="95f3e5a89f53400f31407c294f45eff2" name="src/php_v8_property_handler_flags.h" role="src" />
+   <file md5sum="7d6891768aa64708c0f4f4cbf3fef179" name="src/php_v8_regexp.cc" role="src" />
+   <file md5sum="5038d905f0d8c5d0c9834b4e52940d30" name="src/php_v8_regexp.h" role="src" />
+   <file md5sum="4ea58af8b8a7fb9701fa0f3c98d2b7d6" name="src/php_v8_return_value.cc" role="src" />
+   <file md5sum="f30fd0209ac9b80a1c5a76ebe7fc421a" name="src/php_v8_return_value.h" role="src" />
+   <file md5sum="e62a8f714c9e2f01865011b1fc09461f" name="src/php_v8_script.cc" role="src" />
+   <file md5sum="ec1fb1b1e45474c6f8a9cceaac2a70ec" name="src/php_v8_script.h" role="src" />
+   <file md5sum="73000bca8d9b53a9757586f1126a73e4" name="src/php_v8_script_compiler.cc" role="src" />
+   <file md5sum="8c4cf5950b7c23d5709983dee3e494ef" name="src/php_v8_script_compiler.h" role="src" />
+   <file md5sum="a37c0650464cbba5c0435638450d408b" name="src/php_v8_script_origin.cc" role="src" />
+   <file md5sum="19062e8eb7ac83bb8c6a76ef28646015" name="src/php_v8_script_origin.h" role="src" />
+   <file md5sum="9376877322f0b06f966e40044cb6b1e9" name="src/php_v8_script_origin_options.cc" role="src" />
+   <file md5sum="0e83753469eb0c7a0dc53afaa7ad984c" name="src/php_v8_script_origin_options.h" role="src" />
+   <file md5sum="a15bb532607d669509c8d75d0cda5e1a" name="src/php_v8_set.cc" role="src" />
+   <file md5sum="5243d5e8400c1b0cd2a3ab4d7bea2d4d" name="src/php_v8_set.h" role="src" />
+   <file md5sum="45b22c782eeaa32aa9b10636cd19855a" name="src/php_v8_source.cc" role="src" />
+   <file md5sum="08bac84f2c34b4daef8895495c34112c" name="src/php_v8_source.h" role="src" />
+   <file md5sum="dea7e556a0abeefdaa57fcc9be6c60a2" name="src/php_v8_stack_frame.cc" role="src" />
+   <file md5sum="2508a5604721e43473b6562c0fa34d4e" name="src/php_v8_stack_frame.h" role="src" />
+   <file md5sum="885ae272f09fd631d1f59b53d79006c1" name="src/php_v8_stack_trace.cc" role="src" />
+   <file md5sum="fb380501fdf72f800c484337b7ed4f23" name="src/php_v8_stack_trace.h" role="src" />
+   <file md5sum="721414674b4543ec107aaa1350351171" name="src/php_v8_startup_data.cc" role="src" />
+   <file md5sum="89868f4e29da295fdb6b11fe1500e48a" name="src/php_v8_startup_data.h" role="src" />
+   <file md5sum="d93ab01b25818afc419968584f2a8451" name="src/php_v8_string.cc" role="src" />
+   <file md5sum="7d4ac26e3fd79e629e87c60456d48ff3" name="src/php_v8_string.h" role="src" />
+   <file md5sum="6f2420007a989f8b492a69f3dfa24537" name="src/php_v8_string_object.cc" role="src" />
+   <file md5sum="e346c47370d34e5550ac0fa225ad70e6" name="src/php_v8_string_object.h" role="src" />
+   <file md5sum="44ece6ed754052a4b3361478ab5af054" name="src/php_v8_symbol.cc" role="src" />
+   <file md5sum="ea6ba3ff5b81dac64e17bbffb36e3abf" name="src/php_v8_symbol.h" role="src" />
+   <file md5sum="093a60ea2f52320a25fa7aad1834565e" name="src/php_v8_symbol_object.cc" role="src" />
+   <file md5sum="e28368809db08b30be50c0efb2cebb1d" name="src/php_v8_symbol_object.h" role="src" />
+   <file md5sum="00e629f5f66062e274dbac812e5c61aa" name="src/php_v8_template.cc" role="src" />
+   <file md5sum="35877f48a9f7b837a1a1fd57ffc65723" name="src/php_v8_template.h" role="src" />
+   <file md5sum="bb15c4bdebbd5c2d7a4fb42d1067a25c" name="src/php_v8_try_catch.cc" role="src" />
+   <file md5sum="e851d7c76b347102b91caa1edaf7653b" name="src/php_v8_try_catch.h" role="src" />
+   <file md5sum="a4045becc847b6c92512e4b0ba60ae4a" name="src/php_v8_uint32.cc" role="src" />
+   <file md5sum="7463fdaca319a6bcec8e02664553f338" name="src/php_v8_uint32.h" role="src" />
+   <file md5sum="f21b36c941983b0650012b0139ae6f43" name="src/php_v8_unbound_script.cc" role="src" />
+   <file md5sum="a0dee1db2e507cc09ff692821ce67f52" name="src/php_v8_unbound_script.h" role="src" />
+   <file md5sum="3e454e0596f17033354c10044a6f493d" name="src/php_v8_value.cc" role="src" />
+   <file md5sum="61956cb5df57cb5e40e2061cc794121c" name="src/php_v8_value.h" role="src" />
+   <file md5sum="5e9e23589be63ebc3b55dcc70b5eac29" name="config.m4" role="src" />
+   <file md5sum="a841a36d022f27fd4c91384531db7b1b" name="config.w32" role="src" />
+   <file md5sum="bc948344aae311fd94a00774533dce39" name="php_v8.h" role="src" />
+   <file md5sum="875632fcb7ddc88c95c87517fb18f498" name="v8.cc" role="src" />
+   <file md5sum="47b61d0221096154984c30fefe8c4b0d" name="tests/.testsuite.php" role="test" />
+   <file md5sum="a045561422d82346ecfdde04cc232b3e" name="tests/.tracking_dtors.php" role="test" />
+   <file md5sum="57227ee8e14d9e1aff9e9566687eebdc" name="tests/.v8-helpers.php" role="test" />
+   <file md5sum="b34b18e230dc2fed6b88f5ded9514c0b" name="tests/001-verify-method-parameters-type.phpt" role="test" />
+   <file md5sum="eb57f00a0d7175894ab076b687feab20" name="tests/001.phpt" role="test" />
+   <file md5sum="3d19c4abf8f59d2a5a1e085fcb0c08ed" name="tests/003-V8ObjectTemplate_recursive_chain.phpt" role="test" />
+   <file md5sum="1bf00716381808ab1b2f4350a23f3e39" name="tests/003-V8ObjectTemplate_recursive_global.phpt" role="test" />
+   <file md5sum="86c5d218364a0b910a06e1273dcee006" name="tests/003-V8ObjectTemplate_recursive_self.phpt" role="test" />
+   <file md5sum="0dc0433c538c290a858d67308cbab624" name="tests/003-V8ObjectTemplate_recursive_tree.phpt" role="test" />
+   <file md5sum="eb7dfcf9f0f9dd5afeb98cbf003ddb32" name="tests/004-ICU-Intl_DateTimeFormat.phpt" role="test" />
+   <file md5sum="1d1bc23adfd7dffda51aafc12b3e6596" name="tests/004-ICU-Intl_NumberFormat.phpt" role="test" />
+   <file md5sum="436c93291d5c47bbe550dc940cc043a9" name="tests/005-V8FunctionTemplate_external_memory.phpt" role="test" />
+   <file md5sum="5b7ff6a122e2c8e99690769fa5b8dc60" name="tests/005-V8ObjectTemplate_external_memory.phpt" role="test" />
+   <file md5sum="1454ed38fc16337f166eea6ade413bdd" name="tests/005-V8ObjectValue_external_memory.phpt" role="test" />
+   <file md5sum="104575b0e7963b2b4e62415cd5579aa9" name="tests/V8AccessControl.phpt" role="test" />
+   <file md5sum="0f5a7a99a75f92a512a50ec0c10a5736" name="tests/V8ArrayObject.phpt" role="test" />
+   <file md5sum="fa253125534e3298a142ed26bcc2f9e0" name="tests/V8ArrayObject_Length.phpt" role="test" />
+   <file md5sum="884ff55b5cfb0b3769336445f6cd049e" name="tests/V8Boolean.phpt" role="test" />
+   <file md5sum="c05d1cd31d980c381b903d3b2900f1d2" name="tests/V8BooleanObject.phpt" role="test" />
+   <file md5sum="50e4d909f4d0ed51a2b7530c87836ee8" name="tests/V8CachedData.phpt" role="test" />
+   <file md5sum="e804137ebcf0acff57f7c2cc1c35dff4" name="tests/V8CompileOptions.phpt" role="test" />
+   <file md5sum="68ddffb516dbac66ce19792e47db91f8" name="tests/V8Context.phpt" role="test" />
+   <file md5sum="6213cfac3a6802bc95fe465eefd1211b" name="tests/V8Context_GlobalObject.phpt" role="test" />
+   <file md5sum="96eca4ec29611fbf24d9ff3ea393b6aa" name="tests/V8Context_invalid_ctor_arg_type.phpt" role="test" />
+   <file md5sum="75ba5f11138b2d0e28106b0e8aca2ad7" name="tests/V8Context_reference_lifecycle.phpt" role="test" />
+   <file md5sum="3d01597d591901e1249c0efd4cc4c962" name="tests/V8Context_weakness.phpt" role="test" />
+   <file md5sum="5bfa8cdbf4fb3a747182ff25c2ce52a1" name="tests/V8Data.phpt" role="test" />
+   <file md5sum="492716078a95fa063bc49c14e7f0ce88" name="tests/V8DateObject.phpt" role="test" />
+   <file md5sum="61df89272be2a837549d7f5291b94d15" name="tests/V8Exception_CreateMessage.phpt" role="test" />
+   <file md5sum="928a5c8ab7cc897d0b29da6a03ce2875" name="tests/V8Exception_Error.phpt" role="test" />
+   <file md5sum="5acd80d33e7492d427353add17299c7a" name="tests/V8Exception_GetStackTrace.phpt" role="test" />
+   <file md5sum="859d74ddd0ac93157f5e9d0443e6a8b0" name="tests/V8Exception_RangeError.phpt" role="test" />
+   <file md5sum="9e4723960c1a27bddba6a729bd1577ab" name="tests/V8Exception_ReferenceError.phpt" role="test" />
+   <file md5sum="b94240fc77c1c5caa6bb0217f64aafc4" name="tests/V8Exception_SyntaxError.phpt" role="test" />
+   <file md5sum="6999ec4a8d091ab7e7bcb2435f6e63cb" name="tests/V8Exception_TypeError.phpt" role="test" />
+   <file md5sum="aeb3d91d6c29c5a2bc902df2f35aa704" name="tests/V8ExceptionsTryCatchException.phpt" role="test" />
+   <file md5sum="05710eed89a1f32f8a8022b60d1f6bc9" name="tests/V8FunctionCallbackInfo.phpt" role="test" />
+   <file md5sum="755b3fac631cdd2e5ecbe8b270613af2" name="tests/V8FunctionObject.phpt" role="test" />
+   <file md5sum="a07c2c28105a6ffb96011218d89c3c64" name="tests/V8FunctionObject_Call.phpt" role="test" />
+   <file md5sum="7cf598fc9135c94b7b178d30d2d8f0bc" name="tests/V8FunctionObject_Call_bad_args.phpt" role="test" />
+   <file md5sum="cecdfabd881b1813c8eff9fdb9d4029e" name="tests/V8FunctionObject_die.phpt" role="test" />
+   <file md5sum="9dc99312720defc8aab9a131834c35ab" name="tests/V8FunctionObject_die_different_isolates.phpt" role="test" />
+   <file md5sum="827ae08f995d18328efd8654e6485eb3" name="tests/V8FunctionObject_die_nested.phpt" role="test" />
+   <file md5sum="650c31cd1a1cffc30b85e79d01c5d641" name="tests/V8FunctionObject_weakness_multiple.phpt" role="test" />
+   <file md5sum="34e7de41fa1e4961298de4c5b5671f3d" name="tests/V8FunctionTemplate.phpt" role="test" />
+   <file md5sum="6086df6850f07481a94b6cc98cdf092d" name="tests/V8FunctionTemplate_GetFunction.phpt" role="test" />
+   <file md5sum="735ff4dc4a23a908cef6ff7566f8ffee" name="tests/V8FunctionTemplate_SetCallHandler.phpt" role="test" />
+   <file md5sum="e18a1a7064da5c066ff77fb9a6a68d9a" name="tests/V8FunctionTemplate_callback_weakness.phpt" role="test" />
+   <file md5sum="9bdd5d86bdb730b5359afb3ff959abb9" name="tests/V8FunctionTemplate_exception_in_php.phpt" role="test" />
+   <file md5sum="74b9f0b47fc188bd4a16dcde7f6f3d94" name="tests/V8FunctionTemplate_invalid_ctor_arg_type.phpt" role="test" />
+   <file md5sum="2b7f93a2d810c2cd24704fa113f9ff2b" name="tests/V8FunctionTemplate_require_implementation.phpt" role="test" />
+   <file md5sum="3d1c7ad46e7c8b59ce233dadf33e7735" name="tests/V8FunctionTemplate_weakness.phpt" role="test" />
+   <file md5sum="e68df632a863b4102b9c5992dbdac53b" name="tests/V8HeapStatistics.phpt" role="test" />
+   <file md5sum="6321a8d9de406fa99c264e4dd2208e81" name="tests/V8IndexedPropertyHandlerConfiguration.phpt" role="test" />
+   <file md5sum="825f13d9d61276acc162123c20ffae2c" name="tests/V8Int32Value.phpt" role="test" />
+   <file md5sum="c39ab16d7c667c57d24ba08e3f69ad59" name="tests/V8IntegerValue.phpt" role="test" />
+   <file md5sum="22c8a18e71b8adc5cc0fc9e7caa82f50" name="tests/V8IntegrityLevel.phpt" role="test" />
+   <file md5sum="cbcacbfd740b16ce70b94924144cbd2c" name="tests/V8Isolate.phpt" role="test" />
+   <file md5sum="52e4b26cee4433094145c5bda7e07c19" name="tests/V8Isolate_IsDead.phpt" role="test" />
+   <file md5sum="3003868fdbfcf376afba53a01703f88d" name="tests/V8Isolate_IsInUse.phpt" role="test" />
+   <file md5sum="08280604d2517b44ce53db4ef70cc31a" name="tests/V8Isolate_ThrowException.phpt" role="test" />
+   <file md5sum="0cd23471fa3edbb21d1c96c6f1951f75" name="tests/V8Isolate_gc_cyclic_ref_memleak.phpt" role="test" />
+   <file md5sum="a1d485401ecb2a5ce7bb67ddf1ab0c81" name="tests/V8Isolate_limit_memory.phpt" role="test" />
+   <file md5sum="de0195c00e88af3d456c76e99fbb7732" name="tests/V8Isolate_limit_memory_nested.phpt" role="test" />
+   <file md5sum="3806c29a5b3c1f34b9291b27a7f7322d" name="tests/V8Isolate_limit_memory_not_hit.phpt" role="test" />
+   <file md5sum="3e74215a06962b15cffbfa7ad574c401" name="tests/V8Isolate_limit_time.phpt" role="test" />
+   <file md5sum="cefdbf89874852590fcfd28d99168e4e" name="tests/V8Isolate_limit_time_nested.phpt" role="test" />
+   <file md5sum="3d1ac11fd4bcfe32246a36d2a0f0310a" name="tests/V8Isolate_limit_time_not_hit.phpt" role="test" />
+   <file md5sum="340a8fffa2c7b4eb2ce9cabb8b91099f" name="tests/V8Isolate_limit_time_set_during_execution.phpt" role="test" />
+   <file md5sum="4172d83bc7cc6522a7610905f1d729f1" name="tests/V8Isolate_nested_termination_exceptions.phpt" role="test" />
+   <file md5sum="7ae4f313d4f30bffd9a80f3c26e67c14" name="tests/V8Isolate_snapshot_support.phpt" role="test" />
+   <file md5sum="b6cba89a94bdc755473d4a295103fb79" name="tests/V8MapObject.phpt" role="test" />
+   <file md5sum="34f71ac68a991ac42fbbcb679108504f" name="tests/V8Message.phpt" role="test" />
+   <file md5sum="3dfd6df655f0c5ffb544e4527d03a6fb" name="tests/V8NameValue.phpt" role="test" />
+   <file md5sum="043f44ad1d81e74022fab722d956fe89" name="tests/V8NamedPropertyHandlerConfiguration.phpt" role="test" />
+   <file md5sum="79c19b8cab2fbcf9c711955cdab64df4" name="tests/V8NullValue.phpt" role="test" />
+   <file md5sum="54d029c2262e7fd4000ff569dfc45da2" name="tests/V8NumberObject.phpt" role="test" />
+   <file md5sum="98e62d3c785112164ec15d9f0080bd9d" name="tests/V8NumberValue.phpt" role="test" />
+   <file md5sum="a89d637ce3b81854a557aaa40672f99f" name="tests/V8ObjectTemplate.phpt" role="test" />
+   <file md5sum="2887327cf5dc523c19bef4a97bdf9772" name="tests/V8ObjectTemplate_MarkAsUndetectable.phpt" role="test" />
+   <file md5sum="d05add6ab564562fdcc674d7c902a9d8" name="tests/V8ObjectTemplate_Set.phpt" role="test" />
+   <file md5sum="c8425a66e47b476c6219fa1cb0a6595a" name="tests/V8ObjectTemplate_SetAccessCheckCallback.phpt" role="test" />
+   <file md5sum="4a16b8dc03da13e580e3e7d2705d0018" name="tests/V8ObjectTemplate_SetAccessCheckCallback_func_args.phpt" role="test" />
+   <file md5sum="7512a129dbd701f8027fe86b5b2bdad5" name="tests/V8ObjectTemplate_SetCallAsFunctionHandler.phpt" role="test" />
+   <file md5sum="784ccfc7d0027cd3d2e8a9606bd49590" name="tests/V8ObjectTemplate_SetHandlerForIndexedProperty.phpt" role="test" />
+   <file md5sum="f3f7011c811560cf9ba5936f0311f247" name="tests/V8ObjectTemplate_SetHandlerForNamedProperty.phpt" role="test" />
+   <file md5sum="19675083fe51dd1b2a76eab0e954fe47" name="tests/V8ObjectTemplate_SetHandler_both.phpt" role="test" />
+   <file md5sum="9b825db5085ad8c01d2ed3b82df84cfc" name="tests/V8ObjectTemplate_invalid_ctor_arg_type.phpt" role="test" />
+   <file md5sum="5dfc3d429a0d364738aa0bd7f766d286" name="tests/V8ObjectValue.phpt" role="test" />
+   <file md5sum="dc3296c62adfee4e2508152225782972" name="tests/V8ObjectValue_Get.phpt" role="test" />
+   <file md5sum="f1a45cf7727808eaf676cffaa657a48b" name="tests/V8ObjectValue_IsArgumentsObject.phpt" role="test" />
+   <file md5sum="3387621f1e47daf5ac5a7a17d06c6508" name="tests/V8ObjectValue_IsNativeError.phpt" role="test" />
+   <file md5sum="628c1722cb28dacf8c99c6798c54576b" name="tests/V8ObjectValue_SetAccessor.phpt" role="test" />
+   <file md5sum="9fa950a9d22b92074eed4a53132a93cd" name="tests/V8ObjectValue_SetIntegrityLevel.phpt" role="test" />
+   <file md5sum="b49d8856bbe6bf5797b46c21a738c2d4" name="tests/V8PrimitiveValue.phpt" role="test" />
+   <file md5sum="156cc2b60d5bf1c9d69981f967321ca0" name="tests/V8PropertyAttribute.phpt" role="test" />
+   <file md5sum="9e520dfe1ef89d6cbe007e8df0b75b45" name="tests/V8PropertyCallbackInfo.phpt" role="test" />
+   <file md5sum="949e2a88538495458488f856cd3bdd30" name="tests/V8PropertyHandlerFlags.phpt" role="test" />
+   <file md5sum="17eb91615dc40d9cf981218c46e3701c" name="tests/V8RegExpFlags.phpt" role="test" />
+   <file md5sum="12d7ed027e1a696996d75e817b1d0931" name="tests/V8RegExpObject.phpt" role="test" />
+   <file md5sum="259439f68c6a010537bd6b203d780f8d" name="tests/V8ReturnValue.phpt" role="test" />
+   <file md5sum="07af60bf8a08912479e7cd0c5202ff39" name="tests/V8ReturnValue_context.phpt" role="test" />
+   <file md5sum="e55dbcfe8062b3c4046167a8ffdd17ee" name="tests/V8Script.phpt" role="test" />
+   <file md5sum="5e3285c5a094c3ca5da9cb769931e61e" name="tests/V8ScriptCompiler.phpt" role="test" />
+   <file md5sum="3e6cedbf9da12a3bfb8b0e1df740050d" name="tests/V8ScriptCompiler_Compile.phpt" role="test" />
+   <file md5sum="5f74c6b1e033a658db4eab09ef4a45cc" name="tests/V8ScriptCompiler_CompileFunctionInContext.phpt" role="test" />
+   <file md5sum="788fe1d7dd9e557e4488587edbaaf1cc" name="tests/V8ScriptCompiler_CompileUnbound.phpt" role="test" />
+   <file md5sum="b56ab12b052a85ad95be0d14d264238b" name="tests/V8ScriptOrigin.phpt" role="test" />
+   <file md5sum="00067d1653cf3c36f5e87f1925681e83" name="tests/V8ScriptOriginOptions.phpt" role="test" />
+   <file md5sum="93b95ed011292c7a5d2c706caa53cf48" name="tests/V8Script_Run.phpt" role="test" />
+   <file md5sum="1662559fffab10021dff8c90cfe87c71" name="tests/V8Script_Run_out_of_memory.phpt" role="test" />
+   <file md5sum="3e51abbb768460cff348cd8f973affe8" name="tests/V8Script_Run_uncaught_exception.phpt" role="test" />
+   <file md5sum="98c1da2b2f13b8141047c96e94611ebc" name="tests/V8Script_exit_during_script_execution.phpt" role="test" />
+   <file md5sum="a60f69219b9aaa2235f36a799534c57e" name="tests/V8Script_terminate_script_execution.phpt" role="test" />
+   <file md5sum="8d309c53f9dae3926c95c75bd6401a0f" name="tests/V8SetObject.phpt" role="test" />
+   <file md5sum="f96bdbe5f219ae6db917d5cf663250e8" name="tests/V8Source.phpt" role="test" />
+   <file md5sum="ea4e9f1d0642c50f1593d4fc10b9a307" name="tests/V8StackFrame.phpt" role="test" />
+   <file md5sum="19ecfa7488cb16cc58397b20df15510f" name="tests/V8StackTrace.phpt" role="test" />
+   <file md5sum="a4ea9434b925bb770a15c7c6dd01c01f" name="tests/V8StackTraceOptions.phpt" role="test" />
+   <file md5sum="a4eb48786e6f1c679205ad94e82e4a0e" name="tests/V8StackTrace_CurrentStackTrace.phpt" role="test" />
+   <file md5sum="d74e3c2b3e3b04d95c004173fb026bdf" name="tests/V8StartupData_CreateFromSource.phpt" role="test" />
+   <file md5sum="b99d1c43a3e6c3978a97a19eb1a795d4" name="tests/V8StringObject.phpt" role="test" />
+   <file md5sum="cf636c376a5b9f4260883a2c7d0adbbe" name="tests/V8StringValue.phpt" role="test" />
+   <file md5sum="53013a7b95463d3bfd02419748fb0748" name="tests/V8String_range_error_length.phpt" role="test" />
+   <file md5sum="517f4cf628c869c63b4159a427c1b680" name="tests/V8SymbolObject.phpt" role="test" />
+   <file md5sum="73b932af6458c908032323030693d36d" name="tests/V8SymbolValue.phpt" role="test" />
+   <file md5sum="c7a56849942ac82b204330656245ee59" name="tests/V8TryCatch.phpt" role="test" />
+   <file md5sum="19e9b81798aff30139c02f4fb78525a7" name="tests/V8TryCatch_from_script.phpt" role="test" />
+   <file md5sum="15897444069cf4a6692b4ac01d059c60" name="tests/V8Uint32Value.phpt" role="test" />
+   <file md5sum="966090f48e76181fa577af9b8bb6356d" name="tests/V8UnboundScript.phpt" role="test" />
+   <file md5sum="9e1101206f3045027be2a9ff1f9b2c10" name="tests/V8Value.phpt" role="test" />
+   <file md5sum="1eab15ce65058eb08962f452e7ad34b8" name="tests/V8Value_destruct.phpt" role="test" />
+   <file md5sum="f03a45c631e2ab2d44c37c4a4f957316" name="tests/V8Value_empty.phpt" role="test" />
+   <file md5sum="7208d9b35f1291912123cfe1bd5f74c5" name="tests/V8Value_invalid_ctor_arg_type.phpt" role="test" />
+   <file md5sum="992c721c2e3aef4b3b333e3593e3d244" name="tests/V8_extension_info.phpt" role="test" />
+   <file md5sum="c2d4df646bb104d710f22b24f260dc24" name="stubs/LICENSE" role="doc" />
+   <file md5sum="bb816a1d69acdad1996cb846e09db324" name="stubs/README.md" role="doc" />
+   <file md5sum="407079d33abcebff918abf8119d5ef69" name="stubs/composer.json" role="doc" />
+   <file md5sum="b209abe417dc45ac6a718a805c49c577" name="stubs/src/AccessControl.php" role="doc" />
+   <file md5sum="51f145ce468a0adc2398dde4fd45e981" name="stubs/src/AdjustableExternalMemoryInterface.php" role="doc" />
+   <file md5sum="00250ed61ce32ac064a1214a066e4ae2" name="stubs/src/ArrayObject.php" role="doc" />
+   <file md5sum="dd091d4e941bde8b8440c39a3e2e71da" name="stubs/src/BooleanObject.php" role="doc" />
+   <file md5sum="57d10780a5beed401013ebac9b6dc0b9" name="stubs/src/BooleanValue.php" role="doc" />
+   <file md5sum="60f2e14baa28de5e31505ba2cd0d7f9c" name="stubs/src/CallbackInfo.php" role="doc" />
+   <file md5sum="55dce667619d59705afad1384f687aad" name="stubs/src/Context.php" role="doc" />
+   <file md5sum="df7a7a124a13f14b69bf32f49fe40aa1" name="stubs/src/Data.php" role="doc" />
+   <file md5sum="dffe9c0c2e67f44661f0dd96a0843b3e" name="stubs/src/DateObject.php" role="doc" />
+   <file md5sum="3799fa540037f955110125120cab7e08" name="stubs/src/Exception.php" role="doc" />
+   <file md5sum="80cecf7916243e4d64581f12ee9f10b8" name="stubs/src/Exceptions/AbstractResourceLimitException.php" role="doc" />
+   <file md5sum="41082af2904ae27e30155a452b9d3259" name="stubs/src/Exceptions/GenericException.php" role="doc" />
+   <file md5sum="43dca7ad9f592e093ef4ec9eea81ddeb" name="stubs/src/Exceptions/MemoryLimitException.php" role="doc" />
+   <file md5sum="0e52d7fcfd677a620aae4f1472edc929" name="stubs/src/Exceptions/TerminationException.php" role="doc" />
+   <file md5sum="8d757672a31b2dca7b16ccb944fdce67" name="stubs/src/Exceptions/TimeLimitException.php" role="doc" />
+   <file md5sum="144e9093b68a32cd315c9d06b23e27ec" name="stubs/src/Exceptions/TryCatchException.php" role="doc" />
+   <file md5sum="2c10e742787f8bdb3386171aedb05c4a" name="stubs/src/Exceptions/ValueException.php" role="doc" />
+   <file md5sum="d187e61cd13090b54a2e1ab06b02d1f9" name="stubs/src/FunctionCallbackInfo.php" role="doc" />
+   <file md5sum="ccc3f4cfa86ff54125af84e7d4cedadc" name="stubs/src/FunctionObject.php" role="doc" />
+   <file md5sum="f628ee759e7c0c5877e07226c89c8a76" name="stubs/src/FunctionTemplate.php" role="doc" />
+   <file md5sum="a9cc3258b221869f927307a3797de9f7" name="stubs/src/HeapStatistics.php" role="doc" />
+   <file md5sum="716662c92ed57bb27d989ac3d4e82f76" name="stubs/src/IndexedPropertyHandlerConfiguration.php" role="doc" />
+   <file md5sum="469d0501ea1019f28313f2df5995c61f" name="stubs/src/Int32Value.php" role="doc" />
+   <file md5sum="8e2459ce3a1f26f27fa0d3b764907bdf" name="stubs/src/IntegerValue.php" role="doc" />
+   <file md5sum="7d0ab5abf82cbfe0dd564d4e31b93ab3" name="stubs/src/IntegrityLevel.php" role="doc" />
+   <file md5sum="c99d1fb29c3826f0c6b6a1d68eb435b8" name="stubs/src/Isolate.php" role="doc" />
+   <file md5sum="957889659fd36e9d26b07ac130dcce3e" name="stubs/src/MapObject.php" role="doc" />
+   <file md5sum="785f1c5baee8b773275d80fd3632ac0e" name="stubs/src/Message.php" role="doc" />
+   <file md5sum="e8c6bc977430bde697aacb93c3b0f0c8" name="stubs/src/NameValue.php" role="doc" />
+   <file md5sum="5b5baf2b7d53a13a1fed95534e3de25e" name="stubs/src/NamedPropertyHandlerConfiguration.php" role="doc" />
+   <file md5sum="a3fedb9c29cce0394a839fb3dd822563" name="stubs/src/NullValue.php" role="doc" />
+   <file md5sum="ec0cde25584d22ca39f26ca72cdd987a" name="stubs/src/NumberObject.php" role="doc" />
+   <file md5sum="b0987afc0196a9af779fd5fe122a7888" name="stubs/src/NumberValue.php" role="doc" />
+   <file md5sum="b30634bd58b0d801418290dcff2f3e0e" name="stubs/src/ObjectTemplate.php" role="doc" />
+   <file md5sum="e1ee11a86bffecf7ae58e9d525003261" name="stubs/src/ObjectValue.php" role="doc" />
+   <file md5sum="584498363b2dff074de08904073208b8" name="stubs/src/PrimitiveValue.php" role="doc" />
+   <file md5sum="79180608e2567e18fdbc7f04c7120a28" name="stubs/src/PropertyAttribute.php" role="doc" />
+   <file md5sum="15c5db76ea169aa4f60dc36f09a8f055" name="stubs/src/PropertyCallbackInfo.php" role="doc" />
+   <file md5sum="3ef3450f9117a2b463802204ac12edd3" name="stubs/src/PropertyHandlerFlags.php" role="doc" />
+   <file md5sum="34ae339c6bebc19f189f6f5011364a5c" name="stubs/src/RegExp/Flags.php" role="doc" />
+   <file md5sum="d7e55925a87a2b0c43d7825d0b03e58a" name="stubs/src/RegExpObject.php" role="doc" />
+   <file md5sum="10c5f3f4804f71712b74d3df86f85892" name="stubs/src/ReturnValue.php" role="doc" />
+   <file md5sum="77c8495432e24c392bd69109d6199e2e" name="stubs/src/Script.php" role="doc" />
+   <file md5sum="bf8364f7298423eec3e67b6a089f8706" name="stubs/src/ScriptCompiler.php" role="doc" />
+   <file md5sum="89e5bc0e13d3e6211a44bd000a489f9b" name="stubs/src/ScriptCompiler/CachedData.php" role="doc" />
+   <file md5sum="13940557799fa88637e65746fd1d957e" name="stubs/src/ScriptCompiler/CompileOptions.php" role="doc" />
+   <file md5sum="1e879429f9f6e8905ace19098c67b4f5" name="stubs/src/ScriptCompiler/Source.php" role="doc" />
+   <file md5sum="8118425f44f91806c529ff883a3380e0" name="stubs/src/ScriptOrigin.php" role="doc" />
+   <file md5sum="6f35c19445d304465cbabbd7124866be" name="stubs/src/ScriptOriginOptions.php" role="doc" />
+   <file md5sum="7af6fd32e0f93370deec5cec612831f1" name="stubs/src/SetObject.php" role="doc" />
+   <file md5sum="b4b54ef14b55114c0bd72c9c480f3cac" name="stubs/src/StackFrame.php" role="doc" />
+   <file md5sum="0bf9dbc30545fe4ab15e815dc5ce996f" name="stubs/src/StackTrace.php" role="doc" />
+   <file md5sum="226c4657f5654c5dc59bf8bd4501e99b" name="stubs/src/StackTrace/StackTraceOptions.php" role="doc" />
+   <file md5sum="6dca730515f8aca97df8fdd5134f18f8" name="stubs/src/StartupData.php" role="doc" />
+   <file md5sum="fceac0b7e4de0c4fd759b0227bc16260" name="stubs/src/StringObject.php" role="doc" />
+   <file md5sum="6de8234d398c5da0762d667e1b3056b1" name="stubs/src/StringValue.php" role="doc" />
+   <file md5sum="01cc753b0766f47015b8d80a17338747" name="stubs/src/SymbolObject.php" role="doc" />
+   <file md5sum="057c8b71b2b6570f8b91eb753d65f4cf" name="stubs/src/SymbolValue.php" role="doc" />
+   <file md5sum="4dd626bd66e680fd4581fa9744b54dee" name="stubs/src/Template.php" role="doc" />
+   <file md5sum="d236ba3bf96b37647626976110557fb2" name="stubs/src/TryCatch.php" role="doc" />
+   <file md5sum="60ef8df316bfb7f125141427685d6b69" name="stubs/src/Uint32Value.php" role="doc" />
+   <file md5sum="74df24019a52dacf963668b32a59ece0" name="stubs/src/UnboundScript.php" role="doc" />
+   <file md5sum="724110d594cb749b1289151dd40b7730" name="stubs/src/Value.php" role="doc" />
+   <file md5sum="c2d4df646bb104d710f22b24f260dc24" name="LICENSE" role="doc" />
+   <file md5sum="1393e4a6db3c7e01160b918e75d61d24" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+   <os>
+    <name>windows</name>
+    <conflicts />
+   </os>
+  </required>
+ </dependencies>
+ <providesextension>v8</providesextension>
+ <extsrcrelease />
+</package>

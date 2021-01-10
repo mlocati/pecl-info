@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0" packagerversion="1.4.0a4">
+ <name>pecl_http</name>
+ <summary>Extended HTTP support</summary>
+ <description>* Building absolute URIs
+* RFC compliant HTTP redirects
+* RFC compliant HTTP date handling
+* Parsing of HTTP headers and responses
+* Caching by &quot;Last-Modified&quot; and/or ETag
+  (with 'on the fly' option for ETag generation from buffered output)
+* Sending data/files/streams with (multiple) ranges support
+* Negotiating user preferred language/charset
+* Convenient request functions to HEAD/GET/POST if libcurl is available
+* HTTP auth hooks (Basic)
+* HTTPi, HTTPi_Response and HTTPi_Request classes (HTTPi_Request only with libcurl)
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>mike</user>
+   <name>Michael Wallner</name>
+   <email>mike@php.net</email>
+   <role>lead</role>
+  </maintainer>
+  </maintainers>
+ <release>
+  <version>0.6.1</version>
+  <date>2005-03-07</date>
+  <license>PHP License 3.0</license>
+  <state>alpha</state>
+  <notes>* fixed overflow in http_split_response()
+- removed HTTPi_Request::getResponseHeaders()
++ added HTTPi_Request::getResponseCode()
++ added HTTPi_Request::getResponseHeader([string name]), allowing retrieval of single header values
++ HTTPi_Request::getResponseInfo([string name]) now allows retrieval of single info values
++ vastly enhanced http_absolute_uri()
+  </notes>
+  <filelist>
+   <file role="doc" md5sum="3f1d1a418acd28c07d84cc05b2690a69" name="CREDITS"/>
+   <file role="doc" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL"/>
+   <file role="doc" md5sum="4431114db52c85a370981c11e94096ba" name="docs/functions.html"/>
+   <file role="src" md5sum="1f30d56e4e536de134f9650e725731b5" platform="windows" name="config.w32"/>
+   <file role="src" md5sum="3025f3ca059e68b1484d4587a2092c02" name="config.m4"/>
+   <file role="src" md5sum="5b27534e2af299f8c521058260978aaf" name="php_http.h"/>
+   <file role="src" md5sum="7327b0c6949439ae390777b98ebc7c22" name="php_http_api.h"/>
+   <file role="src" md5sum="b35e2b3cf13f68b2f588c1a29ec71358" name="php_http_curl_api.h"/>
+   <file role="src" md5sum="60748ee09bc0d9f6e3237279f6e659f9" name="php_http_std_defs.h"/>
+   <file role="src" md5sum="63620b99245c29ca08b678ded570633f" name="http.c"/>
+   <file role="src" md5sum="6c3839c25780ef7d94409d2e78478b52" name="http_functions.c"/>
+   <file role="src" md5sum="18e456704d6130b61c7d69b697e419fa" name="http_methods.c"/>
+   <file role="src" md5sum="5dd2e2830570a4fd05bfc4f5523231a6" name="http_api.c"/>
+   <file role="src" md5sum="de0fbb6e4af0f67e48267bc6b81250b7" name="http_curl_api.c"/>
+  </filelist>
+ </release>
+</package>

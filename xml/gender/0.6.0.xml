@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.7.2" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+  <name>gender</name>
+  <channel>pecl.php.net</channel>
+  <summary>Gender Extension</summary>
+  <description>Gender PHP extension is a port of the gender.c program originally written by Jörg Michael. The main purpose is to find out the gender of firstnames. The actual database contains &gt;40000 firstnames from 54 countries.</description>
+  <lead>
+    <name>Anatoliy Belsky</name>
+    <user>weltling</user>
+    <email>ab@php.net</email>
+    <active>yes</active>
+  </lead>
+  <date>2008-12-17</date>
+  <time>19:05:49</time>
+  <version>
+    <release>0.6.0</release>
+    <api>1.2</api>
+  </version>
+  <stability>
+    <release>stable</release>
+    <api>stable</api>
+  </stability>
+  <license filesource="/LICENSE">PHP</license>
+  <notes> * first pecl release with basic functionality
+          * do not forget to run postinstall script, which copies the names dictionary file
+  </notes>
+  <contents>
+    <dir name="/">
+      <file role="php" name="scripts/copy_gender_data.php">
+        <tasks:replace from="@data_dir@" to="data_dir" type="pear-config"/>
+        <tasks:postinstallscript>
+          <tasks:paramgroup>
+            <tasks:id>move_data</tasks:id>
+            <tasks:param>
+              <tasks:name>save_path</tasks:name>
+              <tasks:prompt>Where the names dictionary file must be saved?</tasks:prompt>
+              <tasks:type>string</tasks:type>
+            </tasks:param>
+          </tasks:paramgroup>
+        </tasks:postinstallscript>
+      </file>
+      <file role="doc" name="README"/>
+      <file role="src" name="php_gender.h"/>
+      <file role="doc" name="LICENSE"/>
+      <file role="src" name="gender_functions.c"/>
+      <file role="src" name="gender_definitions.h"/>
+      <file role="src" name="gender.c"/>
+      <file role="doc" name="EXPERIMENTAL"/>
+      <file role="data" name="data/nam_dict.txt.bz2"/>
+      <file role="doc" name="CREDITS"/>
+      <file role="src" name="config.w32"/>
+      <file role="src" name="config.m4"/>
+    </dir>
+  </contents>
+  <dependencies>
+    <required>
+      <php>
+        <min>5.2.0</min>
+      </php>
+      <pearinstaller>
+        <min>1.7.0</min>
+      </pearinstaller>
+    </required>
+  </dependencies>
+  <providesextension>gender</providesextension>
+  <extsrcrelease/>
+</package>

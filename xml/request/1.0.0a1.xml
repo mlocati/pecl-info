@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="         http://pear.php.net/dtd/tasks-1.0         http://pear.php.net/dtd/tasks-1.0.xsd         http://pear.php.net/dtd/package-2.0         http://pear.php.net/dtd/package-2.0.xsd     ">
+ <name>request</name>
+ <channel>pecl.php.net</channel>
+ <summary>Provides server-side request and response objects.</summary>
+ <description>This extension provides server-side request and response objects for PHP.
+These are *not* HTTP message objects proper. They are more like wrappers
+for existing global PHP variables and functions, with some limited
+additional convenience functionality.
+
+This extension defines two classes in the global namespace:
+
+- ServerRequest, composed of read-only copies of PHP superglobals and some
+  other commonly-used values, with methods for adding application-specific
+  request information in immutable fashion.
+
+- ServerResponse, essentially a wrapper around (and buffer for) response-
+  related PHP functions, with some additional convenience methods, and self-
+  sending capability.
+
+Documentation: https://gitlab.com/pmjones/phprequest</description>
+ <lead>
+  <name>John Boehr</name>
+  <user>jbboehr</user>
+  <email>jbboehr@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Paul M. Jones</name>
+  <user>pmjones</user>
+  <email>pmjones@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2016-11-17</date>
+ <time>21:05:15</time>
+ <version>
+  <release>1.0.0a1</release>
+  <api>1.0.0a1</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/MIT">MIT</license>
+ <notes>
+Please see CHANGELOG.md for release notes.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="9b650a53eeb11f97282df8c44bbd94a0" name="tests/request/__clone.phpt" role="test" />
+   <file md5sum="f4b2f776fb45939621f59d10d2c221f6" name="tests/request/__construct.phpt" role="test" />
+   <file md5sum="ca3a15ec45002f397162384c0487086d" name="tests/request/__get.phpt" role="test" />
+   <file md5sum="527af72cebda3db9b48ab7f0322a422f" name="tests/request/__get-extension.phpt" role="test" />
+   <file md5sum="34bc7f6a1c39b3549b006510e58c1194" name="tests/request/__get-userland.phpt" role="test" />
+   <file md5sum="cf056c52926ca61dab72fd137ce8a718" name="tests/request/__isset.phpt" role="test" />
+   <file md5sum="82704f16612a231a89440c64d9712dda" name="tests/request/__set.phpt" role="test" />
+   <file md5sum="bf3e4e6f3afa5cef89bbee5ef05aa551" name="tests/request/__unset.phpt" role="test" />
+   <file md5sum="d7c75038992f3ec2663f929364c8877d" name="tests/request/accept.phpt" role="test" />
+   <file md5sum="094f343127385533473e907bd755f8d6" name="tests/request/acceptCharset.phpt" role="test" />
+   <file md5sum="78ba18998a44da85494ceac81be802b7" name="tests/request/acceptEncoding.phpt" role="test" />
+   <file md5sum="3fa62e4e47ccf4de6b2608f37f1a890c" name="tests/request/acceptLanguage.phpt" role="test" />
+   <file md5sum="246bf5d2c35c6688fa24d017b3834321" name="tests/request/auth_basic.phpt" role="test" />
+   <file md5sum="db863d7c8dd00a031a478e2d6d550797" name="tests/request/auth_digest.phpt" role="test" />
+   <file md5sum="8c34bf3d174129a19ffac159bb311960" name="tests/request/auto_globals_jit.phpt" role="test" />
+   <file md5sum="3109a4ddf7806ebea432c5ee05b53e4f" name="tests/request/content1.phpt" role="test" />
+   <file md5sum="0d938162a2e3443ab548bc5b07f47a8a" name="tests/request/content2.phpt" role="test" />
+   <file md5sum="63e84cb83fd4c09e20cba9e930df12d5" name="tests/request/contentLength.phpt" role="test" />
+   <file md5sum="5b693d94badb08bbe965da966455759a" name="tests/request/contentMd5.phpt" role="test" />
+   <file md5sum="1c22d88f334829fae7f43a6698566c43" name="tests/request/contentType.phpt" role="test" />
+   <file md5sum="81166d985810e09000608f2b652bc852" name="tests/request/cookie.phpt" role="test" />
+   <file md5sum="b3aac5c98173a01a6d939efc250e3fa4" name="tests/request/env.phpt" role="test" />
+   <file md5sum="734201237b2efd93a9dc883fc481e27a" name="tests/request/files.phpt" role="test" />
+   <file md5sum="5cc6eb7c48d7c9d9d4296bea4a81b2f7" name="tests/request/get.phpt" role="test" />
+   <file md5sum="ff3c94bba5fa9d7e4e970017bdfda909" name="tests/request/headers.phpt" role="test" />
+   <file md5sum="2e27968a1a303ab81afdc70693ee05c9" name="tests/request/inheritance.phpt" role="test" />
+   <file md5sum="0585ec6279e7255032a03a3a3fc9c723" name="tests/request/method.phpt" role="test" />
+   <file md5sum="77cd3e6294cf2bbbbfe0fe5a7874f389" name="tests/request/parseAccept.phpt" role="test" />
+   <file md5sum="0e2a7007d35a4183f86b233b1dca6bdf" name="tests/request/parseContentType.phpt" role="test" />
+   <file md5sum="e20f2496270b7a72fabb63a823070daa" name="tests/request/parseDigestAuth.phpt" role="test" />
+   <file md5sum="501f3fe8d87595ab8caf58fb54430990" name="tests/request/post.phpt" role="test" />
+   <file md5sum="2fe9d13a1af3a87a4e410e27c0c19809" name="tests/request/superglobals-are-copied.phpt" role="test" />
+   <file md5sum="372fc930ae5e69517f1d3bdbf49f8661" name="tests/request/uploads-complex.phpt" role="test" />
+   <file md5sum="8cfed63c49b761ec818e17fd9507f773" name="tests/request/uploads-real.phpt" role="test" />
+   <file md5sum="588beb13b2101cf3caf8c93fbed1ac30" name="tests/request/uploads-trivial.phpt" role="test" />
+   <file md5sum="b1f763dc0cd8ab48db7f816244e97337" name="tests/request/url.phpt" role="test" />
+   <file md5sum="2d3b6699b42755d400b02cf0316351ef" name="tests/request/variables_order.phpt" role="test" />
+   <file md5sum="71f5014602494adecfd88a2bab81bd54" name="tests/request/withInput.phpt" role="test" />
+   <file md5sum="2d686006f47b56094bcf2536f6479a5c" name="tests/request/withoutParam.phpt" role="test" />
+   <file md5sum="68ae39a998c771c99b70e5c9a9a4be32" name="tests/request/withoutParams.phpt" role="test" />
+   <file md5sum="91e152d56d9c54cc7a213516e00ef42c" name="tests/request/withParam.phpt" role="test" />
+   <file md5sum="7145e435b42578797c07875bbb1fb8ff" name="tests/request/withParams.phpt" role="test" />
+   <file md5sum="7d371c103c55cd8276efc6360463a84e" name="tests/request/withUrl.phpt" role="test" />
+   <file md5sum="102a8f3000531117ae170cf39b582db6" name="tests/response/addHeader_array.phpt" role="test" />
+   <file md5sum="d73940c4755c7e014072cff44e115da6" name="tests/response/addHeader.phpt" role="test" />
+   <file md5sum="02de30baa39e02fbbd42ea35ceb56b96" name="tests/response/date_invalid.phpt" role="test" />
+   <file md5sum="da897591560aace57b6375c77ba7952d" name="tests/response/date.phpt" role="test" />
+   <file md5sum="bc6fa0595d390dde00ff09d9b104d8c5" name="tests/response/getStatus.phpt" role="test" />
+   <file md5sum="3004d3085f4915cadd519cbfd213a095" name="tests/response/getVersion.phpt" role="test" />
+   <file md5sum="ac09ad65e4577b1e0634b43698389b4f" name="tests/response/sendContent_callable.phpt" role="test" />
+   <file md5sum="5edacd7cfd9f453f4dbd0792ff2e07cc" name="tests/response/sendContent_callableRV.phpt" role="test" />
+   <file md5sum="19def4055605e72cffe7943098cdda7c" name="tests/response/sendContent_resource.phpt" role="test" />
+   <file md5sum="d534d95fed0de23ae8c294e21e1f9df3" name="tests/response/sendContent_string.phpt" role="test" />
+   <file md5sum="acf98363639cb89de004cd61b9a586b1" name="tests/response/sendCookies.phpt" role="test" />
+   <file md5sum="0c4eb13e7dd05a7db4f719e6bd831803" name="tests/response/sendHeaders.phpt" role="test" />
+   <file md5sum="18e19e245f5bd0557d2e829504ea84b7" name="tests/response/sendStatus.phpt" role="test" />
+   <file md5sum="0b95eefd0e8939de8baf59fc9362c748" name="tests/response/setContent.phpt" role="test" />
+   <file md5sum="75c15ed28a698e73c8e1d1194dc49755" name="tests/response/setContentDownload_notResource.phpt" role="test" />
+   <file md5sum="3cfd9c1a6471a6f547c5ca7a2c872127" name="tests/response/setContentDownload.phpt" role="test" />
+   <file md5sum="a94589d285dd6da2361160e60faa5f60" name="tests/response/setContentJson_failed.phpt" role="test" />
+   <file md5sum="48449011d9ebe64c3dc6b5ad3b6bbda5" name="tests/response/setContentJson.phpt" role="test" />
+   <file md5sum="6140d8520612befbae5bcd9161f9d0b1" name="tests/response/setCookie.phpt" role="test" />
+   <file md5sum="e67b4687d06c055f73c2b70968e228d7" name="tests/response/setHeader_array.phpt" role="test" />
+   <file md5sum="a108960e2ad1676002e2c0f73656b0a7" name="tests/response/setHeader.phpt" role="test" />
+   <file md5sum="03a8dd5931e31ac9df59f2075c37def5" name="tests/response/setStatus.phpt" role="test" />
+   <file md5sum="d8464b8775fa6a93873bbc3564222bcd" name="tests/response/setVersion.phpt" role="test" />
+   <file md5sum="04b2c6c196af50166ed560d11c893e94" name="CHANGELOG.md" role="doc" />
+   <file md5sum="9448d3c8f0f648d017101f47eabec5d7" name="LICENSE.md" role="doc" />
+   <file md5sum="815d7830863e7bfc0118dddb4ec0a46b" name="README.md" role="doc" />
+   <file md5sum="7154fd5ceb5816b6cd43d37445a427cb" name="TODO.md" role="doc" />
+   <file md5sum="32dca6c79bf4d13783fcb2288771c223" name="config.m4" role="src" />
+   <file md5sum="33a8361d718ace9b2522ab5c801f150a" name="Makefile.frag" role="src" />
+   <file md5sum="afc561c3a16abf8b6c6e6e7b23e5dbd0" name="parsers.c" role="src" />
+   <file md5sum="5d6366fe9e9176b1a265e0117909d267" name="parsers.re" role="src" />
+   <file md5sum="05476713c17b229fd2a2704061416db7" name="php_request.c" role="src" />
+   <file md5sum="76a43726bb6256548eab063b756df12b" name="php_request.h" role="src" />
+   <file md5sum="c24c12db5a1a659ebfdb50533ca01656" name="serverrequest.c" role="src" />
+   <file md5sum="36990d876565cdc57a20f884b859b746" name="serverresponse.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>request</providesextension>
+ <extsrcrelease />
+</package>

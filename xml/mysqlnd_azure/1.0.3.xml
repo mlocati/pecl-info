@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.5" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>mysqlnd_azure</name>
+ <channel>pecl.php.net</channel>
+ <summary>mysqlnd_azure - a redirection plugin for mysqlnd</summary>
+ <description>mysqlnd extension for azure</description>
+ <lead>
+  <name>Hang Zhang</name>
+  <user>ymr674</user>
+  <email>haz@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Qianqian Bu</name>
+  <user>bqq</user>
+  <email>Qianqian.Bu@microsoft.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2020-02-10</date>
+ <time>09:23:05</time>
+ <version>
+  <release>1.0.3</release>
+  <api>1.0.3</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Remove the use of is_using_redirect flag. More strict validation and test cases with php built-in web server.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="6d473de497966da011b1b1a60b2285c8" name="config.m4" role="src" />
+   <file md5sum="5afc590b5c2da3920337849073de0c4b" name="config.w32" role="src" />
+   <file md5sum="980886d3952d3d5502a749dc73daccdd" name="mysqlnd_azure.c" role="src" />
+   <file md5sum="7b6d0c29876533de3729f100d81322eb" name="php_mysqlnd_azure.c" role="src" />
+   <file md5sum="08ccfc4c9b688262ea20c00e61eccf16" name="redirect_cache.c" role="src" />
+   <file md5sum="e20c5b0495d318ccf9f27559e5491c81" name="mysqlnd_azure.h" role="src" />
+   <file md5sum="3fb1859d281f3d752db6ca608d6aa019" name="php_mysqlnd_azure.h" role="src" />
+   <file md5sum="74fec526a8c723f8debca84cb0a5aa9a" name="tests/mysqli_azure_redirection_enabled.phpt" role="test" />
+   <file md5sum="cb50cd954f289fd9dca25ed31dc908a0" name="tests/mysqli_azure_redirection_disabled.phpt" role="test" />
+   <file md5sum="edf6aeb2b0831c0856b3765c777457d0" name="tests/connect.inc" role="test" />
+   <file md5sum="6836a4ce5c77a905b6bc164ac676ed80" name="tests/skipif.inc" role="test" />
+   <file md5sum="36114b153313f92f9b0ce8c73fe9f1b0" name="tests/skipifconnectfailure.inc" role="test" />
+   <file md5sum="86d932037d113c6347716e199ebbbfcc" name="tests/server.inc" role="test" />
+   <file md5sum="76eb99f16fee7a7b8292b2d7b34c109d" name="tests/skipif_pdo.inc" role="test" />
+   <file md5sum="9ecaa780d20d362faeae7df543a0d38f" name="tests/skipif_server.inc" role="test" />
+   <file md5sum="d498dd709e52e77b2420cb2cefb5c11a" name="tests/server_basic_mysqli.phpt" role="test" />
+   <file md5sum="8552daadc1f7801a7ac555567c1d051f" name="tests/server_basic_mysqli_testcase.php" role="test" />
+   <file md5sum="593b39d7ecc4e15487dea0e4cf3c0800" name="tests/server_basic_pdo.phpt" role="test" />
+   <file md5sum="97bc4399921944da2191ec5979ce6735" name="tests/server_basic_pdo_testcase.php" role="test" />
+   <file md5sum="a898ba9138cb8ebe9751d0629ebdcd87" name="LICENSE.txt" role="doc" />
+   <file md5sum="c3de6c763e44bebab12cfa0d85c37fa0" name="Notes.txt" role="doc" />
+   <file md5sum="2e6b1acdbd3ea3056847cbd5d8042153" name="CREDITS" role="doc" />
+   <file md5sum="a2dcc2e5ba32a57f6a2748254abb1dcd" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.2.15</min>
+    <exclude>7.3.0</exclude>
+    <exclude>7.3.1</exclude>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>mysqlnd_azure</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2020-02-10</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Remove the use of is_using_redirect flag. More strict validation and test cases with php built-in web server.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.3RC</release>
+    <api>1.0.3RC</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2020-01-16</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+apply fix for the crash problem when working with PDO interface with flag PDO::ATTR_PERSISTENT=&gt;false.
+avoid redirect when ssl is false. Other performance improvement and refactor.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2019-11-20</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+apply fix for database null/empty problem change in https://github.com/php/php-src/pull/4340 in MYSQLND_METHOD(mysqlnd_conn_data, connect) to MYSQLND_METHOD(mysqlnd_azure_data, connect)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2019-11-01</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Update package folder name for pecl install, and README.md
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2019-10-17</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Initial package release.
+   </notes>
+  </release>
+ </changelog>
+</package>

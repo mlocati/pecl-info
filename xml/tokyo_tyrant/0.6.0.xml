@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>tokyo_tyrant</name>
+ <channel>pecl.php.net</channel>
+ <summary>Provides a wrapper to the Tokyo Tyrant client library.</summary>
+ <description>tokyo_tyrant extension provides object oriented API for communicating
+with Tokyo Tyrant key-value store.
+
+This extension requires Tokyo Cabinet, Tokyo Tyrant and PHP version 5.2.0+.</description>
+ <lead>
+  <name>Mikko Koppanen</name>
+  <user>mkoppanen</user>
+  <email>mkoppanen@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-02-22</date>
+ <time>18:13:13</time>
+ <version>
+  <release>0.6.0</release>
+  <api>0.6.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Fixes PECL Bug #18005
+- Fixes PECL Bug #18344
+- Fix memory allocation error
+- Binary safety fixes (Isamu Arimoto)
+- TokyoTyrantTable::put cuts integer key of 2nd argment array.  (Isamu Arimoto)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="2e533c5aa3601c2bc775f048ece29c52" name="config.m4" role="src" />
+   <file md5sum="710527aaa97d1d255d6866c86744086b" name="connection.c" role="src" />
+   <file md5sum="b80d3811382f947670b4da15d67c0cc4" name="failover.c" role="src" />
+   <file md5sum="a595ab82fefd0cf7c7f9ee69d5c9e767" name="server_pool.c" role="src" />
+   <file md5sum="d05bb1dc1e2b2a32f5c1b52e7171f59f" name="session.c" role="src" />
+   <file md5sum="255b8ecc85925b91a68bbe6c5c7fc83e" name="session_funcs.c" role="src" />
+   <file md5sum="6280403b76b907f6ba0187bc2d7d63f5" name="tokyo_tyrant.c" role="src" />
+   <file md5sum="d64e612609cc7b4c7ee2b0c982f72f74" name="tokyo_tyrant_funcs.c" role="src" />
+   <file md5sum="a4be100fcfd393281d179f9a300794e5" name="php_tokyo_tyrant.h" role="src">
+    <tasks:replace from="@PACKAGE_VERSION@" to="version" type="package-info" />
+   </file>
+   <file md5sum="1684095f600a3ce37febd8e69058ef96" name="php_tokyo_tyrant_connection.h" role="src" />
+   <file md5sum="f63bf741bebe6c36a06ba2d2cdc390d4" name="php_tokyo_tyrant_failover.h" role="src" />
+   <file md5sum="a10da688fa4344eb8cc8be7e27c06c82" name="php_tokyo_tyrant_funcs.h" role="src" />
+   <file md5sum="da57778237119fd214686584256009a1" name="php_tokyo_tyrant_private.h" role="src" />
+   <file md5sum="21c90b0d7ed5aec1e75978104adeed6a" name="php_tokyo_tyrant_server_pool.h" role="src" />
+   <file md5sum="81d8fe8315f75326b3633802a96a9a38" name="php_tokyo_tyrant_session.h" role="src" />
+   <file md5sum="4583d39dd123b2a71bc03773945f4a9b" name="php_tokyo_tyrant_session_funcs.h" role="src" />
+   <file md5sum="d0c66d58b83dbbed1eac070bafcf41ae" name="CREDITS" role="doc" />
+   <file md5sum="17989d2c059301ce4642b5730fbcb75f" name="LICENSE" role="doc" />
+   <file md5sum="c87c6658668dade64c00bb53162d6010" name="ChangeLog" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>tokyo_tyrant</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-tokyo-tyrant" prompt="Please provide the prefix of Tokyo Tyrant installation" />
+  <configureoption default="autodetect" name="with-tokyo-cabinet-dir" prompt="Please provide the prefix of Tokyo Cabinet installation" />
+ </extsrcrelease>
+</package>

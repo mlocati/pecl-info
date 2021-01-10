@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>amqp</name>
+ <channel>pecl.php.net</channel>
+ <summary>Communicate with any AMQP compliant server</summary>
+ <description>This extension can communicate with any AMQP spec 0-9-1 compatible server, such as RabbitMQ, OpenAMQP and Qpid, giving you the ability to create and delete exchanges and queues, as well as publish to any exchange and consume from any queue.</description>
+ <lead>
+  <name>Pieter de Zwart</name>
+  <user>pdezwart</user>
+  <email>pdezwart@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2012-03-02</date>
+ <time>13:38:34</time>
+ <version>
+  <release>1.0.1</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+1.0.1 Release:
+Fixed bug:
+    * 61247: Allow queue creation with empty queue name, and return auto generated name
+    * 61127: Segmentation fault when cleaning up an AMQPChannel without calling AMQPConnection::connect first
+
+1.0.0 Release:
+Changed/finalized API signature:
+    * Exposing AMQPChannel
+    * Exposing AMQPEnvelope
+    * Exposing more queue and exchange arguments and flags
+    * Exposing basic.qos
+Added persistent connections
+Cleaned up codebase
+Fixed memory leaks and segmentation faults
+     
+0.3.1 Release:
+Fixed bug:
+    * 24323: Cannot get the name for auto-named reply-to queues
+     
+0.3.0 Release:
+Fixed memory leaks in many functions (courtesy Jonathan Tansavatdi and Andy Wick)
+Fixed consume method to return proper values
+Cleaned up variable usage
+Fixed bugs:
+    * 22638: Unexpected exit code 1 with AMQPQueue::consume()
+    * 22698: AMQPQueue::consume
+
+0.2.2 Release:
+Made extension compatible with PHP lt 5.3 (courtesy John Skopis)
+Fixed wrong typing of message properties (courtesy John Skopis)
+
+0.2.1 Release:
+Fixed refcount decrementing bug causing segfaults.
+
+0.2.0 Release:
+Works with AMQP 0-8 and 0-9-1 (used by RabbitMQ 2.*)
+Modified AMQPConnection object:
+    * Requires call to &apos;connect&apos; method to connect (no longer connects on instantiation)
+    * Added support for disconnect and reconnect
+    * Added helper setters for port, host, vhost, login and password
+Improved consume method to block for MIN messages, and try to get MAX messages if available
+Fixed zval descoping bugs
+Fixed bugs:
+    * 17809: Couldn&apos;t compile pecl extension under PHP 5.3
+    * 17831: Segmentation fault when the exchange doesn&apos;t exists
+    * 19707: AMQPQueue::get() doesn&apos;t return the message
+    * 19840: Connection Exception
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="407500e873c794f0d25f87eeabfa963c" name="amqp.c" role="src" />
+   <file md5sum="92534418962c76ca9bdf49bd1a22655f" name="amqp_connection.c" role="src" />
+   <file md5sum="4b8c340a3cdde6a3ecf5c393feee56a4" name="amqp_channel.c" role="src" />
+   <file md5sum="5668c32520ff2be59559f269ad6b8a8e" name="amqp_exchange.c" role="src" />
+   <file md5sum="e3f37c695ebd858e483ef78041a526b6" name="amqp_queue.c" role="src" />
+   <file md5sum="5abd33a25b2a8d460c4b1307f91c2875" name="amqp_envelope.c" role="src" />
+   <file md5sum="c821d9863019d72116cad1edd0d57899" name="config.m4" role="src" />
+   <file md5sum="a48b9621d53bb64e06878d9fb737c83d" name="CREDITS" role="doc" />
+   <file md5sum="fcdc3a69706a73d493888d13d634f60c" name="php_amqp.h" role="src" />
+   <file md5sum="c90e130489d836878b795607e927595d" name="amqp_connection.h" role="src" />
+   <file md5sum="a2a28b9a362da2871b5b6f10efb613d5" name="amqp_channel.h" role="src" />
+   <file md5sum="0dba244f7d9787daf0bb6e50f7fb3538" name="amqp_exchange.h" role="src" />
+   <file md5sum="c1c7626dcb7e16cd6254a4e1bae40781" name="amqp_queue.h" role="src" />
+   <file md5sum="d01a3241272a9753831477092488e236" name="amqp_envelope.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>amqp</providesextension>
+ <extsrcrelease />
+</package>

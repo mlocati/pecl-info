@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0   http://pear.php.net/dtd/tasks-1.0.xsd   http://pear.php.net/dtd/package-2.0   http://pear.php.net/dtd/package-2.0.xsd">
+ <name>dom_varimport</name>
+ <channel>pecl.php.net</channel>
+ <summary>Convert nested arrays into DOMDocument</summary>
+ <description>The extension converts nested PHP arrays and objects into DOMDocument.
+  Some of projects use XSLT as a templating engine. To build XML for such engines,
+  we need a very fast and memory efficient way to convert PHP nested arrays and
+  objects into DOMDocument object. Also, produced XML should be straight-forward
+  and as simple as it could be (BTW XMLRPC, SOAP and other XML-based formats are quite
+  sloppy in this case). So dom_varimport has been introduced: it produces DOMDocument
+  from a nested array near 20 times faster than a hand-made code in native PHP
+  (1 MB XML with thousands of nodes could be generated in 1-2 ms).</description>
+ <lead>
+  <name>Dmitry Koterov</name>
+  <user>dmitrykoterov</user>
+  <email>dmitry.koterov@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2015-08-04</date>
+ <time>10:11:28</time>
+ <version>
+  <release>1.11.1</release>
+  <api>1.11.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+** Typo
+    * Remove an outdated test (expired after the version is migrated from README to package.xml)
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="4b705ad4d2c61717b20d497b82f1052a" name="tests/001.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="c58d37fedbc7195cc5c64a97fda85282" name="tests/002_formats.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="3a23e7ba221efbc628669209974db159" name="tests/003_mem_leaks.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="caa8f87ec37f480f711a825190d9a393" name="tests/004_recursion.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="ccc7085a9c798e57f9faea411ec580fe" name="tests/005_arrayobject.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="a87e39d70cb835f1fe51c01b9de8cd99" name="tests/006_custom_root.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="d6ea33a5dd1dd7a676f8558c16d1daa6" name="tests/009_custom_badname_element.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="12fa0620f5a7b82629b84cbab39efe8a" name="tests/010_custom_key_attr.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="e5f1b51c7cad79aa396801f32914055d" name="tests/011_warnings.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="4d0470bcb2b8e57803c6dc644455bf31" name="tests/012_notices.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="9023ceb930fec347e851eaa695c1d103" name="tests/013_attributes.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="ec67c5263246b1d009c2d52164d73a64" name="tests/014_domelement.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="841ad5b04cc2664df41076004c5d693e" name="tests/900_stress.phpt" role="src" />
+   <file baseinstalldir="/" md5sum="b288da4653d16c9bda989d5d26204a7e" name="tests/init.inc" role="src" />
+   <file baseinstalldir="/" md5sum="61efcb60e3a3cbfaa145afbd220ebd3a" name="tests/skipif.inc" role="src" />
+   <file baseinstalldir="/" md5sum="29c5a998bd4a0d431d26749c74992af9" name="CREDITS" role="doc" />
+   <file baseinstalldir="/" md5sum="dd34a70236f008af999de817b93a5e3a" name="LICENSE" role="doc" />
+   <file baseinstalldir="/" md5sum="a745a59d2b2f67353e6c491e8ef61542" name="README" role="doc" />
+   <file baseinstalldir="/" md5sum="1c7ec43996ce5ee65179e96b66844d2c" name="config.m4" role="src" />
+   <file baseinstalldir="/" md5sum="b16d71526dba19e045c8e33bd6cca2b6" name="config.w32" role="src" />
+   <file baseinstalldir="/" md5sum="557ab821960feb935fe3cf628c72cd6a" name="dom_varimport.c" role="src" />
+   <file baseinstalldir="/" md5sum="434fa12aca25d25264f9136bc17a5317" name="php_dom_varimport.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.3</min>
+   </pearinstaller>
+   <extension>
+    <name>dom</name>
+   </extension>
+   <extension>
+    <name>libxml</name>
+   </extension>
+  </required>
+ </dependencies>
+ <providesextension>dom_varimport</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2015-08-04</date>
+   <time>12:00:00</time>
+   <version>
+    <release>1.11.0</release>
+    <api>1.11.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+** New Feature
+    * Special key @attributes to set predefined attributes, ability to populate DOMElement [Dimasik]
+    * Support for different types in @attributes array [Dimasik]
+    * Tests for special attribute and DOMElement [Dimasik]
+    * Enable Win32 build (ZTS support)
+   </notes>
+  </release>
+  <release>
+   <date>2014-04-22</date>
+   <time>20:00:00</time>
+   <version>
+    <release>1.10.0</release>
+    <api>1.10.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+** Improvement
+    * Cleanup before PECL publishing
+    * Add &quot;dom&quot; extension dependency in tests
+   </notes>
+  </release>
+  <release>
+   <date>2014-04-18</date>
+   <time>18:00:00</time>
+   <version>
+    <release>1.2.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+** New Feature
+    * Double values serialization improvement
+    * A sample for root element name customization in README
+    * Support for root element name customization
+    * ArrayObject test added
+    * Test to check recursion protection
+   </notes>
+  </release>
+ </changelog>
+</package>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>ingres</name>
+ <channel>pecl.php.net</channel>
+ <summary>Extension for the Ingres Relational Database System.</summary>
+ <description>This extension supports the Ingres Relational Database System.</description>
+ <lead>
+  <name>Grant Croker</name>
+  <user>grant</user>
+  <email>grant.croker@ingres.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2009-06-19</date>
+ <time>15:29:30</time>
+ <version>
+  <release>2.2.0</release>
+  <api>2.2.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>This is a minor release that introduces the following new functionality:
+     
+- Add support for fetching/putting LONG NVARCHAR data
+- Add arginfo to provide reflection access to the internals
+- Add ingres_unbuffered_query()
+
+And fixes the following problems:
+
+- Fix bug 16668 - Update ii_result-&gt;tranhandle after calling IIapì_autocommit()
+- Fix bug 16616 - auto commit emulation failed with a SELECT followed by an INSERT
+- Fix bug 16075 - improper clean up of old resource values causing SEGV
+- When II_SYSTEM is not defined provide a link to the documentation showing how to set it up
+- Fix bug 16539 - Stale connections fail to be disconnected using IIapi_disconnect()
+- Fix bug 16539 - Binding UTF-8 data causes an additional NULL to be sent to the server
+- Fix GPF on Windows with sql.safe_mode and undefined ingres.default_database
+- Fix ingres_prepare() and ingres_execute() so they actually work
+- Make sql_safe_mode use ingres.default_database
+- ingres_fetch_proc_return should return NULL if no value is available
+- Handle leading white-space characters in query detection (thanks Alex Trofast)</notes>
+ <contents>
+  <dir name="/">
+   <file baseinstalldir="ingres" md5sum="e5febde259b634f4c71801d27925d4e7" name="tests/connection.inc" role="test" />
+   <file baseinstalldir="ingres" md5sum="23d7d2f7a6ae62d0a837837d6d87ae9a" name="tests/skipif.inc" role="test" />
+   <file baseinstalldir="ingres" md5sum="efd7c626c32cabfe6ced4ccb6bde531e" name="tests/utf8.txt" role="test" />
+   <file baseinstalldir="ingres" md5sum="cf7c8ab5e365439696d7315c8df69dca" name="tests/test_001.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="8c63d66d7c21f4a8b7dfaeb6904c5ed7" name="tests/test_002.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="d40dff0a673f98e48a0a36502b66a7e3" name="tests/test_003.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="221099ea49c8f4258a8947e2cd0b1a84" name="tests/test_004.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="1e4f11da3919e97fe9268c6dca0e5747" name="tests/test_005.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="97c434cdaca22df7d900a261bf579e2c" name="tests/test_006.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="01677bd5f6c5d182f306a841067edc5d" name="tests/test_007.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="f2ce6c81a5614d9f3b164f14ec81aa68" name="tests/test_008.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="3d02990960a1ad461d6cf3138fbf2945" name="tests/test_009.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="0cff1bb825a5ceb0bb3c20333dc58f36" name="tests/test_010.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="7581ddce8c2a679f867896f4dfaa07a8" name="tests/test_011.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="f296aa98b82e5a264beee9b1f6027c3f" name="tests/test_012.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="308e931924b391333e50573d9aceaf78" name="tests/test_013.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="475993a132bb8c608c28fee418718d2b" name="tests/test_014.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="cde20513abe5ad5367df3c536eb702e5" name="tests/test_015.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="70132518335b7a6eb162a0cb443c1da9" name="tests/test_016.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="18a5233a7ea7f4f7e8ffbbd052b1e8a7" name="tests/test_017.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="4150f1205def48e1db70ba7e095c9f42" name="tests/test_018.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="e94c426b2b05dee28f0840b901012c0d" name="tests/test_019.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="59add7d471284c0b966bf2fa7fcce367" name="tests/test_020.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="77a0e3ae46db3fd73a37a4746bef8aec" name="tests/test_021.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="d6a338e9ebcd156526e430a30b6d3c7c" name="tests/test_022.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="7b6bfa5d41ca251d5579591ec2981efb" name="tests/test_023.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="c2ddc35b03bfd0907415595682ca22e4" name="tests/test_024.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="5dc0500dd2223586cf933cd438f700bb" name="tests/test_025.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="96583295598e3098c7619546087b3148" name="tests/test_026.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="9c5507cf4fa063207512537e60233256" name="tests/test_027.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="579315860dff9b4848c75ab8da858498" name="tests/test_028.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="64d5ed34b04b60602c21441547d5975f" name="tests/test_029.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="832740a8ba1007e4b837bd500dfc9014" name="tests/test_030.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="e4310e3e3fe3772cb1c49748856a97bb" name="tests/test_031.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="d42d30d2e66d91a0d62437b6bc1198a4" name="tests/test_032.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="42c1bfc6b9d0208d37baae68aa4096f7" name="tests/test_033.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="31c15331826e3683d8dbdb6308af559f" name="tests/test_034.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="cf46c6317c8040b158cc75a6672aa6f2" name="tests/test_035.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="f924ae30049c05d0b0397a8cb366db52" name="tests/test_036.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="2fadc345739149412025c2cad9f8eaa9" name="tests/test_037.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="5c64d5ebaa72f55f16c7b007c3db9cef" name="tests/test_038.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="9eaa6b99985693dfba3866009ec5d44b" name="tests/test_039.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="e768e6f161bd0a8731c62460f20f2aaa" name="tests/test_040.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="2e7de7b2e801e1b2b41cc49db6f82e06" name="tests/test_041.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="b792adbb8818f15141be4d8f21a5a445" name="tests/test_042.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="b7606790ccd484e334f81cda31eebca1" name="tests/test_043.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="4ef28596119ff756e0742b76607cb7c3" name="tests/test_044.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="6e50283c834f1c5463e3537e49c8b2d4" name="tests/test_045.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="fc0ec0fa98bf0a0181a1d66a861f095a" name="tests/test_046.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="7fd92ffb25205f37a67d25de75978f04" name="tests/test_047.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="66b3100700a34cfa9017e28c8bda054a" name="tests/test_048.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="e70034f4ecbc42ed8ecb90cc0aa9de04" name="tests/test_049.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="7c006a07f18491e11c7b3fcf655d3712" name="tests/test_050.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="d6a0075c80b15e59ef66a95445f71da8" name="tests/test_051.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="0e1325177bcdffbd4ab1200cd118ea24" name="tests/test_052.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="8a53d4dc6a1b3aab899b54c70dc890be" name="tests/bug_15586_newlines.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="6988243613a531b5875086f3ef12c2e3" name="tests/bug_15586.phpt" role="test" />
+   <file baseinstalldir="ingres" md5sum="6c3547c6f0eeabe8f535bf66887ff2b2" name="BUILD.COM" role="src" />
+   <file baseinstalldir="ingres" md5sum="a6699dff98dd45b917424c538dfac0a5" name="CHANGELOG" role="doc" />
+   <file baseinstalldir="ingres" md5sum="a8f2dba5c25aee9857700cab03040cc0" name="config.m4" role="src" />
+   <file baseinstalldir="ingres" md5sum="cf48b1582468eb40ff2eab254c28c865" name="config.w32" role="src" />
+   <file baseinstalldir="ingres" md5sum="d860f685c28971f6bab88ea0e9887998" name="convertUTF.c" role="src" />
+   <file baseinstalldir="ingres" md5sum="adef82398ecf2e0554ea855c79ee1d16" name="convertUTF.h" role="src" />
+   <file baseinstalldir="ingres" md5sum="ad867664c8e989a34ab1d7e9d02e33d2" name="CREDITS" role="doc" />
+   <file baseinstalldir="ingres" md5sum="e39607bee03c6459e93b18c3887b989f" name="ingres.c" role="src" />
+   <file baseinstalldir="ingres" md5sum="c483791478e93943c02fdb7394587770" name="ingres.h" role="src" />
+   <file baseinstalldir="ingres" md5sum="8666ab61335f7bb44f0e5ec9401a77f6" name="ingres.ini" role="doc" />
+   <file baseinstalldir="ingres" md5sum="b63c58af82893cb25ec6e92b7b2ae069" name="INGRES.OPT" role="src" />
+   <file baseinstalldir="ingres" md5sum="6ef2671da01eda68ae0439605977683b" name="php_ingres.h" role="src" />
+   <file baseinstalldir="ingres" md5sum="9cf0ddb196a1d8847535a349a60b407a" name="php_ingres2.h" role="src" />
+   <file baseinstalldir="ingres" md5sum="e27fd8c5eeba9d2918a0bb2f4b856603" name="README" role="doc" />
+   <file baseinstalldir="ingres" md5sum="848bec22e035acbc7b74de65dc43f933" name="README.html" role="doc" />
+   <file baseinstalldir="ingres" md5sum="0c70f580c62d91170d878eb18dbaf633" name="README.VMS" role="doc" />
+   <file baseinstalldir="ingres" md5sum="5f447ba415b45d92371368fe033cd0f8" name="TODO" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>ingres</providesextension>
+ <extsrcrelease>
+  <configureoption name="with-ingres" prompt="Ingres II_SYSTEM dir?" />
+ </extsrcrelease>
+</package>

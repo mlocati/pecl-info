@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="   http://pear.php.net/dtd/tasks-1.0   http://pear.php.net/dtd/tasks-1.0.xsd   http://pear.php.net/dtd/package-2.0   http://pear.php.net/dtd/package-2.0.xsd">
+ <name>pecl_http</name>
+ <channel>pecl.php.net</channel>
+ <summary>Extended HTTP Support</summary>
+ <description>Extended HTTP support. Again. Keep in mind that it&apos;s got the major version 2, because it&apos;s incompatible with pecl_http v1.
+
+* Introduces the http namespace.
+* Message bodies have been remodeled to use PHP temporary streams instead of in-memory buffers.
+* The utterly misunderstood HttpResponse class has been reimplemented as http\Env\Response inheriting http\Message.
+* Currently, there&apos;s only one Exception class left, http\Exception.
+* Errors triggered by the extension can be configured statically by http\Object::$defaultErrorHandling or inherited http\Object-&gt;errorHandling.
+* The request ecosystem has been modularized to support different libraries, though for the moment only libcurl is supported;
+  Nevertheless, you have to use the http\Request\Factory to create your request/pool/datashare objects.</description>
+ <lead>
+  <name>Michael Wallner</name>
+  <user>mike</user>
+  <email>mike@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2012-03-09</date>
+ <time>14:59:17</time>
+ <version>
+  <release>2.0.0dev7</release>
+  <api>2.0.0</api>
+ </version>
+ <stability>
+  <release>devel</release>
+  <api>devel</api>
+ </stability>
+ <license>BSD, revised</license>
+ <notes>
++ Added multipart support to http\Message, which can now splitMultipartBody() 
+  to a http\Message chain, f.e. of a ranges response or file upload request.
++ Added primitive quoting/escaping capabilities to http\Params.
++ Reworked and improved negotiation support, added asterisk (*) matching etc.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="2c1f32df88ec56cb661329187566e2d8" name="LICENSE" role="doc" />
+   <file md5sum="79d943877ef7b7100451a5eadd05a311" name="CREDITS" role="doc" />
+   <file md5sum="d1df898ab54c49006436890b733bfce2" name="KnownIssues.txt" role="doc" />
+   <file md5sum="98b8806e550da930ccead3a2779d31a9" name="ThanksTo.txt" role="doc" />
+   <file md5sum="9d36ebe88c36d2cd5e350ad6b0b5c7c5" name="config.m4" role="src" />
+   <file md5sum="cf046376e5208a3991f8e76177437d77" name="config9.m4" role="src" />
+   <file md5sum="419faf88ebb635f29c326269fca0712c" name="php_http_api.h" role="src" />
+   <file md5sum="305431112eb24069e5e7d324e255835e" name="php_http_buffer.c" role="src" />
+   <file md5sum="c773d49e6c8ba3cb9ef53ee4b000a092" name="php_http_buffer.h" role="src" />
+   <file md5sum="5f30222238fd63e0e8be8805daba519a" name="php_http.c" role="src" />
+   <file md5sum="de8876efce58dce096f77b4903f7ca79" name="php_http_cookie.c" role="src" />
+   <file md5sum="c2c005d1c7c62454d00297fabf797fcb" name="php_http_cookie.h" role="src" />
+   <file md5sum="deb06a2e41f356b8d0a6921f4925472c" name="php_http_curl.c" role="src" />
+   <file md5sum="3090d0a8a91017b82b991876d57f97cc" name="php_http_curl.h" role="src" />
+   <file md5sum="4d6836aec1b6dd672b239382df02e3cd" name="php_http_encoding.c" role="src" />
+   <file md5sum="04dc7019ca7369737ea3e88cd70e32fe" name="php_http_encoding.h" role="src" />
+   <file md5sum="089cc4380a4211529802942a556ca0b1" name="php_http_env.c" role="src" />
+   <file md5sum="581d5fcbde4c11f9b28d36ee86451808" name="php_http_env.h" role="src" />
+   <file md5sum="687850f283bf59ccbb987c0d8f29a418" name="php_http_env_request.c" role="src" />
+   <file md5sum="c3ca5f8fe18a0b9fcb47df736e76789a" name="php_http_env_request.h" role="src" />
+   <file md5sum="7a2012acb35ad8a33ffcc0feed5b0553" name="php_http_env_response.c" role="src" />
+   <file md5sum="a6961f996aef3bded4204e1987f31d6e" name="php_http_env_response.h" role="src" />
+   <file md5sum="48f1998a138d8947c323bc1c8a5fef67" name="php_http_etag.c" role="src" />
+   <file md5sum="7182acd8cc18a78820457fb48cf242bc" name="php_http_etag.h" role="src" />
+   <file md5sum="62f3937aedcb86687424853d9a5f82ca" name="php_http_exception.c" role="src" />
+   <file md5sum="9c1b329c4e454a504aa2f603a3cc20fb" name="php_http_exception.h" role="src" />
+   <file md5sum="66da05949e8b7465ad6de788d6443028" name="php_http_filter.c" role="src" />
+   <file md5sum="0c01fe075eca1e0fbcdd8a29e6478c0e" name="php_http_filter.h" role="src" />
+   <file md5sum="8c3171ed366e86413a9d64dc93959964" name="php_http.h" role="src" />
+   <file md5sum="93dfe29ec0ea5b9b8a1920c51afa4ad3" name="php_http_header_parser.c" role="src" />
+   <file md5sum="1ae2a13f09d02d02f1608aae0099ed94" name="php_http_header_parser.h" role="src" />
+   <file md5sum="7ec0a9569dea2a7d8ed015be84d50e6f" name="php_http_headers.c" role="src" />
+   <file md5sum="98ada5f726a198304764d789eed0a228" name="php_http_headers.h" role="src" />
+   <file md5sum="961246ced35278b9c7da316a94f1cbaf" name="php_http_info.c" role="src" />
+   <file md5sum="f9399125ddcfdcf5707658e305907a58" name="php_http_info.h" role="src" />
+   <file md5sum="941cf929b2a5648f0ef29e2991b666a1" name="php_http_message_body.c" role="src" />
+   <file md5sum="678fceae3a2f12d0d2b7ba0cbae55419" name="php_http_message_body.h" role="src" />
+   <file md5sum="6d1ea6b0fb7feb1721dab79e69f5bc18" name="php_http_message.c" role="src" />
+   <file md5sum="73d33e7af4bdfae109f34327a51751fa" name="php_http_message.h" role="src" />
+   <file md5sum="72792a6fb0e58d0f900fb9858d99d433" name="php_http_message_parser.c" role="src" />
+   <file md5sum="c6411d812a9018d14e99ed69745e7212" name="php_http_message_parser.h" role="src" />
+   <file md5sum="a9a27dc97cb2e8ebf54b86b3b3dbad89" name="php_http_misc.c" role="src" />
+   <file md5sum="8cabc626f0353bdcedc5b616b43e94b1" name="php_http_misc.h" role="src" />
+   <file md5sum="7a2d8eb3458c4f2b904d2d6fdf862e6a" name="php_http_negotiate.c" role="src" />
+   <file md5sum="575ec0515bdcd882df4d8f084796f587" name="php_http_negotiate.h" role="src" />
+   <file md5sum="024089412603b5e0d9a2e67a7482bd67" name="php_http_object.c" role="src" />
+   <file md5sum="dfb2dfd5addae2860c41d6910794d6bf" name="php_http_object.h" role="src" />
+   <file md5sum="0679afb90e470fe8f5357db04cf2a7f3" name="php_http_params.c" role="src" />
+   <file md5sum="9f0bfc074ec95e912183cb549d8f3acf" name="php_http_params.h" role="src" />
+   <file md5sum="16aceb404074221e5e14e60d8788f09c" name="php_http_persistent_handle.c" role="src" />
+   <file md5sum="c40415a5d54cbad09ef18c25af2967a7" name="php_http_persistent_handle.h" role="src" />
+   <file md5sum="3b0513e9241093ba6fd7abfd1081a2e4" name="php_http_property_proxy.c" role="src" />
+   <file md5sum="567786a5e8905fb248766d10035b5dc8" name="php_http_property_proxy.h" role="src" />
+   <file md5sum="7a622d26252d21c91a2ebcbbe247b4e0" name="php_http_querystring.c" role="src" />
+   <file md5sum="b5d632a6f0ca229f262b086e185ff880" name="php_http_querystring.h" role="src" />
+   <file md5sum="7af5feb0653e7eea3c919a7fcdbf5b15" name="php_http_request.c" role="src" />
+   <file md5sum="cc40db02c9bf2275d8d119596de4ecdb" name="php_http_request_datashare.c" role="src" />
+   <file md5sum="17b126b7b7a82a717d008df50f5441ec" name="php_http_request_datashare.h" role="src" />
+   <file md5sum="29e80c529ffdddb331473a162caa7a84" name="php_http_request_factory.c" role="src" />
+   <file md5sum="a186d4a0b3b695c6aeadf27012a5de13" name="php_http_request_factory.h" role="src" />
+   <file md5sum="78a027cc9d2866129e6fd7569eb389b1" name="php_http_request.h" role="src" />
+   <file md5sum="3d4e26b81b4af2e9e16f593b03afa1f7" name="php_http_request_method.c" role="src" />
+   <file md5sum="9f3e5754388bb091db94936af4b59d51" name="php_http_request_method.h" role="src" />
+   <file md5sum="4322c2716e70cebb8685d40c302ef020" name="php_http_request_pool.c" role="src" />
+   <file md5sum="d3dfdd45b9be71f0f067749c09c93f64" name="php_http_request_pool.h" role="src" />
+   <file md5sum="0477b3317dfb6ea9adf4790ca578202f" name="php_http_resource_factory.c" role="src" />
+   <file md5sum="e99e0d704eb8d1a936b050df2daccd2e" name="php_http_resource_factory.h" role="src" />
+   <file md5sum="0354ff4c9bb1d44ae77c35bd933b1a1a" name="php_http_serf.h" role="src" />
+   <file md5sum="a1064aa97a0ce1e1cfcd725ea7d098a5" name="php_http_strlist.c" role="src" />
+   <file md5sum="5ecc30151a8b4c261036be6309c01653" name="php_http_strlist.h" role="src" />
+   <file md5sum="6f19ae134dbbf77a27ca6d5cbf3a50dc" name="php_http_url.c" role="src" />
+   <file md5sum="0b44128186a2413040772276fcbd99c3" name="php_http_url.h" role="src" />
+   <file md5sum="6a3056c8cd756b40a12b881b48dd8ac1" name="php_http_version.c" role="src" />
+   <file md5sum="ac35e291a8a489079b10db79b5130229" name="php_http_version.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.99</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+  </required>
+  <optional>
+   <extension>
+    <name>session</name>
+   </extension>
+   <extension>
+    <name>hash</name>
+   </extension>
+   <extension>
+    <name>iconv</name>
+   </extension>
+  </optional>
+ </dependencies>
+ <providesextension>http</providesextension>
+ <extsrcrelease>
+  <configureoption default="yes" name="with-http" prompt="Enable extended HTTP support" />
+  <configureoption default="/usr" name="with-http-zlib-dir" prompt="where to find zlib" />
+  <configureoption default="/usr" name="with-http-libcurl-dir" prompt="where to find libcurl" />
+  <configureoption default="/usr" name="with-http-libevent-dir" prompt="where to find libevent" />
+  <filelist />
+ </extsrcrelease>
+</package>

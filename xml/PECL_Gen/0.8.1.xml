@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<package version="1.0">
+  <name>PECL_Gen</name>
+  <summary>Tool to generate PECL extensions from an XML description</summary>
+  <description>PECL_Gen (formerly known as ext_skel_ng) is a pure PHP replacement 
+for the ext_skel shell script that comes with the PHP 4 source. 
+It reads in configuration options, function prototypes and code fragments
+from an XML description file and generates a complete ready-to-compile
+PECL extension.</description>
+  <maintainers>
+    <maintainer>
+      <user>hholzgra</user>
+      <name>Hartmut Holzgraefe</name>
+      <email>hartmut@php.net</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.8.1</version>
+    <date>2003-10-12</date>
+    <license>PHP</license>
+    <state>beta</state>
+    <notes>- custom test generation added
+- minor DTD changes
+- code reformatted for better PEAR coding standards compliance
+- additional tools for whitespace and indentation management</notes>
+    <deps>
+      <dep type="php" rel="ge" version="5.0"/>
+      <dep type="pkg" rel="ge" version="1.0.1">XML_Parser</dep>
+      <dep type="pkg" rel="ge" version="1.0">Console_Getopt</dep>
+    </deps>
+    <provides type="class" name="PECL_Gen_Extension" extends="PEAR" />
+    <provides type="function" name="PECL_Gen_Extension::set_name" />
+    <provides type="function" name="PECL_Gen_Extension::set_summary" />
+    <provides type="function" name="PECL_Gen_Extension::set_description" />
+    <provides type="function" name="PECL_Gen_Extension::set_language" />
+    <provides type="function" name="PECL_Gen_Extension::set_platform" />
+    <provides type="function" name="PECL_Gen_Extension::add_code" />
+    <provides type="function" name="PECL_Gen_Extension::add_author" />
+    <provides type="function" name="PECL_Gen_Extension::add_function" />
+    <provides type="function" name="PECL_Gen_Extension::add_constant" />
+    <provides type="function" name="PECL_Gen_Extension::add_phpini" />
+    <provides type="function" name="PECL_Gen_Extension::add_global" />
+    <provides type="function" name="PECL_Gen_Extension::add_resource" />
+    <provides type="function" name="PECL_Gen_Extension::add_package_file" />
+    <provides type="function" name="PECL_Gen_Extension::set_logo" />
+    <provides type="function" name="PECL_Gen_Extension::set_release" />
+    <provides type="function" name="PECL_Gen_Extension::set_license" />
+    <provides type="function" name="PECL_Gen_Extension::add_makefragment" />
+    <provides type="function" name="PECL_Gen_Extension::create_extension" />
+    <provides type="function" name="PECL_Gen_Extension::generate_source" />
+    <provides type="function" name="PECL_Gen_Extension::generate_documentation" />
+    <provides type="function" name="PECL_Gen_Extension::generate_extension_entry" />
+    <provides type="function" name="PECL_Gen_Extension::generate_globals_c" />
+    <provides type="function" name="PECL_Gen_Extension::generate_globals_h" />
+    <provides type="function" name="PECL_Gen_Extension::get_license" />
+    <provides type="function" name="PECL_Gen_Extension::write_header_file" />
+    <provides type="function" name="PECL_Gen_Extension::internal_functions_c" />
+    <provides type="function" name="PECL_Gen_Extension::private_functions_c" />
+    <provides type="function" name="PECL_Gen_Extension::public_functions_c" />
+    <provides type="function" name="PECL_Gen_Extension::write_code_file" />
+    <provides type="function" name="PECL_Gen_Extension::write_config_m4" />
+    <provides type="function" name="PECL_Gen_Extension::write_ms_devstudio_dsp" />
+    <provides type="function" name="PECL_Gen_Extension::write_credits" />
+    <provides type="function" name="PECL_Gen_Extension::write_experimental" />
+    <provides type="function" name="PECL_Gen_Extension::write_package_xml" />
+    <provides type="function" name="PECL_Gen_Extension::add_test" />
+    <provides type="function" name="PECL_Gen_Extension::write_test_files" />
+    <provides type="function" name="PECL_Gen_Extension::write_dot_cvsignore" />
+    <provides type="function" name="PECL_Gen_Extension::success_msg" />
+    <provides type="function" name="PECL_Gen_Extension::write_readme" />
+    <provides type="function" name="PECL_Gen_Extension::version" />
+    <provides type="class" name="PECL_Gen_Maintainer" extends="PEAR" />
+    <provides type="function" name="PECL_Gen_Maintainer::set_user" />
+    <provides type="function" name="PECL_Gen_Maintainer::set_name" />
+    <provides type="function" name="PECL_Gen_Maintainer::set_email" />
+    <provides type="function" name="PECL_Gen_Maintainer::set_role" />
+    <provides type="function" name="PECL_Gen_Maintainer::comment" />
+    <provides type="function" name="PECL_Gen_Maintainer::phpinfo" />
+    <provides type="function" name="PECL_Gen_Maintainer::package_xml" />
+    <provides type="class" name="PECL_Gen_Release" extends="PEAR" />
+    <provides type="function" name="PECL_Gen_Release::set_version" />
+    <provides type="function" name="PECL_Gen_Release::set_date" />
+    <provides type="function" name="PECL_Gen_Release::set_state" />
+    <provides type="function" name="PECL_Gen_Release::set_notes" />
+    <provides type="function" name="PECL_Gen_Release::package_xml" />
+    <provides type="class" name="PECL_Gen_License" extends="PEAR" />
+    <provides type="function" name="PECL_Gen_License::factory" />
+    <provides type="function" name="PECL_Gen_License::write_license_file" />
+    <provides type="function" name="PECL_Gen_License::license_comment" />
+    <provides type="function" name="PECL_Gen_License::license_file_text" />
+    <provides type="class" name="PECL_Gen_License_PHP" extends="PECL_Gen_License" />
+    <provides type="function" name="PECL_Gen_License_PHP::license_comment" />
+    <provides type="function" name="PECL_Gen_License_PHP::license_file_text" />
+    <provides type="class" name="PECL_Gen_License_LGPL" extends="PECL_Gen_License" />
+    <provides type="function" name="PECL_Gen_License_LGPL::license_comment" />
+    <provides type="function" name="PECL_Gen_License_LGPL::license_file_text" />
+    <provides type="class" name="PECL_Gen_Element" extends="PEAR" />
+    <provides type="function" name="PECL_Gen_Element::is_type" />
+    <provides type="function" name="PECL_Gen_Element::is_keyword" />
+    <provides type="function" name="PECL_Gen_Element::is_name" />
+    <provides type="function" name="PECL_Gen_Element::c_code" />
+    <provides type="function" name="PECL_Gen_Element::c_code_header" />
+    <provides type="function" name="PECL_Gen_Element::c_code_footer" />
+    <provides type="function" name="PECL_Gen_Element::h_code" />
+    <provides type="function" name="PECL_Gen_Element::c_code_editor_settings" />
+    <provides type="function" name="PECL_Gen_Element::docbook_xml" />
+    <provides type="function" name="PECL_Gen_Element::docbook_xml_header" />
+    <provides type="function" name="PECL_Gen_Element::docbook_xml_footer" />
+    <provides type="function" name="PECL_Gen_Element::docbook_editor_settings" />
+    <provides type="class" name="PECL_Gen_Element_Constant" extends="PECL_Gen_Element" />
+    <provides type="function" name="PECL_Gen_Element_Constant::set_name" />
+    <provides type="function" name="PECL_Gen_Element_Constant::set_type" />
+    <provides type="function" name="PECL_Gen_Element_Constant::set_value" />
+    <provides type="function" name="PECL_Gen_Element_Constant::set_desc" />
+    <provides type="function" name="PECL_Gen_Element_Constant::c_code_header" />
+    <provides type="function" name="PECL_Gen_Element_Constant::c_code" />
+    <provides type="function" name="PECL_Gen_Element_Constant::c_code_footer" />
+    <provides type="function" name="PECL_Gen_Element_Constant::docbook_xml_header" />
+    <provides type="function" name="PECL_Gen_Element_Constant::docbook_xml" />
+    <provides type="function" name="PECL_Gen_Element_Constant::docbook_xml_footer" />
+    <provides type="class" name="PECL_Gen_Element_Function" extends="PECL_Gen_Element" />
+    <provides type="function" name="PECL_Gen_Element_Function::set_name" />
+    <provides type="function" name="PECL_Gen_Element_Function::set_summary" />
+    <provides type="function" name="PECL_Gen_Element_Function::set_description" />
+    <provides type="function" name="PECL_Gen_Element_Function::set_role" />
+    <provides type="function" name="PECL_Gen_Element_Function::get_role" />
+    <provides type="function" name="PECL_Gen_Element_Function::set_proto" />
+    <provides type="function" name="PECL_Gen_Element_Function::set_code" />
+    <provides type="function" name="PECL_Gen_Element_Function::is_internal_name" />
+    <provides type="function" name="PECL_Gen_Element_Function::c_code" />
+    <provides type="function" name="PECL_Gen_Element_Function::docbook_xml" />
+    <provides type="function" name="PECL_Gen_Element_Function::write_test" />
+    <provides type="class" name="PECL_Gen_Element_Global" extends="PECL_Gen_Element" />
+    <provides type="function" name="PECL_Gen_Element_Global::set_name" />
+    <provides type="function" name="PECL_Gen_Element_Global::set_type" />
+    <provides type="function" name="PECL_Gen_Element_Global::set_value" />
+    <provides type="function" name="PECL_Gen_Element_Global::is_type" />
+    <provides type="function" name="PECL_Gen_Element_Global::c_code_header" />
+    <provides type="function" name="PECL_Gen_Element_Global::c_code" />
+    <provides type="function" name="PECL_Gen_Element_Global::c_code_footer" />
+    <provides type="function" name="PECL_Gen_Element_Global::h_code_header" />
+    <provides type="function" name="PECL_Gen_Element_Global::h_code" />
+    <provides type="function" name="PECL_Gen_Element_Global::h_code_footer" />
+    <provides type="function" name="PECL_Gen_Element_Global::docbook_xml" />
+    <provides type="class" name="PECL_Gen_Element_Ini" extends="PECL_Gen_Element" />
+    <provides type="function" name="PECL_Gen_Element_Ini::set_name" />
+    <provides type="function" name="PECL_Gen_Element_Ini::set_type" />
+    <provides type="function" name="PECL_Gen_Element_Ini::set_value" />
+    <provides type="function" name="PECL_Gen_Element_Ini::set_desc" />
+    <provides type="function" name="PECL_Gen_Element_Ini::set_access" />
+    <provides type="function" name="PECL_Gen_Element_Ini::set_onupdate" />
+    <provides type="function" name="PECL_Gen_Element_Ini::c_code_header" />
+    <provides type="function" name="PECL_Gen_Element_Ini::c_code" />
+    <provides type="function" name="PECL_Gen_Element_Ini::c_code_footer" />
+    <provides type="function" name="PECL_Gen_Element_Ini::docbook_xml_header" />
+    <provides type="function" name="PECL_Gen_Element_Ini::docbook_xml" />
+    <provides type="function" name="PECL_Gen_Element_Ini::docbook_xml_footer" />
+    <provides type="class" name="PECL_Gen_Element_Logo" extends="PECL_Gen_Element" />
+    <provides type="function" name="PECL_Gen_Element_Logo::minit_code" />
+    <provides type="function" name="PECL_Gen_Element_Logo::c_code" />
+    <provides type="function" name="PECL_Gen_Element_Logo::h_code" />
+    <provides type="function" name="PECL_Gen_Element_Logo::docbook_xml" />
+    <provides type="class" name="PECL_Gen_Element_Resource" extends="PECL_Gen_Element" />
+    <provides type="function" name="PECL_Gen_Element_Resource::set_name" />
+    <provides type="function" name="PECL_Gen_Element_Resource::set_payload" />
+    <provides type="function" name="PECL_Gen_Element_Resource::set_alloc" />
+    <provides type="function" name="PECL_Gen_Element_Resource::set_destruct" />
+    <provides type="function" name="PECL_Gen_Element_Resource::set_description" />
+    <provides type="function" name="PECL_Gen_Element_Resource::minit_code" />
+    <provides type="function" name="PECL_Gen_Element_Resource::c_code" />
+    <provides type="function" name="PECL_Gen_Element_Resource::h_code" />
+    <provides type="function" name="PECL_Gen_Element_Resource::docbook_xml" />
+    <provides type="class" name="PECL_Gen_Element_Test" extends="PECL_Gen_Element" />
+    <provides type="function" name="PECL_Gen_Element_Test::get_title" />
+    <provides type="function" name="PECL_Gen_Element_Test::set_title" />
+    <provides type="function" name="PECL_Gen_Element_Test::get_skipif" />
+    <provides type="function" name="PECL_Gen_Element_Test::set_skipif" />
+    <provides type="function" name="PECL_Gen_Element_Test::get_get" />
+    <provides type="function" name="PECL_Gen_Element_Test::set_get" />
+    <provides type="function" name="PECL_Gen_Element_Test::get_post" />
+    <provides type="function" name="PECL_Gen_Element_Test::set_post" />
+    <provides type="function" name="PECL_Gen_Element_Test::get_code" />
+    <provides type="function" name="PECL_Gen_Element_Test::set_code" />
+    <provides type="function" name="PECL_Gen_Element_Test::get_output" />
+    <provides type="function" name="PECL_Gen_Element_Test::set_output" />
+    <provides type="function" name="PECL_Gen_Element_Test::complete" />
+    <provides type="function" name="PECL_Gen_Element_Test::write_test" />
+    <provides type="function" name="PECL_Gen_Element_Test::c_code" />
+    <provides type="function" name="PECL_Gen_Element_Test::docbook_xml" />
+    <provides type="class" name="PECL_Gen_XmlParser" extends="XML_Parser" />
+    <provides type="function" name="PECL_Gen_XmlParser::parse" />
+    <provides type="function" name="PECL_Gen_XmlParser::findHandler" />
+    <provides type="function" name="PECL_Gen_XmlParser::startHandler" />
+    <provides type="function" name="PECL_Gen_XmlParser::endHandler" />
+    <provides type="function" name="PECL_Gen_XmlParser::cDataHandler" />
+    <provides type="class" name="PECL_Gen_ExtensionParser" extends="PECL_Gen_XmlParser" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::push_helper" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::pop_helper" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagstart_extension" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagstart_extension_name" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_extension_summary" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_extension_description" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagstart_maintainer" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_maintainer_user" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_maintainer_name" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_maintainer_email" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_maintainer_role" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_maintainer" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagstart_functions_function" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_function_summary" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_function_description" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_function_proto" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_function_code" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_functions_function" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagstart_resources_resource" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_resource_destruct" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_resource_description" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_resources_resource" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_extension_logo" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_constants_constant" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_globals_global" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_globals_phpini" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagstart_extension_release" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_release_version" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_release_date" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_release_state" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_release_notes" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_extension_release" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_license" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagstart_extension_deps" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagstart_deps_lib" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagstart_deps_header" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_deps_with" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_extension_code" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_extension_makefile" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagstart_test" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_test_title" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_test_skipif" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_test_get" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_test_post" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_test_code" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_test_output" />
+    <provides type="function" name="PECL_Gen_ExtensionParser::tagend_test" />
+    <provides type="class" name="PECL_Gen_Tools_Getopt" extends="Console_Getopt" />
+    <provides type="function" name="PECL_Gen_Tools_Getopt::have" />
+    <provides type="function" name="PECL_Gen_Tools_Getopt::have_all" />
+    <provides type="function" name="PECL_Gen_Tools_Getopt::value" />
+    <provides type="function" name="PECL_Gen_Tools_Getopt::options" />
+    <provides type="function" name="PECL_Gen_Tools_Getopt::arguments" />
+    <provides type="class" name="PECL_Gen_Tools_Platform" extends="PEAR" />
+    <provides type="function" name="PECL_Gen_Tools_Platform::test" />
+    <provides type="function" name="PECL_Gen_Tools_Platform::count" />
+    <provides type="class" name="PECL_Gen_Tools_Indent" />
+    <provides type="function" name="PECL_Gen_Tools_Indent::tabify" />
+    <provides type="function" name="PECL_Gen_Tools_Indent::untabify" />
+    <provides type="function" name="PECL_Gen_Tools_Indent::indent" />
+    <provides type="function" name="PECL_Gen_Tools_Indent::linetrim" />
+    <filelist>
+      <file role="script" baseinstalldir="/" md5sum="9e6fbefc24a142b2694cd3f1d5354a66" name="pecl-gen">
+        <replace from="/usr/local/bin" to="PHP_BINDIR" type="php-const"/>
+        <replace from="@php_dir@" to="php_dir" type="pear-config"/>
+      </file>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="d9e5fd45bb4a5abc6531a0a1ea7e353e" name="Extension.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="46819d70591ad95d262ce74aac1cfaf1" name="Maintainer.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="9075b762bac29f13e5e2b539e89ba5c1" name="Release.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="caa9f3ee0823c96469c15e4563ef9605" name="License.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="648262d249e3480fdd10a968681ee644" name="License/PHP.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="10d46d531debb0920c8df9cc8e232b22" name="License/BSD.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="b7e7ac893c554f041993203c63d927b3" name="License/LGPL.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="82b3429fc70c8adb605209e56146da1c" name="Element.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="ee56a381fc43cd7685b62a925a38ebbc" name="Element/Constant.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="06c30f450fe285fcf7c3f1687fef04e5" name="Element/Function.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="6925e6ff6e20114dc5cada3b0ecc5494" name="Element/Global.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="88b8da64537adf9eb26bd0789195e3a8" name="Element/Ini.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="d67045c50a380f3416481520b57248a0" name="Element/Logo.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="adc844d547fd9fdcee6d165a6da8e63f" name="Element/Resource.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="c1e29947f3853743a8372fd789f84b6f" name="Element/Test.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="3f5e6e18f9227aa3b441de3e45b9aba9" name="XmlParser.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="e8ff5d9232231e7b6ee23e735446dd29" name="ExtensionParser.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="f08473ab3fdd16f3489556498f91ab33" name="Tools/Getopt.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="3683f30e3fd348e883b833bec14d7a7a" name="Tools/Platform.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" md5sum="780f4fb62278fbd25398921709ea8555" name="Tools/Indent.php"/>
+    </filelist>
+  </release>
+  <changelog>
+    <release>
+      <version>0.8.0</version>
+      <date>2003-07-13</date>
+      <state>beta</state>
+      <notes>- added documentation
+- check for reserved words 
+- check for duplicate names
+- config,m4 header files check added
+- config.m4 support for makefile fragments
+      
+</notes>
+    </release>
+    <release>
+      <version>0.7.0</version>
+      <date>2003-07-03</date>
+      <state>beta</state>
+      <notes>- a README file is written containing information on
+  how to continue after an extension was generated
+- --function=&quot;proto&quot; writes function stub to stdout
+- --stubs=filename now supported in ext_skel BC mode
+- added --help and --version options
+- added a short feedback howto message 
+  (can be disabled using --quiet)  
+- --with-xml works again 
+  (ext_skel compatibility)
+- will now only purge and overwrite existing target directory
+  if '--force' is requested on cmd line
+- .cvsignore created with platform-specific entries
+- PEARifying error reporting finished
+      
+</notes>
+    </release>
+    <release>
+      <version>0.6.1</version>
+      <date>2003-06-29</date>
+      <state>beta</state>
+      <notes>typo fix in package.xml dependencies entry for XML_Parser
+</notes>
+    </release>
+    <release>
+      <version>0.6.0</version>
+      <date>2003-06-28</date>
+      <state>beta</state>
+      <notes>Moved from php5/scripts to PEAR.
+</notes>
+    </release>
+  </changelog>
+</package>

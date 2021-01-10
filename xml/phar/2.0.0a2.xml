@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.7.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>phar</name>
+ <channel>pecl.php.net</channel>
+ <summary>allows running of complete applications out of .phar files (like Java .jar files)</summary>
+ <description>This is the extension version of PEAR&apos;s PHP_Archive package. Support for
+zlib, bz2 and crc32 is achieved without any dependency other than the external
+zlib or bz2 extension.
+
+.phar files can be read using the phar stream, or with the Phar class.  If the SPL extension
+is available, a Phar object can be used as an array to iterate over a phar&apos;s contents
+or to read files directly from the phar.
+
+Phar archives can be created using the streams API or with the Phar class, if
+the phar.readonly ini variable is set to false.
+
+Full support for MD5 and SHA1 signatures is possible. Signatures can be required 
+if the ini variable phar.require_hash is set to true. When PECL extension hash is
+avaiable then SHA-256 and SHA-512 signatures are supported as well.</description>
+ <lead>
+  <name>Greg Beaver</name>
+  <user>cellog</user>
+  <email>cellog@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Marcus Boerger</name>
+  <user>helly</user>
+  <email>helly@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2008-03-27</date>
+ <time>01:43:26</time>
+ <version>
+  <release>2.0.0a2</release>
+  <api>1.1.1</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>Major feature functionality release
+ * new default stub allows running of phar-based phars without phar extension [Greg/Steph]
+ * add support for tar-based and zip-based phar archives [Greg]
+ * add Phar::isTar(), Phar::isZip(), and Phar::isPhar() [Greg]
+ * add Phar::convertToTar(), Phar::convertToZip(), and Phar::convertToPhar() [Greg]
+ * add Phar::compress() [Greg]
+ * conversion to compressed or to other file formats automatically copies the archive
+   to a new extension (i.e. &quot;.phar&quot; to &quot;.phar.tar&quot; or &quot;.tar&quot; to &quot;.tar.gz&quot;) [Steph]
+ * add Phar::webPhar() for running a web-based application unmodified
+   directly from a phar archive [Greg]
+ * file functions (fopen-based and stat-based) can be instructed to only look for
+   relative paths within a phar via Phar::interceptFileFuncs()
+ * add PharData class to allow manipulation/creation of non-executable tar and zip archives. [Steph]
+   non-executable tar/zip manipulation is allowed even when phar.readonly=1 [Greg]
+ * paths with . and .. work (phar://blah.phar/a/../b.php =&gt; phar://blah.phar/b.php) [Greg]
+ * add support for mkdir()/rmdir() and support for empty directories to phar file format [Greg]
+ * add option to compress the entire phar file for phar/tar file format [Greg]
+ * implement Phar::isCompressed() returning 0, Phar::GZ or Phar::BZ2 [Greg]
+ * implement Phar::copy(string $from, string $to) [Greg]
+ * implement Phar::buildFromIterator(Iterator $it[, string $base_directory]) [Greg]
+ * implement Phar::mount() for mounting external paths or files to locations inside a phar [Greg]
+ * add Phar::delete() [Greg]
+
+Changes since 2.0.0a1: fix build in PHP 5.2</notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="862bc0e2b469c2290d2ddb8927bbf37d" name="phar/clicommand.inc" role="src" />
+   <file baseinstalldir="/" md5sum="f4a1d53db199bc1fe79d0dec90b1c817" name="phar/directorygraphiterator.inc" role="src" />
+   <file baseinstalldir="/" md5sum="dab5b46eb46f886b4761698f236a01ac" name="phar/directorytreeiterator.inc" role="src" />
+   <file baseinstalldir="/" md5sum="258be7db21c94a7cbf03be9e34470c4e" name="phar/invertedregexiterator.inc" role="src" />
+   <file baseinstalldir="/" md5sum="a275ab574efaa46cd1fe05e50dafaf62" name="phar/phar.inc" role="src" />
+   <file baseinstalldir="/" md5sum="e9d20300841e5a11fe63e1b3a75a73f1" name="phar/phar.php" role="src" />
+   <file baseinstalldir="/" md5sum="26ef2385d4aae1e8e930714aa7ab9763" name="phar/pharcommand.inc" role="src" />
+   <file baseinstalldir="/" md5sum="0be5d3a3aa763303980a83e1c33f7a11" name="tests/files/extracted.inc" role="test" />
+   <file baseinstalldir="/" md5sum="65acd08ecf6b2e332938149a6b4a9bc1" name="tests/files/frontcontroller.phar" role="test" />
+   <file baseinstalldir="/" md5sum="58288c925e41727424c656d6f99acef9" name="tests/files/frontcontroller.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="dae61bf6a14afe4d8a99d72c23773fc3" name="tests/files/frontcontroller2.phar" role="test" />
+   <file baseinstalldir="/" md5sum="c7ed28447e00eb863ab2e28d21979d04" name="tests/files/frontcontroller2.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="a256cb865e9f2e7f6e108b69a88876d6" name="tests/files/frontcontroller3.phar" role="test" />
+   <file baseinstalldir="/" md5sum="879e12ea175fe1820b5bb557dd88aee1" name="tests/files/frontcontroller3.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="826abe879027cb1d6b8004db973feaad" name="tests/files/frontcontroller4.phar" role="test" />
+   <file baseinstalldir="/" md5sum="55344c2aa0e902852cc0ea6e02b3151d" name="tests/files/frontcontroller4.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="5a6836b8b69c3398e6316b6e4fd12b9c" name="tests/files/frontcontroller5.phar" role="test" />
+   <file baseinstalldir="/" md5sum="32264494937906bd2dfaa9f06a7c9279" name="tests/files/frontcontroller5.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="ade076ff5648d528cf1f0d3e96c5b4b0" name="tests/files/frontcontroller6.phar" role="test" />
+   <file baseinstalldir="/" md5sum="0b33b2760508ff44a774ea68f2dcc344" name="tests/files/frontcontroller6.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="21d4d8661a0664d9dd3ccb32509469bd" name="tests/files/frontcontroller7.phar" role="test" />
+   <file baseinstalldir="/" md5sum="9bb4efb9b3d0a65fe474e92fd4acb78c" name="tests/files/frontcontroller7.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="82302747c6bcd40c5a33660be4a280ef" name="tests/files/frontcontroller8.phar" role="test" />
+   <file baseinstalldir="/" md5sum="f059cb3f050c8696a887ab948a2f6861" name="tests/files/frontcontroller8.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="9457edae30105d1ce1db28fafe93ce44" name="tests/files/frontcontroller9.phar" role="test" />
+   <file baseinstalldir="/" md5sum="9c0ca6a238bd9d739860af8a94ca5d2d" name="tests/files/frontcontroller9.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="51ac6cd7a6ac38cab43d61a6f92eea12" name="tests/files/frontcontroller10.phar" role="test" />
+   <file baseinstalldir="/" md5sum="927c54b320910515d13e9f0fa3dde08c" name="tests/files/frontcontroller10.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="ffd166addabf9a79969d9f613423c3fe" name="tests/files/frontcontroller11.phar" role="test" />
+   <file baseinstalldir="/" md5sum="a0eb91ab65796702dd605da0bbdd7ccd" name="tests/files/frontcontroller11.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="866c43d262c18e46b206e936d94f43a3" name="tests/files/frontcontroller12.phar" role="test" />
+   <file baseinstalldir="/" md5sum="4a3153ce964198d7973fbda180351933" name="tests/files/frontcontroller12.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="898aa29f7b7e9a76691d41d8c72babed" name="tests/files/frontcontroller13.phar" role="test" />
+   <file baseinstalldir="/" md5sum="604a09352c96dac704b0dc786e693f71" name="tests/files/frontcontroller13.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="a5a4ea39cee58557a1d38baafcd3c9ed" name="tests/files/frontcontroller14.phar" role="test" />
+   <file baseinstalldir="/" md5sum="f9b495e4f45bc74863311988aa6e52a5" name="tests/files/frontcontroller14.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="a2ce5a845ed52179832ab743cc6ba9e4" name="tests/files/md5.phar" role="test" />
+   <file baseinstalldir="/" md5sum="5da03f77db7add098af0c73cd5da35a5" name="tests/files/nophar.phar" role="test" />
+   <file baseinstalldir="/" md5sum="452b9f5b186da7276fb44670f7e8543b" name="tests/files/nophar.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="5acf9b1534bf1f67096497287bb3e8d8" name="tests/files/phar_oo_test.inc" role="test" />
+   <file baseinstalldir="/" md5sum="88126ba883729cb9e59836a8206d645e" name="tests/files/phar_test.inc" role="test" />
+   <file baseinstalldir="/" md5sum="e80984e2293c3edab11261f612c724c6" name="tests/files/sha1.phar" role="test" />
+   <file baseinstalldir="/" md5sum="6065ad49eaf656b0c797d0431e10e8bc" name="tests/files/sha256.phar" role="test" />
+   <file baseinstalldir="/" md5sum="6b3012f16029608492355b6057ace7a3" name="tests/files/sha512.phar" role="test" />
+   <file baseinstalldir="/" md5sum="39190a22e2148937f63b3f59e26fc23e" name="tests/files/zfapp.tgz" role="test" />
+   <file baseinstalldir="/" md5sum="f01c9a86331194fc84ac59cbf841dfbb" name="tests/tar/files/frontcontroller.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="203ec5a94c128ef2cbba3a5a723b1a75" name="tests/tar/files/frontcontroller.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="3a78ebac49f608c5f28774b59815cee0" name="tests/tar/files/frontcontroller2.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="cc7ca457e5cf241d7c85c580053afe84" name="tests/tar/files/frontcontroller2.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="c6b2b96bc631624edb7b539183d5a781" name="tests/tar/files/frontcontroller3.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="ea18490264bb019f43737b3b7e09bc6c" name="tests/tar/files/frontcontroller3.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="f9686cefbdacfbf87b034b1d72082ec1" name="tests/tar/files/frontcontroller4.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="3a389f8c2af9138441fed77732b3eb48" name="tests/tar/files/frontcontroller4.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="9eb096565e9941065bb07d5554621c42" name="tests/tar/files/frontcontroller5.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="579a33f5becc771fa9f35a4d3e7fb478" name="tests/tar/files/frontcontroller5.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="915172b18a5278121ed53aeac20d05eb" name="tests/tar/files/frontcontroller6.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="5153ac4ac8e080dc9b160661d30081d3" name="tests/tar/files/frontcontroller6.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="a310119c5dc6b540533b828e31b47814" name="tests/tar/files/frontcontroller7.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="ff00cd92235435cd3231009d4508fef0" name="tests/tar/files/frontcontroller7.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="a450bf8a332ba9c5e26dd61676b2b256" name="tests/tar/files/frontcontroller8.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="ebba0d5224cf5f869fe3287c1bb835de" name="tests/tar/files/frontcontroller8.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="c85d07685031814295f2abe1cbbe2671" name="tests/tar/files/frontcontroller9.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="4f5fb12bc39daf8a037465c89472b083" name="tests/tar/files/frontcontroller9.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="c684cf61bd64d6c518f9c9e8faab081d" name="tests/tar/files/frontcontroller10.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="8635f51e2d78ac7d8fc180aa8259e2c2" name="tests/tar/files/frontcontroller10.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="9a2c2a13e846dd39523cdccc36ab748f" name="tests/tar/files/frontcontroller11.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="6b15cf2a3790b17f00d3aa717f2c4819" name="tests/tar/files/frontcontroller11.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="be64eb3112df012de2924172868ef427" name="tests/tar/files/frontcontroller12.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="62e1b4c49dbc6bcb5a69f03d648cf3cb" name="tests/tar/files/frontcontroller12.phar.tar" role="test" />
+   <file baseinstalldir="/" md5sum="c54d903f35b9b4e777715f4edfc101ec" name="tests/tar/files/make_invalid_tar.php.inc" role="test" />
+   <file baseinstalldir="/" md5sum="8a78848e23be562cfcce725b5c20d25a" name="tests/tar/files/tarmaker.php.inc" role="test" />
+   <file baseinstalldir="/" md5sum="ec61af34ce5b2274d1cd3ee406cf5c2c" name="tests/tar/033.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="23cabaf4a5fe8bccdedb563299a4db06" name="tests/tar/033a.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2a7487162c9877ad77a05509dca4a3a9" name="tests/tar/create_new_and_modify.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5a391dc7dae9dc08e2de6fb3f4bfe34c" name="tests/tar/create_new_phar_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2565433f2b90eaf93659410735d23f57" name="tests/tar/delete.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="096772532c817ebd16e01a42cb38eea1" name="tests/tar/delete_in_phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b8b1b22edaa455ec84229e02bd312455" name="tests/tar/delete_in_phar_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e845f1614091c4ba08139e60a2489fc5" name="tests/tar/delete_in_phar_confirm.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="96d9983ddc66d148df09ea6513e3c923" name="tests/tar/dir.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="cf7b1494b23a2bdd030158470f420d1d" name="tests/tar/frontcontroller1.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6f8dad21cd024e4d2cde82c1dac85386" name="tests/tar/frontcontroller2.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="889adc6b351f9fbd8df24b53b853c5ba" name="tests/tar/frontcontroller3.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1fc6b868c7a85c3809f232bd0acab041" name="tests/tar/frontcontroller4.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="00dd88a0072557867d1c5862f63c016a" name="tests/tar/frontcontroller5.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="220544b2e9a18a2de558f4e300e021ba" name="tests/tar/frontcontroller6.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8ec17ec674b8ebf7d02300782cfad605" name="tests/tar/frontcontroller7.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="09176dfaf6263408ec10fddc90bd8570" name="tests/tar/frontcontroller8.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="148d2f032a3720d33ee4753e020df4f3" name="tests/tar/frontcontroller9.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d22a7280b9372e614878469df521dcad" name="tests/tar/frontcontroller10.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="249f6399e935e301be14051a50e0b571" name="tests/tar/frontcontroller11.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a5f72bb0703ead394860dd7b77728437" name="tests/tar/frontcontroller12.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="360e90146b40179d833e61ca8ad35874" name="tests/tar/frontcontroller13.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ceb32d9260d04d2f9b804dc42cc83e3a" name="tests/tar/frontcontroller14.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1b62e45a94b6ccada736c15120a7056c" name="tests/tar/frontcontroller15.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="206c43593cfd10c5abb3122c050ec74e" name="tests/tar/frontcontroller16.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9bdccbfc4ecffed829c3be53e8c7424f" name="tests/tar/frontcontroller17.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c5494bd8884a12bfa69659af3bb1daaa" name="tests/tar/frontcontroller18.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="cb8195a467cd4b3a8848bb0524744273" name="tests/tar/frontcontroller19.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="723b05a307f8ffa269113bb842da18e8" name="tests/tar/frontcontroller20.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7d21fc6b4a3046526fa80a68bdbd07ea" name="tests/tar/frontcontroller21.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e441ad4d045f67aeb0144ec410eb643a" name="tests/tar/open_for_write_existing.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a729cd2ba377ba3aeaa01d9224402945" name="tests/tar/open_for_write_existing_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="cad1e0a59b84b668e68f13985ef7f0e7" name="tests/tar/open_for_write_existing_c.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="20c3f4cc3073059da5a24300afa1d9e4" name="tests/tar/open_for_write_newfile.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0df5d28b3ba1dd62b1979ef9753f6182" name="tests/tar/open_for_write_newfile_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="eb0c2135050d2ab4538fc3b46f30b30a" name="tests/tar/open_for_write_newfile_c.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1d7735e3e8c34734138884bc5365b609" name="tests/tar/phar_begin_setstub_commit.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f07af3a975a5833c81e4215468c59d6b" name="tests/tar/phar_buildfromiterator4.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="794382858645fa1306e6bd3e482e4420" name="tests/tar/phar_buildfromiterator5.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="99e1cff12e1a4440619223575ead8707" name="tests/tar/phar_buildfromiterator6.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="661ee58ee2150c5e4dc3533074373779" name="tests/tar/phar_buildfromiterator7.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0506ee06464274e837d36d380693c6ec" name="tests/tar/phar_buildfromiterator8.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="14fc55e81578c67e6824951c592fe37e" name="tests/tar/phar_buildfromiterator9.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="be55df3046e1bef2c53efd9b6d27a61d" name="tests/tar/phar_commitwrite.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5b13da932a815cacb40d68deee5f6096" name="tests/tar/phar_convert_phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7b72ddbb58799be14ca7be3b30d55f40" name="tests/tar/phar_convert_phar2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d395c3bf23468033d6158d1ab98b4ace" name="tests/tar/phar_convert_phar3.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5bd15b37957e514d60bb5bf5a293cffb" name="tests/tar/phar_copy.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="afde999a4ab8ae22d370709d09482ad0" name="tests/tar/phar_magic.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c4b4ba2c343c85a522204d634856bd88" name="tests/tar/phar_setalias.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6b1845c0b8b82cb3556ab973c2d5483e" name="tests/tar/phar_setalias2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7990d291b61ed18a8aa2e105197055a1" name="tests/tar/phar_setdefaultstub.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="91aea0fc411bc5ce0c10aed1490a0a3d" name="tests/tar/phar_stub_error.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e80c2ddc77310f8d81be1ad33f5c10c3" name="tests/tar/refcount1.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="843f79d78a85aa86a4cd4304c29246e8" name="tests/tar/refcount1_5_2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="51c5198ee7894f23ebb65d3a9a6f0855" name="tests/tar/rename.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="45db815e57950dd80d5deee65ed6c617" name="tests/tar/tar_001.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="54bf96b5a79bc0e3ee4d8b6261935ad1" name="tests/tar/tar_002.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c22052c060a23c96142a87545a7f996b" name="tests/tar/tar_003.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0d71d03c7c33f2e5d1fe7513b36b4bea" name="tests/tar/tar_004.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3d8f676d037d1eb75fd3b33321063f45" name="tests/tar/tar_bz2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="da950fda751965277f566cbb9d294758" name="tests/tar/tar_gzip.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="04d40b78c0988be87f19a2eb806dac51" name="tests/tar/tar_makebz2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7eb36a8fba7ca5b949f93317c4219285" name="tests/tar/tar_makegz.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e6fa36859bfcb17c4bb09f711fae7747" name="tests/tar/tar_nostub.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d61b069b42bf605bcd98aacb91ef560c" name="tests/zip/files/frontcontroller.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="7ff50b0d9cda74a53281c6fdf03e5cda" name="tests/zip/files/frontcontroller.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="69b3bcaea3a9dca0e4bd4197b7f9ce45" name="tests/zip/files/frontcontroller2.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="33bd2ac31993a7a4a78d4971444bbced" name="tests/zip/files/frontcontroller2.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="6c12f462e7c0c382229829209f14d1bb" name="tests/zip/files/frontcontroller3.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="9207153825d1e257f3571b17bf458229" name="tests/zip/files/frontcontroller3.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="95b19cd0d87b9dc8b5162841883ef334" name="tests/zip/files/frontcontroller4.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="bd3a7408c8612ceb1872802f817027b0" name="tests/zip/files/frontcontroller4.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="994c1199686490c203823746293906ea" name="tests/zip/files/frontcontroller5.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="748801603054af1e30503d938d48fd51" name="tests/zip/files/frontcontroller5.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="f8445b58624f262019751cc93a5f4d36" name="tests/zip/files/frontcontroller6.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="7ce72d5680107ecf54e56137066f468d" name="tests/zip/files/frontcontroller6.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="4c3b06726fac8789cb228747ef957430" name="tests/zip/files/frontcontroller7.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="64f227f3b56b69d8359f6adbdfb0fd9b" name="tests/zip/files/frontcontroller7.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="1581bbfab77f8e2d498b27a7480a9ecd" name="tests/zip/files/frontcontroller8.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="f8f78b793dbead372d9da2a4c5dc2610" name="tests/zip/files/frontcontroller8.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="247afe10e8ac278ebb164f637ce54852" name="tests/zip/files/frontcontroller9.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="52112281379aa21b73db018784b08c55" name="tests/zip/files/frontcontroller9.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="ba40ff4f32f0a5c617d8c76baba5eb6b" name="tests/zip/files/frontcontroller10.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="ced90905345404241e5d1f282cec2e58" name="tests/zip/files/frontcontroller10.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="15df8e6a8a666d7e85001cb6dfa24b91" name="tests/zip/files/frontcontroller11.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="6ac8f817d999e64797907d0fac7ac9bc" name="tests/zip/files/frontcontroller11.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="bb497b9e71523e96d616a90829b040ff" name="tests/zip/files/frontcontroller12.phar.inc" role="test" />
+   <file baseinstalldir="/" md5sum="dca5ecca56fe6f426dde1b3655919343" name="tests/zip/files/frontcontroller12.phar.zip" role="test" />
+   <file baseinstalldir="/" md5sum="43605791e53c8b95fe34454f1af06575" name="tests/zip/files/make_invalid_tar.php.inc" role="test" />
+   <file baseinstalldir="/" md5sum="207d82ef571585d32329b94ae15b47db" name="tests/zip/files/zipmaker.php.inc" role="test" />
+   <file baseinstalldir="/" md5sum="f6d3f551ac0dada85cc3ca125f1496cb" name="tests/zip/033.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3f28ef2a48dd9b1243c5d382d8a948df" name="tests/zip/033a.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ed234c305dd8dc1d94803fcdcac5ccf2" name="tests/zip/create_new_and_modify.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0b8c998c4a7fdd1ef19f9c6e3f9d01aa" name="tests/zip/create_new_phar_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3cdcc46a945ae936dacb05e33423b2d4" name="tests/zip/delete.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6a04484e434ae3ebec67b8ad1e8e1d53" name="tests/zip/delete_in_phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="655e51ac339fc6c537a834d2dbaffd88" name="tests/zip/delete_in_phar_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0ae4755cafb3dd547183067b5d7ac595" name="tests/zip/delete_in_phar_confirm.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1200eb883497d806966ad3f64e61a093" name="tests/zip/dir.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2778a945e91833463c71925d8bf9096c" name="tests/zip/frontcontroller1.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e24a392924f14c31c783c4780c1568dd" name="tests/zip/frontcontroller2.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="39d99baaa860ef95e84c9b51e3f7b96a" name="tests/zip/frontcontroller3.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d294bdec0c9774c09a533e57ad45f120" name="tests/zip/frontcontroller4.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6c6f8b0a781c99b46788419a953e4e55" name="tests/zip/frontcontroller5.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9dc331a2e872010daa25296413a71fc1" name="tests/zip/frontcontroller6.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e3fef27bbdb1925bc381be3584cf7800" name="tests/zip/frontcontroller7.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="de502ea734350722e11b9a2d8ea44047" name="tests/zip/frontcontroller8.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="42b2c3fd4820672b3fbdf4f7ed2a1348" name="tests/zip/frontcontroller9.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="191f76a742cfcf0f74d48d783bd68313" name="tests/zip/frontcontroller10.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3599aa8cf9f081ec03769e7a2ab3cb6e" name="tests/zip/frontcontroller11.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="44d4b7f110619d073b9a1fa8601d1a8f" name="tests/zip/frontcontroller12.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="efef3f383213394dd400793995afa152" name="tests/zip/frontcontroller13.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8451b64a50c93bc10e87b929a8802543" name="tests/zip/frontcontroller14.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="87e69b8bffb3e44e261c942eb0b01aa9" name="tests/zip/frontcontroller15.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="544b931182f1dd2ebea1f0eb706c9148" name="tests/zip/frontcontroller16.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f7749bee11191093ade780debed7525b" name="tests/zip/frontcontroller17.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d07941a4f0d7dd061b075fc9437493c0" name="tests/zip/frontcontroller18.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="10d4c1e54c5ae247762ebe2b9c565d8c" name="tests/zip/frontcontroller19.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ab3df31bc1fb0a1e8b78816128302c7c" name="tests/zip/frontcontroller20.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ea350286ebe6d792da7694d6c1665058" name="tests/zip/frontcontroller21.phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="944fbce8c640bbd1aef4e79dd6fb5f3d" name="tests/zip/open_for_write_existing.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="966511d2467cf7c47d36a9ced0dc4bec" name="tests/zip/open_for_write_existing_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5cdf192dfd4ff91aaac2b525425c4303" name="tests/zip/open_for_write_existing_c.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a239cc8f38ec99073a6aa1b973fffc71" name="tests/zip/open_for_write_newfile.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5e2842d2675d10f04af8af9a46a8e262" name="tests/zip/open_for_write_newfile_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d74371861291e1570a0656f54595871b" name="tests/zip/open_for_write_newfile_c.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="123db6daacd144f3c50d415dca0d1cc9" name="tests/zip/phar_begin_setstub_commit.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="fcc3cf08a970d04a5d40702cd4e7166a" name="tests/zip/phar_buildfromiterator4.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ffa4d0007717d1db72191761e160b64f" name="tests/zip/phar_buildfromiterator5.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4bfa0a06555e84b27ed5cdfd3b0745ba" name="tests/zip/phar_buildfromiterator6.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="eb61e82cb18b2a549ec76ec5048673ca" name="tests/zip/phar_buildfromiterator7.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="cc249503fa96bbf9de9d96195c6f811a" name="tests/zip/phar_buildfromiterator8.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ce527e2e4be7eb6c8fc2de5fe26d52ae" name="tests/zip/phar_buildfromiterator9.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="11b7dafcfaff8313fa7ea97e6bfbd866" name="tests/zip/phar_commitwrite.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1e3bacda9bae3827cf4fb1366d7a6cc1" name="tests/zip/phar_convert_phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="62157661ddc23b6528ce8fbeb380871f" name="tests/zip/phar_copy.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5618074b85aabac978e45b515e946c57" name="tests/zip/phar_magic.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b6708f7358c683ab42a9f46d96441066" name="tests/zip/phar_setalias.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="078b57c8346438a93cc155069e4df80d" name="tests/zip/phar_setalias2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="57698d05aeb712e6649ef0a1d395ce70" name="tests/zip/phar_setdefaultstub.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9f568007cf84d198413ed7b7e95b933d" name="tests/zip/phar_stub_error.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="eec1f13ccfa224feb648027888919031" name="tests/zip/refcount1.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="30c7cce992658744fd4c03d7d0411f3f" name="tests/zip/refcount1_5_2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="fe22d86b98222c59603fc59772b35266" name="tests/zip/rename.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c0f2a877a316ceb1885b68e4aeb86353" name="tests/001.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="60d6f65ae09677ea7aa66b342e1e726e" name="tests/002.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5e98d55df16487fbfb79fa3ccd7eaa84" name="tests/003.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="43fe827889cd9c0d42925c01020d4278" name="tests/003a.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1edd0d487f1c08bbb5f0620b5f0177ee" name="tests/004.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9b304e17bd6db8e4032c7022d4d1d0ae" name="tests/005.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a1632274dc16b6af714260d82d6e2610" name="tests/006.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b1d4472413a9fb8ef89595e42f0a7a0e" name="tests/007.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1f0d4451afd6894420ea69df6daad97a" name="tests/008.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="53f802e4c9fbbe0de978ef42bd7a1dae" name="tests/009.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="15562de3fecc365bf5bfceeb644ad4be" name="tests/010.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b35ddcf66c872ce8f17b435cd8f1333a" name="tests/011.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b3920dbbe4c9f9f83ed0b860639379b8" name="tests/012.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="735bc87976a2a3ea278de9d0a0984a07" name="tests/013.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b1fdf27cd45fb543dccfc9e001b842b0" name="tests/014.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="02b53a9e49691bd610dc236210e4532e" name="tests/015.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c44ea289fcb328abf8dd4cc143edee91" name="tests/015b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6dcb151a7ff7ea0a61fbe9fc1277a1d4" name="tests/016.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="35fc287cec991336741b0dc42ec1cfc8" name="tests/016b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="be809a32ff4eb335f81fcaea60c4793d" name="tests/017.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="647040353b71b6695283da499e42305c" name="tests/018.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a3d4c76ce19eb973e35c7294052e56aa" name="tests/019.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="916e97e2152da942df9d5614befba0ec" name="tests/019b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="90e63ebfed55a91cfea4989e46065c7e" name="tests/019c.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b478fcea10ac93368287e86fe93eb335" name="tests/020.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="be655302f35ae50a486f53b03eb8f972" name="tests/021.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bc9d93e6b874d12c4eab5cfde0a9299c" name="tests/022.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="60f70083c24bb0040c8973bb43b7ad4a" name="tests/023.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ed4261618e8c8d8f3e81b0c6d644494f" name="tests/024.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e25fe3d53caec30b98fb23991ac18d57" name="tests/025.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="35d6758d250d3d1ad34ab7fb1436d663" name="tests/026.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a4d8fbf98d7b8028726a69191b0ee75b" name="tests/027.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0b7029ceaee9a862c95e630d73a462dd" name="tests/028.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7184c25d1216ef199ba3273704e5d5fb" name="tests/029.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3b1448e03c3fe28d30556841ab2c5bb4" name="tests/030.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="cc57678523ea719ee9254d38566691f2" name="tests/031.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7125a0aa01daaa85477fb350d51ba56c" name="tests/032.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d68cb7bee977c087b4d917e071c47fe1" name="tests/033.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8ac56930cd6d5deeb55408fc8821601b" name="tests/033a.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e3aaabecf3773f86247c672db0dc625e" name="tests/create_new_and_modify.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a7205bdcd0dbef03f57455b2a745081c" name="tests/create_new_phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1f5c5af849f4e7b0b814e0e7b5c423b5" name="tests/create_new_phar_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="caeaa20c69c1794ae1ecc8d82bd5b109" name="tests/create_new_phar_c.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="71cbd324a44c371155235911715270aa" name="tests/create_path_error.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="92404ce25d4d015d4244cff4aaeffa28" name="tests/delete.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ff65fff4c5be4f7934b2d4af5555415d" name="tests/delete_in_phar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9788078f6bc9818a285344bf477e3b1d" name="tests/delete_in_phar_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f1fe1484c1fc11d8146920619cfc6871" name="tests/delete_in_phar_confirm.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0304a4e7e416029da85b66fcd3c0f259" name="tests/dir.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="509b0122a36bb6dc893d728a7696eba4" name="tests/extracted_001.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0d1058467d2d01e200e0a3de3b35ac81" name="tests/frontcontroller1.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="79457e2b16405479b5b37a34364bed6a" name="tests/frontcontroller2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d7a490bff80c5e6cd500ea0620c7fdd7" name="tests/frontcontroller3.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d4dd4d20b3057e8554e7fbd5ef7da245" name="tests/frontcontroller4.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9b8f315792061c46212574e26b1fd2db" name="tests/frontcontroller5.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9154f2eeec9846b3da98277057ecbdd7" name="tests/frontcontroller6.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bc1eafb8fde9374f98a8027401779c64" name="tests/frontcontroller7.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bec4ddb84dabd9c335bd29ad709214e9" name="tests/frontcontroller8.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ab56f092efd27bd02a54f0ce7eb4c5b5" name="tests/frontcontroller9.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e55871172f0c69fb1b4c38def4cb08b4" name="tests/frontcontroller10.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8110db18a659b6a272550ab9523e8b05" name="tests/frontcontroller11.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9f5390c118b82164387d11a030860885" name="tests/frontcontroller12.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="da9ecf89f8780073c57adc2489952a06" name="tests/frontcontroller13.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="630ddee08fd5673205eb0bc5b66c0f8c" name="tests/frontcontroller14.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="64c56df64c8064e91fb51192985df232" name="tests/frontcontroller15.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b3feae08689e3d0af23bc8ba1da4edce" name="tests/frontcontroller16.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f42aafb5d5e2402a13f7cf800f463779" name="tests/frontcontroller17.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="78658a3d0a37fb2b079f222343d5425e" name="tests/frontcontroller18.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a2336837af74e5c665ad9adbff88e91f" name="tests/frontcontroller19.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="fc43e450eac5f374ee0d0c3e641ab229" name="tests/frontcontroller20.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e4b700039e65c6739d535471ace09bca" name="tests/frontcontroller21.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="daed95f5af891de0cc2da1514b04cfe9" name="tests/frontcontroller22.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7551fb75ddaca3e545a9c04d904afab4" name="tests/frontcontroller23.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="17f9a1ab04358a27a5eda183f6b1f29f" name="tests/include_path.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9e8df9b97f725139e09e8f639c03eb03" name="tests/ini_set.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="84e4e8458512100b17adfaddeac3b9f0" name="tests/ini_set_off.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6b0d175cf4ac3f7f4672676e3a9ca6f2" name="tests/invalid_alias.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bf0b844a81fd27324fec6536e6622fe3" name="tests/invalid_setstubalias.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8c7299818608620b04063e5a32b26a84" name="tests/metadata_read.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d72b92f4a65811ff1b960482f918a419" name="tests/metadata_write.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="da492622e7efeecaca9bfd9d623e9915" name="tests/metadata_write_commit.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bb56bf5e9c863fbf5d2aaf684683dc6e" name="tests/mounteddir.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5f2e98c4829fa58604aac585fabdf7fd" name="tests/nophar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="de88af7bbb31cbf1e992c7fe108caa56" name="tests/nophar_web.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="54dc5091058edab09eac982d92603fc1" name="tests/open_for_write_existing.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a3f2154153617a736e4bc006673a4760" name="tests/open_for_write_existing_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ea25a2b6751ab0c5c8f0ea21f9ea2165" name="tests/open_for_write_existing_c.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="25bc52fd5431d05cd094f955bb8cc486" name="tests/open_for_write_newfile.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d8331513a3f2504c0b3e7a4f6e54a204" name="tests/open_for_write_newfile_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0e869665900f41076790de52355d0244" name="tests/open_for_write_newfile_c.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="622e4808ae1433da67bd9794014f0f5a" name="tests/phar_begin_setstub_commit.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f8eaf22b6e6d837a275b04448b2e8184" name="tests/phar_buildfromiterator1.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="84ed63a36eb670cf94cb81f979d4255a" name="tests/phar_buildfromiterator2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e7df449d183f80dde2839e608555e011" name="tests/phar_buildfromiterator3.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0606737da1c54736468ee2732e94ff34" name="tests/phar_buildfromiterator4.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="460b5f17a63a09e4a689088c9a10e2e2" name="tests/phar_buildfromiterator5.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="37613047a48b3c1c00326923f87e7e71" name="tests/phar_buildfromiterator6.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="03ba7a82df963ff100c149ba8004492b" name="tests/phar_buildfromiterator7.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="59da998a9b98f4e944baa6b09333b17e" name="tests/phar_buildfromiterator8.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ce527e2e4be7eb6c8fc2de5fe26d52ae" name="tests/phar_buildfromiterator9.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b9043b6df5ee26239fd7a3469cde21a3" name="tests/phar_bz2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c68fc01f6b8405164741f599ef67124b" name="tests/phar_commitwrite.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="268b564a1987c930186671a6421dc900" name="tests/phar_convert_repeated.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9bd615a0313a8535467733bb63687425" name="tests/phar_convert_repeated_b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a6d0a10f76c2fa665b574440ad3ac665" name="tests/phar_convert_tar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="da8b939e96dccd5d6616a324e70f46d2" name="tests/phar_convert_tar2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d6ab81dafa960c8b77b8f7ce557f70e3" name="tests/phar_convert_tar3.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="fe68fb68e362532771815ebf52c0b81c" name="tests/phar_convert_zip.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d9db88ae85d05d91936d7519b9cf4f3e" name="tests/phar_copy.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="262008f6a8163adf0af9d390f2894c26" name="tests/phar_createdefaultstub.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="13eba2d8fdbfd3af80432cba9892dab6" name="tests/phar_create_in_cwd.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="38a27ff5e45d63c690e468823e479b3f" name="tests/phar_ctx_001.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9ee14f6ac7ea97e7cb894b5f4905efdb" name="tests/phar_dir_iterate.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ac7447eaa38d54b8b382061eaa5f70b8" name="tests/phar_get_supportedcomp1.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="586406fea5009e874bb2534b54f09ed2" name="tests/phar_get_supportedcomp2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2a3e56be7ef94d9b550dbb856cd0a39d" name="tests/phar_get_supportedcomp3.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="34ad78eae266972d738926212745d14f" name="tests/phar_get_supportedcomp4.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3af1aa585bcbd2f2ce6cba96e11183e9" name="tests/phar_get_supported_signatures_001.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c2cbac7885269c3de607705fb7d3292d" name="tests/phar_get_supported_signatures_002.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a3455aae766ffb754f793a23446c6767" name="tests/phar_gzip.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="178a6a55275895d1fd19880d66e14bf6" name="tests/phar_magic.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3fd46e3eeb85dc7691f0dd09e2705df4" name="tests/phar_metadata_read.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5a15fd6c227e85fac84e594876aae71a" name="tests/phar_metadata_write.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="73e0569b88e5d654646a6058dc90169e" name="tests/phar_offset_get_error.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3840380a1dbf8df24fba83c1bd0a0ee1" name="tests/phar_oo_001.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bf41b73474938cf1de9abc1960b21bc9" name="tests/phar_oo_002.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9def59c4f8883adb39e78cfc89cfd7e6" name="tests/phar_oo_003.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="75b1691f5ab480ed10f191515ec1b4bb" name="tests/phar_oo_004.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="51802463d08767b0fd2f5ec9ec4ed8bd" name="tests/phar_oo_005.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d367ba14f18cce453aa3d883b7a9c93d" name="tests/phar_oo_006.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3aec3c584e4280c287e827044f40f82b" name="tests/phar_oo_007.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="608662fd237210662ed3e37396794fab" name="tests/phar_oo_008.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="776248ba9e1898b49fbe28ed3165e1b4" name="tests/phar_oo_009.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="342e0c26b432ed2beef925dcd9e912f9" name="tests/phar_oo_010.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="308e2ebaf61667b9d77911e16ff5ae97" name="tests/phar_oo_011.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7927f1801fc903b99f96b4054c5241f4" name="tests/phar_oo_011b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8a8223fdaef7ad01d24e4337293478af" name="tests/phar_oo_012.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7a719f9db4acf634b43e50c5ca3170d6" name="tests/phar_oo_012b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c610ad94c582fb33c5fbd15f0b615a69" name="tests/phar_oo_012_confirm.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3b46bb6396bdf932dbcc167d6e7f04b3" name="tests/phar_oo_compressallbz2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c227a6834b9e5da70a1abf9f57512f41" name="tests/phar_oo_compressallgz.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="92a65b10f5deb78f5a6c6a69ec447cb7" name="tests/phar_oo_compressed_001.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4ed700561bfdcb02a6923bf447a60fb7" name="tests/phar_oo_compressed_001b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bd001802d7a8c7354f596ddcf3365c52" name="tests/phar_oo_compressed_002.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a56277971f70561a09a6c4f457cbc517" name="tests/phar_oo_compressed_002b.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1353eeb28423f6d8c79013bf017deea0" name="tests/phar_oo_getmodified.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="45072e14e22ff0d4a3621e4f015aef67" name="tests/phar_oo_nosig.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="61c78ade01919381b2ef242f3623655e" name="tests/phar_oo_uncompressall.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8aa66c2ac1ab318cc2ba2dcf7f98d489" name="tests/phar_setalias.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a5544621486c0e8b6d6261e394a2e8fc" name="tests/phar_setalias2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d548dfb58abf9bcab3216b4019b5a7ec" name="tests/phar_setdefaultstub.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1dcd32be8da20cfa39e41a2e796069b1" name="tests/phar_setsignaturealgo1.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d7e66d9698139199030702123dad5b14" name="tests/phar_setsignaturealgo2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="715a0947b0d61f5751fdbec86149575c" name="tests/phar_stub.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="17cfd3affbc143dd82aff52cd8c34b95" name="tests/phar_stub_error.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="03be749352ce4ba54738f8a8576c9a5a" name="tests/phar_stub_write.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c3d2fd5b73356cfd0f2211255e695191" name="tests/phar_stub_write_file.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4f7cf014c269eb4c774630e9f39c6ac1" name="tests/refcount1.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="af22595509f782c7d04edd1503d1c526" name="tests/refcount1_5_2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="dba8ed85265b75a68ced21b1d1bba2e5" name="tests/rename.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2872ce00dde562986c6fb425a8786d44" name="tests/test_signaturealgos.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="88a02dd5b4d70bad834bacaaa2438c27" name="tests/withphar.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f343be1f88a1a69a7bd59ca1a2351d7e" name="tests/withphar_web.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="576feeec9238f09983373305fddbb983" name="tests/zf_test.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6067041a06eac8661d8c45b96dc247d7" name="build_precommand.php" role="php" />
+   <file baseinstalldir="/" md5sum="e96fef3825e89d4163a8aa402dabada0" name="config.m4" role="src" />
+   <file baseinstalldir="/" md5sum="959668375b85ae305b9e21c7bd9a33bc" name="config.w32" role="src" />
+   <file baseinstalldir="/" md5sum="45ac5e22e492565c0907f1bc35662735" name="CREDITS" role="doc" />
+   <file baseinstalldir="/" md5sum="0774f47427b38f92f90a7e55108d4704" name="dirstream.c" role="src" />
+   <file baseinstalldir="/" md5sum="3524a19c2c35533fb86f6b011f0143f8" name="dirstream.h" role="src" />
+   <file baseinstalldir="/" md5sum="4420115aee7fb71df1ef707151a41477" name="func_interceptors.c" role="src" />
+   <file baseinstalldir="/" md5sum="2b6b4d16d5038800aac5685f99810fec" name="func_interceptors.h" role="src" />
+   <file baseinstalldir="/" md5sum="038dfac6ff0e133bd22993260be29d54" name="gdbhelp" role="data" />
+   <file baseinstalldir="/" md5sum="d1ac3a00cbeb4f4590931fe7f60086b8" name="LICENSE" role="doc" />
+   <file baseinstalldir="/" md5sum="11014e1f762459828ad44338a37563d5" name="Makefile.frag" role="src" />
+   <file baseinstalldir="/" md5sum="3a85e684da1ac181839cb6dc3be01833" name="makestub.php" role="php" />
+   <file baseinstalldir="/" md5sum="5b61c3df13601649123b6916903c04c4" name="phar.c" role="src" />
+   <file baseinstalldir="/" md5sum="76c002e74b0b00b2b1e83a840db77519" name="phar.phar" role="script" />
+   <file baseinstalldir="/" md5sum="76edb1532aafc637d6fed0d14279ff73" name="pharzip.h" role="src" />
+   <file baseinstalldir="/" md5sum="ba0ebc6b0295119ae95a3086e41f949f" name="phar_internal.h" role="src" />
+   <file baseinstalldir="/" md5sum="071d846b24cd6c2abff1e380e39bb4d7" name="phar_object.c" role="src" />
+   <file baseinstalldir="/" md5sum="cae0787a8ded57d86e1c06512e5ec91d" name="phar_path_check.c" role="src" />
+   <file baseinstalldir="/" md5sum="7ddb9266f338bca285b1df9b4b855ba2" name="phar_path_check.re" role="src" />
+   <file baseinstalldir="/" md5sum="9b33f2987d57c38bae38ada3c225d6c6" name="php_phar.h" role="src" />
+   <file baseinstalldir="/" md5sum="75b8ed874b0755e05962145f429ab54e" name="php_stream_unlink.h" role="src" />
+   <file baseinstalldir="/" md5sum="f7133a29233186de54ee0c5237470a7b" name="shortarc.php" role="php" />
+   <file baseinstalldir="/" md5sum="171c821635967a1c6af58a8ac7d3eb7e" name="stream.c" role="src" />
+   <file baseinstalldir="/" md5sum="ece9b5e33d59d090c6faba2cc1188dbf" name="stream.h" role="src" />
+   <file baseinstalldir="/" md5sum="dca62826ced4d018ed42c4eb2a8c27f5" name="stub.h" role="src" />
+   <file baseinstalldir="/" md5sum="8ca15035abba0a566235ba723365cd3d" name="tar.c" role="src" />
+   <file baseinstalldir="/" md5sum="a849c464bd5e5484e09de1c235bf30c9" name="tar.h" role="src" />
+   <file baseinstalldir="/" md5sum="5e7c616c140665a8e4bb8c43a95d1d4d" name="TODO" role="doc" />
+   <file baseinstalldir="/" md5sum="7eeffa1b76092c66d7bceef2aba26003" name="util.c" role="src" />
+   <file baseinstalldir="/" md5sum="eef23e926d95f251f7f7aa80aff67fa2" name="zip.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.3</min>
+   </pearinstaller>
+  </required>
+  <optional>
+   <package>
+    <name>bz2</name>
+    <channel>pecl.php.net</channel>
+    <providesextension>bz2</providesextension>
+   </package>
+   <package>
+    <name>hash</name>
+    <channel>pecl.php.net</channel>
+    <providesextension>hash</providesextension>
+   </package>
+   <extension>
+    <name>spl</name>
+   </extension>
+   <extension>
+    <name>zlib</name>
+   </extension>
+  </optional>
+ </dependencies>
+ <providesextension>phar</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>2.0.0a2</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2008-03-27</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>Major feature functionality release
+ * new default stub allows running of phar-based phars without phar extension [Greg/Steph]
+ * add support for tar-based and zip-based phar archives [Greg]
+ * add Phar::isTar(), Phar::isZip(), and Phar::isPhar() [Greg]
+ * add Phar::convertToTar(), Phar::convertToZip(), and Phar::convertToPhar() [Greg]
+ * add Phar::compress() [Greg]
+ * conversion to compressed or to other file formats automatically copies the archive
+   to a new extension (i.e. &quot;.phar&quot; to &quot;.phar.tar&quot; or &quot;.tar&quot; to &quot;.tar.gz&quot;) [Steph]
+ * add Phar::webPhar() for running a web-based application unmodified
+   directly from a phar archive [Greg]
+ * file functions (fopen-based and stat-based) can be instructed to only look for
+   relative paths within a phar via Phar::interceptFileFuncs()
+ * add PharData class to allow manipulation/creation of non-executable tar and zip archives. [Steph]
+   non-executable tar/zip manipulation is allowed even when phar.readonly=1 [Greg]
+ * paths with . and .. work (phar://blah.phar/a/../b.php =&gt; phar://blah.phar/b.php) [Greg]
+ * add support for mkdir()/rmdir() and support for empty directories to phar file format [Greg]
+ * add option to compress the entire phar file for phar/tar file format [Greg]
+ * implement Phar::isCompressed() returning 0, Phar::GZ or Phar::BZ2 [Greg]
+ * implement Phar::copy(string $from, string $to) [Greg]
+ * implement Phar::buildFromIterator(Iterator $it[, string $base_directory]) [Greg]
+ * implement Phar::mount() for mounting external paths or files to locations inside a phar [Greg]
+ * add Phar::delete() [Greg]
+
+Changes since 2.0.0a1: fix build in PHP 5.2</notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0a1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2008-03-26</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>Major feature functionality release
+ * new default stub allows running of phar-based phars without phar extension [Greg/Steph]
+ * add support for tar-based and zip-based phar archives [Greg]
+ * add Phar::isTar(), Phar::isZip(), and Phar::isPhar() [Greg]
+ * add Phar::convertToTar(), Phar::convertToZip(), and Phar::convertToPhar() [Greg]
+ * add Phar::compress() [Greg]
+ * conversion to compressed or to other file formats automatically copies the archive
+   to a new extension (i.e. &quot;.phar&quot; to &quot;.phar.tar&quot; or &quot;.tar&quot; to &quot;.tar.gz&quot;) [Steph]
+ * add Phar::webPhar() for running a web-based application unmodified
+   directly from a phar archive [Greg]
+ * file functions (fopen-based and stat-based) can be instructed to only look for
+   relative paths within a phar via Phar::interceptFileFuncs()
+ * add PharData class to allow manipulation/creation of non-executable tar and zip archives. [Steph]
+   non-executable tar/zip manipulation is allowed even when phar.readonly=1 [Greg]
+ * paths with . and .. work (phar://blah.phar/a/../b.php =&gt; phar://blah.phar/b.php) [Greg]
+ * add support for mkdir()/rmdir() and support for empty directories to phar file format [Greg]
+ * add option to compress the entire phar file for phar/tar file format [Greg]
+ * implement Phar::isCompressed() returning 0, Phar::GZ or Phar::BZ2 [Greg]
+ * implement Phar::copy(string $from, string $to) [Greg]
+ * implement Phar::buildFromIterator(Iterator $it[, string $base_directory]) [Greg]
+ * implement Phar::mount() for mounting external paths or files to locations inside a phar [Greg]
+ * add Phar::delete() [Greg]</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.1</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-08-24</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>* add Phar::setAlias() [Greg]
+* fix too many open file handles issue [Greg]
+* fix rename [Greg]
+* add Phar::getAlias() [Marcus]
+* Made -a optional in pack subcommand of phar.phar [Marcus]
+* Fix issue with apache module and extracted archives [Marcus]
+* Send all error messages to stderr in phar.phar [Marcus]
+* Added new subcommands add and delete to phar.phar [Marcus]
+* Made Phar::loadPhar() and Phar::mapPhar() ignore extracted archives [Marcus]
+* Fix issue with compressed entries and uncompressing entries [Marcus]
+* Verify stubs before writing [Marcus]
+* Always use longest stub end to avoid issues with length field [Marcus]</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-05-18</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>* add PharFileInfo::hasMetadata(), PharFileInfo::delMetadata() [Marcus]
+* add Phar::hasMetadata(), Phar::delMetadata() [Marcus]
+* fix Phar::CanWrite() [Marcus]
+* add preliminary phar command (phar.php) [Marcus] 
+* add phar command (phar.phar) [Marcus]
+* list all available compression methods using Phar::getSupportedCompression() [Marcus]
+* remove RINIT [Marcus]</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-04-12</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>* implement ability connect a phar file &apos;phar://whatever&apos; to a directory. That way all
+  access to that phar archive are directed to the extracted directory. This
+  allows to have the installed files and the archive keep the same includes.
+  [Marcus]
+* implement SHA-2 (256, 512) support [Marcus]
+* implement setSignatureAlgorithm() and Phar::MD5 Phar::SHA1 Phar::SHA256 Phar::SHA512 Phar::PGP to
+  choose the kind of signature to use (PGP falls back to SHA1) [Greg]</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-03-28</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>* Fix return value of unlink() and rename() when used for phar archievs. [Marcus]</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-03-26</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>*BACKWARDS COMPATIBILITY BREAK*
+Rename Phar-&gt;begin/isFlushingToPhar/commit to startBuffering/isBuffering/stopBuffering
+Note that isBuffering() returns the opposite value to isFlushingToPhar()</notes>
+  </release>
+ </changelog>
+</package>

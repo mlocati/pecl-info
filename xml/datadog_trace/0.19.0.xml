@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.10.9" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>datadog_trace</name>
+ <channel>pecl.php.net</channel>
+ <summary>APM and distributed tracing for PHP</summary>
+ <description>The Datadog PHP Tracer brings APM and distributed tracing to PHP.</description>
+ <lead>
+  <name>Sammy Kaye Powers</name>
+  <user>sammyk</user>
+  <email>sammyk@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2019-04-12</date>
+ <time>16:29:57</time>
+ <version>
+  <release>0.19.0</release>
+  <api>0.19.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://github.com/DataDog/dd-trace-php/blob/master/LICENSE">BSD 3-Clause</license>
+ <notes>
+### Changed
+- Span and SpanContext main implementation uses public fields to share data to allow faster serialization and overall Span overhead #398
+- `DDTrace\Encoders\SpanEncoder::encode()` now takes an instance of `DDTrace\Data\Span` instead of `DDTrace\Contracts\Span` #398
+- `DDTrace\Processing\TraceAnalyticsProcessor::process()` now takes an instance of `DDTrace\Data\Span` instead of `DDTrace\Contracts\Span` #398
+- Improve performance of setTag and setResource #398
+- Load required PHP files in one go #387
+- Load optional PHP files without filesystem check #387
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="dc9507f3bfa62a057cd399d12e877a93" name="src/ext/mpack/AUTHORS.md" role="doc" />
+   <file md5sum="9c6f1f2e7bfff5e521cc4b1b2b1bef3d" name="src/ext/mpack/CHANGELOG.md" role="doc" />
+   <file md5sum="d2bd3cd591dc5dc7a1c9c9526e5b7b3a" name="src/ext/mpack/README.md" role="doc" />
+   <file md5sum="57ca4303df9d43d6767bd876948632cd" name="src/ext/mpack/LICENSE" role="doc" />
+   <file md5sum="5e5bfb43ef504fba99878c7732d71f08" name="src/ext/mpack/mpack.c" role="src" />
+   <file md5sum="13c81f438e6bc2c7aa60ab15ef218d49" name="src/ext/mpack/mpack.h" role="src" />
+   <file md5sum="6bfd5a6541e8f38cbfda721daa4f3787" name="src/ext/backtrace.c" role="src" />
+   <file md5sum="bba32bdc0e4e5e23480e6dc423046b2d" name="src/ext/backtrace.h" role="src" />
+   <file md5sum="10483235650fefd5d1250e1b48645f00" name="src/ext/compat_zend_string.c" role="src" />
+   <file md5sum="f70babb42021f8cbbfb46ef386959804" name="src/ext/compat_zend_string.h" role="src" />
+   <file md5sum="59585fca3fac806704a4cb0f7b93bf8f" name="src/ext/ddtrace.c" role="src" />
+   <file md5sum="8857fa2bccec2c764f79f8edc1982bf6" name="src/ext/ddtrace.h" role="src" />
+   <file md5sum="56142f9675ed2ecd2faa3d45ac441544" name="src/ext/debug.h" role="src" />
+   <file md5sum="d5fa64ce3223342bc557342ef8dd6a6b" name="src/ext/dispatch.c" role="src" />
+   <file md5sum="2b54ff7f5d834125dc671689d29f291c" name="src/ext/dispatch.h" role="src" />
+   <file md5sum="b25ea69959909e2cc4bf950a95cab0d1" name="src/ext/dispatch_compat.h" role="src" />
+   <file md5sum="02c6bea4df9eb4dd67c4ff77ba1b8808" name="src/ext/dispatch_compat_php5.c" role="src" />
+   <file md5sum="1ed63e48d98d970f572feb0d7dc9abe3" name="src/ext/dispatch_compat_php5.h" role="src" />
+   <file md5sum="39f315e8836fc3dade772f778ff47b52" name="src/ext/dispatch_compat_php7.c" role="src" />
+   <file md5sum="064c2e815416e17969065420fb756a08" name="src/ext/dispatch_setup.c" role="src" />
+   <file md5sum="0081132141507ca73f32862d1b9fd381" name="src/ext/env_config.c" role="src" />
+   <file md5sum="6773e6cb2967a4067618ef42b79a90e0" name="src/ext/env_config.h" role="src" />
+   <file md5sum="7478815d7bd1471fc3ae1145302b32ef" name="src/ext/logging.c" role="src" />
+   <file md5sum="cf878ec5acac509d3e62a31bfb8e23fc" name="src/ext/logging.h" role="src" />
+   <file md5sum="8c79be25d2f7633a737886f7470c8627" name="src/ext/request_hooks.c" role="src" />
+   <file md5sum="763830079e0da0c955322e06005294d2" name="src/ext/request_hooks.h" role="src" />
+   <file md5sum="2daa30c9524bff82c5773b6dc047c033" name="src/ext/serializer.c" role="src" />
+   <file md5sum="767c8714b1edc9ec9db93d7381b087f5" name="src/ext/serializer.h" role="src" />
+   <file md5sum="1a8a236f1ba04cfb2b0cc09ad39d4f36" name="src/ext/version.h" role="src" />
+   <file md5sum="aa538199e059700f3d09c5341d5e7a2d" name="tests/ext/access_modifier_method_access_hook.phpt" role="test" />
+   <file md5sum="4a08625ac2121107cf77f945c197e473" name="tests/ext/access_modifier_property_access_hook.phpt" role="test" />
+   <file md5sum="70c927e67b9104f554b220ed397a3940" name="tests/ext/allow_overriding_before_overrided_methods_functions_are_defined.phpt" role="test" />
+   <file md5sum="39a537b42c807ca77a7a94e79a4e137c" name="tests/ext/case_insensitive_method_hook.phpt" role="test" />
+   <file md5sum="be79bce2496fe401e56b68c081b83ed5" name="tests/ext/closure_accessing_outside_variables.phpt" role="test" />
+   <file md5sum="8663b712524b5ab566333c7f763f0d6f" name="tests/ext/closure_set_inside_object_methods.phpt" role="test" />
+   <file md5sum="39202256463a6f7cf52e478f5e9297b7" name="tests/ext/dd_trace_serialize_msgpack.phpt" role="test" />
+   <file md5sum="a5347206b37c3daed9813d4b526b5262" name="tests/ext/dd_trace_serialize_msgpack_error.phpt" role="test" />
+   <file md5sum="d930849de68c03c4087fceb35358f0b8" name="tests/ext/dd_trace_serialize_msgpack_error_strict.phpt" role="test" />
+   <file md5sum="fe29f212b91bdb5f4062003aebdca55b" name="tests/ext/disable_tracing_disables_tracing.phpt" role="test" />
+   <file md5sum="d1511620b9fa6c9b6fa524263930bae9" name="tests/ext/do_not_check_if_class_or_function_exists_by_default.phpt" role="test" />
+   <file md5sum="fe562349214456d2e12dad72e1f4dfec" name="tests/ext/enable_throw_exception_if_overridable_doesnt_exist.phpt" role="test" />
+   <file md5sum="44af5ff53c1c29f73cd0b92aedc9ff00" name="tests/ext/method_invoked_via_reflection.phpt" role="test" />
+   <file md5sum="dba5bdf810c02b3e351dce531f482cce" name="tests/ext/method_returning_array.phpt" role="test" />
+   <file md5sum="a4430a4c9ef393809cb90517ab9f9311" name="tests/ext/multiple_instrumentations.phpt" role="test" />
+   <file md5sum="ff846bd64f65db0b876d314679af6787" name="tests/ext/namespaces.phpt" role="test" />
+   <file md5sum="254dbf39f5712febc4d0200f5ea40723" name="tests/ext/overriding_construct.phpt" role="test" />
+   <file md5sum="24b43a4e19e83a0a0f5939c5516e3da1" name="tests/ext/overriding_method_defined_in_parent.phpt" role="test" />
+   <file md5sum="9add261752f201eb80bc893ca60b84fd" name="tests/ext/private_method_hook.phpt" role="test" />
+   <file md5sum="fa77934483a843d2309358716e98bbcc" name="tests/ext/private_self_access.phpt" role="test" />
+   <file md5sum="53e9462b2d068009e0b6a23bcea2cdb9" name="tests/ext/protected_method_hook.phpt" role="test" />
+   <file md5sum="fd1924431ffd4944ed06792f378bdd58" name="tests/ext/recursion.phpt" role="test" />
+   <file md5sum="551749e59cd8ce188d9561801bd9f526" name="tests/ext/request_init_hook_check_blacklisted_modules.phpt" role="test" />
+   <file md5sum="18bc971ec4038c7d1c9d5704e308ba00" name="tests/ext/request_init_hook_file_not_found.phpt" role="test" />
+   <file md5sum="0862780eb35b8a0ff8c0212b25035fc5" name="tests/ext/reset_configured_overrides.phpt" role="test" />
+   <file md5sum="a718b7ba48cb07779d7f7fa435c20070" name="tests/ext/reset_function_tracing.phpt" role="test" />
+   <file md5sum="dcfd404e9d62cdd488a6b7bfbcd839c0" name="tests/ext/return_value_passed.phpt" role="test" />
+   <file md5sum="f49fc21d48a55908331e1d5f42a16f0e" name="tests/ext/run_file_before_request_handling.phpt" role="test" />
+   <file md5sum="414991f2976f062bf2738895c5c199f6" name="tests/ext/segfault_backtrace_disabled.phpt" role="test" />
+   <file md5sum="fbd2685904d7cb70bf7e0087527db323" name="tests/ext/segfault_backtrace_disabled_via_env_enabled_in_ini.phpt" role="test" />
+   <file md5sum="f2ea229b26ca986c491421fa29aa058f" name="tests/ext/segfault_backtrace_enabled.phpt" role="test" />
+   <file md5sum="f36a43380e68e7403b4616bbd08d004f" name="tests/ext/segfault_backtrace_enabled_via_env_disabled_in_ini.phpt" role="test" />
+   <file md5sum="3e30d9518161e553ddbf74eca6703e0c" name="tests/ext/segfault_backtrace_enabled_via_env.phpt" role="test" />
+   <file md5sum="e984b7e67b6076a6395b075f31488153" name="tests/ext/simple_function_hook.phpt" role="test" />
+   <file md5sum="be7f5a3833e0f607bea4d51c26fd701f" name="tests/ext/simple_method_hook.phpt" role="test" />
+   <file md5sum="cb72ce0203d12c42b74cb9d1c6b8d80a" name="tests/ext/simple_sanity_check.phpt" role="test" />
+   <file md5sum="f480dac361372ea514daad2d414e6ed7" name="tests/ext/throw_exception.phpt" role="test" />
+   <file md5sum="0b51a69b0430cfbe8f41a66d6a6b2be0" name="tests/ext/trace_method_or_function_that_will_exist_later.phpt" role="test" />
+   <file md5sum="e4ebe6f97735eadc2732c3a49f75abb8" name="tests/ext/trace_static_method.phpt" role="test" />
+   <file md5sum="f9f3503ef50e90a0f9348323a5efd6b8" name="tests/ext/used_dispatch_shouldn_t_be_freed.phpt" role="test" />
+   <file md5sum="86dcbd4df2c0e1a65ef79715f65a6efb" name="tests/ext/variable_length_parameter_list.phpt" role="test" />
+   <file md5sum="86d8d0bc04c03911e8358ab6939f33ca" name="tests/ext/with_params_function_hook.phpt" role="test" />
+   <file md5sum="615ca12addba2609c3878b721ffa8abc" name="tests/ext/with_params_method_hook.phpt" role="test" />
+   <file md5sum="06edab1ffc8454ee282e7df74b2b2562" name="CHANGELOG.md" role="doc" />
+   <file md5sum="1521e35e64d0d072f2defaf38b1b39b6" name="config.m4" role="src" />
+   <file md5sum="bb70ec375a72403325f23192cea36357" name="LICENSE" role="doc" />
+   <file md5sum="88c6ef86cf200178fc505eca253e2b85" name="README.md" role="doc" />
+   <file md5sum="ba64397abb93412158422943cfcacbdd" name="UPGRADE-0.10.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.6</min>
+    <max>7.2.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+   <extension>
+    <name>json</name>
+   </extension>
+  </required>
+ </dependencies>
+ <providesextension>ddtrace</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="enable-ddtrace-debug" prompt="Enable internal debugging in ddtrace" />
+ </extsrcrelease>
+</package>

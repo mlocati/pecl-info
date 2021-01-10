@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd" packagerversion="2.0.0a1">
+ <name>ssdeep</name>
+ <channel>pecl.php.net</channel>
+ <summary>ssdeep fuzzy hashing for php
+</summary>
+ <description>====================
+
+Requirements
+-------
+
+  - Linux (tested on Ubuntu)
+  - ssdeep (tested with 2.5 built from source)
+  - PHP (tested on 5.3)
+  
+
+Usage
+-------
+
+Three functions are exposed:
+
+  - ssdeep_fuzzy_hash_filename()
+  - ssdeep_fuzzy_hash()
+  - ssdeep_fuzzy_compare()
+
+ssdeep_fuzzy_hash_filename() allows you to supply a path to a file you would like to get a hash of:
+
+    $hash1 = ssdeep_fuzzy_hash_filename('/home/simon/text.text');
+
+
+ssdeep_fuzzy_hash() will return a hash when it is supplied a string:
+
+    $hash2 = ssdeep_fuzzy_hash('A piece of text would go here!');
+
+ssdeep_fuzzy_compare() compares two hashes and returns their match percentage:
+
+    $match = ssdeep_fuzzy_compare($hash1, $hash2);
+
+Also see the test.php file for more examples of how this can be used.
+
+
+Installing the ssdeep package
+-------
+
+I would recommend building ssdeep from source using the [instructions][1] from it's [project site][2]. Once done **you need** to copy `.libs/*` to `/usr/lib` so that the php_ssdeep extension can see the ssdeep libraries.
+
+    sudo cp .libs/* /usr/lib
+
+You can use the packages supplied with Ubuntu or Debian, but they are not yet updated to the latest version of ssdeep.
+
+If you are having trouble building or running the php_ssdeep extension it expects to see the following directory structure:
+
+&gt; /usr/bin/ssdeep
+&gt;
+&gt; /usr/include/fuzzy.h
+&gt;
+&gt; /usr/lib/libfuzzy.a
+&gt;
+&gt; /usr/lib/libfuzzy.la
+&gt;
+&gt; /usr/lib/libfuzzy.so
+&gt;
+&gt; /usr/lib/libfuzzy.so.2
+&gt;
+&gt; /usr/lib/libfuzzy.so.2.0.0
+
+Source: [Ubuntu Karmic file list][3]
+
+
+ssdeep Licensing Exemption
+-------
+
+Although ssdeep and the fuzzy hashing API are usually licensed under GNU GPLv2 Jesse Kornblum has licenced them to PECL under the terms of the Perl Artistic Licence with the following declaration:
+&quot;I hereby license ssdeep, the current version and all subsequent versions, under the terms of the Perl Artistic License, for inclusion into the PECL.&quot;
+See http://news.php.net/php.pecl.dev/7625 for the verbatim email.
+
+
+  [1]: http://ssdeep.sourceforge.net/usage.html#install &quot;ssdeep Installation Instructions&quot;
+  [2]: http://ssdeep.sourceforge.net/ &quot;ssdeep Project Site&quot;
+  [3]: http://packages.ubuntu.com/en/karmic/i386/ssdeep/filelist &quot;Ubuntu Karmic file list for ssdeep&quot;</description>
+ <lead>
+  <name>Simon Holywell</name>
+  <user>Treffynnon</user>
+  <email>simon@holywell.com.au</email>
+  <active>yes</active>
+ </lead>
+ <date>2010-09-15</date>
+ <time>12:27:56</time>
+ <version>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+ <notes>Initial PECL compatible release.</notes>
+ <contents>
+  <dir name="/">
+   <file role="test" name="tests/ssdeep.phpt"/>
+   <file role="src" name="ssdeep.c"/>
+   <file role="src" name="php_ssdeep.h"/>
+   <file role="doc" name="examples/example.php"/>
+   <file role="doc" name="doc/index.sqlite"/>
+   <file role="doc" name="doc/generic-unix-manual-pages/ssdeep_fuzzy_hash_filename.3.gz"/>
+   <file role="doc" name="doc/generic-unix-manual-pages/ssdeep_fuzzy_hash.3.gz"/>
+   <file role="doc" name="doc/generic-unix-manual-pages/ssdeep_fuzzy_compare.3.gz"/>
+   <file role="doc" name="doc/chunked-xhtml/ssdeep.setup.html"/>
+   <file role="doc" name="doc/chunked-xhtml/ssdeep.resources.html"/>
+   <file role="doc" name="doc/chunked-xhtml/ssdeep.requirements.html"/>
+   <file role="doc" name="doc/chunked-xhtml/ssdeep.installation.html"/>
+   <file role="doc" name="doc/chunked-xhtml/ssdeep.constants.html"/>
+   <file role="doc" name="doc/chunked-xhtml/ssdeep.configuration.html"/>
+   <file role="doc" name="doc/chunked-xhtml/ref.ssdeep.html"/>
+   <file role="doc" name="doc/chunked-xhtml/intro.ssdeep.html"/>
+   <file role="doc" name="doc/chunked-xhtml/index.html"/>
+   <file role="doc" name="doc/chunked-xhtml/function.ssdeep-fuzzy-hash.html"/>
+   <file role="doc" name="doc/chunked-xhtml/function.ssdeep-fuzzy-hash-filename.html"/>
+   <file role="doc" name="doc/chunked-xhtml/function.ssdeep-fuzzy-compare.html"/>
+   <file role="doc" name="doc/chunked-xhtml/book.ssdeep.html"/>
+   <file role="doc" name="doc/big-xhtml.html"/>
+   <file role="src" name="config.m4"/>
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>ssdeep</providesextension>
+ <extsrcrelease/>
+</package>

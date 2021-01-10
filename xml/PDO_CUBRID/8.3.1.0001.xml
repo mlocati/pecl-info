@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>PDO_CUBRID</name>
+ <channel>pecl.php.net</channel>
+ <summary>CUBRID driver for PDO</summary>
+ <description>This extension provides a CUBRID driver for PDO.</description>
+ <lead>
+  <name>Esen Sagynov</name>
+  <user>CUBRID</user>
+  <email>esen.sagynov@nhn.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-02-21</date>
+ <time>17:41:00</time>
+ <version>
+  <release>8.3.1.0001</release>
+  <api>8.3.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+2008 R3.1 Release
+
+This release is a major release. CUBRID 3.1 Stable has been released. Several new 
+features have been added to this version including new BLOB and CLOB data types and 
+new APIs in JDBC/CCI which can get foreign key information. Accordingly new features 
+are added in this CUBRID PDO version, and some bugs have been fixed.
+
+Features Added:
+
+- Add LOB (BLOB/CLOB) data support:
+
+The LOB in PDO is represented as a stream, so you can insert LOBs by binding a stream, 
+and get LOBs by reading a stream returned by CUBRID PDO.
+
+Known issue: If column data type is CLOB, binding parameter will fail. This bug will 
+fixed later.
+
+- Add Multipy-Query support:
+
+Now you can execute multiple queries and get results using PDOStatement-&gt;nextRowset.
+
+- Add three new schema type integer constants for cubrid_schema, which can be used to 
+get foreign key information: 
+
+CUBRID_SCH_IMPORTED_KEYS
+CUBRID_SCH_EXPORTED_KEYS
+CUBRID_SCH_CROSS_REFERENCE
+
+Features changed:
+
+- In version 8.3.0, the default value of autocommit mode is false. In this release it 
+is changed to true.
+
+Features removed:
+
+- Remove constant CUBRID_INCLUDE_OID, because there is no methods in PDO using OID;
+
+Fixed bugs:
+
+- Fix a bug in cubrid_handle_preparer which makes user can change cursor type to scrollable cursor when preparing SQL; 
+- Fix a bug in cubrid_handle_prepare: when binding parameter is named parameter, there will be memory leak; 
+- Fix a bug in cubrid_handle_quoter: when escaping single quote in string, it should use double single quotes, not backslash;
+- Fix a bug in cubrid_handle_begin, cubrid_handle_commit and cubrid_handle_rollback: when beginning a transaction, it should commit un-commited transaction, turn off autocommit_mode, after commit or rollback, then restore the autocommit_mode;
+- Fix a bug in cubrid_stmt_param_hook: when the value of binding parameter is NULL, it will covert the value to empty string;
+- Fix a bug about cursor type: the cursor type (forward only or scrollable) should be statement attribute, not connection attribute.
+- Fix a bug in cubrid_schema: After array_init(return_value), when error occures, it should destroy array before return false.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="1a41b20f6b5676e3ba739dd2b71f9787" name="win/pdo_cubrid.sln" role="src" />
+   <file md5sum="bb38b234af4f3b5245e6fa05fd425924" name="win/pdo_cubrid.vcproj" role="src" />
+   <file md5sum="228ef8b22513d0a32cd03b7103d75c7f" name="config.m4" role="src" />
+   <file md5sum="6314d6d46309c8140fa8e99a1e3ac893" name="config.w32" role="src" />
+   <file md5sum="a935e105cd60e4d877475173130c9e3a" name="CREDITS" role="doc" />
+   <file md5sum="1d56517e111a615149cd6fcbba6f9422" name="README" role="doc" />
+   <file md5sum="512cc9ce6bed2344e1d9d47528c175c6" name="pdo_cubrid.dsp" role="src" />
+   <file md5sum="f5a335ade4527be8a4e47c0c38e1e8ad" name="cubrid_driver.c" role="src" />
+   <file md5sum="920ec68bf6610a9319762b38107c2133" name="cubrid_statement.c" role="src" />
+   <file md5sum="6b2db70084d6268e44584eba1002068e" name="pdo_cubrid.c" role="src" />
+   <file md5sum="65c0ef81b1c10e9dae648786b57d81ad" name="php_pdo_cubrid.h" role="src" />
+   <file md5sum="ef4444e223dfb7592053dc915fb9264c" name="php_pdo_cubrid_int.h" role="src" />
+   <file md5sum="a3ce8a39b0bc3fd4af9d9def788d62c1" name="pdo_cubrid_version.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>PDO_CUBRID</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-pdo-cubrid" prompt="CUBRID base install dir" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <version>
+    <release>8.3.0.0001</release>
+    <api>8.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This PECL release is the first release of CUBRID PDO Driver.
+   </notes>
+  </release>
+ </changelog>
+</package>

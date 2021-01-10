@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.0.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>CUBRID</name>
+ <channel>pecl.php.net</channel>
+ <summary>This is the official PHP Extension to connect to CUBRID Database.</summary>
+ <description>CUBRID is an open source database management system highly optimized for Web applications (http://www.cubrid.org). The current PHP extension is fully compatibly with the latest stable version of CUBRID Database. To post issues and report bugs, please use CUBRID Official Forum at http://forum.cubrid.org.  </description>
+ <lead>
+  <name>Esen Sagynov</name>
+  <user>CUBRID</user>
+  <email>esen.sagynov@nhn.com</email>
+  <active>yes</active>
+ </lead>
+ 
+ <date>2010-10-26</date>
+ <version><release>8.3.0.0002</release><api>8.3.0</api></version>
+ <stability><release>stable</release><api>stable</api></stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+- fix an installation bug in config.m4
+ </notes>
+
+ <contents>
+  <dir name="/">
+   <file name="config.m4" role="src" />
+   <file name="config.w32" role="src" />
+   <file name="php_cubrid.c" role="src" />
+   <file name="php_cubrid.h" role="src" />
+   <file name="php_cubrid_version.h" role="src" />
+   <file name="php_cubrid.dsp" role="src" />
+   <file name="README" role="doc" />
+   <file name="build-guide.html" role="doc" />
+   <file name="release-notes.html" role="doc" />
+   <dir name="win">
+    <file name="php_cubrid.sln" role="src" />
+    <file name="php_cubrid.vcproj" role="src" />
+   </dir>
+   <dir name="test">
+    <file name="connect_config.php" role="src" />
+    <file name="glo.php" role="src" />
+    <file name="index.php" role="src" />
+    <file name="insert.php" role="src" />
+    <file name="oid.php" role="src" />
+    <file name="query.php" role="src" />
+    <file name="schema.php" role="src" />
+    <file name="set.php" role="src" />
+    <file name="type.php" role="src" />
+    <file name="until.php" role="src" />
+   </dir>
+  </dir>
+ </contents>
+
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+
+ <providesextension>CUBRID</providesextension>
+
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-cubrid" prompt="CUBRID base install dir"/>
+ </extsrcrelease>
+ <changelog>
+    <release>
+      <version><release>8.3.0.0001</release><api>8.3.0</api></version>
+      <stability><release>stable</release><api>stable</api></stability>
+      <license uri="http://www.php.net/license">PHP</license>
+      <notes>
+This release is a major release. All codes has been reviewed, and totally rewritten with latest Zend Engine 2 API.
+
+- Added more than 20 new APIs, see release-notes.html in package for more details.
+- Added two new schema types for cubrid_schema: CUBRID_SCH_DIRECT_SUPER_CLASS and CUBRID_SCH_PRIMARY_KEY.
+- More data types support for cubrid_bind, the following types are added: CHAR, VARCHAR, BIGINT, MONETARY, VARBIT and DATETIME.
+- Fix a bug in cubrid_get: If parameter attr is given and its type is string, and the function returns successfully, then there will be memory leak.
+      </notes>
+    </release>
+ </changelog>
+</package>

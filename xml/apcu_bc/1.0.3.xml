@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>apcu_bc</name>
+ <channel>pecl.php.net</channel>
+ <summary>APCu Backwards Compatibility Module</summary>
+ <description>This module provides a backwards APC compatible API using APCu.</description>
+ <lead>
+  <name>Joe Watkins</name>
+  <user>krakjoe</user>
+  <email>krakjoe@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2016-02-11</date>
+ <time>15:52:27</time>
+ <version>
+  <release>1.0.3</release>
+  <api>5.1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- fix gh#14: apc_inc segfaults if APCu is disabled
+- fix Windows build
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="a37063f931091efdcf7aa00baeb40c05" name="tests/apc_001.phpt" role="test" />
+   <file md5sum="b297b2b74b7ca1b7ef42ae8aef4531be" name="tests/apc_cache_info.phpt" role="test" />
+   <file md5sum="a248eb7a8e8af22c7f0258ebf0e8ff73" name="tests/apc_clear_cache.phpt" role="test" />
+   <file md5sum="9f4cc8847a3a6cea0501f857b9504757" name="tests/apc_incdec.phpt" role="test" />
+   <file md5sum="b18d49aaf1659afdedc40425ffbfc0a6" name="tests/apc_inc_gh14.phpt" role="test" />
+   <file md5sum="5dfce182de32d56fe530ba5eba3fafec" name="tests/iterator_005_bc.phpt" role="test" />
+   <file md5sum="d2873fdab3d4777aeacbbcf5310dc9b1" name="tests/iterator_008_bc.phpt" role="test" />
+   <file md5sum="0852cd1ec5d91c4dbe17dd042daf1e6e" name="tests/skipif.inc" role="test" />
+   <file md5sum="3ebed85da70b891521bb30756c86ee7f" name="config.m4" role="src" />
+   <file md5sum="32f4dcee02c468597bb83cddd6d861cd" name="config.w32" role="src" />
+   <file md5sum="b19ed4c8b539f0fefc375c5e9571429b" name="php_apc.h" role="src" />
+   <file md5sum="7f2079eea89561aafa90be5f6afd3fd1" name="php_apc.c" role="src" />
+   <file md5sum="743bb7a4ba52531de8f35cc2c4063f2d" name="README.md" role="doc" />
+   <file md5sum="52dd90569008fee5bcdbb22d945b1108" name="LICENSE" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+   <package>
+    <name>apcu</name>
+    <channel>pecl.php.net</channel>
+    <min>5.1.2</min>
+    <providesextension>apcu</providesextension>
+   </package>
+  </required>
+ </dependencies>
+ <providesextension>apc</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2015-12-07</date>
+   <version>
+    <release>1.0.0</release>
+    <api>5.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- initial release
+   </notes>
+  </release>
+  <release>
+   <date>2016-01-06</date>
+   <version>
+    <release>1.0.1</release>
+    <api>5.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- fix gh#10 - apc_clear_cache: parameter is optional
+- apc_cache_info: both parameters are optional
+- add dep on APCu extension
+   </notes>
+  </release>
+  <release>
+   <date>2016-01-29</date>
+   <version>
+    <release>1.0.2</release>
+    <api>5.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- restore apc behavior, apc_inc / apc_dec fail when key doesnt exists
+   </notes>
+  </release>
+ </changelog>
+</package>

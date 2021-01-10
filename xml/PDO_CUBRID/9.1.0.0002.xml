@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>PDO_CUBRID</name>
+ <channel>pecl.php.net</channel>
+ <summary>CUBRID driver for PDO</summary>
+ <description>This extension provides a CUBRID driver for PDO.</description>
+ <lead>
+  <name>Esen Sagynov</name>
+  <user>CUBRID</user>
+  <email>esen.sagynov@nhn.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2013-06-11</date>
+ <time>08:48:46</time>
+ <version>
+  <release>9.1.0.0002</release>
+  <api>9.1.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+Fixed bugs:
+1) APIS-546: The PDO driver does not support for the connection between the PDO and CUBRID shard broker.
+2) APIS-550: The PDO driver does not support prepare and query function in CUBRID shard db.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="4832f44b6f9466a440122ef0ee2be99b" name="config.m4" role="src" />
+   <file md5sum="6314d6d46309c8140fa8e99a1e3ac893" name="config.w32" role="src" />
+   <file md5sum="a935e105cd60e4d877475173130c9e3a" name="CREDITS" role="doc" />
+   <file md5sum="2424d7f17554b8d26b6724804525a9c3" name="cubrid_driver.c" role="src" />
+   <file md5sum="99d219eb4496449afd6469c1c8f445a3" name="cubrid_statement.c" role="src" />
+   <file md5sum="6cffe2c4328dc45439d42a3a036ef986" name="pdo_cubrid.c" role="src" />
+   <file md5sum="512cc9ce6bed2344e1d9d47528c175c6" name="pdo_cubrid.dsp" role="src" />
+   <file md5sum="3ba80870e1ff7865909b96641884a9e8" name="pdo_cubrid_version.h" role="src" />
+   <file md5sum="65c0ef81b1c10e9dae648786b57d81ad" name="php_pdo_cubrid.h" role="src" />
+   <file md5sum="33eca35f1f7369fa7c13bb00b5ff6c58" name="php_pdo_cubrid_int.h" role="src" />
+   <file md5sum="7a6d236beb2429915af9797dd6d703bb" name="README" role="doc" />
+   <file md5sum="0b6ecb70a17226f1009979d59186fedd" name="cci/include/cas_cci.h" role="src" />
+   <file md5sum="237fb6b451207497bcfe0053b9e26601" name="cci/include/cas_error.h" role="src" />
+   <file md5sum="4b0dc871fff5d9da331520bd56dd4f95" name="cci/lib/linux/libcascci.a" role="src" />
+   <file md5sum="29c3e4ea1c98664b4f0eff178054d94c" name="cci/lib/win/cas_cci.lib" role="src" />
+   <file md5sum="d135fe2923694e0b9fea77d46ac78e9d" name="cci/lib/win/libregex38a.lib" role="src" />
+   <file md5sum="eab8655c17cf5b19138875294334dfb9" name="cci/lib64/linux/libcascci.a" role="src" />
+   <file md5sum="70950d4e7f9c462b61179ca5d2920b60" name="cci/lib64/win/cas_cci.lib" role="src" />
+   <file md5sum="450d5d9b7c3f0eb9fc4db780a7eed7df" name="cci/lib64/win/libregex38a.lib" role="src" />
+   <file md5sum="5e3f4b6e32833c1001ecdb39b629ae91" name="win/pdo_cubrid.sln" role="src" />
+   <file md5sum="bc96caf3cd305be6fd1b723fa3bd7063" name="win/pdo_cubrid.vcproj" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>PDO_CUBRID</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>9.1.0.0001</release>
+    <api>9.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Changed and Enhanced Features:
+
+1) APIS-418: add the ENUM support in PDO driver.
+2) APIS-404: update the urls in README.
+3) APIS-435: use cci_get_last_insert_id() instead of cci_last_insert_id().
+
+Fixed bugs:
+
+1) APIS-392: change the phpinfo field from &apos;Supported CUBRID server&apos; to &apos;CCI Version&apos; and fix its value.
+2) APIS-401: improve the invoking of cci_disconnect.
+3) APIS-435: remove free() in the insert_id function for Windows platform.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>9.0.0.0001</release>
+    <api>9.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bugs:
+
+- Use CCI funciton cci_escape_string() to implement PDO::quote
+- Get correct lock_timeout value when it has been set.
+- Update error code in handle error function in PDO driver
+- Use cci_connect_ex instead of cci_connect in PDO driver.
+- Use old functions in pdo driver because CUBRID does not export them.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.4.0.0002</release>
+    <api>8.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bugs:
+
+- Fix a bug in cubrid_stmt_next_rowset: new version cci_next_result will reuse the request handle, so do not close it before calling cci_next_result. 
+- Fix a bug about life cycle management of pdo_cubrid_stmt: when database connection is closed, all request handle will be closed in CCI too. So the handle in pdo_cubrid_stmt must be set to invalid value.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.4.0.0001</release>
+    <api>8.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+2008 R4.0 Release
+
+This release is a major release.
+
+Functionality added:
+
+- Implement PDO API getColumnMeta:
+
+The following column meta information will be returned:
+
+type
+name
+table
+def
+precision
+scale
+not_null
+auto_increment
+unique_key
+multiple_key
+primary_key
+foreign_key
+reverse_index
+reverse_unique
+
+Changed and Enhanced Features:
+
+- Add database parameter setting support:
+
+cubrid_set_db_parameter() can be used to set the database transaction isolation
+level and lock timeout value. 
+
+- Change the default status of auto commit mode to off.
+
+Fixed bugs:
+
+- Fix a bug in cubrid_bind: When the value of binding parameter is NULL, it will covert the value to empty string;
+- Fix a bug about BLOB/CLOB: When inserting LOB data, if the data size is large enough, it will fails. And if the LOB data is in a file, and it is too large to be put into memory, you can bind a file path name when binding the LOB data;
+- Fix a bug about CLOB: When binding data type is CLOB, it will fail when inserting it into CUBRID;
+- Fix a bug in cubrid_stmt_describe_col which will cause the failure of test bug_44861.phpt;
+- Fix a bug in cubrid_handle_quoter: Before escaping unquoted string, it should init the value of quotedlen to 0.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.3.1.0003</release>
+    <api>8.3.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bugs:
+
+- fix a bug about BLOB/CLOB: When inserting LOB data, if the data size is large
+enough, it will fails. If the LOB data is in a file, and it is too large to be
+put into memory, you can bind a file path name when binding the LOB data.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.3.1.0002</release>
+    <api>8.3.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bugs:
+
+- Fix a bug in cubrid_handle_quoter: Before escaping unquoted string, it should init the value of quotedlen to 0;
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.3.1.0001</release>
+    <api>8.3.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+2008 R3.1 Release
+
+This release is a major release. CUBRID 3.1 Stable has been released. Several new 
+features have been added to this version including new BLOB and CLOB data types and 
+new APIs in JDBC/CCI which can get foreign key information. Accordingly new features 
+are added in this CUBRID PDO version, and some bugs have been fixed.
+
+Features Added:
+
+- Add LOB (BLOB/CLOB) data support:
+
+The LOB in PDO is represented as a stream, so you can insert LOBs by binding a stream, 
+and get LOBs by reading a stream returned by CUBRID PDO.
+
+Known issue: If column data type is CLOB, binding parameter will fail. This bug will 
+fixed later.
+
+- Add Multipy-Query support:
+
+Now you can execute multiple queries and get results using PDOStatement-&gt;nextRowset.
+
+- Add three new schema type integer constants for cubrid_schema, which can be used to 
+get foreign key information: 
+
+CUBRID_SCH_IMPORTED_KEYS
+CUBRID_SCH_EXPORTED_KEYS
+CUBRID_SCH_CROSS_REFERENCE
+
+Features changed:
+
+- In version 8.3.0, the default value of autocommit mode is false. In this release it 
+is changed to true.
+
+Features removed:
+
+- Remove constant CUBRID_INCLUDE_OID, because there is no methods in PDO using OID;
+
+Fixed bugs:
+
+- Fix a bug in cubrid_handle_preparer which makes user can change cursor type to scrollable cursor when preparing SQL; 
+- Fix a bug in cubrid_handle_prepare: when binding parameter is named parameter, there will be memory leak; 
+- Fix a bug in cubrid_handle_quoter: when escaping single quote in string, it should use double single quotes, not backslash;
+- Fix a bug in cubrid_handle_begin, cubrid_handle_commit and cubrid_handle_rollback: when beginning a transaction, it should commit un-commited transaction, turn off autocommit_mode, after commit or rollback, then restore the autocommit_mode;
+- Fix a bug in cubrid_stmt_param_hook: when the value of binding parameter is NULL, it will covert the value to empty string;
+- Fix a bug about cursor type: the cursor type (forward only or scrollable) should be statement attribute, not connection attribute.
+- Fix a bug in cubrid_schema: After array_init(return_value), when error occures, it should destroy array before return false.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.3.0.0001</release>
+    <api>8.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This PECL release is the first release of CUBRID PDO Driver.
+   </notes>
+  </release>
+ </changelog>
+</package>

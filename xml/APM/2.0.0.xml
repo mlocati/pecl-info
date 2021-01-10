@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>APM</name>
+ <channel>pecl.php.net</channel>
+ <summary>Alternative PHP Monitor</summary>
+ <description>Monitoring extension for PHP, collects error events and statistics and send them to one of his drivers.
+SQLite and MariaDB/MySQL drivers are storing those in a database.
+StatsD driver sends them to StatsD using UDP.
+Socket driver sends them via UDP or TCP socket using its dedicated protocol.
+More drivers to come (SNMP, e-mail, Hadoop,...).</description>
+ <lead>
+  <name>Patrick Allaert</name>
+  <user>patrickallaert</user>
+  <email>patrickallaert@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Davide Mendolia</name>
+  <user>dmendolia</user>
+  <email>dmendolia@php.net</email>
+  <active>no</active>
+ </lead>
+ <developer>
+  <name>Olivier Garcia</name>
+  <user>oliviergarcia</user>
+  <email>oliviergarcia@php.net</email>
+  <active>yes</active>
+ </developer>
+ <date>2015-02-20</date>
+ <time>12:32:45</time>
+ <version>
+  <release>2.0.0</release>
+  <api>2.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+New drivers:
+- StatsD
+- Socket
+
+Added:
+- Per-driver option &apos;apm.&lt;storage driver&gt;_store_silenced_events that lets you toggle whether to store silenced (@-ed) errors (thanks Mathieu Kooiman (@mathieuk))
+- apm.*_exception_mode configuration to control exception collection
+- Auto creation of SQLite and MariaDB/MySQL schemas
+- Stats:
+  - User and System CPU time
+  - Memory Peak Usage
+  - HTTP response code
+- &apos;application_id&apos; field to categorize the issues per application/server/environment/...
+- Support for compilation on Ubuntu (thanks Olivier Garcia (@0livier))
+
+Changed:
+- Deep refactoring:
+  - New DB schema
+  - No more native functions, retrieval of data is directly made in PHP
+- SQLite drivder attempts to create the directory structure by himself
+- Renamed &apos;slow request&apos; to &apos;stats&apos;
+- Connect to MySQL once and reconnect if needed
+- Small UI improvements
+- Avoiding int / uint conversion
+- MariaDB/MySQL driver activated by default
+
+Fixed:
+- Parse error test failing on PHP 5.4
+- Possible segfault with APM_DEBUG used outside RINIT/RSHUTDOWN phases
+- Missing disconnect from SQLite DB if changed with ini_set()
+- Too few arguments to sprintf() with MariaDB/MySQL backend
+- Possible segfault with PHP 5.5
+- Segmentation fault with &quot;zend_mm_heap corrupted&quot; message.
+- Missing zval reference incrementing
+- Out of memory error in backtrace generation
+- Removed hard-coded limit of 64kB json data
+- Do not activate silence handler if APM is not enabled
+- Some compiler warnings
+- Incorrect status propagation for PHP_RSHUTDOWN_FUNCTION
+- Several memory leaks
+
+Removed:
+- Deffered processing (can&apos;t be easily implemented in a generic and driver
+  agnostic way. Depending on the drivers, some deffered processing will
+  happen inside them.)
+- Reference SQL files, see source code for that ;-)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file baseinstalldir="PECL/APM" md5sum="b83c0b5d02bdb6b641665be8b3d6de3f" name="web/config/db.php" role="php" />
+   <file baseinstalldir="PECL/APM" md5sum="2a44fbdb7360c60122bcf6dcef0387d8" name="web/css/smoothness/images/ui-bg_flat_0_aaaaaa_40x100.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="8692e6efddf882acbff144c38ea7dfdf" name="web/css/smoothness/images/ui-bg_flat_75_ffffff_40x100.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="f8f4558e0b92ff2cd6136781533902ec" name="web/css/smoothness/images/ui-bg_glass_55_fbf9ee_1x400.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="e5a8f32e28fd5c27bf0fed33c8a8b9b5" name="web/css/smoothness/images/ui-bg_glass_65_ffffff_1x400.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="c12c6510dad3ebfa64c8a30e959a2469" name="web/css/smoothness/images/ui-bg_glass_75_dadada_1x400.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="f75b5273f4e226b16419509907790f93" name="web/css/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="5a3be2d8fff8324d59aec3df7b0a0c83" name="web/css/smoothness/images/ui-bg_glass_95_fef1ec_1x400.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="72c593d16e998952cd8d798fee33c6f3" name="web/css/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="ebe6b6902a408fbf9cac6379a1477525" name="web/css/smoothness/images/ui-icons_222222_256x240.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="2b99a5e48d3c3957d03027d36a25e8bb" name="web/css/smoothness/images/ui-icons_2e83ff_256x240.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="119dd0c2e94ad689de873ef39fd43e6e" name="web/css/smoothness/images/ui-icons_454545_256x240.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="9c46d7cab43e22a14bad26d2d4806d80" name="web/css/smoothness/images/ui-icons_888888_256x240.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="3e450c2a2c66328d9498e7001ad7197c" name="web/css/smoothness/images/ui-icons_cd0a0a_256x240.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="6d4b93342346fd0c09d30812fdec30eb" name="web/css/smoothness/jquery-ui-1.9.1.custom.min.css" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="844a23aa88cef058a1c1c492e47f5bdd" name="web/css/apm.css" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="323f5dbc2c30537175dad260d75cf7ad" name="web/css/bootstrap.min.css" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="12d88b292711cd2af776fc3c8cf2649e" name="web/css/bootstrap-responsive.min.css" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="cf2c7183a7882faaace78f14a4f71cb1" name="web/css/ellipsis-xbl.xml" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="d5b70873379cdef08065d9391512d00a" name="web/css/ui.jqgrid.css" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="2516339970d710819585f90773aebe0a" name="web/img/glyphicons-halflings.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="9bbc6e9602998a385c2ea13df56470fd" name="web/img/glyphicons-halflings-white.png" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="97d0221079cb4844ddf03c130b400650" name="web/js/i18n/grid.locale-ar.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="1a84749ae17e0dd3deac3645b364f6ab" name="web/js/i18n/grid.locale-bg1251.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="e796cf38a56062d73e655d422be52418" name="web/js/i18n/grid.locale-bg.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="3f7f9bf87d18f099bfe3506544913137" name="web/js/i18n/grid.locale-cat.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="e82854be9e1edd65742634faf6f677de" name="web/js/i18n/grid.locale-cn.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="740c6e68daa5f420ecd8561c65c0a76e" name="web/js/i18n/grid.locale-cs.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="20378c1521050e0c4dd6414ffa2dc36e" name="web/js/i18n/grid.locale-da.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="c1c9cfa72902ea20cfa00da78bd14220" name="web/js/i18n/grid.locale-de.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="f9037e12071f3182f0cb8fec6783b3d7" name="web/js/i18n/grid.locale-dk.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="db2888e35e9c14980ac004fa51e5b1bd" name="web/js/i18n/grid.locale-el.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="8658961a8d54806fd039bc2b957c451c" name="web/js/i18n/grid.locale-en.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="7cb4f822d8501e14229d6388f58c5985" name="web/js/i18n/grid.locale-es.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="1927661d96d7dc0f903315aad153869f" name="web/js/i18n/grid.locale-fa.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="d9526c51ed5233c8b920af492aa4904b" name="web/js/i18n/grid.locale-fi.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="81be987ab87e02df717daf0b7e562c46" name="web/js/i18n/grid.locale-fr.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="0e9d8b9ffe2b2ec6a0d6863ab1a4ef0c" name="web/js/i18n/grid.locale-gl.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="1d20bd82a3741125a7746c045a54a694" name="web/js/i18n/grid.locale-he.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="bd8c05fcd0aad722cf35ddd4d1c933ef" name="web/js/i18n/grid.locale-hr1250.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="7b71ba6bf9d186b524841ad4468fe34a" name="web/js/i18n/grid.locale-hr.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="42ca3d524538c4635e9c5f0d939a6f71" name="web/js/i18n/grid.locale-hu.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="44ec5d1fb8917c6c5785668e14d7fdb8" name="web/js/i18n/grid.locale-id.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="7bae2b1c34c14394dc437df9a56d2674" name="web/js/i18n/grid.locale-is.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="ed1ea006e2ba9933653652ec259b8b98" name="web/js/i18n/grid.locale-it.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="cbb470bfd5ad9c005d370d716720dd0f" name="web/js/i18n/grid.locale-ja.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="60970a163ac921ab6a7ca08d848f51fd" name="web/js/i18n/grid.locale-kr.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="2f5b1e9de23ea9a77ef6f98388f502ec" name="web/js/i18n/grid.locale-lt.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="4b2dffceeafeee16d003b00b83a6cfe3" name="web/js/i18n/grid.locale-mne.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="34397ee03b1cfd810cc85d84ee1aeb35" name="web/js/i18n/grid.locale-nl.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="390e53c12149be1dcafa67266a206c71" name="web/js/i18n/grid.locale-no.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="027c48b8e75c1efb7c91bff428f7de3a" name="web/js/i18n/grid.locale-pl.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="19fe4071a5b5c3b0411d1342f633f18c" name="web/js/i18n/grid.locale-pt-br.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="30ac1eb35902807172feda5906558019" name="web/js/i18n/grid.locale-pt.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="8dccbb7ee1ebe0a439d89d08921e7438" name="web/js/i18n/grid.locale-ro.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="540103b94ac5eedd8dee77d9472f15e1" name="web/js/i18n/grid.locale-ru.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="57539247245758e779f3421d1fbb826b" name="web/js/i18n/grid.locale-sk.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="75b027547670bbc0a6f1ae55fb86c671" name="web/js/i18n/grid.locale-sr.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="f29054ac162b71fb8d05304a5885e86d" name="web/js/i18n/grid.locale-sr-latin.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="223677498d828befc7317e5004f86558" name="web/js/i18n/grid.locale-sv.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="f1f499b19f2f297de03045624458fe75" name="web/js/i18n/grid.locale-th.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="f94d26b82a059ad85bf108c1cf1b0e99" name="web/js/i18n/grid.locale-tr.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="197bcad2fe2713f2e49ad8c9461f9f71" name="web/js/i18n/grid.locale-tw.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="df604b003f6e11ebd001027b7c612d66" name="web/js/i18n/grid.locale-ua.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="7e6e6fc10d0aa0af35810df6102d07f9" name="web/js/i18n/grid.locale-vi.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="91727cec6ede9745fb6a148389e17e2a" name="web/js/apm.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="2916bdd0ab40bc45f6cb6d5b99e34368" name="web/js/bootstrap.min.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="0652da382b6fceb033dfe2b6c06d4d11" name="web/js/jquery-1.9.0.min.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="533292a35e47a40ef354c03af4350a72" name="web/js/jquery.jqGrid.min.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="f8ecdd3c07bfb6f0d99b623232b35493" name="web/js/jquery-ui-1.9.1.custom.min.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="690f76625dcfcb117ff282fa7536731e" name="web/model/apm.php" role="php" />
+   <file baseinstalldir="PECL/APM" md5sum="928bd095d0e6834bbd2620180984b4e3" name="web/model/repository.php" role="php" />
+   <file baseinstalldir="PECL/APM" md5sum="43728d603037c2ed0dbaa25ba2fbc905" name="web/plugins/grid.addons.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="e71e794429744d8529ec228619c555f8" name="web/plugins/grid.postext.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="1e470a277c607e0231e2bdee416583da" name="web/plugins/grid.setcolumns.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="b7a7824cf9bd794a132a07fa8bbfe4d6" name="web/plugins/jquery.contextmenu.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="ccdc75752a7da82a07f54208d0b675c3" name="web/plugins/jquery.searchFilter.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="18d416d50d5ec597b42197cf501cdfd8" name="web/plugins/jquery.tablednd.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="cd2059eb5588eeb6d32ff1433a49fab9" name="web/plugins/searchFilter.css" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="3329bc387ab81656d3bb6955855127b1" name="web/plugins/ui.multiselect.css" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="c6d1a7061973ac67dab1ba90d8302297" name="web/plugins/ui.multiselect.js" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="f947ea8b67b0a6e7646d7f733a4efdbe" name="web/views/html/event.php" role="php" />
+   <file baseinstalldir="PECL/APM" md5sum="6014161f5f27de375294f066bdbcbac4" name="web/views/html/footer.html" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="0680dfbae510b959e4f09c0225737854" name="web/views/html/header.html" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="e61f60369962710b133130d338dd1ea2" name="web/views/html/main.html" role="data" />
+   <file baseinstalldir="PECL/APM" md5sum="9d5d3e4f1d479452b56fd05e73d8109f" name="web/views/html/request.php" role="php" />
+   <file baseinstalldir="PECL/APM" md5sum="99771b4ed71444d655e84739e25a7b7b" name="web/views/json/data.php" role="php" />
+   <file baseinstalldir="PECL/APM" md5sum="acb9cff3380ffba549c1cf0c1fa61414" name="web/index.php" role="php" />
+   <file baseinstalldir="PECL/APM" md5sum="2103888a6dcb6371638414285baac0d0" name="web/event.php" role="php" />
+   <file baseinstalldir="PECL/APM" md5sum="635945ec6a107c2df769ca8ef7ef76e2" name="web/events.php" role="php" />
+   <file baseinstalldir="PECL/APM" md5sum="aa092f154def7969f32e6bb2cf3537ac" name="web/request.php" role="php" />
+   <file baseinstalldir="PECL/APM" md5sum="a684a7e23dd20196ef96dabe26ab257f" name="web/requests.php" role="php" />
+   <file md5sum="c2b96b71dd4390c93f03e94d81124b43" name="apm.c" role="src" />
+   <file md5sum="ff4533d25a7d54ad44348326e1eeea1f" name="apm.ini" role="data" />
+   <file md5sum="fb23be1607ea11d233f9437b40ab1d15" name="AUTHORS" role="doc" />
+   <file md5sum="0342c297151e8cf702f66ea6de915bbf" name="backtrace.c" role="src" />
+   <file md5sum="0b11f1d5a8c43124f84dd7044cbe590c" name="backtrace.h" role="src" />
+   <file md5sum="026b303101dc8bd0a278718318f8fa07" name="config.m4" role="src" />
+   <file md5sum="5009d9776b673d0f051ea1f6ebb1f7d6" name="config.w32" role="src" />
+   <file md5sum="c8eb6a7d83f526d1e3bf2efbb83206c2" name="driver_mysql.c" role="src" />
+   <file md5sum="7e4c0718c4560af18060a7295d0c8fdf" name="driver_mysql.h" role="src" />
+   <file md5sum="ec0555f79a151a8bc615ff674b030913" name="driver_socket.c" role="src" />
+   <file md5sum="718ad9d3fbc4ff4f2b5c98fee28c30de" name="driver_socket.h" role="src" />
+   <file md5sum="af09770efd2eb0baea3a2af9347982a2" name="driver_sqlite3.c" role="src" />
+   <file md5sum="b13048d1e3187d39bf1e055280792e3a" name="driver_sqlite3.h" role="src" />
+   <file md5sum="ef2b335f0eecb5598216a3b0b0e8a30b" name="driver_statsd.c" role="src" />
+   <file md5sum="77d612cccc8788d30e83ae945f18aeea" name="driver_statsd.h" role="src" />
+   <file md5sum="f6ee2e22ea6fe0b6b505a327b305d425" name="CONTRIBUTORS" role="doc" />
+   <file md5sum="694f49a7e1f276ba75a3dd2c5acd580d" name="LICENSE" role="doc" />
+   <file md5sum="7a73705b514f153c7ef3ac3832fa983e" name="NEWS" role="doc" />
+   <file md5sum="e4420b2a923d87c3d35bc48f4d1b9998" name="php_apm.h" role="src" />
+   <file md5sum="122b263fbf968613a443ca1e3157cf6a" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>apm</providesextension>
+ <extsrcrelease>
+  <configureoption default="yes" name="with-sqlite3" prompt="Enable Sqlite3 support" />
+  <configureoption default="yes" name="with-mysql" prompt="Enable MariaDB/MySQL support" />
+  <configureoption default="yes" name="enable-socket" prompt="Enable Socket support" />
+  <configureoption default="yes" name="enable-statsd" prompt="Enable Statsd support" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <version>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2015-02-20</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+New drivers:
+- StatsD
+- Socket
+
+Added:
+- Per-driver option &apos;apm.&lt;storage driver&gt;_store_silenced_events that lets you toggle whether to store silenced (@-ed) errors (thanks Mathieu Kooiman (@mathieuk))
+- apm.*_exception_mode configuration to control exception collection
+- Auto creation of SQLite and MariaDB/MySQL schemas
+- Stats:
+  - User and System CPU time
+  - Memory Peak Usage
+  - HTTP response code
+- &apos;application_id&apos; field to categorize the issues per application/server/environment/...
+- Support for compilation on Ubuntu (thanks Olivier Garcia (@0livier))
+
+Changed:
+- Deep refactoring:
+  - New DB schema
+  - No more native functions, retrieval of data is directly made in PHP
+- SQLite drivder attempts to create the directory structure by himself
+- Renamed &apos;slow request&apos; to &apos;stats&apos;
+- Connect to MySQL once and reconnect if needed
+- Small UI improvements
+- Avoiding int / uint conversion
+- MariaDB/MySQL driver activated by default
+
+Fixed:
+- Parse error test failing on PHP 5.4
+- Possible segfault with APM_DEBUG used outside RINIT/RSHUTDOWN phases
+- Missing disconnect from SQLite DB if changed with ini_set()
+- Too few arguments to sprintf() with MariaDB/MySQL backend
+- Possible segfault with PHP 5.5
+- Segmentation fault with &quot;zend_mm_heap corrupted&quot; message.
+- Missing zval reference incrementing
+- Out of memory error in backtrace generation
+- Removed hard-coded limit of 64kB json data
+- Do not activate silence handler if APM is not enabled
+- Some compiler warnings
+- Incorrect status propagation for PHP_RSHUTDOWN_FUNCTION
+- Several memory leaks
+
+Removed:
+- Deffered processing (can&apos;t be easily implemented in a generic and driver
+  agnostic way. Depending on the drivers, some deffered processing will
+  happen inside them.)
+- Reference SQL files, see source code for that ;-)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0alpha1</release>
+    <api>2.0.0alpha1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2013-06-07</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Changed:
+ - Deep refactoring:
+   - New DB schema
+   - No more native functions, retrieval of data is directly made in PHP
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0RC2</release>
+    <api>1.1.0RC2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2013-05-11</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Changed:
+- upgraded UI by using tweeter boostrap and upgrading jqGrid
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0RC1</release>
+    <api>1.1.0RC1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-10-19</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added:
+- --with-debugfile[=FILE] option to permit debugging of APM
+
+Changed:
+- Lazy loading the connection to the SQLite database
+
+Fixed:
+- Ordering by URL not working
+- Decouple mysql backend from sqlite3 (#62288)
+- Invalid UTF-8 may cause backtrace to be truncated in MySQL driver (#62244)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0beta4</release>
+    <api>1.1.0beta4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-06-07</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added:
+- Referer
+
+Changed:
+- Storing all ts in SQLite as integers
+
+Fixed:
+- Bug #62187: The MySQL driver does not store a timestamp for an event (Thanks to mathieu at mollie dot nl, HMWiesinger at gmx dot at).
+- Bug #62012: No data collected
+- Missing post_vars column definition in SQL creation scripts.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0beta3</release>
+    <api>1.1.0beta3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-05-27</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed:
+- Possible memory not being freed
+- Segmentation fault preventing the collection of data (#62012)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0beta2</release>
+    <api>1.1.0beta2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-05-06</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed:
+- Version 1.1.0beta* should be marked as &quot;beta&quot; and not as &quot;stable&quot;
+- APM-1.1.0beta1.tgz file contains only package.xml (#61937)
+- Some GCC warnings when built with PHP 5.4
+- Error callback arguments must be copied in every cases
+- Prevent calling the original error handler if Xdebug is loaded
+- Possible segfault if MySQL server connection link is gone
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0beta1</release>
+    <api>1.1.0beta1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-04-02</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added:
+- New information stored: IP, host, POST data, cookies
+- Configuration to limit the depth when dumping variables (apm.dump_max_depth)
+
+Removed:
+- JSON flag for apm_get_*_events and apm_get_*_slow_requests
+
+Changed:
+- Some UI refactoring
+- Minor optimizations
+
+Fixed:
+- Installation failing because of config file being named &quot;config.php&quot;
+  pecl/pear installer issue?
+- Some compilation warnings
+- Deffered mode taking only the *mysql* error_reporting into account
+- APM not correctly linking to libmysqlclient
+- Possible buffer overflows
+- Compilation issues related to timelib with PHP &gt;= 5.3.9
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-11-12</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Changed:
+- Base install dir for web files, now in php/PECL/APM
+
+Fixed:
+- Bug #60276 pecl install fail installing APM
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-06-14</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+This is the initial stable release of APM.
+
+Fixed:
+- Script filename could possibly not be filled in case of slow request.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0beta3</release>
+    <api>1.0.0beta3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-11-07</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added:
+- MySQL driver
+- Per driver error reporting level
+- Asynchronous processing of events (config option: apm.deffered_processing)
+
+Changed:
+- Code refactored to make use of &apos;APM drivers&apos;
+
+Fixed:
+- APM cannot be compiled with PHP &lt; 5.2.2.
+- Bug #17502: Drivers&apos; rshutdown run only when slow_request tracking is enabled.
+- Bug #17512: Sqlite connections aren&apos;t closed at the end of the request.
+- Bug #17513: Using MySQL driver, only events of the first incoming request are stored.
+- Bug #19421: apm.*_error_reporting is ignored.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0beta2</release>
+    <api>1.0.0beta2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-01-30</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Second beta release.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0beta1</release>
+    <api>1.0.0beta1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-11-29</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Initial beta release.
+   </notes>
+  </release>
+ </changelog>
+</package>

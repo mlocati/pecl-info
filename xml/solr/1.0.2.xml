@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>solr</name>
+ <channel>pecl.php.net</channel>
+ <summary>The Apache Solr PHP extension is an extremely fast, light-weight, feature-rich library that allows PHP applications to communicate easily and efficiently with Apache Solr server instances using an object-oriented API.</summary>
+ <description>It effectively simplifies the process of interacting with Apache Solr using PHP5 and it already comes with built-in readiness for the latest features added in Solr 3.1. The extension has features such as built-in, serializable query string builder objects which effectively simplifies the manipulation of name-value pair request parameters across repeated requests. The response from the Solr server is also automatically parsed into native php objects whose properties can be accessed as array keys or object properties without any additional configuration on the client-side. Its advanced HTTP client reuses the same connection across multiple requests and provides built-in support for connecting to Solr servers secured behind HTTP Authentication or HTTP proxy servers. It is also able to connect to SSL-enabled containers. Please consult the documentation for more details on features. Included in the source code are phpdoc stubs that enable autocomplete of Solr classes and methods in IDE during development in userland.</description>
+ <lead>
+  <name>Israel Ekpo</name>
+  <user>iekpo</user>
+  <email>iekpo@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-11-29</date>
+ <time>02:49:53</time>
+ <version>
+  <release>1.0.2</release>
+  <api>1.0.2</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Several Bug Fixes by Pierrick, Felipe and Tony
+- Changes to make the code compile on 5.2.3 and greater
+- Changes to Tests by Pierrick
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="f167d18a974158315ecf288a4c4a9401" name="CREDITS" role="doc" />
+   <file md5sum="6d1316f14b82520934ef53e6868f70da" name="README.CONTRIBUTORS" role="doc" />
+   <file md5sum="1da7e2f5e7d2c2c32be7c6fe629b6583" name="LICENSE" role="doc" />
+   <file md5sum="e557ed43abfbef7fb5ee89358d673a8b" name="README.ABOUT_SOLR_EXTENSION" role="doc" />
+   <file md5sum="d1cc97571e554630d1da708867c9d10f" name="README.INSTALLATION" role="doc" />
+   <file md5sum="f8d7ec475c64da4541480b4dea8edba7" name="README.SUBMITTING_CONTRIBUTIONS" role="doc" />
+   <file md5sum="9d73c4eb8b7c62aeaf40f8ddb4417ce0" name="README.MEMORY_ALLOCATION" role="doc" />
+   <file md5sum="5bb8dd873952ec60ac94fab9f6619bf6" name="TODO" role="doc" />
+   <file md5sum="c5db0da6bd5cf257ac4316eb6f42fd0a" name="docs/documentation.php" role="doc" />
+   <file md5sum="9b789659feb54fcd019ce43ce4e4fe29" name="tests/bootstrap.inc" role="test" />
+   <file md5sum="3f12c9228e94c389503e2f146babd1a0" name="tests/test.config.inc" role="test" />
+   <file md5sum="4d9dcbe5b6dfa7ef09e2bdebf8c79678" name="tests/skip.if.server_not_configured.inc" role="test" />
+   <file md5sum="9fc994c5dc6d4396cea2542d15d9c983" name="tests/files/response_xml.1.xml" role="test" />
+   <file md5sum="88d7367550d4c9f615517d1b1339986f" name="tests/solrclient_001.phpt" role="test" />
+   <file md5sum="0a0aae42af9bfcba598c1192a55330a8" name="tests/solrclient_002.phpt" role="test" />
+   <file md5sum="b5856af9bcd7d6b93868f0e6201291ea" name="tests/solrclient_003.phpt" role="test" />
+   <file md5sum="ee7fdcf54e6cfe974ef13c468d77c90f" name="tests/solrclient_004.phpt" role="test" />
+   <file md5sum="861491408fced1f255b2bf97e004f6f4" name="tests/solrclient_005.phpt" role="test" />
+   <file md5sum="a565ca0c4eb7be1ae4caf434b3124c89" name="tests/solrdocument_001.phpt" role="test" />
+   <file md5sum="389e6d2f29599ff1e4f86612d73313d2" name="tests/solrdocument_002.phpt" role="test" />
+   <file md5sum="a361582fb453f9ab88eefa7b94094fa7" name="tests/solrdocument_003.phpt" role="test" />
+   <file md5sum="294b2d1a57c04cd3a5112f7fee415668" name="tests/solrdocument_004.phpt" role="test" />
+   <file md5sum="173aa300845ba265923f1ec1a72bebc8" name="tests/solrobject_001.phpt" role="test" />
+   <file md5sum="af51d264bd28bf906f8d232001964180" name="tests/solrobject_002.phpt" role="test" />
+   <file md5sum="77f54692a11484959ca3fa89c7453220" name="tests/solrobject_003.phpt" role="test" />
+   <file md5sum="a08479d5b047541bb17175423657c324" name="tests/solrobject_004.phpt" role="test" />
+   <file md5sum="ae5d9f1161764f2a99333ab933eab28b" name="tests/solrobject_005.phpt" role="test" />
+   <file md5sum="7d581dd750dfeed53da33f9eb5385a77" name="tests/solrquery_001.phpt" role="test" />
+   <file md5sum="b990d9665f3f10bc005c7f00d7686634" name="tests/solrquery_002.phpt" role="test" />
+   <file md5sum="f14cdfc652a0eb13343bc5e3f624e21a" name="tests/solrquery_003.phpt" role="test" />
+   <file md5sum="10b46f190da0f87dac1979936f4259f2" name="tests/solrquery_004.phpt" role="test" />
+   <file md5sum="b3ab995b18da2634fd98645e5981bd42" name="tests/solrquery_005.phpt" role="test" />
+   <file md5sum="7abc8e130682444597ddc88a316611b4" name="tests/solrquery_006.phpt" role="test" />
+   <file md5sum="e46b32552667695f27e0353afbd859b2" name="tests/solrquery_007.phpt" role="test" />
+   <file md5sum="dd9e82be5479378ee810f347cb53bbd2" name="config.m4" role="src" />
+   <file md5sum="c29f2ff66e2481baa0b246251eb917b6" name="config.w32" role="src" />
+   <file md5sum="6357894eb95d571f5b0199bdfa651e3f" name="solr.dsp" role="src" />
+   <file md5sum="9e22fdc91d33e95408f6200670b9624e" name="php_solr.h" role="src" />
+   <file md5sum="5d6bf1d7b73c5eb2d90e8070b76f42ca" name="php_solr_api.h" role="src" />
+   <file md5sum="2cc90a87926fd0c4a812986853251f8e" name="php_solr_version.h" role="src" />
+   <file md5sum="ceeec8d7d73616d84cbf8c77bc366649" name="php_solr_bc_macros.h" role="src" />
+   <file md5sum="741bda68955550c9629a19c828889c0d" name="solr_constants.h" role="src" />
+   <file md5sum="a7bfe7e2b8841a87b75972ccc9d7df94" name="solr_macros.h" role="src" />
+   <file md5sum="cb6f5c13c2f115c40bfb13b79f4dfb20" name="solr_string.h" role="src" />
+   <file md5sum="fcfb10c798b5d05e7090fae43f20a095" name="solr_types.h" role="src" />
+   <file md5sum="19809c344aef9a6bcd9a94aefba0edd9" name="php_solr.c" role="src" />
+   <file md5sum="936c9e9d6c73ac16d25a02cd6270d582" name="php_solr_client.c" role="src" />
+   <file md5sum="f0c49180b726aa363e9fae6484afdd22" name="php_solr_document.c" role="src" />
+   <file md5sum="1a5500a5f2c1b78675ab5a0203475d14" name="php_solr_exception.c" role="src" />
+   <file md5sum="ced8ee18aab6251aec8d4e221a584ff0" name="php_solr_input_document.c" role="src" />
+   <file md5sum="836b53926d057a102d92d4e218043fbb" name="php_solr_object.c" role="src" />
+   <file md5sum="c8169359ae5c5e161acc604a34e5aaf1" name="php_solr_params.c" role="src" />
+   <file md5sum="42e11d227376d5491c0dfcbae5045ce2" name="php_solr_query.c" role="src" />
+   <file md5sum="cda3f1ce675b4784278e550aae54e604" name="php_solr_response.c" role="src" />
+   <file md5sum="dffebc43677892de2ba78353a8acb2de" name="php_solr_utils.c" role="src" />
+   <file md5sum="70d4da87d14790105f4a4bfe3bb2c834" name="solr_functions_client.c" role="src" />
+   <file md5sum="5d2e8e5d995d75c3d92cafbc51a4ac7f" name="solr_functions_debug.c" role="src" />
+   <file md5sum="e846ce90770496c6d69c80bac811eace" name="solr_functions_document.c" role="src" />
+   <file md5sum="f32f3b7dc0cfa1966fb07607f8a7ba0c" name="solr_functions_helpers.c" role="src" />
+   <file md5sum="aa835fe196b6d2f111c363d6191b5cd3" name="solr_functions_params.c" role="src" />
+   <file md5sum="d8c2f2a9073866a446482ca0582c3db3" name="solr_functions_response.c" role="src" />
+   <file md5sum="6c3c8029bbae162dec45892958d71ae0" name="solr_string.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.3</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+   <extension>
+    <name>libxml</name>
+   </extension>
+   <extension>
+    <name>curl</name>
+   </extension>
+  </required>
+ </dependencies>
+ <providesextension>solr</providesextension>
+ <extsrcrelease>
+  <configureoption default="yes" name="enable-solr" prompt="Enable Solr (yes of course)" />
+  <configureoption default="no" name="enable-solr-debug" prompt="Enable Solr Debugging (Compiles solr in debug mode)" />
+  <configureoption default="/usr" name="with-curl" prompt="libcURL install prefix" />
+  <configureoption default="/usr" name="with-libxml-dir" prompt="libxml2 install prefix" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-11-29</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Several Bug Fixes by Pierrick, Felipe and Tony
+- Changes to make the code compile on 5.2.3 and greater
+- Changes to Tests by Pierrick
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-06-04</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Added support for json response writer in SolrClient
+- Removed final bit from classes so that they can be mocked in unit tests
+- Changed from beta to stable
+- Included phpdoc stubs in source to enable autocomplete of Solr classes and methods in IDE during development
+- Lowered libxml2 version requirement to 2.6.16
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.11</release>
+    <api>0.9.11</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-06-22</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Added ability to specify response writer in constructor option
+- Added new method to set response writer SolrClient::setResponseWriter() 
+- Currently, the only supported response writers are &apos;xml&apos; and &apos;phpnative&apos;
+- Added support for new native Solr response writer
+- New response writer is available at https://issues.apache.org/jira/browse/SOLR-1967
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.10</release>
+    <api>0.9.10</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-05-04</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Increased compatibility with older systems running CentOS 4 or 5 and RHEL4 or 5
+- Added ability to compile directly without having to build libcurl and libxml2 from source	on older systems			
+- Lowered minimum supported version for libcurl to 7.15.0 (Alex Samorukov)
+- Lowered minimum supported version for libxml2 to 2.6.26 (Alex Samorukov)
+- Fixed PECL Bug# 17172 MoreLikeThis only parses one doc (trevor at blubolt dot com, max at blubolt dot com)
+- Declared workaround macros for SSL private key constants due to support for earlier versions of libcurl (Alex Samorukov)
+- Changed extension version numbers to start using hexadecimal numbers (Israel Ekpo)
+- Added instructions on how to attempt to compile on windows (Israel Ekpo)
+- Fixed PECL Bug# 17292 sending UTF-8 encoding in header (giguet at info dot unicaen dot fr)
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.9</release>
+    <api>0.9.9</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-01-10</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed Bug #17009 Creating two SolrQuery objects leads to wrong query value
+- Reset the buffer for the request data from the previous request in SolrClient
+- Added new internal static function solr_set_initial_curl_handle_options()
+- Moved the intialization of CURL handle options to solr_set_initial_curl_handle_options() function
+- Resetting the CURL options on the (CURL *) handle after each request is completed
+- Added more explicit error message to indicate that cloning SolrParams objects and its descendants is currently not yet supported
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.8</release>
+    <api>0.9.8</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-12-04</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed config.w32 for Windows build support (Pierre, Pierrick)
+- Fixed Bug #16943 Segmentation Fault from solr_encode_string() during attempt to retrieve solrXmlNode-&gt;children-&gt;content when solrXmlNode-&gt;children is NULL (Israel)
+- Disabled Expect header in libcurl (Israel)
+- Disabled Memory Debugging when normal debug is enabled (Israel)
+- Added list of contributors to the project
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.7</release>
+    <api>0.9.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-11-17</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed bug 16924 AC_MSG_NOTICE() is undefined in autoconf 2.13
+- Added new method SolrClient::getDebug()
+- Modified SolrClient::__construct() so that port numbers and other integer values for the options can be passed as strings.
+- Changed internal string handling mechanism to allow for tracking of memory allocation in debug mode.
+- Lowered minimum php version to 5.2.3. Unfortunately, this is the lowest PHP version that will be supported. PHP versions lower than 5.2.3 are not compatible or are causing tests to FAIL.
+- Added php stubs for code-completion assists in IDEs and editors.
+- Added more examples
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.6</release>
+    <api>0.9.6</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-11-01</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Reduced minimum php version to 5.2.4
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.5</release>
+    <api>0.9.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-10-27</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Added support for secure connections to SSL-enabled Solr servers (SSL/HTTPS). 
+Made connection errors more verbose.
+The following options where added to the SolrClient constructor :
+ - secure          (Boolean value indicating whether or not to connect in secure mode)
+ - timeout         (This is maximum time in seconds allowed for the http data transfer operation. Default is 30 seconds)
+ - ssl_cert        (File name to a PEM-formatted file containing the private key + private certificate (concatenated in that order) )
+ - ssl_key         (File name to a PEM-formatted private key file only)
+ - ssl_keypassword (Password for private key)
+ - ssl_cainfo      (Name of file holding one or more CA certificates to verify peer with)
+ - ssl_capath      (Name of directory holding multiple CA certificates to verify peer with )
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.4</release>
+    <api>0.9.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-10-23</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed bug 16897 - ap_php_vasprintf not available in 5.2.11
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.3</release>
+    <api>0.9.3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-10-19</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Corrected configuration options for automated installation via PECL. Removed extra hyphens.
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.2</release>
+    <api>0.9.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-10-19</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed bug #16874 Added explanation in documentation
+
+- Updated SolrParams::__toString() - modified to return name-value pair list instead of serialized object string
+
+- Added the following methods to SolrParams :
+
+	SolrParams::toString()
+	SolrParams::getParam()
+	
+- Created the following aliases in SolrParams : 
+	
+	SolrParams::set()
+	SolrParams::add()
+	SolrParams::get()
+
+- Added the following methods to SolrQuery :
+
+	SolrQuery::getQuery()
+	SolrQuery::getStart()
+	SolrQuery::getRows()
+	SolrQuery::getFields()
+	SolrQuery::getSortFields()
+	SolrQuery::getFilterQueries()
+	SolrQuery::getTimeAllowed()
+	
+	SolrQuery::getFacet()
+	SolrQuery::getFacetFields()
+	SolrQuery::getFacetQueries()
+	SolrQuery::getFacetPrefix()
+	SolrQuery::getFacetSort()
+	SolrQuery::getFacetLimit()
+	SolrQuery::getFacetOffset()
+	SolrQuery::getFacetMinCount()
+	SolrQuery::getFacetMissing()
+	SolrQuery::getFacetMethod()
+	
+	SolrQuery::getFacetDateFields()
+	SolrQuery::getFacetDateStart()
+	SolrQuery::getFacetDateEnd()
+	SolrQuery::getFacetDateGap()
+	SolrQuery::getFacetDateHardEnd()
+	SolrQuery::getFacetDateOther()
+	
+	SolrQuery::getHighlight()
+	SolrQuery::getHighlightFields()
+	SolrQuery::getHighlightSnippets()
+	SolrQuery::getHighlightFragsize()
+	SolrQuery::getHighlightMergeContiguous()
+	SolrQuery::getHighlightRequireFieldMatch()
+	SolrQuery::getHighlightMaxAnalyzedChars()
+	SolrQuery::getHighlightAlternateField()
+	SolrQuery::getHighlightMaxAlternateFieldLength()
+	SolrQuery::getHighlightFormatter()
+	SolrQuery::getHighlightSimplePre()
+	SolrQuery::getHighlightSimplePost()
+	SolrQuery::getHighlightFragmenter()
+	SolrQuery::getHighlightUsePhraseHighlighter()
+	SolrQuery::getHighlightHighlightMultiTerm()
+	SolrQuery::getHighlightRegexSlop()
+	SolrQuery::getHighlightRegexPattern()
+	SolrQuery::getHighlightRegexMaxAnalyzedChars()
+	
+	SolrQuery::getStats()
+	SolrQuery::getStatsFields()
+	SolrQuery::getStatsFacets()
+	
+	SolrQuery::getMlt()
+	SolrQuery::getMltCount()
+	SolrQuery::getMltFields()
+	SolrQuery::getMltQueryFields()
+	SolrQuery::getMltMinTermFrequency()
+	SolrQuery::getMltMinDocFrequency()
+	SolrQuery::getMltMinWordLength()
+	SolrQuery::getMltMaxWordLength()
+	SolrQuery::getMltMaxNumTokens()
+	SolrQuery::getMltMaxNumQueryTerms()
+	SolrQuery::getMltBoost()
+	
+	SolrQuery::getTerms()
+	SolrQuery::getTermsField()
+	SolrQuery::getTermsLowerBound()
+	SolrQuery::getTermsUpperBound()
+	SolrQuery::getTermsIncludeLowerBound()
+	SolrQuery::getTermsIncludeUpperBound()
+	SolrQuery::getTermsMinCount()
+	SolrQuery::getTermsMaxCount()
+	SolrQuery::getTermsPrefix()
+	SolrQuery::getTermsLimit()
+	SolrQuery::getTermsReturnRaw()
+	SolrQuery::getTermsSort()
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.1</release>
+    <api>0.9.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-10-07</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed bug #16864 (Build failure in Non-ZTS builds)
+   </notes>
+  </release>
+  <release>
+   <lead>
+    <name>Israel Ekpo</name>
+    <user>iekpo</user>
+    <email>iekpo@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.0</release>
+    <api>0.9.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-10-05</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Initial release after approximately 10 months of development and 3 weeks of testing. This is the beta version. Some of the features may be modified in future releases.
+   </notes>
+  </release>
+ </changelog>
+</package>

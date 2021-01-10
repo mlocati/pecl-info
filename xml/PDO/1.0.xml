@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0" packagerversion="1.4.2">
+ <name>PDO</name>
+ <summary>PHP Data Objects Interface</summary>
+ <description>PDO provides a uniform data access interface, sporting advanced features such
+as prepared statements and bound parameters.  PDO drivers are dynamically
+loadable and may be developed independently from the core, but still accessed
+using the same API.
+Read the documentation at http://www.php.net/pdo for more information.
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>wez</user>
+   <name>Wez Furlong</name>
+   <email>wez@php.net</email>
+   <role>lead</role>
+  </maintainer>
+  <maintainer>
+   <user>helly</user>
+   <name>Marcus Boerger</name>
+   <email>helly@php.net</email>
+   <role>lead</role>
+  </maintainer>
+  <maintainer>
+   <user>iliaa</user>
+   <name>Ilia Alshanetsky</name>
+   <email>iliaa@php.net</email>
+   <role>lead</role>
+  </maintainer>
+  <maintainer>
+   <user>gschlossnagle</user>
+   <name>George Schlossnagle</name>
+   <email>george@omniti.com</email>
+   <role>lead</role>
+  </maintainer>
+  </maintainers>
+ <release>
+  <version>1.0</version>
+  <date>2005-11-26</date>
+  <license>PHP</license>
+  <state>stable</state>
+  <notes>** NOTE WELL! **
+All the PDO_XXX constants have been renamed to PDO::XXX form for future
+compatibility with PHP namespaces.  Sorry for the inconvenience, especially
+after Release Candidate 1.
+
+You need to install a PDO database driver to make use of PDO,
+check http://pecl.php.net/package-search.php?pkg_name=PDO
+for a list of available PDO drivers.
+
+It is highly recommended that you update to PHP 5.1 before using PDO.
+
+If you are running on Windows, you can find a precompiled binary at:
+http://pecl4win.php.net/ext.php/php_pdo.dll
+
+You can find additional PDO drivers at:
+http://pecl4win.php.net
+
+** Changes **
+- Changed PDO_XXX constants to PDO::XXX
+- It is now possible to extend PDO and PDOStatement and override their constructors
+
+- Fixed Bug #35303; PDO::prepare() can cause crashes with invalid parameters
+- Fixed Bug #35135; &quot;new PDOStatement&quot; can cause crashes.
+- Fixed Bug #35293 and PECL Bug #5589; segfault when creating persistent connections
+- Fixed PECL Bug #5010, problem installing headers
+- renamed pdo_drivers() to PDO::getAvailableDrivers()
+- Various fixes when building with SPL
+- PDO::setAttribute(PDO::ATTR_STATEMENT_CLASS) allows you to set your own
+  PDOStatement replacement when extending PDO and PDOStatement
+- Fixed Bug #34687; error information from PDO::query() was not always returned
+- Fixed PECL Bug #5750; uri: DSN was not handled correctly
+- Fixed PECL Bug #5589; segfault when persistent connection attempt fails
+- Fixed Bug #34590; User defined PDOStatement class methods are not callable
+- Fixed Bug #34908; FETCH_INTO segfaults without destination object
+- Fixed PECL Bug #5809; PDOStatement::execute(array(...)) modifies args
+- Fixed PECL Bug #5772; FETCH_FUNC cannot call functions with mixed case names
+
+** Note **
+
+You should uninstall and re-install your individual database drivers whenever
+you upgrade the base PDO package, otherwise you will see an error about PDO API
+numbers when you run your PHP scripts.
+  </notes>
+  <deps>
+   <dep type="php" rel="ge" version="5.0.3"/>
+  </deps>
+  <filelist>
+   <file role="src" md5sum="b8ef66de5c92ee64a2999ab753175f94" name="config.m4"/>
+   <file role="src" md5sum="8a31bf7e60c5ec26fe16a68264d016f9" name="config.w32"/>
+   <file role="src" md5sum="2c9f5713efa76a22790fbda4b3594840" name="pdo.c"/>
+   <file role="src" md5sum="77366906da1381d8e7cd54f8e09e5ebd" name="pdo_dbh.c"/>
+   <file role="src" md5sum="ae1d84137884f17cd14339687b4553ae" name="pdo_stmt.c"/>
+   <file role="src" md5sum="60eec5236b9bb440c5e7c577ed95b8e2" name="php_pdo.h"/>
+   <file role="src" md5sum="bc7174dcce95ff2b437046381b09f39f" name="php_pdo_driver.h"/>
+   <file role="src" md5sum="c71d86c2f4665ad11f33c1e7a5cf3adb" name="php_pdo_int.h"/>
+   <file role="src" md5sum="eafad364e3bca9798fa0ae7a774045bd" name="pdo_sql_parser.re"/>
+   <file role="src" md5sum="e6bed4bfc34d81787a7b39ee28e58431" name="pdo_sql_parser.c"/>
+   <file role="src" md5sum="58fa01524289b0cdf02219956481ce70" name="pdo_sqlstate.c"/>
+   <file role="src" md5sum="52ffc0fb973a24d4247d299cf6f5f118" name="Makefile.frag"/>
+   <file role="doc" md5sum="8886cfa812af28670956ed5b9f0ca69e" name="README"/>
+   <file role="doc" md5sum="60ea0a8f701f030cdb8fa6008d736979" name="TODO"/>
+   <file role="doc" md5sum="ea7dc3a8ed41d86f2f2be143027743b3" name="pdo.php"/>
+   <file role="doc" md5sum="0f7ae6a5c72e6b695c5b8711f17a34f4" name="CREDITS"/>
+  </filelist>
+ </release>
+</package>

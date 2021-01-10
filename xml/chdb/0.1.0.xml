@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.7.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>chdb</name>
+ <channel>pecl.php.net</channel>
+ <summary>A fast database for constant data with memory sharing across processes</summary>
+ <description>CHDB (constant hash database) is a fast key-value database for constant data,
+realized by using a memory-mapped file and thus providing the following
+functionalities:
+ - Extremely fast initial load, regardless of the size of the database.
+ - Only the pages of the file which are actually used are loaded from the disk.
+ - Once a page is loaded it is shared across multiple processes.
+ - Loaded pages are cached across multiple request and even process recycling.
+A typical use of CHDB is as a faster alternative to defining many PHP
+constants.
+CHDB is internally implemented as a hash-table using a perfect hashing function,
+thus guaranteeing worst case O(1) lookup time.</description>
+ <lead>
+  <name>Lorenzo Castelli</name>
+  <user>lcastelli</user>
+  <email>lcastelli@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2010-06-16</date>
+ <time>11:48:33</time>
+ <version>
+  <release>0.1.0</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license filesource="LICENSE">BSD</license>
+ <notes>Initial PECL release.</notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="2ee426bc9609c491247d70d20964037b" name="chdb.c" role="src" />
+   <file md5sum="c383445e666e3d75b661ddb6a6efb36d" name="chdb.h" role="src" />
+   <file md5sum="34a0d4938b13a00f4b072459b266e1d3" name="config.m4" role="src" />
+   <file md5sum="efa5299d0f030fa2256a7523e0b84f36" name="INSTALL" role="doc" />
+   <file md5sum="820b0733a2a5df97e003a7f3d282dcf8" name="LICENSE" role="doc" />
+   <file md5sum="8fb89646099612aada020aaf9f7eb4e1" name="php_chdb.c" role="src" />
+   <file md5sum="26ffa2bdd46710c65718225ff02a56a5" name="php_chdb.h" role="src" />
+   <file md5sum="ba72c1daa1983590ace24b1b9a5fae28" name="README" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+   <os>
+    <name>unix</name>
+   </os>
+  </required>
+ </dependencies>
+ <providesextension>chdb</providesextension>
+ <extsrcrelease>
+  <configureoption default="yes" name="with-chdb" prompt="enable chdb support?" />
+  <configureoption default="autodetect" name="with-libcmph-dir" prompt="cmph installation path?" />
+ </extsrcrelease>
+</package>

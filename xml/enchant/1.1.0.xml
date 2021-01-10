@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.8.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>enchant</name>
+ <channel>pecl.php.net</channel>
+ <summary>libenchant binder, support near all spelling tools</summary>
+ <description>Enchant is a binder for libenchant. Libenchant provides a common
+API for many spell libraries:
+- aspell/pspell (intended to replace ispell)
+- hspell (hebrew)
+- ispell 
+- myspell/hunspell (OpenOffice project, mozilla)
+- uspell (primarily Yiddish, Hebrew, and Eastern European languages)
+A plugin system allows to add custom spell support.
+see www.abisource.com/enchant/</description>
+ <lead>
+  <name>Pierre-Alain Joye</name>
+  <user>pajoye</user>
+  <email>pierre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Ilia Alshanetsky</name>
+  <user>iliaa</user>
+  <email>ilia@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2009-10-08</date>
+ <time>22:54:29</time>
+ <version>
+  <release>1.1.0</release>
+  <api>1.2.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+- add enchant_broker_set_dict_path and enchant_broker_get_dict_path. Allows custom locations for the ispell and myspell dictionnaries
+- add ENCHANT_ISPELL and ENCHANT_MYSPELL constants
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="39d72267c806ed0f6c5cd111ebd62e13" name="docs/examples/example1.php" role="doc" />
+   <file md5sum="615732a1abe323e62f556fa92b80de1e" name="tests/broker_describe.phpt" role="test" />
+   <file md5sum="5a9efaed811772cf807bd14b85c1dc40" name="tests/broker_free.phpt" role="test" />
+   <file md5sum="261b10b76c2d04ca56273f68a919badb" name="tests/broker_init.phpt" role="test" />
+   <file md5sum="806655ba11fe37bc627f2bbcbe704924" name="tests/broker_request_dict.phpt" role="test" />
+   <file md5sum="236ef3d5f65dae3aab6bb6fb0cd0c2b3" name="tests/hindi_correct.txt" role="test" />
+   <file md5sum="65e9486c29ee011b186db1f2551752a2" name="tests/hindi_incorrect.txt" role="test" />
+   <file md5sum="1032fd90f69b5b9096c88bb125dff459" name="tests/bug13181.phpt" role="test" />
+   <file md5sum="876fdd0a7f5aa1eca4228efe7f9b05e3" name="config.m4" role="src" />
+   <file md5sum="e3114405b9e6e3a983a2cd0378294962" name="config.w32" role="src" />
+   <file md5sum="7b2aaf6b564b94308500f8ff5d6f1734" name="CREDITS" role="doc" />
+   <file md5sum="f8c097b4e83cbaf245a45a8e3d994def" name="enchant.c" role="src" />
+   <file md5sum="c37d085b2716174a445657b18c16474e" name="php_enchant.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>enchant</providesextension>
+ <extsrcrelease>
+  <configureoption default="shared" name="with-enchant" prompt="libenchant prefix?" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <date>2008-04-16</date>
+   <version>
+    <release>1.0.2</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- #13181, Leaving a context frees the dictionnary resources
+- Fix protos descriptions in the sources
+   </notes>
+  </release>
+  <release>
+   <date>2006-03-21</date>
+   <version>
+    <release>1.0.1</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- add enchant_broker_list_dicts to get a list of available dictionaries
+- fix compilation warnings
+- add examples
+- add tests
+   </notes>
+  </release>
+  <release>
+   <date>2004-08-11</date>
+   <version>
+    <release>1.0</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Fixed leak inside MINFO function.
+- Fixed crash inside enchant_dict_suggest() when there are no suggestions.
+- Added missing safe_mode/open_basedir check inside enchant_broker_request_pwl_dict().
+- Fixed various function prototypes.
+- Fixed possible leak in suggestions result.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.1</release>
+    <api>0.2.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2004-03-11</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Fix possible leak in suggestions result
+- Move to beta status
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2006-03-21</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Add Ilia Alshanetsky as maintainer
+- Cleanup sources codes (ilia)
+- Add enchant_dict_quick_check (ilia)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1</release>
+    <api>0.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2003-03-08</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Initial release
+   </notes>
+  </release>
+ </changelog>
+</package>

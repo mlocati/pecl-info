@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.5" version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd">
+ <name>cassandra</name>
+ <channel>pecl.php.net</channel>
+ <summary>DataStax PHP Driver for Apache Cassandra</summary>
+ <description>A modern, feature-rich and highly tunable PHP client library for Apache
+Cassandra and DataStax Enterprise using exclusively Cassandra&apos;s binary
+protocol and Cassandra Query Language v3.</description>
+ <lead>
+  <name>Bulat Shakirzyanov</name>
+  <user>avalanche123</user>
+  <email>bulat.shakirzyanov@datastax.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2015-08-13</date>
+ <time>16:38:52</time>
+ <version>
+  <release>1.0.0RC</release>
+  <api>1.0.0RC</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</license>
+ <notes>
+# 1.0.0-rc
+
+Features:
+
+* Added `Cassandra\Collection::remove()`.
+* Added `Cassandra\Blob::toBinaryString()`.
+* Added ability to configure io threads and connections per host.
+* Enabled latency aware routing by default and added a way of disabling it.
+* Enabled TCP nodelay, added a way of disabling it.
+* Added configuration for TCP keepalive.
+
+Bug Fixes:
+
+* [PHP-30] Segfault when using FutureRows
+* [PHP-31] Segfault during deserialization of NULL values
+* [PHP-33] Fixed timestamps generation on 32bit systems
+* [PHP-37] Removed extra null byte when `Cassandra\Blob` created from string
+* [PHP-41] Fix memory leak when using batch statements
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="d03dbbd0c87963b986e94869e890a055" name="config.m4" role="src" />
+   <file md5sum="563b2dfc0e4b359295f6dbdd3a37e028" name="config.w32" role="src" />
+   <file md5sum="0c3c204ffbe88ecbce369be0c2ee52d6" name="php_cassandra.c" role="src" />
+   <file md5sum="05d5f1738587b9fb077bc014a91c8f45" name="php_cassandra.h" role="src" />
+   <file md5sum="4002a1e40b5a088f75ea71735e4c5df3" name="php_cassandra_types.h" role="src" />
+   <file md5sum="1f35979d51beb41df7ae335d2b64460e" name="src/Cassandra.c" role="src" />
+   <file md5sum="97df71438e60802720f6fb0a3f672620" name="src/Cassandra/BatchStatement.c" role="src" />
+   <file md5sum="473627090be9c35fc7cda3a92edd833d" name="src/Cassandra/Bigint.c" role="src" />
+   <file md5sum="bd1830859d693cc3c608bf00739c470d" name="src/Cassandra/Blob.c" role="src" />
+   <file md5sum="9f0ba11e3126cdf78d75db38dd9bce1f" name="src/Cassandra/Cluster.c" role="src" />
+   <file md5sum="a1531032f14853950d9cb27754de1e31" name="src/Cassandra/Cluster/Builder.c" role="src" />
+   <file md5sum="209a7308c849e4d41238138ee771875e" name="src/Cassandra/Collection.c" role="src" />
+   <file md5sum="abed25f4c2fd36811ed6325993db8e1e" name="src/Cassandra/Collection.h" role="src" />
+   <file md5sum="ee47b3a8374dfc7e2224ac2e724390bb" name="src/Cassandra/Decimal.c" role="src" />
+   <file md5sum="c8b02529a3f1405ee437c409f9e02c6e" name="src/Cassandra/DefaultCluster.c" role="src" />
+   <file md5sum="db65effb636342c83656e84d2e4efa48" name="src/Cassandra/DefaultSession.c" role="src" />
+   <file md5sum="bc8e49f0acf7ba1008e4faae08a81dcb" name="src/Cassandra/Exception.c" role="src" />
+   <file md5sum="deb8d49778594fe918cde6dc2658c6fb" name="src/Cassandra/Exception/AlreadyExistsException.c" role="src" />
+   <file md5sum="dda0667b67f56c513938ac6b0f2e864f" name="src/Cassandra/Exception/AuthenticationException.c" role="src" />
+   <file md5sum="371fc5a64bcc6e91b6a5f0a92474dbb9" name="src/Cassandra/Exception/ConfigurationException.c" role="src" />
+   <file md5sum="74c0fad9845174dc0a994a275caf3020" name="src/Cassandra/Exception/DivideByZeroException.c" role="src" />
+   <file md5sum="ea0e6c27c76cfaf11bb2d10113f6df81" name="src/Cassandra/Exception/DomainException.c" role="src" />
+   <file md5sum="6e3157d3b8a626dcf786c6eec732efae" name="src/Cassandra/Exception/ExecutionException.c" role="src" />
+   <file md5sum="d19aee249618659b728c5921f62c27b8" name="src/Cassandra/Exception/InvalidArgumentException.c" role="src" />
+   <file md5sum="6e702acad576b6ce4cface6433bead00" name="src/Cassandra/Exception/InvalidQueryException.c" role="src" />
+   <file md5sum="bbbb3953e709924a0a1074be885997e0" name="src/Cassandra/Exception/InvalidSyntaxException.c" role="src" />
+   <file md5sum="49e0b05ccea2a5976a721cf9c151c153" name="src/Cassandra/Exception/IsBootstrappingException.c" role="src" />
+   <file md5sum="92238e71977bf6a4a118106b7c73a60c" name="src/Cassandra/Exception/LogicException.c" role="src" />
+   <file md5sum="9581d37986838de8f6a683f5a9c67367" name="src/Cassandra/Exception/OverloadedException.c" role="src" />
+   <file md5sum="e39e9cf40a04646334c41d9d1d1cc1af" name="src/Cassandra/Exception/ProtocolException.c" role="src" />
+   <file md5sum="8c735604b8efa169f439e8a2a9f3d420" name="src/Cassandra/Exception/RangeException.c" role="src" />
+   <file md5sum="91f9c7e9e9c05981a9ac62996357118a" name="src/Cassandra/Exception/ReadTimeout.c" role="src" />
+   <file md5sum="547237cdbf66e800d32f6bb793206080" name="src/Cassandra/Exception/RuntimeException.c" role="src" />
+   <file md5sum="6f8b0c1024aba33ac81646aebe286b2c" name="src/Cassandra/Exception/ServerException.c" role="src" />
+   <file md5sum="ea1ad9a567e02ffc2e85f781441bf0cc" name="src/Cassandra/Exception/TimeoutException.c" role="src" />
+   <file md5sum="93f57450233c85ea059d671298143862" name="src/Cassandra/Exception/TruncateException.c" role="src" />
+   <file md5sum="9409e20d78e936e5ed2a316d2997312d" name="src/Cassandra/Exception/UnauthorizedException.c" role="src" />
+   <file md5sum="5000acc99a30b73ecfe607bab1d80984" name="src/Cassandra/Exception/UnavailableException.c" role="src" />
+   <file md5sum="aa01cdaa965c12c6267ea3d1afb41748" name="src/Cassandra/Exception/UnpreparedException.c" role="src" />
+   <file md5sum="cd77b0b2899063c4ce11734491c7c5c4" name="src/Cassandra/Exception/ValidationException.c" role="src" />
+   <file md5sum="4ad2d585003d07a37c247c2bcbae8d5b" name="src/Cassandra/Exception/WriteTimeoutException.c" role="src" />
+   <file md5sum="dc994e6948ce70e73a1f2b7f6c560ec1" name="src/Cassandra/ExecutionOptions.c" role="src" />
+   <file md5sum="bd8d62ed731ee3a948678a8269be1525" name="src/Cassandra/Float.c" role="src" />
+   <file md5sum="aa41220d9f74a2e04cdb8fed326f592c" name="src/Cassandra/Future.c" role="src" />
+   <file md5sum="ce766ee67c3dff0c1f02f6efb2c52def" name="src/Cassandra/FutureClose.c" role="src" />
+   <file md5sum="293d0019ef4abae5f671780010b31401" name="src/Cassandra/FuturePreparedStatement.c" role="src" />
+   <file md5sum="1f6458c25b7ff680e94f6c9929109a11" name="src/Cassandra/FutureRows.c" role="src" />
+   <file md5sum="0c1eaffdd401d74ff921e785aec36788" name="src/Cassandra/FutureSession.c" role="src" />
+   <file md5sum="acc1c7d328a408efb6545f763e508401" name="src/Cassandra/FutureValue.c" role="src" />
+   <file md5sum="d01fd1a96846feb4b2ce5ea530764480" name="src/Cassandra/Inet.c" role="src" />
+   <file md5sum="2b9dc8eaae19ae113dc6cf367d8ce5ac" name="src/Cassandra/Map.c" role="src" />
+   <file md5sum="f0d7f72424bf3e765625b85fe8ef5532" name="src/Cassandra/Map.h" role="src" />
+   <file md5sum="95aac5169d588d143fee63e0acda0be4" name="src/Cassandra/Numeric.c" role="src" />
+   <file md5sum="0b888ce9a70053cfc43504039a67a4c1" name="src/Cassandra/PreparedStatement.c" role="src" />
+   <file md5sum="e4dec2d51d0527103b4d1aaa70aaaa3d" name="src/Cassandra/Rows.c" role="src" />
+   <file md5sum="7bc0aecbba82722336c94cf6701a3ad7" name="src/Cassandra/SSLOptions.c" role="src" />
+   <file md5sum="b808bbbed5ea20b163eaeed7328e807b" name="src/Cassandra/SSLOptions/Builder.c" role="src" />
+   <file md5sum="59b9c49adcd4c6cd1a59f5cc4b460e7c" name="src/Cassandra/Session.c" role="src" />
+   <file md5sum="688b018e1b71ce6ddca11488c6067d3f" name="src/Cassandra/Set.c" role="src" />
+   <file md5sum="cc3baf156d23d8779db4277231370895" name="src/Cassandra/Set.h" role="src" />
+   <file md5sum="c0161312867ac4cfe84cd2621996287b" name="src/Cassandra/SimpleStatement.c" role="src" />
+   <file md5sum="0951d23f8da2095bad9add8b4ae139cc" name="src/Cassandra/Statement.c" role="src" />
+   <file md5sum="366bc362c925d6ef813314face2d138b" name="src/Cassandra/Timestamp.c" role="src" />
+   <file md5sum="4d8c3e8c41275b2392dbf961daf42b0b" name="src/Cassandra/Timeuuid.c" role="src" />
+   <file md5sum="9f44d23128640631d0f438ff26d79f5e" name="src/Cassandra/Uuid.c" role="src" />
+   <file md5sum="c3144500b296cb8ea6d00f445538daf9" name="src/Cassandra/UuidInterface.c" role="src" />
+   <file md5sum="71eba02edd182881389a573b8ca2d032" name="src/Cassandra/Varint.c" role="src" />
+   <file md5sum="0b56238ca344db52c2c60b4d8b19453b" name="util/bytes.c" role="src" />
+   <file md5sum="09ddfe20adf32d6413a490c3a109121f" name="util/bytes.h" role="src" />
+   <file md5sum="90c15a907863c917bfaa4d8e9bd2cc5f" name="util/collections.c" role="src" />
+   <file md5sum="41761d335bdcc9686a82e5b1eebf37ca" name="util/collections.h" role="src" />
+   <file md5sum="62c0ed721bf4f95bf95c48faa74d25c6" name="util/consistency.c" role="src" />
+   <file md5sum="24dd40e0b8687cd0ecc0a00b59ba439f" name="util/consistency.h" role="src" />
+   <file md5sum="59097b33c8b600bf6edf81b7a8a51271" name="util/future.c" role="src" />
+   <file md5sum="4fb3b22fcd18baa3197ffcd11bcdbe39" name="util/future.h" role="src" />
+   <file md5sum="60e3dcfb98fa7584ec671fe788da056a" name="util/inet.c" role="src" />
+   <file md5sum="3bc19b73fa8b7d0bc266492b51e49ba3" name="util/inet.h" role="src" />
+   <file md5sum="ad381c70b197bb13fd5418102799e5a8" name="util/math.c" role="src" />
+   <file md5sum="291789f2286cc3973ddf5051aabc0144" name="util/math.h" role="src" />
+   <file md5sum="ef812c1909674bafed4fa334504cbfc1" name="util/ref.c" role="src" />
+   <file md5sum="621774b2183a36fc0f4f65682d57e98a" name="util/ref.h" role="src" />
+   <file md5sum="784a4fa6cd39d4353000b7076fc98d96" name="util/result.c" role="src" />
+   <file md5sum="bcbbddd94e129dd3b164e7828a0234d9" name="util/result.h" role="src" />
+   <file md5sum="0fcfa8dd3feaba8296f604ce3730c597" name="util/uuid_gen.c" role="src" />
+   <file md5sum="adff401fb7f33aad8e1406be69118118" name="util/uuid_gen.h" role="src" />
+   <file md5sum="e4b36463624eb337b4306fc89359687a" name="version.h" role="src" />
+   <file md5sum="78aa6c93fc8be3bd13c6011da74ef5b5" name="LICENSE" role="doc" />
+   <file md5sum="4027474606d362afc1867cb79d20411a" name="doc/Cassandra.php" role="doc" />
+   <file md5sum="dbea0c7705d867ce13e61644909f3443" name="doc/Cassandra/BatchStatement.php" role="doc" />
+   <file md5sum="b51d2d89d63856fd7fe17bbae2a0c674" name="doc/Cassandra/Bigint.php" role="doc" />
+   <file md5sum="4841f9c93da5b325ba43b8f466595cb4" name="doc/Cassandra/Blob.php" role="doc" />
+   <file md5sum="acb73860177758c19a2a254fa3f9b013" name="doc/Cassandra/Cluster.php" role="doc" />
+   <file md5sum="bd3312267c18f5766a7f8bb36c88bfc4" name="doc/Cassandra/Cluster/Builder.php" role="doc" />
+   <file md5sum="11a73ed6fb80a127b5db4daef1dbfeee" name="doc/Cassandra/Collection.php" role="doc" />
+   <file md5sum="8570e1a63bc9f623531af1e2005ba4a6" name="doc/Cassandra/Decimal.php" role="doc" />
+   <file md5sum="98b42c7b23161387ca4a75ded9a2325c" name="doc/Cassandra/DefaultCluster.php" role="doc" />
+   <file md5sum="18e698be2a4ca903b01e107c31c24764" name="doc/Cassandra/DefaultSession.php" role="doc" />
+   <file md5sum="cc46c908c226e96029deba9459c4d009" name="doc/Cassandra/Exception.php" role="doc" />
+   <file md5sum="c1cdea239b363d280503f44cf3b40d49" name="doc/Cassandra/Exception/AlreadyExistsException.php" role="doc" />
+   <file md5sum="71a4cbafc475238cb1b97a4c0891788c" name="doc/Cassandra/Exception/AuthenticationException.php" role="doc" />
+   <file md5sum="38c043135fe0220349c22b9ca6f77b13" name="doc/Cassandra/Exception/ConfigurationException.php" role="doc" />
+   <file md5sum="e2ccab138ce331a0359e08553d5313c4" name="doc/Cassandra/Exception/DivideByZeroException.php" role="doc" />
+   <file md5sum="6ca042aa106d3a9e77b5ff19034bf2d3" name="doc/Cassandra/Exception/DomainException.php" role="doc" />
+   <file md5sum="77a2f05f2f068e79c803f6784db6c002" name="doc/Cassandra/Exception/ExecutionException.php" role="doc" />
+   <file md5sum="43c9eb09b1917d33c6144a1dd76ea99b" name="doc/Cassandra/Exception/InvalidArgumentException.php" role="doc" />
+   <file md5sum="825d0bd5e51356f14edb15b047b112e2" name="doc/Cassandra/Exception/InvalidQueryException.php" role="doc" />
+   <file md5sum="25720861b7bd5100604cf999cd6a9b4e" name="doc/Cassandra/Exception/InvalidSyntaxException.php" role="doc" />
+   <file md5sum="772f338ce891089cd212d2295e24adce" name="doc/Cassandra/Exception/IsBootstrappingException.php" role="doc" />
+   <file md5sum="5c9c5fc6234ac14f9de6de373cd11f19" name="doc/Cassandra/Exception/LogicException.php" role="doc" />
+   <file md5sum="c625523831fcdef543cdf57666f84d22" name="doc/Cassandra/Exception/OverloadedException.php" role="doc" />
+   <file md5sum="1be563a8bcf3d1563ad735b202cc2454" name="doc/Cassandra/Exception/ProtocolException.php" role="doc" />
+   <file md5sum="f409e1e7249136bb8e024a318abc6cb1" name="doc/Cassandra/Exception/RangeException.php" role="doc" />
+   <file md5sum="e5c451f5d58cab2c32b92baeafa1b81d" name="doc/Cassandra/Exception/ReadTimeoutException.php" role="doc" />
+   <file md5sum="fb7ce9cedc78ff6dbd9f5111d02470c0" name="doc/Cassandra/Exception/RuntimeException.php" role="doc" />
+   <file md5sum="c92d3c7b998cf28fe12e871bdfba3465" name="doc/Cassandra/Exception/ServerException.php" role="doc" />
+   <file md5sum="db9b934169cdd6dbd23a57f81a5b1fd0" name="doc/Cassandra/Exception/TimeoutException.php" role="doc" />
+   <file md5sum="4dc5bdf9a6bc7837dc0335c8ab2f2dfe" name="doc/Cassandra/Exception/TruncateException.php" role="doc" />
+   <file md5sum="fcd28e5073d2cddf1d3421f6832477ad" name="doc/Cassandra/Exception/UnauthorizedException.php" role="doc" />
+   <file md5sum="d61b966fe9d1bfe18da070c3a5dea121" name="doc/Cassandra/Exception/UnavailableException.php" role="doc" />
+   <file md5sum="196c272501900ac99ec1b4dd0e6e3a54" name="doc/Cassandra/Exception/UnpreparedException.php" role="doc" />
+   <file md5sum="d052d293d7d17d633dff96d1db478864" name="doc/Cassandra/Exception/ValidationException.php" role="doc" />
+   <file md5sum="132c5b3a8eca8cfa9d58aef80f99ea23" name="doc/Cassandra/Exception/WriteTimeoutException.php" role="doc" />
+   <file md5sum="13821decce648e1604d292ed6525821b" name="doc/Cassandra/ExecutionOptions.php" role="doc" />
+   <file md5sum="3b0e140ce500c5de8620935b6fa7ec35" name="doc/Cassandra/Float.php" role="doc" />
+   <file md5sum="d09de684bc1b8016412c7118833fd1c4" name="doc/Cassandra/Future.php" role="doc" />
+   <file md5sum="86c5cb1a30cc12e0c3051de8ea43f9c1" name="doc/Cassandra/FutureClose.php" role="doc" />
+   <file md5sum="1f9a1af04857077ce44187060b67e42f" name="doc/Cassandra/FutureException.php" role="doc" />
+   <file md5sum="9ce39e07812dd82ec7fc303b0ac4bf60" name="doc/Cassandra/FuturePreparedStatement.php" role="doc" />
+   <file md5sum="9782347c70752a46f28ecc9bbf988820" name="doc/Cassandra/FutureRows.php" role="doc" />
+   <file md5sum="7463b20a018c945d1c90c0e5c5225a59" name="doc/Cassandra/FutureSession.php" role="doc" />
+   <file md5sum="80b235d9227764ba493f2af52972e7e4" name="doc/Cassandra/FutureValue.php" role="doc" />
+   <file md5sum="2046bb587675f8cb0fe9cd4924b9546a" name="doc/Cassandra/Inet.php" role="doc" />
+   <file md5sum="7e619af39558c98c797823c9cc4143d5" name="doc/Cassandra/Map.php" role="doc" />
+   <file md5sum="46dd4537b20f314dacc5cb9dc0866c8d" name="doc/Cassandra/Numeric.php" role="doc" />
+   <file md5sum="c97de848b38ffacc1b339a0f44749876" name="doc/Cassandra/PreparedStatement.php" role="doc" />
+   <file md5sum="f7e65c296436d2e3453758e139d884d0" name="doc/Cassandra/Rows.php" role="doc" />
+   <file md5sum="01f8949b5a824d820bba6e41ff42349f" name="doc/Cassandra/SSLOptions.php" role="doc" />
+   <file md5sum="44d99351a51ed26f7c4a3fdbbcf564a6" name="doc/Cassandra/SSLOptions/Builder.php" role="doc" />
+   <file md5sum="6268a32a356f0bbba91b99db2bdd16b8" name="doc/Cassandra/Session.php" role="doc" />
+   <file md5sum="f878e357b23e4c8dd30cf183a6a572f0" name="doc/Cassandra/Set.php" role="doc" />
+   <file md5sum="6cceeca85e8d646b7b406363e6f18273" name="doc/Cassandra/SimpleStatement.php" role="doc" />
+   <file md5sum="78f75353783ea741dbb66542553d5c9b" name="doc/Cassandra/Statement.php" role="doc" />
+   <file md5sum="7eb838dfd9aa9acbe1c1ca056622c943" name="doc/Cassandra/Timestamp.php" role="doc" />
+   <file md5sum="b42bb35155161ff428cfeee6aec810e2" name="doc/Cassandra/Timeuuid.php" role="doc" />
+   <file md5sum="4281ac037ad85105f0f87b54b5dec352" name="doc/Cassandra/Uuid.php" role="doc" />
+   <file md5sum="ffb60c22b06bd36b02a44d0e7e1648f4" name="doc/Cassandra/UuidInterface.php" role="doc" />
+   <file md5sum="5595420425c5a8b9d4560a472d4382ff" name="doc/Cassandra/Varint.php" role="doc" />
+   <file md5sum="d5181f3f3e79a609303c17e4b0f898f4" name="doc/README.md" role="doc" />
+   <file md5sum="f25750df6e49d127fbc07c0875068f9f" name="tests/statements/init.phpt" role="test" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.4</min>
+    <max>5.99.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>cassandra</providesextension>
+ <extsrcrelease />
+</package>

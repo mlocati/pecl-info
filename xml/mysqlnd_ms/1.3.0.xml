@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>mysqlnd_ms</name>
+ <channel>pecl.php.net</channel>
+ <summary>A replication and load balancing plugin for mysqlnd</summary>
+ <description>The replication and load balancing plugin is a plugin for the mysqlnd library. It can be used with PHP MySQL extensions (ext/mysql, ext/mysqli, PDO_MySQL). if they are compiled to use mysqlnd. The plugin inspects queries to do read-write splitting. Read-only queries are send to configured MySQL replication slave servers all other queries are redirected to the MySQL replication master server. Very little, if any, application changes required, dependent on the usage scenario required.</description>
+ <lead>
+  <name>Andrey Hristov</name>
+  <user>andrey</user>
+  <email>andrey@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Ulf Wendel</name>
+  <user>uw</user>
+  <email>uw@php_net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Johannes Schlüter</name>
+  <user>johannes</user>
+  <email>johannes@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2012-04-12</date>
+ <time>12:51:13</time>
+ <version>
+  <release>1.3.0</release>
+  <api>1.3.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+new features release
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="26aee31573e2a39efbff50d5ada28c32" name="tests/bench/framework/web/rb_create_csv.php" role="test" />
+   <file md5sum="c1044e29824cdcba440f94dce0d4876c" name="tests/bench/framework/abstract.php" role="test" />
+   <file md5sum="4eba6a42dc8684b7330bf6d89073255a" name="tests/bench/framework/config.php" role="test" />
+   <file md5sum="ff5a3be0382e9e4247d849898403fa1c" name="tests/bench/framework/main.php" role="test" />
+   <file md5sum="cb7727254713557376c5d35f39b6d007" name="tests/bench/framework/rb_main.php" role="test" />
+   <file md5sum="6f93e11c65ba83b52bb0e741ac9761b2" name="tests/bench/framework/rb_renderer_normal.php" role="test" />
+   <file md5sum="5f6933b5a2ed7d2149fdf59a83f173f1" name="tests/bench/framework/rb_storage_db_normal.php" role="test" />
+   <file md5sum="711997481d6e094d9d40cbe6732676b4" name="tests/bench/framework/rb_testrunner_normal.php" role="test" />
+   <file md5sum="2aaf453be919b81aab087c266e02ba84" name="tests/bench/micro_benches/andrey_stmt1.php" role="test" />
+   <file md5sum="69783f5d99e98abca75b75582efc6675" name="tests/bench/micro_benches/andrey_stmt1_php_run_normal.php" role="test" />
+   <file md5sum="7d418073b376f4452bedd7394930570d" name="tests/bench/micro_benches/andrey_stmt2.php" role="test" />
+   <file md5sum="0abff298fb4acb24b1a28f4d28597607" name="tests/bench/micro_benches/georg_bench1.php" role="test" />
+   <file md5sum="7f32b5cbec10bfcdd14f55af0112b4c5" name="tests/bench/micro_benches/georg_bench2.php" role="test" />
+   <file md5sum="d64dbd9ddafdbccf8f181ca3076b8775" name="tests/bench/micro_benches/mysqli_affected_rows.php" role="test" />
+   <file md5sum="221303037fec0599337654488d7498ab" name="tests/bench/micro_benches/mysqli_connect_and_close.php" role="test" />
+   <file md5sum="34f3d921666cfda16888b14e20cf1a14" name="tests/bench/micro_benches/mysqli_connect.php" role="test" />
+   <file md5sum="33cf13b97ced547f84040423cfd0f167" name="tests/bench/micro_benches/mysqli_data_seek_random.php" role="test" />
+   <file md5sum="cded0f721f7c8dd8fd5ffd555fd010a0" name="tests/bench/micro_benches/mysqli_data_seek_random_php_run_normal.php" role="test" />
+   <file md5sum="ea42a54bc6fcf7dc47cff281eaf1fae2" name="tests/bench/micro_benches/mysqli_data_seek_sequential.php" role="test" />
+   <file md5sum="2a913c03e051f35d29aa7148595f9dd9" name="tests/bench/micro_benches/mysqli_fetch_all_vs_fetch_array.php" role="test" />
+   <file md5sum="28ae0967f5a8e44ed7c432a89c79bfd5" name="tests/bench/micro_benches/mysqli_fetch_field_direct.php" role="test" />
+   <file md5sum="a5b17d731d61db07f2524afa60436a31" name="tests/bench/micro_benches/mysqli_fetch_long_buffered.php" role="test" />
+   <file md5sum="a3c130bc573ae03536b4f317fec8041c" name="tests/bench/micro_benches/mysqli_fetch_long_unbuffered.php" role="test" />
+   <file md5sum="1f39f5755eb681b21a76806870aaadfe" name="tests/bench/micro_benches/mysqli_fetch_long_unbuffered_php_run_normal.php" role="test" />
+   <file md5sum="81a99572963161b34c0020dc3c629698" name="tests/bench/micro_benches/mysqli_insert_id.php" role="test" />
+   <file md5sum="0299a65cdadcb5740c6c6bfd5e6494fb" name="tests/bench/micro_benches/mysqli_many_cols_buf.php" role="test" />
+   <file md5sum="5e1658b1707dac84860ac73d40b70e85" name="tests/bench/micro_benches/mysqli_many_cols_unbuf.php" role="test" />
+   <file md5sum="3126f7908f9d410544a5de9c1f97cdac" name="tests/bench/micro_benches/mysqli_query_insert_varchar.php" role="test" />
+   <file md5sum="eff73a1d2fc32be8a4778f5561f7850e" name="tests/bench/micro_benches/mysqli_query_update_varchar.php" role="test" />
+   <file md5sum="bed5f710eb6e41f736a43ccfd89f57c6" name="tests/bench/micro_benches/mysqli_real_connect_and_close.php" role="test" />
+   <file md5sum="8d2f8d8720b765a4aa312f8825f46937" name="tests/bench/micro_benches/mysqli_real_query.php" role="test" />
+   <file md5sum="393861ef44bc97e26ec1e5dc189c5534" name="tests/bench/micro_benches/mysqli_select_varchar_buffered.php" role="test" />
+   <file md5sum="c5764326f1eb45509fb3a3e37c6f31e7" name="tests/bench/micro_benches/mysqli_sel_unbuf.php" role="test" />
+   <file md5sum="69a13f2799913e2f479d6b1ad63398a3" name="tests/bench/micro_benches/mysqli_skeleton.php" role="test" />
+   <file md5sum="0a026ab104c5e6baf49a137e96d81b10" name="tests/bench/micro_benches/mysqli_stmt_data_seek_random.php" role="test" />
+   <file md5sum="66d2e39679e0dfefbf0bffb8d1035fcd" name="tests/bench/micro_benches/mysqli_stmt_execute.php" role="test" />
+   <file md5sum="26255a38d5212f3c3e88a1daeba7edee" name="tests/bench/micro_benches/mysqli_stmt_insert.php" role="test" />
+   <file md5sum="508085135cf17a12ccaf4e35bf519f4f" name="tests/bench/micro_benches/mysqli_stmt_many_col.php" role="test" />
+   <file md5sum="30e60d6f641c48f415d90b140d9b47f6" name="tests/bench/micro_benches/mysqli_stmt_seek_seq.php" role="test" />
+   <file md5sum="bcf52e4d95eda45dd7ac3bee57e0e52c" name="tests/bench/micro_benches/mysqli_stmt_sel_buf.php" role="test" />
+   <file md5sum="4b4fc19ca1965b21d2a3439145117826" name="tests/bench/micro_benches/mysqli_stmt_sel_unbuf.php" role="test" />
+   <file md5sum="b5b8dcf283fff7d7604ad30ce5679366" name="tests/bench/micro_benches/mysqli_variable_command_size.php" role="test" />
+   <file md5sum="0686a68671f62ffce49c0024b2ca5a2e" name="tests/bench/micro_benches/mysqlnd_ms_php.ini" role="test" />
+   <file md5sum="66d28b465a0539b9fe86679a9fa4f945" name="tests/bench/micro_benches/mysqlnd_ms_slave_hint.php" role="test" />
+   <file md5sum="cd38f97b72c54ace6beaa2c701456f7f" name="tests/bench/README" role="test" />
+   <file md5sum="e15e78eca10ce76aa268e7e0805c8333" name="tests/bug_60605.phpt" role="test" />
+   <file md5sum="c61833ba65e0d5b32aa29ae502888cfb" name="tests/bug_pecl_22784.phpt" role="test" />
+   <file md5sum="4b4b072a5b559550361406be4bca7e44" name="tests/config.inc" role="test" />
+   <file md5sum="203a179158e615c9d62532364f69e18d" name="tests/connect.inc" role="test" />
+   <file md5sum="855b620bc2bbc21b3facc2a8eb347ace" name="tests/mysqlnd_ms_autocommit_kill.phpt" role="test" />
+   <file md5sum="f33e28f514213c62c1861fc1cae6f8b7" name="tests/mysqlnd_ms_autocommit.phpt" role="test" />
+   <file md5sum="8d2142ce86d9a934c10cba7305cd19fc" name="tests/mysqlnd_ms_change_user_fail.phpt" role="test" />
+   <file md5sum="5d35c99f75eddb38d443140ade5099ff" name="tests/mysqlnd_ms_change_user.phpt" role="test" />
+   <file md5sum="6bdaede38e3c610b6643119fddbe47df" name="tests/mysqlnd_ms_charsets_fail.phpt" role="test" />
+   <file md5sum="a5d8f8b16a34e7706a0b2acbcd6440a1" name="tests/mysqlnd_ms_charsets_kill.phpt" role="test" />
+   <file md5sum="a4d6cbac3fd1282d58bf471c7867cd92" name="tests/mysqlnd_ms_charsets.phpt" role="test" />
+   <file md5sum="410696add494b4b0724406a065db0e16" name="tests/mysqlnd_ms_commit.phpt" role="test" />
+   <file md5sum="fe8d2a489468d45ae5bd634c6bf8f513" name="tests/mysqlnd_ms_config_access.phpt" role="test" />
+   <file md5sum="9712348de76451b33857bd6c84e9c159" name="tests/mysqlnd_ms_connection_references.phpt" role="test" />
+   <file md5sum="23be4ffd2315c9c61106c08a01b3501e" name="tests/mysqlnd_ms_constants.phpt" role="test" />
+   <file md5sum="58475fd8558ed576d993c839f0329a19" name="tests/mysqlnd_ms_disable_rw_rr.phpt" role="test" />
+   <file md5sum="c95ab4922f0b100ee84134cf830b27f5" name="tests/mysqlnd_ms_empty_slave_list.phpt" role="test" />
+   <file md5sum="1e69a35a658532c520affc59a3a500b4" name="tests/mysqlnd_ms_enable_rw_rr_failover.phpt" role="test" />
+   <file md5sum="61923342e3a75a43b910f3ac30eb0cc4" name="tests/mysqlnd_ms_enable_rw_rr.phpt" role="test" />
+   <file md5sum="ca0ee0b9d871735d9b7fbc939ccc2923" name="tests/mysqlnd_ms_error_errno_sqlstate.phpt" role="test" />
+   <file md5sum="0bb3b31c0a34d7f42ce957b812919a66" name="tests/mysqlnd_ms_error_message.phpt" role="test" />
+   <file md5sum="b870f3b1b6d316d8d1a72d1b83dd0637" name="tests/mysqlnd_ms_field_count.phpt" role="test" />
+   <file md5sum="4ccf2248dabd52c29e9f281679833953" name="tests/mysqlnd_ms_filter_empty_lazy.phpt" role="test" />
+   <file md5sum="b8f5eb9431f89658c20555b0e27b4d09" name="tests/mysqlnd_ms_filter_empty_non_lazy.phpt" role="test" />
+   <file md5sum="c852e3a3132a5209a89cf85da46098f9" name="tests/mysqlnd_ms_filter_multi_last.phpt" role="test" />
+   <file md5sum="cc5232392795b7f500a2cfbe083d73d3" name="tests/mysqlnd_ms_filter_qos_config_conflict1.phpt" role="test" />
+   <file md5sum="3973d958840a6770eb872b198ecb93f9" name="tests/mysqlnd_ms_filter_qos_config_conflict2.phpt" role="test" />
+   <file md5sum="71e4ae0cc19bef1bde7aa7061f5726ac" name="tests/mysqlnd_ms_filter_qos_config_conflict3.phpt" role="test" />
+   <file md5sum="343cf1130e99c0fb4f19590668acd53f" name="tests/mysqlnd_ms_filter_qos_config_conflict4.phpt" role="test" />
+   <file md5sum="1a1e4f65247231d69d3acc70621612e1" name="tests/mysqlnd_ms_filter_qos_config.phpt" role="test" />
+   <file md5sum="9f32e68a48ef4be67e8c83b050f6f389" name="tests/mysqlnd_ms_filter_qos_eventual_age.phpt" role="test" />
+   <file md5sum="149286b262cca2980f2d216c6f3b18f6" name="tests/mysqlnd_ms_filter_qos_eventual_cache_conflict.phpt" role="test" />
+   <file md5sum="953ed99533d520f3772f9d3aaca80ba6" name="tests/mysqlnd_ms_filter_qos_eventual_cache.phpt" role="test" />
+   <file md5sum="765d420684a6df4b855c4440b0e6ce79" name="tests/mysqlnd_ms_filter_qos_eventual_consistency.phpt" role="test" />
+   <file md5sum="c57d914dcc04d1f753b8b879322335f7" name="tests/mysqlnd_ms_filter_qos_eventual_consistency_rr.phpt" role="test" />
+   <file md5sum="d953bb418a5e72940950ecb1e20f163d" name="tests/mysqlnd_ms_filter_qos_eventual_disable_rw_split.phpt" role="test" />
+   <file md5sum="6bc8fbc255a1c1b53e2d3a3634fd1b84" name="tests/mysqlnd_ms_filter_qos_eventual_trx_stickiness.phpt" role="test" />
+   <file md5sum="ffde1232a8dfebede39d83c57cff1976" name="tests/mysqlnd_ms_filter_qos_multi_master.phpt" role="test" />
+   <file md5sum="cdf6591adfe368a6a9d580319929a9fe" name="tests/mysqlnd_ms_filter_qos.phpt" role="test" />
+   <file md5sum="361fe494bbba343e80d7055b661a4d96" name="tests/mysqlnd_ms_filter_qos_rt_gtid.phpt" role="test" />
+   <file md5sum="d38680e84fdc4af99ff1540ad5e2efff" name="tests/mysqlnd_ms_filter_qos_runtime.phpt" role="test" />
+   <file md5sum="277d59b7146d26cd9dda216057924e8f" name="tests/mysqlnd_ms_filter_qos_session_consistency_mm_rr.phpt" role="test" />
+   <file md5sum="3d0aafa3d0d2c848e6a8224a01aa8892" name="tests/mysqlnd_ms_filter_qos_session_consistency_no_slaves.phpt" role="test" />
+   <file md5sum="52ce8552b8aefebab5210cb1997bc999" name="tests/mysqlnd_ms_filter_qos_session_consistency.phpt" role="test" />
+   <file md5sum="426cc82f257ea5acc47925fbb58366be" name="tests/mysqlnd_ms_filter_qos_strong_consistency.phpt" role="test" />
+   <file md5sum="12b17015652c2eaad81805730261fde8" name="tests/mysqlnd_ms_filter_ro_partitioning_rr.phpt" role="test" />
+   <file md5sum="40fc3048238fdcbb0961903fbb4aba61" name="tests/mysqlnd_ms_filter_twice.phpt" role="test" />
+   <file md5sum="b57ea65d7ee0fd18ce84a794bccf141e" name="tests/mysqlnd_ms_get_charset.phpt" role="test" />
+   <file md5sum="3eba538e174fba59721b7a70cc1f2795" name="tests/mysqlnd_ms_get_connection_stats.phpt" role="test" />
+   <file md5sum="a10223b897c6b17c294ba90eda781c8f" name="tests/mysqlnd_ms_get_last_gtid_config.phpt" role="test" />
+   <file md5sum="0471bca4347c7f536b39a74d2c3d5b12" name="tests/mysqlnd_ms_get_last_gtid_params.phpt" role="test" />
+   <file md5sum="bca95278b37e01a816e2f9800b3542b8" name="tests/mysqlnd_ms_get_last_gtid.phpt" role="test" />
+   <file md5sum="69879bb18b14e5ff21b50c6b13c71d06" name="tests/mysqlnd_ms_get_last_gtid_sql_error.phpt" role="test" />
+   <file md5sum="894059e54ce942280efc2783ce02debb" name="tests/mysqlnd_ms_get_last_used_connection.phpt" role="test" />
+   <file md5sum="400a3f230bbc52aaa0f6b2ed7c159888" name="tests/mysqlnd_ms_get_last_used_connection_switches.phpt" role="test" />
+   <file md5sum="e99913c9403927845e25a61c7dcc5dfc" name="tests/mysqlnd_ms_get_stats_disabled.phpt" role="test" />
+   <file md5sum="402c6380310568b0144bb3fe120dcf8a" name="tests/mysqlnd_ms_get_stats.phpt" role="test" />
+   <file md5sum="51fa633ee5815c827ea5cc2e386ec78a" name="tests/mysqlnd_ms_get_stats_register_shutdown.phpt" role="test" />
+   <file md5sum="658dd65639f2b3ba9d8f43f5a097ca4d" name="tests/mysqlnd_ms_gtid_autocommit_stats.phpt" role="test" />
+   <file md5sum="28ff92b643a7297aa1d107fa1b4531a5" name="tests/mysqlnd_ms_gtid_basics.phpt" role="test" />
+   <file md5sum="387464e88c0cac227c2433b25435b345" name="tests/mysqlnd_ms_gtid_commit_stats.phpt" role="test" />
+   <file md5sum="2934efe9f61d2fb6d7e05b266bf811c5" name="tests/mysqlnd_ms_gtid_commit_stats_ps.phpt" role="test" />
+   <file md5sum="4164ec8a1a7dbfd9b515704f7ddd5fa8" name="tests/mysqlnd_ms_gtid_implicit_commit_autocommit.phpt" role="test" />
+   <file md5sum="403d4ca09aa4940ce738a7794f00fc79" name="tests/mysqlnd_ms_gtid_invalid_check_for_gtid.phpt" role="test" />
+   <file md5sum="81044b32a3fc29f6f727ed01571a23b4" name="tests/mysqlnd_ms_gtid_invalid_fetch_last_gtid.phpt" role="test" />
+   <file md5sum="44d71711331d249ebe381ad893525f9c" name="tests/mysqlnd_ms_gtid_invalid_on_commit.phpt" role="test" />
+   <file md5sum="6d4cbcc35820067af1cc555b65e2010c" name="tests/mysqlnd_ms_gtid_ps_autocommit_get_result_mq.phpt" role="test" />
+   <file md5sum="c0b1623aefa243f5fdc43e4a4f7f6b56" name="tests/mysqlnd_ms_gtid_ps_autocommit_get_result.phpt" role="test" />
+   <file md5sum="d0a5302e610a1ab1ef091ff1601d4549" name="tests/mysqlnd_ms_gtid_ps_autocommit_no_result.phpt" role="test" />
+   <file md5sum="9b82e7efd236d8f4bf95f39e6bf261e0" name="tests/mysqlnd_ms_gtid_ps_autocommit_report_error_off.phpt" role="test" />
+   <file md5sum="1f027f6dc1621d951773b7e8734b19fd" name="tests/mysqlnd_ms_gtid_ps_autocommit_report_error.phpt" role="test" />
+   <file md5sum="af181712ac4c3e5cafe705ef6318b1a4" name="tests/mysqlnd_ms_gtid_ps_autocommit_store_result.phpt" role="test" />
+   <file md5sum="6626434c31fe28c31baede96bd2fc119" name="tests/mysqlnd_ms_gtid_ps_autocommit_use_result.phpt" role="test" />
+   <file md5sum="4f01ef0a5463a30123eea2b43f701885" name="tests/mysqlnd_ms_gtid_ps_report_errors_on.phpt" role="test" />
+   <file md5sum="72e4696019b5f9274dc9017aac533544" name="tests/mysqlnd_ms_gtid_report_errors_off_non_lazy.phpt" role="test" />
+   <file md5sum="d7a5aaa119db612842107cf2cf328323" name="tests/mysqlnd_ms_gtid_report_errors_off.phpt" role="test" />
+   <file md5sum="034ee4b3fdae93bca4831e933a9c3120" name="tests/mysqlnd_ms_gtid_report_errors_on_non_lazy.phpt" role="test" />
+   <file md5sum="8fd635c3bbfd594e9091e904d6d1abb5" name="tests/mysqlnd_ms_gtid_report_errors_on.phpt" role="test" />
+   <file md5sum="e48777e217de6d8453e0e02375a42c38" name="tests/mysqlnd_ms_gtid_serverside_basics.phpt" role="test" />
+   <file md5sum="1aafc97135992ed3daeec1bb34d619a2" name="tests/mysqlnd_ms_gtid_serverside_stats.phpt" role="test" />
+   <file md5sum="179847145f06e0214826c24590bf4713" name="tests/mysqlnd_ms_gtid_tx_non_ms.phpt" role="test" />
+   <file md5sum="18e2e2f054b0feef4605e0825e565cf7" name="tests/mysqlnd_ms_host_info.phpt" role="test" />
+   <file md5sum="31eb80ebd2e1b87467c3b71642f3d163" name="tests/mysqlnd_ms_info.phpt" role="test" />
+   <file md5sum="2f643b2c9aea163a10dd2cf3f2ed4c20" name="tests/mysqlnd_ms_ini_settings.phpt" role="test" />
+   <file md5sum="ce96f63e5e6e24270f1cbcd273fe5d2c" name="tests/mysqlnd_ms_insert_affected_pdo.phpt" role="test" />
+   <file md5sum="4d783c1424a427bed1857f75504f85dd" name="tests/mysqlnd_ms_insert_affected.phpt" role="test" />
+   <file md5sum="5159e1ab49126171d28c7f6337894772" name="tests/mysqlnd_ms_last_used_random_once.phpt" role="test" />
+   <file md5sum="94cd48f57d9d91a9b9d9eb86b67d2ef1" name="tests/mysqlnd_ms_last_used_random.phpt" role="test" />
+   <file md5sum="da318ace76bb52092fc440e786ad8f19" name="tests/mysqlnd_ms_last_used_rr.phpt" role="test" />
+   <file md5sum="86175e07537f50fb8a5d27ed72581eb2" name="tests/mysqlnd_ms_lazy_autocommit.phpt" role="test" />
+   <file md5sum="093150c989c432423360ca9d65c58407" name="tests/mysqlnd_ms_lazy_autocommit_switches.phpt" role="test" />
+   <file md5sum="e251e8641715dcd7421a6df279075e7b" name="tests/mysqlnd_ms_lazy_change_user.phpt" role="test" />
+   <file md5sum="d07cfc987642858fd6909946a0a70060" name="tests/mysqlnd_ms_lazy_charsets.phpt" role="test" />
+   <file md5sum="ea734059e2cb28df4344ff22d390531c" name="tests/mysqlnd_ms_lazy_commit.phpt" role="test" />
+   <file md5sum="9c10a3e3652db112c0dab3d5508e8f22" name="tests/mysqlnd_ms_lazy_escape.phpt" role="test" />
+   <file md5sum="58e7797678cdbddb0ad902a531b64e0a" name="tests/mysqlnd_ms_lazy_get_charset.phpt" role="test" />
+   <file md5sum="626a2f7936bdfe16901f0ae3f7f4f930" name="tests/mysqlnd_ms_lazy_master_failure_no_slaves.phpt" role="test" />
+   <file md5sum="65f0c2dfc6d19bdb9815d15ff51eae3e" name="tests/mysqlnd_ms_lazy_master_failure.phpt" role="test" />
+   <file md5sum="c12a12bea852a10e8f33d9b16206e758" name="tests/mysqlnd_ms_lazy_master_failure_random_once.phpt" role="test" />
+   <file md5sum="431fd5290a888b9440318d89977bcc23" name="tests/mysqlnd_ms_lazy_master_failure_random.phpt" role="test" />
+   <file md5sum="fc08bc093facb5c25cd8f60294251f03" name="tests/mysqlnd_ms_lazy_master_failure_rr.phpt" role="test" />
+   <file md5sum="db73314e4eb3a036d307101d43720606" name="tests/mysqlnd_ms_lazy_master_failure_user.phpt" role="test" />
+   <file md5sum="612bb22257a20016078ac4fdb6a7421b" name="tests/mysqlnd_ms_lazy_more_results.phpt" role="test" />
+   <file md5sum="888fa330b716cf355298af2296f1641a" name="tests/mysqlnd_ms_lazy_next_result.phpt" role="test" />
+   <file md5sum="1de636689cc46242fb7fa7e76dc829cf" name="tests/mysqlnd_ms_lazy_other_commands_old.phpt" role="test" />
+   <file md5sum="c13139a671f9ff96e59308fb62694d33" name="tests/mysqlnd_ms_lazy_other_commands.phpt" role="test" />
+   <file md5sum="5c093ce454cc66229108a970b2d09eb7" name="tests/mysqlnd_ms_lazy_prepared_statements.phpt" role="test" />
+   <file md5sum="445972a0abd91a4840e06ed052dd558e" name="tests/mysqlnd_ms_lazy_real_escape.phpt" role="test" />
+   <file md5sum="49006bcef708dc4b9e08f26c539f036b" name="tests/mysqlnd_ms_lazy_rollback.phpt" role="test" />
+   <file md5sum="7f7eed656c68cbaba0fb44a51a96e027" name="tests/mysqlnd_ms_lazy_select_db.phpt" role="test" />
+   <file md5sum="ed11e771bb77782c75f591b7f5be7d2d" name="tests/mysqlnd_ms_lazy_set_charset.phpt" role="test" />
+   <file md5sum="9523b42fa4c083855176f2dc6cf22685" name="tests/mysqlnd_ms_lazy_slave_failure2_random.phpt" role="test" />
+   <file md5sum="0ecda64d73d44bc696b3ea05c6a530be" name="tests/mysqlnd_ms_lazy_slave_failure2_user.phpt" role="test" />
+   <file md5sum="023630d31c43ddbd42e5c790e9e491d3" name="tests/mysqlnd_ms_lazy_slave_failure_failover_random_once.phpt" role="test" />
+   <file md5sum="81a4a7dba82bd766828afb9544f2d9c0" name="tests/mysqlnd_ms_lazy_slave_failure_failover_random.phpt" role="test" />
+   <file md5sum="20bbaec0faa44d7cd852530eb1bc7c9a" name="tests/mysqlnd_ms_lazy_slave_failure_failover_rr.phpt" role="test" />
+   <file md5sum="27f28cd366a08b5ecaeca93a6da2a47f" name="tests/mysqlnd_ms_lazy_slave_failure_random_once.phpt" role="test" />
+   <file md5sum="b75f8e6a21ef29a1e4d12abb689663c3" name="tests/mysqlnd_ms_lazy_slave_failure_random.phpt" role="test" />
+   <file md5sum="39c4b6d4a8081f0c1d5e485dbf465285" name="tests/mysqlnd_ms_lazy_slave_failure_rr.phpt" role="test" />
+   <file md5sum="7d440a8dc24f78b6024d57b527d404cf" name="tests/mysqlnd_ms_lazy_slave_failure_user.phpt" role="test" />
+   <file md5sum="075b041b468f66f47a2daf1dbdf964a4" name="tests/mysqlnd_ms_lazy_stmt_init.phpt" role="test" />
+   <file md5sum="186461177ba8aa8f3c35382627cd9739" name="tests/mysqlnd_ms_lb_filter_twice_ro_rr.phpt" role="test" />
+   <file md5sum="29d01166be25e4b829d39fd7dfe49556" name="tests/mysqlnd_ms_lb_filter_twice_rr_ro.phpt" role="test" />
+   <file md5sum="ffc47afd2cba18c93be546251839a493" name="tests/mysqlnd_ms_limits_async_cont.phpt" role="test" />
+   <file md5sum="abc3f596e615e5950fc9772b65ca6df7" name="tests/mysqlnd_ms_limits_async.phpt" role="test" />
+   <file md5sum="287f92ede276eee36e148a8fb84ba971" name="tests/mysqlnd_ms_limits_autocommit.phpt" role="test" />
+   <file md5sum="c1c1febe9dbdbed0966763847eb259de" name="tests/mysqlnd_ms_limits_connection_options.phpt" role="test" />
+   <file md5sum="3f87500f915b0cd24626a01395b184d0" name="tests/mysqlnd_ms_limits_multi_query_lazy.phpt" role="test" />
+   <file md5sum="e5249151401db4e9b2d023842809fd95" name="tests/mysqlnd_ms_limits_poll.phpt" role="test" />
+   <file md5sum="9ad78ca215ebbf04447f7d7e9213cfa6" name="tests/mysqlnd_ms_limits_sql_calc_found_rows.phpt" role="test" />
+   <file md5sum="7afe3f81432df3d9562af4214a28e778" name="tests/mysqlnd_ms_limits_sql_prepare.phpt" role="test" />
+   <file md5sum="d3da84822038fd61b569c5ce17de7c58" name="tests/mysqlnd_ms_limits_sql_transactions.phpt" role="test" />
+   <file md5sum="3b40b512393219af9a80c3163fb0b49c" name="tests/mysqlnd_ms_limits_use_db.phpt" role="test" />
+   <file md5sum="8975e12509f6431b6abc5658524acd01" name="tests/mysqlnd_ms_manual_failover_killed.phpt" role="test" />
+   <file md5sum="d29bffa0b8fcb963dd6f9e1023740308" name="tests/mysqlnd_ms_manual_failover_unknown.phpt" role="test" />
+   <file md5sum="76bc832ffdd4d8f97152a00803d2ac26" name="tests/mysqlnd_ms_master_on_write.phpt" role="test" />
+   <file md5sum="0ffcca4cc2fb19b5122179b0124f7f0e" name="tests/mysqlnd_ms_master_on_write_random.phpt" role="test" />
+   <file md5sum="9aaed3898442a843c425e068ae15d1d8" name="tests/mysqlnd_ms_master_on_write_round_robin.phpt" role="test" />
+   <file md5sum="30bc0e17128b44f35710ad383eb3efe2" name="tests/mysqlnd_ms_master_unreachable_random_once.phpt" role="test" />
+   <file md5sum="8abdbaaa4f3b3e1226202add05626258" name="tests/mysqlnd_ms_master_unreachable_random.phpt" role="test" />
+   <file md5sum="23b8657982ded3d4427766fc833c8394" name="tests/mysqlnd_ms_master_unreachable_rr.phpt" role="test" />
+   <file md5sum="2c89962f6471bee2187029282ed7a430" name="tests/mysqlnd_ms_master_unreachable_user.phpt" role="test" />
+   <file md5sum="8df6462b9da7be93143e6719da500a6f" name="tests/mysqlnd_ms_match_wild.phpt" role="test" />
+   <file md5sum="2087e7946e3a11b06e218e46a48b8564" name="tests/mysqlnd_ms_multi_master_no_slaves_ro.phpt" role="test" />
+   <file md5sum="f2071097efb03f2af099ce82da24fbb1" name="tests/mysqlnd_ms_multi_master_no_slaves_r.phpt" role="test" />
+   <file md5sum="02257636c9db897dda5157fa220ebcb3" name="tests/mysqlnd_ms_multi_master_no_slaves_rr_nf.phpt" role="test" />
+   <file md5sum="286d9c51419a85300b77ef94e8c7792a" name="tests/mysqlnd_ms_multi_master_no_slaves_rr.phpt" role="test" />
+   <file md5sum="dba799338c8f7458741bd512569f04f1" name="tests/mysqlnd_ms_multi_master_on.phpt" role="test" />
+   <file md5sum="5a72e0fd5c6c23c9c76218029cc20d2e" name="tests/mysqlnd_ms_multi_master.phpt" role="test" />
+   <file md5sum="d8a1a1260473a99672e11c0c9df3ca3a" name="tests/mysqlnd_ms_multi_query_no_ms.phpt" role="test" />
+   <file md5sum="9a47a54dbbf4d2f9ff615f53bbcdd037" name="tests/mysqlnd_ms_multi_query.phpt" role="test" />
+   <file md5sum="b071554c868d74163a1cd77d1da86b7b" name="tests/mysqlnd_ms_no_master.phpt" role="test" />
+   <file md5sum="204cec1f1f0bb0296ada80232ad6e9e9" name="tests/mysqlnd_ms_no_slaves.phpt" role="test" />
+   <file md5sum="4fe7e15265934aa026fd617daccd7cef" name="tests/mysqlnd_ms_pdo_basics.phpt" role="test" />
+   <file md5sum="a559308494c06f6f94acb81356248b34" name="tests/mysqlnd_ms_phpinfo.phpt" role="test" />
+   <file md5sum="863fbe7c176effb2a3e2d379f5ba7e02" name="tests/mysqlnd_ms_pick_random_once2.phpt" role="test" />
+   <file md5sum="89f134a97169f01f53fe0b60dfe23668" name="tests/mysqlnd_ms_pick_random_once.phpt" role="test" />
+   <file md5sum="239ab231ac3f32df8113de1f75230324" name="tests/mysqlnd_ms_pick_random.phpt" role="test" />
+   <file md5sum="2e2f50958d4c56cc173fb0f4466772a7" name="tests/mysqlnd_ms_pick_random_user_multi_no_master_non_lazy.phpt" role="test" />
+   <file md5sum="a07cdf3944b1f19d4dbd71ed9a71a1e4" name="tests/mysqlnd_ms_pick_random_user_multi_no_master.phpt" role="test" />
+   <file md5sum="21d1d778c891b4b020969f6185c945ff" name="tests/mysqlnd_ms_pick_random_user_multi_no_slave_non_lazy.phpt" role="test" />
+   <file md5sum="281ac790d42eb72a2d282be327091cc0" name="tests/mysqlnd_ms_pick_random_user_multi_no_slave.phpt" role="test" />
+   <file md5sum="8402b796e8dc017e23b07c05db99a27a" name="tests/mysqlnd_ms_pick_random_user_multi_slave_err.phpt" role="test" />
+   <file md5sum="a34aaffcad4bf507198ddd8e3905f2d4" name="tests/mysqlnd_ms_pick_round_robin.phpt" role="test" />
+   <file md5sum="a999ae2e9ce18ef528d330383c5db9e1" name="tests/mysqlnd_ms_pick_ro_user_multi_no_master_non_lazy.phpt" role="test" />
+   <file md5sum="4abb12fd93249e8e2a9751f9b794e1da" name="tests/mysqlnd_ms_pick_ro_user_multi_no_master.phpt" role="test" />
+   <file md5sum="1ae5b6e340dcf5bc017f450224449b7f" name="tests/mysqlnd_ms_pick_ro_user_multi_no_slave_non_lazy.phpt" role="test" />
+   <file md5sum="f5eb80cd1de859f4e2f17f2dad2ff4e2" name="tests/mysqlnd_ms_pick_ro_user_multi_no_slave.phpt" role="test" />
+   <file md5sum="d94f24744060085e34264df190a07104" name="tests/mysqlnd_ms_pick_ro_user_multi_slave_killed.phpt" role="test" />
+   <file md5sum="1e97c08e08a4f531e49815eece45f63a" name="tests/mysqlnd_ms_pick_ro_user_multi_slave_removed.phpt" role="test" />
+   <file md5sum="60c417dd5ef74845327758a32ba22b32" name="tests/mysqlnd_ms_pick_rr_user_multi_no_master_non_lazy.phpt" role="test" />
+   <file md5sum="8249b46c54a9a98b64b62d7dbf7622ce" name="tests/mysqlnd_ms_pick_rr_user_multi_no_master.phpt" role="test" />
+   <file md5sum="e19a25d67a60fcfefa2e13f1dab09342" name="tests/mysqlnd_ms_pick_rr_user_multi_no_slave_non_lazy.phpt" role="test" />
+   <file md5sum="aeb62d1daf9bafe4bb9db9a38f8c8a2c" name="tests/mysqlnd_ms_pick_rr_user_multi_no_slave.phpt" role="test" />
+   <file md5sum="25b44ef1adb957fcb9d0fa36b06623c2" name="tests/mysqlnd_ms_pick_unknown_policy.phpt" role="test" />
+   <file md5sum="16495adc3fa37ff17fa363ef2a990340" name="tests/mysqlnd_ms_pick_user_complex.phpt" role="test" />
+   <file md5sum="7de2d46c0a54830faaeb572301d7cac6" name="tests/mysqlnd_ms_pick_user_error.phpt" role="test" />
+   <file md5sum="d00e9d1029fc5dcf948e6157d73484c3" name="tests/mysqlnd_ms_pick_user_function.phpt" role="test" />
+   <file md5sum="5e9f306593473d22db85d73d464bcf4f" name="tests/mysqlnd_ms_pick_user_multi_multi_master.phpt" role="test" />
+   <file md5sum="e32a7edfcf7b1278d6c80bcae842af17" name="tests/mysqlnd_ms_pick_user_multi_multi_slaves.phpt" role="test" />
+   <file md5sum="d965c29cea99c1b2f62545fca9896aa4" name="tests/mysqlnd_ms_pick_user_multi.phpt" role="test" />
+   <file md5sum="287ab859c155e4f76e48eda80897053f" name="tests/mysqlnd_ms_pick_user_multi_return_big_id.phpt" role="test" />
+   <file md5sum="8218fd6c1ba64d6e88a1e2972a6bc11d" name="tests/mysqlnd_ms_pick_user_multi_return_bogus_list.phpt" role="test" />
+   <file md5sum="ca936b74f010dccb708b2efc1d3a33c8" name="tests/mysqlnd_ms_pick_user_multi_return_negative_id.phpt" role="test" />
+   <file md5sum="1d5e4ceb62db8f9005ce6614582a119f" name="tests/mysqlnd_ms_pick_user_multi_return_slave_twice.phpt" role="test" />
+   <file md5sum="720fc31bb05d0f2441d9fb13973d74af" name="tests/mysqlnd_ms_pick_user_multi_return_void.phpt" role="test" />
+   <file md5sum="0e8259a383b7e9902d5fecdd4677aefe" name="tests/mysqlnd_ms_pick_user_multi_trx_stickiness.phpt" role="test" />
+   <file md5sum="2e5797794ea4715c18da725667362c50" name="tests/mysqlnd_ms_pick_user_no_callback.phpt" role="test" />
+   <file md5sum="71f8d2e63faf16f002f1b5b138f7497e" name="tests/mysqlnd_ms_pick_user_return_void.phpt" role="test" />
+   <file md5sum="08b11c7b29d325f891abb6471f07ddc6" name="tests/mysqlnd_ms_pick_user_unknown_function.phpt" role="test" />
+   <file md5sum="0dcf31d550d2ad08ac970839d9e970df" name="tests/mysqlnd_ms_pick_user_unknown_server.phpt" role="test" />
+   <file md5sum="6af184bd3a7b62470bf426530bb39f5c" name="tests/mysqlnd_ms_ping.phpt" role="test" />
+   <file md5sum="ef692e24903ddbb74cf4b6810dc30eb7" name="tests/mysqlnd_ms_prepared_statements.phpt" role="test" />
+   <file md5sum="db1ebbc6eab275e8653edf683d9702f6" name="tests/mysqlnd_ms_prepare_switch.phpt" role="test" />
+   <file md5sum="cd57aabc6e55af96c74387e69438df24" name="tests/mysqlnd_ms_proto_info.phpt" role="test" />
+   <file md5sum="864f6cd0fd74e1d9612a5798629d40fe" name="tests/mysqlnd_ms_ps_commit.phpt" role="test" />
+   <file md5sum="a5bd41a1dad086a0b60abab16be346b9" name="tests/mysqlnd_ms_query_is_select.phpt" role="test" />
+   <file md5sum="8e83486c3b83ef56ff96b39c267cd975" name="tests/mysqlnd_ms_query_is_select_rw_disabled.phpt" role="test" />
+   <file md5sum="f8574efca7631431922a3410c9d97bc0" name="tests/mysqlnd_ms_random_once_unknown_parameter.phpt" role="test" />
+   <file md5sum="40131a6834b4a39de949c2f61bae6ece" name="tests/mysqlnd_ms_random_unknown_parameter.phpt" role="test" />
+   <file md5sum="d2a3efd87f9815b4ca3a57b019573aa9" name="tests/mysqlnd_ms_real_escape.phpt" role="test" />
+   <file md5sum="46fa356cc3f2bb61fd319a9f92037b3d" name="tests/mysqlnd_ms_real_query.phpt" role="test" />
+   <file md5sum="a017cad42f21779a15f4cf664e8e1946" name="tests/mysqlnd_ms_reflection_extension.phpt" role="test" />
+   <file md5sum="8634712500f06306ffb9df6ef25b9a66" name="tests/mysqlnd_ms_reflection_functions.phpt" role="test" />
+   <file md5sum="23e5147e85809a1680099f5abb6a79b0" name="tests/mysqlnd_ms_rr_unknown_parameter.phpt" role="test" />
+   <file md5sum="1f65bddbfff0b5d002e08c85bd750d4e" name="tests/mysqlnd_ms_select_db_fail.phpt" role="test" />
+   <file md5sum="5eeca4cc078bf838ba9b5909d248f000" name="tests/mysqlnd_ms_select_db_kill.phpt" role="test" />
+   <file md5sum="95710b5664f20e6d1d477d55fc2d331b" name="tests/mysqlnd_ms_select_db.phpt" role="test" />
+   <file md5sum="e07dc9440a90002028acf573d64f7ff6" name="tests/mysqlnd_ms_server_info.phpt" role="test" />
+   <file md5sum="25fb76007123d54d6ce8158fec68a513" name="tests/mysqlnd_ms_server_version.phpt" role="test" />
+   <file md5sum="2742f2c7cd7ebd3b077b5f25c7051558" name="tests/mysqlnd_ms_set_qos_age_killed.phpt" role="test" />
+   <file md5sum="38ee11e8f3ae9e9886e16f9c2057e5f5" name="tests/mysqlnd_ms_set_qos_age.phpt" role="test" />
+   <file md5sum="6e3f7d03f5a62507d97dcfd36cef0d49" name="tests/mysqlnd_ms_set_qos_cache.phpt" role="test" />
+   <file md5sum="c4db9bfee67b9fbc5576d88fc6c679e6" name="tests/mysqlnd_ms_set_qos_gtid_lost_connection.phpt" role="test" />
+   <file md5sum="b98692e5e6232ded5a5533c1d2a2ef39" name="tests/mysqlnd_ms_set_qos_gtid_sql_error2.phpt" role="test" />
+   <file md5sum="86d316dd973d034271383c074feee96f" name="tests/mysqlnd_ms_set_qos_gtid_sql_error.phpt" role="test" />
+   <file md5sum="5d41d59e045fc2adc156f3d2294b8e43" name="tests/mysqlnd_ms_set_qos_gtid_sql_parsing2.phpt" role="test" />
+   <file md5sum="c9a45c6985d07fa88e0465a425ba2436" name="tests/mysqlnd_ms_set_qos_gtid_sql_parsing.phpt" role="test" />
+   <file md5sum="ce4ebae08dce8da4b15d919074667808" name="tests/mysqlnd_ms_set_qos_params.phpt" role="test" />
+   <file md5sum="44d3a13e49c19133555bea9825050c4a" name="tests/mysqlnd_ms_settings_connect_flags_invalid.phpt" role="test" />
+   <file md5sum="619ab6f629748626072cc15bda5cf683" name="tests/mysqlnd_ms_settings_connect_flags.phpt" role="test" />
+   <file md5sum="2484c003e450107bb5c75fc3565f56ad" name="tests/mysqlnd_ms_settings_default_lazy.phpt" role="test" />
+   <file md5sum="ec9ed7545374e12539725eddb5f13ac4" name="tests/mysqlnd_ms_settings_force_config.phpt" role="test" />
+   <file md5sum="c987645e25c36f03a5676473e2beca12" name="tests/mysqlnd_ms_settings_host_credentials_inherit.phpt" role="test" />
+   <file md5sum="1496e8041e931d07cea13d8ead627ae7" name="tests/mysqlnd_ms_settings_host_credentials_invalid_cont.phpt" role="test" />
+   <file md5sum="b27a1616f4ce325517d5eb44d9a4ded2" name="tests/mysqlnd_ms_settings_host_credentials_invalid.phpt" role="test" />
+   <file md5sum="e1c47145649cb3a7a45ec037c86143be" name="tests/mysqlnd_ms_settings_host_credentials.phpt" role="test" />
+   <file md5sum="e36c4826859251e78263835269bce2a5" name="tests/mysqlnd_ms_settings_host_credentials_types.phpt" role="test" />
+   <file md5sum="1f5ead58962204dfc48bae57dff0e506" name="tests/mysqlnd_ms_settings_ini_bool_false_aus.phpt" role="test" />
+   <file md5sum="2820872bd998daf7461231c26288514c" name="tests/mysqlnd_ms_settings_ini_bool_false_false.phpt" role="test" />
+   <file md5sum="52d5c56324f3f0f903ac4b345ab14938" name="tests/mysqlnd_ms_settings_ini_bool_false_off.phpt" role="test" />
+   <file md5sum="230ef9352ce5dada06f3c0cee8fd4476" name="tests/mysqlnd_ms_settings_ini_bool_false_zero.phpt" role="test" />
+   <file md5sum="a49288bb700d08f64b2156d0fc9ae001" name="tests/mysqlnd_ms_settings_ini_bool_true.phpt" role="test" />
+   <file md5sum="0105506513ccf9135575b938b62d82a0" name="tests/mysqlnd_ms_settings_ini_file_invalid.phpt" role="test" />
+   <file md5sum="aedffe7ff8fb2e6556d5b48ce3242e16" name="tests/mysqlnd_ms_settings_no_host.phpt" role="test" />
+   <file md5sum="85a90774f12dc1a4f6e34b4bac360d8b" name="tests/mysqlnd_ms_settings_no_json.phpt" role="test" />
+   <file md5sum="eab1684bbb8b944830658e7a457cd854" name="tests/mysqlnd_ms_settings_plugin_conf_false_aus.phpt" role="test" />
+   <file md5sum="6be3f4d003ee7c24da474b97a3d310c2" name="tests/mysqlnd_ms_settings_plugin_conf_false_false.phpt" role="test" />
+   <file md5sum="1ff43c15fb5c11b43511eb34ca9180f7" name="tests/mysqlnd_ms_settings_plugin_conf_false_off.phpt" role="test" />
+   <file md5sum="e77fb249bdd52bd28accd47941c58079" name="tests/mysqlnd_ms_settings_plugin_conf_false_zero.phpt" role="test" />
+   <file md5sum="afd655d9d037c04fc8f5a7052b84c5b4" name="tests/mysqlnd_ms_settings_plugin_conf_true_empty.phpt" role="test" />
+   <file md5sum="06587554218673521985f83d941ee717" name="tests/mysqlnd_ms_settings_unknown_section_force_config.phpt" role="test" />
+   <file md5sum="e5363f62ca15098d5efee5f6d01591cc" name="tests/mysqlnd_ms_settings_unknown_section.phpt" role="test" />
+   <file md5sum="04fa43c1dec77f1d04093884b1116592" name="tests/mysqlnd_ms_simple.phpt" role="test" />
+   <file md5sum="09b5ef160b35f67751a14dc7a64f5be1" name="tests/mysqlnd_ms_slave_unreachable_random_once.phpt" role="test" />
+   <file md5sum="a6b33fe67f3bc4663cce4e46c34d6287" name="tests/mysqlnd_ms_slave_unreachable_random.phpt" role="test" />
+   <file md5sum="66360f64efa1e8020073ae188a71db8f" name="tests/mysqlnd_ms_slave_unreachable_rr.phpt" role="test" />
+   <file md5sum="c77f60928cd3d62e212fc3fc80a81339" name="tests/mysqlnd_ms_slave_unreachable_user.phpt" role="test" />
+   <file md5sum="9af97c5077d0828e0f81da83631ee077" name="tests/mysqlnd_ms_sql_hints.phpt" role="test" />
+   <file md5sum="a93e30dcefa127f556ef9496f49cece8" name="tests/mysqlnd_ms_stat.phpt" role="test" />
+   <file md5sum="2633585ebf6ffa54ff4176379773e0ec" name="tests/mysqlnd_ms_table_assorted_slave.phpt" role="test" />
+   <file md5sum="a0e83c19123ef79cbcebfb612b815868" name="tests/mysqlnd_ms_table_basics.phpt" role="test" />
+   <file md5sum="458f3b73236352ea0d89de518c189be8" name="tests/mysqlnd_ms_table_db_detection.phpt" role="test" />
+   <file md5sum="e1565611b4938924f77828563be12c17" name="tests/mysqlnd_ms_table_dual.phpt" role="test" />
+   <file md5sum="14a81f42ab6d693c5718bcc5c0fe6162" name="tests/mysqlnd_ms_table_evaluation_order.phpt" role="test" />
+   <file md5sum="d121a6a4151e50388509b2bb67798d3b" name="tests/mysqlnd_ms_table_evaluation_order_qualified_first.phpt" role="test" />
+   <file md5sum="2cbeb0964243f0f4f02e9abcb20ddd8d" name="tests/mysqlnd_ms_table_master_no_match_random_once.phpt" role="test" />
+   <file md5sum="e783defa0642c891e8fa16793239e588" name="tests/mysqlnd_ms_table_master_no_match_random.phpt" role="test" />
+   <file md5sum="3803456bfb894e2502ccfd3dd58e7fe6" name="tests/mysqlnd_ms_table_master_no_match_rr.phpt" role="test" />
+   <file md5sum="f7b1196d156801a6f43ead35f60314a8" name="tests/mysqlnd_ms_table_master_ref_slave_rr.phpt" role="test" />
+   <file md5sum="39f4777eb6241aba59a5a111c6a1f5ba" name="tests/mysqlnd_ms_table_parser10.phpt" role="test" />
+   <file md5sum="76874913bf0af475a30ff53886d572ae" name="tests/mysqlnd_ms_table_parser11.phpt" role="test" />
+   <file md5sum="ab9d9de464803434438927a587bd429b" name="tests/mysqlnd_ms_table_parser12.phpt" role="test" />
+   <file md5sum="0b24f3c06a856496d6d0e0717659f4e5" name="tests/mysqlnd_ms_table_parser13.phpt" role="test" />
+   <file md5sum="3633477fe07f11ca051c1914decc4b69" name="tests/mysqlnd_ms_table_parser14.phpt" role="test" />
+   <file md5sum="85b2c26ffc1582901f0fc7d54987a428" name="tests/mysqlnd_ms_table_parser15.phpt" role="test" />
+   <file md5sum="c13efeb41cdd40054da528273ea828a5" name="tests/mysqlnd_ms_table_parser16.phpt" role="test" />
+   <file md5sum="ebe3b5390e6cd05fc2c7933c7defbbb6" name="tests/mysqlnd_ms_table_parser17.phpt" role="test" />
+   <file md5sum="ebc70dda40642a5f257c2ede2edb5826" name="tests/mysqlnd_ms_table_parser18.phpt" role="test" />
+   <file md5sum="3b455571a91e28fef7cf7b87c23d0a62" name="tests/mysqlnd_ms_table_parser19.phpt" role="test" />
+   <file md5sum="240c66d5e481d96f32f907fa64d0835e" name="tests/mysqlnd_ms_table_parser1.phpt" role="test" />
+   <file md5sum="be654076509425b0e071278cbbf2ae74" name="tests/mysqlnd_ms_table_parser20.phpt" role="test" />
+   <file md5sum="6822506158a2a9cd3d24e0ccb5eba3c9" name="tests/mysqlnd_ms_table_parser21.phpt" role="test" />
+   <file md5sum="2dc7c93c7ebe67e34455796b0e715e26" name="tests/mysqlnd_ms_table_parser22.phpt" role="test" />
+   <file md5sum="0cecda8c302cf3257200799995a70d97" name="tests/mysqlnd_ms_table_parser23.phpt" role="test" />
+   <file md5sum="a46142870cc8827f6558a9c17cdeac89" name="tests/mysqlnd_ms_table_parser24.phpt" role="test" />
+   <file md5sum="b4578a2d834c0f62f822c97502632bc5" name="tests/mysqlnd_ms_table_parser25.phpt" role="test" />
+   <file md5sum="931ad6f2f605ee0587d901331120cddd" name="tests/mysqlnd_ms_table_parser26.phpt" role="test" />
+   <file md5sum="0d681e6e8cbf7c255f5b4afbecca3064" name="tests/mysqlnd_ms_table_parser27.phpt" role="test" />
+   <file md5sum="0b544f376a6ef52e393342646d1edf06" name="tests/mysqlnd_ms_table_parser28.phpt" role="test" />
+   <file md5sum="3e81f5b7f9bdc8221dd233c65ad7ecf3" name="tests/mysqlnd_ms_table_parser29.phpt" role="test" />
+   <file md5sum="fa4e95dafe16a473adebf773e3b592b6" name="tests/mysqlnd_ms_table_parser2.phpt" role="test" />
+   <file md5sum="6a685cf6ba30827fd923db0007d4f993" name="tests/mysqlnd_ms_table_parser3.phpt" role="test" />
+   <file md5sum="5fb98eed4b2a086734321bc26094612a" name="tests/mysqlnd_ms_table_parser4.phpt" role="test" />
+   <file md5sum="a3ed558028cd9857811b0467620f276b" name="tests/mysqlnd_ms_table_parser5.phpt" role="test" />
+   <file md5sum="6f4bdedef92b9c30709a0890294d4e22" name="tests/mysqlnd_ms_table_parser6.phpt" role="test" />
+   <file md5sum="e066175992a0f592015898174a948cab" name="tests/mysqlnd_ms_table_parser7.phpt" role="test" />
+   <file md5sum="32e268d829f1ff2ea8473bb4762069ce" name="tests/mysqlnd_ms_table_parser8.phpt" role="test" />
+   <file md5sum="d0b4ba45714a5375cfa8f71730598e02" name="tests/mysqlnd_ms_table_parser9.phpt" role="test" />
+   <file md5sum="5a6657904eccabff2da3b03da8cad1df" name="tests/mysqlnd_ms_table_parser.phpt" role="test" />
+   <file md5sum="497683202c6ab128784f1be6d7392f9f" name="tests/mysqlnd_ms_table_rule_empty_pattern_cont_ro.phpt" role="test" />
+   <file md5sum="c62af5522237ec78f0e173ab7ce1f56d" name="tests/mysqlnd_ms_table_rule_empty_pattern_cont_r.phpt" role="test" />
+   <file md5sum="e66526c3fcece6d5b784881f8b44cb20" name="tests/mysqlnd_ms_table_rule_empty_pattern_cont_rr.phpt" role="test" />
+   <file md5sum="d59c4c815965ca434c97a382cfcf37fd" name="tests/mysqlnd_ms_table_rule_empty_pattern.phpt" role="test" />
+   <file md5sum="890c9f38effbe971e68caebf184c2cfa" name="tests/mysqlnd_ms_table_rule_empty_random_once.phpt" role="test" />
+   <file md5sum="e7beccd5edf97f9a066c5a73799cda32" name="tests/mysqlnd_ms_table_rule_empty_random.phpt" role="test" />
+   <file md5sum="4fbb7d3e0645f15909b275523b05609d" name="tests/mysqlnd_ms_table_rule_empty_rr.phpt" role="test" />
+   <file md5sum="0ce68365e4534afcd7d535dbe0f33dc5" name="tests/mysqlnd_ms_table_rule_master_empty_random_once.phpt" role="test" />
+   <file md5sum="fde8a4391ee96577ddaf1af0c25a853e" name="tests/mysqlnd_ms_table_rule_master_empty_random.phpt" role="test" />
+   <file md5sum="1ad3bba4d01b9c03e08b871b5580c338" name="tests/mysqlnd_ms_table_rule_master_empty_rr.phpt" role="test" />
+   <file md5sum="3f672dc77e918830514eecbef81e25eb" name="tests/mysqlnd_ms_table_rule_numeric.phpt" role="test" />
+   <file md5sum="4d1c526c3b31c6a07e871be2d8a2e252" name="tests/mysqlnd_ms_table_rule_slave_empty_random_once.phpt" role="test" />
+   <file md5sum="c5769beba3fb2289e3c3dd688627bae5" name="tests/mysqlnd_ms_table_rule_slave_empty_random.phpt" role="test" />
+   <file md5sum="f64a63d0b85d62416265a4ab655701b0" name="tests/mysqlnd_ms_table_rule_slave_empty_rr.phpt" role="test" />
+   <file md5sum="44b6c65b26a7f62fe834e8afecfd66de" name="tests/mysqlnd_ms_table_rule_twice2.phpt" role="test" />
+   <file md5sum="f3c9cadaad6cd089578e35a187b3b2e6" name="tests/mysqlnd_ms_table_rule_twice.phpt" role="test" />
+   <file md5sum="ae6acddae6466d2c299631456c418d49" name="tests/mysqlnd_ms_table_rule_unknown_parameter.phpt" role="test" />
+   <file md5sum="0f788639e30cf2297cb065c99d140119" name="tests/mysqlnd_ms_table_slave_no_match_random_once.phpt" role="test" />
+   <file md5sum="52b11f3a4663bc09821f313879d24c64" name="tests/mysqlnd_ms_table_slave_no_match_random.phpt" role="test" />
+   <file md5sum="2ee5349dfca58b6d62f8f122521ce528" name="tests/mysqlnd_ms_table_slave_no_match_rr.phpt" role="test" />
+   <file md5sum="d10e11c0e2bee7f1e7b7756870dc8764" name="tests/mysqlnd_ms_table_slave_ref_master_random.phpt" role="test" />
+   <file md5sum="88ede2d21b532b63724a9aba62f1bb27" name="tests/mysqlnd_ms_table_slave_rr.phpt" role="test" />
+   <file md5sum="5cba92281f77ec7e701ced1dfefcd900" name="tests/mysqlnd_ms_table_sql_hint.phpt" role="test" />
+   <file md5sum="298af755d5024311776f7f8cfb4fd61b" name="tests/mysqlnd_ms_table_undefined_master_in_rule_lazy.phpt" role="test" />
+   <file md5sum="5b7eeedf05a94d1eb2cee415c92beb4d" name="tests/mysqlnd_ms_table_undefined_master_in_rule.phpt" role="test" />
+   <file md5sum="a6790c6aca216dca278a2b7a52366fc4" name="tests/mysqlnd_ms_table_undefined_slave_in_rule_lazy.phpt" role="test" />
+   <file md5sum="6bb421ff47a022dc3c25aa2c904726ad" name="tests/mysqlnd_ms_table_undefined_slave_in_rule.phpt" role="test" />
+   <file md5sum="87feafa3ec2d09293dfc87ed8132c55b" name="tests/mysqlnd_ms_table_unknown_parameter2.phpt" role="test" />
+   <file md5sum="3da206d5884dbe67b11ec85a2439af7a" name="tests/mysqlnd_ms_table_unknown_parameter3.phpt" role="test" />
+   <file md5sum="b5fd9adcc51b292fbc4674e21859da8d" name="tests/mysqlnd_ms_table_unknown_parameter.phpt" role="test" />
+   <file md5sum="8f1e455a6d0c2e117e3cf8ad4ee4700c" name="tests/mysqlnd_ms_table_write_non_unique.phpt" role="test" />
+   <file md5sum="2fb3900b37cda4092ad65176ee91a771" name="tests/mysqlnd_ms_thread_id.phpt" role="test" />
+   <file md5sum="71b91f5898c393e367b18426309a900e" name="tests/mysqlnd_ms_tmp_double_error.phpt" role="test" />
+   <file md5sum="4422f649c82a583443f7df03c8710cfc" name="tests/mysqlnd_ms_trx_stickiness_master_random_once.phpt" role="test" />
+   <file md5sum="fb8df1ecc9b242605763cfa58ba3eb95" name="tests/mysqlnd_ms_trx_stickiness_master_random.phpt" role="test" />
+   <file md5sum="5d49536eb19158262949d01e8513c67f" name="tests/mysqlnd_ms_trx_stickiness_master_rr.phpt" role="test" />
+   <file md5sum="adbc3ecf49ba24641dd6f8981bcf5ec8" name="tests/mysqlnd_ms_trx_stickiness_master_user.phpt" role="test" />
+   <file md5sum="381626f8725bb6dfa4103a27f12272dc" name="tests/mysqlnd_ms_unknown_filter2.phpt" role="test" />
+   <file md5sum="b371096a059044053234e02595f62a0d" name="tests/mysqlnd_ms_unknown_filter3.phpt" role="test" />
+   <file md5sum="1d663f798482799b4d7e0266240f9c2d" name="tests/mysqlnd_ms_unknown_filter4.phpt" role="test" />
+   <file md5sum="9354fccc0f16d1fcb6ffbe87f3ad0144" name="tests/mysqlnd_ms_unknown_filter5.phpt" role="test" />
+   <file md5sum="1cd010c9ae8274a851a8dc5d8de93bbb" name="tests/mysqlnd_ms_unknown_filter6.phpt" role="test" />
+   <file md5sum="42028ee31440284461045fc2d7dce6e6" name="tests/mysqlnd_ms_unknown_filter_cont_ro.phpt" role="test" />
+   <file md5sum="a99f1d9ece26d6b47dc90590d8c29a35" name="tests/mysqlnd_ms_unknown_filter_cont_r.phpt" role="test" />
+   <file md5sum="df2c713c840b907b155530641c1a91f1" name="tests/mysqlnd_ms_unknown_filter_cont_rr.phpt" role="test" />
+   <file md5sum="2cf07ce1f9f916eed1d87962a8252f4e" name="tests/mysqlnd_ms_unknown_filter.phpt" role="test" />
+   <file md5sum="d6805097b9ef86c6574b5120a2087039" name="tests/mysqlnd_ms_use_result2.phpt" role="test" />
+   <file md5sum="93dd11ed22fdac0a3526d367706a9429" name="tests/mysqlnd_ms_use_result.phpt" role="test" />
+   <file md5sum="33297e436964df26ce11f33d1b94bcb1" name="tests/mysqlnd_ms_warning_count.phpt" role="test" />
+   <file md5sum="5501a9c7e2ba2ac24dafc2c39df01ec5" name="tests/README" role="doc" />
+   <file md5sum="76d912e1b7f7a92211ceb2d8fd7bf012" name="tests/skipif.inc" role="test" />
+   <file md5sum="6e71ca9b65692ec96a50f1e4e607c50b" name="tests/util.inc" role="test" />
+   <file md5sum="7a6f47fc0131449fd8a2bfae822f7057" name="CHANGES" role="src" />
+   <file md5sum="0f0d91e428d79d03144c65ff693d1a0e" name="config.m4" role="src" />
+   <file md5sum="c45aa096c420cd230ace02d5ff3bad7d" name="config.w32" role="src" />
+   <file md5sum="a7558b9d7b44323ebeecf42e0c190822" name="CREDITS" role="src" />
+   <file md5sum="cb564efdf78cce8ea6e4b5a4f7c05d97" name="LICENSE" role="src" />
+   <file md5sum="cbb41923d2c8eb6a48ea646194d10f89" name="mf_wcomp.c" role="src" />
+   <file md5sum="c07130491fe84cf9d84129e5cf8e5f13" name="mysqlnd_ms.c" role="src" />
+   <file md5sum="cba1164cac07450ac80c45d180ad1512" name="mysqlnd_ms_config_json.c" role="src" />
+   <file md5sum="2e2421f8c7b0b11293e002f5dfde7769" name="mysqlnd_ms_config_json.h" role="src" />
+   <file md5sum="52ae34aee55e58403e83637591b723f2" name="mysqlnd_ms_enum_n_def.h" role="src" />
+   <file md5sum="acab1e52fe7ba44ed518674f93cccd07" name="mysqlnd_ms_filter_qos.c" role="src" />
+   <file md5sum="ff5baa45741b39e7e81c245c89387207" name="mysqlnd_ms_filter_qos.h" role="src" />
+   <file md5sum="8516c3396ba377a5982ba9e7c8b1ddda" name="mysqlnd_ms_filter_random.c" role="src" />
+   <file md5sum="6003692db95b75640deaa881f3ed5672" name="mysqlnd_ms_filter_random.h" role="src" />
+   <file md5sum="7606011456738342d7e22c5fdadd972d" name="mysqlnd_ms_filter_round_robin.c" role="src" />
+   <file md5sum="35371fa27ff93c99655972dea8e43587" name="mysqlnd_ms_filter_round_robin.h" role="src" />
+   <file md5sum="a51e91671281211c3453ae5631424b04" name="mysqlnd_ms_filter_table_partition.c" role="src" />
+   <file md5sum="d5bb64a758514929aeaaa4d62c87374e" name="mysqlnd_ms_filter_table_partition.h" role="src" />
+   <file md5sum="8f30946a557b3d30abe24dce046f0694" name="mysqlnd_ms_filter_user.c" role="src" />
+   <file md5sum="89f5bd837556b8dbb729fcfc7a5758f5" name="mysqlnd_ms_filter_user.h" role="src" />
+   <file md5sum="c615242579a08d3d938490c41fb9259c" name="mysqlnd_ms.h" role="src" />
+   <file md5sum="f64e4f2f25a46d1a49a041dde4d38342" name="mysqlnd_ms_switch.c" role="src" />
+   <file md5sum="8d397efe6d1ff4aef5a2bc9dbd81b161" name="mysqlnd_ms_switch.h" role="src" />
+   <file md5sum="a5a338989c975798a89c604b0957fc21" name="mysqlnd_qp.h" role="src" />
+   <file md5sum="c47c21db5b59cd8b6286a57a3e0aaf00" name="mysqlnd_query_lexer.c" role="src" />
+   <file md5sum="cdeb83128c0d1c8982add794dca62ae0" name="mysqlnd_query_lexer.flex" role="src" />
+   <file md5sum="6674be80974feeeecf9d8974564c4611" name="mysqlnd_query_lexer.lex.h" role="src" />
+   <file md5sum="dae3c25883b018ae4c8b0ea58d90d8d0" name="mysqlnd_query_parser.c" role="src" />
+   <file md5sum="4b85b6a1266040c0f2242c68d67b3d3d" name="mysqlnd_query_parser.grammar" role="src" />
+   <file md5sum="fc1ad43d11cbf2d3b82160db284fcedd" name="mysqlnd_query_parser.h" role="src" />
+   <file md5sum="2f71458d407330731ab2af7822a4b0f0" name="package.xml" role="src" />
+   <file md5sum="ac812a6646b31da33b65ae4b8343dd14" name="php_mysqlnd_ms.c" role="src" />
+   <file md5sum="2d1bbc810db5b9f5c9cd164bdb11c133" name="php_mysqlnd_ms.h" role="src" />
+   <file md5sum="9f40be9ee4a44df9e30cd64ab1b536f7" name="README" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.6-dev</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>mysqlnd_ms</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>1.3.0</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2012-01-24</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+New feature release with QoS and QC integration
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.1</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-01-24</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+beta release
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2011-12-14</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Global Transaction ID injection and quality-of-service concept
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.2</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-11-04</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed the build for 5.4. Declaring the code as stable. Refer to CHANGES for more information
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.1</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-10-11</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+The same as 1.1.0 code-wise. A note added to config.m4 for an experimental and currently unsupported option
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-09-29</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Numerous feature enhancements. Refer to CHANGES for more information
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-04-21</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Fixed debug build (credits to Vladimir Getmanshchuk). All 1.0 features implemented.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <date>2011-04-20</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+Initial package release. All 1.0 features implemented.
+   </notes>
+  </release>
+ </changelog>
+</package>

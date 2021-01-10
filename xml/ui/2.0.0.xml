@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>UI</name>
+ <channel>pecl.php.net</channel>
+ <summary>UI API</summary>
+ <description>An OO wrapper around libui</description>
+ <lead>
+  <name>Joe Watkins</name>
+  <user>krakjoe</user>
+  <email>krakjoe@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2016-11-02</date>
+ <time>06:10:15</time>
+ <version>
+  <release>2.0.0</release>
+  <api>2.0.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+Refactor of Brushes:
+  UI\Draw\Brush
+  abstract UI\Draw\Brush\Gradient
+  UI\Draw\Brush\LinearGradient
+  UI\Draw\Brush\RadialGradient
+UI\Draw\Color Improvements:
+  Direct access to channels by name (r, g, b, a) as properties, (case insensitive)
+  Allow the use of RRGGBBAA integers in place of UI\Draw\Color
+UI\Draw\Path Improvements:
+  Use Path::Winding as default mode
+UI\Draw\Pen Improvements:
+  Allow UI\Draw\Color (or RRGGBBAA integer) in place of UI\Draw\Brush (fill, stroke)
+UI\Executor:
+  Scheduled executor service for animations superceeds and replaces App::onTick mechanism
+UI\App:
+  Removed, it should be obvious that run/quit are global functions
+UI\Window:
+  Fixed onClosing
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="8be883c3225dc537046671289054ff2f" name="examples/histogram.php" role="doc" />
+   <file md5sum="21a5cacaf824a6b528be681d632d4e98" name="examples/gallery.php" role="doc" />
+   <file md5sum="f64799e0b110e62b431f18a8788ea5c1" name="examples/snake.php" role="doc" />
+   <file md5sum="964d0ce5d3c62e28bf0b85e4926782d3" name="examples/starfield.php" role="doc" />
+   <file md5sum="8286c48545a7968c8f4ca3d618740cd8" name="classes/common.h" role="src" />
+   <file md5sum="e8b6f4f99c43e17d7dafdc7f167b678c" name="classes/area.c" role="src" />
+   <file md5sum="0cc8705422f6c35cf866fa0b2efd3bea" name="classes/area.h" role="src" />
+   <file md5sum="905ad8a0f9e28cac15d80663155eaa56" name="classes/box.c" role="src" />
+   <file md5sum="0c2c37757d0693f3fd0d82d022d97cfb" name="classes/box.h" role="src" />
+   <file md5sum="7cad05c7305becd5bfbc0cf226df8ca6" name="classes/brush.c" role="src" />
+   <file md5sum="2d2e202a8e6f2fe9e25eb70a8406dacf" name="classes/brush.h" role="src" />
+   <file md5sum="f8940f7d572c9244f19156bc3e19283b" name="classes/button.c" role="src" />
+   <file md5sum="9186c873d0e1ef40a72a947a5025290c" name="classes/button.h" role="src" />
+   <file md5sum="9aa387c27e3c3317c8926aa21deb6aaa" name="classes/cbutton.c" role="src" />
+   <file md5sum="7a49ae2ba0a64e8833f3786ef1519da2" name="classes/cbutton.h" role="src" />
+   <file md5sum="21de5ff6dfb3e4ed5ad7537e8f6ff20f" name="classes/check.c" role="src" />
+   <file md5sum="182408c6b5f8dc5f735bd7ae88030c22" name="classes/check.h" role="src" />
+   <file md5sum="05007b9d2be45032ba848b51236174bf" name="classes/color.c" role="src" />
+   <file md5sum="33071f21bc3f090181f26b31cfada8b6" name="classes/color.h" role="src" />
+   <file md5sum="6e08dbb631ec839587c36b5fa3e4ce98" name="classes/combo.c" role="src" />
+   <file md5sum="3257ee444e211063262f9e744d951156" name="classes/combo.h" role="src" />
+   <file md5sum="14aea41a279f5a042dd4c18719fc7fa5" name="classes/control.c" role="src" />
+   <file md5sum="581d4edb5854ad3ac3f4ba35139b0c95" name="classes/control.h" role="src" />
+   <file md5sum="0bceba2089f78b79d7704e3a4f9a3c5c" name="classes/descriptor.c" role="src" />
+   <file md5sum="69cf9a1890757172e7ad9cf38afbc434" name="classes/descriptor.h" role="src" />
+   <file md5sum="9cc938cb7c751430d78dc0bd6812dbb1" name="classes/ecombo.c" role="src" />
+   <file md5sum="4240cbf623cff0c82a04b29e479e18fa" name="classes/ecombo.h" role="src" />
+   <file md5sum="8a214ff047629f0ab97860798356a997" name="classes/exceptions.c" role="src" />
+   <file md5sum="77c1abccae4039df5b1ab5c2041ed7bd" name="classes/exceptions.h" role="src" />
+   <file md5sum="0f1264e95d3f627e2d56bb3f35ac0af4" name="classes/executor.c" role="src" />
+   <file md5sum="f85723d69ac4ffc3a2fcbe5b5b37568c" name="classes/executor.h" role="src" />
+   <file md5sum="792a403de6451531a20d45772ef65015" name="classes/entry.c" role="src" />
+   <file md5sum="f525e8089c6f88a1d973976b87bb7e31" name="classes/entry.h" role="src" />
+   <file md5sum="e6afc67ab103f36c561ad8d39a95898c" name="classes/font.c" role="src" />
+   <file md5sum="f69cffb419d1c5e668c5398f2ea1cd56" name="classes/font.h" role="src" />
+   <file md5sum="863289f9935eb0de86f92a870cbe8e19" name="classes/form.c" role="src" />
+   <file md5sum="d85a5040335859ed74e721f2531cee07" name="classes/form.h" role="src" />
+   <file md5sum="e481c8da5015e73b3cb890c876c713a6" name="classes/grid.c" role="src" />
+   <file md5sum="1abaf2898283e854607487aeb02b9141" name="classes/grid.h" role="src" />
+   <file md5sum="f74095ce2a1db4e4aac22ec6d6277fe1" name="classes/group.c" role="src" />
+   <file md5sum="e749e171474cb74500aaaaee497cb880" name="classes/group.h" role="src" />
+   <file md5sum="c9c678a9dae76b9dbafc7c6fabf76bd9" name="classes/item.c" role="src" />
+   <file md5sum="1b2f7f74657e4d36c900bd5a4faf1734" name="classes/item.h" role="src" />
+   <file md5sum="a79a0f7fae16e9c3a4cd3a8dd627d849" name="classes/label.c" role="src" />
+   <file md5sum="545c33bc86deb3239a3a0fed24569cc0" name="classes/label.h" role="src" />
+   <file md5sum="d955bcd3e183229677501f1fe1336202" name="classes/layout.c" role="src" />
+   <file md5sum="7e55f149ae2a3b3f6acd7b9b0dfff9d3" name="classes/layout.h" role="src" />
+   <file md5sum="4a2ba6fe64b585af1ce776b74824a072" name="classes/matrix.c" role="src" />
+   <file md5sum="04d7435c277cc9d09312b6b07f6e2e9d" name="classes/matrix.h" role="src" />
+   <file md5sum="e466b92f3a385b82449dd2390d44e6e6" name="classes/menu.c" role="src" />
+   <file md5sum="c3e85298660af327b08de76731fa2a3f" name="classes/menu.h" role="src" />
+   <file md5sum="f965443854f21a6cfdb36aa2ccd8cf0e" name="classes/multi.c" role="src" />
+   <file md5sum="e0447a037d76bb0ccede44ea85507fd1" name="classes/multi.h" role="src" />
+   <file md5sum="f326c781e0d8ca7075f8a1387a1dba41" name="classes/path.c" role="src" />
+   <file md5sum="056469aefe9dc2352a5ffcd6e5592672" name="classes/path.h" role="src" />
+   <file md5sum="ae94b1c4798533cf516b79170939b1e2" name="classes/pen.c" role="src" />
+   <file md5sum="80ab86fad4ad2810a347ea8397ce1ecf" name="classes/pen.h" role="src" />
+   <file md5sum="a91e6fad0713a1f11cf6fa28ec9cc455" name="classes/picker.c" role="src" />
+   <file md5sum="ce7b9c5f09c21de462e6e85cf5b8be10" name="classes/picker.h" role="src" />
+   <file md5sum="f1a700d108750f01223cba45c7e2407b" name="classes/point.c" role="src" />
+   <file md5sum="7a6043c1853d079c4bc8802fc79fb737" name="classes/point.h" role="src" />
+   <file md5sum="6e07699d57e86adebde14fd79efe2ff5" name="classes/progress.c" role="src" />
+   <file md5sum="efc27c733e2651e59b0d3f894316bca8" name="classes/progress.h" role="src" />
+   <file md5sum="385bf7fd385c6a355a482ce042682246" name="classes/radio.c" role="src" />
+   <file md5sum="ef032adea87a87ac547dc8de47d68a64" name="classes/radio.h" role="src" />
+   <file md5sum="e0c437d7b083b5dc11f63cc0b1813193" name="classes/separator.c" role="src" />
+   <file md5sum="f9ad7b96bf13684c6cfa90b85e6c425b" name="classes/separator.h" role="src" />
+   <file md5sum="885f30c8c1d348944d45577871144d46" name="classes/size.c" role="src" />
+   <file md5sum="c5c930c3d1e866a1242ddcaaf6577973" name="classes/size.h" role="src" />
+   <file md5sum="41b6fc251c8cb86c0a37db20015e2c6a" name="classes/slider.c" role="src" />
+   <file md5sum="f725031baa2c02a4516669255432ddec" name="classes/slider.h" role="src" />
+   <file md5sum="dddf7bdff3fe250994343ccf316cab8a" name="classes/spin.c" role="src" />
+   <file md5sum="de2481c8213af29cc17d2f21648b598d" name="classes/spin.h" role="src" />
+   <file md5sum="6eb3a1c5d6ab719dd835872ea3e8becd" name="classes/stroke.c" role="src" />
+   <file md5sum="53e8f9648b2cd9bdbf28ca41c710b882" name="classes/stroke.h" role="src" />
+   <file md5sum="4ca67f85e8f17d19ecd276151e894c79" name="classes/tab.c" role="src" />
+   <file md5sum="2af7223e614f2cfbed575133d7177086" name="classes/tab.h" role="src" />
+   <file md5sum="eade3b44a9dddd15ddbb7c12bcc9cdf6" name="classes/window.c" role="src" />
+   <file md5sum="3c96e59a5b9b6759487daeb378a3f02c" name="classes/window.h" role="src" />
+   <file md5sum="6c6b35d7e834540f9334f853e2955056" name="config.m4" role="src" />
+   <file md5sum="e6048c1ed550d66968d47cbcf5d1b94c" name="config.w32" role="src" />
+   <file md5sum="51e58269662201ed9eb7c19566e2ea81" name="LICENSE" role="doc" />
+   <file md5sum="2104ba764b31cbe41547e175f8ab1ae9" name="ui.c" role="src" />
+   <file md5sum="b5e08b70bde022284c3e1e9aad64bb46" name="php_ui.h" role="src" />
+   <file md5sum="c0347a8dd69384d0be1f0c8f46d04025" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0RC5</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>ui</providesextension>
+ <extsrcrelease />
+</package>

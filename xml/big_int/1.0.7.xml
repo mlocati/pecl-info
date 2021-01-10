@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>big_int</name>
+  <summary>big_int library provides a set of functions for calculations with arbitrary length integers and bitsets</summary>
+  <description>Functions from this package are useful for number theory
+applications. For example, in two-keys cryptography.
+
+See /tests/RSA.php in the package for example of simple
+implementation of RSA-like cryptoalgorithm.
+See http://pear.php.net/packages/Crypt_RSA/ project for
+more complex implementation of RSA-like crypto, which
+supports key generating, encrypting/decrypting, generating
+and validating of digital sign.
+
+The package has many bitset functions, which allow to work
+with arbitrary length bitsets.
+
+This package is much faster than bundled into PHP BCMath
+and consists almost all functions, which are implemented
+in PHP GMP extension, but it needn't any external libraries.</description>
+  <maintainers>
+    <maintainer>
+      <user>valyala</user>
+      <name>Alexander Valyalkin</name>
+      <email>valyala@gmail.com</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>1.0.7</version>
+    <date>2005-05-30</date>
+    <license>see LICENSE</license>
+    <state>stable</state>
+    <notes>+ improved memory management in big_int library (see big_int_create() and big_int_realloc() functions)
+* fixed bug int big_int_or(), big_int_add(), big_int_xor() and big_int_andnot(). These functions returns wrong result if start position != 0
+* fixed bug in big_int_rand() function. Sometimes it returns unexpected (negative) numbers
+* fixed number overflow bug in big_int_create() and big_int_realloc() functions
+* fixed compilation bug under FreeBSD 4 (it doesn't have ANSI C99 stdint.h header file) ( thanks to HitMan http://webpark.ru )
+* fixed compilation bug under unix, which fails building bundled into PHP package
+* windows-style carriage returns \r\n replaced by unix-style \n in all files, except MSVC-related *.dsp, *.dsw, *.sln &amp; *.vcproj</notes>
+    <filelist>
+      <file role="doc" md5sum="d2a24e53bc9b21e0512a44befb89be06" name="CREDITS"/>
+      <file role="doc" md5sum="cd12cd36fccbdbfb3fbd92f221d7c614" name="INSTALL"/>
+      <file role="doc" md5sum="e4d987e8f91dfafa1ec69064f7329f31" name="LICENSE"/>
+      <file role="doc" md5sum="e6715a204106e6f3fea38a42ef6885bc" name="README"/>
+      <file role="doc" md5sum="409b3133e74cec1888a49b3684bedfd5" name="docs/index.html"/>
+      <file role="src" md5sum="3424f85ee86803df4c568ba23d3e0e76" name="config.m4"/>
+      <file role="src" md5sum="6bd7889ee2c7ff64c34dc5ff7f191fd6" name="config.w32"/>
+      <file role="src" md5sum="53a7ea1233971bf20772b3079ac80019" name="php_big_int.dsw"/>
+      <file role="src" md5sum="50da1c7a85c3c04bbbe098dafaf08891" name="php_big_int.dsp"/>
+      <file role="src" md5sum="49c43457b61253ed64eaa811e70a2bd5" name="php_big_int.sln"/>
+      <file role="src" md5sum="c5a4679877b838478042f34e9bc7a3ad" name="php_big_int.vcproj"/>
+      <file role="src" md5sum="f9f62ba3d9eed7bab6c6e88e5876d6a2" name="php_big_int.c"/>
+      <file role="src" md5sum="1a9b6c411a2cfb17bffc186fd6d134d0" name="php_big_int.h"/>
+      <file role="test" md5sum="da9d5549b5e1e1ee15b8e1c3f373d63b" name="tests/bitset.php"/>
+      <file role="test" md5sum="4c4d9274359c87d8f93064c97b181883" name="tests/example.php"/>
+      <file role="test" md5sum="b97059f6cc5d3e2fe1841502f5ade05f" name="tests/rand.php"/>
+      <file role="test" md5sum="46cc5f9c0bec144200590f7707458ff0" name="tests/RSA.php"/>
+      <file role="test" md5sum="aa8c957611921e78f68237d836b18017" name="tests/std_header.php"/>
+      <file role="doc" md5sum="82a9b7fce3241a3ee4cad169d9f39f8f" name="libbig_int/CREDITS"/>
+      <file role="doc" md5sum="e4d987e8f91dfafa1ec69064f7329f31" name="libbig_int/LICENSE"/>
+      <file role="src" md5sum="d027371d481645accc96d3e9cd013558" name="libbig_int/include/basic_funcs.h"/>
+      <file role="src" md5sum="01eb3ec4d5aa76b7bf18e6ccb66e2284" name="libbig_int/include/big_int.h"/>
+      <file role="src" md5sum="fa5e05aaefe2cb2077e54772f37f4c6a" name="libbig_int/include/big_int_full.h"/>
+      <file role="src" md5sum="37e1a1295feb0d800a0ce653c369412f" name="libbig_int/include/bitset_funcs.h"/>
+      <file role="src" md5sum="5a54063e3e9970ae3f119476a2bfc679" name="libbig_int/include/get_bit_length.h"/>
+      <file role="src" md5sum="be1b88cf388b10d80b063161e57713ee" name="libbig_int/include/low_level_funcs.h"/>
+      <file role="src" md5sum="3036439c5a09deb32c4917e7417a85d6" name="libbig_int/include/memory_manager.h"/>
+      <file role="src" md5sum="866baca608597f56498510687f950a01" name="libbig_int/include/modular_arithmetic.h"/>
+      <file role="src" md5sum="baa2438ff45829461beda67c192fa6b7" name="libbig_int/include/number_theory.h"/>
+      <file role="src" md5sum="2e4fd77c5b795bab75959862a2cd0a08" name="libbig_int/include/service_funcs.h"/>
+      <file role="src" md5sum="aaaed7301a33ef75fee3439d2dc1b2eb" name="libbig_int/include/str_funcs.h"/>
+      <file role="src" md5sum="042da26fe23365cebaced59703f8d6f0" name="libbig_int/include/str_types.h"/>
+      <file role="src" md5sum="52c6172b2c9107ee36c0aeab718a32bb" name="libbig_int/src/basic_funcs.c"/>
+      <file role="src" md5sum="8fe20f7f53d30bb9dbec32be9659c1b9" name="libbig_int/src/bitset_funcs.c"/>
+      <file role="src" md5sum="35a2bc32f3d774e919856722eca5f290" name="libbig_int/src/memory_manager.c"/>
+      <file role="src" md5sum="95e4521f20f385ac452c98be2c77e2af" name="libbig_int/src/modular_arithmetic.c"/>
+      <file role="src" md5sum="e6abe80cea9d5ad62920cb6adfe18ee2" name="libbig_int/src/number_theory.c"/>
+      <file role="src" md5sum="2e8279c30cfdd665ee7f139427bf8614" name="libbig_int/src/service_funcs.c"/>
+      <file role="src" md5sum="57c0844a70b458ace545dbdf5fdcd92c" name="libbig_int/src/str_funcs.c"/>
+      <file role="src" md5sum="547b0915b80e6bf2d2c86ae410076f93" name="libbig_int/src/low_level_funcs/add.c"/>
+      <file role="src" md5sum="c2b76ba845f000c3bdd385590b0c81de" name="libbig_int/src/low_level_funcs/and.c"/>
+      <file role="src" md5sum="43e46955f7c77ad61face34ea62e3093" name="libbig_int/src/low_level_funcs/andnot.c"/>
+      <file role="src" md5sum="f973d60a5105efd6a1bce445c19a7184" name="libbig_int/src/low_level_funcs/cmp.c"/>
+      <file role="src" md5sum="df067569dc7461b1e8e745f5cf86e173" name="libbig_int/src/low_level_funcs/div.c"/>
+      <file role="src" md5sum="26acac7fb00ac538161dd71666cfac6b" name="libbig_int/src/low_level_funcs/mul.c"/>
+      <file role="src" md5sum="6abd4be9dd76b27e6a4807f45e2587e8" name="libbig_int/src/low_level_funcs/or.c"/>
+      <file role="src" md5sum="d85f6107d1dd67e30adf4aa3fc163dfd" name="libbig_int/src/low_level_funcs/sqr.c"/>
+      <file role="src" md5sum="27099cfe82b24435e8560936ee7662f9" name="libbig_int/src/low_level_funcs/sub.c"/>
+      <file role="src" md5sum="27167f0198a228e1e89d0a350dd7bf3d" name="libbig_int/src/low_level_funcs/xor.c"/>
+    </filelist>
+  </release>
+</package>

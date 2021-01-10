@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>wxwidgets</name>
+ <channel>pecl.php.net</channel>
+ <summary>Cross-platform widget toolkit.</summary>
+ <description>Wraps the wxWidgets library, which allows to write 
+ multi-platform desktop applications that make use of the native 
+ graphical components available to the different platforms.</description>
+ <lead>
+  <name>Mário Soares</name>
+  <user>seariver</user>
+  <email>seariver@gmail.com</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Jefferson González</name>
+  <user>jgmdev</user>
+  <email>jgmdev@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2014-03-09</date>
+ <time>22:46:16</time>
+ <version>
+  <release>3.0.0.1</release>
+  <api>3.0.0.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+* Added missing wxScrolledWindow methods by enabling wxScrolled, 
+  this fixes issue #30 and #32.
+* Enabled wxClipBoard::Get() and disabled gargbage collection of 
+  native_object on wxDataObject and its childs as wxClipBoard itself, 
+  which partially fixes issue #34.
+* Added verification of object parameter child types to allow method 
+  calls which where failing as described on issue #36. This also 
+  completely fixes issue #34, testing may be needed.
+* Updated README_MSW adding changes needed to prevent windows xp 
+  crashes as described on issue #37.
+* Enabled wxNonOwnedWindow::SetShape and fixed wxPrintDialog, 
+  wxPageSetupDialog inheritage.
+* Removed error messages that appeared when failing to call 
+  wxApp::OnInit and wxApp:OnExit.
+* Added proper type casting to wxMouseState.
+* Should fix and close #44 by doing proper type casting when calling 
+  wxKeyboarState methods from child classes.
+* Binded the missing wxAuiNotebookEvent event constants which closes #45.
+* Enabled more wxStyledTextCtrl methods. 
+* Enabled inheritance of wxStyledTextCtrl from wxTextEntry as 
+  enabled some more methods.
+* Some fixes to the reference and interface generator as 
+  simplification of chdir() calls.
+* Initial work to support wxInputStream::OnSysRead in order to be 
+  able to load images with the wxImage(wxInputStream) constructor.
+* Fixed 2 memory leaks, one related to wxEvtHandler::OnEvent and the 
+  other related to the creation of new objects.
+* Fixed memory leak caused by not uninitializing the properties 
+  member of classes like wxPoint when they were destroyed which 
+  closes #48, also modified code generator to only add the properties 
+  code when needed which made the source and library more clean.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="17ec0e832006e7e23fb3d72dd3f4cf74" name="includes/app.h" role="src" />
+   <file md5sum="5296203860d39a2bf1e07ffb9bed544b" name="includes/appmanagement.h" role="src" />
+   <file md5sum="2741acb95f608430dda9332406c8f38b" name="includes/aui.h" role="src" />
+   <file md5sum="14a0c84bd559f87d8daa245e67bcd234" name="includes/bookctrl.h" role="src" />
+   <file md5sum="dfa73da0f4c3e8508526cd06e3589ff4" name="includes/cfg.h" role="src" />
+   <file md5sum="da822cb08794313fd83b513d899d6e6c" name="includes/cmndlg.h" role="src" />
+   <file md5sum="b1b883aa2a25cf3c1785ae4a9887a63e" name="includes/common.h" role="src" />
+   <file md5sum="47a740989c2ad324894bd45ae99fd256" name="includes/containers.h" role="src" />
+   <file md5sum="5f7cc5bfae6f309637f1ba5f4d58190e" name="includes/ctrl.h" role="src" />
+   <file md5sum="b15a6858630ea223b63fdaa70850683b" name="includes/data.h" role="src" />
+   <file md5sum="459aba3764ab6b6c604fb74462907f40" name="includes/dc.h" role="src" />
+   <file md5sum="5b1fc85453856f0da201b9229d68bf22" name="includes/dnd.h" role="src" />
+   <file md5sum="e1d2f7d06c9770b3151b2ce045478180" name="includes/docview.h" role="src" />
+   <file md5sum="ba92b63c2bbc0e23a43f6fb614fc12fd" name="includes/dvc.h" role="src" />
+   <file md5sum="15061098cb2f98b6db0c046b24771389" name="includes/events.h" role="src" />
+   <file md5sum="a1849d14b7e5df8ec4ae5fee0da3d920" name="includes/file.h" role="src" />
+   <file md5sum="dd931ff267841f74dd2ef6df495103a5" name="includes/functions.h" role="src" />
+   <file md5sum="b79e6308f11887387949e84e717146c1" name="includes/gdi.h" role="src" />
+   <file md5sum="69c5c616451f85e5d5e0390b6d0dd74c" name="includes/grid.h" role="src" />
+   <file md5sum="3a2d986d90ac05ac9efdd3ae2173e31f" name="includes/help.h" role="src" />
+   <file md5sum="40e2b0c0b88a261c46ae3eeaccc1f2ef" name="includes/html.h" role="src" />
+   <file md5sum="5eb693af5a07bb5c46153a7f4d3cdd39" name="includes/logging.h" role="src" />
+   <file md5sum="b3576d966e55dd2ba2f758adce18d75d" name="includes/managedwnd.h" role="src" />
+   <file md5sum="c39514fd66e3898f2650e86cc47e76ea" name="includes/media.h" role="src" />
+   <file md5sum="dd43da2fef771ff93d6d813eff108950" name="includes/menus.h" role="src" />
+   <file md5sum="513333e51d2df34db42a8476944af5a8" name="includes/misc.h" role="src" />
+   <file md5sum="586887efd98b94cfa50566b9148cb70b" name="includes/miscwnd.h" role="src" />
+   <file md5sum="3cc9bcd9604e9e28eebacc692ce24bf6" name="includes/net.h" role="src" />
+   <file md5sum="178822f6e927b5acb9d08fa91ae91f52" name="includes/object_types.h" role="src" />
+   <file md5sum="e91c5a12271d23a1811e784eb806fcb4" name="includes/others.h" role="src" />
+   <file md5sum="aa84eb54575124c06d7c4feccf79def6" name="includes/pickers.h" role="src" />
+   <file md5sum="2294cd5ce3c0b7e62fd42606029f41a3" name="includes/printing.h" role="src" />
+   <file md5sum="84d814dc11cee44af8a884dbd0dd4c3d" name="includes/references.h" role="src" />
+   <file md5sum="d214fda115f8bd47ef3f0678c14e0eec" name="includes/ribbon.h" role="src" />
+   <file md5sum="7ecca7d9172e36642189f205b686775e" name="includes/richtext.h" role="src" />
+   <file md5sum="728e9663a74cf6b73bd7f47f1aa098aa" name="includes/rtti.h" role="src" />
+   <file md5sum="72e60f28d7dcb996a6f3317ad451b2e2" name="includes/stc.h" role="src" />
+   <file md5sum="1ab75dc84b8054b0d8cb134fca8aa80a" name="includes/streams.h" role="src" />
+   <file md5sum="6ee07879e2a027c72133be0cdb9a2306" name="includes/threading.h" role="src" />
+   <file md5sum="0a8dcdf42b0859f96d6cdbf439ea4e50" name="includes/validator.h" role="src" />
+   <file md5sum="c22a44d3e41d8415f15b49f48d0e7475" name="includes/vfs.h" role="src" />
+   <file md5sum="106104d93c6f691e91b38d60545b4284" name="includes/webview.h" role="src" />
+   <file md5sum="53a4baf757d2b4cda0f04662e113ce36" name="includes/winlayout.h" role="src" />
+   <file md5sum="11f3e556c5941c148dab83240b86244e" name="includes/xml.h" role="src" />
+   <file md5sum="cf22ef20d6b754a8f88b570bf7f4b4e2" name="includes/xrc.h" role="src" />
+   <file md5sum="353782a97bd652cee6199f96b8c8465b" name="src/app.cpp" role="src" />
+   <file md5sum="bad4514b008362bf7a5583ac02a3413b" name="src/appmanagement.cpp" role="src" />
+   <file md5sum="13f669f715476a4aee33bb2ea3204e75" name="src/aui.cpp" role="src" />
+   <file md5sum="12155ce776f5b9cfb2fd58382e449f90" name="src/bookctrl.cpp" role="src" />
+   <file md5sum="0f84aa056ee82b94112e33427045a758" name="src/cfg.cpp" role="src" />
+   <file md5sum="ed617b3682ec0e6169399c4078c9d9f8" name="src/cmndlg.cpp" role="src" />
+   <file md5sum="16d80263371203b96e89d7ebb7f83cc5" name="src/containers.cpp" role="src" />
+   <file md5sum="1e51df64f8bbe74b527ef3af8d968ad2" name="src/ctrl.cpp" role="src" />
+   <file md5sum="450b75710d0e61099dde732c0a339c86" name="src/data.cpp" role="src" />
+   <file md5sum="75a6c003946c486ad53c22c5213381f5" name="src/dc.cpp" role="src" />
+   <file md5sum="f78fdb370748a0f8f1b796208f49335a" name="src/dnd.cpp" role="src" />
+   <file md5sum="94c00c02e782e7316f1422a1dd335298" name="src/docview.cpp" role="src" />
+   <file md5sum="e13a6d7fb785b0ef4849009d72b6758a" name="src/dvc.cpp" role="src" />
+   <file md5sum="64f02b1a3c644fa3fec43d07a6ff0b53" name="src/events.cpp" role="src" />
+   <file md5sum="23982be4583cac58318c7ccfa077b08f" name="src/file.cpp" role="src" />
+   <file md5sum="12d439ef484977457c827ce56bd2516e" name="src/functions.cpp" role="src" />
+   <file md5sum="90cc3d7567bc36d114f05f9efe8af37b" name="src/gdi.cpp" role="src" />
+   <file md5sum="0b9005ef8db519a24158efadcb053dbb" name="src/grid.cpp" role="src" />
+   <file md5sum="0980a2b613b3406db79482a25906da0e" name="src/help.cpp" role="src" />
+   <file md5sum="fd6896f74e226b91719dc943e92fa005" name="src/html.cpp" role="src" />
+   <file md5sum="57c6a2268e2cbd564e289ff98b429906" name="src/logging.cpp" role="src" />
+   <file md5sum="27dd1783b42caf6d85a19b00d460386c" name="src/managedwnd.cpp" role="src" />
+   <file md5sum="602750841acded85fe8225c9384d25dc" name="src/media.cpp" role="src" />
+   <file md5sum="a94df315a58dcfb35bc9b43a40870af6" name="src/menus.cpp" role="src" />
+   <file md5sum="0d80aeab05329c767238eea8c7260c04" name="src/misc.cpp" role="src" />
+   <file md5sum="41c162979ac5da942d9b2303130e5304" name="src/miscwnd.cpp" role="src" />
+   <file md5sum="4ae5ea2c27ba0cce0b626bfe67baa4a9" name="src/net.cpp" role="src" />
+   <file md5sum="e6165540e8ef758d249b4c55133c5768" name="src/others.cpp" role="src" />
+   <file md5sum="e2b12d9ed38c7ab0dcfd3d186fed71f5" name="src/pickers.cpp" role="src" />
+   <file md5sum="f3b46dedef3a617f4264028d9a720083" name="src/printing.cpp" role="src" />
+   <file md5sum="e88761a07a8f8c91ca9020f578321a1e" name="src/references.cpp" role="src" />
+   <file md5sum="0cd999af62efecafbf8c67fa4740e057" name="src/ribbon.cpp" role="src" />
+   <file md5sum="c01bafcaf3b33d02a0ba56bfebe64b8e" name="src/richtext.cpp" role="src" />
+   <file md5sum="864c7b8ea65692896bddead4882c5e21" name="src/rtti.cpp" role="src" />
+   <file md5sum="c8f1921324c6ff6307a5b9547577f096" name="src/stc.cpp" role="src" />
+   <file md5sum="466db9991373fc90e1ddbf9809b0ed55" name="src/streams.cpp" role="src" />
+   <file md5sum="79467059272f16cba3b37a0aca2129d4" name="src/threading.cpp" role="src" />
+   <file md5sum="542e1ce78922bf484bdf61c7811dc340" name="src/validator.cpp" role="src" />
+   <file md5sum="4098e6057e6a480c4d8dc5ca029a56c2" name="src/vfs.cpp" role="src" />
+   <file md5sum="75f0e940842ea5815e2fc11d74cc227c" name="src/webview.cpp" role="src" />
+   <file md5sum="0bfb2e96045401b832f0cba13a217a15" name="src/winlayout.cpp" role="src" />
+   <file md5sum="19cce9d1a14f6d89f561f9aa462fb7bc" name="src/xml.cpp" role="src" />
+   <file md5sum="e4cb6e16e21971b2ae66493164a5fb7e" name="src/xrc.cpp" role="src" />
+   <file md5sum="3b3e0769e35fe89c03f6f8ee728e80c7" name="config.m4" role="src" />
+   <file md5sum="7dadf2332b5d672b7c3e4539524a5986" name="config.w32" role="src" />
+   <file md5sum="6dc7de9105a362db648e4e46e5cb1427" name="php_wxwidgets.h" role="src" />
+   <file md5sum="7369e2b7111b2254fe6c02e2e482cf61" name="wxwidgets.cpp" role="src" />
+   <file md5sum="15a0e7a830cc9657f4d4867a790c8cde" name="template.rc" role="src" />
+   <file md5sum="0793728b9cb5f0b1d9c62c116b3a9a72" name="examples/lanchat/app.png" role="doc" />
+   <file md5sum="ed00f8cd59f787221f0f77cf13d02a3e" name="examples/lanchat/lanchat.fbp" role="doc" />
+   <file md5sum="35ab29ddc3d744525af350a8eb5bdc76" name="examples/lanchat/lanchat.php" role="doc" />
+   <file md5sum="0ee2140f72f5c79cc3044e24861537b0" name="examples/lanchat/resources.php" role="doc" />
+   <file md5sum="b4acd2227cce4fbbe7398ace21a7008b" name="examples/statbar/green.xpm" role="doc" />
+   <file md5sum="a527f5539fa3d157b3a7c0d7129dfec1" name="examples/statbar/red.xpm" role="doc" />
+   <file md5sum="d5bece0a7edb959ba4df8a85ddadc7f1" name="examples/statbar/sample.xpm" role="doc" />
+   <file md5sum="d8f3cbf3389d0812957e573b3cd6d8e7" name="examples/statbar/statbar.php" role="doc" />
+   <file md5sum="c754c65163d909ea5c48d8dc9c2e469d" name="examples/choicelistbox.php" role="doc" />
+   <file md5sum="55e9f2a27f89e6d1bcfc4a8f47490c65" name="examples/grid.php" role="doc" />
+   <file md5sum="025d70abd9586a297685a1a5c1710a54" name="examples/styledtextctrl.php" role="doc" />
+   <file md5sum="481b769424d04ddd6111ba27fa80c2b9" name="examples/thread.php" role="doc" />
+   <file md5sum="629c397269b3d93721f28958bf54d2d2" name="examples/webview.php" role="doc" />
+   <file md5sum="76d78e2c4c65fdd4dd5d9be5dbd0b2dc" name="CHANGES" role="doc" />
+   <file md5sum="1f20a93de5de53d1a3f2f7df73e6a296" name="CREDITS" role="doc" />
+   <file md5sum="cb564efdf78cce8ea6e4b5a4f7c05d97" name="LICENSE" role="doc" />
+   <file md5sum="15f1d3e30caa92a537fb510bc6bb78a9" name="README.md" role="doc" />
+   <file md5sum="8854e9441d5b5bc7d909e573d1e3b46d" name="README_MSW.txt" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>wxwidgets</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="enable-wxwidgets-debug" prompt="Enable debugging messages in wxwidgets" />
+  <configureoption default="no" name="enable-wxwidgets-monolithic" prompt="Enable linking to monolithic version of wxWidgets" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <version>
+    <release>3.0.0.1</release>
+    <api>3.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2014-03-09</date>
+   <license uri="http://www.php.net/license/3_0.txt">PHP License</license>
+   <notes>
+* Added missing wxScrolledWindow methods by enabling wxScrolled, 
+  this fixes issue #30 and #32.
+* Enabled wxClipBoard::Get() and disabled gargbage collection of 
+  native_object on wxDataObject and its childs as wxClipBoard itself, 
+  which partially fixes issue #34.
+* Added verification of object parameter child types to allow method 
+  calls which where failing as described on issue #36. This also 
+  completely fixes issue #34, testing may be needed.
+* Updated README_MSW adding changes needed to prevent windows xp 
+  crashes as described on issue #37.
+* Enabled wxNonOwnedWindow::SetShape and fixed wxPrintDialog, 
+  wxPageSetupDialog inheritage.
+* Removed error messages that appeared when failing to call 
+  wxApp::OnInit and wxApp:OnExit.
+* Added proper type casting to wxMouseState.
+* Should fix and close #44 by doing proper type casting when calling 
+  wxKeyboarState methods from child classes.
+* Binded the missing wxAuiNotebookEvent event constants which closes #45.
+* Enabled more wxStyledTextCtrl methods. 
+* Enabled inheritance of wxStyledTextCtrl from wxTextEntry as 
+  enabled some more methods.
+* Some fixes to the reference and interface generator as 
+  simplification of chdir() calls.
+* Initial work to support wxInputStream::OnSysRead in order to be 
+  able to load images with the wxImage(wxInputStream) constructor.
+* Fixed 2 memory leaks, one related to wxEvtHandler::OnEvent and the 
+  other related to the creation of new objects.
+* Fixed memory leak caused by not uninitializing the properties 
+  member of classes like wxPoint when they were destroyed which 
+  closes #48, also modified code generator to only add the properties 
+  code when needed which made the source and library more clean.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.0.0</release>
+    <api>3.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2013-12-26</date>
+   <license uri="http://www.php.net/license/3_0.txt">PHP License</license>
+   <notes>
+* Updated debianization scripts.
+* Fix for issue #25, returned object properties are now initialized.
+* Added netbeans project in tools directory.
+* Enabled wxMediaCtrl, wxMediaEvent and wxURI.
+* Fixes to readme.md
+* Bumped wxPHP version to 3.0
+* Fixes to make the GUI binding utility work again.
+* Updated some parts on the development and support section
+* Added SetItem/GetItem to wxDataViewEvent which xixes issue #8
+* Blacklisted wxFSW_EVENT_UNMOUNT from the wxFSWFlags.
+* Changes to get wxPHP compiling against new wxWidgets 3.0
+* Removed duplicated classes.json copy to json dir.
+* Fixed bug (typo) in xml_parser.php which caused functions to have no
+  default arg values.
+* Speed optimizations in derivationsOfClass and inherits_from_class.
+* Ported wxStatusBar sample from C++
+* Merge pull request #18 from tsahlin/master
+* Added a fix for functions returning wxFont objects
+* Minor addition to .gitignore.
+* Merge pull request #16 from tsahlin/master
+* Added wxLog* functions
+* Merge pull request #15 from tsahlin/master
+* Enabled function wxGetNumberFromUser
+* Merge pull request #14 from tsahlin/master
+* Modified code_generator to include more constants
+* Added initialization of a class without constructor on the zend 
+  object creation function.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.9.4.1</release>
+    <api>2.9.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-12-24</date>
+   <license uri="http://www.php.net/license/3_0.txt">PHP License</license>
+   <notes>
+* Initial debianization
+* Added template.rc that includes wxWidgets resources for windows build.
+* Fixed inno setup script.
+* Updated readme.md and readme
+* Regenerated source code to apply the fix for arguments type checking.
+* Fixed function/methods generation code to also check if the argument 
+  type is the same as original and not only a class that inherits from 
+  the original type.
+* Disabled wxNativeFontInfo methods: GetPixelSize and SetPixelSize, 
+  since they are undefined symbols when compiling the extension. 
+* Re-generated the code with warning message disabled for top level 
+  windows and more constants available like wxRAISED_BORDER.
+* Added gitignore file.
+* Now the code generator does not skip #defines that mirror an enum, 
+  like wxRAISED_BORDER mirrors wxBORDER_RAISED.
+* Commented out &apos;Remember to always call Destroy()&apos; warning message.
+* Updated version information on template file.
+   </notes>
+  </release>
+ </changelog>
+</package>

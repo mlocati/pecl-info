@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>zmq</name>
+ <channel>pecl.php.net</channel>
+ <summary>ZeroMQ messaging</summary>
+ <description>ZeroMQ is a software library that lets you quickly design and implement a fast message-based applications.</description>
+ <lead>
+  <name>Mikko Koppanen</name>
+  <user>mkoppanen</user>
+  <email>mkoppanen@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2013-10-24</date>
+ <time>06:29:49</time>
+ <version>
+  <release>1.0.7</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license>BSD License</license>
+ <notes>
+- Added optional listener socket to ZMQDevice
+- Added support for ZeroMQ 4.x
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="54dd66f0aa635c0b322dabb04d729898" name="config.m4" role="src" />
+   <file md5sum="9a3463638a90d8e52b6d1e9920b623af" name="php-zmq.spec" role="src">
+    <tasks:replace from="@PACKAGE_VERSION@" to="version" type="package-info" />
+   </file>
+   <file md5sum="c65baab8eb0205506045165734028707" name="php_zmq.h" role="src">
+    <tasks:replace from="@PACKAGE_VERSION@" to="version" type="package-info" />
+   </file>
+   <file md5sum="b8501ad2490dfd879772bd282cd3793b" name="php_zmq_private.h" role="src" />
+   <file md5sum="721ad02952ff68b2f0a1eb212858c949" name="php_zmq_pollset.h" role="src" />
+   <file md5sum="ef27a0ea574d285475fd64fb518af7fc" name="zmq.c" role="src" />
+   <file md5sum="99040e69566edbb36ba1efa49c97a28a" name="zmq_device.c" role="src" />
+   <file md5sum="637128f946d7f19d0448a4e47b3bcacf" name="zmq_fd_stream.c" role="src" />
+   <file md5sum="3e9d2558efc2f5d980a9ef654cd776ba" name="zmq_pollset.c" role="src" />
+   <file md5sum="c27c70bd83c868a1e30cf8c6a4b02b74" name="zmq_sockopt.c" role="src" />
+   <file md5sum="da1473f951b3196c1d48e5ef7627f81f" name="README.md" role="doc" />
+   <file md5sum="e16070bfb88153b5beb69f1d95104949" name="LICENSE" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>zmq</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-zmq" prompt="Please provide the prefix of libzmq installation" />
+ </extsrcrelease>
+</package>

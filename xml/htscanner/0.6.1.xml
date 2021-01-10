@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.4.9" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>htscanner</name>
+ <channel>pecl.php.net</channel>
+ <summary>htaccess support for PHP</summary>
+ <description>Allow one to use htaccess-like file to configure PHP
+per directory, just like apache&apos;s htaccess. It is especially useful with fastcgi.
+This package was originally developed by Bart Vanbrabant. Old versions are available
+ from: http://files.zoeloelip.be/htscanner</description>
+ <lead>
+  <name>Pierre-Alain Joye</name>
+  <user>pajoye</user>
+  <email>pajoye@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2006-12-13</date>
+ <time>10:41:22</time>
+ <version>
+  <release>0.6.1</release>
+  <api>0.6.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>- Fixed possible leak in cache
+- Calculate the length values only once (strlen cleanup)
+- Fixed TSRM build</notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="9d6c30f5ecf36285c686b40eee2a0694" name="docs/htscanner.ini" role="src" />
+   <file md5sum="3dee4148f137825873620408f8b1412b" name="config.m4" role="src" />
+   <file md5sum="ea6137202a5b67561d56cdb18f74b9c5" name="htscanner.c" role="src">
+    <tasks:replace from="@PACKAGE_VERSION@" to="version" type="package-info" />
+   </file>
+   <file md5sum="f38054ba362f747b6d93fbc6220bfc0c" name="php_htscanner.h" role="src" />
+   <file md5sum="004451e5303787ff59e8807cdadab878" name="CREDITS" role="doc" />
+   <file md5sum="35865fb5ee8411c1020e56a380870415" name="README" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>htscanner</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2006-12-08</date>
+   <version>
+    <release>0.6.0</release>
+    <api>0.6.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>- Added cache support. Each unique ini setting for a given path is cached
+- Added ini setting default_ttl, define the cache lifetime in seconds, default to 300 (5mins)</notes>
+  </release>
+  <release>
+   <date>2006-11-30</date>
+   <version>
+    <release>0.5.0</release>
+    <api>0.5.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>- Initial PECL relase
+- Added safe mode and openbasedir checks
+- use PHP streams instead of std IO
+- Fixed segfault in the parsing routines
+- Fixed CWD detections in threaded environments</notes>
+  </release>
+  <release>
+   <date>2005-11-08</date>
+   <version>
+    <release>0.4.0</release>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>- Some settings were not interpreted correctly</notes>
+  </release>
+  <release>
+   <date>2005-11-06</date>
+   <version>
+    <release>0.3.0</release>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>- Added debug code (set env PHP_HTSCANNER_DEBUG)
+- Fixed bug with some paths
+- Some code cleanups</notes>
+  </release>
+  <release>
+   <date>2005-11-05</date>
+   <version>
+    <release>0.2.0</release>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>- Parser can handle tabs and whitespaces in a directive</notes>
+  </release>
+  <release>
+   <date>2005-10-02</date>
+   <version>
+    <release>0.2.0</release>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>- Initial release</notes>
+  </release>
+ </changelog>
+</package>

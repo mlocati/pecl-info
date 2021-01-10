@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0" packagerversion="1.4.2">
+ <name>PDO_SQLITE</name>
+ <summary>SQLite v3 Interface driver for PDO</summary>
+ <description>This extension provides an SQLite v3 driver for PDO.
+SQLite V3 is NOT compatible with the bundled SQLite 2 in PHP 5, but is a significant
+step forwards, featuring complete utf-8 support, native support for blobs,
+native support for prepared statements with bound parameters and improved
+concurrency.
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>wez</user>
+   <name>Wez Furlong</name>
+   <email>wez@php.net</email>
+   <role>lead</role>
+  </maintainer>
+  </maintainers>
+ <release>
+  <version>1.0RC2</version>
+  <date>2005-11-01</date>
+  <license>PHP</license>
+  <state>beta</state>
+  <notes>You need to install the PDO core module before you can make use of this one.
+This package includes a bundled SQLite 3 library.
+
+Windows binary:
+http://pecl4win.php.net/ext.php/php_pdo_sqlite.dll
+
+- Fixed PECL Bug #5633; build issues
+- Added sqliteCreateFunction() and sqliteCreateAggregate()
+- Fixed PECL Bug #3452; problem when first row of a result set contains a NULL value.
+- Upgraded bundled sqlite to 3.1.3
+- setting PDO_ATTR_TIMEOUT controls the busy timeout
+- Fixed PECL Bug #3391; cannot bind NULL parameters	
+- Fixed build problem when building the bundled sqlite library
+  </notes>
+  <deps>
+   <dep type="php" rel="ge" version="5.0.3"/>
+   <dep type="ext" rel="ge" version="1.0RC2">pdo</dep>
+  </deps>
+  <filelist>
+   <file role="src" md5sum="d175244ddec2f1bb79b49212ed7512f0" name="config.m4"/>
+   <file role="src" md5sum="88d53ad065215936446c0d4747543b5d" name="config.w32"/>
+   <file role="src" md5sum="4b91fc6b2199d787573464e46f98078f" name="pdo_sqlite.c"/>
+   <file role="src" md5sum="c8ee33c7facc8d6f6ebfb00671fde875" name="sqlite_driver.c"/>
+   <file role="src" md5sum="538b2e6956becf8c34b44e779f9fcb24" name="sqlite_statement.c"/>
+   <file role="src" md5sum="8452df26805e921764d7f569bb0372b7" name="php_pdo_sqlite.h"/>
+   <file role="src" md5sum="f8f6f10066cb1d3a59ac4ea9a25c0661" name="php_pdo_sqlite_int.h"/>
+   <file role="doc" md5sum="d3e6d4e9626ad7a05b8f36a7d8b12571" name="CREDITS"/>
+   <file role="src" md5sum="f06f0fe58a44b2956fe6710caef79628" name="sqlite/aclocal.m4"/>
+   <file role="src" md5sum="e5528cbb94587149b603d30c5182aeea" name="sqlite/config.guess"/>
+   <file role="src" md5sum="e0a3182820824be2adb5a95c8bfe9f09" name="sqlite/config.sub"/>
+   <file role="src" md5sum="fcf683b090b9f0de715479183f29066e" name="sqlite/configure"/>
+   <file role="src" md5sum="e419700b99ce99ce1510064f23e62a1f" name="sqlite/configure.ac"/>
+   <file role="src" md5sum="5afe8eb5573965dfb58378e4e46f3813" name="sqlite/install-sh"/>
+   <file role="src" md5sum="142b5127deca748dd6f19a2a75389ad8" name="sqlite/ltmain.sh"/>
+   <file role="src" md5sum="0766fad533947701922706f6112582b7" name="sqlite/main.mk"/>
+   <file role="src" md5sum="71a460f2312ff61d71b026a3e093a522" name="sqlite/Makefile.in"/>
+   <file role="src" md5sum="f09e1dd9fc49d14029ecef74653186bd" name="sqlite/Makefile.linux-gcc"/>
+   <file role="src" md5sum="a50ed3634f257fa42c54a57ce9d89562" name="sqlite/mkdll.sh"/>
+   <file role="src" md5sum="eec827d9d6496548aef1d9a1fef326cc" name="sqlite/mkopcodec.awk"/>
+   <file role="src" md5sum="f180f4d47e0776a5b1657c3c5c949a94" name="sqlite/mkopcodeh.awk"/>
+   <file role="src" md5sum="1dd244a66cf21dc9cc0a1cb0f9d3c1e2" name="sqlite/mkso.sh"/>
+   <file role="src" md5sum="314237c5ea82e8b7e66a88a44b1c061b" name="sqlite/publish.sh"/>
+   <file role="src" md5sum="19c41b8e034464c9ffe9cc5647c3cc04" name="sqlite/README"/>
+   <file role="src" md5sum="b1efb6606dc23954c8f21a7949e13bde" name="sqlite/spec.template"/>
+   <file role="src" md5sum="83a712b09698405892db176d557f82d9" name="sqlite/sqlite.1"/>
+   <file role="src" md5sum="b87bcd090d0e6d7c6ab33524165cb752" name="sqlite/sqlite3.def"/>
+   <file role="src" md5sum="ef5dcac5b6e47cb7bc6b12604bde8422" name="sqlite/sqlite3.pc.in"/>
+   <file role="src" md5sum="c8bd1f027ccd0d6e53fb016255647dc4" name="sqlite/sqlite.pc.in"/>
+   <file role="src" md5sum="003b10a143bba9ce6e8079b3cb3be63b" name="sqlite/VERSION"/>
+   <file role="src" md5sum="9bf4928a123ec9bc778be76901a75475" name="sqlite/src/analyze.c"/>
+   <file role="src" md5sum="d9ea59ed1431f9f0d5e9f2ce898b0873" name="sqlite/src/attach.c"/>
+   <file role="src" md5sum="699b25883a857cc32f12920497720081" name="sqlite/src/alter.c"/>
+   <file role="src" md5sum="ad7794e8877df31c7cecc7128a9f46ef" name="sqlite/src/auth.c"/>
+   <file role="src" md5sum="68c1c2a4968b594a6c1c2407a0eb5ecf" name="sqlite/src/btree.c"/>
+   <file role="src" md5sum="1e69687c7a9d3cb7ddeeec35aea24edd" name="sqlite/src/btree.h"/>
+   <file role="src" md5sum="4e14a80a1d1a1487d0a82e12ff0af5e3" name="sqlite/src/build.c"/>
+   <file role="src" md5sum="2bbc93660bd2d06225441df0a28fd56d" name="sqlite/src/callback.c"/>
+   <file role="src" md5sum="311b525515512925934ce4f61b91b82d" name="sqlite/src/date.c"/>
+   <file role="src" md5sum="8b2f7139feedc7cec944fc5f93eb0013" name="sqlite/src/delete.c"/>
+   <file role="src" md5sum="d467797cbc715c3b6dec5eb6104722c8" name="sqlite/src/expr.c"/>
+   <file role="src" md5sum="18f96e61ef4aa13cf165adaf1c6e5dbc" name="sqlite/src/experimental.c"/>
+   <file role="src" md5sum="d97ffa6fb8498ea8eb437e74752d070b" name="sqlite/src/func.c"/>
+   <file role="src" md5sum="8e604b5c51133e45ee916f27d3f30840" name="sqlite/src/hash.c"/>
+   <file role="src" md5sum="9ba9e026cf6ec4e816e39e5faa52f7ce" name="sqlite/src/hash.h"/>
+   <file role="src" md5sum="d7e968143901ac6a3b23cb8afee0f118" name="sqlite/src/insert.c"/>
+   <file role="src" md5sum="696d5c50f5d779d9c7b2854896c45fab" name="sqlite/src/legacy.c"/>
+   <file role="src" md5sum="79f0f3acf99da55579b57da2e7be9061" name="sqlite/src/main.c"/>
+   <file role="src" md5sum="9a3510cca98f4b4ff76216be83cc68ef" name="sqlite/src/md5.c"/>
+   <file role="src" md5sum="cf80e5ea98b6c7509b1c9b2b5a3fb980" name="sqlite/src/keywordhash.h"/>
+   <file role="src" md5sum="875cfe972241a607258ce67e82e9b2a6" name="sqlite/src/opcodes.c"/>
+   <file role="src" md5sum="bd0144997a5d5be70175d9f04bd9cd79" name="sqlite/src/opcodes.h"/>
+   <file role="src" md5sum="a59c5a683e77fd8e5d7d7d3ab97b66a6" name="sqlite/src/os_common.h"/>
+   <file role="src" md5sum="0426bf544b88967338a11c7a5255ab32" name="sqlite/src/os.h"/>
+   <file role="src" md5sum="ebcafd5ba5c4d5331b347b1486376ceb" name="sqlite/src/os_mac.c"/>
+   <file role="src" md5sum="14f6db21bc8a6675e4e5e869e519ce0d" name="sqlite/src/os_mac.h"/>
+   <file role="src" md5sum="2aa48cbe3d17290fe4f7e472a4dea4f9" name="sqlite/src/os_test.c"/>
+   <file role="src" md5sum="47f6fca929073d45a93bc418ddd9f01f" name="sqlite/src/os_test.h"/>
+   <file role="src" md5sum="298b1b1298d1c41fcb8b70d44e7a3eca" name="sqlite/src/os_unix.c"/>
+   <file role="src" md5sum="bb9814e2e8e5a09a2fcae4360ce92436" name="sqlite/src/os_unix.h"/>
+   <file role="src" md5sum="990dc8e06ea0a1ca552e172369460b4d" name="sqlite/src/os_win.c"/>
+   <file role="src" md5sum="b8bd2c62f4289370dc010e6c69d6b9f8" name="sqlite/src/os_win.h"/>
+   <file role="src" md5sum="08d9ff444fb1e60715979ef44d1bf50a" name="sqlite/src/pager.c"/>
+   <file role="src" md5sum="324bbfcf89b76ed3079351cdd63de6eb" name="sqlite/src/pager.h"/>
+   <file role="src" md5sum="5b8cbba97b6224cae78ee9ca40a37929" name="sqlite/src/parse.y"/>
+   <file role="src" md5sum="1fce9911dbd5164611caa30767d9fef1" name="sqlite/src/parse.c"/>
+   <file role="src" md5sum="21a73be7c4fe52aa1d5ddb39f3f384cd" name="sqlite/src/parse.h"/>
+   <file role="src" md5sum="6e84e3ca4be3ce437aeb949a5c4c3e0a" name="sqlite/src/pragma.c"/>
+   <file role="src" md5sum="400e6f3cfb5852002f4d52f322b5c03d" name="sqlite/src/prepare.c"/>
+   <file role="src" md5sum="b4209482570eaed47716176217e2452c" name="sqlite/src/printf.c"/>
+   <file role="src" md5sum="61da9fb08945189278d9b4cfcbaeb418" name="sqlite/src/random.c"/>
+   <file role="src" md5sum="4ab7d01bb79fdd1b092c410362f36226" name="sqlite/src/select.c"/>
+   <file role="src" md5sum="9eb92865ca2445c5338f390f5e419781" name="sqlite/src/shell.c"/>
+   <file role="src" md5sum="6675e7f7fa0e46a43db8212f63783c76" name="sqlite/src/sqlite.h.in"/>
+   <file role="src" md5sum="f353edfd51a982f86368dbcf31fa06eb" name="sqlite/src/sqliteInt.h"/>
+   <file role="src" md5sum="f112d9ee5d00b9919f47d7b0723bcb5a" name="sqlite/src/table.c"/>
+   <file role="src" md5sum="b7bfbc97e08f35c2c02bd4d9d831903c" name="sqlite/src/tclsqlite.c"/>
+   <file role="src" md5sum="6fbf98e8e91c00ce8b2d5cfa4012dc54" name="sqlite/src/test1.c"/>
+   <file role="src" md5sum="797448f6d5420263cc0e63dda950fe0d" name="sqlite/src/test2.c"/>
+   <file role="src" md5sum="c1138722de940f749ce3901387da401b" name="sqlite/src/test3.c"/>
+   <file role="src" md5sum="a8ab3df5f71d9de0722c212e240397f3" name="sqlite/src/test4.c"/>
+   <file role="src" md5sum="976f4f0b3bc1d68057d9127949e79989" name="sqlite/src/test5.c"/>
+   <file role="src" md5sum="d4a991f9d9c69b371e35633855bc3274" name="sqlite/src/tokenize.c"/>
+   <file role="src" md5sum="3a63f2ac886ef2c591ede265b8edc277" name="sqlite/src/trigger.c"/>
+   <file role="src" md5sum="498eb6e4e942754a51cf6dcb03af29a8" name="sqlite/src/update.c"/>
+   <file role="src" md5sum="c5e3a831efd039376e0161cc30d50cc6" name="sqlite/src/utf.c"/>
+   <file role="src" md5sum="41a6f6cd896f19dd416e0c81a106887f" name="sqlite/src/util.c"/>
+   <file role="src" md5sum="a3a3ddd8304c74df755a9592504d99d4" name="sqlite/src/vacuum.c"/>
+   <file role="src" md5sum="770ed521c2de656b51a857719c133560" name="sqlite/src/vdbeapi.c"/>
+   <file role="src" md5sum="4e320a468c9a754e8dae5a82dc78b69f" name="sqlite/src/vdbeaux.c"/>
+   <file role="src" md5sum="067287646b3b65a7d4fe5c32ecc0c4ca" name="sqlite/src/vdbe.c"/>
+   <file role="src" md5sum="f870302861d39c4318341ba368a62d75" name="sqlite/src/vdbefifo.c"/>
+   <file role="src" md5sum="f44c7738c1649e67d87ea05427ca07ed" name="sqlite/src/vdbe.h"/>
+   <file role="src" md5sum="3f51ee6a501aed1f4d713094b6fb87d6" name="sqlite/src/vdbeInt.h"/>
+   <file role="src" md5sum="22c766e0fb1b90c320b341a201f20201" name="sqlite/src/vdbemem.c"/>
+   <file role="src" md5sum="09a5dc28f99256552843a66453f3ad25" name="sqlite/src/where.c"/>
+   <file role="src" md5sum="6cd3b52710d06caa852e37c4d1945288" name="sqlite/tool/diffdb.c"/>
+   <file role="src" md5sum="4323abbdb2977639162a91052306b9ed" name="sqlite/tool/lemon.c"/>
+   <file role="src" md5sum="d2fe2d1288bb4ee5c1c9d1330e30e96b" name="sqlite/tool/lempar.c"/>
+   <file role="src" md5sum="dc26b045e1048d95a322e38784acaad6" name="sqlite/tool/memleak2.awk"/>
+   <file role="src" md5sum="9499f6b5866b41a017732a507b9f7124" name="sqlite/tool/memleak3.tcl"/>
+   <file role="src" md5sum="c244f876d8f5ed8193c456e2d9f75991" name="sqlite/tool/memleak.awk"/>
+   <file role="src" md5sum="d84fa94aa1000be9e99c74233ce86f26" name="sqlite/tool/mkkeywordhash.c"/>
+   <file role="src" md5sum="25fd75fc3e443b843c7f03bb1df2f8da" name="sqlite/tool/mkopts.tcl"/>
+   <file role="src" md5sum="78c85c1efa7b7b7338e77ee82118575a" name="sqlite/tool/opcodeDoc.awk"/>
+   <file role="src" md5sum="0b100e9753cfffb341ab2ea818014a98" name="sqlite/tool/report1.txt"/>
+   <file role="src" md5sum="46dde997bc106f0a64f02412b0f84d74" name="sqlite/tool/showdb.c"/>
+   <file role="src" md5sum="07b55432a5bc19c5d57561e49e371e35" name="sqlite/tool/showjournal.c"/>
+   <file role="src" md5sum="69f8bbefa71e921996655c848b1bce5c" name="sqlite/tool/spaceanal.tcl"/>
+   <file role="src" md5sum="99e47e47a2bb80e04f4b03a49f5e78bd" name="sqlite/tool/space_used.tcl"/>
+   <file role="src" md5sum="8351d7656de797ec611ae6c5c5c6ef99" name="sqlite/tool/speedtest2.tcl"/>
+   <file role="src" md5sum="7c326fb90f4eac2dc092d289d99a17df" name="sqlite/tool/speedtest.tcl"/>
+  </filelist>
+ </release>
+</package>

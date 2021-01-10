@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd" packagerversion="2.0.0a1">
+ <name>ssdeep</name>
+ <channel>pecl.php.net</channel>
+ <summary>Fuzzy hashing makes it easy to identify similar or almost identical text by simply comparing two hashes against each other.
+</summary>
+ <description>
+The ssdeep project page describes it as a library for &quot;...computing context triggered piecewise hashes (CTPH). Also called fuzzy hashes, CTPH can match inputs that have homologies. Such inputs have sequences of identical bytes in the same order, although bytes in between these sequences may be different in both content and length&quot;.
+
+For an in depth paper explaining context triggered piecewise hashes please see http://dfrws.org/2006/proceedings/12-Kornblum.pdf
+
+
+ssdeep API Information
+---------------------------
+
+Requires at least ssdeep v2.5.
+
+This extensions wraps the ssdeep fuzzy hashing API created by Jesse Kornblum.
+
+For more information about ssdeep, the API and context triggered piecewise hashing please see http://ssdeep.sourceforge.net/
+
+
+ssdeep Licensing Exemption
+---------------------------
+
+Although ssdeep and the fuzzy hashing API are usually licensed under GNU GPLv2 Jesse Kornblum has licenced them to PECL under the terms of the Perl Artistic Licence with the following declaration:
+&quot;I hereby license ssdeep, the current version and all subsequent versions, under the terms of the Perl Artistic License, for inclusion into the PECL.&quot;
+See http://news.php.net/php.pecl.dev/7625 for the verbatim email.
+</description>
+ <lead>
+  <name>Simon Holywell</name>
+  <user>Treffynnon</user>
+  <email>treffynnon@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2010-11-10</date>
+ <time>13:18:52</time>
+ <version>
+  <release>1.0.2</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+ <notes>Patch bug in library availablity code when building with ssdeep path specified (--with-ssdeep=/tmp/ssdeep-2.6 for example) to the upstream packages build directory.
+</notes>
+ <contents>
+  <dir name="/">
+   <file role="test" name="tests/ssdeep.phpt"/>
+   <file role="src" name="ssdeep.c"/>
+   <file role="src" name="php_ssdeep.h"/>
+   <file role="doc" name="examples/example.php"/>
+   <file role="src" name="config.m4"/>
+   <file role="src" name="ax_libssdeep.m4"/>
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>ssdeep</providesextension>
+ <extsrcrelease/>
+</package>

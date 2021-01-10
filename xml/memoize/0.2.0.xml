@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd">
+ <name>memoize</name>
+ <channel>pecl.php.net</channel>
+ <summary>Transparently cache PHP functions</summary>
+ <description>Memoize is an extension which transparently caches PHP functions, much like Perl&apos;s Memoize module.</description>
+ <lead>
+  <name>Arpad Ray</name>
+  <user>arpad</user>
+  <email>arpad@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2013-06-19</date>
+ <time>22:04:22</time>
+ <version>
+  <release>0.2.0</release>
+  <api>0.2.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- bundled storage modules are no longer separate extensions
+	- memcached module now requires libmemcached 1.0.x
+	- added support for TTL by function (optional argument to memoize())
+	- win32 fixes
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="9f0ec773f0becae6533809d0225340ca" name="tests/init.inc" role="data" />
+   <file md5sum="b6ae061d7f58b9ccfecc2914a153c95d" name="tests/apc.phpt" role="test" />
+   <file md5sum="f68661eb379d65e9e03486589604c864" name="tests/cache_namespace.phpt" role="test" />
+   <file md5sum="e97c2043e3a62b46e5d232fbd13e2059" name="tests/functions.phpt" role="test" />
+   <file md5sum="40f428dd4e4f3d54d800d4a55871b325" name="tests/methods.phpt" role="test" />
+   <file md5sum="ab156697d1a3a2c753391c9860918a1f" name="tests/memcached.phpt" role="test" />
+   <file md5sum="62d4bf5bd5d78c451b6c99d935a65b51" name="tests/memcached_class.phpt" role="test" />
+   <file md5sum="79199d57bf220ffbdaafe35d352347ea" name="memoize.c" role="src" />
+   <file md5sum="7ec98a6862f38624a2c1626ecf0a3fbb" name="memoize_memory.c" role="src" />
+   <file md5sum="5589566ed4dcd32cb50bd258ef48fb6f" name="memoize_apc.c" role="src" />
+   <file md5sum="3df2687accf2805435aac9e543c38c39" name="memoize_memcached.c" role="src" />
+   <file md5sum="2a38352f6b37f4f8b57e4dd9181efbb5" name="php_memoize.h" role="src" />
+   <file md5sum="2cb303a38a465c587b8e0163d788f81f" name="php_memoize_storage.h" role="src" />
+   <file md5sum="c82d2aadcf6e30866fc0451f13fd3080" name="config.m4" role="src" />
+   <file md5sum="faf382ac5672cbf6cb69597ebbcf2379" name="config.w32" role="src" />
+   <file md5sum="f38fd858c95a6a313e9e51826e346e79" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>memoize</providesextension>
+ <extsrcrelease>
+  <configureoption default="yes" name="enable-memoize-memory" prompt="Enable memory storage module?" />
+  <configureoption default="no" name="enable-memoize-apc" prompt="Enable APC storage module?" />
+  <configureoption default="no" name="with-memcached" prompt="Please provide the prefix where libmemcached-1.0 is installed" />
+ </extsrcrelease>
+</package>

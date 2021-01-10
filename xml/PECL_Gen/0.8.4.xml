@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>PECL_Gen</name>
+  <summary>Tool to generate PECL extensions from an XML description</summary>
+  <description>PECL_Gen (formerly known as ext_skel_ng) is a pure PHP replacement 
+for the ext_skel shell script that comes with the PHP 4 source. 
+It reads in configuration options, function prototypes and code fragments
+from an XML description file and generates a complete ready-to-compile
+PECL extension.</description>
+  <maintainers>
+    <maintainer>
+      <user>hholzgra</user>
+      <name>Hartmut Holzgraefe</name>
+      <email>hartmut@php.net</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.8.4</version>
+    <date>2004-05-16</date>
+    <license>PHP</license>
+    <state>beta</state>
+    <notes>This is the first release living in PECL insteat of PEAR.
+
+Technical changes are: 
+
+- improved PECL CS compliance of generated code
+- generated config.m4 supports both shared and static build
+- code snippets may be read from files instead of beeing 
+  embedded in CDATA sections
+- improved resource parameter handling
+- shortcuts for constants that just mimic C constants
+- global 'code' tag finally works as documented
+- files can be added using 'file' tag in 'deps'
+- ...</notes>
+    <deps>
+      <dep type="php" rel="ge" version="5"/>
+      <dep type="pkg" rel="ge" version="1.0.1">XML_Parser</dep>
+      <dep type="pkg" rel="ge" version="1.0">Console_Getopt</dep>
+    </deps>
+    <filelist>
+      <file role="script" baseinstalldir="/" name="pecl-gen">
+        <replace from="/usr/local/bin" to="PHP_BINDIR" type="php-const"/>
+        <replace from="@php_dir@" to="php_dir" type="pear-config"/>
+      </file>
+      <file role="php" baseinstalldir="PECL/Gen" name="Extension.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Maintainer.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Release.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="License.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="License/PHP.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="License/BSD.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="License/LGPL.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Element.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Element/Constant.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Element/Function.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Element/Global.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Element/Ini.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Element/Logo.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Element/Resource.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Element/Test.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Element/Class.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="XmlParser.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="ExtensionParser.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Tools/Getopt.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Tools/Platform.php"/>
+      <file role="php" baseinstalldir="PECL/Gen" name="Tools/Indent.php"/>
+    </filelist>
+  </release>
+  <changelog>
+    <release>
+      <version>0.8.3</version>
+      <date>2004-04-01</date>
+      <state>beta</state>
+      <notes>- this release was completely broken for unknown reasons,
+  might be realted to the move from PEAR to PECL ...?
+      
+</notes>
+    </release>
+    <release>
+      <version>0.8.2</version>
+      <date>2003-10-13</date>
+      <state>beta</state>
+      <notes>- fixed a bug in the parser that rendered 0.8.1 almost useless :(
+      
+</notes>
+    </release>
+    <release>
+      <version>0.8.1</version>
+      <date>2003-10-12</date>
+      <state>beta</state>
+      <notes>- custom test generation added
+- minor DTD changes
+- code reformatted for better PEAR coding standards compliance
+- additional tools for whitespace and indentation management
+      
+</notes>
+    </release>
+    <release>
+      <version>0.8.0</version>
+      <date>2003-07-13</date>
+      <state>beta</state>
+      <notes>- added documentation
+- check for reserved words 
+- check for duplicate names
+- config,m4 header files check added
+- config.m4 support for makefile fragments
+      
+</notes>
+    </release>
+    <release>
+      <version>0.7.0</version>
+      <date>2003-07-03</date>
+      <state>beta</state>
+      <notes>- a README file is written containing information on
+  how to continue after an extension was generated
+- --function=&quot;proto&quot; writes function stub to stdout
+- --stubs=filename now supported in ext_skel BC mode
+- added --help and --version options
+- added a short feedback howto message 
+  (can be disabled using --quiet)  
+- --with-xml works again 
+  (ext_skel compatibility)
+- will now only purge and overwrite existing target directory
+  if '--force' is requested on cmd line
+- .cvsignore created with platform-specific entries
+- PEARifying error reporting finished
+      
+</notes>
+    </release>
+    <release>
+      <version>0.6.1</version>
+      <date>2003-06-29</date>
+      <state>beta</state>
+      <notes>typo fix in package.xml dependencies entry for XML_Parser
+</notes>
+    </release>
+    <release>
+      <version>0.6.0</version>
+      <date>2003-06-28</date>
+      <state>beta</state>
+      <notes>Moved from php5/scripts to PEAR.
+</notes>
+    </release>
+  </changelog>
+</package>

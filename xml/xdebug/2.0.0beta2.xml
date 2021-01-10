@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0">
+  <name>xdebug</name>
+  <summary>Provides functions for function traces and profiling</summary>
+  <description>The Xdebug extension helps you debugging your script by providing a lot of
+valuable debug information. The debug information that Xdebug can provide
+includes the following:
+
+    * stack and function traces in error messages with:
+          o full parameter display for user defined functions
+          o function name, file name and line indications
+          o support for member functions
+    * memory allocation
+    * protection for infinite recursions
+
+Xdebug also provides:
+
+    * profiling information for PHP scripts
+    * script execution analysis
+    * capabilities to debug your scripts interactively with a debug client</description>
+  <maintainers>
+    <maintainer>
+      <user>derick</user>
+      <name>Derick Rethans</name>
+      <email>derick@xdebug.org</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>2.0.0beta2</version>
+    <date>2004-11-28</date>
+    <license>BSD style</license>
+    <state>beta</state>
+    <notes>+ Added new features:
+	- DBGP: Added error messages to returned errors (in most cases)
+  
++ Added new functions:
+	- Added a function &quot;xdebug_debug_zval&quot; to debug zvals by printing its
+	  refcounts and is_ref values.
+  
+= Changed features:
+	- xdebug_code_coverage_stop() will now clean up the code coverage array,
+	  unless you specify FALSE as parameter.
+	- The proper Xdebug type is &quot;hash&quot; for associative arrays.
+	- Extended the code-coverage functionality by returning lines with
+	  executable code on them, but where not executed with a count value of -1.
+
+= Fixed bugs:
+	- DBGP: Make property_get and property_value finally work as they should,
+	  including retrieving information from different depths then the most top
+	  stack frame.
+	- DBGP: Fix eval'ed $varnames in property_get.
+	- DBGP: Support the -d option for property_get.
+	- Fixed the exit handler hook to use the new &quot;5.1&quot; way of handling it;
+	  which fortunately also works with PHP 5.0.
+	- Fixed bug #102: Problems with configure for automake 1.8.
+	- Fixed bug #101: crash with set_exeception_handler() and uncatched exceptions.
+	- Fixed bug #99: unset variables return the name as a string with property_get.
+	- Fixed bug #98: 'longname' attribute not returned for unintialized
+	  property in context_get request.
+	- Fixed bug #94: xdebug_sprintf misbehaves with x86_64/glibc-2.3.3
+	- Fixed bug #93: Crash in lookup_hostname on x86_64
+	- Fixed bug #92: xdebug_disable() doesn't disable the exception handler.
+	- Fixed bug #68: Summary not written when script ended with &quot;exit()&quot;.</notes>
+    <filelist>
+      <file role="src" md5sum="5d70b3b3f0efc501a7e0677e3df11fe7" name="php_xdebug.h"/>
+      <file role="src" md5sum="3c14817ba5daf08b57064f4b80674ba8" name="usefulstuff.c"/>
+      <file role="src" md5sum="3263f90934f7eacc9ba400e0258f1a8c" name="usefulstuff.h"/>
+      <file role="src" md5sum="ddaca8b9f4ed4bac47a9195f93d37f45" name="xdebug.c"/>
+      <file role="src" md5sum="18c948e26fb4af784111af3c9812fef2" name="xdebug_code_coverage.c"/>
+      <file role="src" md5sum="884cf134ec1c27fa2961f00fe308c78e" name="xdebug_code_coverage.h"/>
+      <file role="src" md5sum="ebc263f9855ca786100012474cb33809" name="xdebug_com.c"/>
+      <file role="src" md5sum="1134e513774b611e3b51bd3a2883e3bd" name="xdebug_com.h"/>
+      <file role="src" md5sum="0d2125f96ee2c45ee9883633c75b2fc6" name="xdebug_compat.c"/>
+      <file role="src" md5sum="1169527815b977ea7ce9cecd440ad6fe" name="xdebug_compat.h"/>
+      <file role="src" md5sum="e86151ed2be87f21cedaa88a5017be5a" name="xdebug_handlers.c"/>
+      <file role="src" md5sum="8de5ed33c14e07d616666d1fb2962de3" name="xdebug_handlers.h"/>
+      <file role="src" md5sum="4f5317920ca497b4953337e964c71ca8" name="xdebug_handler_dbgp.c"/>
+      <file role="src" md5sum="ed47d623d925bca5731872b408b220a2" name="xdebug_handler_dbgp.h"/>
+      <file role="src" md5sum="bd727699ba4ae0cd97dd69e918143897" name="xdebug_handler_gdb.c"/>
+      <file role="src" md5sum="310304fcf6ec03dc14d0578c3ea1527b" name="xdebug_handler_gdb.h"/>
+      <file role="src" md5sum="8c210f8116a30df7cf1a4283ec016535" name="xdebug_handler_php3.c"/>
+      <file role="src" md5sum="daf92edf6155315a9839b676f2b734ba" name="xdebug_handler_php3.h"/>
+      <file role="src" md5sum="ca99cdd89a324fd3df3ed7e4b331060e" name="xdebug_hash.c"/>
+      <file role="src" md5sum="b306b99c3d176864938110f46338438a" name="xdebug_hash.h"/>
+      <file role="src" md5sum="77128715cf268468630a0010525e280d" name="xdebug_llist.c"/>
+      <file role="src" md5sum="bd778603212ccb1861552a87c1f05eb1" name="xdebug_llist.h"/>
+      <file role="src" md5sum="ca8b84f900ffe1adbe573bb24b5888a8" name="xdebug_mm.h"/>
+      <file role="src" md5sum="9598b19aefad71fef29a84ffdeb7cb22" name="xdebug_private.c"/>
+      <file role="src" md5sum="bb5ca4bd6dca270edbfb10be095859e1" name="xdebug_private.h"/>
+      <file role="src" md5sum="5d3740cf0011a67de722293c2a4ffc5b" name="xdebug_profiler.c"/>
+      <file role="src" md5sum="db1b4344c78f58d78e2ec4474333477f" name="xdebug_profiler.h"/>
+      <file role="src" md5sum="d9d6519c09238f486347cc8cead116da" name="xdebug_str.c"/>
+      <file role="src" md5sum="93f2ff90d0d078f0c7d033e90e907f39" name="xdebug_str.h"/>
+      <file role="src" md5sum="3facef51f7572403cd016095ba0c73db" name="xdebug_superglobals.c"/>
+      <file role="src" md5sum="330aaeb1d90187df6267d08dd83ec3fe" name="xdebug_superglobals.h"/>
+      <file role="src" md5sum="5f00c7335ceae57619ef603d7cd2944a" name="xdebug_var.c"/>
+      <file role="src" md5sum="f978171f370dcd3974537a976e81bef4" name="xdebug_var.h"/>
+      <file role="src" md5sum="01f0fca8edfe3d329a222db80e9086c7" name="xdebug_xml.c"/>
+      <file role="src" md5sum="f851be929e89d31cfd8fa56c2d2acb83" name="xdebug_xml.h"/>
+      <file role="src" md5sum="65dd8129558a33510ad3f67fa015c58e" name="Makefile.in"/>
+      <file role="src" md5sum="ddf851f41fdbf62c60fde06020313a2b" name="config.m4"/>
+      <file role="src" md5sum="03e9665e96f796768be42ec20d7ab9e6" name="xdebug.dsp"/>
+      <file role="doc" md5sum="8f9a93feba6ff23c4bc1bc2929babcc4" name="CREDITS"/>
+      <file role="doc" md5sum="8909291e94b6df0d0dd0f88d74c5bed9" name="Changelog"/>
+      <file role="doc" md5sum="49efc51640d78c653437dd153ff10ed1" name="LICENSE"/>
+      <file role="doc" md5sum="3e217e7632343348f8fe1947f545363e" name="NEWS"/>
+      <file role="doc" md5sum="510f02404d7974ff27f1863558d8b92c" name="README"/>
+      <file role="doc" md5sum="9300c4556247e3fbd76130f329cf59bc" name="xt.vim"/>
+      <file role="src" md5sum="257d2385c7ab17d12ef60cf1fa70de35" name="debugclient/acinclude.m4"/>
+      <file role="src" md5sum="fda34bdcb4283930f9055a263e3ddb28" name="debugclient/buildconf"/>
+      <file role="src" md5sum="253fc424977def9dd5b58f7a4b42612a" name="debugclient/config.guess"/>
+      <file role="src" md5sum="fc153e4874c056f1421349136ef9d27f" name="debugclient/config.h.in"/>
+      <file role="src" md5sum="c31eb7b68f55a62a2223734c80c18d1f" name="debugclient/config.sub"/>
+      <file role="src" md5sum="681f9486a97e658074e1fe2c8dcc1f86" name="debugclient/configure"/>
+      <file role="src" md5sum="590f4ab4af4a4a21b175f93d5c0f9426" name="debugclient/configure.in"/>
+      <file role="src" md5sum="cee6647ceb4340358991d5e65cdf5c43" name="debugclient/cvsclean"/>
+      <file role="src" md5sum="fd5909387a0942054c5fe0ca2c233cc7" name="debugclient/debugclient.dsp"/>
+      <file role="src" md5sum="009c7790e0ea7cee926f9fb41c40300e" name="debugclient/INSTALL"/>
+      <file role="src" md5sum="5afe8eb5573965dfb58378e4e46f3813" name="debugclient/install-sh"/>
+      <file role="src" md5sum="ca2aecaef3386761964198620130ac8e" name="debugclient/LICENSE"/>
+      <file role="src" md5sum="b7fbd439734b78299afbd21edfebc7eb" name="debugclient/ltmain.sh"/>
+      <file role="src" md5sum="e36b33165cf9b9b01ffda6c777230179" name="debugclient/main.c"/>
+      <file role="src" md5sum="627dbe08ec7c8024d2ac5f181ffdd391" name="debugclient/Makefile.in"/>
+      <file role="src" md5sum="d41d8cd98f00b204e9800998ecf8427e" name="debugclient/missing"/>
+      <file role="src" md5sum="20af8d0d8c9b4478a446c1dee0a0c0f0" name="debugclient/mkinstalldirs"/>
+      <file role="src" md5sum="1a5d81f89c0231aebf1a241655ffe86d" name="debugclient/usefulstuff.h"/>
+      <file role="src" md5sum="13de79a5bf23b868329877a9d4ca0de8" name="debugclient/usefulstuff.c"/>
+      <file role="src" md5sum="4f16a301f211aabb3594f87eced6477b" name="debugclient/build/buildcheck.sh"/>
+      <file role="src" md5sum="e796e364148aee1796320b90431bed9b" name="debugclient/build/buildconf1.mk"/>
+      <file role="src" md5sum="4d4b8c43b0c0a5570e31761f05685a5d" name="debugclient/build/buildconf2.mk"/>
+      <file role="src" md5sum="fa89e547ca74aa76eee82ed9c4d2daeb" name="debugclient/build/clean.mk"/>
+      <file role="src" md5sum="306c941e88a71fd3522fd82228563ec9" name="debugclient/build/config-stubs"/>
+    </filelist>
+  </release>
+  <changelog>
+    <release>
+      <version>2.0.0beta2</version>
+      <date>2004-11-28</date>
+      <state>beta</state>
+      <notes>+ Added new features:
+	- DBGP: Added error messages to returned errors (in most cases)
+  
++ Added new functions:
+	- xdebug_debug_zval() to debug zvals by printing its refcounts and is_ref
+	  values.
+  
+= Changed features:
+	- xdebug_code_coverage_stop() will now clean up the code coverage array,
+	  unless you specify FALSE as parameter.
+	- The proper Xdebug type is &quot;hash&quot; for associative arrays.
+	- Extended the code-coverage functionality by returning lines with
+	  executable code on them, but where not executed with a count value of -1.
+
+= Fixed bugs:
+	- DBGP: Make property_get and property_value finally work as they should,
+	  including retrieving information from different depths then the most top
+	  stack frame.
+	- DBGP: Fix eval'ed $varnames in property_get.
+	- DBGP: Support the -d option for property_get.
+	- Fixed the exit handler hook to use the new &quot;5.1&quot; way of handling it;
+	  which fortunately also works with PHP 5.0.
+	- Fixed bug #102: Problems with configure for automake 1.8.
+	- Fixed bug #101: crash with set_exeception_handler() and uncatched exceptions.
+	- Fixed bug #99: unset variables return the name as a string with property_get.
+	- Fixed bug #98: 'longname' attribute not returned for unintialized
+	  property in context_get request.
+	- Fixed bug #94: xdebug_sprintf misbehaves with x86_64/glibc-2.3.3
+	- Fixed bug #93: Crash in lookup_hostname on x86_64
+	- Fixed bug #92: xdebug_disable() doesn't disable the exception handler.
+	- Fixed bug #68: Summary not written when script ended with &quot;exit()&quot;.
+     
+</notes>
+    </release>
+    <release>
+      <version>2.0.0beta1</version>
+      <date>2004-09-15</date>
+      <state>beta</state>
+      <notes>+ Added new features:
+	- Added support for the new DBGp protocol for communicating with the debug
+	  engine.
+	- A computerized trace format for easier parsing by external programs.
+	- The ability to set remote debugging features via the environment.  This
+	  allows an IDE to emulate CGI and still pass the configuration through to
+	  the debugger.  In CGI mode, PHP does not allow -d arguments.
+	- Reimplementation of the tracing code, you can now only trace to file; this greatly
+	  enhances performance as no string representation of variables need to be
+	  kept in memory any more.
+	- Re-implemented profiling support. Xdebug outputs information the same way
+	  that cachegrind does so it is possible to use Kcachegrind as front-end.
+	- Xdebug emits warnings when it was not loaded as a Zend extension.
+	- Added showing private, protected and public to the fancy var_dump()
+	  replacement function.
+	- Added the setting of the TCP_NODELAY socket option to stop delays in
+	  transferring data to the remote debugger client. (Patch by Christof J.  Reetz)
+	+ DebugClient: Added setting for port to listen on and implemented running
+	  the previous command when pressing just enter.
+
++ Added new functions:
+	- xdebug_get_stack_depth() to return the current stack depth level.
+	- xdebug_get_tracefile_name() to retrieve the name of the tracefile. This
+	  is useful in case auto trace is enabled and you want to clean the trace
+	  file.
+	- xdebug_peak_memory_usage() which returns the peak memory
+	  used in a script. (Only works when --enable-memory-limit was enabled)
+
++ Added feature requests:
+	- FR #5: xdebug_break() function which interupts the script for the debug
+	  engine.
+	- FR #30: Dump current scope information in stack traces on error.
+	- FR #88: Make the url parameter XDEBUG_SESSION_START optional. So it can
+	  be disabled and the user does not need to add it.
+
++ Added new php.ini settings:
+	- xdebug.auto_trace_file: to configure a trace file to write to as addition
+	  to the xdebug.auto_trace setting which just turns on tracing.
+	- xdebug.collect_includes: separates collecting
+	  names of include files from the xdebug.collect_params setting.
+	- xdebug.collect_return: showing return values in traces.
+	- xdebug.dump_global: with which you can turn off dumping of super globals
+	  even in you have that configured.
+	- xdebug.extended_info: turns off the generation of extended opcodes that
+	  are needed for stepping and breakpoints for the remote debugger. This is
+	  useful incase you want to profile memory usage as the generation of this
+	  extended info increases memory usage of oparrrays by about 33%. 
+	- xdebug.profiler_output_dir: profiler output directory.
+	- xdebug.profiler_enable: enable the profiler.
+	- xdebug.show_local_vars: turn off the showing of local variables in the
+	  top most stack frame on errors.
+	- xdebug.show_mem_delta: show differences between current and previous
+	  memory usage on a function call level.
+	- xdebug.trace_options: to configure extra
+	  options for trace dumping:
+		o XDEBUG_TRACE_APPEND option (1)
+
+= Changed features:
+	- xdebug_start_trace() now returns the filename of the tracefile (.xt is
+	  added to the requested name).
+	- Changed default debugging protocol to dbgp instead of gdb.
+	- Changed default debugger port from 17869 to 9000.
+	- Changed trace file naming: xdebug.trace_output_dir is now used to
+	  configure a directory to dump automatic traces; the trace file name now
+	  also includes the pid (xdebug.trace_output_name=pid) or a crc32 checksum
+	  of the current working dir (xdebug.trace_output_name=crc32) and traces
+	  are not being appended to an existing file anymore, but simply
+	  overwritten.
+	- Removed $this and $GLOBALS from showing variables in the local scope.
+
+- Removed functions:
+	- xdebug_get_function_trace/xdebug_dump_function_trace() because of the new
+	  idea of tracing.
+
+= Fixed bugs:
+	- Fixed bug #89: var_dump shows empty strings garbled.
+	- Fixed bug #85: Xdebug segfaults when no idekey is set.
+	- Fixed bug #83: More than 32 parameters functions make xdebug crash.
+	- Fixed bug #75: xdebug's var_dump implementation is not binary safe.
+	- Fixed bug #73: komodo beta 4.3.7 crash.
+	- Fixed bug #72: breakpoint_get returns wrong structure.
+	- Fixed bug #69: Integer overflow in cachegrind summary.
+	- Fixed bug #67: Filenames in Xdebug break URI RFC with spaces.
+	- Fixed bug #64: Missing include of xdebug_compat.h.
+	- Fixed bug #57: Crash with overloading functions.
+	- Fixed bug #54: source command did not except missing -f parameter.
+	- Fixed bug #53: Feature get misusing the supported attribute.
+	- Fixed bug #51: Only start a debug session if XDEBUG_SESSION_START is
+	  passed as GET or POST parameter, or the DBGP_COOKIE is send to the server.
+	  Passing XDEBUG_SESSION_STOP as GET/POST parameter will end the debug
+	  session and removes the cookie again. The cookie is also passed to the
+	  remote handler backends; for DBGp it is added to the &lt;init&gt; packet.
+	- Fixed bug #49: Included file's names should not be stored by address.
+	- Fixed bug #44: Script time-outs should be disabled when debugging.
+	= Fixed bug #36: GDB handler using print causes segfault with wrong syntax
+	- Fixed bug #33: Implemented the use of the ZEND_POST_DEACTIVATE hook. Now we
+	  can handle destructors safely too.
+	- Fixed bug #32: Unusual dynamic variables cause xdebug to crash.
+     
+</notes>
+    </release>
+    <release>
+      <version>1.3.1</version>
+      <date>2004-04-06</date>
+      <state>stable</state>
+      <notes>= Fixed profiler to aggregate class/method calls correctly. (Robert Beenen)
+= Fixed debugclient to initialize socket structure correctly. (Brandon Philips
+  and David Sklar)
+= GDB: Fixed bug where the source file wasn't closed after a &quot;source&quot; command.
+  (Derick)
+     
+</notes>
+    </release>
+    <release>
+      <version>1.3.0</version>
+      <date>2003-09-17</date>
+      <state>stable</state>
+      <notes>= Fixed segfault where a function name didn't exist in case of a
+ &quot;call_user_function&quot;. (Derick)
+= Fixed reading a filename in case of an callback to a PHP function from an
+  internal function (like &quot;array_map()&quot;). (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>1.3.0rc1</version>
+      <date>2003-09-17</date>
+      <state>beta</state>
+      <notes>= Fixed bug with wrong file names for functions called from call_user_*().
+  (Derick)
++ Added the option &quot;dump_superglobals&quot; to the remote debugger. If you set this
+  option to 0 the &quot;show-local&quot; and similar commands will not return any data
+  from superglobals anymore. (Derick)
+= Fixed bug #2: &quot;pear package&quot; triggers a segfault. (Derick)
+= Fixed crash bug when a function had sprintf style parameters (ie.
+  strftime()). (Derick)
++ Added &quot;id&quot; attribute to &lt;var /&gt; elements in responses from the remove
+  debugger when the response method is XML. This makes it possible to
+  distinguish between unique elements by use of recursion for example. (Derick)
+= Improved performance greatly by doing lazy folding of variables outside
+  trace mode. (Derick)
+= Fixed a bug with &quot;quit&quot;, if it was used it disabled the extension for the
+  current process. (Derick)
++ Added the &quot;full&quot; argument to the remote command &quot;backtrace&quot;. When this
+  argument is passed, the local variables will be returned to for each frame in
+  the stack. (Derick)
++ Implemented xdebug_time_index() which returns the time passed since the
+  start of the script. This change also changes the output of the tracing
+  functions as the start time will no longer be the first function call, but
+  the real start time of the script. (Derick)
++ Implemented the &quot;show-local&quot; command (shows all local variables in the
+  current scope including all contents). (Derick)
++ Implemented conditions for breakpoints in the &quot;break&quot; command. (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>1.2.0</version>
+      <date>2003-04-21</date>
+      <state>stable</state>
+      <notes>= Fixed compilation on MacOSX. (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>1.2.0rc2</version>
+      <date>2003-04-15</date>
+      <state>beta</state>
+      <notes>= Fixed handling Windows paths in the debugger. (Derick)
+= Fixed getting zvals out of Zend Engine 2. (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>1.2.0rc1</version>
+      <date>2003-04-06</date>
+      <state>beta</state>
+      <notes>+ Added code coverage functions to check which lines and how often they were
+  touched during execution. (Derick)
++ Made Xdebug compatible with Zend Engine 2. (Derick)
++ Added dumping of super globals on errors. (Harald Radi)
++ Added XML protocol for the debugger client. (Derick)
+= Fixed handling of &quot;continue&quot; (so that it also continues with the script).
+  (Derick)
++ Additions to the remote debugger: &quot;eval&quot; (evaluate any PHP code from the
+  debugger client). (Derick)
++ Added profiling support to xdebug. This introduces 3 new functions,
+  xdebug_start_profiling() that begins profiling process, 
+  xdebug_stop_profiling() that ends the profiling process and
+  xdebug_dump_function_trace() that dumps the profiling data. (Ilia)
++ Implemented the &quot;kill&quot; (kills the running script) and &quot;delete&quot; (removes
+  a breakpoint on a specified element) command. (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>1.1.0</version>
+      <date>2002-11-11</date>
+      <state>stable</state>
+      <notes>+ Implemented the &quot;list&quot; (source listing), &quot;print&quot; (printing variable
+  contents), &quot;show&quot; (show all variables in the scope), &quot;step&quot; (step through
+  execution), &quot;pwd&quot; (print working directory), &quot;next&quot; (step over) and &quot;finish&quot;
+  (step out) commands for the remote debugger. (Derick)
+= Fixed lots of small bugs, under them memory leaks and crash bugs. (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>1.1.0pre2</version>
+      <date>2002-10-29</date>
+      <state>beta</state>
+      <notes>+ Implemented class::method, object-&gt;method and file.ext:line style
+  breakpoints. (Derick)
++ Added xdebug.collect_params setting. If this setting is on (the default)
+  then Xdebug collects all parameters passed to functions, otherwise they
+  are not collected at all. (Derick)
++ Implemented correct handling of include/require and eval. (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>1.1.0pre1</version>
+      <date>2002-10-22</date>
+      <state>beta</state>
+      <notes>+ Added automatic starting of function traces (xdebug.auto_trace, defaulting to
+  &quot;off&quot;). (Derick)
+- Xdebug no longer supports PHP versions below PHP 4.3.0pre1. (Derick)
++ Added gdb compatible debugger handler with support for simple (function only)
+  breakpoints. (Derick)
+= Implemented a new way to get class names and file names. (Derick, Thies C.
+  Arntzen &lt;thies@thieso.net&gt;)
++ Added time-index and memory footprint to CLI dumps. (Derick)
++ Implemented remote debugger handler abstraction. (Derick)
++ Added a php3 compatible debugger handler. (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>1.0.0rc1</version>
+      <date>2002-09-01</date>
+      <state>beta</state>
+      <notes>+ Implemented gathering of parameters to internal functions (only available
+  in combination with PHP 4.3.0-dev). (Derick)
+= Implemented a new way to get class names and file names. (Derick, Thies C.
+  Arntzen &gt;thies@thieso.net&lt;)
++ Added support for error messages with stack trace in syslog. (Sergio
+  Ballestrero &gt;s.ballestrero@planetweb.it&lt;)
+= Windows compilation fixes. (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>0.9.0</version>
+      <date>2002-06-16</date>
+      <state>beta</state>
+      <notes>= Fixed a memory leak in delayed included files. (Derick)
+- Added support for PHP 4.1.2. (Derick)
+= Rewrote xdebug_get_function_stack() and xdebug_get_function_trace() to return
+  data in multidimensional arrays. (Derick)
+= Fixed compiling without memory limit enabled (Sander Roobol, Derick)
+- Add support for classnames, variable include files and variable
+  function names. (Derick)
+- Implemented links to the PHP Manual in traces. (Derick)
+- Added timestamps and memory usage to function traces. (Derick)
+= Fixed crash when using an user defined session handler. (Derick)
++ Implemented variable function names ($a = 'foo'; $f();) for use in
+  traces. (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>0.8.0</version>
+      <date>2002-05-26</date>
+      <state>beta</state>
+      <notes>+ Implemented much better parameter tracing for user defined
+  functions. (Derick)
+= Renamed xdebug_get_function_trace() to xdebug_dump_function_trace().
+  (Derick)
+= Implemented new xdebug_get_function_trace() to return the function trace in
+  an array. (Derick)
++ Added a parameter to xdebug_start_trace(). When this parameter is used,
+  xdebug will dump a function trace to the filename which this parameter
+  speficies. (Derick)
+- Fix a problem with nested member functions. (Derick)
+= Make configure scripts work with PHP 4.2.x. (Derick)
++ Implemented handling single-dimensional constant arrays passed to a
+  function. (Derick)
+= Fix function traces in windows. (Derick)
++ Implemented function traces, which you can start and stop with
+  xdebug_start_trace() and xdebug_stop_trace(). You can view the trace by using
+  the return array from xdebug_get_function_trace(). (Derick)
+= Fixed segfaults with xdebug_call_*(). (Derick)
+      
+</notes>
+    </release>
+    <release>
+      <version>0.7.0</version>
+      <date>2002-05-08</date>
+      <state>beta</state>
+      <notes>+ Implemented handling of static method calls (foo::bar). (Derick)
++ Added correct handling of include(_once)/require(_once) and eval().
+  (Derick)
++ Added ini setting to change the default setting for enabling showing
+  enhanced error messages. (Defaults to &quot;On&quot;). (Derick)
++ Added the functions xdebug_enable() and xdebug_disable() to change the
+  showing of stack traces from within your code. (Derick)
+= Fixed the extension to show all errors. (Derick)
++ Implemented xdebug_memory_usage() which returns the memory in use by PHPs
+  engine. (Derick)
+      
+</notes>
+    </release>
+  </changelog>
+</package>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0" packagerversion="1.4.0a11">
+ <name>DBDO</name>
+ <summary>Database DataObjects</summary>
+ <description>DBDO performs 2 tasks:
+1. Builds SQL statements based on the objects vars and the builder methods.
+2. acts as a datastore for a table row. (ORM)
+The core class is designed to be extended for each of your tables so 
+that you put the data logic inside the data classes.
+
+For the most part, refer to this for documentation
+http://pear.php.net/manual/en/package.database.db-dataobject.php
+and the project home page for any changes in method names.
+ 
+The key differences between DataObjects and DBDO are:
+- PHP5 only
+- query() / with no arguments replaces find()
+- assignFrom replaces setFrom
+- DBDO::factory('dbalias','table') has 2 arguments, first being the db alias
+- Configuration done using static methods.
+  DBDO::config('dbalias', 'provider','Mysql');
+  DBDO::config('dbalias', 'cnc','database=XYZ');
+- Addition of FetchAll
+  $do-&gt;fetchAll(DBDO::SINGLE | DBDO::OBJECTS | DBDO::KEY_VALUE | DBDO::VALUE) 
+- Error handling 
+ * Throws exceptions for database errors / unusual stuff
+ * E_ERROR's and dies if you use it incorrectly (eg. fixable at code level)
+- No support for joins yet.. (On the TODO list) 
+
+Building it Requires libgda (www.gnome-db.org), currently from CVS, which can be a pain.
+
+- Win32 support is theoretically possible, it just requires someone to spend time working
+out how to build libgda (which has windows makefiles) and this library.
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>alan_k</user>
+   <name>Alan Knowles</name>
+   <email>alan@akbkhome.com</email>
+   <role>lead</role>
+  </maintainer>
+  </maintainers>
+ <release>
+  <version>0.1.0</version>
+  <date>2005-04-19</date>
+  <license>PHP</license>
+  <state>alpha</state>
+  <notes>- Initial Packaged Release
+ 
+At this point, DBDO is working on at least one web site, so it is undergoing
+testing, and needs more people to come up with ideas to improve it, or just 
+find more reproducable bugs..
+  </notes>
+  <filelist>
+   <file role="src" md5sum="f208d6031cacdb6dc20d343dc0a61b99" name="/EXPERIMENTAL"/>
+   <file role="src" md5sum="91980df65afe34235f2f77d0acf94a83" name="/CREDITS"/>
+   <file role="src" md5sum="460d6ba3d25629232c30c65583c8aa52" name="/config.m4"/>
+   <file role="src" md5sum="6b28c2b64cb4e4d49dd96b03dd50d920" name="/dbdo.c"/>
+   <file role="src" md5sum="4c0939477d2a70ba68c06bf36a93a938" name="/dbdo_object.c"/>
+   <file role="src" md5sum="bf78395fc145c5db04ee96bf03b6f339" name="/php_dbdo.h"/>
+   <file role="doc" md5sum="fd402d85dd601bd7047f27beec855a7f" name="/examples/assignFrom.php"/>
+   <file role="doc" md5sum="3d2428a38ed77626cdb4995a7270129c" name="/examples/call.php"/>
+   <file role="doc" md5sum="f6ab56b03bbdbbb0e20af42a53019371" name="/examples/constants.php"/>
+   <file role="doc" md5sum="a6d47f7466c4891cdf2de667035b51f4" name="/examples/count.php"/>
+   <file role="doc" md5sum="80d6d6876bcf8663c47c5cca7426aed0" name="/examples/delete.php"/>
+   <file role="doc" md5sum="82ef992c4c7625dca570c482b7314082" name="/examples/factory.php"/>
+   <file role="doc" md5sum="dd26b81c8d6a54f641da339cf8c775df" name="/examples/fetchAll.php"/>
+   <file role="doc" md5sum="64cfe76077ba92728e72d0f692c0b218" name="/examples/get.php"/>
+   <file role="doc" md5sum="7a3cd5d484e65b7572f301e9d04da30e" name="/examples/info.php"/>
+   <file role="doc" md5sum="03a2005fc4cb04d96410a8eeafc1b69a" name="/examples/insert.php"/>
+   <file role="doc" md5sum="64f377b1efef62fbd5fec14a64136273" name="/examples/keys.php"/>
+   <file role="doc" md5sum="b6b7c24707e0f20fe450f4a52b9f4f74" name="/examples/mortgagecalc.php"/>
+   <file role="doc" md5sum="2d03362915b58e8bcd7e6d4b2e73aca1" name="/examples/schema.php"/>
+   <file role="doc" md5sum="82f74d34cfc7ab7c2021165d2a1a4567" name="/examples/Test_typetest.php"/>
+   <file role="doc" md5sum="dcd2abc023e696a115e69e54705494fa" name="/examples/toArray.php"/>
+   <file role="doc" md5sum="b2c276e03ff06e940157f6d0ce32fa05" name="/examples/update.php"/>
+   <file role="doc" md5sum="44dd0d16743ff87d074f7c31b11b1c11" name="/examples/valueGet.php"/>
+   <file role="doc" md5sum="9f5511440cf29715e2995ff32309cde6" name="/examples/valueSet.php"/>
+   <file role="test" md5sum="ade06f3e1c67b0898b0a8e551f4deaa3" name="/tests/01_get.phpt"/>
+   <file role="test" md5sum="22ac219cbea8e07464bfb93eacbbccec" name="/tests/02_update.phpt"/>
+   <file role="test" md5sum="96a4815a9fc7ca7ac2793079111e7449" name="/tests/03_factory.phpt"/>
+   <file role="test" md5sum="6113622180f2294917f766aeedf07f03" name="/tests/04_fetching.phpt"/>
+   <file role="test" md5sum="840362f1107bac972bd4043c8f3d3383" name="/tests/40_fetching.phpt"/>
+   <file role="test" md5sum="cc2cadd67fc38f6b2b5e4b810dc2938d" name="/tests/41_fetching.phpt"/>
+   <file role="test" md5sum="162a8b156c6eab30bfc344a7a96a5a38" name="/tests/42_fetching.phpt"/>
+   <file role="test" md5sum="ab3262374552342f479ac22d59e8035c" name="/tests/50_create.phpt"/>
+   <file role="test" md5sum="50b5107bdeaf0aa29991a916f3226b7a" name="/tests/60_assignFrom.phpt"/>
+   <file role="test" md5sum="c69bf1f63f4f53d0b27044cb3b850830" name="/tests/70_errors_factory.phpt"/>
+   <file role="test" md5sum="12476a145003c7465914c6cfc98b30cd" name="/tests/71_errors_factory1.phpt"/>
+   <file role="test" md5sum="7f3a8dfed5c385b6595e9865af1cc45b" name="/tests/80_info.phpt"/>
+   <file role="test" md5sum="758c699b79aac85924fcfa1e1b651f23" name="/tests/README.txt"/>
+   <file role="test" md5sum="be97f36bf5d853c443cda08fcbb1bafa" name="/tests/classtest.inc.php"/>
+   <file role="test" md5sum="96f25425d9280afdf350970a2ddd0227" name="/tests/config.php"/>
+  </filelist>
+ </release>
+</package>

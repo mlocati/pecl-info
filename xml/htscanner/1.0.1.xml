@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>htscanner</name>
+ <channel>pecl.php.net</channel>
+ <summary>htaccess support for PHP</summary>
+ <description>Allow one to use htaccess-like file to configure PHP
+per directory, just like apache&apos;s htaccess. It is especially useful with fastcgi (ISS5/6/7, lighttpd, etc.).
+This package was originally developed by Bart Vanbrabant. Old versions are available
+ from: http://files.zoeloelip.be/htscanner</description>
+ <lead>
+  <name>Pierre-Alain Joye</name>
+  <user>pajoye</user>
+  <email>pajoye@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Martynas Venckus</name>
+  <user>martynas</user>
+  <email>martynas@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2012-03-01</date>
+ <time>17:14:32</time>
+ <version>
+  <release>1.0.1</release>
+  <api>1.0.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Fixed NULL pointer dereference when CLI server does not
+define sapi_module.getenv.
+- #22607, adapted apache module to provide dummy php_flag and
+php_value directives for Apache 2.x API.  See mod_htscanner2.c provided
+with the package
+- #22608, made example in README more explicit with regarding to IfModule
+directive
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="66617d00db54f04ab9fbb964a70b6460" name="docs/htscanner.ini" role="src" />
+   <file md5sum="6803fdb24618163342fce20b00a9fc43" name="config.m4" role="src" />
+   <file md5sum="70e6daca01f969dd9645b106efdd9fde" name="config.w32" role="src" />
+   <file md5sum="2d7c9a3c480ed17c7c6826db3cbf7dfa" name="htscanner.c" role="src" />
+   <file md5sum="a54faa5fd98fbb3a6a382a02effb3f21" name="mod_htscanner.c" role="src" />
+   <file md5sum="350a4342ac002ced5e5ddbf58b3f582d" name="mod_htscanner2.c" role="src" />
+   <file md5sum="dca5f81414d70f0e31937e2ac12b314d" name="php_htscanner.h" role="src" />
+   <file md5sum="004451e5303787ff59e8807cdadab878" name="CREDITS" role="doc" />
+   <file md5sum="0a5be7c6e95f1c776b4bd34aaa67a603" name="README" role="doc" />
+   <file md5sum="49b7808deb07eca96ad6024f5b36d99f" name="TODO" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>htscanner</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2011-02-01</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- #19019, added support for scanning apache UserDir
+- #19078, made php_flag behavior consistent with apache
+- #19066, call zend at htaccess stage.  Fixes crashes for some
+settings (e.g. zlib.output_compression) and gains security (checks
+mail.force_extra_parameters)
+- #19168, #18886, #17067, #16891, rewritten htscanner parser code.
+All known parsing problems have been fixed
+- Added support for IfModule directive
+- Fixed mail.log safe_mode and open_basedir bypass
+- Plugged serious memory leaks in the caching code
+- Don&apos;t cache if default_ttl is zero
+- Unlock mutex after actually using name and value
+- Implemented apache module to provide dummy php_flag and php_value
+directives.  See mod_htscanner.c provided with the package
+- Added htscanner.verbose option that disables warnings when an option
+cannot be set
+- Fixed build on PHP trunk
+- Assorted improvements and code cleanup
+   </notes>
+  </release>
+  <release>
+   <date>2009-03-04</date>
+   <version>
+    <release>0.9.0</release>
+    <api>0.9.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- allow all configuration options by using the SAPI hook
+- #11959, fix value parsing when other empty chars are used than space (tabs)
+- #13190, Setting a value with php_value strips the last character
+- #14487, quotes and double quotes not parsed correctly
+Thanks to m dot kurzyna at crystalpoint dot pl, manuel at mausz dot at for 
+their patches and patience :)
+   </notes>
+  </release>
+  <release>
+   <date>2007-03-2333</date>
+   <version>
+    <release>0.8.1</release>
+    <api>0.8.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- #10426, safe_mode throws warnings about missing .htaccess
+- #10432, warning while blocking php_value safe_mode (Matthew Kent)
+   </notes>
+  </release>
+  <release>
+   <date>2007-03-20</date>
+   <version>
+    <release>0.8.0</release>
+    <api>0.8.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Initial PHP4 support
+Thanks to widexs (http://www.widexs.nl) to fund php4 support
+   </notes>
+  </release>
+  <release>
+   <date>2007-02-17</date>
+   <version>
+    <release>0.7.0</release>
+    <api>0.7.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Request #10017, added a new ini option to disable RINIT errors:
+  htscanner.stop_on_error
+  When set to 1 htscanner returns a failure when an error occured 
+	internally (cache, doc_root missing, etc.). If it is et to 0 (the default)
+	it will simply return SUCCESS and do nothing. It is useful if you have only
+	one php.ini for cli and cgi or if you compiled it staticaly.
+   </notes>
+  </release>
+  <release>
+   <date>2007-01-06</date>
+   <version>
+    <release>0.6.3</release>
+    <api>0.6.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- #9672, erroneous ini value length 
+- Replace request and module init fatal errors by warnings 
+- The None value is now case insentive, like in php.ini
+- do not use REPORT_ERRORS while trying to open a config file
+- Added a note in README to compile for apache when mod_access and php are present
+   </notes>
+  </release>
+  <release>
+   <date>2006-12-18</date>
+   <version>
+    <release>0.6.2</release>
+    <api>0.6.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Removed invalid zend_hash_destroy in mshutdown 
+- Added an error message when no path translated has been found
+- Unlock the cache when an error occured in alter_ini and using a cached entry
+   </notes>
+  </release>
+  <release>
+   <date>2006-12-13</date>
+   <version>
+    <release>0.6.1</release>
+    <api>0.6.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed possible leak in cache
+- Calculate the length values only once (strlen cleanup)
+- Fixed TSRM build
+   </notes>
+  </release>
+  <release>
+   <date>2006-12-08</date>
+   <version>
+    <release>0.6.0</release>
+    <api>0.6.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Added cache support. Each unique ini setting for a given path is cached
+- Added ini setting default_ttl, define the cache lifetime in seconds, default to 300 (5mins)
+   </notes>
+  </release>
+  <release>
+   <date>2006-11-30</date>
+   <version>
+    <release>0.5.0</release>
+    <api>0.5.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Initial PECL relase
+- Added safe mode and openbasedir checks
+- use PHP streams instead of std IO
+- Fixed segfault in the parsing routines
+- Fixed CWD detections in threaded environments
+   </notes>
+  </release>
+  <release>
+   <date>2005-11-08</date>
+   <version>
+    <release>0.4.0</release>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Some settings were not interpreted correctly
+   </notes>
+  </release>
+  <release>
+   <date>2005-11-06</date>
+   <version>
+    <release>0.3.0</release>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Added debug code (set env PHP_HTSCANNER_DEBUG)
+- Fixed bug with some paths
+- Some code cleanups
+   </notes>
+  </release>
+  <release>
+   <date>2005-11-05</date>
+   <version>
+    <release>0.2.0</release>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Parser can handle tabs and whitespaces in a directive
+   </notes>
+  </release>
+  <release>
+   <date>2005-10-02</date>
+   <version>
+    <release>0.2.0</release>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Initial release
+   </notes>
+  </release>
+ </changelog>
+</package>

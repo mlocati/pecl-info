@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.5" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>stackdriver_debugger</name>
+ <channel>pecl.php.net</channel>
+ <summary>Investigate your code&apos;s behavior in production</summary>
+ <description>Stackdriver Debugger is a free, open-source way to debug your running
+ application without requiring a redeployment.
+
+ This library allows you to set breakpoints in your running application that
+ conditionally capture local variable state, stack traces, and more. This library
+ can work in conjunction with the PHP library google/cloud-debugger (available
+ via composer: https://packagist.org/packages/google/cloud-debugger) in
+ order to send collected data to a backend storage server.</description>
+ <lead>
+  <name>Jeff Ching</name>
+  <user>chingor</user>
+  <email>chingor@google.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2018-01-09</date>
+ <time>17:56:42</time>
+ <version>
+  <release>0.1.1</release>
+  <api>0.1.1</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license>Apache 2.0</license>
+ <notes>
+Fix missing snapshot w/ OPCache (#30)
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="b02664955a6d92398e104baaa274f5aa" name="tests/ast/bracketed_namespaced_code.php" role="test" />
+   <file baseinstalldir="/" md5sum="78cc2c10224487e024fe2b831e9d4567" name="tests/ast/code.php" role="test" />
+   <file baseinstalldir="/" md5sum="1a4ae742cccfe2174dd874696d6acf2a" name="tests/ast/simple_namespaced_code.php" role="test" />
+   <file baseinstalldir="/" md5sum="3f84bfee48e5ade4037d9ddb1c214c43" name="tests/logpoints/loop.php" role="test" />
+   <file baseinstalldir="/" md5sum="8cfc313b69b626c1f68dd2984d41bfa8" name="tests/snapshots/line_numbers.php" role="test" />
+   <file baseinstalldir="/" md5sum="3f84bfee48e5ade4037d9ddb1c214c43" name="tests/snapshots/loop.php" role="test" />
+   <file baseinstalldir="/" md5sum="472c037a6a33c440f011bc8f9647b49d" name="tests/ast/ast_bracketed_namespaced_function.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5d517c1295be0e166687ff0ed12390ab" name="tests/ast/ast_closure.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="871b84562c8df4d5d6f2ac1e4ac04e80" name="tests/ast/ast_do_while.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ee5ad8ad26eaaa9f17419c24a06e1c37" name="tests/ast/ast_else.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7d44740d4f223602c3860d2a392d8bf5" name="tests/ast/ast_for.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a0f6a652246188fb725ee8bdaff666db" name="tests/ast/ast_foreach.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="dc0d7250c1ab42d5eb3f49496df8244c" name="tests/ast/ast_if.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f9ae58b43aded3c8287f1a70a0051d79" name="tests/ast/ast_method.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6b8b9a7da899a3c9f180e1e399f1ad95" name="tests/ast/ast_namespaced_function.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="73c85f682edf5a8c06981b4b644d1ef9" name="tests/ast/ast_switch.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e9c339d61cad9e3425b4c3b4d9b86e6a" name="tests/ast/ast_switch_default.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8a93633273278818952db1170408fde7" name="tests/ast/ast_while.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3b8f0c251e80bb36018a66f1bdcb3114" name="tests/logpoints/basic_logpoint.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e578352f9013b4e8198e1554ae96a77d" name="tests/logpoints/callback.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d7abcf3a1abbd927d04c6c5ce9b40c05" name="tests/logpoints/callback_context.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="635c6d0d7160c9d6191f6c20746a97f7" name="tests/logpoints/callback_exception.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3b2db60f0dbfd1bb35d92b31315ee561" name="tests/logpoints/escaped_expressions.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="05c90dd46efcb16a88a69e3863e41d8f" name="tests/logpoints/expressions.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ebc9c1115d71f28921684f6bc7041105" name="tests/logpoints/log_condition.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="03b4a0207a57a2655eb263b6a9fe5d17" name="tests/logpoints/log_multiple_times.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2ba696c5e452db710b2cabc30105bd8f" name="tests/logpoints/missing_expressions.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2f53f23030434ae8952a86c5d6e9157b" name="tests/logpoints/missing_logpoint_id.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c4fd00d82f3eef80d5cd13e0052bec7f" name="tests/logpoints/multiple_logpoints.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="610eedf5a31aecef20b4274f9f76e4d9" name="tests/logpoints/multiple_logpoints_callback.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a9bf3348795947d39253fb2f03dfb93d" name="tests/logpoints/repeated_expressions.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="994505c1228fdbdd816383ed66d574a4" name="tests/logpoints/source_root.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="35af8791c9d77c15b665d0bf256004fe" name="tests/logpoints/time_limit.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="886c635d4227609809765c058087c4cd" name="tests/logpoints/time_limit_custom.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b542f16a27a9841cdfb062e02fcfb93b" name="tests/logpoints/time_limit_custom_ini_set.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0664e1145f556fd32d54151c63080c6f" name="tests/snapshots/basic_variable_dump.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5f3bc680511826d45e47dfdd59e14cbf" name="tests/snapshots/callback.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8b3ec606f164c4d8bcdc3d0410f4dbdd" name="tests/snapshots/callback_exception.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c737ca5ad42aff73d954283c17361d5d" name="tests/snapshots/conditional_empty.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f07210885027078eff7899732816c377" name="tests/snapshots/conditional_match.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="65a87375eaf7b49fe59fe454fdc52e69" name="tests/snapshots/conditional_null.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="443b2deea2db1dcce35f998d53d5ed62" name="tests/snapshots/conditional_warning.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b02c575574dc24c19f446b5b49a3cd6b" name="tests/snapshots/expressions.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3f2cfe31de511bd79cea3ae286c796c5" name="tests/snapshots/expressions_warning.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e2a2f0f29859a4b7b1c90e7f5054d0ad" name="tests/snapshots/first_line_test.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="be8df68a90e45e23c6a7bf87dfb4aab7" name="tests/snapshots/invalid_condition.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a9fc2a3966e967d1ae0f09c0e54ab13b" name="tests/snapshots/missing_snapshot_id.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="890f76d620bd4b8f54cd022d192cd82e" name="tests/snapshots/multiple_snapshots.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7c860d2fd4f90b23136063d40193ca3b" name="tests/snapshots/multiple_snapshots_callback.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6fd0bc93c0b307c2fea0d834f03eae13" name="tests/snapshots/null_snapshot_id.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="98922b85dcfa63a486ee7a0eb71980a2" name="tests/snapshots/second_line_test.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8bcc3fac62edb4267c9ab20e12caa887" name="tests/snapshots/source_root.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="fd8a0f05749b2920a30b4942cbb74fc6" name="tests/snapshots/time_limit.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8dadc29436228979d7189b5fc86fc20b" name="tests/snapshots/time_limit_custom.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7898306805f490fa9ac61c768cff49d0" name="tests/snapshots/time_limit_custom_ini_set.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2249705c66146390dfd7ca6af3438de0" name="config.m4" role="src" />
+   <file baseinstalldir="/" md5sum="3eea7ef5b59e18946eb6afed82621859" name="config.w32" role="src" />
+   <file baseinstalldir="/" md5sum="a290de411de818598c094ab0556dddc6" name="stackdriver_debugger.c" role="src" />
+   <file baseinstalldir="/" md5sum="19c473d1b063d9da8cab84327cd62301" name="stackdriver_debugger_ast.c" role="src" />
+   <file baseinstalldir="/" md5sum="16ee577b7f18d0e7edfb4216e12d2f30" name="stackdriver_debugger_logpoint.c" role="src" />
+   <file baseinstalldir="/" md5sum="5a000ce396981bc41e27ee9c2d58ec83" name="stackdriver_debugger_snapshot.c" role="src" />
+   <file baseinstalldir="/" md5sum="d28dd83ecfa5d5b4283a23dfe94433a1" name="php_stackdriver_debugger.h" role="src" />
+   <file baseinstalldir="/" md5sum="d8ed057a0c1d80e64b19dd9e46a9706a" name="stackdriver_debugger.h" role="src" />
+   <file baseinstalldir="/" md5sum="3c0c9071f9946cf61578a653df9c455a" name="stackdriver_debugger_ast.h" role="src" />
+   <file baseinstalldir="/" md5sum="15e475f2268319c2224e45b4a1543776" name="stackdriver_debugger_logpoint.h" role="src" />
+   <file baseinstalldir="/" md5sum="f4acf7b9bcd4569795c4e67bbd4b33c8" name="stackdriver_debugger_snapshot.h" role="src" />
+   <file baseinstalldir="/" md5sum="51a6d4c8141490360314edb8aa9f3670" name="stackdriver_debugger_time_functions.h" role="src" />
+   <file baseinstalldir="/" md5sum="f4ea67ceb10bf8edf471c9e826de7b12" name="README.md" role="doc" />
+   <file baseinstalldir="/" md5sum="ec0681e08ef3ade1a3447c2490cfc6b9" name="LICENSE" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>stackdriver_debugger</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2017-12-11</date>
+   <license>Apache 2.0</license>
+   <notes>
+First dev release
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.2</release>
+    <api>0.0.2</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2017-12-11</date>
+   <license>Apache 2.0</license>
+   <notes>
+Fix windows build configuration
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2018-01-02</date>
+   <license>Apache 2.0</license>
+   <notes>
+First alpha release
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2018-01-09</date>
+   <license>Apache 2.0</license>
+   <notes>
+Fix missing snapshot w/ OPCache (#30)
+   </notes>
+  </release>
+ </changelog>
+</package>

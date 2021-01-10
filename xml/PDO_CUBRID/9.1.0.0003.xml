@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>PDO_CUBRID</name>
+ <channel>pecl.php.net</channel>
+ <summary>CUBRID driver for PDO</summary>
+ <description>This extension provides a CUBRID driver for PDO.</description>
+ <lead>
+  <name>Esen Sagynov</name>
+  <user>CUBRID</user>
+  <email>esen.sagynov@nhn.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2013-07-23</date>
+ <time>06:15:47</time>
+ <version>
+  <release>9.1.0.0003</release>
+  <api>9.1.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+Fixed bugs:
+1)[APIS-120] - [PHP]Return value is not correct when passing a date parameter to cubrid_bind method
+2)[APIS-121] - [PHP]Return value is not false when passing a invalid time to cubrid_bind method
+3)[APIS-358] - [PHP] Create table failed when using default timestamp &apos;2038-01-19 12:14:07&apos;
+4)[APIS-364] - [PHP][Windows] the export lob file from db is not correct after import the lob fie into db successfully
+5)[APIS-513] - [PHP Static] Cas error code is not expected in Windows
+6)[APIS-553] - Manual page for cubrid_close_request() should be edited
+7)[APIS-554] - cubrid_connect_with_url example does not have updated connection url
+8)[APIS-556] - cubrid_fetch CUBRID_LOB tries to allocate 4 billion bytes
+9)[APIS-557] - cubrid_lob2_seek64 example does not work properly
+10)[APIS-558] - [PHP]some bug about document
+11)[APIS-560] - Cannot load PHP API 9.1.0.0003 in CentOS 5.6: undefined symbol: pthread_create in Unknown on line 0
+12)[APIS-562] - Cannot execute DELETE query in CUBRID SHARD via PHP API
+13)[APIS-583] - [PHP] The cubrid_get_class_name() function throws a warning if select data from a system table
+14)[APIS-586] - [PHP] cubrid_bind() doesn&apos;t work properly when insert bit data
+15)[APIS-587] - [PHP] cubrid_bind() doesn&apos;t support select bit data from a prepared statement
+16)[APIS-596] - [PHP][Manual] The &apos;test_lob&apos; table which is not created initially may lead some misunderstandings
+Changed and Enhanced Features:
+1)[APIS-549] - Warnings during PHP/PDO API build via PECL
+2)[APIS-555] - support Collection Data Types in Pdo driver
+3)[APIS-559] - Compile PHP/PDO drivers from together with CCI source code instead of including the entire CCI binary.
+4)[APIS-584] - [PHP][Manual] Some &apos;Example&apos; codes about the driver in php.net are somewhat confused
+5)[APIS-580] - Support CCI connection string parameters like altHosts, loadBalance in PHP/PDO
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="508d2444379d8ad65817507c77c550cf" name="config.m4" role="src" />
+   <file md5sum="6314d6d46309c8140fa8e99a1e3ac893" name="config.w32" role="src" />
+   <file md5sum="a935e105cd60e4d877475173130c9e3a" name="CREDITS" role="src" />
+   <file md5sum="1b980d3f7c00bb5a6a1165589e904b2e" name="cubrid_driver.c" role="src" />
+   <file md5sum="19eb0dfe0a28fa4614665012f44ba41a" name="cubrid_statement.c" role="src" />
+   <file md5sum="6cffe2c4328dc45439d42a3a036ef986" name="pdo_cubrid.c" role="src" />
+   <file md5sum="512cc9ce6bed2344e1d9d47528c175c6" name="pdo_cubrid.dsp" role="src" />
+   <file md5sum="1eccfdaab86b324a42633eb3b4a199d3" name="pdo_cubrid_version.h" role="src" />
+   <file md5sum="f3a2b39c88eee776ef79358ee80f0fdd" name="php_pdo_cubrid.h" role="src" />
+   <file md5sum="33eca35f1f7369fa7c13bb00b5ff6c58" name="php_pdo_cubrid_int.h" role="src" />
+   <file md5sum="7a6d236beb2429915af9797dd6d703bb" name="README" role="src" />
+   <file md5sum="ea7fd332fdcf2d40f766a2cab0c31525" name="cci-src/acinclude.m4" role="src" />
+   <file md5sum="ee3a31b065e440511f80d9f439383a75" name="cci-src/aclocal.m4" role="src" />
+   <file md5sum="0554d992d1031a5ae6d80e3688b95b1e" name="cci-src/autogen.sh" role="src" />
+   <file md5sum="b2a305cfd2c2249b15a9d17c5610992d" name="cci-src/build.sh" role="src" />
+   <file md5sum="5f961ce47dcd05798a6de00b00caa27b" name="cci-src/BUILD_NUMBER" role="src" />
+   <file md5sum="dca151c925aea5ff389c554c891fdaf9" name="cci-src/config.h.in" role="src" />
+   <file md5sum="8a335b525d5071b5a9b606d40abefa35" name="cci-src/configure" role="src" />
+   <file md5sum="75d7be0be840e836be6169be218dc39f" name="cci-src/configure.ac" role="src" />
+   <file md5sum="b02363a51b99d40b3182cd5a1b05beb2" name="cci-src/COPYING" role="src" />
+   <file md5sum="4593bb26615130479f67ee5a9274ac8b" name="cci-src/CREDITS" role="src" />
+   <file md5sum="d7c8df22554e630d27c93d8e6ebe51f9" name="cci-src/Makefile.am" role="src" />
+   <file md5sum="8fd57da2d39411bbbe24d14ba04d8ab9" name="cci-src/Makefile.in" role="src" />
+   <file md5sum="f9fb1563e711b442edbe4bbcb1cc9846" name="cci-src/README" role="src" />
+   <file md5sum="eb90b09d02a065d5eebb1268d17280ca" name="cci-src/cci/Makefile.am" role="src" />
+   <file md5sum="e3335c618634d000f08fada4e973db65" name="cci-src/cci/Makefile.in" role="src" />
+   <file md5sum="b2a35e98453194ca837c363ee9c0d379" name="cci-src/config/compile" role="src" />
+   <file md5sum="7fc030a85a8f3d4864a65db5fb70c794" name="cci-src/config/config.guess" role="src" />
+   <file md5sum="a1ad4822ccc53519fe519a9d353407d0" name="cci-src/config/config.sub" role="src" />
+   <file md5sum="d7d8db17e074dcabf513d766b728993d" name="cci-src/config/depcomp" role="src" />
+   <file md5sum="aded5875c5d5830de6653181e8ced19c" name="cci-src/config/install-sh" role="src" />
+   <file md5sum="ce785af2c9c33dad261e255cd91a9a89" name="cci-src/config/ltmain.sh" role="src" />
+   <file md5sum="5d58f0dd4262171a71b65bd515d85d07" name="cci-src/config/missing" role="src" />
+   <file md5sum="1f506099ebda5fa0a19f5753f0ae5c3c" name="cci-src/external/Makefile.am" role="src" />
+   <file md5sum="0a15b6ca40d01723c3f794ad9fc44118" name="cci-src/external/Makefile.in" role="src" />
+   <file md5sum="2a462a9971a32186b9d1e1a13f956154" name="cci-src/external/libregex38a/aclocal.m4" role="src" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="cci-src/external/libregex38a/AUTHORS" role="src" />
+   <file md5sum="5bb92a4351b53c9d5bd997f80a8169d3" name="cci-src/external/libregex38a/cclass.h" role="src" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="cci-src/external/libregex38a/ChangeLog" role="src" />
+   <file md5sum="7abc6d9d2fb7d78cc690bcf16d5c49d5" name="cci-src/external/libregex38a/cname.h" role="src" />
+   <file md5sum="7fc030a85a8f3d4864a65db5fb70c794" name="cci-src/external/libregex38a/config.guess" role="src" />
+   <file md5sum="6b15e29933ad151d95018519d6fb8abd" name="cci-src/external/libregex38a/config.h.in" role="src" />
+   <file md5sum="a1ad4822ccc53519fe519a9d353407d0" name="cci-src/external/libregex38a/config.sub" role="src" />
+   <file md5sum="ad94b91bb05c50055e46d1cd33d79b97" name="cci-src/external/libregex38a/configure" role="src" />
+   <file md5sum="64647b3151b5131f36a78160acf17104" name="cci-src/external/libregex38a/configure.ac" role="src" />
+   <file md5sum="67fb692ba29f2df34ddf3d3cfd7e2962" name="cci-src/external/libregex38a/configure.gnu" role="src" />
+   <file md5sum="dc5485bb394a13b2332ec1c785f5d83a" name="cci-src/external/libregex38a/COPYING" role="src" />
+   <file md5sum="d7d8db17e074dcabf513d766b728993d" name="cci-src/external/libregex38a/depcomp" role="src" />
+   <file md5sum="99305a6e51aaceee72c8929c3e13e532" name="cci-src/external/libregex38a/engine.c" role="src" />
+   <file md5sum="05b9ccb954f381da1d93b2a92d44ca75" name="cci-src/external/libregex38a/engine.ih" role="src" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="cci-src/external/libregex38a/INSTALL" role="src" />
+   <file md5sum="aded5875c5d5830de6653181e8ced19c" name="cci-src/external/libregex38a/install-sh" role="src" />
+   <file md5sum="ce785af2c9c33dad261e255cd91a9a89" name="cci-src/external/libregex38a/ltmain.sh" role="src" />
+   <file md5sum="e2593b6e07c12c2b7b5019216e288075" name="cci-src/external/libregex38a/Makefile.am" role="src" />
+   <file md5sum="9529709b5474f9d58eb3a3c7b82edc02" name="cci-src/external/libregex38a/Makefile.in" role="src" />
+   <file md5sum="5d58f0dd4262171a71b65bd515d85d07" name="cci-src/external/libregex38a/missing" role="src" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="cci-src/external/libregex38a/NEWS" role="src" />
+   <file md5sum="07bb8ebc51ae69c10390fb16cc547c34" name="cci-src/external/libregex38a/README" role="src" />
+   <file md5sum="e344ce62c051aaba8cf8813d77aaf592" name="cci-src/external/libregex38a/regcomp.c" role="src" />
+   <file md5sum="4b5c460e791e312aeb0e3b02d616730e" name="cci-src/external/libregex38a/regcomp.ih" role="src" />
+   <file md5sum="3b14816e33e02a04aa4b7e07684c0c81" name="cci-src/external/libregex38a/regerror.c" role="src" />
+   <file md5sum="617074e54fd24202d3cf58f30408ec2a" name="cci-src/external/libregex38a/regerror.ih" role="src" />
+   <file md5sum="e46dcc68772fb4790c803ff7d28f9980" name="cci-src/external/libregex38a/regex2.h" role="src" />
+   <file md5sum="5cc43951956bce773fac29f53717def0" name="cci-src/external/libregex38a/regexec.c" role="src" />
+   <file md5sum="dd3928c07a4020735dafd8508206f9e2" name="cci-src/external/libregex38a/regfree.c" role="src" />
+   <file md5sum="a2abf40417aff3f4ee7bf047b42efd18" name="cci-src/external/libregex38a/regmem.c" role="src" />
+   <file md5sum="e50abbbe352d63b7aafc0cc5960be5cc" name="cci-src/external/libregex38a/regmem.ih" role="src" />
+   <file md5sum="9109dd8c2735485d0752877ddc92b5ae" name="cci-src/external/libregex38a/utils.h" role="src" />
+   <file md5sum="b4804b8b1f754a46007247dae6cce52c" name="cci-src/external/libregex38a/include/Makefile.am" role="src" />
+   <file md5sum="82397056d6a780f8f67137995ff86f2a" name="cci-src/external/libregex38a/include/Makefile.in" role="src" />
+   <file md5sum="28ca68e2213bd1806bd3c32137ecea0f" name="cci-src/external/libregex38a/include/regex38a.h" role="src" />
+   <file md5sum="0a7417388288cf06e56fdcf62ca02f83" name="cci-src/include/Makefile.am" role="src" />
+   <file md5sum="a4d8a6e40276d2178d6454b841f40c74" name="cci-src/include/Makefile.in" role="src" />
+   <file md5sum="76cfbb2ca1d712972df6d5a97bd50eac" name="cci-src/include/system.h" role="src" />
+   <file md5sum="856439391559904fba4d169ae229fecd" name="cci-src/src/base/error_code.h" role="src" />
+   <file md5sum="070e0912e6ca173684b1a6a2c54cb78b" name="cci-src/src/base/getopt.h" role="src" />
+   <file md5sum="fa8afe2cb111b01a08cbec3ce18eabad" name="cci-src/src/base/porting.c" role="src" />
+   <file md5sum="7b2cfe075a0bea8b354e4e80bfa9e68d" name="cci-src/src/base/porting.h" role="src" />
+   <file md5sum="82b61982f9b368612cca8e509f9fb5fe" name="cci-src/src/base/rand.c" role="src" />
+   <file md5sum="c28217e68d451fb075842845487ed000" name="cci-src/src/base/stringl.h" role="src" />
+   <file md5sum="237fb6b451207497bcfe0053b9e26601" name="cci-src/src/broker/cas_error.h" role="src" />
+   <file md5sum="5f9a4559d90bbe095c8db883905e032d" name="cci-src/src/broker/cas_protocol.h" role="src" />
+   <file md5sum="8fb85a8c0450b05bfba7141825736248" name="cci-src/src/cci/cas_cci.c" role="src" />
+   <file md5sum="f9e0161821f99fc8a8757942dfa415c0" name="cci-src/src/cci/cas_cci.h" role="src" />
+   <file md5sum="ceaa02415883dee5b580a6c8e377b95f" name="cci-src/src/cci/cci_common.c" role="src" />
+   <file md5sum="4ac27dccabaeaaa2b117ed7a1a651b16" name="cci-src/src/cci/cci_common.h" role="src" />
+   <file md5sum="47a22344c9a469db997f0fbaaed6c673" name="cci-src/src/cci/cci_handle_mng.c" role="src" />
+   <file md5sum="bf357a6da27b613013d5a14d835faaf8" name="cci-src/src/cci/cci_handle_mng.h" role="src" />
+   <file md5sum="ad4b0a8fc8d34ca640934461eef00473" name="cci-src/src/cci/cci_log.cpp" role="src" />
+   <file md5sum="cffa1112d2f161af904adb747faab955" name="cci-src/src/cci/cci_log.h" role="src" />
+   <file md5sum="809a72383c94587a7d722053d3674556" name="cci-src/src/cci/cci_map.cpp" role="src" />
+   <file md5sum="b0a8ab559151465eb90d82614ccac2e8" name="cci-src/src/cci/cci_map.h" role="src" />
+   <file md5sum="3db316a65cda319f3ff10e03fd72f7ac" name="cci-src/src/cci/cci_mutex.h" role="src" />
+   <file md5sum="de90f583cb0ba6f026a3a0785e088e92" name="cci-src/src/cci/cci_network.c" role="src" />
+   <file md5sum="536fc91913ebdfc56bd7d659ef8b6707" name="cci-src/src/cci/cci_network.h" role="src" />
+   <file md5sum="8e48abfaf16625537281688e4f260130" name="cci-src/src/cci/cci_net_buf.c" role="src" />
+   <file md5sum="945814f6eb66b263ac9852d40fd2ffc6" name="cci-src/src/cci/cci_net_buf.h" role="src" />
+   <file md5sum="4d9c3f2ecb5f42fef9b5228bb9137118" name="cci-src/src/cci/cci_properties.c" role="src" />
+   <file md5sum="51629203aff6124f5551800b6ee85b4b" name="cci-src/src/cci/cci_query_execute.c" role="src" />
+   <file md5sum="363bc51b051384460c9b1c6ca3f3b3f1" name="cci-src/src/cci/cci_query_execute.h" role="src" />
+   <file md5sum="6f43a327f84471ff35eccc1c4b589743" name="cci-src/src/cci/cci_t_lob.c" role="src" />
+   <file md5sum="9f95d67b7b63fd809c93c21fe1ccf7ad" name="cci-src/src/cci/cci_t_lob.h" role="src" />
+   <file md5sum="38994cbca0b3c63c3ec92c178e54ca76" name="cci-src/src/cci/cci_t_set.c" role="src" />
+   <file md5sum="658887d4a8beff7453f202f9723f1174" name="cci-src/src/cci/cci_t_set.h" role="src" />
+   <file md5sum="ddc10f142e391962c3b32d2f18ecaf81" name="cci-src/src/cci/cci_util.c" role="src" />
+   <file md5sum="e60b6bc8899848a5605db9d2c5be3a29" name="cci-src/src/cci/cci_util.h" role="src" />
+   <file md5sum="e2f5fffb2efa84830df80ffe77b787e1" name="cci-src/src/cci/cci_wsa_init.c" role="src" />
+   <file md5sum="9faf1525738e409bdd0eb184de2dfb44" name="cci-src/src/cci/cci_wsa_init.h" role="src" />
+   <file md5sum="dfe0470e81c33324e28ce4ffbd0224a8" name="cci-src/src/cci/cci_xa.h" role="src" />
+   <file md5sum="ec01d071134e96e6e502808b8c880c0a" name="cci-src/win/config.h" role="src" />
+   <file md5sum="211edffb30c1e7e7e129f767ea79b29d" name="cci-src/win/version.h" role="src" />
+   <file md5sum="2e99d793fe0d7f07812410bc2d9ed2a0" name="cci-src/win/cascci/cascci.def" role="src" />
+   <file md5sum="1f319db0770aafff4e924c4970eb2f18" name="cci-src/win/cascci/cascci.vcproj" role="src" />
+   <file md5sum="ff8fe2cd44616a694c4acc34e83f8735" name="cci-src/win/cas_cci/cas_cci.vcproj" role="src" />
+   <file md5sum="df609d3af6b6ba8a3ef75e6714e5a1f1" name="cci-src/win/external/include/regex38a.h" role="src" />
+   <file md5sum="d135fe2923694e0b9fea77d46ac78e9d" name="cci-src/win/external/lib/libregex38a.lib" role="src" />
+   <file md5sum="450d5d9b7c3f0eb9fc4db780a7eed7df" name="cci-src/win/external/lib64/libregex38a.lib" role="src" />
+   <file md5sum="bff1e1f22b205ccc6b3e8062c27d922c" name="win/pdo_cubrid.sln" role="src" />
+   <file md5sum="78e7b5a3070db026079720233d0c0c20" name="win/pdo_cubrid.vcproj" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>PDO_CUBRID</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>9.1.0.0002</release>
+    <api>9.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bugs:
+1) APIS-546: The PDO driver does not support for the connection between the PDO and CUBRID shard broker.
+2) APIS-550: The PDO driver does not support prepare and query function in CUBRID shard db.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>9.1.0.0001</release>
+    <api>9.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Changed and Enhanced Features:
+
+1) APIS-418: add the ENUM support in PDO driver.
+2) APIS-404: update the urls in README.
+3) APIS-435: use cci_get_last_insert_id() instead of cci_last_insert_id().
+
+Fixed bugs:
+
+1) APIS-392: change the phpinfo field from &apos;Supported CUBRID server&apos; to &apos;CCI Version&apos; and fix its value.
+2) APIS-401: improve the invoking of cci_disconnect.
+3) APIS-435: remove free() in the insert_id function for Windows platform.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>9.0.0.0001</release>
+    <api>9.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bugs:
+
+- Use CCI funciton cci_escape_string() to implement PDO::quote
+- Get correct lock_timeout value when it has been set.
+- Update error code in handle error function in PDO driver
+- Use cci_connect_ex instead of cci_connect in PDO driver.
+- Use old functions in pdo driver because CUBRID does not export them.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.4.0.0002</release>
+    <api>8.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bugs:
+
+- Fix a bug in cubrid_stmt_next_rowset: new version cci_next_result will reuse the request handle, so do not close it before calling cci_next_result. 
+- Fix a bug about life cycle management of pdo_cubrid_stmt: when database connection is closed, all request handle will be closed in CCI too. So the handle in pdo_cubrid_stmt must be set to invalid value.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.4.0.0001</release>
+    <api>8.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+2008 R4.0 Release
+
+This release is a major release.
+
+Functionality added:
+
+- Implement PDO API getColumnMeta:
+
+The following column meta information will be returned:
+
+type
+name
+table
+def
+precision
+scale
+not_null
+auto_increment
+unique_key
+multiple_key
+primary_key
+foreign_key
+reverse_index
+reverse_unique
+
+Changed and Enhanced Features:
+
+- Add database parameter setting support:
+
+cubrid_set_db_parameter() can be used to set the database transaction isolation
+level and lock timeout value. 
+
+- Change the default status of auto commit mode to off.
+
+Fixed bugs:
+
+- Fix a bug in cubrid_bind: When the value of binding parameter is NULL, it will covert the value to empty string;
+- Fix a bug about BLOB/CLOB: When inserting LOB data, if the data size is large enough, it will fails. And if the LOB data is in a file, and it is too large to be put into memory, you can bind a file path name when binding the LOB data;
+- Fix a bug about CLOB: When binding data type is CLOB, it will fail when inserting it into CUBRID;
+- Fix a bug in cubrid_stmt_describe_col which will cause the failure of test bug_44861.phpt;
+- Fix a bug in cubrid_handle_quoter: Before escaping unquoted string, it should init the value of quotedlen to 0.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.3.1.0003</release>
+    <api>8.3.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bugs:
+
+- fix a bug about BLOB/CLOB: When inserting LOB data, if the data size is large
+enough, it will fails. If the LOB data is in a file, and it is too large to be
+put into memory, you can bind a file path name when binding the LOB data.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.3.1.0002</release>
+    <api>8.3.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bugs:
+
+- Fix a bug in cubrid_handle_quoter: Before escaping unquoted string, it should init the value of quotedlen to 0;
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.3.1.0001</release>
+    <api>8.3.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+2008 R3.1 Release
+
+This release is a major release. CUBRID 3.1 Stable has been released. Several new 
+features have been added to this version including new BLOB and CLOB data types and 
+new APIs in JDBC/CCI which can get foreign key information. Accordingly new features 
+are added in this CUBRID PDO version, and some bugs have been fixed.
+
+Features Added:
+
+- Add LOB (BLOB/CLOB) data support:
+
+The LOB in PDO is represented as a stream, so you can insert LOBs by binding a stream, 
+and get LOBs by reading a stream returned by CUBRID PDO.
+
+Known issue: If column data type is CLOB, binding parameter will fail. This bug will 
+fixed later.
+
+- Add Multipy-Query support:
+
+Now you can execute multiple queries and get results using PDOStatement-&gt;nextRowset.
+
+- Add three new schema type integer constants for cubrid_schema, which can be used to 
+get foreign key information: 
+
+CUBRID_SCH_IMPORTED_KEYS
+CUBRID_SCH_EXPORTED_KEYS
+CUBRID_SCH_CROSS_REFERENCE
+
+Features changed:
+
+- In version 8.3.0, the default value of autocommit mode is false. In this release it 
+is changed to true.
+
+Features removed:
+
+- Remove constant CUBRID_INCLUDE_OID, because there is no methods in PDO using OID;
+
+Fixed bugs:
+
+- Fix a bug in cubrid_handle_preparer which makes user can change cursor type to scrollable cursor when preparing SQL; 
+- Fix a bug in cubrid_handle_prepare: when binding parameter is named parameter, there will be memory leak; 
+- Fix a bug in cubrid_handle_quoter: when escaping single quote in string, it should use double single quotes, not backslash;
+- Fix a bug in cubrid_handle_begin, cubrid_handle_commit and cubrid_handle_rollback: when beginning a transaction, it should commit un-commited transaction, turn off autocommit_mode, after commit or rollback, then restore the autocommit_mode;
+- Fix a bug in cubrid_stmt_param_hook: when the value of binding parameter is NULL, it will covert the value to empty string;
+- Fix a bug about cursor type: the cursor type (forward only or scrollable) should be statement attribute, not connection attribute.
+- Fix a bug in cubrid_schema: After array_init(return_value), when error occures, it should destroy array before return false.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>8.3.0.0001</release>
+    <api>8.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This PECL release is the first release of CUBRID PDO Driver.
+   </notes>
+  </release>
+ </changelog>
+</package>

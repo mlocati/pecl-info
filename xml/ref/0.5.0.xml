@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>ref</name>
+ <channel>pecl.php.net</channel>
+ <summary>Soft and Weak references support in PHP</summary>
+ <description>This extension adds Soft and Weak references support to PHP 7 and may serve as a ground for other data structures that require advanced referencing model.</description>
+ <lead>
+  <name>Bogdan Padalko</name>
+  <user>pinepain</user>
+  <email>pinepain@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2017-08-27</date>
+ <time>14:29:34</time>
+ <version>
+  <release>0.5.0</release>
+  <api>0.5.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/mit">The MIT License (MIT)</license>
+ <notes>
+This release fix bugs, drop unused feature and soon to be EOL PHP 7.0 (see http://php.net/supported-versions.php for details).
+
+Changelist:
+ - Drop PHP &lt; 7.1 support (BC-breaking);
+ - Remove array notifier in a favor of callback (BC-breaking);
+ - Remove references comparison (BC-breaking);
+ - Fix bug when object handle reused but previous state was not clean;
+ - Fix wrong behavior when reference get deleted during notifier call;
+ - Fix memleaks;
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="fca336d067640db3c5c595663c36e0c7" name="stubs/LICENSE" role="doc" />
+   <file md5sum="b795ad36b684977f7ea02f15be3db47b" name="stubs/README.md" role="doc" />
+   <file md5sum="8057227f9eb7c7a08056a9c79870eaba" name="stubs/composer.json" role="doc" />
+   <file md5sum="21500026dd0bd09454bc9047680698dd" name="stubs/src/AbstractReference.php" role="doc" />
+   <file md5sum="9d1a61fb8db3d43d58e2a1be03f12545" name="stubs/src/NotifierException.php" role="doc" />
+   <file md5sum="613735f7a6bfc63342f521099790ebdb" name="stubs/src/SoftReference.php" role="doc" />
+   <file md5sum="4ea72fdcc51ccf97533840fd512989ce" name="stubs/src/WeakReference.php" role="doc" />
+   <file md5sum="7c2a3868b9cf42b7a552fc533120bb1b" name="stubs/src/functions.php" role="doc" />
+   <file md5sum="db1d19a0bc15670052a6e385dc8af69e" name="tests/.stubs.php" role="test" />
+   <file md5sum="99dfddc16cf0d7b8f337e67499423802" name="tests/.testsuite.php" role="test" />
+   <file md5sum="6f06cd9b857d8c518292c2225ece9463" name="tests/001-extension-loaded.phpt" role="test" />
+   <file md5sum="d9b5ce2743bf1bc3dd4f8050e1c3efe9" name="tests/002-AbstractReference-basic.phpt" role="test" />
+   <file md5sum="dc1720466230138c758c0a4b0eab3877" name="tests/002-AbstractReference-clone.phpt" role="test" />
+   <file md5sum="4aa86eb30eb00d71b691968036484a1f" name="tests/002-NotifierException-basic.phpt" role="test" />
+   <file md5sum="3948ea0e2d43e9ec17e20ca86e5ae7a7" name="tests/002-WeakReference-basic.phpt" role="test" />
+   <file md5sum="4db50ec30e1bb8d7b34ac9db643a598e" name="tests/002-WeakReference-clone.phpt" role="test" />
+   <file md5sum="1f12891167d69939a442f7f22040d30b" name="tests/002-WeakReference-clone_extended.phpt" role="test" />
+   <file md5sum="f32e714cf502d8956421fd08b5bfeb43" name="tests/002-WeakReference-closure.phpt" role="test" />
+   <file md5sum="f8990309a8e79136ce8992798da8e81d" name="tests/002-WeakReference-die_in_dtor.phpt" role="test" />
+   <file md5sum="f84e47ec4da9586c247327edcd6cfe85" name="tests/002-WeakReference-dump_extended.phpt" role="test" />
+   <file md5sum="11094a2a8051186649f721d5934630eb" name="tests/002-WeakReference-exception-before-and-from-notifier.phpt" role="test" />
+   <file md5sum="c143588a38f7452797ab7e375adc7f4a" name="tests/002-WeakReference-exception-before-notifier.phpt" role="test" />
+   <file md5sum="2c1da3802e287a190ff71b3ee572f50d" name="tests/002-WeakReference-exception_in_callback.phpt" role="test" />
+   <file md5sum="4be8cce499a2e615129cc586980ffabd" name="tests/002-WeakReference-exception_in_multiple_callbacks.phpt" role="test" />
+   <file md5sum="7e774719372bba645d4af03386b8ea2c" name="tests/002-WeakReference-exception_in_orig_dtor.phpt" role="test" />
+   <file md5sum="fb0ae4a4de85bfcc398907e15a9be58c" name="tests/002-WeakReference-exception_in_orig_dtor_and_callback.phpt" role="test" />
+   <file md5sum="95dff9abd1fbacad410726ab262158b9" name="tests/002-WeakReference-extended_dtor_called.phpt" role="test" />
+   <file md5sum="91f0b0e0ead1a72f93a2ce9ae8460da0" name="tests/002-WeakReference-multiple_obj.phpt" role="test" />
+   <file md5sum="d21820dec2d1f11a275672140debb780" name="tests/002-WeakReference-multiple_weak.phpt" role="test" />
+   <file md5sum="380377dc110a83f877c3d7434103cbc6" name="tests/002-WeakReference-multiple_with_notify_and_orig_dtor.phpt" role="test" />
+   <file md5sum="a31c03ef7ca11e2345768e15f3d1e2f2" name="tests/002-WeakReference-notified.phpt" role="test" />
+   <file md5sum="87691eb8402d37ed809bf279a30179ca" name="tests/002-WeakReference-notifier.phpt" role="test" />
+   <file md5sum="f4dfa43c987f78a6fd3ce7c93d38ed55" name="tests/002-WeakReference-notifier_callable_array.phpt" role="test" />
+   <file md5sum="4782e866f65ab040b80038f59d97a913" name="tests/002-WeakReference-notifier_callable_string.phpt" role="test" />
+   <file md5sum="635dc2b0af9721fc155f91cb9cb53461" name="tests/002-WeakReference-notifier_change.phpt" role="test" />
+   <file md5sum="3fa2057a2176f22f6aa91bff7fb38887" name="tests/002-WeakReference-notifier_clone_change.phpt" role="test" />
+   <file md5sum="638d40a6866e388afd18cc31f6a3d2a9" name="tests/002-WeakReference-notifier_invalid_callback.phpt" role="test" />
+   <file md5sum="c1489d6a99890d717e8d4eab04d2fa92" name="tests/002-WeakReference-notifier_not_called_after_wr_dies_first.phpt" role="test" />
+   <file md5sum="50e70099f21a71b77cd7952e2eb9191e" name="tests/002-WeakReference-object-handle-reuse.phpt" role="test" />
+   <file md5sum="13e0912ddb8191e1baace0bd3590e12c" name="tests/002-WeakReference-orig_dtor_and_notifier_when_wr_dies_first.phpt" role="test" />
+   <file md5sum="1b927d98a5bef646e78cfd7994013558" name="tests/002-WeakReference-orig_dtor_and_notify.phpt" role="test" />
+   <file md5sum="b4daea66416e1f58afb07bf57f79e18e" name="tests/002-WeakReference-orig_dtor_called.phpt" role="test" />
+   <file md5sum="13e0912ddb8191e1baace0bd3590e12c" name="tests/002-WeakReference-orig_dtor_called_after_wr_dies_first.phpt" role="test" />
+   <file md5sum="78f430ffa0a110995f9726b2c2fb8101" name="tests/002-WeakReference-orig_dtor_called_once.phpt" role="test" />
+   <file md5sum="aed77c521b645baac7b88f49be6a573b" name="tests/002-WeakReference-reference-deleted-during-notifier.phpt" role="test" />
+   <file md5sum="1a40d0f44e459dc02afb91e9882d311d" name="tests/002-WeakReference-serialize_extended_not_allowed.phpt" role="test" />
+   <file md5sum="162fe5d9442d638f3a002b0b4e9c7117" name="tests/002-WeakReference-serialize_not_allowed.phpt" role="test" />
+   <file md5sum="c73fa81cfd3d240f6fc9f2c22ed01340" name="tests/002-WeakReference-spl_hash_consistent.phpt" role="test" />
+   <file md5sum="a1243ea94727f86d19eea4e31208e9ef" name="tests/002-WeakReference-spl_object_storage_debug_hash_consistent.phpt" role="test" />
+   <file md5sum="94f5f262883dcda3847209e08478bc27" name="tests/002-WeakReference-spl_object_storage_hash_consistent.phpt" role="test" />
+   <file md5sum="fb5b834c8979876f103c05f5082f2123" name="tests/003-functions-soft-and-weak.phpt" role="test" />
+   <file md5sum="c392ad0ef71a10b648b4eba47a351e5e" name="tests/003-functions-soft.phpt" role="test" />
+   <file md5sum="906326d1ffc5bff0a0377a28adab2aef" name="tests/003-functions-weakrefcounted_after_all_refs_died.phpt" role="test" />
+   <file md5sum="f65dc7f32ee95283a563a8313b2fd408" name="tests/003-functions.phpt" role="test" />
+   <file md5sum="dfe4d0ba3c74ecfc1377ca0c06180125" name="tests/004-SofReference-basic.phpt" role="test" />
+   <file md5sum="8e33ad982374cbbee4f6226a5cad8990" name="tests/004-SoftReference-clone.phpt" role="test" />
+   <file md5sum="45d0c4ce7eb9aaee2c49f6efd6235817" name="tests/004-SoftReference-clone_extended.phpt" role="test" />
+   <file md5sum="1bd060a52d6e97b15e982054138724ea" name="tests/004-SoftReference-closure.phpt" role="test" />
+   <file md5sum="0dd368cc9d652957caba0bac32a41e35" name="tests/004-SoftReference-die_in_dtor.phpt" role="test" />
+   <file md5sum="5c1d07b234314c3d86c25b76fc50a50a" name="tests/004-SoftReference-dump_extended.phpt" role="test" />
+   <file md5sum="e0ced6b8f89112b7350ba3550455fef0" name="tests/004-SoftReference-exception-before-and-from-notifier.phpt" role="test" />
+   <file md5sum="0ba22ca6c3acc6ee602d3fcef6cc766e" name="tests/004-SoftReference-exception-before-notifier.phpt" role="test" />
+   <file md5sum="db4e62d8f8da2131de9d19041bc2f0eb" name="tests/004-SoftReference-exception_in_callback.phpt" role="test" />
+   <file md5sum="aef3620dddc239889ec3aefd6884215d" name="tests/004-SoftReference-exception_in_multiple_callbacks.phpt" role="test" />
+   <file md5sum="84a1422fcada050a48985014a42f5d26" name="tests/004-SoftReference-exception_in_orig_dtor.phpt" role="test" />
+   <file md5sum="47fabb456bf03683f67ee023fb94ba26" name="tests/004-SoftReference-exception_in_orig_dtor_and_callback.phpt" role="test" />
+   <file md5sum="9461fe3ba2c79d3831a93076246f8440" name="tests/004-SoftReference-extended_dtor_called.phpt" role="test" />
+   <file md5sum="68f9299c6397497a6716f335713bed9d" name="tests/004-SoftReference-multiple_obj.phpt" role="test" />
+   <file md5sum="4aa94e6842909e837dba6cfe5da75e1e" name="tests/004-SoftReference-multiple_weak.phpt" role="test" />
+   <file md5sum="21696c5c5d419336162d5632cdc17068" name="tests/004-SoftReference-multiple_with_notify_and_orig_dtor.phpt" role="test" />
+   <file md5sum="b4c9771b6b89fd755f54452de883a986" name="tests/004-SoftReference-notified.phpt" role="test" />
+   <file md5sum="964c60fc06566b825958df6bf5628471" name="tests/004-SoftReference-notified_prevent_destoying.phpt" role="test" />
+   <file md5sum="9773d0e92813e09c052b11a801b53b98" name="tests/004-SoftReference-notified_prevent_destoying_forever.phpt" role="test" />
+   <file md5sum="20069785d0bca5a3fad6a3814f526c42" name="tests/004-SoftReference-notified_prevent_destoying_forever_with_weak.phpt" role="test" />
+   <file md5sum="a31818dcfd5eeb7720b0c84aa2d3ef45" name="tests/004-SoftReference-notified_prevent_destoying_multiple.phpt" role="test" />
+   <file md5sum="ab866347c12f9bcee9534db4162d960f" name="tests/004-SoftReference-notified_prevent_destoying_with_weak.phpt" role="test" />
+   <file md5sum="891ef6c310d69cac1e3bdb81d3de6ada" name="tests/004-SoftReference-notified_with_weak.phpt" role="test" />
+   <file md5sum="aa31d0525bb98f1848d7061e2b4b40b4" name="tests/004-SoftReference-notifier.phpt" role="test" />
+   <file md5sum="11ca8c51c2cfc27a345c923b63e8657f" name="tests/004-SoftReference-notifier_callable_array.phpt" role="test" />
+   <file md5sum="a2eaf34ebfedb093b2ea9b71b56a771e" name="tests/004-SoftReference-notifier_callable_string.phpt" role="test" />
+   <file md5sum="0ac10de5180a14fefd8f74fda7b8c3cb" name="tests/004-SoftReference-notifier_change.phpt" role="test" />
+   <file md5sum="b43fb21f1f68583c057f0e5e3c4efac2" name="tests/004-SoftReference-notifier_clone_change.phpt" role="test" />
+   <file md5sum="fbd46f5a234b5c11137d25c2c0356bb8" name="tests/004-SoftReference-notifier_invalid_callback.phpt" role="test" />
+   <file md5sum="d734daa79a551072e280cc5b82dc2035" name="tests/004-SoftReference-notifier_not_called_after_wr_dies_first.phpt" role="test" />
+   <file md5sum="c15c5e92e2a4bb744dd9a024c22df7db" name="tests/004-SoftReference-orig_dtor_and_notifier_when_wr_dies_first.phpt" role="test" />
+   <file md5sum="869ca68d482d17fb4f484cc77950cc8b" name="tests/004-SoftReference-orig_dtor_and_notify.phpt" role="test" />
+   <file md5sum="259534ffd47cf4ff226c7dab7abc3761" name="tests/004-SoftReference-orig_dtor_called.phpt" role="test" />
+   <file md5sum="c15c5e92e2a4bb744dd9a024c22df7db" name="tests/004-SoftReference-orig_dtor_called_after_wr_dies_first.phpt" role="test" />
+   <file md5sum="0dac254bfe7f52f55b2e5e0a9ac3c079" name="tests/004-SoftReference-orig_dtor_called_once.phpt" role="test" />
+   <file md5sum="56e4c04b8c5f2c7322112907c6e164fe" name="tests/004-SoftReference-serialize_extended_not_allowed.phpt" role="test" />
+   <file md5sum="656e3c1ed00c68450de420a4c78df720" name="tests/004-SoftReference-serialize_not_allowed.phpt" role="test" />
+   <file md5sum="aa3ee12c9c6895fbd21e491203c706d5" name="tests/004-SoftReference-spl_hash_consistent.phpt" role="test" />
+   <file md5sum="001edbee6c03fb34520e700d899d5b29" name="tests/004-SoftReference-spl_object_storage_debug_hash_consistent.phpt" role="test" />
+   <file md5sum="04eb706169911f19148ae44067fc0148" name="tests/004-SoftReference-spl_object_storage_hash_consistent.phpt" role="test" />
+   <file md5sum="23484328ecac66e3b35ea1fcee75755f" name="tests/005-Soft-and-Weak-Reference-exception-before-and-from-notifier.phpt" role="test" />
+   <file md5sum="589f10690cf3937b3a34b9c8f6da421e" name="tests/005-Soft-and-Weak-Reference-exception-before-notifier.phpt" role="test" />
+   <file md5sum="56e9575b340eadb55167e1d09424419d" name="config.m4" role="src" />
+   <file md5sum="7ae313dc112ff5752cdcf107cc0b3994" name="config.w32" role="src" />
+   <file md5sum="fca336d067640db3c5c595663c36e0c7" name="LICENSE" role="doc" />
+   <file md5sum="a1599e47ceb05b9b073622a7859ea58f" name="php_ref.h" role="src" />
+   <file md5sum="8b06def76f4c80f2ea1909612c06b882" name="php_ref_functions.c" role="src" />
+   <file md5sum="594dec2eb4effa11818dd05d3ab6eb77" name="php_ref_functions.h" role="src" />
+   <file md5sum="c835da9a83fad48c8825f3e262232106" name="php_ref_notifier_exception.c" role="src" />
+   <file md5sum="a35bd7a40453658eb9e0a51d2ca75c3e" name="php_ref_notifier_exception.h" role="src" />
+   <file md5sum="8ccf4eab6948c34bc8a187ef0f63d1e7" name="php_ref_reference.c" role="src" />
+   <file md5sum="91027b09b428525c1159e7f83f7045db" name="php_ref_reference.h" role="src" />
+   <file md5sum="25bffc13cb6247f1e16d4a7c08a731f9" name="README.md" role="doc" />
+   <file md5sum="3370c4f03f83f693949959eb2dfb85f3" name="ref.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>ref</providesextension>
+ <extsrcrelease />
+</package>

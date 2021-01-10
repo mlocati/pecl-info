@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package version="1.0" packagerversion="1.6.1">
+ <name>paradox</name>
+ <summary>An extension to read and write Paradox files</summary>
+ <description>Paradox is an extension to read and write Paradox .DB and .PX files.
+It can handle almost all field types and binary large objects stored
+in .MB files.
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>steinm</user>
+   <name>Uwe Steinmann</name>
+   <email>steinm@php.net</email>
+   <role>lead</role>
+  </maintainer>
+  </maintainers>
+ <release>
+  <version>1.4.3</version>
+  <date>2007-10-24</date>
+  <license>PHP License</license>
+  <state>stable</state>
+  <notes>Fixed build problems on win32
+  </notes>
+  <deps>
+   <dep type="php" rel="ge" version="5"/>
+  </deps>
+  <filelist>
+   <file role="doc" md5sum="5dacf3b8f8ba023d81a9a3fb44146aa4" name="CREDITS"/>
+   <file role="src" md5sum="27e65e2c4efbacd3b107521b88e2b951" name="config.m4"/>
+   <file role="src" md5sum="c6e56e5d06d41f4173a8a7882eed5594" name="config.w32"/>
+   <file role="src" md5sum="52afc7a9bbf5500c7ccc8f5c25a03f55" name="php_paradox.h"/>
+   <file role="src" md5sum="782bebf7809f4f42d1131ff0e34fb5f5" name="paradox.c"/>
+   <file role="test" md5sum="6aa64b9a876c29d0355e3ac9eea75d4a" name="tests/001.phpt"/>
+   <file role="test" md5sum="ce9782be7808e4df01d3c3b231c3423f" name="tests/002.phpt"/>
+   <file role="test" md5sum="4177b6676514ebe6661e58e9da042b1c" name="tests/003.phpt"/>
+   <file role="test" md5sum="9ec8a901971010968e8b123839e70c26" name="tests/004.phpt"/>
+   <file role="test" md5sum="aa198424035edf63171ea275e1c89aa1" name="tests/005.phpt"/>
+   <file role="test" md5sum="26f10052eae22c2fa8305b5203be072f" name="tests/006.phpt"/>
+   <file role="test" md5sum="8a550015d8025ef13dad4efe6a56cd28" name="tests/007.phpt"/>
+   <file role="test" md5sum="a6ae7f0f428d1b814913731baad138fb" name="tests/008.phpt"/>
+   <file role="test" md5sum="2d6752bbbd47c3c4fcf014246fac5762" name="tests/009.phpt"/>
+   <file role="test" md5sum="9034e34a3c35b15c3c06250013ae59f8" name="tests/010.phpt"/>
+   <file role="test" md5sum="4430be09d82759d0bc57036989be34a9" name="tests/011.phpt"/>
+   <file role="test" md5sum="7fe6a891278a25d1cebf1b39d42726e0" name="tests/012.phpt"/>
+   <file role="test" md5sum="5e679da2a738d7c9405fd1da486a312e" name="tests/013.phpt"/>
+   <file role="test" md5sum="a7b091f877445f5e19275b4c3e203074" name="tests/014.phpt"/>
+   <file role="test" md5sum="161e67917953867737c6dc1232beb1dd" name="tests/015.phpt"/>
+   <file role="test" md5sum="92c0419234fe4bb9cb46b7075a9d2524" name="tests/016.phpt"/>
+   <file role="test" md5sum="a3bfd756b188364a11e5c7cab61fb496" name="tests/017.phpt"/>
+   <file role="test" md5sum="369d5d071531f6e2d8ab61184705362e" name="tests/018.phpt"/>
+   <file role="test" md5sum="6491dc9f85f4954500e132e44894a016" name="tests/020.phpt"/>
+   <file role="test" md5sum="713aae21c64f117c0662979b47f73b09" name="tests/simpletest.db"/>
+   <file role="test" md5sum="ac6ce6994b9c4a5c9556cf1464a17914" name="tests/memo.db"/>
+   <file role="test" md5sum="3251ddee33df22cde492b18336118c5c" name="tests/memo.mb"/>
+   <file role="test" md5sum="09f6520f61169f6947bd8b33ce734ea7" name="tests/picture.db"/>
+   <file role="test" md5sum="78628de650d513f3c5c782e4b92a4a4d" name="tests/picture.mb"/>
+  </filelist>
+ </release>
+ <changelog>
+   <release>
+    <version>1.4.2</version>
+    <date>2007-10-04</date>
+    <state>stable</state>
+    <notes>Array returned PX_get_info() contains new key &apos;recordsize&apos;. Added config.w32. Pass TSRMLS_CC to non api functions.
+    </notes>
+   </release>
+   <release>
+    <version>1.4.1</version>
+    <date>2006-02-13</date>
+    <state>stable</state>
+    <notes>PX_insert_record() inserts null values if the record array has less elements than expected. Added test for automatic incrementation of autoinc fields. Timestamps are inserted and updated propperly. Compiles again with gcc 2.9.5. Added test to check null values in blob fields.
+    </notes>
+   </release>
+   <release>
+    <version>1.4.0</version>
+    <date>2006-02-10</date>
+    <state>stable</state>
+    <notes>New functions px_delete_record(), px_insert_record(),
+    </notes>
+   </release>
+   <release>
+    <version>1.3.1</version>
+    <date>2005-02-11</date>
+    <state>stable</state>
+    <notes>px_get_record() can handle fields of type &apos;Time&apos;. New function
+    </notes>
+   </release>
+   <release>
+    <version>1.3.0</version>
+    <date>2004-07-20</date>
+    <state>stable</state>
+    <notes>Fields of type BCD and BLOB can be read. New function
+px_set_blob_file(). New test to read blob data.
+    </notes>
+   </release>
+   <release>
+    <version>1.1.0</version>
+    <date>2004-05-17</date>
+    <state>stable</state>
+    <notes>Major overhaul of extension
+    </notes>
+   </release>
+   <release>
+    <version>1.0</version>
+    <date>2003-10-27</date>
+    <state>stable</state>
+    <notes>Initial Release in PECL
+    </notes>
+   </release>
+ </changelog>
+</package>
