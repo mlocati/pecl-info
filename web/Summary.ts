@@ -1,6 +1,6 @@
 import data from "./summary.min.json";
 
-interface CompatiblePHPVersions {
+export interface CompatiblePHPVersions {
   readonly v: ReadonlyArray<string>;
   readonly min?: string;
   readonly max?: string;
@@ -12,7 +12,7 @@ interface ConfigureOption {
   readonly d?: string;
 }
 
-interface CompatibleConfigureOptions {
+export interface CompatibleConfigureOptions {
   readonly v: ReadonlyArray<string>;
   readonly opts?: ReadonlyArray<ConfigureOption>;
 }
