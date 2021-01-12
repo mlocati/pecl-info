@@ -1,7 +1,7 @@
 module.exports = {
     productionSourceMap: false,
     lintOnSave: true,
-    outputDir: __dirname + '/docs',
+    outputDir: 'docs',
     configureWebpack: {
         resolve: {
             alias: {
