@@ -1,0 +1,101 @@
+name: Check recent versions
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  repository_dispatch:
+    types:
+      - check-recent
+
+jobs:
+  check:
+    name: Determine extension list
+    runs-on: ubuntu-latest
+    steps:
+      - name: Retrieve recently updated extensions
+        id: retrieve-extensions
+        run: |
+          printf 'Downloading PECL feed... '
+          XML="$(curl -sSLf https://pecl.php.net/feeds/latest.rss)"
+          printf 'done.\n'
+          printf 'Formatting XML... '
+          XML="$(printf '%s' "$XML" | tr -s ' \t\r\n' ' ' | sed -r 's# *<#\n<#g' | sed -r 's#>\n*#>\n#g' | tr -s '\n' '\n' | sed -r 's#^ +##g')"
+          printf 'done.\n'
+          printf 'Detecting extension list... '
+          EXTENSIONS=''
+          IFS="$(printf '\n\b')"
+          for XML_LINE in $XML; do
+            case "$XML_LINE" in
+              \<item\ *)
+                URL="$(printf '%s' "$XML_LINE" | sed -r 's#^.+ rdf:about\s*=\s*"##' | sed -r 's#".*$##')"
+                EXTENSION="$(printf '%s' "$URL" | sed -r 's#^.*[?&]package=##' | sed -r 's#&.*$##' | tr '[:upper:]' '[:lower:]')"
+                EXTENSIONS="$EXTENSIONS$EXTENSION "
+                ;;
+            esac
+          done
+          EXTENSIONS="$(printf '%s' "${EXTENSIONS% }" | tr ' ' '\n' | sort | uniq | tr '\n' ' ')"
+          printf 'done.\n'
+          printf 'Found etensions: %s\n' "$EXTENSIONS"
+          printf '::set-output name=list::%s\n' "$EXTENSIONS"
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: composer:v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Composer dependencies
+        run: composer install
+      - name: Update packages
+        run: ./bin/pecl-info update --ansi --no-interaction --update-packages --update-versions ${{ steps.retrieve-extensions.outputs.list }}
+      - name: Check changes
+        id: check-changes
+        run: |
+          BUILD_APP=no
+          PUSH=no
+          printf 'Checking changes in downloaded XML files...'
+          if test -n "$(git status --porcelain xml)"; then
+            printf 'changes detected!\n'
+            git add --all xml
+            PUSH=yes
+          else
+            printf 'no changes detected.\n'
+          fi
+          printf 'Checking changes in generated JSON files...'
+          if test -n "$(git status --porcelain web)"; then
+            printf 'changes detected!\n'
+            git add --all web
+            BUILD_APP=yes
+            PUSH=yes
+          else
+            printf 'no changes detected.\n'
+          fi
+          printf '::set-output name=build-app::%s\n' "$BUILD_APP"
+          printf '::set-output name=push::%s\n' "$PUSH"
+      - name: Configure git
+        if: steps.check-changes.outputs.push == 'yes'
+        run: |
+          git config --local user.name 'Michele Locati'
+          git config --local user.email 'michele@locati.it'
+      - name: Commit changed files
+        if: steps.check-changes.outputs.push == 'yes'
+        run: git commit -m 'Automatic update of recent PECL packages'
+      - name: Install NodeJS
+        if: steps.check-changes.outputs.build-app == 'yes'
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install NodeJS dependencies
+        if: steps.check-changes.outputs.build-app == 'yes'
+        run: npm ci
+      - name: Build web application
+        if: steps.check-changes.outputs.build-app == 'yes'
+        run: npm run build
+      - name: Commit new app version
+        if: steps.check-changes.outputs.build-app == 'yes'
+        run: |
+          git add --all docs
+          git commit -m 'Automatic update of web application'
+      - name: Push back to the remote repository
+        if: steps.check-changes.outputs.push == 'yes'
+        run: git push
