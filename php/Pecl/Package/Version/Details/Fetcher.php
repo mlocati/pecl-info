@@ -68,10 +68,22 @@ class Fetcher
         return [$xml, $saveXML];
     }
 
+    protected function createTemporatyTGZFile(): string
+    {
+        $dir = rtrim(str_replace(DIRECTORY_SEPARATOR, '/', sys_get_temp_dir()), '/');
+        for ($i = 1; ; $i++) {
+            $file = "{$dir}/dpx-{$i}-" . mt_rand() . '.tar.gs';
+            if (!file_exists($file)) {
+                touch($file);
+                return $file;
+            }
+        }
+    }
+
     protected function fetchXML(): string
     {
         $url = $this->getDownloadURL();
-        $tgzFile = tempnam(sys_get_temp_dir(), 'dpx');
+        $tgzFile = $this->createTemporatyTGZFile();
         try {
             file_put_contents($tgzFile, file_get_contents($url));
             $archive = new PharData($tgzFile);
