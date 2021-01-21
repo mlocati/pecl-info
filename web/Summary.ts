@@ -19,6 +19,9 @@ export interface CompatibleConfigureOptions {
 
 export interface PackageSummary {
   readonly name: string;
+  readonly license: string;
+  readonly summary: string;
+  readonly description: string;
   readonly phpv?: ReadonlyArray<CompatiblePHPVersions>;
   readonly confopts?: ReadonlyArray<CompatibleConfigureOptions>;
 }

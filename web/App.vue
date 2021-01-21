@@ -22,6 +22,11 @@
         />
         <div v-if="selectedPackage !== null">
           <h2>{{ selectedPackage.name }}</h2>
+          <b-alert show>
+            <strong class="break">{{ selectedPackage.summary }}</strong>
+            <div>License: <b-badge>{{ selectedPackage.license }}</b-badge></div>
+            <div class="break">{{ selectedPackage.description }}</div>
+          </b-alert>
           <b-alert
             v-if="
               !selectedPackage.phpv ||
@@ -143,3 +148,9 @@ export default class App extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.break {
+  white-space: pre-line;
+}
+</style>
