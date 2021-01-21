@@ -24,8 +24,21 @@
           <h2>{{ selectedPackage.name }}</h2>
           <b-alert show>
             <strong class="break">{{ selectedPackage.summary }}</strong>
-            <div>License: <b-badge>{{ selectedPackage.license }}</b-badge></div>
+            <div>
+              License: <b-badge>{{ selectedPackage.license }}</b-badge>
+            </div>
             <div class="break">{{ selectedPackage.description }}</div>
+            <div class="clearfix">
+              <b-button
+                v-bind:href="
+                  'https://pecl.php.net/package/' + selectedPackage.name
+                "
+                size="sm"
+                variant="info"
+                class="float-right"
+                >More details</b-button
+              >
+            </div>
           </b-alert>
           <b-alert
             v-if="
