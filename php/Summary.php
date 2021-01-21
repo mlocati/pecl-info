@@ -29,7 +29,7 @@ class Summary implements JsonSerializable
     {
         $existingIndex = null;
         foreach ($this->packages as $index => $package) {
-            if (strcasecmp($package->getName(), $value->getName()) === 0) {
+            if (strcasecmp($package->getDetails()->getPackageName(), $value->getDetails()->getPackageName()) === 0) {
                 $existingIndex = $index;
                 break;
             }
@@ -39,7 +39,7 @@ class Summary implements JsonSerializable
             usort(
                 $this->packages,
                 static function (Package $a, Package $b): int {
-                    return strnatcasecmp($a->getName(), $b->getName());
+                    return strnatcasecmp($a->getDetails()->getPackageName(), $b->getDetails()->getPackageName());
                 }
             );
         } else {

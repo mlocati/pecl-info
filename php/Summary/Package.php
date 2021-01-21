@@ -1,16 +1,18 @@
 <?php
 
 declare(strict_types=1);
+
 namespace PeclInfo\Summary;
 
 use JsonSerializable;
 use PeclInfo\Summary\Package\CompatibleConfigureOptions;
 use PeclInfo\Summary\Package\CompatiblePHPVersions;
 use RuntimeException;
+use PeclInfo\Pecl\Package\Details;
 
 class Package implements JsonSerializable
 {
-    private string $name;
+    private Details $details;
 
     /**
      * @var \PeclInfo\Summary\Package\CompatiblePHPVersions[]
@@ -22,14 +24,14 @@ class Package implements JsonSerializable
      */
     private $compatibleConfigureOptions = [];
 
-    public function __construct(string $name)
+    public function __construct(Details $details)
     {
-        $this->name = $name;
+        $this->details = $details;
     }
 
-    public function getName(): string
+    public function getDetails(): Details
     {
-        return $this->name;
+        return $this->details;
     }
 
     /**
@@ -76,7 +78,10 @@ class Package implements JsonSerializable
     public function jsonSerialize()
     {
         $result = [
-            'name' => $this->getName(),
+            'name' => $this->getDetails()->getPackageName(),
+            'license' => $this->getDetails()->getLicense(),
+            'summary' => $this->getDetails()->getSummary(),
+            'description' => $this->getDetails()->getDescription(),
         ];
         $compatiblePHPVersions = $this->getCompatiblePHPVersions();
         if ($compatiblePHPVersions !== []) {
@@ -101,7 +106,19 @@ class Package implements JsonSerializable
         if (!is_string($name) || $name === '') {
             throw new RuntimeException('Missing/invalid name key for ' . __CLASS__);
         }
-        $result = new static($name);
+        $license = $value['license'] ?? null;
+        if (!is_string($license) || $license === '') {
+            throw new RuntimeException('Missing/invalid license key for ' . __CLASS__);
+        }
+        $summary = $value['summary'] ?? null;
+        if (!is_string($summary) || $summary === '') {
+            throw new RuntimeException('Missing/invalid summary key for ' . __CLASS__);
+        }
+        $description = $value['description'] ?? null;
+        if (!is_string($description) || $description === '') {
+            throw new RuntimeException('Missing/invalid description key for ' . __CLASS__);
+        }
+        $result = new static(new Details($name, $license, $summary, $description));
         $list = $value['phpv'] ?? [];
         if (!is_array($list)) {
             throw new RuntimeException('Missing/invalid compatible PHP versions key for ' . __CLASS__);

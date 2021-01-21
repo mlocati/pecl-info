@@ -57,7 +57,7 @@ class Lister
 
     protected function getXMLFileName(): string
     {
-        return DIR_XML . '/' . $this->getPackageName() . '.xml';
+        return DIR_XML . '/' . $this->getPackageName() . '-versions.xml';
     }
 
     protected function getXML(bool $forceReload): array
