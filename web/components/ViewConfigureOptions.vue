@@ -7,9 +7,9 @@
       </i>
       <ol v-else>
         <li v-for="option in data.opts" v-bind:key="option.n">
-          Name: <code>{{ option.n }}</code>
+          <b>{{ option.p }}</b>
           <br />
-          Prompt: <i>{{ option.p }}</i>
+          Name: <code>{{ option.n }}</code>
           <br />
           Default:
           <code v-if="option.d !== undefined">{{ option.d }}</code>
