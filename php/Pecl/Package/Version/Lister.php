@@ -7,6 +7,7 @@ use DOMDocument;
 use DOMXPath;
 use PeclInfo\Pecl\Package\Version;
 use PeclInfo\Pecl\Stability;
+use PeclInfo\Pecl\VersionComparer;
 use RuntimeException;
 
 class Lister
@@ -127,7 +128,7 @@ class Lister
             $packageVersions[] = new Version($this->getPackageName(), $version, $stability);
         }
         usort($packageVersions, static function (Version $a, Version $b): int {
-            return version_compare($a->getVersion(), $b->getVersion());
+            return VersionComparer::compare($a->getVersion(), $b->getVersion());
         });
 
         return $packageVersions;

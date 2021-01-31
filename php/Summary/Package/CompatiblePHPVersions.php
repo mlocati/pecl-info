@@ -5,6 +5,7 @@ namespace PeclInfo\Summary\Package;
 
 use JsonSerializable;
 use PeclInfo\Pecl\Package\Version\Details;
+use PeclInfo\Pecl\VersionComparer;
 use RuntimeException;
 
 class CompatiblePHPVersions implements JsonSerializable
@@ -43,7 +44,7 @@ class CompatiblePHPVersions implements JsonSerializable
         usort(
             $this->versions,
             static function (string $a, string $b): int {
-                return version_compare($a, $b);
+                return VersionComparer::compare($a, $b);
             }
         );
 
