@@ -12,7 +12,11 @@ import { CompatiblePHPVersions } from "../Summary";
 @Component
 export default class ViewCompatiblePhpVersions extends Vue {
   @Prop() private data!: CompatiblePHPVersions;
+  @Prop() private compactVersions!: boolean;
   private get versionDescription(): string {
+    if (!this.compactVersions) {
+      return this.data.v.join(", ");
+    }
     if (this.data.v.length === 1) {
       return this.data.v[0];
     }

@@ -20,6 +20,11 @@
             updateLocationHash();
           "
         />
+        <div class="float-right mt-n3">
+          <b-form-checkbox v-model="compactVersions" name="check-button" switch>
+            Compact versions
+          </b-form-checkbox>
+        </div>
         <div v-if="selectedPackage !== null">
           <h2>{{ selectedPackage.name }}</h2>
           <b-alert show>
@@ -70,6 +75,7 @@
                   v-for="v in selectedPackage.phpv"
                   v-bind:key="selectedPackage.name + '@' + v.v.join(',')"
                   v-bind:data="v"
+                  v-bind:compact-versions="compactVersions"
                 />
               </tbody>
             </table>
@@ -91,6 +97,7 @@
                   v-for="co in selectedPackage.confopts"
                   v-bind:key="selectedPackage.name + '@' + co.v.join(',')"
                   v-bind:data="co"
+                  v-bind:compact-versions="compactVersions"
                 />
               </tbody>
             </table>
@@ -118,6 +125,7 @@ import ViewConfigureOptions from "./components/ViewConfigureOptions.vue";
 export default class App extends Vue {
   private updatingHash = false;
   public selectedPackage: PackageSummary | null = null;
+  public compactVersions = true;
   public readonly summary: ReadonlyArray<PackageSummary> = Summary;
   public get packageNames(): Array<string> {
     const names: string[] = [];
