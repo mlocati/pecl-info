@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.9" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>leveldb</name>
+ <channel>pecl.php.net</channel>
+ <summary>LevelDB PHP bindings</summary>
+ <description>This extension is a PHP binding for Google LevelDB</description>
+ <lead>
+  <name>Reeze Xia</name>
+  <user>reeze</user>
+  <email>reeze@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Dylan K. Taylor</name>
+  <user>dktapps</user>
+  <email>dktapps@pmmp.io</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Arpad Ray</name>
+  <user>arpad</user>
+  <email>arpad@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2021-02-18</date>
+ <time>14:14:17</time>
+ <version>
+  <release>0.3.0</release>
+  <api>0.3.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+- Add support for PHP 7.3, 7.4 and 8.0
+- Fixed assert failures and possible faults involving comparators
+- Deprecate LevelDB-&gt;close() (use unset($db) instead, allows more consistent behaviour of iterators and snapshots, and fixes leveldb asserts)
+- Fix wrong arginfo of LevelDBWriteBatch
+- Fix memory errors when google/leveldb was compiled with different compiler options than php-leveldb
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="b7b1787cefd7ec2a1d5eed19893ae166" name="tests/001-basic.phpt" role="test" />
+   <file md5sum="599331189d71a224edae796fcb35305e" name="tests/002-db-management.phpt" role="test" />
+   <file md5sum="cffd23f6757347cd19b6bcc41c722969" name="tests/003-openbasedir.phpt" role="test" />
+   <file md5sum="15efbf3798eea27917cb43a0f6316c7d" name="tests/004-write-batch.phpt" role="test" />
+   <file md5sum="5d41e8b2c9495fdf2c5d69170f6660f3" name="tests/005-iterator.phpt" role="test" />
+   <file md5sum="05b01dba291712bfb290f8abd28ce713" name="tests/006-iterator-foreach.phpt" role="test" />
+   <file md5sum="cbceaa3f499b6fe1e1ef650d912dc589" name="tests/007-db-close.phpt" role="test" />
+   <file md5sum="ac872c4ab4bd13649968861af03b3df5" name="tests/008-options.phpt" role="test" />
+   <file md5sum="3326d2072dae417dce42974431013963" name="tests/009-comparator.phpt" role="test" />
+   <file md5sum="62df1f94c5017f2e045e98acff00105d" name="tests/010-compression.phpt" role="test" />
+   <file md5sum="0a7484763161dd97ac03f62026aebdb5" name="tests/011-getApproximateSizes.phpt" role="test" />
+   <file md5sum="76634dd021cc61edec88a15771c7f97e" name="tests/012-getProperty.phpt" role="test" />
+   <file md5sum="dde386ab22dbc3bed365a95b36a52748" name="tests/013-compactRange.phpt" role="test" />
+   <file md5sum="a86bc46b39d747b22f30f526d17ebe25" name="tests/014-iterator-destroy.phpt" role="test" />
+   <file md5sum="72795de157a4a57b04c28843cdf15d8e" name="tests/015-double-iterator.phpt" role="test" />
+   <file md5sum="8d84c3a8b14fdba9d75b1c508b29010b" name="tests/016-different-iterators-should-differ.phpt" role="test" />
+   <file md5sum="1f889b98190550505a9e0c815ed5782e" name="tests/017-db-getIterator.phpt" role="test" />
+   <file md5sum="eee2b540e407c2ccb0fd51e167873b2f" name="tests/018-snapshot.phpt" role="test" />
+   <file md5sum="2927c14a3edd8c555098d0ec105b0258" name="tests/019-null-comparator.phpt" role="test" />
+   <file md5sum="68508097a8f656c396b440cbe02324e8" name="tests/020-null-snapshot.phpt" role="test" />
+   <file md5sum="73c33013fe79a3d4f4c28232eb9fb969" name="tests/leveldb.inc" role="test" />
+   <file md5sum="716d7c26cc1622afc214920b157880ec" name="tests/skipif.inc" role="test" />
+   <file md5sum="e91fb7f348cf0f91a64686fc2d2b09de" name="config.m4" role="src" />
+   <file md5sum="63219b199c535d7c324eede79a269910" name="leveldb.c" role="src" />
+   <file md5sum="9a0a74702b1eacd507534055a6e6884b" name="php_leveldb.h" role="src" />
+   <file md5sum="a5a1cb389400f8dd0b98b1419af9e306" name="CREDITS" role="doc" />
+   <file md5sum="ab5215b391feaa5fb1ecc15a4caa2b47" name="LICENSE" role="doc" />
+   <file md5sum="b80e409ca020a945edefb201fa3e49bb" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>leveldb</providesextension>
+ <extsrcrelease />
+</package>
