@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>LuaSandbox</name>
+ <channel>pecl.php.net</channel>
+ <summary>Lua interpreter with limits and safe environment</summary>
+ <description>LuaSandbox is an extension for running untrusted Lua code within a PHP web request. Code is run in a stripped-down, safe environment. Time and memory limits can be set.</description>
+ <lead>
+  <name>Tim Starling</name>
+  <user>tstarling</user>
+  <email>tstarling@wikimedia.org</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Kunal Mehta</name>
+  <user>legoktm</user>
+  <email>legoktm@member.fsf.org</email>
+  <active>yes</active>
+ </developer>
+ <date>2021-03-04</date>
+ <time>06:15:45</time>
+ <version>
+  <release>4.0.0</release>
+  <api>4.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license>MIT</license>
+ <notes>
+- Add docbook documentation (for php.net)
+- Flag optional and variadic parameters properly for PHP reflection
+- Remove memory leaks in data_conversion.c
+- Drop PHP5 and HHVM compatibility
+- Add PHP 8 support
+- Windows compilation fixes
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="27575b93e0ead274c94f455b02c736b8" name="docbook/luasandbox/callfunction.xml" role="doc" />
+   <file md5sum="33732d42a4359c2973a76becf9a210a2" name="docbook/luasandbox/disableprofiler.xml" role="doc" />
+   <file md5sum="59a7266fc65f4188fbdc79eaecc5cf99" name="docbook/luasandbox/enableprofiler.xml" role="doc" />
+   <file md5sum="0f1c7720a21888282dd2d19c6a9e7a8f" name="docbook/luasandbox/getcpuusage.xml" role="doc" />
+   <file md5sum="7f24bc971c022e24e18ab1e31abba21e" name="docbook/luasandbox/getmemoryusage.xml" role="doc" />
+   <file md5sum="2e3ba191513b64f031c9d8569107e284" name="docbook/luasandbox/getpeakmemoryusage.xml" role="doc" />
+   <file md5sum="83dd3fea893b0da1523ce07a23ee2a3d" name="docbook/luasandbox/getprofilerfunctionreport.xml" role="doc" />
+   <file md5sum="8b0868c77c9bf939a00dc625485b01f0" name="docbook/luasandbox/getversioninfo.xml" role="doc" />
+   <file md5sum="3e1ea8872f9b17a94a587476fdf023aa" name="docbook/luasandbox/loadbinary.xml" role="doc" />
+   <file md5sum="b8a2ee37379649181ace9b9e01cfcc81" name="docbook/luasandbox/loadstring.xml" role="doc" />
+   <file md5sum="df4eaf5b8d8d24b84e14f1c5012afaf7" name="docbook/luasandbox/pauseusagetimer.xml" role="doc" />
+   <file md5sum="73ccc17686e35b412b4cf0b45c0f901d" name="docbook/luasandbox/registerlibrary.xml" role="doc" />
+   <file md5sum="7007ec083fc0609bd0dd7723bcb34d1b" name="docbook/luasandbox/setcpulimit.xml" role="doc" />
+   <file md5sum="5028580d2d42cc4db8033ba4c15e329a" name="docbook/luasandbox/setmemorylimit.xml" role="doc" />
+   <file md5sum="f17d349efd649824c875c69a16b92b37" name="docbook/luasandbox/unpauseusagetimer.xml" role="doc" />
+   <file md5sum="dd3292b5435cb65c1e800e3d9255b108" name="docbook/luasandbox/wrapphpfunction.xml" role="doc" />
+   <file md5sum="d4462bab0556105a0524c85d395d7ac6" name="docbook/luasandboxfunction/call.xml" role="doc" />
+   <file md5sum="111659995ba6778d9547ecc3aa9281af" name="docbook/luasandboxfunction/construct.xml" role="doc" />
+   <file md5sum="7cd5aaa0987c7f744f590089e5ed58b7" name="docbook/luasandboxfunction/dump.xml" role="doc" />
+   <file md5sum="db990c5771f6423293dcca20b1dd891d" name="docbook/book.xml" role="doc" />
+   <file md5sum="4960972c78d430930f1563bf016d3e68" name="docbook/configure.xml" role="doc" />
+   <file md5sum="6d606b83ee225edc0d8a1cac72fe8aab" name="docbook/constants.xml" role="doc" />
+   <file md5sum="e2b64e10cbb4708a74bc854c7e8234b7" name="docbook/differences.xml" role="doc" />
+   <file md5sum="d1e862a32fe8c1c0014d540eac17cbbc" name="docbook/examples.xml" role="doc" />
+   <file md5sum="273d82ccf88be085f42ca81693590b81" name="docbook/luasandboxerrorerror.xml" role="doc" />
+   <file md5sum="6492d8b00abdca85bb3dd283c6277526" name="docbook/luasandboxerror.xml" role="doc" />
+   <file md5sum="e54549f89846b8cad69a7587ee218c4c" name="docbook/luasandboxfatalerror.xml" role="doc" />
+   <file md5sum="c06a3b7131b3f61f3b49cdcfcd80a914" name="docbook/luasandboxfunction.xml" role="doc" />
+   <file md5sum="03ea837dadcdfaf77f8dbe5c0a832033" name="docbook/luasandboxmemoryerror.xml" role="doc" />
+   <file md5sum="674a57d5dd2ad376897d593df40e7ba7" name="docbook/luasandboxruntimeerror.xml" role="doc" />
+   <file md5sum="064b6ad81aa2572f9a0e7ba76bf53fed" name="docbook/luasandboxsyntaxerror.xml" role="doc" />
+   <file md5sum="e3fbc7413a3706dd5478325c57d35bb4" name="docbook/luasandboxtimeouterror.xml" role="doc" />
+   <file md5sum="c1a9e0ce33b0cba7e987fea8418a3703" name="docbook/luasandbox.xml" role="doc" />
+   <file md5sum="37074a9283a9a4488e86865b99598a09" name="docbook/reference.xml" role="doc" />
+   <file md5sum="da059c44072178bb9b8efec445de8434" name="docbook/setup.xml" role="doc" />
+   <file md5sum="3d95b33d9f958550fb85cacfd351e7a1" name="docbook/versions.xml" role="doc" />
+   <file md5sum="574045a21eef9b5555d3380521b9033c" name="m4/pkg.m4" role="src" />
+   <file md5sum="c75f6ea20972c02749b82ca9dfce2c5a" name="stubs/Exceptions.php" role="doc" />
+   <file md5sum="e5d0812032ca26cdfdaa941f3f80cfb4" name="stubs/LuaSandboxFunction.php" role="doc" />
+   <file md5sum="28dda8647ee379cc9e56a9ece1dae68c" name="stubs/LuaSandbox.php" role="doc" />
+   <file md5sum="dd372c6dbdb8ad6b235da5704a246e68" name="tests/array-key-conversion.phpt" role="test" />
+   <file md5sum="c86b4f55dcfbe8eb97d13e373b51c72f" name="tests/callback_exception.phpt" role="test" />
+   <file md5sum="a5000020899d65c53f00d6bd68a39d01" name="tests/call.phpt" role="test" />
+   <file md5sum="d90c67dd07e10d20162b84b6eacc0b01" name="tests/datatypes.phpt" role="test" />
+   <file md5sum="0567ea9df89d0f3e08810527e7bfd67b" name="tests/datatypes-unsupported.phpt" role="test" />
+   <file md5sum="3a1d5ff623bc279439fa70bcc26ac266" name="tests/dump_loadBinary_call.phpt" role="test" />
+   <file md5sum="8a62eb86c36e3095e6c8217625b94929" name="tests/errors-at-call-boundaries.phpt" role="test" />
+   <file md5sum="c510cb41a9fc58d7b94ad7f66b06379e" name="tests/extending-LuaSandbox.phpt" role="test" />
+   <file md5sum="7cd459f6b1cdb3aaac53518a9678e594" name="tests/ipairs.phpt" role="test" />
+   <file md5sum="3c22483eec366d6450c6d24a2d66516e" name="tests/loadString.phpt" role="test" />
+   <file md5sum="8c38104096960740d998897290edd7ac" name="tests/lua_catches_php_exception.phpt" role="test" />
+   <file md5sum="dc700484bf55a5f255364663e5cacf08" name="tests/LuaSandboxFunction_construct.phpt" role="test" />
+   <file md5sum="ac3bc7095919cff4bdb39d3389ffbf05" name="tests/pairs.phpt" role="test" />
+   <file md5sum="524052c8f6e0adc42180ee803c1a6cc6" name="tests/pcall.phpt" role="test" />
+   <file md5sum="b18ff4cae416387d00a1ec37187c3eee" name="tests/profiler.phpt" role="test" />
+   <file md5sum="085a3340f127b8a497e42bd72b40f69d" name="tests/profiler-sorting.phpt" role="test" />
+   <file md5sum="0a8ce0f0d101cb8a0e1ca756e5703c7f" name="tests/reentrant.phpt" role="test" />
+   <file md5sum="171de493d394e3f3df6405135ee94c2d" name="tests/timer.phpt" role="test" />
+   <file md5sum="78546da223478eb8e37a1ceb280f2038" name="tests/xpcall.phpt" role="test" />
+   <file md5sum="3a4fb581a751b081113d5b2362f7e8f6" name="alloc.c" role="src" />
+   <file md5sum="028ba1f27aa0e8a91e2ab0ee35c30e2f" name="config.m4" role="src" />
+   <file md5sum="547c2c52bb9b380cc633d0e467103f12" name="COPYING" role="doc" />
+   <file md5sum="6d87be7572ddc2997b6d1cccc0c56062" name="CREDITS" role="doc" />
+   <file md5sum="bde5c9942b67a59b6d922a2fb5e4c13f" name="data_conversion.c" role="src" />
+   <file md5sum="bd877dc0c76e19becb30173db530f430" name="Doxyfile" role="src" />
+   <file md5sum="904a03f7d6f927d0d47cf7df0c350c26" name="FindLua51cpp.cmake" role="src" />
+   <file md5sum="ec2300b2b1343d54ad1a5429733883a8" name="library.c" role="src" />
+   <file md5sum="7c6aa25c11c472868656cd915df273a0" name="luasandbox.c" role="src" />
+   <file md5sum="a4684bf327b777f925d37171c81769dd" name="luasandbox.ini" role="src" />
+   <file md5sum="b3e6096f11f150434ea7726eea36e4d5" name="luasandbox_lstrlib.c" role="src" />
+   <file md5sum="e69455e9131c185306b1f5b2f95d01e3" name="luasandbox_lstrlib.patch" role="src" />
+   <file md5sum="59b2552a6a40b33e98e31975726f3fda" name="luasandbox_timer.h" role="src" />
+   <file md5sum="034e5fc4be2153535936b394c2b0af84" name="luasandbox_types.h" role="src" />
+   <file md5sum="e482fbc582338741bb2893812b92b63b" name="luasandbox_version.h" role="src" />
+   <file md5sum="1420b99d23fd0c43885545a20b0c9cff" name="php_luasandbox.h" role="src" />
+   <file md5sum="62bda08f610f2e62c3b0b5681f82e275" name="README.md" role="doc" />
+   <file md5sum="1206c0e280fa82e45941d236b5476c9c" name="README.Documentation" role="doc" />
+   <file md5sum="44eea9c48d68b7ae8e7ad5916b9c08f5" name="timer.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>luasandbox</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2018-10-11</date>
+   <version>
+    <release>3.0.3</release>
+    <api>3.0.3</api>
+   </version>
+   <notes>
+- Fix ZTS build on PHP 7+ (Patch by Remi Collet)
+   </notes>
+  </release>
+  <release>
+   <date>2018-10-09</date>
+   <version>
+    <release>3.0.2</release>
+    <api>3.0.2</api>
+   </version>
+   <notes>
+- Fix PHP 7 object layout
+- Initial PECL release
+   </notes>
+  </release>
+ </changelog>
+</package>
