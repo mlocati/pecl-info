@@ -183,6 +183,9 @@ class Fetcher
             case 'APC-3.0.12p1': // DOMDocument::loadXML(): xmlns:xsi: 'http://www.w3.org/2001/XMLSchema-inst ance' is not a valid URI in Entity, line: 2
             case 'APC-3.0.12p2': // DOMDocument::loadXML(): xmlns:xsi: 'http://www.w3.org/2001/XMLSchema-inst ance' is not a valid URI in Entity, line: 2
             case 'event-1.10.2': // DOMDocument::loadXML(): Input is not proper UTF-8, indicate encoding
+            case 'PAM-2.2.1': // DOMDocument::loadXML(): xmlns:xsi: 'http://www.w3.org/2001/XMLSchema- instance' is not a valid URI in Entity, line: 2
+            case 'PAM-2.2.2': // DOMDocument::loadXML(): xmlns:xsi: 'http://www.w3.org/2001/XMLSchema- instance' is not a valid URI in Entity, line: 2
+            case 'PAM-2.2.3': // DOMDocument::loadXML(): xmlns:xsi: 'http://www.w3.org/2001/XMLSchema- instance' is not a valid URI in Entity, line: 2
             case 'trader-0.2': // DOMDocument::loadXML(): xmlns:xsi: 'http://ww  w.w3.org/2001/XMLSchema-instance' is not a valid URI in Entity, line: 2
             case 'trader-0.2.1': // DOMDocument::loadXML(): xmlns:xsi: 'http://ww  w.w3.org/2001/XMLSchema-instance' is not a valid URI in Entity, line: 2
             case 'trader-0.2.2': // DOMDocument::loadXML(): xmlns:xsi: 'http://ww  w.w3.org/2001/XMLSchema-instance' is not a valid URI in Entity, line: 2
