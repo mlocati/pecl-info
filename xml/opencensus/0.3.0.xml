@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>opencensus</name>
+ <channel>pecl.php.net</channel>
+ <summary>A stats collection and distributed tracing framework</summary>
+ <description>OpenCensus is a open source, distributed tracing system that allows you to collect latency data and report it to any trace aggregation system such as Zipkin or Stackdriver Trace.
+
+This extension allows you to easily gather latency and other metadata by watching for targeted function and method invocations without needing to inject code into the libraries.</description>
+ <lead>
+  <name>Jeff Ching</name>
+  <user>chingor</user>
+  <email>chingor@google.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2021-06-08</date>
+ <time>23:15:30</time>
+ <version>
+  <release>0.3.0</release>
+  <api>0.3.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license>Apache 2.0</license>
+ <notes>
+- OpenCensus stats implementation (#220)
+- Fix ZVAL_DESTRUCTOR usage
+- Add PHP8 compatibility (#270)
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="91b6c4b0fcdb549dab89194970511bad" name="tests/common.inc" role="test" />
+   <file baseinstalldir="/" md5sum="26b66d1a7e99a570ba1f5c32677cfcfd" name="tests/annotations.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4bf7130e79d117068f7da54025c267a0" name="tests/basic_class_function.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f4979ee4c0a6bd4917a91faf16726724" name="tests/basic_context.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="208659401c5186d573302d1929639897" name="tests/basic_function.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4d6638a152b33166d809888da85ac337" name="tests/basic_method.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e43680160ead8d69db470555f2a7a95c" name="tests/bug_001.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="003262e611eeeb91a8c8a6a32e3594e8" name="tests/clear_traces.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1615c6f5fd35336ea21bac14fee7990b" name="tests/closure_exeception.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="57a83d67c564ab814e57a08fa5e69a89" name="tests/closure_exeception2.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="506b2e2d0d7cae1d39c43739452cc9a5" name="tests/context_class.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="330364ceacc87f5403025eccc58f64dd" name="tests/context_span_id.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="863a88e41a8a8b4566501a7b131ddcf6" name="tests/function_callback.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6e5056c655b3e1d0bf148194e70942d3" name="tests/function_callback_arguments.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ff861222d578fcb10937b1ad91b02531" name="tests/function_callback_arguments_array.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bdd22f634d644f9d3736c2f1c2e4433a" name="tests/function_callback_arguments_string.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="af5fe6bc9e1777674af160033a18e2fa" name="tests/function_callback_array.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5ca23ad95db3ad372cab440d6303b2a3" name="tests/function_callback_callable_wrong_return.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="23c10118e21354c1b04326a28d8b9411" name="tests/function_callback_extra_arguments.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6f0fb461a8bb163424db7c4bd06f6610" name="tests/function_callback_static_string.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4ac32102fc71c7ab7e2f0f90e29c6102" name="tests/function_callback_string.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0d29b7f5339f37aab0e130830701070c" name="tests/function_callback_wrong_return.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="235b9c8a872aa037828fdb98af44317c" name="tests/function_custom.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="328e46a5684db7d84a8a1827a3179503" name="tests/inherit_context.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5ef54ebda249a500eb94294523c64796" name="tests/labels.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="80d9f1e073984f5188e6004d026e6345" name="tests/links.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6803da6bf6c79b215e00a3c17094f338" name="tests/manual_spans.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e9ab13c185103d990c2cb4b1246e3c06" name="tests/manual_spans_default_options.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="139077fbc4d9fa36fd5d6552d63b6f4e" name="tests/many_spans_test.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="dbef3bc31c63b7126924632aa7717fd8" name="tests/message_events.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ec65a4020f4c754e2421d4bdae56742a" name="tests/method_callback.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7e41d5a7e091bd7130ff870855cff025" name="tests/method_callback_arguments.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="96fb370eba05bbce9eafb152c521268f" name="tests/method_callback_arguments_array.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1787bd3df34ba9d9e67a313e41bc4f05" name="tests/method_callback_arguments_string.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a40a882d780099656183af7caeb207ee" name="tests/method_callback_array.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="db4267e5c9bb93942de62c5ad6b0a8c3" name="tests/method_callback_scope.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0576cc645a31ffba48dd1fc3ee6bcb58" name="tests/method_callback_string.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="14ecccb7bda39a8453d43fff15746529" name="tests/method_custom.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="45d4a92f43e77be257bf8387509aa679" name="tests/module_callback_static_string.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9916c0abc32a3d64b4f24ac3f287e914" name="tests/name_castable_object.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="344460ec07233c63ad8fb2991ad85a64" name="tests/name_double.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9a1f393efb8be660a0e8183cee1c288c" name="tests/name_integer.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bf22a1c6a67b48fa42587c2756488fcb" name="tests/name_null.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3767927962560a1286ad7c1db50a921f" name="tests/name_uncastable_object.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5e037f74c6391aa5583cf6618f6e4012" name="tests/name_uncastable_object_php74.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a4131e03c5be71300d850c5b8073441d" name="tests/nested_spans.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ef62c85d3e17b635275604acec93abde" name="tests/non-string-labels-function-callback.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="435daa2fefa1446c7155334d63cb1d91" name="tests/non-string-labels-function.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="66f7a212c32ccb7727d2798e6a478553" name="tests/non-string-labels-method-callback.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="cf7a7c0eae80aadc4f97897f8f83f83c" name="tests/non-string-labels-method.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="61b74e4adbd86a4df6077a708f28ac5b" name="tests/non-string-labels.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d64dcf800369832b8a6152e230fb2d02" name="tests/span_class.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="013c93d2b0e906f48ade69d32c915865" name="tests/span_id_double.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0e42fcdae61ada18a45d61da8d425793" name="tests/span_id_integer.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ae223285e618c1186564e35f781af149" name="tests/span_id_null.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ddd98ac8970127bbfae4930bd6441d0c" name="tests/span_id_string.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2586f397fdbe506022014eebc5692ea2" name="tests/span_kind.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="db9e57f73c98bee1a42735f21562a6e5" name="tests/span_kind_integer.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="e69b73ff1b41bed366a642822922eaee" name="tests/span_kind_null.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0489eacf372ee77d601dd9b222302984" name="tests/span_same_process_as_parent_span.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="17f70ab1a44e8d26ada9e59517c0864c" name="tests/span_same_process_as_parent_span_falsy.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b48991239283778feb5d6eeb0e7d5d00" name="tests/span_stacktrace_custom.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="80333f847e4e5efc5b85b5bf39c35dad" name="tests/span_stacktrace_default.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="162f6e61b05bb2cca23aa8083e3c610c" name="tests/span_stacktrace_invalid.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="deca5946fa05ec979a6881f3d363f466" name="tests/span_start_time_double.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="baf928f13441d02a0f2488b9667e620c" name="tests/span_start_time_int.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="38e671b100031ab8a9c0966c073ee546" name="tests/span_start_time_null.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2ec5b7af3867b8cf0052b3ec96a102ba" name="tests/span_start_time_string.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4d2d984b0427e92d493ef6112d2f9abc" name="tests/static_method_callback_scope.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="9a6cce9afb2a80dceccdd1601843b247" name="tests/static_method_test.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a016e67cb07821843d7dad723b6b52fa" name="tests/trace_context.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="33f0958adabce419cb109a54ffd46177" name="config.m4" role="src" />
+   <file baseinstalldir="/" md5sum="69c672539f8b4001b7ec1f06be5fa93f" name="config.w32" role="src" />
+   <file baseinstalldir="/" md5sum="3fb0eca067acf8ac4ce00614a6a6cd81" name="opencensus.c" role="src" />
+   <file baseinstalldir="/" md5sum="f6aa3ee993dcced2ec155c2fa665f43b" name="opencensus_core_daemonclient.c" role="src" />
+   <file baseinstalldir="/" md5sum="8844e386897226f25585df6dc95da830" name="opencensus_trace.c" role="src" />
+   <file baseinstalldir="/" md5sum="8cb7c40ab3ea3a6e3f0def26828237bf" name="opencensus_trace_annotation.c" role="src" />
+   <file baseinstalldir="/" md5sum="b3e6311d67ff8fb4631522a6ee86f393" name="opencensus_trace_context.c" role="src" />
+   <file baseinstalldir="/" md5sum="2decabe2b6c2189c2a149480482a9951" name="opencensus_trace_link.c" role="src" />
+   <file baseinstalldir="/" md5sum="617c298c1749f048652e3b28d3f8019d" name="opencensus_trace_message_event.c" role="src" />
+   <file baseinstalldir="/" md5sum="9e11435097f30962baa0288070d85948" name="opencensus_trace_span.c" role="src" />
+   <file baseinstalldir="/" md5sum="a575b0522cbd953cb480ceb1867b6260" name="varint.c" role="src" />
+   <file baseinstalldir="/" md5sum="ed336373c0bd97bb0ddfd7dc124b8126" name="opencensus_core_daemonclient.h" role="src" />
+   <file baseinstalldir="/" md5sum="a9880caefdc3e314b75dc4a2821e7532" name="opencensus_trace.h" role="src" />
+   <file baseinstalldir="/" md5sum="4db50be97e12e48e4d17372d3478af60" name="opencensus_trace_annotation.h" role="src" />
+   <file baseinstalldir="/" md5sum="90b10470b8be43e3646d4cbacdc4b948" name="opencensus_trace_context.h" role="src" />
+   <file baseinstalldir="/" md5sum="90c8c51e0fe127b594590eefb9bbac26" name="opencensus_trace_link.h" role="src" />
+   <file baseinstalldir="/" md5sum="35f0c5c84829d1dc100fb83ac40f1956" name="opencensus_trace_message_event.h" role="src" />
+   <file baseinstalldir="/" md5sum="e8b5cea8244d68e95aea51dadfaba601" name="opencensus_trace_span.h" role="src" />
+   <file baseinstalldir="/" md5sum="cbf09e5aae25be2f902a2b4e408d6c0c" name="opencensus_trace_time_event.h" role="src" />
+   <file baseinstalldir="/" md5sum="d7cef951a042d28096e24b98c1d15e55" name="php_opencensus.h" role="src" />
+   <file baseinstalldir="/" md5sum="774d43bf1bba9d7d0915fff573c6c0d0" name="varint.h" role="src" />
+   <file baseinstalldir="/" md5sum="6b61db84a431d4798bdda86daa5191c7" name="README.md" role="doc" />
+   <file baseinstalldir="/" md5sum="ec0681e08ef3ade1a3447c2490cfc6b9" name="LICENSE" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>opencensus</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2017-08-14</date>
+   <license>Apache 2.0</license>
+   <notes>
+First dev release
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.2</release>
+    <api>0.0.2</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2017-08-15</date>
+   <license>Apache 2.0</license>
+   <notes>
+- Fix builds for 32-bit architecture (#15)
+- Fix windows builds (#17)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.3</release>
+    <api>0.0.3</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2017-08-25</date>
+   <license>Apache 2.0</license>
+   <notes>
+- Capture span kind (#19)
+- Capture stacktrace (#21)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.4</release>
+    <api>0.0.4</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <date>2017-10-20</date>
+   <license>Apache 2.0</license>
+   <notes>
+- Adds php_info() section (#42)
+- Span ids are captured as hex strings (#44)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2017-12-12</date>
+   <license>Apache 2.0</license>
+   <notes>
+First alpha release.
+- Refactored internal data structures to match OpenCensus models
+- Supports creating detached spans.
+- Add support for annotations, message events, and links.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2017-12-22</date>
+   <license>Apache 2.0</license>
+   <notes>
+Fix segfault when specifying attributes in a callback (#93)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.2</release>
+    <api>0.1.2</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2018-01-19</date>
+   <license>Apache 2.0</license>
+   <notes>
+Fix potential variable naming collision (#97)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.3</release>
+    <api>0.1.3</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2018-03-02</date>
+   <license>Apache 2.0</license>
+   <notes>
+Fix segfault on OSX (#129)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.4</release>
+    <api>0.1.4</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2018-03-05</date>
+   <license>Apache 2.0</license>
+   <notes>
+Fix handling startTime when passed to opencensus_trace_begin (#135)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2018-04-02</date>
+   <license>Apache 2.0</license>
+   <notes>
+- Adds Span kind (#151)
+- Adds Span sameProcessAsParentSpan (#153)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.1</release>
+    <api>0.2.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2018-04-18</date>
+   <license>Apache 2.0</license>
+   <notes>
+- Preserve annotation, link, and message event options (#171)
+- Preserve span stacktrace when provided as an option (#171)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.2</release>
+    <api>0.2.2</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2018-05-08</date>
+   <license>Apache 2.0</license>
+   <notes>
+- Fix refcounts for arguments in traced function callbacks (#184)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2021-06-08</date>
+   <license>Apache 2.0</license>
+   <notes>
+- OpenCensus stats implementation (#220)
+- Fix ZVAL_DESTRUCTOR usage
+- Add PHP8 compatibility (#270)
+   </notes>
+  </release>
+ </changelog>
+</package>
