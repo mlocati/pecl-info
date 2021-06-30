@@ -20,5 +20,7 @@ set_error_handler(
 define('DIR_ROOT', rtrim(str_replace(DIRECTORY_SEPARATOR, '/', __DIR__), '/'));
 const DIR_XML = DIR_ROOT . '/xml';
 const DIR_WEB = DIR_ROOT . '/web';
+const DIR_DOCS = DIR_ROOT . '/docs';
+const DIR_PUBLIC = DIR_ROOT . '/public';
 
 require_once __DIR__ . '/vendor/autoload.php';

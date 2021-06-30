@@ -52,7 +52,6 @@ jobs:
       - name: Check changes
         id: check-changes
         run: |
-          BUILD_APP=no
           PUSH=no
           printf 'Checking changes in downloaded XML files...'
           if test -n "$(git status --porcelain xml)"; then
@@ -62,16 +61,22 @@ jobs:
           else
             printf 'no changes detected.\n'
           fi
-          printf 'Checking changes in generated JSON files...'
-          if test -n "$(git status --porcelain web)"; then
+          printf 'Checking changes in generated JSON files (public)...'
+          if test -n "$(git status --porcelain public)"; then
             printf 'changes detected!\n'
-            git add --all web
-            BUILD_APP=yes
+            git add --all public
             PUSH=yes
           else
             printf 'no changes detected.\n'
           fi
-          printf '::set-output name=build-app::%s\n' "$BUILD_APP"
+          printf 'Checking changes in generated JSON files (docs/data)...'
+          if test -n "$(git status --porcelain docs/data)"; then
+            printf 'changes detected!\n'
+            git add --all docs/data
+            PUSH=yes
+          else
+            printf 'no changes detected.\n'
+          fi
           printf '::set-output name=push::%s\n' "$PUSH"
       - name: Configure git
         if: steps.check-changes.outputs.push == 'yes'
@@ -81,22 +86,6 @@ jobs:
       - name: Commit changed files
         if: steps.check-changes.outputs.push == 'yes'
         run: git commit -m 'Automatic update of recent PECL packages'
-      - name: Install NodeJS
-        if: steps.check-changes.outputs.build-app == 'yes'
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - name: Install NodeJS dependencies
-        if: steps.check-changes.outputs.build-app == 'yes'
-        run: npm ci
-      - name: Build web application
-        if: steps.check-changes.outputs.build-app == 'yes'
-        run: npm run build
-      - name: Commit new app version
-        if: steps.check-changes.outputs.build-app == 'yes'
-        run: |
-          git add --all docs
-          git commit -m 'Automatic update of web application'
       - name: Push back to the remote repository
         if: steps.check-changes.outputs.push == 'yes'
         run: git push

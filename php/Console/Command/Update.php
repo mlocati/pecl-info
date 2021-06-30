@@ -129,14 +129,14 @@ class Update extends Command
         return Command::SUCCESS;
     }
 
-    protected function getSummaryFilename(bool $minified): string
+    protected function getSummaryFilename(bool $generated, bool $minified): string
     {
-        return DIR_WEB . '/summary' . ($minified ? '.min.json' : '.json');
+        return ($generated ? DIR_DOCS : DIR_PUBLIC) . '/data/summary' . ($minified ? '.min.json' : '.json');
     }
 
     protected function loadSummary(): Summary
     {
-        $filename = $this->getSummaryFilename(false);
+        $filename = $this->getSummaryFilename(false, false);
         if (is_file($filename)) {
             $json = file_get_contents($filename);
             $data = json_decode($json, true, 2147483646, JSON_THROW_ON_ERROR);
@@ -151,13 +151,15 @@ class Update extends Command
     protected function saveSummary(Summary $summary): void
     {
         $jsonOptions = JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR;
-        foreach ([false, true] as $minify) {
-            $filename = $this->getSummaryFilename($minify);
-            $dirname = dirname($filename);
-            if (!is_dir($dirname)) {
-                mkdir($dirname, 0777, true);
+        foreach ([false, true] as $generated) {
+            foreach ([false, true] as $minify) {
+                $filename = $this->getSummaryFilename($generated, $minify);
+                $dirname = dirname($filename);
+                if (!is_dir($dirname)) {
+                    mkdir($dirname, 0777, true);
+                }
+                file_put_contents($filename, json_encode($summary, $jsonOptions | ($minify ? 0 : JSON_PRETTY_PRINT)));
             }
-            file_put_contents($filename, json_encode($summary, $jsonOptions | ($minify ? 0 : JSON_PRETTY_PRINT)));
         }
     }
 

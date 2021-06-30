@@ -1,4 +1,4 @@
-import data from "./summary.min.json";
+import axios, { AxiosResponse } from "axios";
 
 export interface CompatiblePHPVersions {
   readonly v: ReadonlyArray<string>;
@@ -26,4 +26,22 @@ export interface PackageSummary {
   readonly confopts?: ReadonlyArray<CompatibleConfigureOptions>;
 }
 
-export const Summary = data as ReadonlyArray<PackageSummary>;
+let data: ReadonlyArray<PackageSummary> | undefined;
+
+export function getSummary(): Promise<ReadonlyArray<PackageSummary>> {
+  return new Promise<ReadonlyArray<PackageSummary>>((resolve, reject) => {
+    if (data !== undefined) {
+      resolve(data);
+      return;
+    }
+    axios
+      .get("data/summary.min.json")
+      .then((response: AxiosResponse) => {
+        data = response.data as ReadonlyArray<PackageSummary>;
+        resolve(data);
+      })
+      .catch((error: Error) => {
+        reject(error);
+      });
+  });
+}
