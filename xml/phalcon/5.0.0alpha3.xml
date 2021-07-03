@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>phalcon</name>
+ <channel>pecl.php.net</channel>
+ <summary>Phalcon is a full stack PHP framework offering low resource consumption and high performance.</summary>
+ <description>Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.</description>
+ <lead>
+  <name>Ruud Boon</name>
+  <user>ruudboon</user>
+  <email>ruud@ruudboon.io</email>
+  <active>yes</active>
+ </lead>
+ <date>2021-06-30</date>
+ <time>16:46:16</time>
+ <version>
+  <release>5.0.0alpha3</release>
+  <api>5.0.0alpha3</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="https://license.phalcon.io">BSD 3-Clause License</license>
+ <notes>
+Full changelog can be found at: https://github.com/phalcon/cphalcon/blob/master/CHANGELOG-5.0.md
+
+## Changed
+- Changed version format to allow alpha/beta/RC releases on PECL.
+- Changed:
+  - `Phalcon\Mvc\Model\Resultset\Complex::__construct` now accepts `Psr\SimpleCache\CacheInterface` for the cache
+  - `Phalcon\Mvc\Model\Resultset\Simple::__construct` now accepts `Psr\SimpleCache\CacheInterface` for the cache
+  - `Phalcon\Mvc\Model\Resultset::__construct` now accepts `Psr\SimpleCache\CacheInterface` for the cache
+  - `Phalcon\Mvc\Model\Resultset::getCache` now returns `Psr\SimpleCache\CacheInterface` [#15471](https://github.com/phalcon/cphalcon/issues/15471)
+- Changed `Phalcon\Db\Adapter\AbstractAdapter:delete()` signature of optional parameters. [#15363](https://github.com/phalcon/cphalcon/issues/15363)
+- Changed `bindCounts` argument to array type in:
+  - `Phalcon\Db\Dialect:getColumnList()`
+  - `Phalcon\Db\Dialect:getSqlColumn()`
+  - `Phalcon\Db\Dialect:getSqlExpression()`
+  - `Phalcon\Db\Dialect:getSqlExpressionBinaryOperations()`
+  - `Phalcon\Db\Dialect:getSqlExpressionCase()`
+  - `Phalcon\Db\Dialect:getSqlExpressionCastValue()`
+  - `Phalcon\Db\Dialect:getSqlExpressionConvertValue()`
+  - `Phalcon\Db\Dialect:getSqlExpressionFunctionCall()`
+  - `Phalcon\Db\Dialect:getSqlExpressionGroupBy()`
+  - `Phalcon\Db\Dialect:getSqlExpressionHaving()`
+  - `Phalcon\Db\Dialect:getSqlExpressionJoins()`
+  - `Phalcon\Db\Dialect:getSqlExpressionLimit()`
+  - `Phalcon\Db\Dialect:getSqlExpressionList()`
+  - `Phalcon\Db\Dialect:getSqlExpressionObject()`
+  - `Phalcon\Db\Dialect:getSqlExpressionOrderBy()`
+  - `Phalcon\Db\Dialect:getSqlExpressionScalar()`
+  - `Phalcon\Db\Dialect:getSqlExpressionUnaryOperations()`
+  - `Phalcon\Db\Dialect:getSqlExpressionWhere()`
+  - `Phalcon\Db\DialectInterface:getSqlExpression()`
+
+## Fixed
+- Fixed `Phalcon\Db\Adapter\AbstractAdapter:delete()` when `bindTypes` argument is passed. [#15363](https://github.com/phalcon/cphalcon/issues/15363)
+- Fixed `Phalcon\Storage\Adapter\Redis::getAdapter` to use passed `connectionTimeout`, `retryInterval` and `readTimeout` options for the connection [#15484](https://github.com/phalcon/cphalcon/issues/15484)
+- Fixed `Phalcon\Mvc\View\Engine\Volt\Compiler` for a use case when a block will return null vs an array for `statementList` in PHP 8 [#15556](https://github.com/phalcon/cphalcon/issues/15556)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="605b108f1e0f081d2175d4648254d104" name="config.m4" role="src" />
+   <file md5sum="8e4b43860b95fec6b0130a31dd51a572" name="config.w32" role="src" />
+   <file md5sum="b48fcb9425ac6a72605c8892876b5215" name="phalcon.zep.c" role="src" />
+   <file md5sum="14dd91fa7532fdc333ac540331fa4735" name="phalcon.zep.h" role="src" />
+   <file md5sum="d40e53990f2b056f57ac72a130f0fdcb" name="php_phalcon.h" role="src" />
+   <file md5sum="d203bdf1a0b2d361f36cd0e0d9c23c74" name="LICENSE.txt" role="doc" />
+   <file md5sum="881fd18c8de61a495661eb164d393762" name="CHANGELOG-5.0.md" role="doc" />
+   <file md5sum="1a8e06974b9cd303433b483b49d66906" name="CODE_OF_CONDUCT.md" role="doc" />
+   <file md5sum="571d2ce604ed1357574c156aefbaa56b" name="CODE_OWNERS.TXT" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.4.1</min>
+    <max>8.0.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+   <package>
+    <name>psr</name>
+    <channel>pecl.php.net</channel>
+    <min>1.0.1</min>
+   </package>
+  </required>
+ </dependencies>
+ <providesextension>phalcon</providesextension>
+ <extsrcrelease />
+</package>
