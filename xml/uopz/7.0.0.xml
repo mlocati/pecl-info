@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>uopz</name>
+ <channel>pecl.php.net</channel>
+ <summary>User Operations for Zend</summary>
+ <description>The uopz extension is focused on providing utilities to aid with unit testing PHP code.
+
+It supports the following activities:
+
+* Intercepting function execution
+* Intercepting object creation
+* Hooking into function execution
+* Manipulation of function statics
+* Manipulation of function flags
+* Redefinition of constants
+* Deletion of constants
+* Runtime creation of functions and methods</description>
+ <lead>
+  <name>Joe Watkins</name>
+  <user>krakjoe</user>
+  <email>pthreads@pthreads.org</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2021-07-28</date>
+ <time>11:03:46</time>
+ <version>
+  <release>7.0.0</release>
+  <api>6.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Fix #145 uopz_find_hook segfault with PHP 8.0
+- Fix #140 segfault with PHPUnit 9.5 caused by uopz_del_function
+- Don&apos;t remove methods of immutable classes
+- PHP 8 support
+- Drop PHP 7 support
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="b3caa49eba7771e0b803b9908d33809a" name="/src/class.c" role="src" />
+   <file md5sum="7e100f615962902d94463f366862a8bc" name="/src/class.h" role="src" />
+   <file md5sum="d7c487c408d0635bf7d945d758d00c6d" name="/src/constant.c" role="src" />
+   <file md5sum="96a961c623283fe931ce500cf2936dab" name="/src/constant.h" role="src" />
+   <file md5sum="1229f80298e3e51806434d0ed5cca01f" name="/src/copy.c" role="src" />
+   <file md5sum="0c50a6a08eea0a965391777a80c8f934" name="/src/copy.h" role="src" />
+   <file md5sum="55af3101e8c7ecca11c21c45d2abab78" name="/src/executors.c" role="src" />
+   <file md5sum="5e1052367bad6b9813487fe321de4916" name="/src/executors.h" role="src" />
+   <file md5sum="ad3b37f98fa673b81b2c80267bfb0efd" name="/src/function.c" role="src" />
+   <file md5sum="0e2214e30455c08324bac2a4e0beb350" name="/src/function.h" role="src" />
+   <file md5sum="99a513aab339493f58cb0bd2156c4c84" name="/src/handlers.c" role="src" />
+   <file md5sum="36c724971feec799de15815d227212ae" name="/src/handlers.h" role="src" />
+   <file md5sum="8e7db78354596319d09b42d9641deb76" name="/src/hook.c" role="src" />
+   <file md5sum="be8a3fef9808029ab558ca7f1dbb97f6" name="/src/hook.h" role="src" />
+   <file md5sum="1668e135fe52a6c92838dc6901b41373" name="/src/return.c" role="src" />
+   <file md5sum="817974359960a657974a011bcf0d5cd9" name="/src/return.h" role="src" />
+   <file md5sum="5e5b3cc2a75407f78c446efcfe56f1f6" name="/src/util.c" role="src" />
+   <file md5sum="3bee9aad20d2a6c65cf2812f89bab14a" name="/src/util.h" role="src" />
+   <file md5sum="e6fdbc3b2d2eecb99bca4ecc13250898" name="/tests/bugs/0001-uopz_set_static.phpt" role="test" />
+   <file md5sum="8a1d231b3ce37162b7bc006d9d89a351" name="/tests/bugs/0002-uopz_set_static_clear.phpt" role="test" />
+   <file md5sum="c2d9638a313141ff379fb10200058a8a" name="/tests/bugs/0003-uopz_get_property.phpt" role="test" />
+   <file md5sum="8b4a1c1968b2a1d761564e007c1b1377" name="/tests/bugs/0004-uopz_set_property.phpt" role="test" />
+   <file md5sum="abea8a1ce63fb34321793f2785f570b5" name="/tests/bugs/0005-uopz_set_return_prototype.phpt" role="test" />
+   <file md5sum="a8b87990932ab1fcfa6df2e5d5451533" name="/tests/bugs/0006-uopz-opcache-const-subst.phpt" role="test" />
+   <file md5sum="b8f01fa17f10d3624fa186945e1e322f" name="/tests/bugs/gh43.phpt" role="test" />
+   <file md5sum="cc0bdffdaaa5ac3c67d14bcc104a47fa" name="/tests/bugs/gh53.phpt" role="test" />
+   <file md5sum="4fb0b413582298ba37b43baeab21b42d" name="/tests/bugs/gh64.phpt" role="test" />
+   <file md5sum="b21af739faa4b6f363974dfac24a2e10" name="/tests/bugs/gh68.phpt" role="test" />
+   <file md5sum="201a1eb460fe07920256adb8cf69aaaf" name="/tests/bugs/gh73.phpt" role="test" />
+   <file md5sum="3fc267a48e84f2555284624f575d094a" name="/tests/bugs/gh76.phpt" role="test" />
+   <file md5sum="68a7e0ba0726ad10b1be7e63f895fad0" name="/tests/bugs/gh85.phpt" role="test" />
+   <file md5sum="970899573114d5a0f1684c00cbc102e6" name="/tests/bugs/gh86.phpt" role="test" />
+   <file md5sum="b875af377222ce3ef4be78fc477a3d35" name="/tests/bugs/gh99.phpt" role="test" />
+   <file md5sum="6b4e8f207ba4da452c2f6beb20be6e09" name="/tests/bugs/gh100.phpt" role="test" />
+   <file md5sum="4fc7ca5b452ad280173167f411fd8c09" name="/tests/bugs/gh102.phpt" role="test" />
+   <file md5sum="1ecda51425435c8c7ffedd6006baf676" name="/tests/bugs/gh106.phpt" role="test" />
+   <file md5sum="74a384919b5b636f1bb6bf849b29c938" name="/tests/bugs/gh106a.phpt" role="test" />
+   <file md5sum="9292a765b8f8f155d35549154f5b20d0" name="/tests/bugs/gh109.phpt" role="test" />
+   <file md5sum="17cfe4050f39ceb913d573d5b829ca56" name="/tests/001.phpt" role="test" />
+   <file md5sum="0c51e38bdbd5bffb14e9c7326fbbee60" name="/tests/002.phpt" role="test" />
+   <file md5sum="7218df460ab38e906f9775d32a59d15a" name="/tests/003.phpt" role="test" />
+   <file md5sum="c42a948ade3353e98d186b6c2eef4d20" name="/tests/004.phpt" role="test" />
+   <file md5sum="a3d0f4416abc4b9e31c63d6e59fa3119" name="/tests/005.phpt" role="test" />
+   <file md5sum="09c5dde4ed764bf270be7b93c0b737be" name="/tests/006.phpt" role="test" />
+   <file md5sum="0ec579a5d1ce0e9099e31bae94839f4c" name="/tests/007.phpt" role="test" />
+   <file md5sum="7a487c07076f9a84bdb79da4557d253a" name="/tests/008.phpt" role="test" />
+   <file md5sum="29f640ae8ea35aae67fd8f080357a969" name="/tests/009.phpt" role="test" />
+   <file md5sum="b72807f840439b3ac3a5e014b4d785a2" name="/tests/010.phpt" role="test" />
+   <file md5sum="077d9cdb2f23d6d615e18b047f8d9f9c" name="/tests/011.phpt" role="test" />
+   <file md5sum="200d1ed8eb742bb4432041ebfdf0c5fc" name="/tests/012.phpt" role="test" />
+   <file md5sum="48a9d563ed7726297806ffd89f141aae" name="/tests/013.phpt" role="test" />
+   <file md5sum="d38619f329913fa60d0362f2d3c0f3b4" name="/tests/016.phpt" role="test" />
+   <file md5sum="dd428d0bf89588301d43cc19cccfc27e" name="/tests/017.phpt" role="test" />
+   <file md5sum="80bd668d8f3989e6e4bf834b88603b33" name="/tests/018.phpt" role="test" />
+   <file md5sum="be9b8da50cb23e6448d443c1ec29c79f" name="/tests/019.phpt" role="test" />
+   <file md5sum="9d76962e44191e81bfbed90c84caf2ae" name="/tests/020.phpt" role="test" />
+   <file md5sum="36a51645ce33b7fa3cd4c872dc557af9" name="/tests/021.phpt" role="test" />
+   <file md5sum="c039612e63ea4a794d77d43b727d8487" name="/tests/027.phpt" role="test" />
+   <file md5sum="c92964f3d9984c2a8cf04f1fda8a2fe9" name="/tests/028.phpt" role="test" />
+   <file md5sum="097511e9a695d0ce28543f8a73a2625d" name="/tests/029.phpt" role="test" />
+   <file md5sum="4589e0d7ee8774e26d3da36abd9ae218" name="/tests/032.phpt" role="test" />
+   <file md5sum="1238113000301eddfd62952ccd6a366a" name="/tests/033.phpt" role="test" />
+   <file md5sum="0c15d0837e6b80f9e009d713b44f0a51" name="/tests/035.phpt" role="test" />
+   <file md5sum="e1240a885c2890581ab0c1802d1068d7" name="/tests/036.phpt" role="test" />
+   <file md5sum="f19a6dd2a4db54e3f0495a30252e0d9c" name="/tests/038.phpt" role="test" />
+   <file md5sum="d85c56436b9807fd99a7d98b2a917b38" name="/tests/039.phpt" role="test" />
+   <file md5sum="6c0e6ee0764464c884038cae279bcc5a" name="/tests/040.phpt" role="test" />
+   <file md5sum="d4bb452acafe10b15de5b793e4d11dda" name="/tests/skipif.inc" role="test" />
+   <file md5sum="844eb6b67c6ba92ec314ed9f84a231ec" name="uopz.h" role="src" />
+   <file md5sum="4c74d1b8a98d57b23abf7906cd90f3af" name="uopz.c" role="src" />
+   <file md5sum="70fb4442337ac6803de190ab0bc9df32" name="config.m4" role="src" />
+   <file md5sum="9606066bdff2ff82fe1ff7167b2af359" name="config.w32" role="src" />
+   <file md5sum="51e58269662201ed9eb7c19566e2ea81" name="LICENSE" role="doc" />
+   <file md5sum="2d73b88fa80d8a938abb48772d93a296" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+   <extension>
+    <name>xdebug</name>
+    <max>2.9.3</max>
+    <conflicts />
+   </extension>
+  </required>
+ </dependencies>
+ <providesextension>uopz</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2020-06-30</date>
+   <version>
+    <release>6.1.2</release>
+    <api>6.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- make UOPZ compatible with Xdebug again (2.9.4+ required)
+   </notes>
+  </release>
+  <release>
+   <date>2019-09-18</date>
+   <version>
+    <release>6.1.1</release>
+    <api>6.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix compatibility with 7.4.0RC1
+- Fix gh#110 uopz_set_mock function does not work if xdebug is loaded
+   </notes>
+  </release>
+  <release>
+   <date>2019-05-27</date>
+   <version>
+    <release>6.1.0</release>
+    <api>6.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix #109 uopz_set_hook closure receive extra arguments when function call
+  through call_user_func and call_user_func_array
+- 7.4 support
+   </notes>
+  </release>
+  <release>
+   <date>2019-02-06</date>
+   <version>
+    <release>6.0.1</release>
+    <api>6.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Add &quot;uopz.exit&quot; configuration option, to allow the execution of exit
+  opcodes or not (default=0 to keep current behavior)
+- Improve opcache optimizer compatibility
+- Display ini settings in module info
+   </notes>
+  </release>
+  <release>
+   <date>2019-01-30</date>
+   <version>
+    <release>6.0.0</release>
+    <api>6.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Breaking change to uopz_set_mock: now behaves like the old test-helpers new overload
+- Fixed redefine/undefine namespaced constants
+- Fix flags being ignored when adding functions
+- Remove executor hook for maximum compatibility
+   </notes>
+  </release>
+  <release>
+   <date>2019-01-02</date>
+   <version>
+    <release>5.1.0</release>
+    <api>5.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix #89 uopz_flags bugs on 64bit windows
+- Fix #87 segfault when hook throws fatal error
+- Fix #86 interface support for uopz_set_return
+- Fix #85 cuf/cufa bugs
+- Fix #76 uopz_extend changing linkage
+- Fix #73 cuf/cufa bugs
+- Fix #68 hang when using anon class as mock
+- Fix #64 segfault after uopz_set_static
+- Fix #63 class constant redefinition depends on opcache
+- Fix #61 mocking not working with xdebug
+- Fix #51 hooks and returns bug
+- Fix #42 uopz_set_mock not working in some cases
+- Fix PHP 7.3 compatibility
+   </notes>
+  </release>
+  <release>
+   <date>2017-08-03</date>
+   <version>
+    <release>5.0.2</release>
+    <api>5.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- add uopz.disable ini switch (default 0)
+- fix gh#43: setting hook on __invoke method doesn&apos;t work on call_user_func
+- fix gh#48: segmentation fault (uopz_set_return)
+- add 4 new functions:
+    - uopz_call_user_func(callable function, ... args)
+    - uopz_get_exit_status()
+    - uopz_allow_exit(bool allow)
+    - uopz_call_user_func_array(callable function, array args)
+- fix PHP 7.1 compatibility
+- fix PHP 7.2 compatibility
+   </notes>
+  </release>
+  <release>
+   <date>2016-04-13</date>
+   <version>
+    <release>5.0.1</release>
+    <api>5.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- PHP 7 compatibility
+- new API, see documentation
+   </notes>
+  </release>
+  <release>
+   <date>2015-03-04</date>
+   <version>
+    <release>2.0.7</release>
+    <api>2.0.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+fix bug in overriding methods in classes loaded prior to override
+add ability to send object from ZEND_NEW handler
+send exit parameter to overload function
+fix bug in handling exit status code when overloading disabled
+set exit status code when overloading enabled from return value
+   </notes>
+  </release>
+ </changelog>
+</package>
