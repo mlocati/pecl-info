@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>igbinary</name>
+ <channel>pecl.php.net</channel>
+ <summary>igbinary extension</summary>
+ <description>Igbinary is a drop in replacement for the standard php serializer. Instead of
+the time and space consuming textual representation used by PHP&apos;s serialize(), igbinary stores php data
+structures in a compact binary form. Savings are significant when using
+memcached or similar memory based storages for serialized data.</description>
+ <lead>
+  <name>Oleg Grenrus</name>
+  <user>phadej</user>
+  <email>oleg.grenrus@iki.fi</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Pierre Joye</name>
+  <user>pajoye</user>
+  <email>pierre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Teddy Grenman</name>
+  <user>tricky</user>
+  <email>teddy.pecl@luuseri.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Tyson Andre</name>
+  <user>tandre</user>
+  <email>tandre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2021-08-07</date>
+ <time>14:40:44</time>
+ <version>
+  <release>3.2.5</release>
+  <api>1.3.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+ <notes>
+* Fix change in behavior introduced in 3.2.2RC1 when unserializing arrays - the internal array pointer (for `next()`, `key()`, etc) pointed past the end of the array in php 7.0-7.2.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="240264189d88e0deb9d61d210dca199d" name="tests/__serialize_001.phpt" role="test" />
+   <file md5sum="bddecdc631751be7f53b562f91429239" name="tests/__serialize_002.phpt" role="test" />
+   <file md5sum="00fbe31dea4cb1306b1da8bd758557e2" name="tests/__serialize_003.phpt" role="test" />
+   <file md5sum="cf7e9667a0a4ba291186dea75fec85a0" name="tests/__serialize_004.phpt" role="test" />
+   <file md5sum="3bd51367205954d41840cf4d4d88d985" name="tests/__serialize_005.phpt" role="test" />
+   <file md5sum="b9363d5ed0d0d48ee21260921dede696" name="tests/__serialize_006.phpt" role="test" />
+   <file md5sum="e92862504e168a92f90020219fac644c" name="tests/__serialize_007.phpt" role="test" />
+   <file md5sum="52284738c15a8a6ad36c0039c45c5bbd" name="tests/__serialize_008.phpt" role="test" />
+   <file md5sum="04fa4689250e0f5031266678c749cb72" name="tests/__serialize_009.phpt" role="test" />
+   <file md5sum="484a2a2c99e26643d35bbec751981ef2" name="tests/__serialize_010.phpt" role="test" />
+   <file md5sum="bb4a049ee41483f511e3c7f22d0ae4f7" name="tests/__serialize_011.phpt" role="test" />
+   <file md5sum="656853540ea1938736b69cc37ea74928" name="tests/__serialize_012.phpt" role="test" />
+   <file md5sum="ff6a1ccc30bfcb51e05c9323a1186406" name="tests/__serialize_013.phpt" role="test" />
+   <file md5sum="0c62eed967956057a024bcec3ceda66a" name="tests/__serialize_013_php8.phpt" role="test" />
+   <file md5sum="6ff06442acca9392767b470a92832f8a" name="tests/__serialize_014.phpt" role="test" />
+   <file md5sum="4dc1d535856b79e2240ffb2942d7bee3" name="tests/__serialize_014_php8.phpt" role="test" />
+   <file md5sum="d370c1ff1c062f57f08c7ac618e0d883" name="tests/__serialize_015.phpt" role="test" />
+   <file md5sum="103aa20b258d57a059b12434e7d7479d" name="tests/__serialize_016.phpt" role="test" />
+   <file md5sum="98bc4d64a900feaf85a070db4044a79d" name="tests/__serialize_016_php8.phpt" role="test" />
+   <file md5sum="1d940382a81eb7fad4a9690e483bf2e8" name="tests/__serialize_017.phpt" role="test" />
+   <file md5sum="54716c1e83ecbef490bd2103a381050b" name="tests/__serialize_018.phpt" role="test" />
+   <file md5sum="5ef440f102b840bdc6f227a8986710f2" name="tests/__serialize_019.phpt" role="test" />
+   <file md5sum="d3e09a4168ce876fd098a7db18f29d69" name="tests/__serialize_020.phpt" role="test" />
+   <file md5sum="fbe8c4416a426dcd13ad7922cc85512d" name="tests/__serialize_021.phpt" role="test" />
+   <file md5sum="113ea020fb7c1e510b94192f2f5f2e2a" name="tests/__serialize_022.phpt" role="test" />
+   <file md5sum="0e644531343a7fa54f158a375b5d1015" name="tests/igbinary_001.phpt" role="test" />
+   <file md5sum="7b9ae3d2d6222f27e5c65a3fee8789f8" name="tests/igbinary_002.phpt" role="test" />
+   <file md5sum="3abac9cddbc2e834810fbbe90e0e9163" name="tests/igbinary_003.phpt" role="test" />
+   <file md5sum="c03f52110e671ab4c5bfd56423c0dbab" name="tests/igbinary_004.phpt" role="test" />
+   <file md5sum="aebcd503296aabd436bc0e99decd5326" name="tests/igbinary_005.phpt" role="test" />
+   <file md5sum="20602afb69b4118617a3e22e8abcd16c" name="tests/igbinary_006.phpt" role="test" />
+   <file md5sum="5518b099f53ac832ce4fd9355f8988d8" name="tests/igbinary_007.phpt" role="test" />
+   <file md5sum="a4f1524e924c51fef1596109a5069e71" name="tests/igbinary_008.phpt" role="test" />
+   <file md5sum="2c571615ab6047120633ec4a55701a64" name="tests/igbinary_009.phpt" role="test" />
+   <file md5sum="2598849d5d6d15adddd94e4ce691dff2" name="tests/igbinary_009b.phpt" role="test" />
+   <file md5sum="39d5216d7d8816587337839eb3faefb4" name="tests/igbinary_009b_php8.phpt" role="test" />
+   <file md5sum="e7c15498db93ff6bf92d35b85ae6a34a" name="tests/igbinary_010.phpt" role="test" />
+   <file md5sum="667685eebecae85b9bf308fb752b1348" name="tests/igbinary_012.phpt" role="test" />
+   <file md5sum="c1c0a4f82507fd32a66b90b522ead0db" name="tests/igbinary_013.phpt" role="test" />
+   <file md5sum="f20c025d25e894c3804308b997a8506c" name="tests/igbinary_014.phpt" role="test" />
+   <file md5sum="af55b7905825b2f985dc057a5f831e7d" name="tests/igbinary_015.phpt" role="test" />
+   <file md5sum="8c6ee115fd5e62f5ea755a655657f4e0" name="tests/igbinary_015b.phpt" role="test" />
+   <file md5sum="d3180ad0bfa395f4c3b42084eeb59603" name="tests/igbinary_015c.phpt" role="test" />
+   <file md5sum="3974e7154c2e90d3a55e51eb44e27cd9" name="tests/igbinary_016.phpt" role="test" />
+   <file md5sum="860030256231e9c10a551c9785c485e8" name="tests/igbinary_017.phpt" role="test" />
+   <file md5sum="c833cafbcf144f74fc04b47fb5e05c22" name="tests/igbinary_018.phpt" role="test" />
+   <file md5sum="4b24ea144edebba141a774832f700a0e" name="tests/igbinary_019.phpt" role="test" />
+   <file md5sum="e2c785db6388ff670754a816da20b8a1" name="tests/igbinary_020.phpt" role="test" />
+   <file md5sum="72a5fba6c64f357a3efb42c568cf4ac1" name="tests/igbinary_021.phpt" role="test" />
+   <file md5sum="81eb1e1474f54536f1f2105df53b849b" name="tests/igbinary_022.phpt" role="test" />
+   <file md5sum="605472036355808b556edf9fabf46c54" name="tests/igbinary_023.phpt" role="test" />
+   <file md5sum="c60a707c970c43494f8d9774dd07ce9f" name="tests/igbinary_024.phpt" role="test" />
+   <file md5sum="45aad6952bb37512aae9085b517a8157" name="tests/igbinary_025.phpt" role="test" />
+   <file md5sum="903dc597e43c06536983f4203f1e1a4e" name="tests/igbinary_025b.phpt" role="test" />
+   <file md5sum="997683f73823be136440822c1f019005" name="tests/igbinary_026.phpt" role="test" />
+   <file md5sum="fe1d29c95b102f99ec67b8245b8c36bf" name="tests/igbinary_026_php8.phpt" role="test" />
+   <file md5sum="26d87552f0efb551550a5c1861d26adc" name="tests/igbinary_026b.phpt" role="test" />
+   <file md5sum="4c96c922a376d19ea34899995df52e5a" name="tests/igbinary_026b_php8.phpt" role="test" />
+   <file md5sum="a9e31ce0e6eeef42ead226b19c71d30d" name="tests/igbinary_027.phpt" role="test" />
+   <file md5sum="038f7def1c7ab3a62f0a9902a7670d2e" name="tests/igbinary_028.phpt" role="test" />
+   <file md5sum="74cc7ff879939966e106c232604dd0b2" name="tests/igbinary_029.phpt" role="test" />
+   <file md5sum="4b4645940c5c2e72870890bdc4c75934" name="tests/igbinary_030_php7.phpt" role="test" />
+   <file md5sum="6e1a70edc8ee5159c57ccf464808c4fd" name="tests/igbinary_030_php72.phpt" role="test" />
+   <file md5sum="0ffb1b3eff71cb3f6dbe2d6ca382dfd3" name="tests/igbinary_031.phpt" role="test" />
+   <file md5sum="6b8eb4d19097aa6ff461f1cda5ec0a9b" name="tests/igbinary_032.phpt" role="test" />
+   <file md5sum="36c520cb0b88ddb5ce42cd9d39f1dab6" name="tests/igbinary_033.phpt" role="test" />
+   <file md5sum="69da4a694cd26ca8844e93a06bbb5cdb" name="tests/igbinary_034.phpt" role="test" />
+   <file md5sum="c6333aa18e7c1754b9c0685878ce2fd9" name="tests/igbinary_040.phpt" role="test" />
+   <file md5sum="ddacfd3765ec6ac9fcd5b9b6ccd42dc2" name="tests/igbinary_041.phpt" role="test" />
+   <file md5sum="636b17542cde3acdbb3a8b7fe12d30cb" name="tests/igbinary_043.phpt" role="test" />
+   <file md5sum="9cabe9c3f76004e6e92ef8b9aa7fb1c6" name="tests/igbinary_044.phpt" role="test" />
+   <file md5sum="322a7d2847bba8bf2d4aa0b08c9b9b84" name="tests/igbinary_045b.phpt" role="test" />
+   <file md5sum="de738a98c63d22e7324ed47323281cc5" name="tests/igbinary_045c.phpt" role="test" />
+   <file md5sum="39efe182d7c6b3e6b48f020c30f79b2f" name="tests/igbinary_046.phpt" role="test" />
+   <file md5sum="32545cac8801fca1963a5fe103e34aa8" name="tests/igbinary_046b.phpt" role="test" />
+   <file md5sum="2c081ae91fbabb879493e430a590940b" name="tests/igbinary_046c.phpt" role="test" />
+   <file md5sum="8f2a617fc6f38c6446df5497446aa756" name="tests/igbinary_046d.phpt" role="test" />
+   <file md5sum="54958bea138b0e9b9ca7c29d46a42304" name="tests/igbinary_047.phpt" role="test" />
+   <file md5sum="a51801e38470f84fcc3dcf5fa6e20547" name="tests/igbinary_048.phpt" role="test" />
+   <file md5sum="962934707df8fc686123a2f4a56c24a5" name="tests/igbinary_048b.phpt" role="test" />
+   <file md5sum="d43f6c9a7dab8fb4266f27db8919cf96" name="tests/igbinary_049.phpt" role="test" />
+   <file md5sum="4459c36bc05cf183d8ad8a8d96c0043d" name="tests/igbinary_049b.phpt" role="test" />
+   <file md5sum="81b295fd238ec8608578339a91cddfb6" name="tests/igbinary_050.phpt" role="test" />
+   <file md5sum="11e86e7e1b65f1281939c1f972013fe0" name="tests/igbinary_051.phpt" role="test" />
+   <file md5sum="80a4be402a29fecfbf39f7585313923b" name="tests/igbinary_052.phpt" role="test" />
+   <file md5sum="d1829e5a7408fd43a5c3fa2d05e72050" name="tests/igbinary_053.phpt" role="test" />
+   <file md5sum="16ef11f9a24b1de2ebe0786da7876309" name="tests/igbinary_054.phpt" role="test" />
+   <file md5sum="91159e98a1da7af282416aafbddf1e7b" name="tests/igbinary_055.phpt" role="test" />
+   <file md5sum="91f7f92b3ac1025067b7d824d5da54f5" name="tests/igbinary_057.phpt" role="test" />
+   <file md5sum="fb94b62c7943d7778bad1b64b16fb00e" name="tests/igbinary_058.phpt" role="test" />
+   <file md5sum="ddff5d45992e5e04c91720da83cb8926" name="tests/igbinary_058b.phpt" role="test" />
+   <file md5sum="cd0a935bf7f5f9942af0caeabb937e73" name="tests/igbinary_059.phpt" role="test" />
+   <file md5sum="bb4857e8e25290be4694f1e5a2947b0b" name="tests/igbinary_060.phpt" role="test" />
+   <file md5sum="72deef79db3a984c4a8b513237e5b246" name="tests/igbinary_061.phpt" role="test" />
+   <file md5sum="040475433b3646b231da40ce666e72ef" name="tests/igbinary_062.phpt" role="test" />
+   <file md5sum="ca85d524fd8da5396b6d88ba87d0d540" name="tests/igbinary_063_php7.phpt" role="test" />
+   <file md5sum="0883552a49028c7e3d45b56c98d19e41" name="tests/igbinary_063_php72.phpt" role="test" />
+   <file md5sum="f352e20b708500430489c64707f2a1d7" name="tests/igbinary_064.phpt" role="test" />
+   <file md5sum="0082363c091386cd31ba855b5f8fb163" name="tests/igbinary_065.phpt" role="test" />
+   <file md5sum="b68b8f6842451c65a6236940d736df0f" name="tests/igbinary_066.phpt" role="test" />
+   <file md5sum="4f3a49a05a00838f13cef83ee78a625a" name="tests/igbinary_067.phpt" role="test" />
+   <file md5sum="7b29ce63b70251806dbc6d65122194f0" name="tests/igbinary_068.phpt" role="test" />
+   <file md5sum="23244b3e44569eddc2fa5f464ddaf01e" name="tests/igbinary_069.phpt" role="test" />
+   <file md5sum="f6106de44f0d389274274ff989d1e5c8" name="tests/igbinary_070.phpt" role="test" />
+   <file md5sum="09f3debf608a838e3043a607cff44fe6" name="tests/igbinary_071.phpt" role="test" />
+   <file md5sum="ba0fd873a019ca297fe75e2d5af94ae2" name="tests/igbinary_071_php8.phpt" role="test" />
+   <file md5sum="88326665d591ffbbaeba9509b3282a58" name="tests/igbinary_072.phpt" role="test" />
+   <file md5sum="63b3ccbb107a6e44fc7e87376cc1bbf1" name="tests/igbinary_073.phpt" role="test" />
+   <file md5sum="f2955872fb68e43e3a3817b6d1a98f3f" name="tests/igbinary_074.phpt" role="test" />
+   <file md5sum="820f1ebcb04c9192c3e9f71d207a798d" name="tests/igbinary_075.phpt" role="test" />
+   <file md5sum="57a445d451d19155edc57875e57ae4e0" name="tests/igbinary_076.phpt" role="test" />
+   <file md5sum="2c680e190460c490481c5dff04eca503" name="tests/igbinary_077.phpt" role="test" />
+   <file md5sum="52868c2f03303b66a2a8e68f0887e6c1" name="tests/igbinary_078.phpt" role="test" />
+   <file md5sum="162593232bdb253df3549a18fa120069" name="tests/igbinary_079.phpt" role="test" />
+   <file md5sum="efff4967400ca9951636697fb6bc2da4" name="tests/igbinary_080.phpt" role="test" />
+   <file md5sum="571d9aa04a6962fba4d20c3d2e905f8e" name="tests/igbinary_081.phpt" role="test" />
+   <file md5sum="2424f4d57ec7a6f8964b20de488b3b2f" name="tests/igbinary_082.phpt" role="test" />
+   <file md5sum="f9bba9168f9dcb4422aa5b9cee032b19" name="tests/igbinary_082_php74.phpt" role="test" />
+   <file md5sum="c656b9e7e8a493fa87897d3f79697cae" name="tests/igbinary_083.phpt" role="test" />
+   <file md5sum="77402a196b4217aefd43126f6b25c182" name="tests/igbinary_084.phpt" role="test" />
+   <file md5sum="4b9262ad786447d7bc44a78ee06db41f" name="tests/igbinary_084b.phpt" role="test" />
+   <file md5sum="cc9aea7c7568ff897c57096f0e5dc0a8" name="tests/igbinary_085.phpt" role="test" />
+   <file md5sum="34f682f0d9c1e486fae57c278978dae1" name="tests/igbinary_086.phpt" role="test" />
+   <file md5sum="3c86dc578176bb62ad821b1a1d43c558" name="tests/igbinary_087.phpt" role="test" />
+   <file md5sum="4e13d2709204430bb9cb0d29d39748b5" name="tests/igbinary_088.phpt" role="test" />
+   <file md5sum="05a609574eab4944fdf2ab0f46f2f4c0" name="tests/igbinary_089.phpt" role="test" />
+   <file md5sum="e1b5bdbe954729d1ac7fa0a7422dbb33" name="tests/igbinary_090.phpt" role="test" />
+   <file md5sum="d216448d8fc769b66c26ceb791ec6192" name="tests/igbinary_091.phpt" role="test" />
+   <file md5sum="684db65ae8a6c603894873c8d4467718" name="tests/igbinary_092.phpt" role="test" />
+   <file md5sum="fdc8bc531b21e8af02be10a561ce5c21" name="tests/igbinary_093.phpt" role="test" />
+   <file md5sum="1f7a4923e9b4114b805fae9af04ff93b" name="tests/igbinary_094.phpt" role="test" />
+   <file md5sum="32f056bede4664f2768d307f518df1b4" name="tests/igbinary_095.phpt" role="test" />
+   <file md5sum="b21e280b31f038589be3887082038452" name="tests/igbinary_096.phpt" role="test" />
+   <file md5sum="d4d5b027819c599711fb30271a848197" name="tests/igbinary_bug54662.phpt" role="test" />
+   <file md5sum="7468c0e2832d9fe6ba2498e1df39621f" name="tests/igbinary_bug72134.phpt" role="test" />
+   <file md5sum="8f793177f481a6e27f4a17df0539c2b0" name="tests/igbinary_enums_1.phpt" role="test" />
+   <file md5sum="b1f3f8f2dc5800af868b1a12d9bb00db" name="tests/igbinary_enums_2.phpt" role="test" />
+   <file md5sum="765b9fac671dd1b63a0f85e892942f0e" name="tests/igbinary_unserialize_v1_compatible.phpt" role="test" />
+   <file md5sum="dbe606f25ef567e4d7de574529ad5e8e" name="config.m4" role="src" />
+   <file md5sum="747b0e84221c23b9dadc0279386abd97" name="config.w32" role="src" />
+   <file md5sum="cd03eb27e60f3788acbccdd9a370b653" name="igbinary.h" role="src" />
+   <file md5sum="dbe410913c8ed647c68ed52b206f6c06" name="php_igbinary.h" role="src" />
+   <file md5sum="5955162dcc1576f4bc5e8b3523bffdc6" name="src/php7/hash.h" role="src" />
+   <file md5sum="8cd6d257e75487fa3337dd9df52f3464" name="src/php7/hash_ptr.h" role="src" />
+   <file md5sum="46faf1ed9d5323f64b48ffc281448fba" name="src/php7/hash_si.c" role="src" />
+   <file md5sum="f592a8b7590cc9890c278fa67e63fe57" name="src/php7/hash_si_ptr.c" role="src" />
+   <file md5sum="a0201896296ba9585ad8785c0b189517" name="src/php7/igbinary.c" role="src" />
+   <file md5sum="f3807ac1a10e0f72e595398b82344f4d" name="src/php7/igbinary.h" role="src" />
+   <file md5sum="121a1addcb6bf59294641b3b02740354" name="src/php7/igbinary_bswap.h" role="src" />
+   <file md5sum="4fd17c9f79b2c2e7d1d141a20710a680" name="src/php7/igbinary_macros.h" role="src" />
+   <file md5sum="d0728438589d9a7181bfabfe97636a3b" name="src/php7/igbinary_zend_hash.h" role="src" />
+   <file md5sum="89e7a711dbc7ee75d0ace8ac69ef91c7" name="src/php7/php_igbinary.h" role="src" />
+   <file md5sum="7a54bbf26201785e71c41d329ce943ad" name="src/php7/ig_win32.h" role="src" />
+   <file md5sum="6ab0c18d278642c7aa674f10a9c4f070" name="igbinary.php" role="doc" />
+   <file md5sum="ec6d65122bf896f39b07b1fa9702b8c6" name="igbinary.php.ini" role="doc" />
+   <file md5sum="f689b3371abc4e94adfe44890e1c8bf5" name="tags.sh" role="doc" />
+   <file md5sum="428aab84dcb89f8b36cae8676dbab1c2" name="igbinary.spec" role="doc" />
+   <file md5sum="a5b2cf75be0fe4019f6c2d4c84a055ac" name="COPYING" role="doc" />
+   <file md5sum="940c2a19feb9b8f3970813d20b0d34a7" name="CREDITS" role="doc" />
+   <file md5sum="8a33f25e1af6a86448a4103b7cf454b4" name="README.md" role="doc" />
+   <file md5sum="e06f45513317d140d28e5e4cf56c7ff7" name="TECH_NOTES.md" role="doc" />
+   <file md5sum="1980e2f08e94a8b622fc9a21ed40447e" name="NEWS" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>igbinary</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2021-07-24</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.2.5</release>
+    <api>1.3.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Forbid serializing classes that deny serialization/unserialization (anonymous classes, CURLFile, etc.) even when subclasses implement &apos;__serialize&apos; and &apos;__unserialize&apos;
+   </notes>
+  </release>
+  <release>
+   <date>2021-06-09</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.2.3</release>
+    <api>1.3.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix build for php 8.1 after changes to enum internals.
+* Update tests to suppress deprecations in php 8.1 and support run-tests.php changes in php 8.1
+* Don&apos;t emit a notice when unserialize_callback_func causes igbinary_unserialize to throw https://bugs.php.net/bug.php?id=81118
+   </notes>
+  </release>
+  <release>
+   <date>2021-04-18</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.2.2</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Eliminate impossible/redundant checks.
+* Add a new type code for serialization and unserialization of PHP strings that are larger than 4GB.
+* Add additional checks for overflow when serializing extremely large data structures.
+  (e.g. serializing more than 2**32 strings or 2**32 objects/references/arrays)
+* Support serializing and unserializing php 8.1 enums (can only be unserialized in php 8.1+)
+   </notes>
+  </release>
+  <release>
+   <date>2021-01-11</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.2.2RC1</release>
+    <api>1.2.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Update php version check to allow igbinary to be statically built in PHP 8.0+
+* Fix bug in out of memory error handling in __sleep, slightly speed up serializing with __sleep.
+* Continue serializing remaining properties if a missing property name is returned from __sleep.
+* Speed up serializing by optimizing for the case where there is no memory manager override.
+  When there is a memory manager override, only use that for allocating the string to return.
+  (benchmarks/serialize-scalar-int.b.php showed a speedup from 0.22 to 0.18 seconds for repeated serialization of a single scalar,
+  and from 0.186 to 0.180 seconds for benchmarks/serialize-stringarray.b.php for an array of strings)
+* Speed up unserializing arrays in php 7.2-8.0 by adding optimized code for finding the hash bucket of
+  a string/integer key of an array, or creating a placeholder if it does not already exist.
+   </notes>
+  </release>
+  <release>
+   <date>2020-12-27</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.2.1</release>
+    <api>1.2.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix crash when unserializing if __serialize was defined but __unserialize was undefined in php 8.0+ (due to typo).
+   </notes>
+  </release>
+  <release>
+   <date>2020-12-26</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.2.0</release>
+    <api>1.2.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Use PHP&apos;s shared empty array instance when unserializing empty arrays in php 7.3+.
+  (helps slightly with memory usage when repeatedly unserializing,
+  when removing elements from arrays before unserializing them,
+  or when serializing values including an empty array that was unserialized)
+* Emit a deprecation notice when serializing resources.
+  PHP itself is converting many resources to objects that throw an Error on serialization attempts.
+  Continue to represent resources as null in the serialized data.
+* Fix memory management bug when unserializing invalid data (duplicate properties in objects (e.g. from `__sleep`) or duplicate fields in arrays (impossible for valid data)).
+* Speed up calls to `__serialize`/`__unserialize` in php 8.0+.
+* Fix error messages for unserialize_callback_func: make messages properly refer to the autoload function.
+* Optimize unserializing alternative names for private/protected properties that were previously public.
+   </notes>
+  </release>
+  <release>
+   <date>2020-10-08</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.6</release>
+    <api>1.2.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix build failure with older C standard (e.g. building on CentOS 6).
+* Otherwise, identical to 3.1.6RC1.
+   </notes>
+  </release>
+  <release>
+   <date>2020-10-07</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.6RC1</release>
+    <api>1.2.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix igbinary_serialize incorrectly deduplicating arrays/objects/references when they were garbage collected/freed during serialization.
+   </notes>
+  </release>
+  <release>
+   <date>2020-09-02</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.5</release>
+    <api>1.2.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Update unit test expectation to match behavior in php 8 due to changes in php&apos;s handling of cyclic references in arrays.
+* Support API changes in php 8.0.0beta3.
+   </notes>
+  </release>
+  <release>
+   <date>2020-08-05</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.4</release>
+    <api>1.2.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix unserialization of PHP references to internal/user-defined classes using PHP 7.4&apos;s `__unserialize` (e.g. `ArrayObject`)
+   </notes>
+  </release>
+  <release>
+   <date>2020-08-04</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.3</release>
+    <api>1.2.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Properly serialize reference groups of size 1 (these can be created by array_walk_recursive and other functions).
+  Note that this does not fix the general case where values not being serialized are in the same reference group as a value being serialized.
+* PHP 8.0 compatibility fixes.
+   </notes>
+  </release>
+  <release>
+   <date>2020-01-21</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.2</release>
+    <api>1.2.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Speed up object, array, reference, and string serialization.
+* Speed up unserializing integers between 0 and 65535 (as values and array keys).
+* Speed up unserializing objects with declared properties.
+   </notes>
+  </release>
+  <release>
+   <date>2020-01-16</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.1</release>
+    <api>1.2.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix bug causing incorrect serialization for 1 in 2**32 strings on 64-bit php installations when string hashes collide.
+  (https://github.com/igbinary/igbinary/issues/260)
+   </notes>
+  </release>
+  <release>
+   <date>2021-01-11</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.1a1</release>
+    <api>1.2.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Throw when an uninitialized php 7.4 typed property is included in the result of __sleep(),
+  instead of emitting a notice and attempting to represent the unset/uninitialized value as null (#258).
+  See https://bugs.php.net/bug.php?id=79002
+
+  Uninitialized properties without types (from __sleep) continue to cause igbinary to emit notices and are represented as null.
+   </notes>
+  </release>
+  <release>
+   <date>2019-12-27</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.0</release>
+    <api>1.2.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Same as 3.1.0b4.
+   </notes>
+  </release>
+  <release>
+   <date>2019-12-20</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.0b4</release>
+    <api>1.2.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Don&apos;t call __destruct for objects where deferred __unserialize calls were not started (e.g. due to Serializable::unserialize throwing).
+   </notes>
+  </release>
+  <release>
+   <date>2019-12-10</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.0b3</release>
+    <api>1.2.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Skip over object properties that are uninitialized or unset when serializing, instead of serializing them as null.
+  This is done to avoid Errors when unserializing their values for php 7.4 typed properties.
+   </notes>
+  </release>
+  <release>
+   <date>2019-12-09</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.0b2</release>
+    <api>1.2.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix crashes related to unserializing instances of classes with php 7.4 typed properties.
+   </notes>
+  </release>
+  <release>
+   <date>2019-12-08</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.1.0b1</release>
+    <api>1.2.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Support php 7.4&apos;s __serialize/__unserialize the same way serialize()/unserialize() does.
+  This deliberately only supports __serialize/__unserialize in php 7.4, to making switching to/from serialize()/unserialize() as straightforward as possible.
+   </notes>
+  </release>
+  <release>
+   <date>2019-03-20</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.0.1</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix version check when statically building igbinary inside of the php-src folder.
+   </notes>
+  </release>
+  <release>
+   <date>2019-02-17</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.0.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Identical to 3.0.0a2
+   </notes>
+  </release>
+  <release>
+   <date>2019-02-13</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.0.0a2</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Don&apos;t use empty string for serializing empty $_SESSION array, it breaks some save handlers. (Issue #231)
+  Continue treating the empty string as the empty $_SESSION array when unserializing.
+   </notes>
+  </release>
+  <release>
+   <date>2019-02-09</date>
+   <time>16:00:00</time>
+   <version>
+    <release>3.0.0a1</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Drop support for PHP 5.
+* Drop support for APC (APC was only available for PHP5 - It is the predecessor of APCu)
+* Emit a warning and return null if igbinary_unserialize() is passed more data to unserialize than expected.
+* Fix compilation against PHP 7.4-dev. Igbinary does NOT yet properly serialize/unserialize all classes with PHP 7.4-dev&apos;s typed properties.
+* The serialization format is exactly the same as igbinary 2.x
+   </notes>
+  </release>
+  <release>
+   <date>2018-10-20</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.8</release>
+    <api>1.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Be more aggressive about deduplication when generating serialization of arrays in php 7.0+.
+* Define HAVE_IGBINARY on Unix/Linux. (previously defined only on Windows)
+* Update formatting/wording of documentation.
+   </notes>
+  </release>
+  <release>
+   <date>2018-06-27</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.7</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix compiler warnings about format strings, for errors that should not occur during normal igbinary usage.
+   </notes>
+  </release>
+  <release>
+   <date>2018-05-12</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.6</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Same as 2.0.6RC1
+   </notes>
+  </release>
+  <release>
+   <date>2018-04-01</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.6RC1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Same as 2.0.6RC1
+* Fix a bug in Windows debug builds.
+* Emit more specific warnings when __sleep() returns a declared property that was unset.
+* Fix harmless compiler warnings during builds.
+* Fix a build error on PHP7.3-dev.
+   </notes>
+  </release>
+  <release>
+   <date>2017-11-04</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.5</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Same as 2.0.5RC1 (no bugs were reported in that release candidate)
+   </notes>
+  </release>
+  <release>
+   <date>2017-10-15</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.5RC1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Improve performance when unserializing objects/arrays and serializing objects/arrays/strings in php 5/7.
+* Update unserialization of integer object keys for php 7.2: Make those keys accessible when unserializing.
+* Properly pick up presence of gcc for default compiler flags (`cc --version` doesn&apos;t contain gcc).
+  Add -O2 to default gcc compiler flags.
+* Use empty string for serializing empty $_SESSION array, similar to &quot;session.serialize_handler=php&quot;.
+  Older igbinary releases already unserialize the empty string to the empty array.
+   </notes>
+  </release>
+  <release>
+   <date>2017-04-14</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.4</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fixes bug #129: Should not call __wakeup() on data which was created by Serializable::unserialize()
+   </notes>
+  </release>
+  <release>
+   <date>2017-03-31</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.3</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+- Fixes bug #126: Fatal error: &quot;igbinary_serialize_zval: zval has unknown type 0&quot; (IS_UNDEF)
+  Make this a warning instead of a fatal error (and serialize as null instead), since IS_UNDEF is a known type.
+  Later releases will fix the root cause of the warning, and consistently omit array/object/other entries for IS_UNDEF.
+   </notes>
+  </release>
+  <release>
+   <date>2017-02-28</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.2</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+- Compatible with PHP 5.2 - 7.1
+- Fixes crash in Memcached-&gt;setMulti (in php 7.0+) when the first level of array elements have references as values.
+  Other extensions using igbinary shouldn&apos;t be affected.
+   </notes>
+  </release>
+  <release>
+   <date>2016-11-19</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+- Compatible with PHP 5.2 - 7.0
+- Fixes bug in session decoder not calling wakeup in php 7.0+
+- (Enhancement) Reuses identical strings when unserializing objects and arrays in php 7.0+
+   </notes>
+  </release>
+  <release>
+   <date>2016-10-30</date>
+   <time>16:00:00</time>
+   <version>
+    <release>2.0.0</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+- Compatible with PHP 5.2 - 7.0 (Adds PHP 7 support)
+- Serialization format is unchanged
+- Performance improvements for serialization and unserialization in PHP 5.2 - 7.0
+- (PHP 7) Don&apos;t call __destruct if __wakeup threw an exception (or __wakeup wasn&apos;t called yet)
+- Ports integration with other extensions to PHP 7.0 (session serialization, Memcached, Redis, APCu, etc.)
+- Fixes Windows PECL builds for PHP 5.6+
+- Reword warnings for invalid header bytes of serialized data (in igbinary_unserialize).
+   </notes>
+  </release>
+  <release>
+   <date>2014-08-29</date>
+   <time>09:00:00</time>
+   <version>
+    <release>1.2.1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause-3-Clause</license>
+   <notes>
+- Compatible with PHP 5.2 - 5.6
+   </notes>
+  </release>
+  <release>
+   <date>2014-08-29</date>
+   <time>08:00:00</time>
+   <version>
+    <release>1.2.0</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/igbinary/igbinary/blob/master/COPYING">BSD-3-Clause</license>
+   <notes>
+- PECL bug #22614, igbinary_unserialize(FALSE) must return FALSE
+- PHP bug #54662, unserializing nested objects cause crash
+- Other fixes
+   </notes>
+  </release>
+  <release>
+   <date>2011-03-14</date>
+   <time>12:32:48</time>
+   <version>
+    <release>1.1.1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.dynamoid.com/#license">BSD-3-Clause</license>
+   <notes>
+- Initial PECL release
+   </notes>
+  </release>
+  <release>
+   <date>2009-09-02</date>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.dynamoid.com/#license">PHP like license</license>
+   <notes>
+- Use Z_ADDREF_PP or Z_ADDREF et al. when increasing refcount.
+   </notes>
+  </release>
+ </changelog>
+</package>
