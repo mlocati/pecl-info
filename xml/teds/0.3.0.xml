@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>teds</name>
+ <channel>pecl.php.net</channel>
+ <summary>teds extension</summary>
+ <description>teds (Tentative Extra Data Structures) is a collection of data structures and iterable functionality</description>
+ <lead>
+  <name>Tyson Andre</name>
+  <user>tandre</user>
+  <email>tandre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2021-09-19</date>
+ <time>13:01:00</time>
+ <version>
+  <release>0.3.0</release>
+  <api>0.3.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+ <notes>
+* Backwards incompatible change: Change `Vector::indexOf` return type from `int|false` to `?int` (and all other `indexOf*` methods in other data structures)
+* Backwards incompatible change: Change `valueAt`/`setValueAt` to get/set in Deque, Vector, and ImmutableSequence
+* Add optional parameter `$value = null` to `Vector::setSize()` to allow overriding the value used for padding when lengthening an array.
+* Change exception handling for sizes/capacities that are definitely too large to allocate.
+* Make Vector::push() variadic and accept 0 or more arguments, like `array_push` does.
+* Reclaim unused memory in Deque when roughly a quarter or less of the internal buffer is used.
+* Optimize performance of Deque, always use powers of 2 for the capacity of Deque to speed up reads/writes.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="a142d9e629d4576a56440502ab851df2" name="tests/Deque/Deque.phpt" role="test" />
+   <file md5sum="a477afdcec35161538f19bdee79e7130" name="tests/Deque/aggregate.phpt" role="test" />
+   <file md5sum="5aa2e2189ae6be01700ea66c1e5b2232" name="tests/Deque/arrayCast.phpt" role="test" />
+   <file md5sum="ca11839c34aafba255a09b0ac299a8f1" name="tests/Deque/clear.phpt" role="test" />
+   <file md5sum="9c961c5f2130fdbb6b0d4fc537935c58" name="tests/Deque/clone.phpt" role="test" />
+   <file md5sum="13a6e81ae70f063878a5ae8a1a0c0eb7" name="tests/Deque/contains.phpt" role="test" />
+   <file md5sum="fd124afc3c1a3ebea3f5382698a5fcfc" name="tests/Deque/exceptionhandler.phpt" role="test" />
+   <file md5sum="84d35c1677ccee206c7b92b2f33edbc9" name="tests/Deque/iterator.phpt" role="test" />
+   <file md5sum="437e42ecbc6655f955d72c2f57c7a149" name="tests/Deque/offsetGet.phpt" role="test" />
+   <file md5sum="464e76b384ce40880b9f73012e868bc7" name="tests/Deque/offsetGetShifted.phpt" role="test" />
+   <file md5sum="af2c3e3a329cddf3420fbe77cd42523f" name="tests/Deque/popFront.phpt" role="test" />
+   <file md5sum="24b1796c46b95f7385ab824d3d3502d8" name="tests/Deque/popMany.phpt" role="test" />
+   <file md5sum="2ee1db31c762638b31ad23977aac37d9" name="tests/Deque/pushFront.phpt" role="test" />
+   <file md5sum="f8e3548ebb89a202273e46cb94275dd1" name="tests/Deque/push_pop.phpt" role="test" />
+   <file md5sum="d58471a060c99ba92834fe814723bafa" name="tests/Deque/push_pop_both.phpt" role="test" />
+   <file md5sum="60c27dae3af32231afe9068a66e23589" name="tests/Deque/reinit_forbidden.phpt" role="test" />
+   <file md5sum="35e571abc60f8eb45877aef350595163" name="tests/Deque/serialization.phpt" role="test" />
+   <file md5sum="391997dd2b44556f8f364675ae6f1f96" name="tests/Deque/setValueAt.phpt" role="test" />
+   <file md5sum="7fc9585729ded4764d9dbf7faecea77a" name="tests/Deque/set_state.phpt" role="test" />
+   <file md5sum="bbaab01ba54c370b7dee0082935a6fbc" name="tests/Deque/toArray.phpt" role="test" />
+   <file md5sum="b9435a19225a1b76c318384b0a548a0d" name="tests/Deque/traversable.phpt" role="test" />
+   <file md5sum="cf89e6c6949aaa43f567f39501d32edc" name="tests/Deque/unserialize.phpt" role="test" />
+   <file md5sum="cdde80505f077a020f26017f13f2553d" name="tests/ImmutableKeyValueSequence/ImmutableKeyValueSequence.phpt" role="test" />
+   <file md5sum="68c81b0f246bfeb8cfae91b22932146c" name="tests/ImmutableKeyValueSequence/aggregate.phpt" role="test" />
+   <file md5sum="e0c4e1a58dbd7ea610a38a65a98d934e" name="tests/ImmutableKeyValueSequence/clone.phpt" role="test" />
+   <file md5sum="f733cd08edfcd4db7e5fc6751aad3446" name="tests/ImmutableKeyValueSequence/contains.phpt" role="test" />
+   <file md5sum="db2b6c4ff7664690b834de2cfef19ff4" name="tests/ImmutableKeyValueSequence/exceptionhandler.phpt" role="test" />
+   <file md5sum="050a386d3b0d82eb52b6006fd13e64b7" name="tests/ImmutableKeyValueSequence/from_pairs.phpt" role="test" />
+   <file md5sum="79ddb85de77bb7d6e0c7d84c34047396" name="tests/ImmutableKeyValueSequence/keyAt_valueAt.phpt" role="test" />
+   <file md5sum="a7d0b0efb5f71f5c8aaf8e406698779e" name="tests/ImmutableKeyValueSequence/keys_values.phpt" role="test" />
+   <file md5sum="d449fb758019b13c95a75261fc9f3c64" name="tests/ImmutableKeyValueSequence/reinit_forbidden.phpt" role="test" />
+   <file md5sum="63de7483b78883986172277126f9a3e9" name="tests/ImmutableKeyValueSequence/serialization.phpt" role="test" />
+   <file md5sum="48222ddfdf5cf6cb897ae7e0889202ae" name="tests/ImmutableKeyValueSequence/set_state.phpt" role="test" />
+   <file md5sum="5021d269f8c98277257e843476d9c21c" name="tests/ImmutableKeyValueSequence/traversable.phpt" role="test" />
+   <file md5sum="c33139a1ad4c42827d2cfeba9457f470" name="tests/ImmutableKeyValueSequence/unserialize.phpt" role="test" />
+   <file md5sum="22a87b7213581a475cb91c8599a9a137" name="tests/ImmutableSequence/ImmutableSequence.phpt" role="test" />
+   <file md5sum="26e11ac900fe548a282ba6ce69022e8b" name="tests/ImmutableSequence/aggregate.phpt" role="test" />
+   <file md5sum="4d28b2c4e3b3ddeaa94369eac48b356e" name="tests/ImmutableSequence/clone.phpt" role="test" />
+   <file md5sum="880afe8b22b2f1fd8222048e923c8f01" name="tests/ImmutableSequence/contains.phpt" role="test" />
+   <file md5sum="676f71faa4644a6506eb508a17bd6c05" name="tests/ImmutableSequence/exceptionhandler.phpt" role="test" />
+   <file md5sum="bb029e031942fc9932a7761f8e792913" name="tests/ImmutableSequence/offsetGet.phpt" role="test" />
+   <file md5sum="08632fe9f0971f7ab968bdc8b4bd0d07" name="tests/ImmutableSequence/reinit_forbidden.phpt" role="test" />
+   <file md5sum="0fc4bfd05f53974df258803484a1f11f" name="tests/ImmutableSequence/serialization.phpt" role="test" />
+   <file md5sum="70efa84e940bc0265fcfc36059135cf0" name="tests/ImmutableSequence/set_state.phpt" role="test" />
+   <file md5sum="8c87c2a094ef474ab0c7e2b7d02e83d2" name="tests/ImmutableSequence/toArray.phpt" role="test" />
+   <file md5sum="739a1e5c47402de4204aec8bfb76fe67" name="tests/ImmutableSequence/traversable.phpt" role="test" />
+   <file md5sum="0634d42cc4ffdbddc22d637084b671f3" name="tests/ImmutableSequence/unserialize.phpt" role="test" />
+   <file md5sum="942fa34918eced040aa964560b76713e" name="tests/KeyValueVector/KeyValueSequence.phpt" role="test" />
+   <file md5sum="e0cafb5bd0861ed527ec1b0e508b82a4" name="tests/KeyValueVector/aggregate.phpt" role="test" />
+   <file md5sum="fb323f5148b02e3b8f2acb149e5b4f63" name="tests/KeyValueVector/clone.phpt" role="test" />
+   <file md5sum="31291ccfc2493dd8a41e347ef4c36d37" name="tests/KeyValueVector/contains.phpt" role="test" />
+   <file md5sum="ec610c440846fbcd2ad07b90818c21cc" name="tests/KeyValueVector/exceptionhandler.phpt" role="test" />
+   <file md5sum="ed305bf7df092132564b4bd8660e2e24" name="tests/KeyValueVector/from_pairs.phpt" role="test" />
+   <file md5sum="86fc82ec5fcc7b3bac3fa1c4edc1cee3" name="tests/KeyValueVector/keyAt_valueAt.phpt" role="test" />
+   <file md5sum="60b73c19eea3b85ec100148e5f44cb51" name="tests/KeyValueVector/keys_values.phpt" role="test" />
+   <file md5sum="e448ddd91fb7810708512bc2a3b1ff1e" name="tests/KeyValueVector/push_pop.phpt" role="test" />
+   <file md5sum="b1a380c2ca521dd528b895315e994885" name="tests/KeyValueVector/reinit_forbidden.phpt" role="test" />
+   <file md5sum="ddcaec4b5cf6187937d0c3c8d895e5ce" name="tests/KeyValueVector/serialization.phpt" role="test" />
+   <file md5sum="617fa28159c506573815d72640804d5f" name="tests/KeyValueVector/setKeyAt.phpt" role="test" />
+   <file md5sum="0437b44840c8f369931249610cf90e61" name="tests/KeyValueVector/setSize.phpt" role="test" />
+   <file md5sum="96ca9d94d3a755063d097ffb17f2c247" name="tests/KeyValueVector/set_state.phpt" role="test" />
+   <file md5sum="7cbb187a1d5e514e25ae9bd83128c7ff" name="tests/KeyValueVector/traversable.phpt" role="test" />
+   <file md5sum="24182e1e0e029fb1725181de50021a2c" name="tests/KeyValueVector/unserialize.phpt" role="test" />
+   <file md5sum="50c010ceb9dca74f5b322735c0a1fb9d" name="tests/Vector/Vector.phpt" role="test" />
+   <file md5sum="7b0c76ea59ef886cf9ce2a27a975bad6" name="tests/Vector/aggregate.phpt" role="test" />
+   <file md5sum="122a88d71161c01594e072cb20c22a13" name="tests/Vector/arrayCast.phpt" role="test" />
+   <file md5sum="49afe34b1147ddd0b02d35b01fd8b010" name="tests/Vector/clear.phpt" role="test" />
+   <file md5sum="4024e1e804819e17b1d5893720065cff" name="tests/Vector/clone.phpt" role="test" />
+   <file md5sum="c24c5a5cc6c4b26df1dd47de6d0b0d4e" name="tests/Vector/contains.phpt" role="test" />
+   <file md5sum="f86efe94310685f5dc81bcd947ca10cf" name="tests/Vector/exceptionhandler.phpt" role="test" />
+   <file md5sum="e9bcdc53a1e6c37adf6dca80093c16f1" name="tests/Vector/filter.phpt" role="test" />
+   <file md5sum="38960c1bcabac33dda5406cca9bce181" name="tests/Vector/isset.phpt" role="test" />
+   <file md5sum="83103cc85732937ca770e675e8bbfcfc" name="tests/Vector/map.phpt" role="test" />
+   <file md5sum="559afe53b00a8e2a9124f9d98b59b214" name="tests/Vector/offsetGet.phpt" role="test" />
+   <file md5sum="3a96b4793ea16516fc0f16967f691587" name="tests/Vector/push_pop.phpt" role="test" />
+   <file md5sum="ecdcbcc2bb6ccb964318afc310e82c16" name="tests/Vector/reinit_forbidden.phpt" role="test" />
+   <file md5sum="7fd95267203d67f5091588afa8eb1ede" name="tests/Vector/reserve.phpt" role="test" />
+   <file md5sum="912a80d0818369bbe622e62213c34332" name="tests/Vector/serialization.phpt" role="test" />
+   <file md5sum="ccdeefaefe07148122df0f0fa69e5898" name="tests/Vector/setSize.phpt" role="test" />
+   <file md5sum="955bccad845e1404bfe8ee57d0a6ecbb" name="tests/Vector/setSize_default.phpt" role="test" />
+   <file md5sum="69a0e199b9cf49b05c83174de2b5acf2" name="tests/Vector/setValueAt.phpt" role="test" />
+   <file md5sum="798418e1fe20e618cb2ec39f27930ae1" name="tests/Vector/set_state.phpt" role="test" />
+   <file md5sum="1c25a8513630c882639c63eb2189b797" name="tests/Vector/shrink_capacity.phpt" role="test" />
+   <file md5sum="d6f5c5f852d08d327916e45347c2f291" name="tests/Vector/toArray.phpt" role="test" />
+   <file md5sum="8a0c6ecf3b0ea0fd28b1a7d746655cd2" name="tests/Vector/traversable.phpt" role="test" />
+   <file md5sum="cf956c2100434b71557b5bcb62c4a460" name="tests/Vector/traversable_preserve_keys.phpt" role="test" />
+   <file md5sum="28ec3c0988464a33602970a74fc4b373" name="tests/Vector/unserialize.phpt" role="test" />
+   <file md5sum="2fddf6342b33029bfa893463dd65da05" name="tests/iterable/all_array.phpt" role="test" />
+   <file md5sum="15af9fe1d76ef2f999fafdd5cb098c46" name="tests/iterable/all_traversable.phpt" role="test" />
+   <file md5sum="55da0a87299b895450831a3d2db45b19" name="tests/iterable/any_array.phpt" role="test" />
+   <file md5sum="14d73a96f4c6e10e29c1f9dc4e78eaf2" name="tests/iterable/any_traversable.phpt" role="test" />
+   <file md5sum="89f7b92994e811b85d1a56097c1e29ff" name="tests/iterable/find_array.phpt" role="test" />
+   <file md5sum="06e43bbc22a867e45ce454b256c83d4a" name="tests/iterable/find_traversable.phpt" role="test" />
+   <file md5sum="e6d6a48ea6a4e43c8e8f91536dbf4a29" name="tests/iterable/fold_array.phpt" role="test" />
+   <file md5sum="9ddefc8c4ae4acff3c580f45d403bf2b" name="tests/iterable/fold_traversable.phpt" role="test" />
+   <file md5sum="8553c8b32288c914903cf0107d1c2cf3" name="tests/iterable/includes_value.phpt" role="test" />
+   <file md5sum="f0d2ca26f7fe77a48032f5a424e837c1" name="tests/iterable/none_array.phpt" role="test" />
+   <file md5sum="9433b09b54e8498e9ecf638dc43cab34" name="tests/iterable/none_traversable.phpt" role="test" />
+   <file md5sum="d3d4fa2152df171380f10d3c3ed8e446" name="config.m4" role="src" />
+   <file md5sum="eff4861eff87678a4ac6ce27ae9c7280" name="config.w32" role="src" />
+   <file md5sum="624f696ea58bc137957d1d0b712a830e" name="teds.c" role="src" />
+   <file md5sum="b2f42b80a7b341345c411d2296baf406" name="teds.h" role="src" />
+   <file md5sum="f835da5eed979d3a9311b1d8c476a2e2" name="teds_arginfo.h" role="src" />
+   <file md5sum="2655936380fd1db9a03894edc1170f54" name="teds_deque_arginfo.h" role="src" />
+   <file md5sum="2a6cc811ce9f1feb97bcb788fa9512d6" name="teds_deque.c" role="src" />
+   <file md5sum="d52c44d38923bf9c4143864b7cf918f5" name="teds_deque.h" role="src" />
+   <file md5sum="d1e4dc10c2e4a5ae599ce29b836e6510" name="teds_deque.stub.php" role="src" />
+   <file md5sum="4c4da53ab04054c028982d63ceb57fc8" name="teds_immutablekeyvaluesequence_arginfo.h" role="src" />
+   <file md5sum="0e6b27b303b8c38c8882777f751be62a" name="teds_immutablekeyvaluesequence.c" role="src" />
+   <file md5sum="c79b207ef17cb2cf0fe4c38418d071cb" name="teds_immutablekeyvaluesequence.h" role="src" />
+   <file md5sum="a1e16c6aa83541640c467d90f14e0405" name="teds_immutablekeyvaluesequence.stub.php" role="src" />
+   <file md5sum="c231a29ffc2951bd2abc9d64c5bddc5d" name="teds_immutablesequence_arginfo.h" role="src" />
+   <file md5sum="674b490c0adc7a8519f4f0a43bcd2de1" name="teds_immutablesequence.c" role="src" />
+   <file md5sum="9cbd978de3af41b10449d6fa464c24e6" name="teds_immutablesequence.h" role="src" />
+   <file md5sum="ce05c052f495b6450fff225dd1a229d4" name="teds_immutablesequence.stub.php" role="src" />
+   <file md5sum="4040986978d9ea290922b8180c61c867" name="teds_keyvaluevector_arginfo.h" role="src" />
+   <file md5sum="67106fa40bbb05dd4c11f8c06c0f8938" name="teds_keyvaluevector.c" role="src" />
+   <file md5sum="a446014061eae55a622dcdb075a30125" name="teds_keyvaluevector.h" role="src" />
+   <file md5sum="5e5303d04d0ae0aec9d17519e271809c" name="teds_keyvaluevector.stub.php" role="src" />
+   <file md5sum="4e3d8f33edbf5b32ba930bc136e6ca08" name="teds_util.h" role="src" />
+   <file md5sum="8faa9d4c457e651098241be58fd9e4a9" name="teds_vector_arginfo.h" role="src" />
+   <file md5sum="484e1192d58f205f3f2bae36822a391a" name="teds_vector.c" role="src" />
+   <file md5sum="42325b84616314a4f84ee0f6c735cea7" name="teds_vector.h" role="src" />
+   <file md5sum="e141bb1f360c9e3142e60cea2cf2d66b" name="teds_vector.stub.php" role="src" />
+   <file md5sum="6830898afb2fa38d81b70e2f11f10931" name="php_teds.h" role="src" />
+   <file md5sum="1ad8a1ef629c64186821943ac77f420f" name="README.md" role="doc" />
+   <file md5sum="57e0b9b125a1b93bc222984efa37f389" name="COPYING" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>teds</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <date>2021-09-16</date>
+  <time>16:00:00</time>
+  <version>
+   <release>0.2.1</release>
+   <api>0.2.1</api>
+  </version>
+  <stability>
+   <release>alpha</release>
+   <api>alpha</api>
+  </stability>
+  <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+  <notes>* Support `$vector[] = $value` and `$deque[] = $value` assignments to append to Vector/Deque.
+* Add map() and filter() functions to Vector.</notes>
+  <release>
+   <date>2021-09-12</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Breaking change: Change `Teds\Vector::__construct` to add an additional parameter `bool $preserveKeys = true`,
+  and use the original keys of arrays/Traversables by default, throwing for non-integers and invalid integer offsets.
+  (Similar to the behavior of SplFixedArray::fromArray)
+* Convert references to non-references when creating values from iterables.
+* Minor performance improvements of `Teds\Vector`
+   </notes>
+  </release>
+  <release>
+   <date>2021-09-10</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Add Teds\KeyValueVector
+* Fix edge cases in Teds\Vector setSize
+   </notes>
+  </release>
+  <release>
+   <date>2021-08-24</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.1.0a1</release>
+    <api>0.1.0a1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Initial commit
+   </notes>
+  </release>
+ </changelog>
+</package>
