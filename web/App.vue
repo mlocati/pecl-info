@@ -50,15 +50,24 @@
               </div>
               <div class="break">{{ selectedPackage.description }}</div>
               <div class="clearfix">
-                <b-button
-                  v-bind:href="
-                    'https://pecl.php.net/package/' + selectedPackage.name
-                  "
-                  size="sm"
-                  variant="info"
-                  class="float-right"
-                  >More details</b-button
-                >
+                <div class="float-right">
+                  <b-button
+                    v-bind:href="
+                      'https://pecl.php.net/package-changelog.php?package=' + selectedPackage.name
+                    "
+                    size="sm"
+                    variant="info"
+                    >Changelog</b-button
+                  >
+                  &nbsp;
+                  <b-button
+                    v-bind:href="
+                      'https://pecl.php.net/package/' + selectedPackage.name
+                    "
+                    size="sm"
+                    variant="primary"
+                    >More details</b-button
+                  >
               </div>
             </b-alert>
             <b-alert
