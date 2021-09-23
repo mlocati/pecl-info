@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.10" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="   http://pear.php.net/dtd/tasks-1.0   http://pear.php.net/dtd/tasks-1.0.xsd   http://pear.php.net/dtd/package-2.0   http://pear.php.net/dtd/package-2.0.xsd">
+ <name>json_post</name>
+ <channel>pecl.php.net</channel>
+ <summary>JSON POST handler</summary>
+ <description>This extension provides a PHP content type handler for &quot;application/json&quot; and
+&quot;text/json&quot; to PHP&apos;s form data parser. If the `Content-Type` of an incoming
+request is `text/json`, the JSON contents of the request body will by parsed
+into `$_POST`.
+
+This extension does not provide any constants, functions or classes.</description>
+ <lead>
+  <name>Michael Wallner</name>
+  <user>mike</user>
+  <email>mike@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2021-09-23</date>
+ <time>05:56:20</time>
+ <version>
+  <release>1.1.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://copyfree.org/content/standard/licenses/2bsd/license.txt">BSD-2-Clause</license>
+ <notes>
+* Fix gh-issue #3:
+    * Add json_post.onerror.response INI entry, specifying whether and which
+      response code to send when `json_decode` fails.
+    * Add json_post.onerror.exit INI entry, specifying whether to exit PHP
+      without running the script when `json_decode` fails.
+    * Add json_post.onerror.warning INI entry, specifying whether to raise
+      a WARNING when `json_decode` fails.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="4f061b8fa47520bc11d29634dc58328c" name="tests/001.phpt" role="test" />
+   <file md5sum="a7f712a5f1c184d51b21c2e2b35e4742" name="tests/002.phpt" role="test" />
+   <file md5sum="5e6c380b43c0f1caae8b93d887b41f6a" name="tests/003.phpt" role="test" />
+   <file md5sum="8c03206bfbd2a1ca84713a0e42796b8a" name="tests/004.phpt" role="test" />
+   <file md5sum="1af111030f487fd382c1b34a68aad40e" name="tests/005.phpt" role="test" />
+   <file md5sum="2bd860468baffbf7a84b585927cecdba" name="tests/application.phpt" role="test" />
+   <file md5sum="8548f3e5d2a97984c71ff4b6c2aa9a8b" name="tests/error.inc" role="test" />
+   <file md5sum="afcdff2c506142234a80051260e65e3a" name="tests/error001.phpt" role="test" />
+   <file md5sum="7a6f8e50d6cfd14a92cac2627fe43e71" name="tests/error002.phpt" role="test" />
+   <file md5sum="34b19b6c99af70351ceea07a04b750d8" name="tests/error003.phpt" role="test" />
+   <file md5sum="12aa944986bd611746a54257753b88d9" name="tests/error004.phpt" role="test" />
+   <file md5sum="21bd291802f6c42f66280f9b3c847aa3" name="tests/error005.phpt" role="test" />
+   <file md5sum="ed2ee71cf5ea9fba2dec824085cc394b" name="tests/error006.phpt" role="test" />
+   <file md5sum="f00d3c40b7d279e4f72b8464c2ac08b5" name="AUTHORS" role="doc" />
+   <file md5sum="e08900397d959898138ad2128935d922" name="CONTRIBUTING.md" role="doc" />
+   <file md5sum="5efeece3b304e9792a24eb3f4fbbacaa" name="CREDITS" role="doc" />
+   <file md5sum="66d96dc004ea207dca2d52fc31f33b59" name="LICENSE" role="doc" />
+   <file md5sum="49e03942174f0d4535374fc087d19ce1" name="README.md" role="doc" />
+   <file md5sum="4e1797daf7c3db0078a47dedc36d714b" name="THANKS" role="doc" />
+   <file md5sum="c2a06a4fc6618f5bb814426ea4d37dba" name="config.m4" role="src" />
+   <file md5sum="21be8a487351eb33b9ade19ee8937210" name="config.w32" role="src" />
+   <file md5sum="8407d38252307e52de6a43227e2ba8a5" name="php_json_post.h" role="src" />
+   <file md5sum="3f555741616a1628d2b095e0c2ceb459" name="php_json_post.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   <extension>
+    <name>json</name>
+   </extension>
+  </required>
+ </dependencies>
+ <providesextension>json_post</providesextension>
+ <extsrcrelease />
+</package>
