@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd">
+ <name>rdkafka</name>
+ <channel>pecl.php.net</channel>
+ <summary>Kafka client based on librdkafka</summary>
+ <description>PHP-rdkafka is a stable Kafka client for PHP based on librdkafka</description>
+ <lead>
+  <name>Arnaud Le Blanc</name>
+  <user>lbarnaud</user>
+  <email>arnaud.lb@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2021-11-19</date>
+ <time>14:04:19</time>
+ <version>
+  <release>6.0.0RC1</release>
+  <api>6.0.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+ <notes>
+## Enhancements
+- PHP 8.1 support (@ruudk, @remicollet, @nick-zh, @arnaud-lb)
+
+## Breaking changes
+- Added tentative return types in PHP 8.1 builds
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="034489c4aca18de917240dacd4970375" name="tests/allow_null_payload_and_key.phpt" role="test" />
+   <file md5sum="2fd2a16d4f5d4764defa0a7a78a3a2de" name="tests/allow_null_payload.phpt" role="test" />
+   <file md5sum="9725a96aa30210fd42a0dc0bb5e87a60" name="tests/bug115.phpt" role="test" />
+   <file md5sum="4c4a4b2b8e53e02706c5f91d8862f0c5" name="tests/bug330.phpt" role="test" />
+   <file md5sum="99b27df292c04c059f0714ed7909ec7e" name="tests/bug74.phpt" role="test" />
+   <file md5sum="9fab0fc9d80f94ad3b8a22c42c3e392c" name="tests/bug88.phpt" role="test" />
+   <file md5sum="049ae2ff35a1966b70dbd1f11abfb050" name="tests/bugConfSetArgument.phpt" role="test" />
+   <file md5sum="7b0804ee8144adb6ea52a5ddd7bd07ad" name="tests/conf_callbacks_integration.phpt" role="test" />
+   <file md5sum="4659ca6924c544563cfd157338b972b4" name="tests/conf_callbacks.phpt" role="test" />
+   <file md5sum="9c58ac17b42e65263999c3f52148d829" name="tests/conf.phpt" role="test" />
+   <file md5sum="a0789a1670ec70b1cd99fe0f423ab212" name="tests/conf_setDefaultTopicConf8.phpt" role="test" />
+   <file md5sum="61ac9a637c57f83e007426719acd5809" name="tests/conf_setDefaultTopicConf.phpt" role="test" />
+   <file md5sum="bbe91ce00fc974aa60e15b0964542bc5" name="tests/constants.phpt" role="test" />
+   <file md5sum="9090ee53394f675dfb9b7a685c92bb54" name="tests/err2name.phpt" role="test" />
+   <file md5sum="03f9367f93da96798f92b655320e4cad" name="tests/init_transaction_not_configured.phpt" role="test" />
+   <file md5sum="77c49333cc934b8ddfde07b7aeec8e7b" name="tests/integration-tests-check.php" role="test" />
+   <file md5sum="81262cb0944b564b0d1db81bcf18bdd6" name="tests/kafka_error_exception.phpt" role="test" />
+   <file md5sum="23a230f9ac61c224c013c2ec49a65621" name="tests/message_headers.phpt" role="test" />
+   <file md5sum="fae84e0b112cb6a8d4ca6253a7fbc9a0" name="tests/pause_resume.phpt" role="test" />
+   <file md5sum="871c3cea4e2a29dbeb95c01a650ad788" name="tests/produce_consume.phpt" role="test" />
+   <file md5sum="5524023d7fac5cfa71b8fd5d095c5f06" name="tests/produce_consume_queue.phpt" role="test" />
+   <file md5sum="4cc8417e414fd685cfe0be7309195da8" name="tests/produce_consume_transactional.phpt" role="test" />
+   <file md5sum="21c38347c980f5e911684661faa4d376" name="tests/produce_opaque_noconf.phpt" role="test" />
+   <file md5sum="a73b41905e9fbe68597a16c6efc54774" name="tests/produce_opaque_noflush_dr_callback.phpt" role="test" />
+   <file md5sum="819a9bbeaddd477ccd3333c89d5b4dae" name="tests/produce_opaque_noflush.phpt" role="test" />
+   <file md5sum="3e6fae4f08d460e43dbf4739ca0cd865" name="tests/produce_opaque.phpt" role="test" />
+   <file md5sum="2c842a9d12ca3b8d9281028a7cacb235" name="tests/produce_opaque_purge_dr_callback.phpt" role="test" />
+   <file md5sum="95c80c10978810ea75f6c542eeb038a3" name="tests/produce_opaque_purge.phpt" role="test" />
+   <file md5sum="9abe40d64514f5023abf8c1b42d63bcb" name="tests/producev_opaque.phpt" role="test" />
+   <file md5sum="bba2ce029ebc8cf074b50a43ac355b69" name="tests/rd_kafka_get_err_descs.phpt" role="test" />
+   <file md5sum="9151fcc1be3dcb40fe41a7dc17157153" name="tests/test0.phpt" role="test" />
+   <file md5sum="0e19f0b7a07e699af81349d720e9a71d" name="tests/topic_conf.phpt" role="test" />
+   <file md5sum="eecc99e24205326104edc84a6b0443f9" name="tests/topic_partition.phpt" role="test" />
+   <file md5sum="9f77b1cb29d903194df6369de74aff3c" name="CREDITS" role="doc" />
+   <file md5sum="3957792c293a3cd3a4a49ca5c9035ec7" name="LICENSE" role="doc" />
+   <file md5sum="48e667c0b2fb0e4dcf653ea7c7df71ca" name="README.md" role="doc" />
+   <file md5sum="9aafe45ad6d3f18d6b13b474697c5299" name="build/gen_stub.php" role="src" />
+   <file md5sum="68f2fe140be527b4e6892205eb390996" name="conf.c" role="src" />
+   <file md5sum="36cd660b768be203496e570d07c53fd8" name="conf.h" role="src" />
+   <file md5sum="987c323dd610210c5d72b6634f564a34" name="conf.stub.php" role="src" />
+   <file md5sum="b81f013e5eef455526cc6d8508cbd95d" name="conf_arginfo.h" role="src" />
+   <file md5sum="aa0cde2c9d42b0b091c47da29d224b82" name="conf_legacy_arginfo.h" role="src" />
+   <file md5sum="557c97e0605bbe393f3fea1ce399580f" name="config.m4" role="src" />
+   <file md5sum="e8b92df1fedfae5324b96a5907da521b" name="config.w32" role="src" />
+   <file md5sum="b1f6ce3f3f283f5e19cd3ad414001dee" name="fun.c" role="src" />
+   <file md5sum="d5ffc36e88f5bbac322261ea285a60ad" name="fun.stub.php" role="src" />
+   <file md5sum="b3dfd59e551f7965a329cbb508ca8ab0" name="fun_arginfo.h" role="src" />
+   <file md5sum="990515a29d16e2271da93b76c4a267be" name="fun_legacy_arginfo.h" role="src" />
+   <file md5sum="e4412c137a885bd6f2cc3dd075073d4f" name="kafka_consumer.c" role="src" />
+   <file md5sum="fa9974c0d8766440764abbd58a5eedd4" name="kafka_consumer.h" role="src" />
+   <file md5sum="d3072b7763867430728baaf35f8544b8" name="kafka_consumer.stub.php" role="src" />
+   <file md5sum="1de3638a07112df1154eb5683a71a1ea" name="kafka_consumer_arginfo.h" role="src" />
+   <file md5sum="f06a938e4ca70665c610738dc81aef13" name="kafka_consumer_legacy_arginfo.h" role="src" />
+   <file md5sum="b9f703c5a945c9cbf54bba2b4631f6db" name="kafka_error_exception.c" role="src" />
+   <file md5sum="ec18905d28da69b37ee5c8ae08fd7a65" name="kafka_error_exception.h" role="src" />
+   <file md5sum="16b41ae9a2e3d3dfe71b911192d8fd05" name="kafka_error_exception.stub.php" role="src" />
+   <file md5sum="984377250c88b8567ce0f265d346c052" name="kafka_error_exception_arginfo.h" role="src" />
+   <file md5sum="4f706a8064b9a36e9386d7247b4db354" name="kafka_error_exception_legacy_arginfo.h" role="src" />
+   <file md5sum="00796fc4209339c62c378968102097e3" name="message.c" role="src" />
+   <file md5sum="8e6b42becc91a8729973b5882ad614bb" name="message.h" role="src" />
+   <file md5sum="c5487e8fcf54fd33932dc36afb588ebe" name="message.stub.php" role="src" />
+   <file md5sum="835dac33ce0cc5a16554c7c4c4fd9c26" name="message_arginfo.h" role="src" />
+   <file md5sum="1c401d9d190aac703ef901f8cd1dd462" name="message_legacy_arginfo.h" role="src" />
+   <file md5sum="949e7e3b3ec12d936d2ea712562ca910" name="metadata.c" role="src" />
+   <file md5sum="f9e853d7a6f3b129adde1d286f8fb55a" name="metadata.h" role="src" />
+   <file md5sum="a3fb99159fa77912f9f3eb7a36d6be33" name="metadata.stub.php" role="src" />
+   <file md5sum="a8d1215ec5e54215d1ed69b53bc38142" name="metadata_arginfo.h" role="src" />
+   <file md5sum="1849e49473447c84cb5e1b763c90ce80" name="metadata_broker.c" role="src" />
+   <file md5sum="4a0da8b7faeb96696ff6b459ed7ab604" name="metadata_broker.h" role="src" />
+   <file md5sum="51ce52ae24ac001b3741eae01fff14af" name="metadata_broker.stub.php" role="src" />
+   <file md5sum="8ee74447a920a9fa93ea5963d642cb6e" name="metadata_broker_arginfo.h" role="src" />
+   <file md5sum="793da4336e9de06839d43c2f7c809661" name="metadata_broker_legacy_arginfo.h" role="src" />
+   <file md5sum="2582c21ea74a4f2969ef0a857b934a22" name="metadata_collection.c" role="src" />
+   <file md5sum="321d56c194cfdaaa040947f0799bda16" name="metadata_collection.h" role="src" />
+   <file md5sum="c0f83d7d2f1f15fd1df907c7efdfb21e" name="metadata_collection.stub.php" role="src" />
+   <file md5sum="57e6b07495dc34d6d6ea4050c6d82079" name="metadata_collection_arginfo.h" role="src" />
+   <file md5sum="fd021731f7ca4ddf70e0ca3c5a9a7357" name="metadata_collection_legacy_arginfo.h" role="src" />
+   <file md5sum="721e5b6a66ffdfe89e7ba30b0ba7badb" name="metadata_legacy_arginfo.h" role="src" />
+   <file md5sum="0cf485bc7154f1c84a15de60dd339efb" name="metadata_partition.c" role="src" />
+   <file md5sum="23604046827735d4fa46359f1465e69e" name="metadata_partition.h" role="src" />
+   <file md5sum="f301ac47816d3444d80a1a40fdf5ad2c" name="metadata_partition.stub.php" role="src" />
+   <file md5sum="289976fe6016cfbcb4d0f3b7acb4a651" name="metadata_partition_arginfo.h" role="src" />
+   <file md5sum="605afd483beb6854d6b3a06419d0b437" name="metadata_partition_legacy_arginfo.h" role="src" />
+   <file md5sum="e8ccad4e0bb3790085d17b93156b1f82" name="metadata_topic.c" role="src" />
+   <file md5sum="69194dd5df78a86df962b03d97f81388" name="metadata_topic.h" role="src" />
+   <file md5sum="499c53ad5ecc2281b4755134fb435e18" name="metadata_topic.stub.php" role="src" />
+   <file md5sum="15c67f8034e7a9fdbe802f2abf470b73" name="metadata_topic_arginfo.h" role="src" />
+   <file md5sum="2794c0d6b3f7641003a70ce700d57d96" name="metadata_topic_legacy_arginfo.h" role="src" />
+   <file md5sum="12aa35c982557d4ea8fb307f7797c559" name="php_rdkafka.h" role="src" />
+   <file md5sum="0c8ec9f7f1f06bea4f4c7ab6496b8959" name="php_rdkafka_priv.h" role="src" />
+   <file md5sum="05700cf58da91e325ce04e4ae2c3f8e6" name="queue.c" role="src" />
+   <file md5sum="11d9fc6b7ccc2b83e5d9c01e66770b72" name="queue.h" role="src" />
+   <file md5sum="199c7eac5961b58cc47a9f75ab9f61e1" name="queue.stub.php" role="src" />
+   <file md5sum="dadf77d80c1335d21803c3ce1557f14e" name="queue_arginfo.h" role="src" />
+   <file md5sum="6fa03d5d2b34d3ae13f80f7fd5eecae9" name="queue_legacy_arginfo.h" role="src" />
+   <file md5sum="2b25761a46dc018c8b74ebca6e1a18c1" name="rdkafka.c" role="src" />
+   <file md5sum="b7e98320563ae59e8eeda33004c03ae0" name="rdkafka.stub.php" role="src" />
+   <file md5sum="1c3c6141e5d4efab133ea68658c324de" name="rdkafka_arginfo.h" role="src" />
+   <file md5sum="131d29816a8f5ee357d144a4baf44205" name="rdkafka_legacy_arginfo.h" role="src" />
+   <file md5sum="200f546c70e3acfe582e23559de79ac1" name="topic.c" role="src" />
+   <file md5sum="973d55800702d6072eab1ac0aa5800e7" name="topic.h" role="src" />
+   <file md5sum="10ead3189fdc0d48d5a3726a75bdd47e" name="topic.stub.php" role="src" />
+   <file md5sum="e0953b4230d29dd360902173ddb4dc8c" name="topic_arginfo.h" role="src" />
+   <file md5sum="43a9be113ffb799e3f156d2c762deb02" name="topic_legacy_arginfo.h" role="src" />
+   <file md5sum="f46c166f8ba1483831edd7d74385ed27" name="topic_partition.c" role="src" />
+   <file md5sum="78423c304b7febe5cb97f86dfa0865ad" name="topic_partition.h" role="src" />
+   <file md5sum="4c3e75146f7bbcbbb3c1f94674907d76" name="topic_partition.stub.php" role="src" />
+   <file md5sum="3e1da98fed326b434ae26dcdcafaaaa8" name="topic_partition_arginfo.h" role="src" />
+   <file md5sum="ad4bbf32329fdb6c213273c3bba768cb" name="topic_partition_legacy_arginfo.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+    <max>8.99.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>rdkafka</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2021-11-19</date>
+   <time>14:00:00</time>
+   <version>
+    <release>5.0.1</release>
+    <api>4.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+## Enhancements
+- Add pausePartitions(), resumePartitions() on RdKfaka, RdKafka\KafkaConsumer (#438, @arnaud-lb)
+- Clarify error when KafkaConsumer is closed (@zoonru)
+
+## Bugfixes
+- Fix windows build (#440, @nick-zh)
+- Fix crash in RdKafka\Metadata\Topic::getTopic() (#465, @arnaud-lb)
+   </notes>
+  </release>
+  <release>
+   <date>2021-01-14</date>
+   <time>12:00:00</time>
+   <version>
+    <release>5.0.0</release>
+    <api>4.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+## Enhancements
+- PHP 8 support (@nick-zh, @arnaud-lb)
+- Suport passing an opaque value in produce(), producev() (@arnaud-lb)
+
+## Breaking changes
+- Dropped PHP 5 support
+   </notes>
+  </release>
+  <release>
+   <date>2020-12-06</date>
+   <time>12:00:00</time>
+   <version>
+    <release>4.1.0</release>
+    <api>4.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+BREAKING CHANGE: Since version 4.0, the client no longer polls for network
+events at shutdown (during object destructor). This behaviour didn&apos;t give
+enough control to the user in case of server issue, and could cause the script
+to hang while terminating.
+
+Starting from 4.0, programs MUST call flush() before shutting down, otherwise
+some messages and callbacks may be lost.
+
+## Features
+- Add transactional producer support (#359, @nick-zh)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>4.0.4</release>
+    <api>4.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+BREAKING CHANGE: Since version 4.0, the client no longer polls for network
+events at shutdown (during object destructor). This behaviour didn&apos;t give
+enough control to the user in case of server issue, and could cause the script
+to hang while terminating.
+
+Starting from 4.0, programs MUST call flush() before shutting down, otherwise
+some messages and callbacks may be lost.
+
+## Bugfixes
+- Fix crash during shurtdown (#367, @nick-zh, @sofire)
+
+## Enhancements
+- Improved CI (@Steveb-p, @arnaud-lb)
+
+## Documentation
+- Improved doc (@nick-zh, @Steveb-p)
+   </notes>
+  </release>
+  <release>
+   <date>2020-02-07</date>
+   <time>12:00:00</time>
+   <version>
+    <release>4.0.3</release>
+    <api>4.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+BREAKING CHANGE: Since version 4.0, the client no longer polls for network
+events at shutdown (during object destructor). This behaviour didn&apos;t give
+enough control to the user in case of server issue, and could cause the script
+to hang while terminating.
+
+Starting from 4.0, programs MUST call flush() before shutting down, otherwise
+some messages and callbacks may be lost.
+
+## Improvements
+- Add partition check for offsetStore (#331, @nick-zh)
+- Naming consistency for setting in tests (#339, @romainneutron)
+
+## Bugfixes
+- Fix headers containing null bytes (#338,  @arnaud-lb, @dirx @nick-zh)
+- Fix topic deconstruct for high level consumer (#333, @nick-zh)
+
+## Documentation
+- Fix doc example (#340, @Steveb-p)
+- Remove outdated and duplicate examples (#341, @nick-zh)
+   </notes>
+  </release>
+  <release>
+   <date>2019-12-15</date>
+   <time>12:00:00</time>
+   <version>
+    <release>4.0.2</release>
+    <api>4.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+BREAKING CHANGE: Since version 4.0, the client no longer polls for network
+events at shutdown (during object destructor). This behaviour didn&apos;t give
+enough control to the user in case of server issue, and could cause the script
+to hang while terminating.
+
+Starting from 4.0, programs MUST call flush() before shutting down, otherwise
+some messages and callbacks may be lost.
+
+## Bugfixes
+
+* Fix partition 0 exposed as NULL in Message (#327 reverts #321, @arnaud-lb @nick-zh)
+* Fix memory leak in consume() when messages have headers (#323, @nick-zh)
+   </notes>
+  </release>
+  <release>
+   <date>2019-12-08</date>
+   <time>12:00:00</time>
+   <version>
+    <release>4.0.1</release>
+    <api>4.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+BREAKING CHANGE: Since version 4.0, the client no longer polls for network
+events at shutdown (during object destructor). This behaviour didn&apos;t give
+enough control to the user in case of server issue, and could cause the script
+to hang while terminating.
+
+Starting from 4.0, programs MUST call flush() before shutting down, otherwise
+some messages and callbacks may be lost.
+
+## Features
+
+* Added RdKafka\ConsumerTopic::consumeCallback() (#310, @nick-zh)
+
+## Enhancements
+
+* Run integration tests in CI (#223, @Steveb-p)
+* Improved README (#295 #297 #298, #307 @Steveb-p @sndsgd @nick-zh)
+* Fix windows test cases (#296, @cmb69)
+* Add testsuite in pecl archive (#291, @remicollet)
+* Add editor config (#308, @Steveb-p)
+
+## Bugfixes
+
+* Fix build (#290, @nick-zh)
+* Fix segfault during module shutdown (#293, @arnaud-lb @nick-zh)
+* Fix RdKafka\Topic visibility in PHP 7.4 (#316, @nick-zh)
+* Fix headers memory management in producev (#318 , @nick-zh)
+* Fix partition number in error (#321, @nick-zh)
+   </notes>
+  </release>
+  <release>
+   <date>2019-10-04</date>
+   <time>12:00:00</time>
+   <version>
+    <release>4.0.0</release>
+    <api>4.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+BREAKING CHANGE: Since version 4.0, the client longer polls for network events
+at shutdown (during object destructor). This behaviour didn&apos;t give enought
+control to the user in case of server issue, and could cause the script to
+hang while terminating.
+
+Starting from this version, programs MUST now call flush() before shutting
+down, otherwise some messages and callbacks may be lost.
+
+## Features
+
+* Added RdKafka\Kafka::offsetsForTimes(), RdKafka\KafkaConsumer::offsetsForTimes() (#238, #270, @nick-zh)
+* Added RdKafka\KafkaConsumer::getOffsetPositions() (#244, @nick-zh)
+* Added RdKafka\Kafka::purge() (#255, @nick-zh)
+* Added RdKafka\Kafka::flush() (#264, @nick-zh)
+* Added RdKafka\ConsumerTopic::consumeBatch() (#256, @nick-zh)
+* Added RdKafka\Conf::setLogCb() (#253, @nick-zh)
+* Added RdKafka\KafkaConsumer::queryWatermarkOffsets() (#271, @nick-zh)
+* Added RdKafka\KafkaConsumer::close() (#144, @TiMESPLiNTER)
+
+## Enhancements
+
+* Support block on full producer queue (RD_KAFKA_MSG_F_BLOCK) (#245, @nick-zh)
+* Add additional partitioners (#267, @nick-zh)
+* Fix phpinfo output (#172, @TiMESPLiNTER)
+* Don&apos;t poll in destruct anymore (#264, #278, @nick-zh)
+
+## Bugfixes
+
+* Fix segfault, remove Producer::newQueue (#273, @nick-zh)
+
+## General
+
+* Dropping support for librdkafka below 0.11 (#247, @arnaud-lb)
+* Update build matrix PHP 7.3 + nightly, librdkafka 1.x + master (#249, @arnaud-lb)
+* Deprecating deprecated librdkafka functions (#266, #254, #251, @nick-zh)
+   </notes>
+  </release>
+  <release>
+   <date>2019-07-08</date>
+   <time>12:00:00</time>
+   <version>
+    <release>3.1.2</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Fix build
+   </notes>
+  </release>
+  <release>
+   <date>2019-07-03</date>
+   <time>12:00:00</time>
+   <version>
+    <release>3.1.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Expose query watermark offsets (#219, @gytislakavicius)
+* Support sending timestamp (epoch ms) in producev (#228, @lkm)
+* Fix KafkaTopic::producev causing segfault on librdkafka 1.0.0 (#222, @Steveb-p)
+* Fix version parsing (#224, @dariuskasiulevicius)
+   </notes>
+  </release>
+  <release>
+   <date>2019-04-18</date>
+   <time>12:00:00</time>
+   <version>
+    <release>3.1.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Added timestamp support (@mariam-japaridze)
+* Added headers support (@martynaszaliaduonis, @dariuskasiulevicius)
+* Added Rdkafka\Conf::setConsumeCb(), RdKafka\Conf::setOffsetCommitCb() (@tPl0ch)
+* Added RdKafka\KafkaConsumer::getCommittedOffsets() (@dariuskasiulevicius)
+* Fixed RdKafka\Message::errstr() (@JustBlackBird)
+* Fixed reflection (@carusogabriel)
+* Allow null key and null message (@awons)
+* Dropped official PHP 5.4 / 5.5 support (@tPl0ch)
+* Improved examples (@dbakiu, @Steveb-p)
+   </notes>
+  </release>
+  <release>
+   <date>2017-11-20</date>
+   <time>12:00:00</time>
+   <version>
+    <release>3.0.5</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Fixed destruction order, fixes hangs during RdKafka\Consumer destruction
+   </notes>
+  </release>
+  <release>
+   <date>2017-08-16</date>
+   <time>12:00:00</time>
+   <version>
+    <release>3.0.4</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Fixed destruction order, fixes hangs during RdKafka\Consumer destruction
+* Added RdKafka\Conf::setStatsCb
+   </notes>
+  </release>
+  <release>
+   <date>2017-05-29</date>
+   <time>12:00:00</time>
+   <version>
+    <release>3.0.3</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Reduced termination times
+   </notes>
+  </release>
+  <release>
+   <date>2017-05-23</date>
+   <time>12:00:00</time>
+   <version>
+    <release>3.0.2</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Fixed ConsumerTopic::consumeStop() hanging on PHP 5
+   </notes>
+  </release>
+  <release>
+   <date>2017-01-28</date>
+   <time>12:00:00</time>
+   <version>
+    <release>3.0.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Fixed build on old gcc
+   </notes>
+  </release>
+  <release>
+   <date>2016-12-18</date>
+   <time>12:00:00</time>
+   <version>
+    <release>3.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Unified code for PHP versions 5 and 7. This package builds and works on
+  PHP 5.3 through PHP 7.x.
+   </notes>
+  </release>
+  <release>
+   <date>2016-09-09</date>
+   <time>12:00:00</time>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+This version of rdkafka is indented for php version 5. To compile rdkafka for
+newer versions of php, use the pecl package version 2.
+
+ * Added high level consumer: Rdkafka\KafkaConsumer (librdkafka 0.9)
+ * RD_KAFKA_VERSION now reports the runtime librdkafka version
+ * Added RD_KAFKA_BUILD_VERSION
+ * Export runtime-provided constants from librdkafka (librdkafka 0.9)
+ * Added rd_kafka_get_err_descs() (librdkafka 0.9)
+ * Improve reflection/arginfo
+ * Rdkafka::metadata() is now a deprecated alias to Rdkafka::getMetadata()
+ * Rdkafka::outqLen() is now a deprecated alias to Rdkafka::getOutQLen()
+ * Rdkafka now throws Rdkafka\Exception instances
+ * Added Rdkafka\Conf::setDefaultTopicConf() (librdkafka 0.9)
+ * Added Rdkafka\Conf::setDrMsgCb() (librdkafka 0.9)
+   </notes>
+  </release>
+  <release>
+   <date>2016-01-11</date>
+   <time>10:30:00</time>
+   <version>
+    <release>0.9.1</release>
+    <api>0.9.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Allow to build against librdkafka master/0.9.x
+   </notes>
+  </release>
+  <release>
+   <date>2016-01-09</date>
+   <time>14:00:00</time>
+   <version>
+    <release>0.9.0</release>
+    <api>0.9.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
+   <notes>
+* Metadata API
+* Consistent partitioner
+* Fix ZTS build
+   </notes>
+  </release>
+  <release>
+   <date>2015-05-13</date>
+   <time>16:26:12</time>
+   <version>
+    <release>0.0.2</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <notes>
+Fixed package
+   </notes>
+  </release>
+ </changelog>
+</package>
