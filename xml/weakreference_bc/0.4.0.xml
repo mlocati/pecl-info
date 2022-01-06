@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>weakreference_bc</name>
+ <channel>pecl.php.net</channel>
+ <summary>Polyfill of WeakMap/WeakReference for older PHP versions. This is a fork of the abandoned &quot;weakref&quot; PECL.</summary>
+ <description>A weak reference provides a gateway to an object without preventing that object from being collected by the garbage collector (GC).</description>
+ <lead>
+  <name>Tyson Andre</name>
+  <user>tandre</user>
+  <email>tandre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2022-01-06</date>
+ <time>02:54:05</time>
+ <version>
+  <release>0.4.0</release>
+  <api>0.4.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="https://www.php.net/license">PHP</license>
+ <notes>
+- Fork this from the abandoned &quot;weakref&quot; PECL to provide WeakMap for php 7.0-7.4 and WeakReference for php 7.0-7.3
+- Fix compilation errors for WeakMap in php 7.4
+- Rename WeakRef to WeakReference to act as a polyfill for WeakReference in php before php 7.4.
+- Make WeakReference constructor throw and require the use of WeakReference::create, like php 7.4
+- Fix edge cases when destructor of an old value modifies the weakmap during an update.
+- Strictly prevent the creation of dynamic properties on a WeakReference.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="1bb99258d4835a32b8658f21b76a36c4" name="tests/weakmap_001.phpt" role="test" />
+   <file md5sum="aeba465c6e499a4ab9d0df47e282fe01" name="tests/weakmap_002.phpt" role="test" />
+   <file md5sum="a86f23c3b2639a4684279ef5fd6c8bd5" name="tests/weakmap_003.phpt" role="test" />
+   <file md5sum="91003e3618ab2879cf91d2486063f6a1" name="tests/weakmap_004.phpt" role="test" />
+   <file md5sum="a361c3fa5a29c4ede7e9ac8e20566c34" name="tests/weakmap_005.phpt" role="test" />
+   <file md5sum="d901d70605b6073012587950123c3a83" name="tests/weakmap_basic_map_behavior.phpt" role="test" />
+   <file md5sum="4a78a0a1f7d14e3823e44b1be327f6c5" name="tests/weakmap_dtor_exception.phpt" role="test" />
+   <file md5sum="74a3f254f774996dbd4a354e999bf6e7" name="tests/weakmap_error_conditions.phpt" role="test" />
+   <file md5sum="ba0c7aa68edc9f7c207aaa627b48c77f" name="tests/weakmap_iteration.phpt" role="test" />
+   <file md5sum="b8d04506cf1ae755b8315103b3f9ee46" name="tests/weakmap_iteration_simple.phpt" role="test" />
+   <file md5sum="9567c289556a956286f2b3a984cc5f33" name="tests/weakmap_multiple_weakrefs.phpt" role="test" />
+   <file md5sum="dd73e224dad9f9910a48196efbcfcc13" name="tests/weakmap_nested.phpt" role="test" />
+   <file md5sum="7dab964add93ab582c09af2fd31cde6c" name="tests/weakmap_unchanged_hash.phpt" role="test" />
+   <file md5sum="50d216a47403a7563534ad3cbb1f1bce" name="tests/weakmap_weakness.phpt" role="test" />
+   <file md5sum="4d3482f5715acf08462944b1b3d187a1" name="tests/weakref_001.phpt" role="test" />
+   <file md5sum="e5465110474059b6464547b250f208b6" name="tests/weakref_003.phpt" role="test" />
+   <file md5sum="97ee4920da7fd57a1e888d4c050c84fe" name="tests/weakref_006.phpt" role="test" />
+   <file md5sum="a4569e39172a03bfd788f93358e0323e" name="tests/weakref_007.phpt" role="test" />
+   <file md5sum="161b24d307b4564c805dd3a6dd13ea78" name="tests/weakref_008.phpt" role="test" />
+   <file md5sum="6269d12812b4102fb9822ba6b70a7e1e" name="tests/weakref_009.phpt" role="test" />
+   <file md5sum="237e780421e5cda667b0946d2ad3dc10" name="tests/weakref_010.phpt" role="test" />
+   <file md5sum="2709a27ca01942320d2fd8dd4e3377dc" name="tests/weakref_011.phpt" role="test" />
+   <file md5sum="0069344e8e83404636eb51ca02913ce1" name="tests/weakref_014.phpt" role="test" />
+   <file md5sum="47fd152fd58539659dfa517135d7f90a" name="tests/weakrefs_001.phpt" role="test" />
+   <file md5sum="67c53b611c5455e34aa9d6b11ff3c847" name="tests/weakrefs_002.phpt" role="test" />
+   <file md5sum="6ce2c11f1939018bd228702f0dc1d51d" name="tests/weakrefs_003.phpt" role="test" />
+   <file md5sum="d3c7dd76137444df3287cc6d4465dc58" name="tests/weakrefs_004.phpt" role="test" />
+   <file md5sum="0257759160c858acaabcf678b32df0ad" name="tests/weakrefs_005.phpt" role="test" />
+   <file md5sum="224e68b826daa46623349bdcf77c94ac" name="tests/weakrefs_006.phpt" role="test" />
+   <file md5sum="9a2fd55a3061ef7967c6b9ec38151270" name="CREDITS" role="doc" />
+   <file md5sum="6121c9a0aae5ffcf61da33650a02316b" name="README.md" role="doc" />
+   <file md5sum="5bb09683f8f09b15b7076f4b4c31d61f" name="LICENSE" role="doc" />
+   <file md5sum="d7ddf631cd8c43b5c41fd63c61953d38" name="config.m4" role="src" />
+   <file md5sum="e6c599082fdb97454562c875fdfca2fe" name="config.w32" role="src" />
+   <file md5sum="2baa3d1074aa664670bcd962931cc068" name="php_weakref.c" role="src" />
+   <file md5sum="d661b0d61542b1a650ba315afe988d8e" name="php_weakref.h" role="src" />
+   <file md5sum="1b0080da9e5d4100740320abe3696366" name="wr_store.c" role="src" />
+   <file md5sum="4c43d3d8e301cf69078b516977d66d7f" name="wr_store.h" role="src" />
+   <file md5sum="97fbb69739dd0a74470b3fccfba9fd81" name="wr_weakref.c" role="src" />
+   <file md5sum="f3a29f7d0c124ebdd2dd66b5c1052882" name="wr_weakref.h" role="src" />
+   <file md5sum="e8359ab6a5f39a1b989aa04da925f801" name="wr_weakmap.c" role="src" />
+   <file md5sum="68af447c5df0288a08f5c591d1822405" name="wr_weakmap.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.3</min>
+    <max>8.0.0</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>weakreference_bc</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.3.3</release>
+    <api>0.3.1</api>
+   </version>
+   <date>2016-12-13</date>
+   <notes>
+- Restore dtors to prevent crash in multi-requests scenario
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.3.2</release>
+    <api>0.3.1</api>
+   </version>
+   <date>2016-01-24</date>
+   <notes>
+- Fix crash in wr_store_tracked_object_dtor
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.3.1</release>
+    <api>0.3.1</api>
+   </version>
+   <date>2016-01-11</date>
+   <notes>
+- Fix a bug where acquired ref would be dtored before the wref during shutdown (#69131)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <date>2016-01-11</date>
+   <notes>
+- Support PHP7 (Big thanks to Julien Pauli for helping with the upgrade) (issue #19)
+- Add support for cloning WeakMap
+- Iterating WeakMap now yields objects as keys (issue #17)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.2.5</release>
+    <api>0.2.5</api>
+   </version>
+   <date>2014-10-08</date>
+   <notes>
+- Fix crash when freeing circular weakmap/ref (issues #13)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.2.4</release>
+    <api>0.2.4</api>
+   </version>
+   <date>2014-05-05</date>
+   <notes>
+- Fix version and add license
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.2.3</release>
+    <api>0.2.3</api>
+   </version>
+   <date>2014-05-01</date>
+   <notes>
+- Upgrade PHP dependencies.
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.2.2</release>
+    <api>0.2.2</api>
+   </version>
+   <date>2014-05-01</date>
+   <notes>
+- Fixes compatibility issues with 5.3
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.2.1</release>
+    <api>0.2.1</api>
+   </version>
+   <date>2012-06-19</date>
+   <notes>
+- Fixes crashes and bugs caused by zval splitting.
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <date>2012-03-30</date>
+   <notes>
+- Fixes crashes and bugs.
+- Implement weakmap.
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <date>2011-08-18</date>
+   <notes>
+- First release.
+   </notes>
+  </release>
+ </changelog>
+</package>
