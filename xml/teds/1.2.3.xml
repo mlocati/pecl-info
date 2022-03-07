@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>teds</name>
+ <channel>pecl.php.net</channel>
+ <summary>Provides extra data structures and iterable/array functionality.</summary>
+ <description>teds (Tentative Extra Data Structures) is a collection of data structures and iterable functionality</description>
+ <lead>
+  <name>Tyson Andre</name>
+  <user>tandre</user>
+  <email>tandre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2022-03-06</date>
+ <time>21:36:43</time>
+ <version>
+  <release>1.2.3</release>
+  <api>1.2.3</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+ <notes>
+* Make pop() on Sequences affect iterators the same way that `$o-&gt;offsetUnset(count($o) - 1)` would.
+  (Move iterators pointing to the removed entry backwards by 1)
+* Make pop() on MutableIterable move iterators pointing to that entry backwards.
+* Properly convert references to non-references in some Collection constructors/unserializers and `Teds\unique_values()`
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="9a1ad94c0e438543fb12b8acd02340ad" name="tests/ArrayAccess/empty.phpt" role="test" />
+   <file md5sum="5e2f91d227b436d22fd346e958e935e9" name="tests/BitVector/BitVector.phpt" role="test" />
+   <file md5sum="54253f2807a0feb022498bf8a3807c78" name="tests/BitVector/aggregate.phpt" role="test" />
+   <file md5sum="f7d6706787e19765293f7f2a6390a15b" name="tests/BitVector/arrayCast.phpt" role="test" />
+   <file md5sum="3c75f62b329816e3a919e1a286414b02" name="tests/BitVector/clone.phpt" role="test" />
+   <file md5sum="7e70efb0603b540399645bb6d47de733" name="tests/BitVector/exceptionhandler.phpt" role="test" />
+   <file md5sum="6f6fc2fab39a27c5f84bc961d1354a6b" name="tests/BitVector/gc.phpt" role="test" />
+   <file md5sum="09a5bd3451fbbd54f16edd882780f5f0" name="tests/BitVector/indexOf.phpt" role="test" />
+   <file md5sum="51cb447ebae7d46983eff98f240d79dd" name="tests/BitVector/insert.phpt" role="test" />
+   <file md5sum="e5505be7279c272096dc4f845b78d638" name="tests/BitVector/intAccess.phpt" role="test" />
+   <file md5sum="8aefc58277fceec606af4c0d6d7e8d7a" name="tests/BitVector/isEmpty.phpt" role="test" />
+   <file md5sum="f5b56c24878523ef03a26789527dbc6c" name="tests/BitVector/isset.phpt" role="test" />
+   <file md5sum="514f74acc5e3fdc8824ba719c67086da" name="tests/BitVector/large.phpt" role="test" />
+   <file md5sum="ad08ef1112d08f0fa0a76cf1a12f95c2" name="tests/BitVector/offsetGet.phpt" role="test" />
+   <file md5sum="12f69e0a8ccf7bee2faacdf4d4d30f15" name="tests/BitVector/push_pop.phpt" role="test" />
+   <file md5sum="7d84a6d4dd6e9846f8cee32ebc28ef9f" name="tests/BitVector/reinit_forbidden.phpt" role="test" />
+   <file md5sum="409d5e2f6f54f3f6d3a90f34ae964953" name="tests/BitVector/serialization.phpt" role="test" />
+   <file md5sum="a1695f907a95a9473e523161ed01610e" name="tests/BitVector/serializeString.phpt" role="test" />
+   <file md5sum="80f95ec5e06a48cb35bef17dfb24e5a9" name="tests/BitVector/setValueAt.phpt" role="test" />
+   <file md5sum="064d6e1e47fcb9b3cecfc81c0bbe6a01" name="tests/BitVector/set_state.phpt" role="test" />
+   <file md5sum="af2b7ab5817c0750484a3a306207584c" name="tests/BitVector/shift.phpt" role="test" />
+   <file md5sum="2480cf43a33c3614d42dc99ce9d6a803" name="tests/BitVector/traversable.phpt" role="test" />
+   <file md5sum="70ca5901f8994635595b1f9a672f20f6" name="tests/BitVector/unserialize.phpt" role="test" />
+   <file md5sum="bf4868a0ed9174e3e3f65a32dcf93178" name="tests/BitVector/unshift.phpt" role="test" />
+   <file md5sum="4a2b064786b88e78741a251d0c5d0865" name="tests/CachedIterable/clone.phpt" role="test" />
+   <file md5sum="bc688cfff19348165c5b5cdaece3c620" name="tests/CachedIterable/contains.phpt" role="test" />
+   <file md5sum="f5df542aba1ffa93fde23d26e8b77e44" name="tests/CachedIterable/keyAt_valueAt.phpt" role="test" />
+   <file md5sum="cba5d8a8dfa0b743ccc9df93ac538758" name="tests/CachedIterable/keys_values.phpt" role="test" />
+   <file md5sum="8d88d3fc1167c57a1c5543e292c17337" name="tests/CachedIterable/lazy.phpt" role="test" />
+   <file md5sum="c52dba0064ca290c20497cff4aa0bc4f" name="tests/CachedIterable/selfReferential.phpt" role="test" />
+   <file md5sum="ec26316efab4479aa86174cdf87b0572" name="tests/CachedIterable/selfReferentialMisuseDetection.phpt" role="test" />
+   <file md5sum="852956fd26f6e0dc49fa5209125e26db" name="tests/CachedIterable/serialization.phpt" role="test" />
+   <file md5sum="36532518d77b9848bf805f5fc1c0cac0" name="tests/CachedIterable/set_state.phpt" role="test" />
+   <file md5sum="8b9494812360b2cedeab89c3102a2073" name="tests/CachedIterable/unserialize.phpt" role="test" />
+   <file md5sum="158671ef0fd20a9b566fd838e794eaf7" name="tests/Collection/aggregate.phpt" role="test" />
+   <file md5sum="645395ca92a54c95f349f406140a0a38" name="tests/Collection/clear_nonempty.phpt" role="test" />
+   <file md5sum="5afe9007494550b0dad41a5b380f8495" name="tests/Collection/create_references.phpt" role="test" />
+   <file md5sum="5ef5af954577be185adb74fa010d0731" name="tests/Collection/empty.phpt" role="test" />
+   <file md5sum="09a4f752442ec2e9986f464808c1bbbb" name="tests/Collection/exceptionhandler.phpt" role="test" />
+   <file md5sum="07bb96b42a7e90329be41efd13ee6681" name="tests/Collection/fromArray.phpt" role="test" />
+   <file md5sum="391b4b1068e7475585f2e61ad65fc359" name="tests/Collection/fromLargeArray.phpt" role="test" />
+   <file md5sum="935790cd58ada9e3dc08e8d71f341417" name="tests/Collection/reinit_forbidden.phpt" role="test" />
+   <file md5sum="869bdf78bff85cedb0dd0c1cfd8c33af" name="tests/Collection/traversable.phpt" role="test" />
+   <file md5sum="76ddb9dcd0b6192a4f2c53fe9ec3b66b" name="tests/Collection/traversable_rewind_error.phpt" role="test" />
+   <file md5sum="a142d9e629d4576a56440502ab851df2" name="tests/Deque/Deque.phpt" role="test" />
+   <file md5sum="ac9df95c053d8bf20fa747365bebbdeb" name="tests/Deque/clone.phpt" role="test" />
+   <file md5sum="0ba59a014b26d12edef9f6c54e77549c" name="tests/Deque/foreach.phpt" role="test" />
+   <file md5sum="59770b1394c629beb100708d7d41e3a0" name="tests/Deque/iterator.phpt" role="test" />
+   <file md5sum="54fa795ef1e156783ce92abf4cf2f52d" name="tests/Deque/offsetGet.phpt" role="test" />
+   <file md5sum="9980e609a7de72d98fc2389eff774a46" name="tests/Deque/offsetGetShifted.phpt" role="test" />
+   <file md5sum="2afd89eeba5f642a6c96dcfd1c69299e" name="tests/Deque/popMany.phpt" role="test" />
+   <file md5sum="dc58ab672b5bb72ec0cc78af8011055c" name="tests/Deque/push_multiple.phpt" role="test" />
+   <file md5sum="3b5dc9992af12235060f8b77dc5183d9" name="tests/Deque/push_pop.phpt" role="test" />
+   <file md5sum="50853235359a85cba92d52f4b48e7ff7" name="tests/Deque/push_pop_both.phpt" role="test" />
+   <file md5sum="35e571abc60f8eb45877aef350595163" name="tests/Deque/serialization.phpt" role="test" />
+   <file md5sum="b4520fd41ffe52def89265b063a67f77" name="tests/Deque/shift.phpt" role="test" />
+   <file md5sum="bbaab01ba54c370b7dee0082935a6fbc" name="tests/Deque/toArray.phpt" role="test" />
+   <file md5sum="cf89e6c6949aaa43f567f39501d32edc" name="tests/Deque/unserialize.phpt" role="test" />
+   <file md5sum="84a353b51694e63c56a31359c86ce078" name="tests/Deque/unshift.phpt" role="test" />
+   <file md5sum="7fa5d6d3d8a4c174b6499dc81a4f550e" name="tests/Deque/var_export_recursion.phpt" role="test" />
+   <file md5sum="28120b3ab7cc386a9088a05b61ad52f0" name="tests/EmptyMap/EmptyMap.phpt" role="test" />
+   <file md5sum="be59c1e0d40328fce38dfbb825c21983" name="tests/EmptySequence/EmptySequence.phpt" role="test" />
+   <file md5sum="dc9c4693420ee2ab55395f9d857ecbf6" name="tests/EmptySet/EmptySet.phpt" role="test" />
+   <file md5sum="3813884c6f572ea8d909e7af925727c4" name="tests/ImmutableIterable/clone.phpt" role="test" />
+   <file md5sum="ed69bbb7d339db80de3fc6d8fd1f2062" name="tests/ImmutableIterable/contains.phpt" role="test" />
+   <file md5sum="a97f7e7c87f5812a9d1a7a1e0f292721" name="tests/ImmutableIterable/keyAt_valueAt.phpt" role="test" />
+   <file md5sum="9eb9e1981376699eeb6b624e46363a79" name="tests/ImmutableIterable/keys_values.phpt" role="test" />
+   <file md5sum="e72c3b09b035cd39b83cad4354d44f33" name="tests/ImmutableIterable/serialization.phpt" role="test" />
+   <file md5sum="b33049defb45c189f2405c70474e0c00" name="tests/ImmutableIterable/set_state.phpt" role="test" />
+   <file md5sum="2de423108ec68ad6c09f54417dbbc66b" name="tests/ImmutableIterable/unserialize.phpt" role="test" />
+   <file md5sum="95248ff1f0e73c066521e88e152c7ad8" name="tests/ImmutableSequence/arrayAccess.phpt" role="test" />
+   <file md5sum="4d28b2c4e3b3ddeaa94369eac48b356e" name="tests/ImmutableSequence/clone.phpt" role="test" />
+   <file md5sum="65a10b24d5cb06881ace3a3f84e7d952" name="tests/ImmutableSequence/filter.phpt" role="test" />
+   <file md5sum="7366168c017a8ff61e95610c6879d95d" name="tests/ImmutableSequence/map.phpt" role="test" />
+   <file md5sum="f0c7691ed4918805e4589d759d3065e3" name="tests/ImmutableSequence/offsetGet.phpt" role="test" />
+   <file md5sum="0fc4bfd05f53974df258803484a1f11f" name="tests/ImmutableSequence/serialization.phpt" role="test" />
+   <file md5sum="70efa84e940bc0265fcfc36059135cf0" name="tests/ImmutableSequence/set_state.phpt" role="test" />
+   <file md5sum="8c87c2a094ef474ab0c7e2b7d02e83d2" name="tests/ImmutableSequence/toArray.phpt" role="test" />
+   <file md5sum="0634d42cc4ffdbddc22d637084b671f3" name="tests/ImmutableSequence/unserialize.phpt" role="test" />
+   <file md5sum="4e17b9bfe0f19ffe6e446cc68bb50949" name="tests/ImmutableSortedIntSet/create.phpt" role="test" />
+   <file md5sum="a9848b7bdf4a697bd674ba7861763327" name="tests/ImmutableSortedStringSet/contains.phpt" role="test" />
+   <file md5sum="ce7d95c376adbf1c363cef54d7c32b22" name="tests/ImmutableSortedStringSet/create.phpt" role="test" />
+   <file md5sum="d589b2c48b652445fbbc7d75d57ba34e" name="tests/IntVector/IntVector.phpt" role="test" />
+   <file md5sum="fccf0cf0d6fe4052008e12472704c2ae" name="tests/IntVector/aggregate.phpt" role="test" />
+   <file md5sum="d928c52bf3ba3eada93a9c11dcef1ae4" name="tests/IntVector/arrayCast.phpt" role="test" />
+   <file md5sum="cc3d7dead2f7039eb759cad2ae70200e" name="tests/IntVector/clone.phpt" role="test" />
+   <file md5sum="9ace1820977b46e7eaa27155507f76da" name="tests/IntVector/gc.phpt" role="test" />
+   <file md5sum="da26e99215778aaa68ea137c78117308" name="tests/IntVector/isset.phpt" role="test" />
+   <file md5sum="6368eb7abc0416805f6ed51d83ae66b0" name="tests/IntVector/offsetGet.phpt" role="test" />
+   <file md5sum="a5b6389d9f25ccc6c24d5dbd03ae07c7" name="tests/IntVector/promote.phpt" role="test" />
+   <file md5sum="3f9e8ee3cf47deac01b415a88e31c396" name="tests/IntVector/promote_32bit.phpt" role="test" />
+   <file md5sum="c81867f6326649bd5a2a1523a2141b0b" name="tests/IntVector/push_pop.phpt" role="test" />
+   <file md5sum="8b1f7fc0e88b869842af6401299a49b9" name="tests/IntVector/serialization.phpt" role="test" />
+   <file md5sum="5918831f75e3c81815604dcf7e9d1fff" name="tests/IntVector/serialization_64.phpt" role="test" />
+   <file md5sum="fc3316c73ec824b4281554794b2a48b6" name="tests/IntVector/serialization_64_32bit.phpt" role="test" />
+   <file md5sum="5d2c446caf21aace706556081048dfb8" name="tests/IntVector/setValueAt.phpt" role="test" />
+   <file md5sum="6cf166d716af9d12280d0776552923f3" name="tests/IntVector/set_state.phpt" role="test" />
+   <file md5sum="d0253d03fb100039899ce5a44c8e66a8" name="tests/IntVector/specializations.phpt" role="test" />
+   <file md5sum="83b0860b9714823d675526c18af6ea11" name="tests/IntVector/toArray.phpt" role="test" />
+   <file md5sum="676b1ab2a8e80c944edc03692dfbe872" name="tests/IntVector/unserialize.phpt" role="test" />
+   <file md5sum="7862bb5794559e01bee358d0180985ad" name="tests/LowMemoryVector/bitsetSerialization.phpt" role="test" />
+   <file md5sum="2b6b8013e0088e03997d419beb0f4b36" name="tests/LowMemoryVector/clone.phpt" role="test" />
+   <file md5sum="900c44b7717a4a2ac016ed12f64606c6" name="tests/LowMemoryVector/isset.phpt" role="test" />
+   <file md5sum="ee730ccafc75135c3b0d738e28679bdc" name="tests/LowMemoryVector/jsonEncodeRecursive.phpt" role="test" />
+   <file md5sum="b8fb49ea822c49d712d81ec5a23e2857" name="tests/LowMemoryVector/offsetGet.phpt" role="test" />
+   <file md5sum="572f60519dab3df49578b64effba7522" name="tests/LowMemoryVector/promote.phpt" role="test" />
+   <file md5sum="bb36c7549fec99fe23f2f022d77f92c9" name="tests/LowMemoryVector/promote_32bit.phpt" role="test" />
+   <file md5sum="e4b06f0d9e4f7c1a257b1037bb0fc561" name="tests/LowMemoryVector/push_pop.phpt" role="test" />
+   <file md5sum="d78a6b3a1ef8a872eabb2db92dc528cb" name="tests/LowMemoryVector/serialization.phpt" role="test" />
+   <file md5sum="804f39096e738686de6b9b9df8662ab5" name="tests/LowMemoryVector/serialization_64.phpt" role="test" />
+   <file md5sum="ae3d3ae7a18b071fd7fae03735239b37" name="tests/LowMemoryVector/serialization_64_32bit.phpt" role="test" />
+   <file md5sum="512ef8596c88907d8b72dfdafd3863fb" name="tests/LowMemoryVector/set_state.phpt" role="test" />
+   <file md5sum="85c5851348a216d3bd3e091b0fbe3c28" name="tests/LowMemoryVector/specializations.phpt" role="test" />
+   <file md5sum="47e433f924434c63512302caddb4205b" name="tests/LowMemoryVector/toArray.phpt" role="test" />
+   <file md5sum="2481aa9f859b100fd6ac2a926ccc48e5" name="tests/LowMemoryVector/unserialize.phpt" role="test" />
+   <file md5sum="7a702ec8bebcea4e42289c8ee53300f4" name="tests/Map/array.phpt" role="test" />
+   <file md5sum="78996a7a751f5f23efd5a68ab51edbdd" name="tests/Map/clear.phpt" role="test" />
+   <file md5sum="92bf3062e64db28967cc05311bb965dc" name="tests/Map/contains.phpt" role="test" />
+   <file md5sum="a573662d87c104633759b4a673f02a23" name="tests/Map/from_pairs.phpt" role="test" />
+   <file md5sum="44297ea47d20fd743bd8562f1ccde8ee" name="tests/Map/gc.phpt" role="test" />
+   <file md5sum="b22559e65224f159510e21ae4cedbb38" name="tests/Map/iteration.phpt" role="test" />
+   <file md5sum="37322ce6f672711fcea3703d679e26c8" name="tests/Map/iteration_repack.phpt" role="test" />
+   <file md5sum="47154491bcb630ce9f32106fda68e43e" name="tests/Map/iteration_repack_single.phpt" role="test" />
+   <file md5sum="4eebba9f0120a36110bd1cd47e64680c" name="tests/Map/offset.phpt" role="test" />
+   <file md5sum="48e4dccaf5932f49d2f522a47fc91775" name="tests/Map/referenceShorthand.phpt" role="test" />
+   <file md5sum="6b5e9968fc9aeac06aeb5daaeb984013" name="tests/Map/remove.phpt" role="test" />
+   <file md5sum="f401619b15d4d027f92b7b6b83042903" name="tests/Map/toArray.phpt" role="test" />
+   <file md5sum="c200c53ee4ea6bc0fcc6ebd6d404211c" name="tests/MutableIterable/clone.phpt" role="test" />
+   <file md5sum="5f81d744e654b7cc60dffc565861cc31" name="tests/MutableIterable/contains.phpt" role="test" />
+   <file md5sum="471c97ac65f731c8eac3be60e982d33a" name="tests/MutableIterable/keyAt_valueAt.phpt" role="test" />
+   <file md5sum="8f0602566f7430011570dc0dc1b9839c" name="tests/MutableIterable/keys_values.phpt" role="test" />
+   <file md5sum="ad6422f3b54ff2925d50a935135b24cb" name="tests/MutableIterable/push_pop.phpt" role="test" />
+   <file md5sum="500248e3a79c385fb145f57d9a2b62ea" name="tests/MutableIterable/serialization.phpt" role="test" />
+   <file md5sum="e73adc23858a56d135187f35e172c3e8" name="tests/MutableIterable/setKeyAt.phpt" role="test" />
+   <file md5sum="6d7419bc4b42a7a2bf2a1f0e03e445f3" name="tests/MutableIterable/setSize.phpt" role="test" />
+   <file md5sum="d707067d548f70dd3b08465777317c82" name="tests/MutableIterable/set_state.phpt" role="test" />
+   <file md5sum="73f2aebae9a8b4c6491c3768f83cba0b" name="tests/MutableIterable/unserialize.phpt" role="test" />
+   <file md5sum="c290d2d216ae5d46b8e8d8459ee94feb" name="tests/Sequence/arrayCast.phpt" role="test" />
+   <file md5sum="2c90ebf9399ddd0f7018f7a5921c1bf9" name="tests/Sequence/clear.phpt" role="test" />
+   <file md5sum="607a2add1bc575a056b79097b0e3f4fa" name="tests/Sequence/contains.phpt" role="test" />
+   <file md5sum="e2e6b7f096f89bda28524b68c6a84863" name="tests/Sequence/insert.phpt" role="test" />
+   <file md5sum="1d0dbcb353a406fe931413af344e8e07" name="tests/Sequence/insert_foreach.phpt" role="test" />
+   <file md5sum="ed35a89671504d206ad827d3d1ca68f2" name="tests/Sequence/insert_iteration.phpt" role="test" />
+   <file md5sum="ddf529eb6093abf6ce9a425f58402089" name="tests/Sequence/pop_iteration.phpt" role="test" />
+   <file md5sum="0310264a44ca3ac7992a85b93627e500" name="tests/Sequence/set.phpt" role="test" />
+   <file md5sum="b41ca2be34f574f48839fce42fea2c73" name="tests/Sequence/set_state.phpt" role="test" />
+   <file md5sum="c1d61eeefe1de505838ca238a6cf6d5d" name="tests/Sequence/shift.phpt" role="test" />
+   <file md5sum="ddd321bd65a8322c5a219f47c5cf4050" name="tests/Set/contains.phpt" role="test" />
+   <file md5sum="aaaf1cb2dddaeaae1e6a6baf9d652ead" name="tests/Set/deduplicate.phpt" role="test" />
+   <file md5sum="3a78c87072d3470f4f029d58a69acefd" name="tests/Set/floatKey.phpt" role="test" />
+   <file md5sum="534943683c8de507e03500cc6131ee16" name="tests/Set/gc.phpt" role="test" />
+   <file md5sum="5cda75afb80099cf3a637f1a3f08036f" name="tests/Set/iteration.phpt" role="test" />
+   <file md5sum="cf3f87af03d08ffe36812ecd3dd49c80" name="tests/Set/iteration_gaps.phpt" role="test" />
+   <file md5sum="37daa7d6ea086467860702b87d98a051" name="tests/Set/iteration_repack.phpt" role="test" />
+   <file md5sum="5983db8cc45996715f2f0d05861b56ef" name="tests/Set/iteration_repack_single.phpt" role="test" />
+   <file md5sum="918e187b1051e0b7fd674f71209116a6" name="tests/Set/serialization.phpt" role="test" />
+   <file md5sum="db596b2e7cfa8a4bd0138e7972ef7ae4" name="tests/Set/set_state.phpt" role="test" />
+   <file md5sum="09ccd8c7737e5049e150d786886e305a" name="tests/SortedIntVectorSet/addRemove.phpt" role="test" />
+   <file md5sum="eaaac0d4f715cb8390ddbe72630bbef5" name="tests/SortedIntVectorSet/create.phpt" role="test" />
+   <file md5sum="8fa4ff45cda5fa3cb249b42de89ffeed" name="tests/StrictHashMap/clone.phpt" role="test" />
+   <file md5sum="c0c3c1fb14de6279618b48cdd34133f7" name="tests/StrictHashMap/floatKey.phpt" role="test" />
+   <file md5sum="17d32790b5fc47f17f6fd93d756f6423" name="tests/StrictHashMap/keys_values.phpt" role="test" />
+   <file md5sum="bef45fbb6849be713ba7bf8104907be2" name="tests/StrictHashMap/offsetExists.phpt" role="test" />
+   <file md5sum="5c9901af339387f1e515b32699d7c32b" name="tests/StrictHashMap/serialization.phpt" role="test" />
+   <file md5sum="1b9863e380c6492d986a68c64864b5d3" name="tests/StrictHashMap/types.phpt" role="test" />
+   <file md5sum="d2ef61583b19d7fab9dd6d5181525d6b" name="tests/StrictHashMap/unserialize.phpt" role="test" />
+   <file md5sum="aee21db2aeb93de3de0cf81614df3195" name="tests/StrictHashSet/add.phpt" role="test" />
+   <file md5sum="6b3411bcf6d2d9c3a689da008563f751" name="tests/StrictHashSet/clone.phpt" role="test" />
+   <file md5sum="61349fd449556cfd49bfe26ff831751f" name="tests/StrictHashSet/expand.phpt" role="test" />
+   <file md5sum="dd93d676a7695d6c24520229767c859d" name="tests/StrictHashSet/queue.phpt" role="test" />
+   <file md5sum="45a90f7bcabaf2142e8be6138e2516f0" name="tests/StrictHashSet/single.phpt" role="test" />
+   <file md5sum="814444533201a828cad600ff27fe2d6f" name="tests/StrictHashSet/unserialize.phpt" role="test" />
+   <file md5sum="a2c6cbb260a1cd7bcb07ccde691ff3d6" name="tests/StrictHeap/StrictHeap.phpt" role="test" />
+   <file md5sum="ccfd6600429d19f3e00ff01077a7bb99" name="tests/StrictHeap/extensible.phpt" role="test" />
+   <file md5sum="0af356dc00f1a0f2951ae6873c91699b" name="tests/StrictHeap/reflection.phpt" role="test" />
+   <file md5sum="3686520f25e5e05b361505e5c9ed8e45" name="tests/StrictHeap/serialization.phpt" role="test" />
+   <file md5sum="f4d42a311ac26f04931d5eeae14136b3" name="tests/StrictSortedVectorMap/clone.phpt" role="test" />
+   <file md5sum="665e87e005f48a762edeac9c371839be" name="tests/StrictSortedVectorMap/keys_values.phpt" role="test" />
+   <file md5sum="5ade8d44faa31657bb77609f4aea5fb5" name="tests/StrictSortedVectorMap/offsetExists.phpt" role="test" />
+   <file md5sum="8d698dfb305319433f8e05ea59157d86" name="tests/StrictSortedVectorMap/serialization.phpt" role="test" />
+   <file md5sum="72091ed4a89b492691443e5b98154f42" name="tests/StrictSortedVectorMap/shift.phpt" role="test" />
+   <file md5sum="1cd5c0a9d15278474dad01d42d3a4394" name="tests/StrictSortedVectorMap/types.phpt" role="test" />
+   <file md5sum="77d2416e8faa0a2524ed338a4c44cbab" name="tests/StrictSortedVectorMap/unserialize.phpt" role="test" />
+   <file md5sum="bb96df8de850be2d2732abb273d2adde" name="tests/StrictSortedVectorSet/add.phpt" role="test" />
+   <file md5sum="d7d273dc41742ae181b42b1fb98baa4d" name="tests/StrictSortedVectorSet/clone.phpt" role="test" />
+   <file md5sum="4aad436a78350c43e7b3b3ad8beebe17" name="tests/StrictSortedVectorSet/shift.phpt" role="test" />
+   <file md5sum="d3d0f708e0a830083e36b618c4d77f8a" name="tests/StrictSortedVectorSet/unserialize.phpt" role="test" />
+   <file md5sum="408e914425dc056cb40ac907d1d4d8a4" name="tests/StrictSortedVectorSet/unserialize_sorted.phpt" role="test" />
+   <file md5sum="398c4517d33de2fdcc137b6b2a2425dd" name="tests/StrictTreeMap/clone.phpt" role="test" />
+   <file md5sum="8cb31717c97093ab451b43d35935759c" name="tests/StrictTreeMap/fast_balanced_creation.phpt" role="test" />
+   <file md5sum="4c3eb3b108b9fe1724cf51f7e3963ec5" name="tests/StrictTreeMap/iteration_delete.phpt" role="test" />
+   <file md5sum="5cd811b738e528141d9069c9e52bd053" name="tests/StrictTreeMap/iteration_insert.phpt" role="test" />
+   <file md5sum="3f4e7a75128e48269cc57a4175c1f50a" name="tests/StrictTreeMap/keys_values.phpt" role="test" />
+   <file md5sum="a2cef455a0357504d2868c36a737acc8" name="tests/StrictTreeMap/large.phpt" role="test" />
+   <file md5sum="7374950a2496b1132af729c6b454bea2" name="tests/StrictTreeMap/offsetExists.phpt" role="test" />
+   <file md5sum="06765eaee9470f8a87359e2255c28597" name="tests/StrictTreeMap/rebalance_insert.phpt" role="test" />
+   <file md5sum="6f80ec0ea10249b23bcbb75c8c5ece56" name="tests/StrictTreeMap/remove_single.phpt" role="test" />
+   <file md5sum="e0e427af0979843b1ae0750ca1f76cf6" name="tests/StrictTreeMap/serialization.phpt" role="test" />
+   <file md5sum="95a7b165bd1ec19c44a6f3203da12955" name="tests/StrictTreeMap/shift.phpt" role="test" />
+   <file md5sum="c199724ff8c1641e70299f549d0b8432" name="tests/StrictTreeMap/shift_repeated.phpt" role="test" />
+   <file md5sum="1b064d892bbee13f197f8be34456ebb0" name="tests/StrictTreeMap/types.phpt" role="test" />
+   <file md5sum="55365c0637de222e41a85a3680c37c95" name="tests/StrictTreeMap/unserialize.phpt" role="test" />
+   <file md5sum="2c90195374cc1eaa574dc281c04ba04a" name="tests/StrictTreeSet/add.phpt" role="test" />
+   <file md5sum="df6bddce5c586bead6bccbfbc5f7cdec" name="tests/StrictTreeSet/clone.phpt" role="test" />
+   <file md5sum="d70287c983fb8b8460a692a14c710d8a" name="tests/StrictTreeSet/floatKey.phpt" role="test" />
+   <file md5sum="a98c54a4ef9735772e915784abeb8637" name="tests/StrictTreeSet/iteration_delete.phpt" role="test" />
+   <file md5sum="6d71ea48181911cccbcd453ef5604b88" name="tests/StrictTreeSet/iteration_insert.phpt" role="test" />
+   <file md5sum="0798b7f81e4c70905f97eb8bd50d2afc" name="tests/StrictTreeSet/rebalance_add.phpt" role="test" />
+   <file md5sum="c69ce5bebaf037386d1f16af194b83ac" name="tests/StrictTreeSet/shift.phpt" role="test" />
+   <file md5sum="a7efd7e95f5f0d3a2fa1bd88070b9932" name="tests/StrictTreeSet/shift_repeated.phpt" role="test" />
+   <file md5sum="071fbafeafa71b91a033a88fb18f6e6f" name="tests/StrictTreeSet/unserialize.phpt" role="test" />
+   <file md5sum="0f9201a7b6a5d127b3f0addfcf537824" name="tests/StrictTreeSet/unserialize_sorted.phpt" role="test" />
+   <file md5sum="4024e1e804819e17b1d5893720065cff" name="tests/Vector/clone.phpt" role="test" />
+   <file md5sum="e9bcdc53a1e6c37adf6dca80093c16f1" name="tests/Vector/filter.phpt" role="test" />
+   <file md5sum="38960c1bcabac33dda5406cca9bce181" name="tests/Vector/isset.phpt" role="test" />
+   <file md5sum="83103cc85732937ca770e675e8bbfcfc" name="tests/Vector/map.phpt" role="test" />
+   <file md5sum="115c98aa41625c43ddde23d2c14bf39b" name="tests/Vector/offsetGet.phpt" role="test" />
+   <file md5sum="8fd8770258d344ef1a7b1c636fad099d" name="tests/Vector/push_pop.phpt" role="test" />
+   <file md5sum="4b02b4b572eed4d65d08817f3b5a91ac" name="tests/Vector/reserve.phpt" role="test" />
+   <file md5sum="13e97a98d76286d8bda95e85fdc845fe" name="tests/Vector/serialization.phpt" role="test" />
+   <file md5sum="ccdeefaefe07148122df0f0fa69e5898" name="tests/Vector/setSize.phpt" role="test" />
+   <file md5sum="955bccad845e1404bfe8ee57d0a6ecbb" name="tests/Vector/setSize_default.phpt" role="test" />
+   <file md5sum="798418e1fe20e618cb2ec39f27930ae1" name="tests/Vector/set_state.phpt" role="test" />
+   <file md5sum="1c25a8513630c882639c63eb2189b797" name="tests/Vector/shrink_capacity.phpt" role="test" />
+   <file md5sum="f789ceb26b36e8457394991eef2d893f" name="tests/Vector/toArray.phpt" role="test" />
+   <file md5sum="28ec3c0988464a33602970a74fc4b373" name="tests/Vector/unserialize.phpt" role="test" />
+   <file md5sum="a51cf0e5eaaad0a51f0b2f63b838eada" name="tests/array/array_value_first.phpt" role="test" />
+   <file md5sum="006ad4adf832be23c17cd60d8b2246ee" name="tests/array/is_same_array_handle.phpt" role="test" />
+   <file md5sum="5e030b3186e25a0155262d3a67f4955a" name="tests/encode_raw_string.inc" role="test" />
+   <file md5sum="2fddf6342b33029bfa893463dd65da05" name="tests/iterable/all_array.phpt" role="test" />
+   <file md5sum="15af9fe1d76ef2f999fafdd5cb098c46" name="tests/iterable/all_traversable.phpt" role="test" />
+   <file md5sum="55da0a87299b895450831a3d2db45b19" name="tests/iterable/any_array.phpt" role="test" />
+   <file md5sum="14d73a96f4c6e10e29c1f9dc4e78eaf2" name="tests/iterable/any_traversable.phpt" role="test" />
+   <file md5sum="89f7b92994e811b85d1a56097c1e29ff" name="tests/iterable/find_array.phpt" role="test" />
+   <file md5sum="06e43bbc22a867e45ce454b256c83d4a" name="tests/iterable/find_traversable.phpt" role="test" />
+   <file md5sum="0a723cf0ab8ff077e1c9afb55dadfee7" name="tests/iterable/fold_array.phpt" role="test" />
+   <file md5sum="9ddefc8c4ae4acff3c580f45d403bf2b" name="tests/iterable/fold_traversable.phpt" role="test" />
+   <file md5sum="8553c8b32288c914903cf0107d1c2cf3" name="tests/iterable/includes_value.phpt" role="test" />
+   <file md5sum="fbb9dd732314d864734c7ffe338baad6" name="tests/iterable/none_array.phpt" role="test" />
+   <file md5sum="9433b09b54e8498e9ecf638dc43cab34" name="tests/iterable/none_traversable.phpt" role="test" />
+   <file md5sum="403249ea618a3e9cbf3af6a06165e5fe" name="tests/iterable/unique_values.phpt" role="test" />
+   <file md5sum="d2d4803683c7152e11babf12490535a0" name="tests/iterable/unique_values_references.phpt" role="test" />
+   <file md5sum="e3b11409ec31a3306d6fb4f1a30b0248" name="tests/iterable/unique_values_traversable.phpt" role="test" />
+   <file md5sum="1872b3fcfe871b1639146c346a62f8c6" name="tests/misc/binary_search.phpt" role="test" />
+   <file md5sum="e50ee83bf5fb74fea2687f1dea803626" name="tests/misc/binary_search_edge_case.phpt" role="test" />
+   <file md5sum="674b1276a8ec22edc51c6c76443906d4" name="tests/misc/binary_search_edge_case_2.phpt" role="test" />
+   <file md5sum="704058e72f26113ab471246ab5a24b87" name="tests/misc/stable_compare.phpt" role="test" />
+   <file md5sum="8efe75a34dcfdf87aef0ac47d8a6099a" name="tests/misc/stable_compare_2.phpt" role="test" />
+   <file md5sum="6c233f25d845ce6eff4ba5fa32be080e" name="tests/misc/stable_compare_3.phpt" role="test" />
+   <file md5sum="fb08596bd475ec775147d30460de78f5" name="tests/misc/strict_hash.phpt" role="test" />
+   <file md5sum="f7701204694b82fda2a52827940dd429" name="tests/misc/strict_hash_32bit.phpt" role="test" />
+   <file md5sum="265c7269f1344a310709b7cc08706eff" name="tests/misc/strict_hash_array_recursion.phpt" role="test" />
+   <file md5sum="f69478bd7b9aef617f5485a991745b80" name="tests/misc/strict_hash_array_recursion_32bit.phpt" role="test" />
+   <file md5sum="873b61774cd62022a12827aad27c0062" name="tests/misc/strict_hash_array_references.phpt" role="test" />
+   <file md5sum="4a2eb8e8da261a148855ceb18865a3c7" name="tests/misc/strict_hash_array_references_32bit.phpt" role="test" />
+   <file md5sum="fdf43b0f87efb9a2a7e68a7224b4d839" name="tests/misc/strict_hash_recursion.phpt" role="test" />
+   <file md5sum="38a2384d6214b32f00768a854cddc2de" name="tests/misc/strict_hash_recursion_32bit.phpt" role="test" />
+   <file md5sum="bea08776cad92cde11982c3d3812a9d8" name="tests/misc/strict_hash_typed_property.phpt" role="test" />
+   <file md5sum="0c2d4a96ec6dc593d27300b7c1999673" name="tests/reflection.phpt" role="test" />
+   <file md5sum="f1fa16878a24d3e9eef020be015175e3" name="tests/reflection_81.phpt" role="test" />
+   <file md5sum="164e5c848f5588cc549096993370dafc" name="config.m4" role="src" />
+   <file md5sum="f5f2aa34150bc0528d844e8816fb2544" name="config.w32" role="src" />
+   <file md5sum="833d560ac772499dbaab70c2a164645c" name="php_teds.h" role="src" />
+   <file md5sum="2ba683d51c93167f3af7f4b523b8a4cc" name="README.md" role="doc" />
+   <file md5sum="57e0b9b125a1b93bc222984efa37f389" name="COPYING" role="doc" />
+   <file md5sum="ec1c911b758e8799326081cc0e9bfcdf" name="teds_arginfo.h" role="src" />
+   <file md5sum="69e53264c47f89618f334bb5d082cfe9" name="teds_bitvector_arginfo.h" role="src" />
+   <file md5sum="cf296d6584aac975b98d8d598e8c1ba3" name="teds_bitvector.c" role="src" />
+   <file md5sum="9b568e69a22900ec31c836d22599b2c0" name="teds_bitvector.h" role="src" />
+   <file md5sum="f3fe0ebc1833ddfeb171fad7098afd65" name="teds_bitvector.stub.php" role="src" />
+   <file md5sum="586f086a09345d294309d6716adad15b" name="teds_bswap.h" role="src" />
+   <file md5sum="628cf44eb2e083ef4ab02e2e5a3858b5" name="teds_cachediterable_arginfo.h" role="src" />
+   <file md5sum="ec98ef2325b31a792c9474e374a0c2b5" name="teds_cachediterable.c" role="src" />
+   <file md5sum="17cd11fe6b3700b59b32ce54f9023481" name="teds_cachediterable.h" role="src" />
+   <file md5sum="e58cd36d8441a18844a2d2cf78be2f31" name="teds_cachediterable.stub.php" role="src" />
+   <file md5sum="03b193f40e9c7a83342d1610516c76f1" name="teds.c" role="src" />
+   <file md5sum="c3bc7f433dca45a00c7681723bb596f0" name="teds_deque_arginfo.h" role="src" />
+   <file md5sum="c2b5cbec8d3b5672a33b7329bf39d9f8" name="teds_deque.c" role="src" />
+   <file md5sum="d52c44d38923bf9c4143864b7cf918f5" name="teds_deque.h" role="src" />
+   <file md5sum="8a7a2628c95769fc9abb10ba5bd70d23" name="teds_deque.stub.php" role="src" />
+   <file md5sum="e705cec8c3bea553ef178c698032a261" name="teds_emptycollection_arginfo.h" role="src" />
+   <file md5sum="4f871c9220fc5d8ea78a0b84bff8b2f4" name="teds_emptycollection.c" role="src" />
+   <file md5sum="440be5a981aa6350cb52b13baef64906" name="teds_emptycollection.h" role="src" />
+   <file md5sum="c21ac9e1c7ab171f23cb338160429d64" name="teds_emptycollection.stub.php" role="src" />
+   <file md5sum="e0b5258d9c8a0bdbabf1081773f58a2f" name="teds_exceptions_arginfo.h" role="src" />
+   <file md5sum="df5fb4e2a23c58ce1e0f8be36bc4ec91" name="teds_exceptions.c" role="src" />
+   <file md5sum="fad3264b1fed215f7639cff69c324b94" name="teds_exceptions.h" role="src" />
+   <file md5sum="ccca1fd0fd935f93ca0e25110d82b330" name="teds_exceptions.stub.php" role="src" />
+   <file md5sum="c6743f6cc1c3a72bb31e3546a5dfd132" name="teds.h" role="src" />
+   <file md5sum="c3e9ee9ce111fcde3a2ebafc78893d55" name="teds_immutableiterable_arginfo.h" role="src" />
+   <file md5sum="2ae706c476c49b7b637bf5982f4fcd64" name="teds_immutableiterable.c" role="src" />
+   <file md5sum="171c6eeda9038c3c71f0359fe4124373" name="teds_immutableiterable.h" role="src" />
+   <file md5sum="e01ad4a941c0f0a20c57be32f4c7f9fb" name="teds_immutableiterable.stub.php" role="src" />
+   <file md5sum="15260f72bb4a335b10f683220d0a6026" name="teds_immutablesequence_arginfo.h" role="src" />
+   <file md5sum="3b29a0e5eefaba4c6a9848bf8c3e9b27" name="teds_immutablesequence.c" role="src" />
+   <file md5sum="9cbd978de3af41b10449d6fa464c24e6" name="teds_immutablesequence.h" role="src" />
+   <file md5sum="bb8843652216d2a69d63596d828c9f60" name="teds_immutablesequence.stub.php" role="src" />
+   <file md5sum="714096d0d45f8bf49f134a069f8ad0cb" name="teds_immutablesortedstringset_arginfo.h" role="src" />
+   <file md5sum="f0cf906d7f256d8143e991a70956529a" name="teds_immutablesortedstringset.c" role="src" />
+   <file md5sum="8032fd8b9b4202481c2d7f4f7fb30244" name="teds_immutablesortedstringset.h" role="src" />
+   <file md5sum="ae999a7f49e1b4aaa40209e587ce775d" name="teds_immutablesortedstringset.stub.php" role="src" />
+   <file md5sum="9809a51c9de8646421f93589e47ef730" name="teds_interfaces_arginfo.h" role="src" />
+   <file md5sum="b2bcad0b3c83f2cece40af3120a2296a" name="teds_interfaces.c" role="src" />
+   <file md5sum="e8ad43f2b26c1c1a61f2caab98dc660f" name="teds_interfaces.h" role="src" />
+   <file md5sum="b421d5ae82e453d8b3cd883384363990" name="teds_interfaces.stub.php" role="src" />
+   <file md5sum="4c1d5d99811bb0d1b3ebd9804aee24f2" name="teds_internaliterator.h" role="src" />
+   <file md5sum="2ebd04880fdb60ffbe198e83e8b4e04f" name="teds_intvector_arginfo.h" role="src" />
+   <file md5sum="c76401111d02b56e4cc036d8f5528628" name="teds_intvector.c" role="src" />
+   <file md5sum="782b91f558c25aa199e8c542f9668d5c" name="teds_intvector.h" role="src" />
+   <file md5sum="319ba70cb93034414c1957deb71463f5" name="teds_intvector.stub.php" role="src" />
+   <file md5sum="f9daede75ccebf35e6e14e6559cfbcb5" name="teds_lowmemoryvector_arginfo.h" role="src" />
+   <file md5sum="359440f2e975a288298145bb572352bd" name="teds_lowmemoryvector.c" role="src" />
+   <file md5sum="d7720e1a483e99b3a8e81f858844fe29" name="teds_lowmemoryvector.h" role="src" />
+   <file md5sum="d57aadddfe49c2dfc1ef7fef1e40ae17" name="teds_lowmemoryvector.stub.php" role="src" />
+   <file md5sum="9c4eaaac4e4ebedfb90a591e0d7033c9" name="teds_mutableiterable_arginfo.h" role="src" />
+   <file md5sum="a25f2d3892729daa8662a6ecbdcd9893" name="teds_mutableiterable.c" role="src" />
+   <file md5sum="9815f61c9d1c7b681fee9d5488cf6905" name="teds_mutableiterable.h" role="src" />
+   <file md5sum="d35338aa4643cd7c5346664a86da25fa" name="teds_mutableiterable.stub.php" role="src" />
+   <file md5sum="5d90eb4cd43773ddc66e432c080b60a1" name="teds_serialize_util.h" role="src" />
+   <file md5sum="e91921b2f1850f97ff313143a896f49b" name="teds_strictheap_arginfo.h" role="src" />
+   <file md5sum="075200ae30724d8181ccc0769f26160f" name="teds_strictheap.c" role="src" />
+   <file md5sum="5cf87cf37f155663ffa3ab22611c7857" name="teds_strictheap.h" role="src" />
+   <file md5sum="37f8081fec8a03884d6139ee31101ec3" name="teds_strictheap.stub.php" role="src" />
+   <file md5sum="eec812ddceeae3d49d9cd16482bcfe29" name="teds_strictsortedvectormap_arginfo.h" role="src" />
+   <file md5sum="1c5832e9e22d8efc8334b17cbbff9de4" name="teds_strictsortedvectormap.c" role="src" />
+   <file md5sum="3a56a0122743925b9fbfdda739429d34" name="teds_strictsortedvectormap.h" role="src" />
+   <file md5sum="ca0687af04e04200ebabe466dc056de8" name="teds_strictsortedvectormap.stub.php" role="src" />
+   <file md5sum="43f4ed3beb9e5ebd93267531f86461b4" name="teds_strictsortedvectorset_arginfo.h" role="src" />
+   <file md5sum="3f1d515a1ef7051116fa917d4bb64b50" name="teds_strictsortedvectorset.c" role="src" />
+   <file md5sum="a3cdf61a1952db204524bdcdab3a82b1" name="teds_strictsortedvectorset.h" role="src" />
+   <file md5sum="3da193643a7bc4822ace840d33aa7616" name="teds_strictsortedvectorset.stub.php" role="src" />
+   <file md5sum="d547d8b435a2c33f53aa3ac7a0738637" name="teds_stricthashmap_arginfo.h" role="src" />
+   <file md5sum="711e141e092fe58b2f045d1f60dff6ef" name="teds_stricthashmap.c" role="src" />
+   <file md5sum="bdce5f783bb9a2c42a1feea6251e9c3e" name="teds_stricthashmap.h" role="src" />
+   <file md5sum="42f4d6fa76f8a6fc9b020c94aa2c5b40" name="teds_stricthashmap.stub.php" role="src" />
+   <file md5sum="06bb862ad83629e05a6c3720166e2346" name="teds_stricthashset_arginfo.h" role="src" />
+   <file md5sum="459f73fd8e0d69822135e8ee0401593a" name="teds_stricthashset.c" role="src" />
+   <file md5sum="a35c1e3a20149abecb7020666897bf7f" name="teds_stricthashset.h" role="src" />
+   <file md5sum="15891df063800fd4209c64dd264c83d2" name="teds_stricthashset.stub.php" role="src" />
+   <file md5sum="b20de86fc85a54b8b5b9a339a1a42f87" name="teds_stricttreemap_arginfo.h" role="src" />
+   <file md5sum="93d1c9649fcad633c9200efd6b2d756b" name="teds_stricttreemap.c" role="src" />
+   <file md5sum="f8301ec6c3e156573e37458d65fbee27" name="teds_stricttreemap.h" role="src" />
+   <file md5sum="5e3041664dc3d9e0d189ca23355a76d0" name="teds_stricttreemap.stub.php" role="src" />
+   <file md5sum="d0ce0b6111deb50fb619679aab6ebabe" name="teds_stricttreeset_arginfo.h" role="src" />
+   <file md5sum="197f2701459895defe14ea2307b3fa16" name="teds_stricttreeset.c" role="src" />
+   <file md5sum="31a73f500b7da95408a3403188067461" name="teds_stricttreeset.h" role="src" />
+   <file md5sum="e80934ee34de537be6caaab0c2bd2df3" name="teds_stricttreeset.stub.php" role="src" />
+   <file md5sum="abd07a84fa46b87c8621aa46a6320cc3" name="teds.stub.php" role="src" />
+   <file md5sum="d4baa2ba7b719d037e81116a414e33fd" name="teds_util.c" role="src" />
+   <file md5sum="2273920b26adfa114849ab95fe6cc19b" name="teds_util.h" role="src" />
+   <file md5sum="8be412df958f52a43fc218821d916307" name="teds_vector_arginfo.h" role="src" />
+   <file md5sum="697da74d1bb04edd526d108d5a56a179" name="teds_vector.c" role="src" />
+   <file md5sum="b2483a3e521204e14b832c81ef28dad8" name="teds_vector.h" role="src" />
+   <file md5sum="f5554d2658ea8a2a2a8499e1d7f938c2" name="teds_vector.stub.php" role="src" />
+   <file md5sum="8758bfce563d33c013012a3b666196dd" name="teds_zval_pair.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>teds</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2022-03-06</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.2.2</release>
+    <api>1.2.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix bugs in Teds\StrictHashSet/Teds\StrictHashMap iteration behavior.
+* Fix bug constructing balanced tree in Teds\StrictTreeSet/Teds\StrictTreeMap from array/unserializing, where certain sizes resulted in trees not maintaining the balancing invariant.
+* Fix bug when constructing Teds\IntVector from array when promoting type but not keeping reserved capacity.
+* Fix bugs in Teds\StrictSortedVectorSet::__construct
+   </notes>
+  </release>
+  <release>
+   <date>2022-03-05</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.2.1</release>
+    <api>1.2.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Update documentation
+* Make iteration of Teds\StrictSortedVectorSet and Teds\StrictSortedVectorMap account for removals and additions.
+* Make removal in Teds\StrictTreeSet and Teds\StrictTreeMap move iterators to the previous node if the iterator pointed to the removed node.
+  Add a state for iterators being prior to the start of the tree.
+  Use the state of being before the first value of the tree when calling InternalIterator::rewind on an empty tree or removing an iterator pointing to the first value in a tree.
+* Make repacking/removals in Teds\StrictHashSet and Teds\StrictHashMap move InternalIterator positions.
+* Change iteration behavior of Teds\Deque to be like Vector, make shift/pop behave the same way as offsetUnset with respect to iteration.
+  (If the iterator is moved to be before the start of the deque, calling next will move it to the front, and other changes to the Deque will have no effect)
+   </notes>
+  </release>
+  <release>
+   <date>2022-03-04</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.2.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Add `Teds\SortedIntVectorSet` - a Set implementation represented in a way similar to an `Teds\IntVector` with unique sorted integers.
+  (This may be useful for reducing memory usage and speeding up unserialization, when unserializing large Sets of integers which change infrequently. See benchmarks/benchmark_vector_unserialize.php)
+* Add `Teds\ImmutableSortedStringSet` - an immutable Set implementation containing a list of unique strings sorted with strcmp.
+  (This may be useful for reducing memory usage and speeding up unserialization, when unserializing large Sets of strings which change infrequently to check values for membership in a Set. See benchmarks/benchmark_string_set.php)
+* Add `Teds\ImmutableSortedIntSet` - an immutable Set implementation containing a list of unique integers sorted by increasing value.
+  (This may be useful for reducing memory usage and speeding up unserialization, when unserializing large Sets of integers which change infrequently to check values for membership in a Set.)
+* Rename `Teds\BitSet` to `Teds\BitVector`
+* Add `Teds\Sequence::insert(int $offset, mixed ...$values)` to the Sequence interfaces and implementations
+* Add first/last to the `Teds\Sequence` interface.
+* Fix edge cases with var_export/var_dump/debug_zval_dump and cyclic data structures in debug builds and php 8.2.0-dev.
+* Make iteration account for offsetUnset/insert/shift/unshift in Sequences.
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-19</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.1.2</release>
+    <api>1.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix big-endian builds (#160)
+* Make `teds\stable_compare` consistently 1/0/-1 for arrays with different keys on all platforms.
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-19</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.1.1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix bugs in Teds\Map array access shorthand.
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-19</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix ImmutableSequence throwing for ArrayAccess shorthand read syntax.
+* Add CachedIterable as an alternative to ImmutableIterable that lazily evaluates Traversable objects passed into the constructor. (e.g. only runs Generators up to the most recently requested offset)
+* Change exception type to `Teds\UnsupportedOperationException` in a few places.
+* Add `Teds\is_same_array_handle(array $array1, array $array2): bool` for infinite recursion detection when processing arrays.
+* Fix memory leak when initializing `Teds\StrictMinHeap`/`Teds\StrictMaxHeap` from Traversables.
+* Fix memory leak when constructing collections from Traversable where rewind throws
+* Use first/last as method names for getting the first and last method names. Keep bottom/top as aliases to be deprecated later.
+* Add first/last helper methods to more collection types
+* Optimize implementations of `$map[$x]` array access shorthand in `Teds\Map` implementations.
+* Throw for `$map[] = $value` instead of setting the key for null in `Teds\Map` implementations.
+* Fix Teds\IntVector and Teds\LowMemoryVector shift implementation for integers
+* Add more methods to Teds\BitVector to read/write bytes/integers, convert to/from strings.
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-16</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Regenerate arginfo for method aliases, update test expectations
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-16</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* BREAKING CHANGES: Fix incorrect serialization/unserialization result of LowMemoryVector for boolean/null. Incompatible with older releases.
+* BUGFIX: Fix converting LowMemoryVector of floats to an array (they were unintentionally converted to integers).
+* BREAKING CHANGES: Rename datastructures and interfaces for consistency. Change definitions of interfaces/remove interfaces.
+  Rename Teds\ImmutableKeyValueSequence to Teds\ImmutableIterable and add an alias for the old name. Aliases will be removed in a future release.
+  Rename Teds\KeyValueSequence to Teds\MutableIterable and add an alias.
+  Rename Teds\SortedStrictMap to Teds\StrictTreeMap and add an alias.
+  Rename Teds\StrictMap to Teds\StrictHashMap and add an alias.
+  Rename Teds\SortedStrictSet to Teds\StrictTreeSet and add an alias.
+  Rename Teds\StrictSet to Teds\StrictHashSet and add an alias.
+  Rename Teds\StableMinHeap to Teds\StrictMinHeap and add an alias.
+  Rename Teds\StableMaxHeap to Teds\StrictMaxHeap and add an alias.
+  Change the definition of Teds\Collection to be just a Collection of **values**. Make Teds\Values an alias of Teds\Collection.
+  Add the interfaces `Teds\Sequence`, `Teds\Map`, `Teds\Set`.
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-13</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.14.0</release>
+    <api>0.14.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Make `strict_hash` return the same value for signed positive and negative zero. (In php, `0.0 === -0.0`, though var_export/print/var_dump output differ.)
+* Fix StrictHashMap/StrictHashSet handling of NAN. Make StrictHashMap/StrictHashSet treat positive and negative zero floats as the same key, like StrictTreeSet/stable_compare.
+* Add bitset source files to package.xml
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-12</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.13.0</release>
+    <api>0.13.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Add Teds\BitVector providing similar functionality to a Vector of booleans, using a single bit per boolean.
+* Fix stub documentation and qualify `\Iterator` for StrictMinHeap/StrictMaxHeap in documentation.
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-10</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.13.0</release>
+    <api>0.13.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Breaking changes.
+* Fix serialization/unserialization in StrictMinHeap/StrictMaxHeap.
+* Add interfaces for `Teds\Values` (e.g. Heap/Set), Teds\Collection(e.g. StrictHashMap, StableSortedMap), Sequence(Vector, Deque, etc.) (the keyword list is reserved)
+* Implement -&gt;values() in classes implementing `Teds\Values`.
+* Make offsetExists consistently return false when the value of the given key is null across all data structures.
+* Add Teds\Collection-&gt;containsKey to return true if a key exists without coercing types, and returning true regardless of whether the corresponding key is null.
+* Change signature of IntVector::set() and ::push() to match Sequence
+* Add Collection::toArray() (behaves like iterator_to_array).
+* Check for exceeding 64-bit capacity limits in more collections to avoid hitting gc size limits
+  and to avoid unpredictable behavior (e.g. it&apos;d be surprising to have this throw/fatal error only if var_export/var_dump/json_encode was called and PHP&apos;s array size limits(2147483648 elements, or at least 32GB) were hit).
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-10</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.12.0</release>
+    <api>0.12.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Breaking changes.
+* Fix serialization/unserialization in StrictMinHeap/StrictMaxHeap.
+* Add interfaces for `Teds\Values` (e.g. Heap/Set), Teds\Collection(e.g. StrictHashMap, StableSortedMap), ListInterface(Vector, Deque, etc.) (the keyword list is reserved)
+* Implement -&gt;values() in classes implementing `Teds\Values`.
+* Make offsetExists consistently return false when the value of the given key is null across all data structures.
+* Add Teds\Collection-&gt;containsKey to return true if a key exists without coercing types, and returning true regardless of whether the corresponding key is null.
+* Change signature of IntVector::set() and ::push() to match ListInterface
+* Add Collection::toArray() (behaves like iterator_to_array).
+* Check for exceeding 64-bit capacity limits in more collections to avoid hitting gc size limits
+  and to avoid unpredictable behavior (e.g. it&apos;d be surprising to have this throw/fatal error only if var_export/var_dump/json_encode was called and PHP&apos;s array size limits(2147483648 elements, or at least 32GB) were hit).
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-09</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.11.0</release>
+    <api>0.11.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Breaking change: Make StrictMinHeap/StrictMaxHeap stop inheriting from SplHeap to be more memory efficient.
+* Properly sort in StrictSortedVectorSet::__construct and __set_state
+* Deduplicate code.
+* Reduce size/capacity limits to the same limits as array for Deque.
+* Add ImmutableSequence::map(), filter()
+* Fix bug in Deque::contains(), Deque::indexOf()
+   </notes>
+  </release>
+  <release>
+   <date>2022-02-06</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.10.0</release>
+    <api>0.10.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Speed up unserializing StrictTreeSet/StrictTreeMap when the input data is already sorted. (If the data is not sorted, then build the binary tree the slow but correct way)
+* Add a LowMemoryVector type and IntVector type, supporting reduced memory usage.
+* Deduplicate code.
+* Fix garbage collection in some classes.
+   </notes>
+  </release>
+  <release>
+   <date>2022-01-30</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.9.2</release>
+    <api>0.9.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Make StrictTreeSet/StrictTreeMap use a red-black tree that is rebalanced on insertions and removals, guaranteeing worst-case logarithmic time for insertions/removals/lookups.
+   </notes>
+  </release>
+  <release>
+   <date>2022-01-29</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.9.1</release>
+    <api>0.9.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Make StrictTreeSet/StrictTreeMap use a binary search tree (not yet a balanced tree).
+* Associate iterators on StrictTreeSet/StrictTreeMap with nodes of the tree.
+  Invalidate iterators pointing to a node when that node of the set/map is removed.
+* Fix sorting order when instantiating StrictSortedVectorSet/StrictTreeSet/StrictTreeMap from unsorted arrays.
+   </notes>
+  </release>
+  <release>
+   <date>2022-01-23</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.9.0</release>
+    <api>0.9.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Migrate `Teds\StrictHashSet`, `Teds\StrictHashMap`, and `Teds\unique_values` implementation to use an actual hash table instead of a list of unique values.
+   </notes>
+  </release>
+  <release>
+   <date>2022-01-23</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.8.0</release>
+    <api>0.8.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Add `StrictSortedVectorSet` and `StrictSortedVectorMap` as memory-efficient alternatives to `StrictTreeSet`/`StrictTreeMap`.
+* Speed up `StrictTreeSet::__unserialize` and `StrictTreeMap::__unserialize` when data is already sorted.
+* Fix crash in `StrictHashSet` and `StrictTreeSet` during cyclic garbage collection.
+   </notes>
+  </release>
+  <release>
+   <date>2022-01-22</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.7.0</release>
+    <api>0.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Make `Teds\strict_hash` ignore recursion caused by unrelated functions (e.g. var_dump calling `__debugInfo` calling `strict_hash`)
+* Add `Teds\binary_search(array $values, mixed $target, callable $comparer = null, bool $useKey=false)`
+* Change parent class of `Teds\StrictMaxHeap` and `Teds\StrictMinHeap` to `SplHeap`.
+* Fix deduplication when constructing `StrictHashSet` from `iterable`, `StrictHashMap` from `Traversable`.
+* Add `Teds\unique_values(iterable): array` using `strict_hash` to check for duplicates.
+   </notes>
+  </release>
+  <release>
+   <date>2022-01-18</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.6.0</release>
+    <api>0.6.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Make `Teds\stable_compare` sort objects by class name with strcmp before sorting by spl_object_id.
+* Add a hash map `StrictHashMap` using `Teds\stable_hash` as a hash algorithm.
+  Keys are returned in order of insertion.
+* Add a hash set `StrictHashSet` using `Teds\stable_hash` as a hash algorithm.
+* Add a sorted map `StrictTreeMap` using `Teds\stable_compare` as a comparison function.
+  Keys are returned ordered by `Teds\stable_compare` and no two keys have `stable_compare` return 0 (i.e. no two keys are equivalent).
+* Add a sorted set `StrictTreeSet` using `Teds\stable_compare` as a comparison function.
+* Add StrictMinHeap/StrictMaxHeap extending SplMinHeap/SplMaxHeap, using `Teds\stable_compare` as a comparison function.
+   </notes>
+  </release>
+  <release>
+   <date>2022-01-15</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.5.1</release>
+    <api>0.5.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Add Teds\array_value_first(), Teds\array_value_last()
+* Add `Teds\stable_compare($v1, $v2): int` for a stable comparison function of arbitrary values. (see tests/misc/stable_compare.phpt).
+  Like strcmp, this returns a negative value for less than, and positive for greater than, and 0 for equality.
+  Note that php&apos;s `&lt;` operator is not stable. `&apos;10&apos; &lt; &apos;0a&apos; &lt; &apos;1b&apos; &lt; &apos;9&apos; &lt; &apos;10&apos;`.
+  stable_compare fixes that by strictly ordering:
+  `null &lt; false &lt; true &lt; int,float &lt; string &lt; array &lt; object &lt; resource`.
+  (objects and resources are compared by id, and arrays are compared recursively. Numbers are compared numerically. If an int is equal to a float, then the int is first)
+  (strings use strcmp)
+* Make Deque iteration account for calls to shift/unshift tracking the position of the front of the Deque.
+  Calls to shift/unshift will do the following:
+  - Increase/Decrease the value returned by the iterator&apos;s key() by the number of elements added/removed to/from the front of the Deque. (`$deque[$iteratorKey] === $iteratorValue` at the time the key and value are returned).
+  - Repeated calls to shift will cause valid() to return false if the iterator&apos;s position ends up before the start of the Deque at the time iteration resumes.
+  - They will not cause the remaining values to be iterated over more than once or skipped.
+   </notes>
+  </release>
+  <release>
+   <date>2021-09-26</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.4.1</release>
+    <api>0.4.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix computation of next power of 2 for sizes of `2 ** 32` or larger.
+   </notes>
+  </release>
+  <release>
+   <date>2021-09-26</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.4.0</release>
+    <api>0.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Backwards incompatible change: Change `Deque` APIs to be consistent with SplDoublyLinkedList and `array_push`: change pushBack/popBack/pushFront/popFront to push/pop/unshift/shift
+* Backwards incompatible change: Remove `$preserve_keys` flag from `Vector::__construct` (Always reindex keys in order of iteration instead).
+* Add isEmpty() method to datastructures
+* Make exceeding the capacity limit for a vector a fatal error.
+* Make Deque::push() and unshift() variadic.
+   </notes>
+  </release>
+  <release>
+   <date>2021-09-19</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Backwards incompatible change: Change `Vector::indexOf` return type from `int|false` to `?int` (and all other `indexOf*` methods in other data structures)
+* Backwards incompatible change: Change `valueAt`/`setValueAt` to get/set in Deque, Vector, and ImmutableSequence
+* Add optional parameter `$value = null` to `Vector::setSize()` to allow overriding the value used for padding when lengthening an array.
+* Change exception handling for sizes/capacities that are definitely too large to allocate.
+* Make Vector::push() variadic and accept 0 or more arguments, like `array_push` does.
+* Reclaim unused memory in Deque when roughly a quarter or less of the internal buffer is used.
+* Optimize performance of Deque, always use powers of 2 for the capacity of Deque to speed up reads/writes.
+   </notes>
+  </release>
+  <release>
+   <date>2021-09-16</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.2.1</release>
+    <api>0.2.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Support `$vector[] = $value` and `$deque[] = $value` assignments to append to Vector/Deque.
+* Add map() and filter() functions to Vector.
+   </notes>
+  </release>
+  <release>
+   <date>2021-09-12</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Breaking change: Change `Teds\Vector::__construct` to add an additional parameter `bool $preserveKeys = true`,
+  and use the original keys of arrays/Traversables by default, throwing for non-integers and invalid integer offsets.
+  (Similar to the behavior of SplFixedArray::fromArray)
+* Convert references to non-references when creating values from iterables.
+* Minor performance improvements of `Teds\Vector`
+   </notes>
+  </release>
+  <release>
+   <date>2021-09-10</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Add Teds\MutableIterable
+* Fix edge cases in Teds\Vector setSize
+   </notes>
+  </release>
+  <release>
+   <date>2021-08-24</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.1.0a1</release>
+    <api>0.1.0a1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/teds/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Initial commit
+   </notes>
+  </release>
+ </changelog>
+</package>
