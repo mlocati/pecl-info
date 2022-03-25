@@ -1,0 +1,856 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>memcached</name>
+ <channel>pecl.php.net</channel>
+ <summary>PHP extension for interfacing with memcached via libmemcached library</summary>
+ <description>This extension uses libmemcached library to provide API for communicating with memcached servers.</description>
+ <lead>
+  <name>Andrei Zmievski</name>
+  <user>andrei</user>
+  <email>andrei@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Mikko Koppanen</name>
+  <user>mkoppanen</user>
+  <email>mkoppanen@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Aaron Stone</name>
+  <user>sodabrew</user>
+  <email>aaron@serendipity.cx</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2022-03-24</date>
+ <time>11:52:50</time>
+ <version>
+  <release>3.2.0</release>
+  <api>3.2.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+- PHP 8.0 and 8.1 support
+- store_retry_count is no more set explicitly (#452)
+- fix MemcachedServer (libmemcached-awesome is recommended)
+- code cleanup
+- fix windows build
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="f9b7256e9d80542818b6e9f112bff122" name="tests/skipif.inc" role="test" />
+   <file md5sum="0049a2e653da16929b460283c12c9acb" name="tests/001.phpt" role="test" />
+   <file md5sum="9f849d92256f8a554b50a33703fb1d90" name="tests/version.phpt" role="test" />
+   <file md5sum="c17d5f95f355d86212181a2a13fefad8" name="tests/bug_16084.phpt" role="test" />
+   <file md5sum="f1106a0cee044abb3947273f60818f08" name="tests/bug_16959.phpt" role="test" />
+   <file md5sum="9ea415221918e7b7baeb7280c3f71f10" name="tests/bug_17137.phpt" role="test" />
+   <file md5sum="6ef00999b3f02f20b3de72f396a10098" name="tests/bug_18639.phpt" role="test" />
+   <file md5sum="e245add323bcc081b241a8015aa456a9" name="tests/callback_exception.phpt" role="test" />
+   <file md5sum="0ed83d4d1b9fe309e6d538b2a9550659" name="tests/callback_exception_2.phpt" role="test" />
+   <file md5sum="d44987c777d295db8ae308f524a71ece" name="tests/cas.phpt" role="test" />
+   <file md5sum="ec2e05be49f3e5a9a94231a12a204003" name="tests/cas_multi.phpt" role="test" />
+   <file md5sum="700e9c3df96ce958dea0f58ea1fef622" name="tests/check_if_persistent.phpt" role="test" />
+   <file md5sum="c209649db8e54b0b24542d4142896a52" name="tests/check_if_pristine.phpt" role="test" />
+   <file md5sum="3a72f2f6e1cb0ac6a1c9eccc90ee490d" name="tests/check_key.phpt" role="test" />
+   <file md5sum="d753b7841da68d7a3a9f0f14c601d0da" name="tests/clone.phpt" role="test" />
+   <file md5sum="02b42848750f01304b8b543c9f551ab8" name="tests/compression_conditions.phpt" role="test" />
+   <file md5sum="337a4a603ad6baef7ee8c622b0f278d6" name="tests/compression_types.phpt" role="test" />
+   <file md5sum="f108206906e74b243e4e9ca4cec5a62c" name="tests/conf_persist.phpt" role="test" />
+   <file md5sum="5f653e588dcafc00722756b35c83a539" name="tests/construct.phpt" role="test" />
+   <file md5sum="09480798efb9358e3b86c3df93c27b1f" name="tests/construct_persistent.phpt" role="test" />
+   <file md5sum="af3e5d769768e7593032d80625ea4f16" name="tests/deleted.phpt" role="test" />
+   <file md5sum="57b9b9a81b00c2001f19f01f2777a143" name="tests/deletemulti.phpt" role="test" />
+   <file md5sum="2b075f4c05006e6fe4fcf8b838928cc4" name="tests/deletemultitypes.phpt" role="test" />
+   <file md5sum="03b1b6e388ac84f102656ae6afce9050" name="tests/expire.phpt" role="test" />
+   <file md5sum="7a986bda034992c31c2124d1e14953f4" name="tests/flush_buffers.phpt" role="test" />
+   <file md5sum="f5b1688af8a16fb4eda76853e03940d1" name="tests/getdelayed.phpt" role="test" />
+   <file md5sum="9a71d505497b31cda6e277bfa48b3216" name="tests/getserverlist.phpt" role="test" />
+   <file md5sum="70406e137e7589f169baecb3b57b5ac4" name="tests/gh_21.phpt" role="test" />
+   <file md5sum="8540045ccf5d2cb090d9fec246bcefeb" name="tests/gh_77.phpt" role="test" />
+   <file md5sum="8f7572424986a2642c3c129d815c52d8" name="tests/gh_90.phpt" role="test" />
+   <file md5sum="534889cc99753a5630006d038302d65f" name="tests/gh_500.phpt" role="test" />
+   <file md5sum="47ed4213b0903e162f45603cd67640d6" name="tests/invoke_callback.phpt" role="test" />
+   <file md5sum="2ba97fc9e1196e5d70012e334fc4ede2" name="tests/invoke_callback_2.phpt" role="test" />
+   <file md5sum="7a3baaf4c91c7bb6d908f5f480261cfc" name="tests/invoke_callback_twice.phpt" role="test" />
+   <file md5sum="e666041d8ea0fd1b7d8b1a3136b35340" name="tests/localserver.phpt" role="test" />
+   <file md5sum="5b846320e91090eb202cd4a5dc307225" name="tests/multi_order.phpt" role="test" />
+   <file md5sum="253552a6ed8402d7fb915e11d8fa2c3c" name="tests/no-not-found.phpt" role="test" />
+   <file md5sum="4e361af2d7b2475787a644e501ce0c54" name="tests/options.phpt" role="test" />
+   <file md5sum="52cd927ff3e4ce93bc40c0e92a06878b" name="tests/pr_75.phpt" role="test" />
+   <file md5sum="9b182457d9aa8f5a4c0a11c9a5fd437f" name="tests/rescode.phpt" role="test" />
+   <file md5sum="f7087831c069974dea58fdcd418d0588" name="tests/session_badconf_emptyprefix.phpt" role="test" />
+   <file md5sum="8189657125af99b4e740e52a53c4ea0e" name="tests/session_badconf_locktime.phpt" role="test" />
+   <file md5sum="7d514549b6b1815f61e51620a66af10e" name="tests/session_badconf_persistent.phpt" role="test" />
+   <file md5sum="28251fb9278d9371ec081a2f01c17c7e" name="tests/session_badconf_prefix.phpt" role="test" />
+   <file md5sum="6ad3bb23f6ec4966a04c10fa36c15a95" name="tests/session_badconf_servers.phpt" role="test" />
+   <file md5sum="2c2a81d96782a1abbebf22cb14e579a0" name="tests/session_badconf_servers-php72.phpt" role="test" />
+   <file md5sum="33f552e9f433e2c21e2d1891fd77d322" name="tests/session_basic.phpt" role="test" />
+   <file md5sum="aa156bf7bb4462e9173317c7e6daaeac" name="tests/session_basic2.phpt" role="test" />
+   <file md5sum="515c05e73a3d1bb4e3ed6e58d256b8c4" name="tests/session_basic3.phpt" role="test" />
+   <file md5sum="e97c28a1b11a7a513eadc4560db17780" name="tests/session_persistent.phpt" role="test" />
+   <file md5sum="c7030c53a0a4a70db0eb9f4931b20efd" name="tests/set_large.phpt" role="test" />
+   <file md5sum="bc001a6bdfc8535411aa509d9d40e95c" name="tests/setoptions.phpt" role="test" />
+   <file md5sum="5096ca152b3344f8dab6a2182c98ace0" name="tests/touch_binary.phpt" role="test" />
+   <file md5sum="977a8c648fefbfdd0281146b99566046" name="tests/types.inc" role="test" />
+   <file md5sum="2efee38de0a9ac21aa08195d2f028e66" name="tests/types_igbinary.phpt" role="test" />
+   <file md5sum="eb026f27e4bf6341c7a113bceca0124c" name="tests/types_igbinary_multi.phpt" role="test" />
+   <file md5sum="5d979ff0b24ee9d780c4df756ae56fa6" name="tests/types_json.phpt" role="test" />
+   <file md5sum="5cb7b55c708b8400dd4a8bfbc03e6a23" name="tests/types_json_multi.phpt" role="test" />
+   <file md5sum="fd6bc5ea8b3efacb6769a6eb532e5c13" name="tests/types_msgpack.phpt" role="test" />
+   <file md5sum="6323b069b1a61d3635e25cda05c53abd" name="tests/types_msgpack_multi.phpt" role="test" />
+   <file md5sum="1232db5f17b5093d491c7b7fe46639b8" name="tests/types_php.phpt" role="test" />
+   <file md5sum="7b54663feade6501bc58445be3b8cb2a" name="tests/types_php_multi.phpt" role="test" />
+   <file md5sum="6c1241dd8e53e2bda3362aafab15cf64" name="tests/undefined_set.phpt" role="test" />
+   <file md5sum="982d771e57586dde200a54f6e1d7c205" name="tests/vbucket.phpt" role="test" />
+   <file md5sum="3e1e2916b2e20f7c8a71c101ecb9f336" name="tests/vbucket_error_7.phpt" role="test" />
+   <file md5sum="45a942be4b684743586daaae06d8aca1" name="tests/vbucket_error_8.phpt" role="test" />
+   <file md5sum="9536d55e450f33a0d0884f41f11efb44" name="tests/user-flags.phpt" role="test" />
+   <file md5sum="16b0c1f09268752607253cb498dbc207" name="tests/gh_93.phpt" role="test" />
+   <file md5sum="148ba8b00686de02433ae93442219ca2" name="tests/add.phpt" role="test" />
+   <file md5sum="54f7d4cd439dd91e1883a589fb1e3057" name="tests/bad_construct.phpt" role="test" />
+   <file md5sum="59633289e2ca18655f33d22bd85aeb88" name="tests/bad_construct_8.phpt" role="test" />
+   <file md5sum="81de6221c6cae1f5e96cf1cf2e4f23c2" name="tests/append.phpt" role="test" />
+   <file md5sum="1812f8862214b7958bcdf63e2a451fda" name="tests/prepend.phpt" role="test" />
+   <file md5sum="560425b0e9ff2e5adde5db088448dd86" name="tests/replace.phpt" role="test" />
+   <file md5sum="bf2ce9e5237bf38806f1fff5d12c5b8f" name="tests/getmulti.phpt" role="test" />
+   <file md5sum="5eb0205bdc38f8d95d053fd693eb2de8" name="tests/setmulti.phpt" role="test" />
+   <file md5sum="e952363deea908c9078c52fdb017b36a" name="tests/cachecallback.phpt" role="test" />
+   <file md5sum="cc9a511ff8babb7221e7b3fcd85abc9a" name="tests/incrdecr.phpt" role="test" />
+   <file md5sum="3927c7ce0fd35c4d9864edc130f84e17" name="tests/incrdecr_64.phpt" role="test" />
+   <file md5sum="5aa2ce74a2f85d46236889b06de0d44a" name="tests/incrdecr_initial.phpt" role="test" />
+   <file md5sum="8a4542d8276de516ec4624092d4b9a46" name="tests/incrdecr_invalid_key.phpt" role="test" />
+   <file md5sum="87a62cc497a6b660a4a01d0cbf02ba35" name="tests/incrdecr_bykey.phpt" role="test" />
+   <file md5sum="3925fe82126261b6589bd9cbf64a4568" name="tests/invalid_options.phpt" role="test" />
+   <file md5sum="3d4e8dc5099592914cbcd273efc93d6c" name="tests/keys_ascii.phpt" role="test" />
+   <file md5sum="5c51cc2837948891fb0c6e4c63a2e669" name="tests/keys_binary.phpt" role="test" />
+   <file md5sum="a4058bd7f5993894fb867bafa57097c8" name="tests/testdata.res" role="test" />
+   <file md5sum="cb4b22ed0a91765f3be48e66b28118c9" name="tests/config.inc" role="test" />
+   <file md5sum="6c0907cd401bc5bc51a9727d35d24493" name="tests/sasl_basic.phpt" role="test" />
+   <file md5sum="9b7cc383e10fd4189afe2e2b59f7861b" name="tests/set_encoding_key.phpt" role="test" />
+   <file md5sum="4f68ad6b3b0ff857486f46f930e2c35f" name="tests/set_encoding_key2.phpt" role="test" />
+   <file md5sum="1509b73bc84322e2cd07663657c53446" name="tests/getserverbykey.phpt" role="test" />
+   <file md5sum="74f839c2b03150a023aa48e8ea135aa9" name="tests/gh_155.phpt" role="test" />
+   <file md5sum="66749ac07b531f834903b410d002d833" name="tests/get_flags.phpt" role="test" />
+   <file md5sum="787ab9d0298f7eb2f4353608ab711a4a" name="tests/session_lock.phpt" role="test" />
+   <file md5sum="5440e40d0b8419a9ce18bbd09f66f813" name="tests/session_lazy_warning.phpt" role="test" />
+   <file md5sum="b0425111164f5a2980a48e5c450c91d6" name="tests/session_regenerate.phpt" role="test" />
+   <file md5sum="6f26dd1498b785b3047db40038b74a69" name="tests/stats.phpt" role="test" />
+   <file md5sum="31927e9f8eb8938e2b37f3de17dcada0" name="tests/stats_hang.phpt" role="test" />
+   <file md5sum="166976cf5634f94f8ae7ba5c34ab4516" name="tests/default_behavior.phpt" role="test" />
+   <file md5sum="582ae0198d6acff8b43accb288a97a5f" name="tests/reset_keyprefix.phpt" role="test" />
+   <file md5sum="91401c7726d8fe32d303a472807f613c" name="tests/session_lock-php71.phpt" role="test" />
+   <file md5sum="a4344764c217a1ebcc38c76a85e5697d" name="tests/server.inc" role="test" />
+   <file md5sum="b03cb654128034ac234cc2132136081a" name="tests/server.php" role="test" />
+   <file md5sum="15b9597828a5e71c904f5d63b915217b" name="tests/memcachedserver.phpt" role="test" />
+   <file md5sum="83f16fd1ad3eb242330a599e45fb08a1" name="tests/memcachedserver6.phpt" role="test" />
+   <file md5sum="e363615c309e1ca265a16bee4b396540" name="README.markdown" role="doc" />
+   <file md5sum="f15b54956edc11e9bf1c995385b433b4" name="CREDITS" role="doc" />
+   <file md5sum="cb564efdf78cce8ea6e4b5a4f7c05d97" name="LICENSE" role="doc" />
+   <file md5sum="19715df9170f028156b4457cb2552050" name="ChangeLog" role="doc" />
+   <file md5sum="aa4e3e907461b5ddb6dcd3a133dc393a" name="memcached-api.php" role="doc" />
+   <file md5sum="cde6e7130e5b0b245dd396b1bfdd63dd" name="memcached.ini" role="doc" />
+   <file md5sum="543b3b1b8571c4b9c02eafee4a6f3fa3" name="fastlz/LICENSE" role="doc" />
+   <file md5sum="0f4f06353dc6831885e311b38d546a86" name="config.m4" role="src" />
+   <file md5sum="99852c597ceafb5429057b1e17bf7826" name="config.w32" role="src" />
+   <file md5sum="dbdaadc461126eaa9e69db72337d8afa" name="php_memcached.c" role="src" />
+   <file md5sum="0ff5c00ae1778b997a25bdfd572895d9" name="php_memcached.h" role="src" />
+   <file md5sum="dda2cf88fd462f452940e95f06609e78" name="php_memcached.stub.php" role="src" />
+   <file md5sum="760d9041d472520c09a6bcd4ce9ffab9" name="php_memcached_arginfo.h" role="src" />
+   <file md5sum="b03c1b12fdac77821097e2b7e3f11be1" name="php_memcached_legacy_arginfo.h" role="src" />
+   <file md5sum="ab8183a753b3291c30adf11872507652" name="php_memcached_private.h" role="src" />
+   <file md5sum="b1ecb6f476a9394e896f4a00db4a18d7" name="php_memcached_session.c" role="src" />
+   <file md5sum="3c47c0ddad806318e44c4a0307179532" name="php_memcached_session.h" role="src" />
+   <file md5sum="fdfd0d785240591e81437a91e5c341e3" name="php_libmemcached_compat.h" role="src" />
+   <file md5sum="a37d5b1a87a3090cc5809f5922d90c23" name="php_libmemcached_compat.c" role="src" />
+   <file md5sum="ca6c85249adc0edb67d8da8a43e52149" name="php_memcached_server.h" role="src" />
+   <file md5sum="c405b09c8b4fb4d54f991c9108ec5acf" name="php_memcached_server.c" role="src" />
+   <file md5sum="9aeffa26d0908db89a3703f718c9375e" name="g_fmt.c" role="src" />
+   <file md5sum="94fb8525d4419947cec4653a302be41a" name="g_fmt.h" role="src" />
+   <file md5sum="89384a08695fc238e9fbc41b0a14b5a7" name="fastlz/fastlz.c" role="src" />
+   <file md5sum="d49275e3dcc1d23d6ce0041648be8e14" name="fastlz/fastlz.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+  <optional>
+   <extension>
+    <name>igbinary</name>
+    <min>2.0</min>
+   </extension>
+   <extension>
+    <name>msgpack</name>
+    <min>2.0</min>
+   </extension>
+  </optional>
+ </dependencies>
+ <providesextension>memcached</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="with-libmemcached-dir" prompt="libmemcached directory" />
+  <configureoption default="no" name="with-zlib-dir" prompt="zlib directory" />
+  <configureoption default="no" name="with-system-fastlz" prompt="use system fastlz" />
+  <configureoption default="no" name="enable-memcached-igbinary" prompt="enable igbinary serializer" />
+  <configureoption default="no" name="enable-memcached-msgpack" prompt="enable msgpack serializer" />
+  <configureoption default="no" name="enable-memcached-json" prompt="enable json serializer" />
+  <configureoption default="no" name="enable-memcached-protocol" prompt="enable server protocol" />
+  <configureoption default="yes" name="enable-memcached-sasl" prompt="enable sasl" />
+  <configureoption default="yes" name="enable-memcached-session" prompt="enable sessions" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <date>2019-12-03</date>
+   <version>
+    <release>3.1.5</release>
+    <api>3.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+PHP 7.0 - 7.1 - 7.2 - 7.3 - 7.4 release of memcached extension. Note that support for
+libmemcached 0.x series has been discontinued and the oldest actively tested
+version is 1.0.8. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+Fixes
+ * Fix build with PHP 7.4 release due to ulong typedef removal (#445)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.4</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2019-10-06</date>
+   <notes>
+PHP 7.0 - 7.1 - 7.2 - 7.3 - 7.4 release of memcached extension. Note that support for
+libmemcached 0.x series has been discontinued and the oldest actively tested
+version is 1.0.8. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+Fixes
+  * Test on PHP 7.4 as well as 8.0 (#440)
+  * Fix segfault for unknown memcached flags (#431)
+  * Update documented defaults for sess_lock_retries (#432)
+  * Remove stray instances of the TSRMLS_CC macro for PHP 8 compatibility (#444)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.3</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2018-12-22</date>
+   <notes>
+PHP 7.0 - 7.1 - 7.2 - 7.3 release of memcached extension. Note that support for
+libmemcached 0.x series has been discontinued and the oldest actively tested
+version is 1.0.8. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+Fixes
+  * Fix --disable-memcached-session by ifdef-ing session INI handler callbacks (#396, #420)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.2</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2018-12-22</date>
+   <notes>
+PHP 7.0 - 7.1 - 7.2 - 7.3 release of memcached extension. Note that support for
+libmemcached 0.x series has been discontinued and the oldest actively tested
+version is 1.0.8. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+Fixes
+  * Fix --enable-memcached-protocol was set to yes by default, reverted to no (#418)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.1</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2018-12-21</date>
+   <notes>
+PHP 7.0 - 7.1 - 7.2 - 7.3 release of memcached extension. Note that support for
+libmemcached 0.x series has been discontinued and the oldest actively tested
+version is 1.0.8. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+Fixes
+  * Fix --disable-memcached-sasl and --disable-memcached-session replaced by --enable variants (#416)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.1.0</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2018-12-21</date>
+   <notes>
+PHP 7.0 - 7.1 - 7.2 - 7.3 release of memcached extension. Note that support for
+libmemcached 0.x series has been discontinued and the oldest actively tested
+version is 1.0.8. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+New
+  * Support for PHP 7.3 (#385, #390)
+  * Add INI setting to choose session consistent hash (ketama or ketama_weighted) (#344, #392)
+  * Add support for libmemcached encryption (#345, #381)
+  * Add error reporting to session code (#165)
+  * Expose build configuration via PECL (#383)
+
+Fixes
+  * Fix hanging getStats() when binary protocol and non-blocking are both enabled (#348)
+  * Fix session persistence by checking memcached behavior values before setting (#379)
+  * Fix memcached.sess_persistent not working with memcached.sess_binary_protocol = On (#375)
+  * Configure warns if libmemcached needs sasl.h (#341, #380)
+  * Resolve various INI deviations in 3.0.3 (#351)
+  * Turn off sess_binary_protocol by default with older libmemcached (#330)
+
+Changes
+  * Impove Windows builds (#411)
+  * Support Homebrew ZLIB path (#410)
+  * Remove forgotten unused comment about -lpthread (#406)
+  * Git ignore configure.ac (#405)
+  * Replace obsolete macros AC_TRY_FOO with AC_FOO_IFELSE (#403)
+  * Remove unused defines (#354)
+  * Change session_lock and sess_prefix default ini values (#340, #350)
+  * Use new fast_zpp parameter parsing API (#302, #311)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.0.4</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2017-11-20</date>
+   <notes>
+PHP 7.0 - 7.1 - 7.2 release of memcached extension. Note that support for
+libmemcached 0.x series has been discontinued and the oldest actively tested
+version is 1.0.2. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+Fixes
+ * Fix corrupted interned strings (#338)
+ * Fix unit tests for compatibility with PHP 7.2 (#358, #359)
+ * Fix \x0a in key name locks up connection and triggers a fatal timeout error (#339)
+ * Fix missing optional parameter getStats($type) (#337)
+ * Fix typo in skip message (#331)
+ * Fix build warnings (#329)
+ * Document GET_EXTENDED flag, add/rename other missing/misnamed constants (#335)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.0.3</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2017-02-19</date>
+   <notes>
+PHP7 release of memcached extension. Note that support for libmemcached 0.x series has been discontinued
+and the oldest actively tested version is 1.0.2. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+Fixes
+ * Fix crash when checking session data with older versions of libmemcached (#328)
+ * Fix crash due to zend_mm_corrupted when fetching session data (#327)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.0.2</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2016-02-12</date>
+   <notes>
+PHP7 release of memcached extension. Note that support for libmemcached 0.x series has been discontinued
+and the oldest actively tested version is 1.0.2. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+Fixes
+ * Update warning for touch command in binary protocol mode with libmemcached below 1.0.18 (#322)
+ * Add tests for 64-bit increment/decrement/incrementByKey/decrementByKey (#321)
+ * Fix tests for 32-bit increment/decrement/incrementByKey/decrementByKey (#319)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.0.1</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2016-02-07</date>
+   <notes>
+PHP7 release of memcached extension. Note that support for libmemcached 0.x series has been discontinued
+and the oldest actively tested version is 1.0.2. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+Fixes
+ * Add API entries for flushBuffers() and getAllKeys() (#316)
+ * Ignore specific errors from memcached_dump for getAllKeys() with newer memcached servers (#315)
+ * Fix compiling with memcached binary protocol enabled (#312)
+ * Restore php_libmemcached_compat with workaround for missing memcached_exists (#314)
+ * Travis CI purge old versions of memcached and libmemcached (#309)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>3.0.0</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2016-01-27</date>
+   <notes>
+PHP7 release of memcached extension. Note that support for libmemcached 0.x series has been discontinued
+and the oldest actively tested version is 1.0.2. It is highly recommended to use version 1.0.18 of
+libmemcached.
+
+API
+ * The method signature of get, getByKey, getMulti, and getMultiByKey changed.
+ * get* and getMulti* commands no longer take cas or user flags parameters.
+ * get* and getMulti* commands now take the Memcached::GET_EXTENDED flag to retrieve user flags and cas tokens.
+ * Fixes getStats command to return all stats from all servers
+ * Fixes allKeys command behaviour
+ * Fixes error where cache callback for get command was not setting expiration time properly
+ * Added server type to server list
+ * Remove use_sasl ini-variable and initialise sasl as needed
+ * CAS tokens are returned as integers and they overflow to strings as needed
+
+Session handler
+ * The session memcached protocol config name was changed, and the default protocol was changed from text to binary protocol. If your memcached setup does not support the binary protocol(e.g. if using tw
+ * Session lock algorithm updated (new ini-values memcached.sess_lock_wait_min, memcached.sess_lock_wait_max and memcached.sess_lock_retries)
+ * Session extension uses PHP allocators (still some work to do on the rest of the extension)
+ * Ini-values take effect during session_start or session_regenerate_id
+ * Fixes crash with session_regenerate_id (work-around for PHP bug)
+
+Tests
+ * Fix several problematic tests
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <version>
+    <release>3.0.0a1</release>
+    <api>3.0.0</api>
+   </version>
+   <date>2016-02-22</date>
+   <notes>
+PHP7 release of memcached extension. Note that support for libmemcached 0.x series has been discontinued
+and the oldest actively tested version is 1.0.2. It is highly recommended to use version 1.0.18 of
+libmemcached. Please note that this is a beta release and reporting any issues would be highly appreciated
+before we move closer to releasing stable version.
+
+API
+ * get commands do not take cas or user flags parameters.
+ * get and getMulti commands take Memcached::GET_EXTENDED flag to retrieve user flags and cas tokens
+ * Fixes getStats command to return all stats from all servers
+ * Fixes allKeys command behaviour
+ * Fixes error where cache callback for get command was not setting expiration time properly
+ * Added server type to server list
+ * Remove use_sasl ini-variable and initialise sasl as needed
+ * CAS tokens are returned as integers and they overflow to strings as needed
+
+Session handler
+ * Session lock algorithm updated (new ini-values memcached.sess_lock_wait_min, memcached.sess_lock_wait_max and memcached.sess_lock_retries)
+ * Session extension uses PHP allocators (still some work to do on the rest of the extension)
+ * Ini-values take effect during session_start or session_regenerate_id
+ * Fixes crash with session_regenerate_id (work-around for PHP bug)
+
+Tests
+ * Fix several problematic tests
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.0</release>
+    <api>2.2.0</api>
+   </version>
+   <date>2014-04-01</date>
+   <notes>
+- Added the OPT_SERVER_TIMEOUT_LIMIT behaviour
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.0RC1</release>
+    <api>2.2.0</api>
+   </version>
+   <date>2014-03-12</date>
+   <notes>
+- Fixes incorrect size when compressing serialized objects
+- Fixes endianess of compressed values
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.2.0b1</release>
+    <api>2.2.0</api>
+   </version>
+   <date>2013-10-28</date>
+   <notes>
+- Reinstate support for libememcached 0.x series
+- Added SASL support to session handler
+- Added Memcached::flushBuffers as per GH #78
+- Fixes GH #54: Fixed UDP server adding with newer libmemcached
+- Fixed PHP bug #65334: (Segfault if uncompress value failed)
+- Fixes GH #14: get with cas token fails to fetch all results
+- Fixes GH #69: compiling on CentOS 6.4 with libmemcached 1.0.17
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.1.0</release>
+    <api>2.1.0</api>
+   </version>
+   <date>2012-08-06</date>
+   <notes>
+- Drop support for libmemcached 0.x series, now 1.0.x is required
+- Add support for virtual bucket distribution
+- Fix compilation against PHP 5.2
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.0.1</release>
+    <api>2.0.1</api>
+   </version>
+   <date>2012-03-03</date>
+   <notes>
+- Fix embedded version number to be not -dev
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
+   </version>
+   <date>2012-03-02</date>
+   <notes>
+- Add touch() and touchByKey() methods
+- Add resetServerList() and quit() methods
+- Support binary protocol in sessions
+- Make it work with libmemcached up to 1.0.4
+- Test against PHP 5.4.0
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>2.0.0b2</release>
+    <api>2.0.0b2</api>
+   </version>
+   <date>2011-06-24</date>
+   <notes>
+- Add OPT_REMOVE_FAILED_SERVERS option.
+- Make it work with libmemcached up to 0.49.
+- Fix a case where invalid session ID could lock the script.
+- Improve session support:
+    * Add support for libmemcached config string
+    * Add persistence support via PERSISTENT=persistent_id prefix
+      of the save_path
+- Add 3rd parameter to the __construct() that allows specification
+  of libmemcached configuration string
+- Fix a possible crash in __construct() when using persistent
+  connections
+- Add work-around a bug in libmemcached &lt; 0.50 that causes truncation
+  of last character of server key prefix
+- When using multiple servers implement transparent fail-over
+- Fix php_memc_cas_impl() implementation when server_key is not being used
+- Add support for incrementByKey() and decrementByKey()
+- Make increment/decrement initialize value when it is not available (when
+  using binary protocol)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>2.0.0b1</release>
+    <api>2.0.0b1</api>
+   </version>
+   <date>2011-03-12</date>
+   <notes>
+- Change the return value for non-existing keys to be NULL rather than
+  &apos;false&apos;, affects simple get only
+- Add fastlz library that provides better/faster payload compression
+- Add configure switch to enable/disable JSON serialization support
+- Add getAllKeys() method
+- Add deleteMulti() and deleteMultiByKey() methods
+- Add isPristine() and isPersistent() methods
+- Add setOptions() method to set multiple options at once
+- Add SERIALIZER_JSON_ARRAY type that decodes JSON payloads as arrays
+  instead of objects
+- Add support for Unix domain socket connections
+- Add memcached.compression_threshold INI setting
+- Add memcached.compression_factor INI setting
+- Add memcached.compression_type INI setting
+- Implement a few speed optimizations
+- Many bug fixes and memory leaks plugged
+- Add several more tests
+- Add constants for libmemcached 0.37+:
+  * Memcached::OPT_NUMBER_OF_REPLICAS
+  * Memcached::OPT_RANDOMIZE_REPLICA_READ
+- Add &apos;on_new&apos; callback to constructor
+- Add SASL support
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+   </version>
+   <date>2010-05-03</date>
+   <notes>
+- Fix build for libmemcached-0.39 (memcached_server_list() issue)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <date>2010-03-11</date>
+   <notes>
+- Fix build for libmemcached-0.38.
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <date>2009-07-04</date>
+   <notes>
+- First stable release.
+- Add getResultMessage() method.
+- Fix OPT_RECV_TIMEOUT definition.
+- Initialize Session lock wait to max execution time (if max execution
+  time is unlimited, default to 30 seconds).
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <date>2009-06-04</date>
+   <notes>
+- Refactor the way payload types are stored in memcached flags to optimize the structure
+  and allow for future expansion. WARNING! You have to flush the cache when upgrading from
+  an older version.
+- Add JSON serializer support, requires PHP 5.2.10+.
+- Add HAVE_JSON and HAVE_IGBINARY class constants that indicate whether the respective
+  serializers are available.
+- Add &apos;flags&apos; parameter to getMulti() and getMultiByKey().
+- Add GET_PRESERVE_ORDER class constant that can be used with abovementioned flags
+  parameter to make the order of the keys in the response match the request.
+- Fix an issue with retrieving 0-length payloads (FALSE boolean value).
+- Add several tests.
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.1.5</release>
+    <api>0.1.5</api>
+   </version>
+   <date>2009-03-31</date>
+   <notes>
+- Implement getVersion().
+- Add support for preserving boolean value types.
+- Fix crash when child class does not call constructor.
+- Fix bug #16084 (Crash when addServers is called with an associative array).
+- ZTS compilation fixes.
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.1.4</release>
+    <api>0.1.4</api>
+   </version>
+   <date>2009-02-13</date>
+   <notes>
+- Fix compilation against PHP 5.3.
+- Add support for &apos;igbinary&apos; serializer (Oleg Grenrus)
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.1.3</release>
+    <api>0.1.3</api>
+   </version>
+   <date>2009-02-06</date>
+   <notes>
+- Bludgeon bug #15896 (Memcached setMulti error) into submission.
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.1.2</release>
+    <api>0.1.2</api>
+   </version>
+   <date>2009-02-06</date>
+   <notes>
+- Fix bug #15896 (Memcached setMulti error).
+- Check for empty key in getServerByKey().
+- Allow passing &apos;null&apos; for callbacks.
+- get() with cas token fetching wasn&apos;t erroring out properly.
+- Rename certain parameters in the API to be more clear.
+- Allow only strings as the append/prepend value.
+- Remove expiration parameter from append/prepend.
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <date>2009-02-02</date>
+   <notes>
+- Add OPT_LIBKETAMA_COMPATIBLE option.
+- Implement addServers() method.
+- Swap internal compressed and serialized flags to be compatible with other clients.
+   </notes>
+  </release>
+  <release>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <date>2009-01-29</date>
+   <notes>
+- Initial PECL release
+   </notes>
+  </release>
+ </changelog>
+</package>
