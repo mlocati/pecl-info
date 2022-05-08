@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
+ <name>excimer</name>
+ <channel>pecl.php.net</channel>
+ <summary>Interrupting timer and low-overhead sampling profiler</summary>
+ <description>Calls a user-defined callback when a one-shot or periodic timer expires. Also a sampling profiler backend, which aggregates backtraces collected by a periodic timer.</description>
+ <lead>
+  <name>Tim Starling</name>
+  <user>tstarling</user>
+  <email>tstarling@wikimedia.org</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Kunal Mehta</name>
+  <user>legoktm</user>
+  <email>legoktm@debian.org</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Timo Tijhof</name>
+  <user>krinkle</user>
+  <email>krinkle@fastmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2022-05-07</date>
+ <time>15:22:43</time>
+ <version>
+  <release>1.0.4</release>
+  <api>1.0.4</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license filesource="LICENSE" uri="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</license>
+ <notes>
+- Fix arginfo error for PHP 7.1
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="d543e72bd3e2efe01c1c67b4bb4238f7" name="stubs/ExcimerLog.php" role="doc" />
+   <file md5sum="8cfea3d8ca63f1cc7ae74f199e19ca93" name="stubs/ExcimerLogEntry.php" role="doc" />
+   <file md5sum="b02871615538eedd5a3a7a03e975756d" name="stubs/ExcimerProfiler.php" role="doc" />
+   <file md5sum="b251acf07e78ca75fdaa5eb6c6a0ce73" name="stubs/ExcimerTimer.php" role="doc" />
+   <file md5sum="9accdf946903c9562f33ab45df17e51e" name="stubs/globals.php" role="doc" />
+   <file md5sum="d98c0fba1d3286014581f20d43515d73" name="tests/cpu.phpt" role="test" />
+   <file md5sum="f7a60f764c8ddf379b13704531930125" name="tests/maxDepth.phpt" role="test" />
+   <file md5sum="91c1956b1d347b2cd898db23d1d047a5" name="tests/periodic.phpt" role="test" />
+   <file md5sum="b7c27f8fbc9a44362e81ec95a3419cef" name="tests/real.phpt" role="test" />
+   <file md5sum="fdfcb0f0cc2f526e69bac1df0b34512d" name="tests/timeout.phpt" role="test" />
+   <file md5sum="a6980f8ed50b488b2b9b439b6aa78682" name="tests/timer.phpt" role="test" />
+   <file md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="doc" />
+   <file md5sum="85046d6a7bb0864aeadccfa0ee0ae1f0" name="README.md" role="doc" />
+   <file md5sum="610eb356f72a988cb28563288178c7a8" name="config.m4" role="src" />
+   <file md5sum="48eefd3e53387f319b63aa7e2da7b2bb" name="excimer.c" role="src" />
+   <file md5sum="180c0abeb9af6197e8108d63791c50fa" name="excimer.ini" role="src" />
+   <file md5sum="e5c14dd61a071ecef46dcb0ffc899dbd" name="excimer_log.c" role="src" />
+   <file md5sum="1e885349fa2c9436503390ac5a43d87c" name="excimer_log.h" role="src" />
+   <file md5sum="f2e3714089bced14e9bc7a7216104fe9" name="excimer_timer.c" role="src" />
+   <file md5sum="0bce454adf82f631b359b0621ea6988f" name="excimer_timer.h" role="src" />
+   <file md5sum="67991bc29ea8dc67f1a94ffe196ce51a" name="php_excimer.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.8.0</min>
+   </pearinstaller>
+   <os>
+    <name>linux</name>
+   </os>
+  </required>
+ </dependencies>
+ <providesextension>excimer</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2022-05-04</date>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0.3</api>
+   </version>
+   <notes>
+- Set return type on ExcimerLog::aggregateByFunction
+- Set return type on ExcimerProfiler::getLog
+   </notes>
+  </release>
+  <release>
+   <date>2021-10-16</date>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+   </version>
+   <notes>
+- Fix Iterator prototypes for PHP 8.1
+- Add extension version in phpinfo()
+   </notes>
+  </release>
+  <release>
+   <date>2021-09-29</date>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <notes>
+- Filter null bytes out of the collapsed output
+- Fix segfault in ZTS mode
+- Fix [-Wincompatible-pointer-types] with PHP 8
+   </notes>
+  </release>
+  <release>
+   <date>2021-02-26</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <notes>
+- Initial PECL release
+   </notes>
+  </release>
+ </changelog>
+</package>
