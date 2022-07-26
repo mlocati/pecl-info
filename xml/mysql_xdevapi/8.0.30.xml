@@ -1,0 +1,1090 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>mysql_xdevapi</name>
+ <channel>pecl.php.net</channel>
+ <summary>MySQL X DevAPI for PHP</summary>
+ <description>The X DevAPI is the new common API for MySQL Connectors built on the X Protocol introduced in MySQL 5.7.12.
+
+The X DevAPI wraps powerful concepts in a simple API.
+* A new high-level session concept enables you to write code that can transparently scale from single MySQL Server to a multiple server environment.
+* Read operations are simple and easy to understand.
+
+The X DevAPI introduces a new, modern and easy-to-learn way to work with your data.
+* Documents are stored in Collections and have their dedicated CRUD operation set.
+* Work with your existing domain objects or generate code based on structure definitions for strictly typed languages.
+* Focus is put on working with data via CRUD operations. See Section 3.1, “CRUD Operations Overview”.
+* Modern practices and syntax styles are used to get away from traditional SQL-String-Building. See Chapter 10, Building Expressions.</description>
+ <lead>
+  <name>Filip Janiszewski</name>
+  <user>fjanisze</user>
+  <email>fjanisze@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Dariusz Slusarczyk</name>
+  <user>marines</user>
+  <email>marines@php.net</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Johannes Schlüter</name>
+  <user>johannes</user>
+  <email>johannes@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>MySQL Release Engineering</name>
+  <user>mysqlre</user>
+  <email>mysqlre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Andrey Hristov</name>
+  <user>andrey</user>
+  <email>andrey@php.net</email>
+  <active>no</active>
+ </developer>
+ <date>2022-07-20</date>
+ <time>10:06:58</time>
+ <version>
+  <release>8.0.30</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+Release
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="94c43eab40e003f3c461a3bc430d3168" name="tests/auth/timeout/default_timeout.phpt" role="test" />
+   <file md5sum="9eb70a5befe0ae4209bd4ea2f52e3e39" name="tests/auth/timeout/disabled_timeout.phpt" role="test" />
+   <file md5sum="601ad4adfa2706c412f2c77704619fee" name="tests/auth/timeout/elapsed_timeout.phpt" role="test" />
+   <file md5sum="134ae0fb3a90cbfa8fe362a64696a1ca" name="tests/auth/timeout/incorrect_timeout.phpt" role="test" />
+   <file md5sum="feb726ffc22ddfb336da9472980fcd98" name="tests/auth/timeout/successful_no_timeout.phpt" role="test" />
+   <file md5sum="e2586abf4aa77d4c49f7dda872f46d9b" name="tests/auth/timeout/timeout_utils.inc" role="test" />
+   <file md5sum="0b1e705b744042adae9825c4ade61c48" name="tests/auth/tls/ciphers.phpt" role="test" />
+   <file md5sum="dfdb2d1a58bf86d9827708bb747c1609" name="tests/auth/tls/ciphersuites.phpt" role="test" />
+   <file md5sum="d959383d944d62ad748d1b125a7b401c" name="tests/auth/tls/ciphersuites_tlsv13.phpt" role="test" />
+   <file md5sum="6a96bf805bb28c4cf05d4c17fd9524b6" name="tests/auth/tls/incorrect_ciphers.phpt" role="test" />
+   <file md5sum="86f61a3f510cffda944d75bb2c18c5d4" name="tests/auth/tls/incorrect_ciphersuites.phpt" role="test" />
+   <file md5sum="54b9f48d1da611057b5f0c3d183d22e4" name="tests/auth/tls/incorrect_ciphersuites_tlsv13.phpt" role="test" />
+   <file md5sum="d5a168fa5e34b0cf57290224e9173f2b" name="tests/auth/tls/incorrect_tls_versions.phpt" role="test" />
+   <file md5sum="253b78d32bf4630fb7a20a63802871af" name="tests/auth/tls/tls_utils.inc" role="test" />
+   <file md5sum="a103aa0192ff67d8430a374d40daf4e4" name="tests/auth/tls/tls_versions.phpt" role="test" />
+   <file md5sum="1d34614b5fcd93f510d87cc89354506b" name="tests/auth/tls/tls_versions_tlsv13.phpt" role="test" />
+   <file md5sum="85e54ff7c36433592b4b6a55b85492ad" name="tests/auth/auth_utils.inc" role="test" />
+   <file md5sum="86f72c2a30b37a2beb3846378e0fb0a6" name="tests/auth/incorrect_ssl_query.phpt" role="test" />
+   <file md5sum="4c111e2230d592cbae7857726706522f" name="tests/auth/secure_native.phpt" role="test" />
+   <file md5sum="fa06c8a8c924e60ce625223551df8a6a" name="tests/auth/secure_sha256_mem.phpt" role="test" />
+   <file md5sum="fad7f8cb6947203988185ea10f699cbe" name="tests/auth/sha256_mem.phpt" role="test" />
+   <file md5sum="7fc175ebb282533065db2d5882a1b152" name="tests/auth/unsecure_native.phpt" role="test" />
+   <file md5sum="4bca5f54f54948b91958ed4d0f005812" name="tests/auth/unsecure_sha256_mem.phpt" role="test" />
+   <file md5sum="1324400ac677fed9a7aa34dc708d8234" name="tests/auth/warnings_secure_caching_sha2.phpt" role="test" />
+   <file md5sum="9127ab3dc53d243e847e9d740f494bab" name="tests/auth/warnings_secure_native.phpt" role="test" />
+   <file md5sum="71de393b4fcfd8b8f1ce677ffdc3106b" name="tests/auth/warnings_unsecure_caching_sha2.phpt" role="test" />
+   <file md5sum="39502d908efdd23236d02c63427a4fad" name="tests/auth/warnings_unsecure_native.phpt" role="test" />
+   <file md5sum="17eeb40af355c0b02b68bfee8d4dc4fb" name="tests/client/client_disabled.phpt" role="test" />
+   <file md5sum="e137674e4fa8989bac12f327d535d87d" name="tests/client/client_utils.inc" role="test" />
+   <file md5sum="f7ba724292f6ea6662746e6403319f1f" name="tests/client/close_client.phpt" role="test" />
+   <file md5sum="6a4bf43e7bdc6c561b1c6735ee9895dd" name="tests/client/close_client_open_session.phpt" role="test" />
+   <file md5sum="a30f4f6e1cc4d3333663ec87d229529c" name="tests/client/close_open.phpt" role="test" />
+   <file md5sum="a1cae687b78f3199ac509c25275caf12" name="tests/client/common_vs_simple.phpt" role="test" />
+   <file md5sum="2dd10ccb718af7979f0aaffdc70a9fcf" name="tests/client/default_options.phpt" role="test" />
+   <file md5sum="5f1938e03a4d1408fdecea476255fba1" name="tests/client/default_options_as_null.phpt" role="test" />
+   <file md5sum="6a07daf5f2e59f56982773a95967ba36" name="tests/client/default_options_with_enabled.phpt" role="test" />
+   <file md5sum="4423b7b69bd250d08746e9b56050d463" name="tests/client/default_options_with_max_idle_time.phpt" role="test" />
+   <file md5sum="db0a0c1a0d72f443d591a8951d1cee14" name="tests/client/default_options_with_max_size.phpt" role="test" />
+   <file md5sum="0b804e70c2299c07d7ddc1b9ae84e745" name="tests/client/default_options_with_queue_timeout.phpt" role="test" />
+   <file md5sum="1e459c5dfbc2866e4b7a31c0c0da4453" name="tests/client/incorrect_options.phpt" role="test" />
+   <file md5sum="b55f184f2dcccda4d1f1874bea4494cf" name="tests/client/incorrect_options_case_sensitive.phpt" role="test" />
+   <file md5sum="3dc98929a989d94a247cc80561499181" name="tests/client/incorrect_uri.phpt" role="test" />
+   <file md5sum="a16612b3f560d6129f362828bfdeed3a" name="tests/client/new_session_reset.phpt" role="test" />
+   <file md5sum="6796500ef2b4a30de14f1a6ce4cae706" name="tests/client/session_multiple_close.phpt" role="test" />
+   <file md5sum="9ec7b4d68e0cd6612670373598a4df24" name="tests/client/simple.phpt" role="test" />
+   <file md5sum="2dab7bafd204e263e7df69485f5a7485" name="tests/client/simple_close.phpt" role="test" />
+   <file md5sum="8eed078dea34414d32f13bc20a9fc3fa" name="tests/client/simple_close_client.phpt" role="test" />
+   <file md5sum="49699a14127fd8eac6af39255490ccca" name="tests/client/simple_prune_expired.phpt" role="test" />
+   <file md5sum="5cc204f141d04c6306d3ccf03a115531" name="tests/client/simple_vs_common.phpt" role="test" />
+   <file md5sum="525b4f7f24147e4777f1052cb95120b9" name="tests/client/waiting_timeout.phpt" role="test" />
+   <file md5sum="21d5d1bb78c34fc9c4158c81dbcf8da0" name="tests/client/waiting_timeout_close_open.phpt" role="test" />
+   <file md5sum="a231394c4406cf8c8f3244830031d7f6" name="tests/compression/algorithm_alias.phpt" role="test" />
+   <file md5sum="1948a89695d6b147b76697d230544c53" name="tests/compression/algorithm_empty.phpt" role="test" />
+   <file md5sum="58d8719268e5828b9cea9ab0f2c90463" name="tests/compression/algorithm_incorrect.phpt" role="test" />
+   <file md5sum="c4f466a0f888fb6e8c50588748bafb79" name="tests/compression/algorithm_name.phpt" role="test" />
+   <file md5sum="30164c4c5824c4873b8c4cd7b511661a" name="tests/compression/algorithm_name_alias.phpt" role="test" />
+   <file md5sum="80ed7dad9ce71f7ecf621ca6c1ac37b2" name="tests/compression/algorithm_unknown.phpt" role="test" />
+   <file md5sum="a716173a5a56f900c5e1cbb332909722" name="tests/compression/compression_utils.inc" role="test" />
+   <file md5sum="fb6fb12088ed7e8d7c4a0e8404c145e8" name="tests/compression/mode.phpt" role="test" />
+   <file md5sum="4508c62e2f594edc566d12eaffe80df3" name="tests/crud_json/crud_json_utils.inc" role="test" />
+   <file md5sum="61a1d59f50287bda88d93f87ef6cde18" name="tests/crud_json/modify_array_append.phpt" role="test" />
+   <file md5sum="e60831b0caa0a70122e7827b24e3c890" name="tests/crud_json/modify_array_insert.phpt" role="test" />
+   <file md5sum="e3a2113a85cfa807922a73a0d2c5f553" name="tests/crud_json/modify_patch.phpt" role="test" />
+   <file md5sum="d0f05cf8032e52686a8d96eac1908cb5" name="tests/crud_json/modify_replace.phpt" role="test" />
+   <file md5sum="5c574ca86fd09a14bc076cba890c826f" name="tests/crud_json/modify_set.phpt" role="test" />
+   <file md5sum="92ae2fc86079a13092d2d89052840f62" name="tests/crud_json/modify_unset.phpt" role="test" />
+   <file md5sum="f9aa32c11f705d1e67d941cbc559a3d6" name="tests/index/array_dates.phpt" role="test" />
+   <file md5sum="d6029683eb4592ff95b66c80664c7950" name="tests/index/array_integers.phpt" role="test" />
+   <file md5sum="7a3fcda402f858d4c2826accc1ac88bf" name="tests/index/array_strings.phpt" role="test" />
+   <file md5sum="af6200720cd0e7ecb9bb0e306fcb7bde" name="tests/index/common.phpt" role="test" />
+   <file md5sum="8e615fe23ea4634557ddbf0430b56673" name="tests/index/create.phpt" role="test" />
+   <file md5sum="848a7cfcb1853524fda1d2c99f1a9b58" name="tests/index/drop.phpt" role="test" />
+   <file md5sum="849e5f3ad0753c9ecdacc82abc0a49fa" name="tests/index/extra.phpt" role="test" />
+   <file md5sum="0bc2e38d738d10c7d846bee455bef8e7" name="tests/index/fail.phpt" role="test" />
+   <file md5sum="1432e4bbd992eee921a099efd48a2e33" name="tests/index/index_utils.inc" role="test" />
+   <file md5sum="4b8ec0648432741e8f6535954036234c" name="tests/index/multi.phpt" role="test" />
+   <file md5sum="aedb839b26e473d2d500e58912ed730a" name="tests/orabugs/orabug_30093227.phpt" role="test" />
+   <file md5sum="b8408c0507216b2e50ea91f027b3a7c4" name="tests/orabugs/orabug_30226250.phpt" role="test" />
+   <file md5sum="1b8b3c8c163d53df14beccc60dacf080" name="tests/prepared_statement/ps_collection_find.phpt" role="test" />
+   <file md5sum="a7f9b32e291a7533b24d5783ad4566bf" name="tests/prepared_statement/ps_collection_modify.phpt" role="test" />
+   <file md5sum="c293f4d0d6c0395369abf96b540390df" name="tests/prepared_statement/ps_collection_remove.phpt" role="test" />
+   <file md5sum="759b41b50175d95088bfcd79df5b4f34" name="tests/prepared_statement/ps_table_delete.phpt" role="test" />
+   <file md5sum="14998c5f041c76130ecd847f16904824" name="tests/prepared_statement/ps_table_select.phpt" role="test" />
+   <file md5sum="c45e5c0404fca4574f6c3145ed2aeab5" name="tests/prepared_statement/ps_table_update.phpt" role="test" />
+   <file md5sum="39e5b9937c0f128fa9460f2825db868a" name="tests/prepared_statement/ps_utils.inc" role="test" />
+   <file md5sum="9472bd9cbf224de45839d1aca991f2f1" name="tests/query/collection_overlaps_int.phpt" role="test" />
+   <file md5sum="5c67e659183c8e61fe402df34b2c4ca6" name="tests/query/collection_overlaps_int_list.phpt" role="test" />
+   <file md5sum="82a022a840db5afad2f1172fcb1a3447" name="tests/query/collection_overlaps_string.phpt" role="test" />
+   <file md5sum="65ef716ef0ca2be0b750c1d6968269f2" name="tests/query/collection_overlaps_string_list.phpt" role="test" />
+   <file md5sum="f50af29c2204f8c2ef8b00117e00b838" name="tests/query/query_utils.inc" role="test" />
+   <file md5sum="9aa8a710bfa1f57fff1f6b8cdee43e21" name="tests/query/table_overlaps_int.phpt" role="test" />
+   <file md5sum="d7ac6922e93205047cb19cb1a5db8e7d" name="tests/query/table_overlaps_json_int_list.phpt" role="test" />
+   <file md5sum="9f7a26301e7c006afada1f0c8cbf11a5" name="tests/query/table_overlaps_json_string_list.phpt" role="test" />
+   <file md5sum="775ad79570eae9348621c27fe37596ad" name="tests/row_locking/waiting_options_collection/coll_default_exclusive_exclusive.phpt" role="test" />
+   <file md5sum="9a987637bc4f7c34b938b974df30e50c" name="tests/row_locking/waiting_options_collection/coll_default_exclusive_exclusive_worker.php" role="test" />
+   <file md5sum="a0f2843a5bf9ca7babf4727fafaa9aa1" name="tests/row_locking/waiting_options_collection/coll_default_exclusive_none.phpt" role="test" />
+   <file md5sum="9ace169faf45c9e22eefa8494abd401a" name="tests/row_locking/waiting_options_collection/coll_default_exclusive_none_worker.php" role="test" />
+   <file md5sum="994fec422523abe2257a876bfc9c3853" name="tests/row_locking/waiting_options_collection/coll_default_exclusive_shared.phpt" role="test" />
+   <file md5sum="3d7c95273da86b0132de7f67c28d96e0" name="tests/row_locking/waiting_options_collection/coll_default_exclusive_shared_worker.php" role="test" />
+   <file md5sum="e4c400394d68d5f6cca056b652335483" name="tests/row_locking/waiting_options_collection/coll_default_shared_exclusive.phpt" role="test" />
+   <file md5sum="9a987637bc4f7c34b938b974df30e50c" name="tests/row_locking/waiting_options_collection/coll_default_shared_exclusive_worker.php" role="test" />
+   <file md5sum="728a878e1f29f27bc1e01c08e7b4c5dc" name="tests/row_locking/waiting_options_collection/coll_default_shared_none.phpt" role="test" />
+   <file md5sum="ad790219e3981033ea76031b8a27e3bf" name="tests/row_locking/waiting_options_collection/coll_default_shared_none_worker.php" role="test" />
+   <file md5sum="223400ee0468040103abaaf5e1ad73a3" name="tests/row_locking/waiting_options_collection/coll_default_shared_shared.phpt" role="test" />
+   <file md5sum="a87fef472bb21b045790effb04681108" name="tests/row_locking/waiting_options_collection/coll_default_shared_shared_worker.php" role="test" />
+   <file md5sum="d9550ed24d648ee0060bec8ddb8aa4f4" name="tests/row_locking/waiting_options_collection/coll_nowait_exclusive_exclusive.phpt" role="test" />
+   <file md5sum="86a040d85f14a248f877b174a24bdee2" name="tests/row_locking/waiting_options_collection/coll_nowait_exclusive_exclusive_worker.php" role="test" />
+   <file md5sum="f890f1962e0050b85314d8b3d17847cc" name="tests/row_locking/waiting_options_collection/coll_nowait_exclusive_shared.phpt" role="test" />
+   <file md5sum="42794ae31adcdc45058ff5d8e24838ba" name="tests/row_locking/waiting_options_collection/coll_nowait_exclusive_shared_worker.php" role="test" />
+   <file md5sum="7a2a43433f5d04520b659828edf6bd8c" name="tests/row_locking/waiting_options_collection/coll_nowait_shared_exclusive.phpt" role="test" />
+   <file md5sum="86a040d85f14a248f877b174a24bdee2" name="tests/row_locking/waiting_options_collection/coll_nowait_shared_exclusive_worker.php" role="test" />
+   <file md5sum="fdb6373d0b9f0ff3f0467b54f489f1b1" name="tests/row_locking/waiting_options_collection/coll_nowait_shared_shared.phpt" role="test" />
+   <file md5sum="1abb75dc2a217241059967693a666a32" name="tests/row_locking/waiting_options_collection/coll_nowait_shared_shared_worker.php" role="test" />
+   <file md5sum="cc0ae992e9c2c0c318abce4c22b5f63e" name="tests/row_locking/waiting_options_collection/coll_skip_locked_exclusive_exclusive.phpt" role="test" />
+   <file md5sum="ab6f06edab3fe216f8eca02775099f03" name="tests/row_locking/waiting_options_collection/coll_skip_locked_exclusive_exclusive_worker.php" role="test" />
+   <file md5sum="370d4bf7b67262c4e09b11f4d9a8d88c" name="tests/row_locking/waiting_options_collection/coll_skip_locked_exclusive_shared.phpt" role="test" />
+   <file md5sum="1a0cc582fbe6158932ec896be00ba8b4" name="tests/row_locking/waiting_options_collection/coll_skip_locked_exclusive_shared_worker.php" role="test" />
+   <file md5sum="b0895b6f77adc4c0f0cb95ca3664699d" name="tests/row_locking/waiting_options_collection/coll_skip_locked_shared_exclusive.phpt" role="test" />
+   <file md5sum="24d61985a9ce56ad1732b02edbd020b7" name="tests/row_locking/waiting_options_collection/coll_skip_locked_shared_exclusive_worker.php" role="test" />
+   <file md5sum="667217c7193abce8b9142113b74c2ac5" name="tests/row_locking/waiting_options_collection/coll_skip_locked_shared_shared.phpt" role="test" />
+   <file md5sum="0a9ed40a7cc58d17d681ccff3d3fdb2f" name="tests/row_locking/waiting_options_collection/coll_skip_locked_shared_shared_worker.php" role="test" />
+   <file md5sum="b838d23b189cf846f8d6d127fc301094" name="tests/row_locking/waiting_options_collection/coll_without_exclusive_exclusive.phpt" role="test" />
+   <file md5sum="a4fab5e6dd6dcda44b2e51fcb0e770b0" name="tests/row_locking/waiting_options_collection/coll_without_exclusive_exclusive_worker.php" role="test" />
+   <file md5sum="2a860706cc731e73f60af5f3b547602e" name="tests/row_locking/waiting_options_collection/coll_without_exclusive_none.phpt" role="test" />
+   <file md5sum="537ec191d8850c830590016f1845062b" name="tests/row_locking/waiting_options_collection/coll_without_exclusive_none_worker.php" role="test" />
+   <file md5sum="798a2a03aa3d8302f3355d49b83856a2" name="tests/row_locking/waiting_options_collection/coll_without_exclusive_shared.phpt" role="test" />
+   <file md5sum="f4c31a09233cb0482963e7dcd071c8c1" name="tests/row_locking/waiting_options_collection/coll_without_exclusive_shared_worker.php" role="test" />
+   <file md5sum="f6a7b86f0349964e64c6f348020ccf70" name="tests/row_locking/waiting_options_collection/coll_without_shared_exclusive.phpt" role="test" />
+   <file md5sum="a4fab5e6dd6dcda44b2e51fcb0e770b0" name="tests/row_locking/waiting_options_collection/coll_without_shared_exclusive_worker.php" role="test" />
+   <file md5sum="833e3478dacedea18212f7827ea163a4" name="tests/row_locking/waiting_options_collection/coll_without_shared_none.phpt" role="test" />
+   <file md5sum="8f161b8b9f2319c298b65af1a593a183" name="tests/row_locking/waiting_options_collection/coll_without_shared_none_worker.php" role="test" />
+   <file md5sum="af3834e8a44d5a82c678d099354fd0da" name="tests/row_locking/waiting_options_collection/coll_without_shared_shared.phpt" role="test" />
+   <file md5sum="55bd53aa0bb556f2ec1d0cebe844ccfb" name="tests/row_locking/waiting_options_collection/coll_without_shared_shared_worker.php" role="test" />
+   <file md5sum="c41cac889311fc6c400009634d38a1da" name="tests/row_locking/waiting_options_table/tab_default_exclusive_exclusive.phpt" role="test" />
+   <file md5sum="ee78b61539d2646829e30d620538481d" name="tests/row_locking/waiting_options_table/tab_default_exclusive_exclusive_worker.php" role="test" />
+   <file md5sum="f7058e6f018cdf9483a405fc10beb1c8" name="tests/row_locking/waiting_options_table/tab_default_exclusive_none.phpt" role="test" />
+   <file md5sum="80986b101c2d5ad35e12673beaa985f2" name="tests/row_locking/waiting_options_table/tab_default_exclusive_none_worker.php" role="test" />
+   <file md5sum="a6cb0a6b0692b4f276e0d1a86afce275" name="tests/row_locking/waiting_options_table/tab_default_exclusive_shared.phpt" role="test" />
+   <file md5sum="dd9ca4ce83dba2818ca54073abc02f64" name="tests/row_locking/waiting_options_table/tab_default_exclusive_shared_worker.php" role="test" />
+   <file md5sum="263de37c70ddbbfeb21d09c270353b33" name="tests/row_locking/waiting_options_table/tab_default_shared_exclusive.phpt" role="test" />
+   <file md5sum="ee78b61539d2646829e30d620538481d" name="tests/row_locking/waiting_options_table/tab_default_shared_exclusive_worker.php" role="test" />
+   <file md5sum="38c3810abe31d4b6d2ed30f073d442e3" name="tests/row_locking/waiting_options_table/tab_default_shared_none.phpt" role="test" />
+   <file md5sum="6249e0754d9400bcc5309f3dbb806e53" name="tests/row_locking/waiting_options_table/tab_default_shared_none_worker.php" role="test" />
+   <file md5sum="e4a288d62d4cbf5b941ce32aefaeac1d" name="tests/row_locking/waiting_options_table/tab_default_shared_shared.phpt" role="test" />
+   <file md5sum="8561bd1e788b5fd4231061986d8d09b2" name="tests/row_locking/waiting_options_table/tab_default_shared_shared_worker.php" role="test" />
+   <file md5sum="17519300ee25f646425998b60b846070" name="tests/row_locking/waiting_options_table/tab_nowait_exclusive_exclusive.phpt" role="test" />
+   <file md5sum="efe9547d5d59d513dd911caa2ed051a9" name="tests/row_locking/waiting_options_table/tab_nowait_exclusive_exclusive_worker.php" role="test" />
+   <file md5sum="6fb993f7c0a3165aee27602088448ffa" name="tests/row_locking/waiting_options_table/tab_nowait_exclusive_shared.phpt" role="test" />
+   <file md5sum="5550803b12b4756167a8cbb4f18a8ee8" name="tests/row_locking/waiting_options_table/tab_nowait_exclusive_shared_worker.php" role="test" />
+   <file md5sum="e0b4f23bb8bd5c8f6ef001030f16f077" name="tests/row_locking/waiting_options_table/tab_nowait_shared_exclusive.phpt" role="test" />
+   <file md5sum="efe9547d5d59d513dd911caa2ed051a9" name="tests/row_locking/waiting_options_table/tab_nowait_shared_exclusive_worker.php" role="test" />
+   <file md5sum="d314243446a239499ed556ca26132785" name="tests/row_locking/waiting_options_table/tab_nowait_shared_shared.phpt" role="test" />
+   <file md5sum="95e2b9572f523da38c1df4a28aec1979" name="tests/row_locking/waiting_options_table/tab_nowait_shared_shared_worker.php" role="test" />
+   <file md5sum="0d1ee1da50eef12f1a1b11d865d9a780" name="tests/row_locking/waiting_options_table/tab_skip_locked_exclusive_exclusive.phpt" role="test" />
+   <file md5sum="d7765c912787233cd11a0ce6639c0030" name="tests/row_locking/waiting_options_table/tab_skip_locked_exclusive_exclusive_worker.php" role="test" />
+   <file md5sum="030d1b7840fdd9d060a2d9f5f696090f" name="tests/row_locking/waiting_options_table/tab_skip_locked_exclusive_shared.phpt" role="test" />
+   <file md5sum="3bd9dc89fca028adb009f5057001813a" name="tests/row_locking/waiting_options_table/tab_skip_locked_exclusive_shared_worker.php" role="test" />
+   <file md5sum="7f5f0029246d8da1a1d67ddf236857ca" name="tests/row_locking/waiting_options_table/tab_skip_locked_shared_exclusive.phpt" role="test" />
+   <file md5sum="abc90711e26e48281225539d9dd6bf47" name="tests/row_locking/waiting_options_table/tab_skip_locked_shared_exclusive_worker.php" role="test" />
+   <file md5sum="c95e9915b12dc4af5b856cdd2ed33fa6" name="tests/row_locking/waiting_options_table/tab_skip_locked_shared_shared.phpt" role="test" />
+   <file md5sum="7971dfe0555398a281cc32d157c81fc7" name="tests/row_locking/waiting_options_table/tab_skip_locked_shared_shared_worker.php" role="test" />
+   <file md5sum="83683b95b98074ca24c0162652c372e8" name="tests/row_locking/waiting_options_table/tab_without_exclusive_exclusive.phpt" role="test" />
+   <file md5sum="67df7d4f9d8b0ee425f78c20c7bbabc4" name="tests/row_locking/waiting_options_table/tab_without_exclusive_exclusive_worker.php" role="test" />
+   <file md5sum="dfca7bdfa43818f3ab04a9cbd6b0f8e8" name="tests/row_locking/waiting_options_table/tab_without_exclusive_none.phpt" role="test" />
+   <file md5sum="fc97663eda2d88ead672d8afd64d3705" name="tests/row_locking/waiting_options_table/tab_without_exclusive_none_worker.php" role="test" />
+   <file md5sum="2e101d430f56a5dcb74eecc51480b11f" name="tests/row_locking/waiting_options_table/tab_without_exclusive_shared.phpt" role="test" />
+   <file md5sum="73d69847711760834d276785a5b6d3e7" name="tests/row_locking/waiting_options_table/tab_without_exclusive_shared_worker.php" role="test" />
+   <file md5sum="e6c2bc856a25d44d52376b0049cd3d9c" name="tests/row_locking/waiting_options_table/tab_without_shared_exclusive.phpt" role="test" />
+   <file md5sum="67df7d4f9d8b0ee425f78c20c7bbabc4" name="tests/row_locking/waiting_options_table/tab_without_shared_exclusive_worker.php" role="test" />
+   <file md5sum="0af583ddbca5aa8ffdff8d67c81aa128" name="tests/row_locking/waiting_options_table/tab_without_shared_none.phpt" role="test" />
+   <file md5sum="358fe49b87eefd844333af0d43197921" name="tests/row_locking/waiting_options_table/tab_without_shared_none_worker.php" role="test" />
+   <file md5sum="50ae17b592b4134448778385ea20e5c4" name="tests/row_locking/waiting_options_table/tab_without_shared_shared.phpt" role="test" />
+   <file md5sum="95cb47a301103f7b8abcb5db978ce4f7" name="tests/row_locking/waiting_options_table/tab_without_shared_shared_worker.php" role="test" />
+   <file md5sum="e841588af4e33c2bab97cf6a421ea4a9" name="tests/row_locking/collection_misc.phpt" role="test" />
+   <file md5sum="ef29ead74576549e80800b26f03f632b" name="tests/row_locking/collection_parallel_exclusive_exclusive.phpt" role="test" />
+   <file md5sum="508eeeac0c5a5ecbe90a006a8f083acf" name="tests/row_locking/collection_parallel_exclusive_exclusive_worker.php" role="test" />
+   <file md5sum="9a3677df4105cdee68f664ef8c8b9f57" name="tests/row_locking/collection_parallel_exclusive_shared.phpt" role="test" />
+   <file md5sum="00846b9d959dfa089dccacd9588c2421" name="tests/row_locking/collection_parallel_exclusive_shared_worker.php" role="test" />
+   <file md5sum="7e617b4127139f5051f7fa703373cdb0" name="tests/row_locking/collection_parallel_shared_exclusive.phpt" role="test" />
+   <file md5sum="3900de689486173903ed6a03bf641b67" name="tests/row_locking/collection_parallel_shared_exclusive_worker.php" role="test" />
+   <file md5sum="d6f589be3c8b60b0679d6a60a4e89256" name="tests/row_locking/collection_sequential.phpt" role="test" />
+   <file md5sum="02c4a9f203ed98d39621a85cddeb48b3" name="tests/row_locking/row_locking_utils.inc" role="test" />
+   <file md5sum="25e6d4f31fead89ce5b98f0d75a75222" name="tests/row_locking/table_misc.phpt" role="test" />
+   <file md5sum="c50901738bb424495c6cafe60b5e5f3d" name="tests/row_locking/table_parallel_exclusive_exclusive.phpt" role="test" />
+   <file md5sum="cf6c644dd8ac3f000dc1869bcd8120b4" name="tests/row_locking/table_parallel_exclusive_exclusive_worker.php" role="test" />
+   <file md5sum="beb5b80a4dbc63aae8f5b6931e21084e" name="tests/row_locking/table_parallel_exclusive_shared.phpt" role="test" />
+   <file md5sum="4d1bc113a7c45851af91c09af77cde60" name="tests/row_locking/table_parallel_exclusive_shared_worker.php" role="test" />
+   <file md5sum="fedb544bce82373c10d47c1b5659c623" name="tests/row_locking/table_parallel_shared_exclusive.phpt" role="test" />
+   <file md5sum="0716a2b2733be8b21177903b15ac482d" name="tests/row_locking/table_parallel_shared_exclusive_worker.php" role="test" />
+   <file md5sum="f70d9a3199bb0113f380f6f5ee4c0528" name="tests/row_locking/table_sequential.phpt" role="test" />
+   <file md5sum="53d6a71c7802e9ab0ace2eef13a4ea45" name="tests/row_locking/table_sequential_native_sql.phpt" role="test" />
+   <file md5sum="39e2c4557b7e367a768d1aa9a28b46c7" name="tests/schema/common_default_schema.phpt" role="test" />
+   <file md5sum="0a85b4aefbdd43e1f8894f5d5dbd3ccf" name="tests/schema/empty_default_schema.phpt" role="test" />
+   <file md5sum="724338908c89b1e981efa11cb192add1" name="tests/schema/get_default_schema.phpt" role="test" />
+   <file md5sum="2fef2f400115feaba25fe5e1c56ce281" name="tests/schema/get_empty_default_schema.phpt" role="test" />
+   <file md5sum="8799ded151cf89ed5a427d64dcc31cbb" name="tests/schema/incorrect_default_schema.phpt" role="test" />
+   <file md5sum="1f3b5e72a5f547ce8bfdb6ebcab336a6" name="tests/schema/schema_utils.inc" role="test" />
+   <file md5sum="b713726b818add3332c5d5b32c1056d8" name="tests/schema_validation/create_common.phpt" role="test" />
+   <file md5sum="c104128485bb601f80b263e67871a8d9" name="tests/schema_validation/create_no_schema.phpt" role="test" />
+   <file md5sum="ee458aa232420a00012861a92c02dc7b" name="tests/schema_validation/create_simple.phpt" role="test" />
+   <file md5sum="a67c66052e9859a8ceb7fb61a5ef084b" name="tests/schema_validation/modify_off.phpt" role="test" />
+   <file md5sum="b9042f826d3d4666a9cf521529085cb0" name="tests/schema_validation/modify_schema.phpt" role="test" />
+   <file md5sum="2f9f524a9358db6fda5f069dd171028b" name="tests/schema_validation/modify_strict.phpt" role="test" />
+   <file md5sum="d50aae683563b8807ef8f88106492fd2" name="tests/schema_validation/parse_error.phpt" role="test" />
+   <file md5sum="4f9aa82ca7cc9bc8a9822c0257e2ac83" name="tests/session/from_collection.phpt" role="test" />
+   <file md5sum="55d412cb17b9d9642b1642bae8d418f3" name="tests/session/from_schema.phpt" role="test" />
+   <file md5sum="83fb5411382280068ced50069da43ba2" name="tests/session/from_table.phpt" role="test" />
+   <file md5sum="f8f5d19328c80c33e9e55e2dc044976f" name="tests/session/multiple_close.phpt" role="test" />
+   <file md5sum="6095dd7df06e0b2574f6674a3bcdfa87" name="tests/session/session_utils.inc" role="test" />
+   <file md5sum="d96c508417e3fae17c1b19ebd6bc0549" name="tests/session/simple_session_open.phpt" role="test" />
+   <file md5sum="4ba2a1568e98b0cc88e4350303f61fe1" name="tests/session/simple_session_open_close.phpt" role="test" />
+   <file md5sum="f03004cf5005e5f303958ef939e2af61" name="tests/session/simple_session_open_verify_close.phpt" role="test" />
+   <file md5sum="b4eae4063bf59008c28528af8c28040e" name="tests/single_doc_ops/add_or_replace_one.phpt" role="test" />
+   <file md5sum="4e61b7aeb621fae4b6a0b17af8eafbad" name="tests/single_doc_ops/get_one.phpt" role="test" />
+   <file md5sum="ba252079bc172f24e5d6579f7a8fbafc" name="tests/single_doc_ops/remove_one.phpt" role="test" />
+   <file md5sum="d6a1547134bf7e8553b46adbf23caee5" name="tests/single_doc_ops/replace_one.phpt" role="test" />
+   <file md5sum="fa738f7af46406867bbf28e11f789a77" name="tests/single_doc_ops/single_doc_utils.inc" role="test" />
+   <file md5sum="896ea1638ac9dc023890027d4bfa02f3" name="tests/ssl/ca.pem" role="test" />
+   <file md5sum="e5d0485d250e65604527f0c95c83968d" name="tests/ssl/client-cert.pem" role="test" />
+   <file md5sum="bb05543c6aa41454087607cb4ea9c79a" name="tests/ssl/client-key.pem" role="test" />
+   <file md5sum="d1974bcb01914f0b0ecc0bf1e624b46e" name="tests/ssl/client-req.pem" role="test" />
+   <file md5sum="4d3b53f834a3c0834705a5689073afcd" name="tests/ssl/server-cert.pem" role="test" />
+   <file md5sum="51f22e13143e1080e25061c44d9028eb" name="tests/ssl/server-key.pem" role="test" />
+   <file md5sum="2bbaf548a8e846b08d1982b5107599af" name="tests/ssl/server-req.pem" role="test" />
+   <file md5sum="3de4fce5c42cdc6b94b06ca254f46884" name="tests/000.phpt" role="test" />
+   <file md5sum="fccbeec931a39508d09cc968834e0a9a" name="tests/add_with_empty_arg_is_noop.phpt" role="test" />
+   <file md5sum="b9da3c345d20e67ba6d4c46df1b79b9d" name="tests/array_or_object_contains_operator.phpt" role="test" />
+   <file md5sum="28c95c1eb05ac694f132ee735578118f" name="tests/basic_collection_operations.phpt" role="test" />
+   <file md5sum="370e9e6844199bd07cb758e28209a90e" name="tests/basic_execute_sql.phpt" role="test" />
+   <file md5sum="ca2323415f07853143c1d69148fc73b0" name="tests/basic_transactions.phpt" role="test" />
+   <file md5sum="87d4485245781217ef673d61a825d570" name="tests/client_side_failover.phpt" role="test" />
+   <file md5sum="2543e781bf4c78506f42edfc0960b531" name="tests/coll_multiple_affected_items_count.phpt" role="test" />
+   <file md5sum="e7350acc86b37ca45bb7a4853d007ad7" name="tests/collection.phpt" role="test" />
+   <file md5sum="39103f3e8a27a3222a02cd9ad9ab53d8" name="tests/collection_fields.phpt" role="test" />
+   <file md5sum="2a7c57b8d3b32ef653dc444301dd57c2" name="tests/collection_find.phpt" role="test" />
+   <file md5sum="8d3f598d587648c911ddb2739c3a1d27" name="tests/collection_find_no_only_full_group_by.phpt" role="test" />
+   <file md5sum="23eadd90dfe6d6e2abfd5e576fb64f52" name="tests/collection_group_by.phpt" role="test" />
+   <file md5sum="85bfc8a05d783ceb547696e8ba13ef4c" name="tests/collection_limit_offset.phpt" role="test" />
+   <file md5sum="297893706a60f707a1c293bc22ed3e75" name="tests/collection_modify_array_delete.phpt" role="test" />
+   <file md5sum="d34190bbbcf06090f25c509c41e69e8f" name="tests/collection_modify_set_replace.phpt" role="test" />
+   <file md5sum="eb1b22479d85a7dd502c7c77173b5082" name="tests/collection_modify_sortreplacemerge.phpt" role="test" />
+   <file md5sum="08e700c8fc8b86f56e58b74f43c34c20" name="tests/collection_modifysetunset.phpt" role="test" />
+   <file md5sum="8badf138933e46493f75bf88bebb6155" name="tests/collection_remove.phpt" role="test" />
+   <file md5sum="4b2e89d89d5aacfe03f8c5fa991487f2" name="tests/complex_query.phpt" role="test" />
+   <file md5sum="2da99f3feb695ace60bd0438b0076521" name="tests/connect.inc" role="test" />
+   <file md5sum="c9f4b06b4c52d3eef40a9e6640c063fc" name="tests/connection_test_uri_string.phpt" role="test" />
+   <file md5sum="c048d90d1cf38a81d5bcc66196551204" name="tests/createdrop_schema.phpt" role="test" />
+   <file md5sum="31c867bdad7cf4b6f2689cee5b09fdea" name="tests/date_time_types.phpt" role="test" />
+   <file md5sum="ef751d47bb88625dad98fc6a426eb592" name="tests/drop_item.phpt" role="test" />
+   <file md5sum="b8221d1bd872fa80a648c2724b217fc6" name="tests/exists_in_database.phpt" role="test" />
+   <file md5sum="79b73107c8f3785b97a7be5bf80e2151" name="tests/field_metadata.phpt" role="test" />
+   <file md5sum="a7f1b21be2e71a9c79a35c021a96c604" name="tests/field_metadata_empty_rowset.phpt" role="test" />
+   <file md5sum="45020c9436063d3d4a0a5a627608dbc5" name="tests/flexible_number_of_arguments.phpt" role="test" />
+   <file md5sum="31ec0468fe97bfa862c1a7fe6bab280c" name="tests/generated_doc_ids.phpt" role="test" />
+   <file md5sum="d53038da28af66301f735383ca1fc300" name="tests/get_auto_increment_value.phpt" role="test" />
+   <file md5sum="319f413dbf34e7e27721a58bf583b5c9" name="tests/get_collection_as_table.phpt" role="test" />
+   <file md5sum="6f95f0221ed98a06114f755a8b241bb4" name="tests/get_name.phpt" role="test" />
+   <file md5sum="863343e8a2dd95d857692ad1bb395a9d" name="tests/get_tableget_tables.phpt" role="test" />
+   <file md5sum="4b2e89c9078dc67a6e73282ae6dafd1a" name="tests/iterators.phpt" role="test" />
+   <file md5sum="ae6514dceb404ae29dfe0007d53b3b54" name="tests/mergepatch.phpt" role="test" />
+   <file md5sum="9d5b2cdf3964225c911be15b72287352" name="tests/modify_array_append_insert.phpt" role="test" />
+   <file md5sum="26696455cd69d31e91097bbd6ef2dd52" name="tests/multiple_results.phpt" role="test" />
+   <file md5sum="7ceb902e4665b5d03b0d6cfd2079f9f0" name="tests/savepoint.phpt" role="test" />
+   <file md5sum="67c9ceec21cbbc5bb383604a84da7bc4" name="tests/schema.phpt" role="test" />
+   <file md5sum="c7201245794d161b308500ad17ffe276" name="tests/select_fetch.phpt" role="test" />
+   <file md5sum="499ea9cfa97edb5fbd3bd0c56acde96f" name="tests/session_attributes.phpt" role="test" />
+   <file md5sum="77a1ef138493847b72115ed10889fe89" name="tests/session_minor_tc.phpt" role="test" />
+   <file md5sum="e62c3f00614a2e1d127d5e83a213af5b" name="tests/simple_expression.phpt" role="test" />
+   <file md5sum="598bf52b88dda7e448e9631033c924ef" name="tests/simple_ssl.phpt" role="test" />
+   <file md5sum="1999f767b623b22ea5bc789440f2d361" name="tests/sql_simple.phpt" role="test" />
+   <file md5sum="6d0810898e9f0e47db47c9275c629314" name="tests/table.phpt" role="test" />
+   <file md5sum="3abc1e1f1881802a07e8b84608beabbd" name="tests/table_delete_limit_order_by.phpt" role="test" />
+   <file md5sum="def6248ad285fedf6af91922c198cfa3" name="tests/table_delete_where.phpt" role="test" />
+   <file md5sum="a1ba90c33192145eb5df43576edf6665" name="tests/table_group_by.phpt" role="test" />
+   <file md5sum="ca3c1a152a3560e4efd95d38bbbe6e21" name="tests/table_limit_offset.phpt" role="test" />
+   <file md5sum="ab7988ac6219c21f885dfef51ac5a58e" name="tests/unix_domain_socket.phpt" role="test" />
+   <file md5sum="1e58e66733b586a980992ace5cd94fff" name="tests/update.phpt" role="test" />
+   <file md5sum="629d71e1c7c2864d20cd89b6bd8ffd25" name="tests/warnings.phpt" role="test" />
+   <file md5sum="5d15b3f9ba58bc8748d97878b05650c6" name="tests/worker_utils.inc" role="test" />
+   <file md5sum="d8cd5501f99621714444936cfd3f04f1" name="util/allocator.cc" role="src" />
+   <file md5sum="3683344ef6a864e95f8379debe0c2421" name="util/allocator.h" role="src" />
+   <file md5sum="7d1304ecb988dcfa247a62bd0fe3a352" name="util/arguments.cc" role="src" />
+   <file md5sum="8a0d5023e0fcc6c5b863419c9f9c68b4" name="util/arguments.h" role="src" />
+   <file md5sum="6d8d031be9656ec50f3fae5296962308" name="util/arguments.inl" role="src" />
+   <file md5sum="70ccab132725e65810c1a32afef8e855" name="util/compiler_utils.h" role="src" />
+   <file md5sum="97f6a11f049e358d0d3d2414cee8edd0" name="util/exceptions.cc" role="src" />
+   <file md5sum="d30ad7487d4f88e1e8fa1c786efce7fe" name="util/exceptions.h" role="src" />
+   <file md5sum="9556521d6881d6e7d043d45ea061c770" name="util/functions.cc" role="src" />
+   <file md5sum="14e87c4b33be1dd1a8a1898f05e28878" name="util/functions.h" role="src" />
+   <file md5sum="c1b0cd73b6d5804ed5394b71c3a64c62" name="util/json_utils.cc" role="src" />
+   <file md5sum="25c5d3ec991c14cd767e9c2086c0e0c1" name="util/json_utils.h" role="src" />
+   <file md5sum="1ea103de38243a1271afb7ff28c17fdb" name="util/object.cc" role="src" />
+   <file md5sum="c9c060eb308b606562af9df371df63d0" name="util/object.h" role="src" />
+   <file md5sum="2a1234551499c47daf4f2bb73f3057c7" name="util/pb_utils.cc" role="src" />
+   <file md5sum="afe39891e16a34e767cd99d0a0d4f9fd" name="util/pb_utils.h" role="src" />
+   <file md5sum="fe5b724568143ca0cd7dae0affd96a9d" name="util/string_utils.cc" role="src" />
+   <file md5sum="70b4ce92ae4473cd697a469b6e638c90" name="util/string_utils.h" role="src" />
+   <file md5sum="1835cf008cf3b43b4c40511256fb57bd" name="util/strings.cc" role="src" />
+   <file md5sum="42214fbba70304e69e9efec7a093fc02" name="util/strings.h" role="src" />
+   <file md5sum="d6fed802fc4e41cb84170a8b14120566" name="util/types.h" role="src" />
+   <file md5sum="a256883c90c9d297f136d51503e398ca" name="util/url_utils.cc" role="src" />
+   <file md5sum="d4f31cef950e18cc768fc50fe36f00e7" name="util/url_utils.h" role="src" />
+   <file md5sum="b538b8ef7891dcd1ad3ec01e8564967f" name="util/value.cc" role="src" />
+   <file md5sum="8421bc0c9ccd86d1570281cc9874fd52" name="util/value.h" role="src" />
+   <file md5sum="816382957ea44aacafbea0832970ecf9" name="util/value.inl" role="src" />
+   <file md5sum="ba4e90fd05e0d27d0a33b720992f3c03" name="util/zend_utils.cc" role="src" />
+   <file md5sum="e50edcb5a8a445c2a65b6f86cd949e72" name="util/zend_utils.h" role="src" />
+   <file md5sum="a84ed50d360af3dd0b612ac29f98065d" name="xmysqlnd/cdkbase/core/codec.cc" role="src" />
+   <file md5sum="501e7c8588ed33bfb24c479069e1d87b" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/error/en.h" role="src" />
+   <file md5sum="e9e1ae8b99e97bb4e90f1d3e7db7dd71" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/error/error.h" role="src" />
+   <file md5sum="3992d0c12a1a6fe8c46a9efcb8a89012" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/biginteger.h" role="src" />
+   <file md5sum="6c214ad248bffa50cc6b7312a194217b" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/diyfp.h" role="src" />
+   <file md5sum="fee848179439386edcc6142f72e1a427" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/dtoa.h" role="src" />
+   <file md5sum="f10994226a60e0756dfeb67d0a28bb0f" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/ieee754.h" role="src" />
+   <file md5sum="1cc800666cfc7f9c0d0d6646f3c89edb" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/itoa.h" role="src" />
+   <file md5sum="8cb27dd4ec80562b3fd3e3a1b80b9ae3" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/meta.h" role="src" />
+   <file md5sum="758616be6b48246694374575629c6353" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/pow10.h" role="src" />
+   <file md5sum="612e11298b8c161973369e7b56c21fd2" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/regex.h" role="src" />
+   <file md5sum="a6418a4f7c237848dd79984c86784b2f" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/stack.h" role="src" />
+   <file md5sum="0ca36226591bd78cf1d5497fdf06827b" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/strfunc.h" role="src" />
+   <file md5sum="b2cd7c1b157f54e1208ace8a325a69c6" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/strtod.h" role="src" />
+   <file md5sum="d31947cff85adf536ef86d37ad4d4bc9" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/internal/swap.h" role="src" />
+   <file md5sum="28b716fa388af4d2ed70cca92fad3e09" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/msinttypes/inttypes.h" role="src" />
+   <file md5sum="6e619664c829473ada26d63aea8bca83" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/msinttypes/stdint.h" role="src" />
+   <file md5sum="ed9bb128461a03da4ddc95c85b274045" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/allocators.h" role="src" />
+   <file md5sum="7c20900c2153efbf6759def3cd914431" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/document.h" role="src" />
+   <file md5sum="4f359244f4ebdb6bc924a3af44261a74" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/encodedstream.h" role="src" />
+   <file md5sum="1cd05b1b84c6e0ababce9a8e3ed681a9" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/encodings.h" role="src" />
+   <file md5sum="d343cd55dc5e638b9be9db70ef4d57b9" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/filereadstream.h" role="src" />
+   <file md5sum="6e08b938f57f6d2d0e56fe1beeb0b506" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/filewritestream.h" role="src" />
+   <file md5sum="e4bf6ee9d10530c9efc19c953d7e2f16" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/fwd.h" role="src" />
+   <file md5sum="09afdc12862fceddbd742d7c2e666cdd" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/istreamwrapper.h" role="src" />
+   <file md5sum="11dd26ff4c1ceecbca2d00f64fc188b0" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/memorybuffer.h" role="src" />
+   <file md5sum="7128019abd5b14ea804846a84447843f" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/memorystream.h" role="src" />
+   <file md5sum="2577b34aedcb9f49f22114db78531cb9" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/ostreamwrapper.h" role="src" />
+   <file md5sum="eb35ace9735ace423a5cb058f356542d" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/pointer.h" role="src" />
+   <file md5sum="addc08bdef5dbf6c6871e291dad5875a" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/prettywriter.h" role="src" />
+   <file md5sum="6dd511785f8f24ec33fd5f4949a8e0dc" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/rapidjson.h" role="src" />
+   <file md5sum="2299663662afc33ea9e52b7753e5c5b7" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/reader.h" role="src" />
+   <file md5sum="46519de699550169dfd716ad5957cb76" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/schema.h" role="src" />
+   <file md5sum="30ded522b7f96fee77b0eade5826ee84" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/stream.h" role="src" />
+   <file md5sum="37ec52d55fbdd66c867761301a9a840d" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/stringbuffer.h" role="src" />
+   <file md5sum="b458053d66538fded4d9a2ce5e1b68ba" name="xmysqlnd/cdkbase/extra/rapidjson/include/rapidjson/writer.h" role="src" />
+   <file md5sum="898398e1b87e3b5d9faa31e8ea698c11" name="xmysqlnd/cdkbase/foundation/error.cc" role="src" />
+   <file md5sum="a910147f9226c502f96aedf7ef4329bc" name="xmysqlnd/cdkbase/foundation/stream.cc" role="src" />
+   <file md5sum="9a72b5e20e923e5133830d6300e79ee0" name="xmysqlnd/cdkbase/include/mysql/cdk/api/cursor.h" role="src" />
+   <file md5sum="d776c7c9180097bbd56b823ca768b933" name="xmysqlnd/cdkbase/include/mysql/cdk/api/document.h" role="src" />
+   <file md5sum="c72448bec29814ce3e607d515e7b41e1" name="xmysqlnd/cdkbase/include/mysql/cdk/api/expression.h" role="src" />
+   <file md5sum="903df2af1972a2bffdf81c4808513b6c" name="xmysqlnd/cdkbase/include/mysql/cdk/api/mdata.h" role="src" />
+   <file md5sum="1941c1e52763994506bd87c69a1d90a0" name="xmysqlnd/cdkbase/include/mysql/cdk/api/obj_ref.h" role="src" />
+   <file md5sum="79be6dcd59b0ed762e37a300221dd55b" name="xmysqlnd/cdkbase/include/mysql/cdk/api/processors.h" role="src" />
+   <file md5sum="c86fc6276e1728760fd5097bc2ab97db" name="xmysqlnd/cdkbase/include/mysql/cdk/api/query.h" role="src" />
+   <file md5sum="0b8ed09a2581025d65fafee7d7149830" name="xmysqlnd/cdkbase/include/mysql/cdk/api/reply.h" role="src" />
+   <file md5sum="6d98bd5c9f01a22461d6f5acba8d078a" name="xmysqlnd/cdkbase/include/mysql/cdk/api/session.h" role="src" />
+   <file md5sum="67a880adbba619bd976b4c46e2bedb23" name="xmysqlnd/cdkbase/include/mysql/cdk/api/transaction.h" role="src" />
+   <file md5sum="30118b9d1f7dc0b5d7962be314a27c9c" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/async.h" role="src" />
+   <file md5sum="f539c7c7470e79481bceea936ee0ee0f" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/cdk_time.h" role="src" />
+   <file md5sum="5874b9e8345eb11a2278df36e533ecfa" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/codec.h" role="src" />
+   <file md5sum="942dad3c3a005f0a141e67ab50ab7307" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/common.h" role="src" />
+   <file md5sum="a4f645149c4a59185f4130d1757d1f5a" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/connection_openssl.h" role="src" />
+   <file md5sum="b6cbeed2070e94017962357efd31056a" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/connection_tcpip.h" role="src" />
+   <file md5sum="979b933d0cb6da46d9ff5dfa9a81baba" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/diagnostics.h" role="src" />
+   <file md5sum="e87bdda77c75b0fa955558d1729ab5f2" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/error.h" role="src" />
+   <file md5sum="e2d3cf9374d18f5860cb0a4a2e87530c" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/error_category.h" role="src" />
+   <file md5sum="ead22d655242e6d1c9f2d3bc2352a9cc" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/opaque_impl.h" role="src" />
+   <file md5sum="6bd9e40ca316b08cc21ae153b82a1460" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/opaque_impl.i" role="src" />
+   <file md5sum="b78d12522eacf1b604b981c7721fe2c4" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/socket.h" role="src" />
+   <file md5sum="54558727b44f7a7df1a972a60f06710e" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/static_assert.h" role="src" />
+   <file md5sum="8d0fc59ab05cf0a35a8fb97f567bba96" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/std_error_conditions.h" role="src" />
+   <file md5sum="0bec215a93b0615c93b71d75a499f6da" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/stream.h" role="src" />
+   <file md5sum="5348b57c828d42bf12f4b13f11a2a7b2" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/string.h" role="src" />
+   <file md5sum="66cd47af3abe2b9ccd703ddf242badaf" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/types.h" role="src" />
+   <file md5sum="45977b01d19fe5ad17d187929a675bcd" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation/variant.h" role="src" />
+   <file md5sum="1cf2de175da82adf4dd610d78dd69321" name="xmysqlnd/cdkbase/include/mysql/cdk/mysqlx/common.h" role="src" />
+   <file md5sum="df0e1e860870e06a8f60952d2f88d430" name="xmysqlnd/cdkbase/include/mysql/cdk/mysqlx/result.h" role="src" />
+   <file md5sum="9dca9ad2c3a5cb25264091bbd7dd7d35" name="xmysqlnd/cdkbase/include/mysql/cdk/mysqlx/session.h" role="src" />
+   <file md5sum="81ba81ad49bfe292c9633b7efd5eda61" name="xmysqlnd/cdkbase/include/mysql/cdk/protocol/mysqlx/collations.h" role="src" />
+   <file md5sum="79bd05634b74d496117b77fc6c465f0e" name="xmysqlnd/cdkbase/include/mysql/cdk/protocol/mysqlx/expr.h" role="src" />
+   <file md5sum="639da636f8a04f239ea62478730e90b5" name="xmysqlnd/cdkbase/include/mysql/cdk/protocol/mysqlx/traits.h" role="src" />
+   <file md5sum="0a0854fbbeb83017c5e8e1460743910f" name="xmysqlnd/cdkbase/include/mysql/cdk/protocol/mysqlx.h" role="src" />
+   <file md5sum="43ac543de8000b00609457b6868a807f" name="xmysqlnd/cdkbase/include/mysql/cdk/charsets.h" role="src" />
+   <file md5sum="e889152fe25d780710ffa4779ce98cfb" name="xmysqlnd/cdkbase/include/mysql/cdk/codec.h" role="src" />
+   <file md5sum="42f25c264ade32dda397800fc5546c79" name="xmysqlnd/cdkbase/include/mysql/cdk/common.h" role="src" />
+   <file md5sum="786ff19ebb3d061143adb97e317a68ff" name="xmysqlnd/cdkbase/include/mysql/cdk/config.h" role="src" />
+   <file md5sum="b3afd80d20a4ac740a4c19f36c124a1f" name="xmysqlnd/cdkbase/include/mysql/cdk/converters.h" role="src" />
+   <file md5sum="b28275ff46a40f3f4ac39136c8a0409f" name="xmysqlnd/cdkbase/include/mysql/cdk/cursor.h" role="src" />
+   <file md5sum="57e1ba3f0cb5560fb317b364ddac4c71" name="xmysqlnd/cdkbase/include/mysql/cdk/data_source.h" role="src" />
+   <file md5sum="b0c4024eeb6aafeb9eaec0b480a9a788" name="xmysqlnd/cdkbase/include/mysql/cdk/foundation.h" role="src" />
+   <file md5sum="24fd7818df6dd459c125324a3713ca60" name="xmysqlnd/cdkbase/include/mysql/cdk/mysqlx.h" role="src" />
+   <file md5sum="7766ffacd0ee20d9a48a2afc7130d281" name="xmysqlnd/cdkbase/include/mysql/cdk/reply.h" role="src" />
+   <file md5sum="e9901bb9613a1bfc083bc25756c187bb" name="xmysqlnd/cdkbase/include/mysql/cdk/session.h" role="src" />
+   <file md5sum="5d6ad6fa0214bb1c8b9a34346b400aed" name="xmysqlnd/cdkbase/include/mysql/cdk.h" role="src" />
+   <file md5sum="1ed1af8b55732beec6cd4e5462ef32f3" name="xmysqlnd/cdkbase/mysqlx/converters.h" role="src" />
+   <file md5sum="ee4d90ba8017352f0892f60ee168c4d6" name="xmysqlnd/cdkbase/mysqlx/delayed_op.h" role="src" />
+   <file md5sum="3ba0ce2b50d21e86fc3c82ba5f08cd97" name="xmysqlnd/cdkbase/parser/char_iterator.h" role="src" />
+   <file md5sum="258051b9f1fd23d2fd00c1c2ecde86aa" name="xmysqlnd/cdkbase/parser/expr_parser.cc" role="src" />
+   <file md5sum="6bb871dd2c62f9a4120b96c467ac311b" name="xmysqlnd/cdkbase/parser/expr_parser.h" role="src" />
+   <file md5sum="25eabb59b4fb2afff7cc0e55b4978bd4" name="xmysqlnd/cdkbase/parser/json_parser.cc" role="src" />
+   <file md5sum="7384a69aeb32acf33ccae947e6976e02" name="xmysqlnd/cdkbase/parser/json_parser.h" role="src" />
+   <file md5sum="c24f3f15ac69b56615bb059dd5ec4dde" name="xmysqlnd/cdkbase/parser/parser.h" role="src" />
+   <file md5sum="28bc5325430a00be66cdee73cead8cfa" name="xmysqlnd/cdkbase/parser/tokenizer.cc" role="src" />
+   <file md5sum="e7b15edc441e1947f58023019c29cbc4" name="xmysqlnd/cdkbase/parser/tokenizer.h" role="src" />
+   <file md5sum="2253599bc511464e12eb6aa3f5c31041" name="xmysqlnd/cdkbase/protocol/mysqlx/builders.h" role="src" />
+   <file md5sum="259b610d1442cc8d8b83310f7c45d0b5" name="xmysqlnd/crud_parsers/compilerutils.h" role="src" />
+   <file md5sum="cd2398809a6f7d416e6f0d68902cf881" name="xmysqlnd/crud_parsers/expression_parser.cc" role="src" />
+   <file md5sum="ab3ba8078f03af98021983417b7213d3" name="xmysqlnd/crud_parsers/expression_parser.h" role="src" />
+   <file md5sum="13798fbd736216c130071d94cf1ff77d" name="xmysqlnd/crud_parsers/legacy_tokenizer.cc" role="src" />
+   <file md5sum="eea58326f18b75fae1214b7f30597386" name="xmysqlnd/crud_parsers/legacy_tokenizer.h" role="src" />
+   <file md5sum="a255bb1a050ad3468ca15ed3a73534a9" name="xmysqlnd/crud_parsers/memory_new.h" role="src" />
+   <file md5sum="63ce0c186656f7e21f81e10a12388847" name="xmysqlnd/crud_parsers/mysqlx_crud_parser.cc" role="src" />
+   <file md5sum="1af265f6b0c63c1133b57243730612f1" name="xmysqlnd/crud_parsers/mysqlx_crud_parser.h" role="src" />
+   <file md5sum="bebbd9adf5b4171ad0cf07616d414f28" name="xmysqlnd/proto_def/mysqlx.proto" role="src" />
+   <file md5sum="857b8ec72c124b546c0e144872f8b9ba" name="xmysqlnd/proto_def/mysqlx_connection.proto" role="src" />
+   <file md5sum="54bc281beca90b5fc8232607721cfecd" name="xmysqlnd/proto_def/mysqlx_crud.proto" role="src" />
+   <file md5sum="48cccfde82e14b9345bddc69bb0fe302" name="xmysqlnd/proto_def/mysqlx_cursor.proto" role="src" />
+   <file md5sum="ce131edf1fe4ce4b60e837c89fb6c722" name="xmysqlnd/proto_def/mysqlx_datatypes.proto" role="src" />
+   <file md5sum="2aa3afec89d18c67d830385b782160a4" name="xmysqlnd/proto_def/mysqlx_expect.proto" role="src" />
+   <file md5sum="a26aa6d8dbbd4c23aefd3a3c01840060" name="xmysqlnd/proto_def/mysqlx_expr.proto" role="src" />
+   <file md5sum="4cbec455ced40c854310e8ce84138a04" name="xmysqlnd/proto_def/mysqlx_notice.proto" role="src" />
+   <file md5sum="9b7de1248decb152a758e09380773a16" name="xmysqlnd/proto_def/mysqlx_prepare.proto" role="src" />
+   <file md5sum="2025a8747eaf1489571782963b6a3c87" name="xmysqlnd/proto_def/mysqlx_resultset.proto" role="src" />
+   <file md5sum="d8b2e13cc68c69cce9590918b12ecf57" name="xmysqlnd/proto_def/mysqlx_session.proto" role="src" />
+   <file md5sum="e459709485c1cac4a086beb6466a4819" name="xmysqlnd/proto_def/mysqlx_sql.proto" role="src" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="xmysqlnd/proto_gen/.keep" role="src" />
+   <file md5sum="9eaa0416f47d335875bd3766e1cdf81d" name="xmysqlnd/xmysqlnd.h" role="src" />
+   <file md5sum="4121960b7094efa2a06b859b8478a266" name="xmysqlnd/xmysqlnd_any2expr.cc" role="src" />
+   <file md5sum="2e5fc52b6b9c19ca777139e59d68ec02" name="xmysqlnd/xmysqlnd_any2expr.h" role="src" />
+   <file md5sum="20b1b8d82c2225995959d928f4a4ee33" name="xmysqlnd/xmysqlnd_collection.cc" role="src" />
+   <file md5sum="d9918273f5e0c33c3e8adfc2d3dd7bb3" name="xmysqlnd/xmysqlnd_collection.h" role="src" />
+   <file md5sum="9d646e9eb9092d95d62a81dbe7bfa351" name="xmysqlnd/xmysqlnd_compression.cc" role="src" />
+   <file md5sum="f560bcf357a954e246968abb29733f67" name="xmysqlnd/xmysqlnd_compression.h" role="src" />
+   <file md5sum="524131b6e05bb5ed0b908ac90cc9dbc7" name="xmysqlnd/xmysqlnd_compression_setup.cc" role="src" />
+   <file md5sum="119a030d021c83170a52f1324f82a65f" name="xmysqlnd/xmysqlnd_compression_setup.h" role="src" />
+   <file md5sum="35a054719c3840bfe16a8ff60f356a4c" name="xmysqlnd/xmysqlnd_compression_types.cc" role="src" />
+   <file md5sum="5262c0efaba6a1321974a5309e9a96e6" name="xmysqlnd/xmysqlnd_compression_types.h" role="src" />
+   <file md5sum="b5e38827b899e5335f998c5d7d252b5d" name="xmysqlnd/xmysqlnd_compressor.cc" role="src" />
+   <file md5sum="d15492f3e58e562ef0bf8837b1ac668c" name="xmysqlnd/xmysqlnd_compressor.h" role="src" />
+   <file md5sum="2d459162244b7938167ea34dbe04249a" name="xmysqlnd/xmysqlnd_compressor_lz4.cc" role="src" />
+   <file md5sum="5f654ef6f8b19eff330a40163619d932" name="xmysqlnd/xmysqlnd_compressor_lz4.h" role="src" />
+   <file md5sum="ef112e89d7d9b2b0fda036dd4fae4fb0" name="xmysqlnd/xmysqlnd_compressor_zlib.cc" role="src" />
+   <file md5sum="5374f5c8d2f6cb3786c229ef62d45c9f" name="xmysqlnd/xmysqlnd_compressor_zlib.h" role="src" />
+   <file md5sum="92d01603f5f48e09198f467b77ff96bb" name="xmysqlnd/xmysqlnd_compressor_zstd.cc" role="src" />
+   <file md5sum="1001577480108a13bd5936885fde6445" name="xmysqlnd/xmysqlnd_compressor_zstd.h" role="src" />
+   <file md5sum="3ae4734d7e7379e8a490d9b53bd03818" name="xmysqlnd/xmysqlnd_crud_collection_commands.cc" role="src" />
+   <file md5sum="4daab919b62b14c7350d68ead41e4213" name="xmysqlnd/xmysqlnd_crud_collection_commands.h" role="src" />
+   <file md5sum="c03967e9590302c0959f8a1b5107c2cd" name="xmysqlnd/xmysqlnd_crud_commands.h" role="src" />
+   <file md5sum="bd227cbcb2bf4f4e0750f0ac9a76b7e2" name="xmysqlnd/xmysqlnd_crud_table_commands.cc" role="src" />
+   <file md5sum="dbe37e7f38b3864fa0674a0f769c0822" name="xmysqlnd/xmysqlnd_crud_table_commands.h" role="src" />
+   <file md5sum="1e18378e3c014f8e84522d87e80ec418" name="xmysqlnd/xmysqlnd_driver.cc" role="src" />
+   <file md5sum="5e0266a7b3fa8dc26e27a5162e7c1336" name="xmysqlnd/xmysqlnd_driver.h" role="src" />
+   <file md5sum="dc2c1d2f11ec2c606d0fbca51ae257a3" name="xmysqlnd/xmysqlnd_enum_n_def.h" role="src" />
+   <file md5sum="75f0a2b2f3ce9864e3d73f8935044b5b" name="xmysqlnd/xmysqlnd_environment.cc" role="src" />
+   <file md5sum="e9ed3e39130d76b1b1fe377dc7f3ab3e" name="xmysqlnd/xmysqlnd_environment.h" role="src" />
+   <file md5sum="301210316681160ff4b1edba214407b6" name="xmysqlnd/xmysqlnd_extension_plugin.cc" role="src" />
+   <file md5sum="68bc6c4692cd74f06bb1ea4853e1d91c" name="xmysqlnd/xmysqlnd_extension_plugin.h" role="src" />
+   <file md5sum="d716240c690c3fdc4470e06a970039ee" name="xmysqlnd/xmysqlnd_index_collection_commands.cc" role="src" />
+   <file md5sum="af2ede189af286a766e7fc1f6aac1cb3" name="xmysqlnd/xmysqlnd_index_collection_commands.h" role="src" />
+   <file md5sum="628e5009296f70a3cb2af29f598cc74b" name="xmysqlnd/xmysqlnd_object_factory.cc" role="src" />
+   <file md5sum="c703ed0f4868ad09c3bd4b90867181cb" name="xmysqlnd/xmysqlnd_object_factory.h" role="src" />
+   <file md5sum="04bdb94d8d7f4336020d56f758558e42" name="xmysqlnd/xmysqlnd_priv.h" role="src" />
+   <file md5sum="437ed5255c94cf11756f983a01645bba" name="xmysqlnd/xmysqlnd_protocol_dumper.cc" role="src" />
+   <file md5sum="034d2d61fff716739f054e0102bec142" name="xmysqlnd/xmysqlnd_protocol_dumper.h" role="src" />
+   <file md5sum="faa8cf06c4644c0212c97847faaa78a1" name="xmysqlnd/xmysqlnd_protocol_frame_codec.cc" role="src" />
+   <file md5sum="54ef4457baee9073fac63a9f59d2de82" name="xmysqlnd/xmysqlnd_protocol_frame_codec.h" role="src" />
+   <file md5sum="57f64603b4f8f3799e9c48fd277e3f60" name="xmysqlnd/xmysqlnd_rowset.cc" role="src" />
+   <file md5sum="7bd163508725d867546d0ee5551f9324" name="xmysqlnd/xmysqlnd_rowset.h" role="src" />
+   <file md5sum="8624dc3fd62df88d7c347cd9bc91c5f8" name="xmysqlnd/xmysqlnd_rowset_buffered.cc" role="src" />
+   <file md5sum="5faa8df703ad5e0b5f14a9dc00363a79" name="xmysqlnd/xmysqlnd_rowset_buffered.h" role="src" />
+   <file md5sum="c17cc9bf1b22db5693738f09c986d4f2" name="xmysqlnd/xmysqlnd_rowset_fwd.cc" role="src" />
+   <file md5sum="bd59128477d67a14fbe3ba3a8d6ed28e" name="xmysqlnd/xmysqlnd_rowset_fwd.h" role="src" />
+   <file md5sum="a03d5a7038955c363a23223c7263f75b" name="xmysqlnd/xmysqlnd_schema.cc" role="src" />
+   <file md5sum="b47644b32235d82036e97497742da0cb" name="xmysqlnd/xmysqlnd_schema.h" role="src" />
+   <file md5sum="4833ba06e13c0a73acfa5a91f277b7c6" name="xmysqlnd/xmysqlnd_session.cc" role="src" />
+   <file md5sum="00e4f4e1a58e77afb8407b267c5961b0" name="xmysqlnd/xmysqlnd_session.h" role="src" />
+   <file md5sum="50c44e81fa0668f4006b7500a4df6fd4" name="xmysqlnd/xmysqlnd_statistics.cc" role="src" />
+   <file md5sum="bc6c82523453230825bd9d6ef950c50a" name="xmysqlnd/xmysqlnd_stmt.cc" role="src" />
+   <file md5sum="2a7934d1f95eeac9d24e9a7840be6f6a" name="xmysqlnd/xmysqlnd_stmt.h" role="src" />
+   <file md5sum="c4884078c11e6b16379bc0fc07654f90" name="xmysqlnd/xmysqlnd_stmt_execution_state.cc" role="src" />
+   <file md5sum="a3c684f110a4cb8cdd0516cfea7e4a4f" name="xmysqlnd/xmysqlnd_stmt_execution_state.h" role="src" />
+   <file md5sum="260f968f07221ee2fb2f76fba29eea52" name="xmysqlnd/xmysqlnd_stmt_result.cc" role="src" />
+   <file md5sum="65333ec672eac906bdc840cc147237b4" name="xmysqlnd/xmysqlnd_stmt_result.h" role="src" />
+   <file md5sum="7025d45616922b941d07bfa6c7702117" name="xmysqlnd/xmysqlnd_stmt_result_meta.cc" role="src" />
+   <file md5sum="579fa47c129989b1503018378d4a35aa" name="xmysqlnd/xmysqlnd_stmt_result_meta.h" role="src" />
+   <file md5sum="05ced0f908fce6fe6c8e4e2b6c35a125" name="xmysqlnd/xmysqlnd_structs.h" role="src" />
+   <file md5sum="853368b8b5be0155e602ac39bd740644" name="xmysqlnd/xmysqlnd_table.cc" role="src" />
+   <file md5sum="e59cf59a3af78f75b469b184ff1f0708" name="xmysqlnd/xmysqlnd_table.h" role="src" />
+   <file md5sum="6db45fb9f3b842e3b20dc5ed33c90284" name="xmysqlnd/xmysqlnd_utils.cc" role="src" />
+   <file md5sum="592b94d7d37043a1fd7877025e7970f2" name="xmysqlnd/xmysqlnd_utils.h" role="src" />
+   <file md5sum="c2d3716b37598ce91b905a7c3d0e0863" name="xmysqlnd/xmysqlnd_warning_list.cc" role="src" />
+   <file md5sum="02b07b4545722faa716b1cda494f0ae9" name="xmysqlnd/xmysqlnd_warning_list.h" role="src" />
+   <file md5sum="15c367ef8b622adcb43f60c071148527" name="xmysqlnd/xmysqlnd_wireprotocol.cc" role="src" />
+   <file md5sum="7b9e55437c596910b696c3e9958e2471" name="xmysqlnd/xmysqlnd_wireprotocol.h" role="src" />
+   <file md5sum="44b24605c25f4052b4f8114d3af5e066" name="xmysqlnd/xmysqlnd_wireprotocol_types.cc" role="src" />
+   <file md5sum="3b0e1dd22c0ca69c13eb0c1172a09654" name="xmysqlnd/xmysqlnd_wireprotocol_types.h" role="src" />
+   <file md5sum="961e1e925affa886852994e4c14221f6" name="xmysqlnd/xmysqlnd_zval2any.cc" role="src" />
+   <file md5sum="abf768c8590167044abd8a94c6f3998f" name="xmysqlnd/xmysqlnd_zval2any.h" role="src" />
+   <file md5sum="09b61d90fca296339087aee0e12eb8bf" name="CREDITS" role="doc" />
+   <file md5sum="5ebd5be8e2a89f634486445bd164bef0" name="LICENSE" role="doc" />
+   <file md5sum="b5ce64edbf56490fc43d622b41e0c1fe" name="Makefile.frag" role="src" />
+   <file md5sum="5eae0704257a1bd9d6be3eeab9ba1230" name="Makefile.frag.w32" role="src" />
+   <file md5sum="7b24a9b75d90fcf0d497d09dc45fb204" name="README" role="doc" />
+   <file md5sum="01949a615609ea00c76c2159f75b204b" name="config.m4" role="src" />
+   <file md5sum="1f308f248dfb18ba4483a717602a3b36" name="config.w32" role="src" />
+   <file md5sum="11fb1dfed133069b100853929c646c6c" name="examples.php" role="test" />
+   <file md5sum="3f610d24ac2b4dabcb102a016b0dc9aa" name="json_api.h" role="src" />
+   <file md5sum="972eaccd53649c88ee41faaed6c3887c" name="mysqlnd_api.h" role="src" />
+   <file md5sum="426a959aaaf7f77c02c8ae3bc1d848b2" name="mysqlx_base_result.cc" role="src" />
+   <file md5sum="7a2cc61a552d547f1cd3be7146120e85" name="mysqlx_base_result.h" role="src" />
+   <file md5sum="4bf612cdaf9d88d598f911d9b96b0c0f" name="mysqlx_class_properties.cc" role="src" />
+   <file md5sum="2d22c178ce8b99d8185352e5c1b3c03a" name="mysqlx_class_properties.h" role="src" />
+   <file md5sum="42f37a44eb18a812616894b0981ed93b" name="mysqlx_client.cc" role="src" />
+   <file md5sum="b507bca2196094e7b875b0e0f8865ade" name="mysqlx_client.h" role="src" />
+   <file md5sum="4244699454f65b8f5f98e5408abef2cf" name="mysqlx_collection.cc" role="src" />
+   <file md5sum="d292235280767833bfcc76d1bc32f0e5" name="mysqlx_collection.h" role="src" />
+   <file md5sum="d6d0cf96a8eb76f2fb505b5aa0d84373" name="mysqlx_collection__add.cc" role="src" />
+   <file md5sum="e0045f68bb8cf6a69f64835637cbaeab" name="mysqlx_collection__add.h" role="src" />
+   <file md5sum="5f064f8bf6f725822316ff033366d4de" name="mysqlx_collection__find.cc" role="src" />
+   <file md5sum="227fdd0a8638c00b979263205e92fa5c" name="mysqlx_collection__find.h" role="src" />
+   <file md5sum="91dae1055aaef84cffa4f54c36fe038e" name="mysqlx_collection__modify.cc" role="src" />
+   <file md5sum="0d4ca442a1f67b8b04cc2c29823bfeea" name="mysqlx_collection__modify.h" role="src" />
+   <file md5sum="c4c9778d4d8fec40eb1a28e48e09f8f1" name="mysqlx_collection__remove.cc" role="src" />
+   <file md5sum="1f90ca8b3047ece01b1c465fa168de0f" name="mysqlx_collection__remove.h" role="src" />
+   <file md5sum="a3edb748257e2f969c32ce2457bb4726" name="mysqlx_collection_index.cc" role="src" />
+   <file md5sum="03d391c69d8b7b2f5e46bad87ac3a474" name="mysqlx_collection_index.h" role="src" />
+   <file md5sum="f0800daf7d164afedc2684b50ef51324" name="mysqlx_column_result.cc" role="src" />
+   <file md5sum="355b064f514df8eb16543a6ad573837e" name="mysqlx_column_result.h" role="src" />
+   <file md5sum="aaafea55123a3eceeaea431456a9aae5" name="mysqlx_crud_operation_bindable.cc" role="src" />
+   <file md5sum="320851ac499abe32a750044755032c6b" name="mysqlx_crud_operation_bindable.h" role="src" />
+   <file md5sum="8860c5cc47647c1001f257fbab65c154" name="mysqlx_crud_operation_limitable.cc" role="src" />
+   <file md5sum="20e129bfe956762b538ece48179898c2" name="mysqlx_crud_operation_limitable.h" role="src" />
+   <file md5sum="95c5931f6e3d4f96edb61e6df0b53358" name="mysqlx_crud_operation_skippable.cc" role="src" />
+   <file md5sum="f1b0e6faea0a0a297890de14ca4c97f4" name="mysqlx_crud_operation_skippable.h" role="src" />
+   <file md5sum="8d7d3bb19a39c990a1e89746b4211257" name="mysqlx_crud_operation_sortable.cc" role="src" />
+   <file md5sum="6df38148b9f9cfb5065daa9b474cbfae" name="mysqlx_crud_operation_sortable.h" role="src" />
+   <file md5sum="0a17e7b0f4e3d9b15157d407df13be25" name="mysqlx_database_object.cc" role="src" />
+   <file md5sum="b468ca718aee3d751eaeb816cd946721" name="mysqlx_database_object.h" role="src" />
+   <file md5sum="872579f8de389a5e16d176cd77451bbf" name="mysqlx_doc_result.cc" role="src" />
+   <file md5sum="8a97a9ac3a0bc886b09756a341e40bee" name="mysqlx_doc_result.h" role="src" />
+   <file md5sum="a3606438872bbaf6f860d646df120332" name="mysqlx_doc_result_iterator.cc" role="src" />
+   <file md5sum="a5232f2eda5023c847cca36aba9b3f66" name="mysqlx_doc_result_iterator.h" role="src" />
+   <file md5sum="9a3386d7a470d60136981fce1fbbc081" name="mysqlx_enum_n_def.h" role="src" />
+   <file md5sum="661165d32cb5f11297a55f407be76f7f" name="mysqlx_exception.cc" role="src" />
+   <file md5sum="831ebd13aec246b0fc5c52134db9aa76" name="mysqlx_exception.h" role="src" />
+   <file md5sum="6c6df7722a7abb35eb68e27ead5c89c1" name="mysqlx_executable.cc" role="src" />
+   <file md5sum="17bf5881aefd024b1d8357ffff59cb16" name="mysqlx_executable.h" role="src" />
+   <file md5sum="e7a2576a8708e55158e711777f3cd062" name="mysqlx_execution_status.cc" role="src" />
+   <file md5sum="f30565255b76e741fea33cdaa2cc5318" name="mysqlx_execution_status.h" role="src" />
+   <file md5sum="163b754bc77ad548c16ffaba654e7a43" name="mysqlx_expression.cc" role="src" />
+   <file md5sum="f89b1e80f97a6f60776bd1ae9f28af33" name="mysqlx_expression.h" role="src" />
+   <file md5sum="79f5a9c9d79b056b4c9ab431099be194" name="mysqlx_object.cc" role="src" />
+   <file md5sum="9c16e59f7b31a4c24b2ea9eb222bf848" name="mysqlx_object.h" role="src" />
+   <file md5sum="96d4ade942324c1227cb87b93a2d220a" name="mysqlx_result.cc" role="src" />
+   <file md5sum="8983cae5f519538dbfcfad2e9b91fada" name="mysqlx_result.h" role="src" />
+   <file md5sum="472055704dbf8ee9b34ca7d5e2260170" name="mysqlx_result_iterator.cc" role="src" />
+   <file md5sum="4a8909e966bc4db0b92d4cee28738261" name="mysqlx_result_iterator.h" role="src" />
+   <file md5sum="75a3cd49691f8eaae5f8edf0d9c8eeff" name="mysqlx_row_result.cc" role="src" />
+   <file md5sum="bdc261b15dcd2ff61dcdf82cbe85780b" name="mysqlx_row_result.h" role="src" />
+   <file md5sum="fb89446ee9f397595ba9ad5e4723e62c" name="mysqlx_row_result_iterator.cc" role="src" />
+   <file md5sum="147b3616f89dbbc19a0a5cb978e60cf6" name="mysqlx_row_result_iterator.h" role="src" />
+   <file md5sum="bebad58126469f6c38923a7852a74f6a" name="mysqlx_schema.cc" role="src" />
+   <file md5sum="5d7956b2718a129910d7e2a65a446e47" name="mysqlx_schema.h" role="src" />
+   <file md5sum="0c8e687ea092895296f74091d2196d41" name="mysqlx_schema_object.cc" role="src" />
+   <file md5sum="fd50ba4a55d70f273d42ec3b349b3611" name="mysqlx_schema_object.h" role="src" />
+   <file md5sum="2a7e3f7f26f0b04e5c11a4ca7e71f494" name="mysqlx_session.cc" role="src" />
+   <file md5sum="2767bed750e10c2235ac051c34fb9706" name="mysqlx_session.h" role="src" />
+   <file md5sum="c8b00a2cca38cd5e47bbe292405010f8" name="mysqlx_sql_statement.cc" role="src" />
+   <file md5sum="5e15021a29b31246258a4c176dadc709" name="mysqlx_sql_statement.h" role="src" />
+   <file md5sum="dae09a98e5e8c6eb7e563a605c27c2be" name="mysqlx_sql_statement_result.cc" role="src" />
+   <file md5sum="45997aea026b944075548d1f431eafcb" name="mysqlx_sql_statement_result.h" role="src" />
+   <file md5sum="20455e564fd61f347050c2af5a786e02" name="mysqlx_sql_statement_result_iterator.cc" role="src" />
+   <file md5sum="9bbaf0987479f44aa496bf855208bb43" name="mysqlx_sql_statement_result_iterator.h" role="src" />
+   <file md5sum="3bd50236515fc3398823e9c5e0f5669a" name="mysqlx_table.cc" role="src" />
+   <file md5sum="ba05e9164d2c42690059d25b831f8eee" name="mysqlx_table.h" role="src" />
+   <file md5sum="72e6f14c822a7ec3842a7815f1b1d57e" name="mysqlx_table__delete.cc" role="src" />
+   <file md5sum="a8dc687b6c948577627dddf8cf56b7b1" name="mysqlx_table__delete.h" role="src" />
+   <file md5sum="b373b7be967de6c1899d5adab0205746" name="mysqlx_table__insert.cc" role="src" />
+   <file md5sum="2ae4f311f776c9b4c22e931a9958c3ce" name="mysqlx_table__insert.h" role="src" />
+   <file md5sum="96bb5d821e8d3bc9c29bbc41f7852545" name="mysqlx_table__select.cc" role="src" />
+   <file md5sum="8df34e6323310a1869680649c6f68e8f" name="mysqlx_table__select.h" role="src" />
+   <file md5sum="3e0f266b312381f3561300002124c3f1" name="mysqlx_table__update.cc" role="src" />
+   <file md5sum="7b131e263465f38a975c4632f68775b9" name="mysqlx_table__update.h" role="src" />
+   <file md5sum="9d94ff2c5199e6940270674c7b908ae4" name="mysqlx_warning.cc" role="src" />
+   <file md5sum="a4fc029e91dc2f5daa5b898bf3bc49a7" name="mysqlx_warning.h" role="src" />
+   <file md5sum="086d9b0717f9372e4d230ebd11349b3e" name="php_api.h" role="src" />
+   <file md5sum="4aef2dee4de51e2c161feb147611c9d0" name="php_mysql_xdevapi.h" role="src" />
+   <file md5sum="5cba91c9867a78efc5ef91f27f4167e5" name="php_mysqlx.cc" role="src" />
+   <file md5sum="d975e617ab7921bbc2ac2462d759b44e" name="php_mysqlx.h" role="src" />
+   <file md5sum="5ece920d020e513459023b82c2a4e62b" name="php_mysqlx_ex.cc" role="src" />
+   <file md5sum="99ae4e8735d238e64e7bbb34f3fa1955" name="php_mysqlx_ex.h" role="src" />
+   <file md5sum="5f20124eab3c568f229ac8595029ad89" name="product_data.txt" role="doc" />
+   <file md5sum="c35444b0ba2eea5a5171bada875fe91c" name="protobuf_api.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>mysql_xdevapi</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-boost" prompt="Point out boost library install dir" />
+  <configureoption default="autodetect" name="with-protobuf" prompt="Point out protobuf library install dir" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <date>2021-10-18</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.27</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Maintanance build with no changes.
+   </notes>
+  </release>
+  <release>
+   <date>2021-07-02</date>
+   <time>09:13:16</time>
+   <version>
+    <release>8.0.26</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#14666: Deprecate TLS 1.0 and 1.1
+   </notes>
+  </release>
+  <release>
+   <date>2020-04-26</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.25</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Emergency build with no changes.
+   </notes>
+  </release>
+  <release>
+   <date>2020-04-15</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.24</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+No changes in this release, only build number
+   </notes>
+  </release>
+  <release>
+   <date>2020-08-20</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.22</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#14012: XProtocol -- support for configurable compression algorithms
+orabug #31364076: mysqlndx switch from C++14 to C++17, and all related
+orabug #31414039: mysqlndx apply std::string_view, remove MYSQLND_CSTRING
+orabug #30084547: improve zval wrapper
+orabug #31678047: prepared statements tests fail with the newest server
+orabug #31958145: some secure connection / TLS tests fail on el8-x86-64bit
+   </notes>
+  </release>
+  <release>
+   <date>2020-06-26</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.21</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#13014 DevAPI: Add schema validation to create collection
+orabug #30134490: apply helpers from util/object.h
+orabug #31084747: single doc tests failing in php-7.4
+changes in config.m4|w32 to improve resolving 3rdParty libs
+   </notes>
+  </release>
+  <release>
+   <date>2020-04-10</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.20</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#13001 DevAPI: Connection compression
+orabug #30864458: some methods should not be reported as deprecated anymore
+   </notes>
+  </release>
+  <release>
+   <date>2020-01-10</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.19</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#13541: Fix admin command namespace usage
+WL#13398: DNS SRV support
+   </notes>
+  </release>
+  <release>
+   <date>2019-10-14</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.18</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#12732: DevAPI: Specify TLS ciphers to be used by a client or session
+orabug #29421446: fixes for secure connections
+orabug #30226250: some of Collection.Modify ops don&apos;t support JSON documents properly
+orabug #30093227: mysql_xdevapi\CollectionFind::fields() path fails when ends in number
+orabug #30226232: incorrect behaviour of chained CRUD ops in webserver mode
+orabug #30258670: CollectionModify.arrayInsert vs bind: cannot use bindings for arrayInsert
+orabug #30088118: clean up XSession leavings
+orabug #30088150: remove messages
+orabug #30084547: improve zval wrapper
+orabug #29998874: fix tests to pass with default auth_plugin=caching_sha2_password
+orabug #30096952: add support for building in static mode
+orabug #30084593: get rid of vim &quot;decorators&quot;
+fixes for building with PHP-7.4+
+   </notes>
+  </release>
+  <release>
+   <date>2019-06-12</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.17</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#12190-DevAPI: indexing array fields
+WL#12683-DevAPI: Add overlaps and not_overlaps as operator
+WL#13012: Deprecate methods
+WL#11852: erase temporary protobuf files at &apos;make clean&apos; step
+orabug #28605926: unclear _id related messages with 5.7
+adapt sources to build with PHP-7.4
+   </notes>
+  </release>
+  <release>
+   <date>2019-03-07</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.16</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#9879: Prepared statement support
+WL#11983: Support session-connect-attributes
+WL#12396: Support new session reset functionality
+orabug #28802543: classes: Driver, ExecutionStatus, Expression, and Statement
+orabug #28803208: the DocResult prototype appear wrong
+orabug #28803039: the fields() method seems odd
+orabug #28805757: how exactly are set() and replace() different?
+   </notes>
+  </release>
+  <release>
+   <date>2019-01-29</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.15</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This release contains no functional changes and is published to align
+version number with the MySQL Server 8.0.15 release.
+   </notes>
+  </release>
+  <release>
+   <date>2018-12-13</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.14</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#12593: DevAPI: Handling of Default Schema
+WL#12457: Be prepared for initial notice on connection
+WL#12291: automagically resolve path to preferred version of boost on pb2
+orabug #28803092 the offset() method requires limit()
+orabug #28802524 always use sql()-&gt;execute() instead of executeSql()
+orabug #27441854 fetchAll should return an empty array when the result is empty, not (bool)false
+orabug #28804413 containers methods
+orabug #28802453 TableDelete: offset does not seem useful
+orabug #29011588 execute more than once for crud ops with bind causes crash at releasing
+orabug #28605347 CollectionFind::offset() without limit() error is unclear
+orabug #28803201 FieldMetadata and ColumnResult are returning different information about columns
+orabug #28804447 remove client functions
+orabug #28802551 Collection::createIndex() create an index on multiple fields
+orabug #28804461 ensure groupBy() functionality
+orabug #28838435 PHPT tests - make checking results more precise
+   </notes>
+  </release>
+  <release>
+   <date>2018-10-05</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.13</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#11956: Implement connection pooling for xprotocol
+WL#12189: Implement connect timeout
+WL#12428: Adding support for chained adds
+WL#12435: Returning the proper values
+WL#12280: connection error handling - throw an exception
+WL#11851: enable treat warning as error
+WL#11853: check available boost version
+WL#12276: Expose metadata about source and binaries in unified way
+   </notes>
+  </release>
+  <release>
+   <date>2018-06-26</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.12</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#11957: DevAPI, Core v1 Alignment
+WL#11955: Increase coverage
+refactorings: WL#11960, WL#11945,  WL#11949, WL#11947, WL#11854
+   </notes>
+  </release>
+  <release>
+   <date>2018-04-12</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.11</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#11591-DevAPI: Add SHA256_MEMORY support
+WL#11390-DevAPI: New document _id generation support
+WL#11242-Support locking modes: NOWAIT and SKIP LOCKED
+refactoring: reference counting, clear warnings
+   </notes>
+  </release>
+  <release>
+   <date>2018-01-17</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.4</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL#9898-Driver: Extended Authentication support (incl. SHA256)
+WL#10089-DevAPI: Cleanup Drop APIs
+WL#9876-DevAPI: Collection.createIndex
+WL#11301-Remove CreateTable and CreateView
+WL#10725-DevAPI: Modify/MergePatch
+WL#10868-DevAPI: transaction save-points
+WL#11340-Remove configuration API
+   </notes>
+  </release>
+  <release>
+   <date>2017-09-28</date>
+   <time>20:00:00</time>
+   <version>
+    <release>8.0.3</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL-10875: DevAPI: Array or Object &quot;contains&quot; operator
+WL-10640 / 10876: DevAPI: getOne, removeOne, replaceOne, addOrReplaceOne
+WL-10641/10877 DevAPI: Row locking for Crud.Find / Table.Select
+server 8.x support, fixes for phpize build
+   </notes>
+  </release>
+  <release>
+   <date>2017-06-22</date>
+   <time>12:00:00</time>
+   <version>
+    <release>8.0.2</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+WL10393/10097 DevAPI: Table.createTable
+MY-235: Configuration handling interface
+WL-10402  Ensure all connectors are secure by default
+WL10627 / 10728 Forbid modify() and remove() with no condition
+WL-10089/10392 DevAPI: Cleanup Drop APIs
+WL-10390: DevAPI, Document UUID generation
+WL-10506: Bugs and Clarifications
+   </notes>
+  </release>
+  <release>
+   <date>2017-03-13</date>
+   <time>23:42:05</time>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Added support for View DDL
+- Added support for X DevAPI unified connection string
+- Added support for Unix Domain Sockets
+- Added table.isView()
+- Added Core TLS/SSL options
+- Internal refacotoring
+- Fixed a few bugs
+   </notes>
+  </release>
+  <release>
+   <date>2016-12-08</date>
+   <time>12:00:00</time>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Initial release
+   </notes>
+  </release>
+ </changelog>
+</package>
