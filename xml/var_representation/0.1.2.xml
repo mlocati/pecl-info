@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.5" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>var_representation</name>
+ <channel>pecl.php.net</channel>
+ <summary>A compact, more readable alternative to var_export.</summary>
+ <description>var_representation is a compact alternative to var_export that properly escapes control characters</description>
+ <lead>
+  <name>Tyson Andre</name>
+  <user>tandre</user>
+  <email>tandre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2022-08-31</date>
+ <time>00:26:20</time>
+ <version>
+  <release>0.1.2</release>
+  <api>0.1.2</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://github.com/TysonAndre/var_representation/blob/main/COPYING">BSD-3-Clause</license>
+ <notes>
+* Switch from infinite recursion detection on the object&apos;s properties to infinite recursion detection on the object itself.
+  This conforms with the change to var_export/debug_zval_dump in php 8.2-dev,
+  and would allow data structures to safely start returning temporary arrays that can be garbage collected to save memory
+  (after dumping the representation) starting in php 8.2+.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="dc3bb574ebece116a4dadcc7c3178312" name="tests/001.phpt" role="test" />
+   <file md5sum="0b4572409d9da4308f95c419f3d971b7" name="tests/002.phpt" role="test" />
+   <file md5sum="ec9e8e76e6325b582b90398dacd05279" name="tests/003.phpt" role="test" />
+   <file md5sum="0ae1ffa1ad182135efceaa45112b9d19" name="tests/004.phpt" role="test" />
+   <file md5sum="79360627b4d2e13e1607b7ef7d799fbd" name="tests/005.phpt" role="test" />
+   <file md5sum="e6e60d068560c434673c86729d1a5d37" name="tests/006.phpt" role="test" />
+   <file md5sum="9d08a2bd5c13d012c04a9038de3fbda4" name="tests/007.phpt" role="test" />
+   <file md5sum="1d01431d0b73dfdefbdce72bde14b6a5" name="tests/dump.inc" role="test" />
+   <file md5sum="a6a98b6cbefce4328c0dcf43de4a0217" name="tests/php81.phpt" role="test" />
+   <file md5sum="c5620ab3811005389c4f2ac82895c4f3" name="config.m4" role="src" />
+   <file md5sum="772d3bb327063798082885f9684cbdfd" name="config.w32" role="src" />
+   <file md5sum="dda195613b9542cdb91f1fa000c53cba" name="var_representation.c" role="src" />
+   <file md5sum="62af63a957ea39de2a5ca076cba2ce75" name="var_representation.h" role="src" />
+   <file md5sum="8b04e5c3f7fb2c5c090069d039929501" name="var_representation.stub.php" role="src" />
+   <file md5sum="79a59f4fe28e371fa933ebe37ef47329" name="var_representation_arginfo.h" role="src" />
+   <file md5sum="1f7fdf54509b100531fd57d61b29f938" name="php_var_representation.h" role="src" />
+   <file md5sum="10c63093185a54a88f3171ab1100730a" name="README.md" role="doc" />
+   <file md5sum="1a9ec316a7d19696b02217e82672415e" name="COPYING" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>var_representation</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2021-08-14</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/var_representation/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Optimize escaping single quoted strings
+* Add a new flag VAR_REPRESENTATION_UNESCAPED to always encode strings as single quoted strings without escaping control characters.
+  This may be useful when the result of var_representation is escaped again before being rendered (e.g. json encoding),
+  or when a short representation is desired.
+   </notes>
+  </release>
+  <release>
+   <date>2021-06-24</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/TysonAndre/var_representation/blob/main/COPYING">BSD-3-Clause</license>
+   <notes>
+* Fix handling of dumping arrays created from $GLOBALS in php versions prior to 8.1
+* Move the C var_representation_ex API to var_representation.h
+   </notes>
+  </release>
+  <release>
+   <date>2021-06-22</date>
+   <time>16:00:00</time>
+   <version>
+    <release>0.1.0RC1</release>
+    <api>0.1.0RC1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <notes>
+* Initial commit
+   </notes>
+   <license uri="https://github.com/TysonAndre/var_representation/blob/main/COPYING">BSD-3-Clause</license>
+  </release>
+ </changelog>
+</package>
