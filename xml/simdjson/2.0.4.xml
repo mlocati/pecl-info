@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>simdjson</name>
+ <channel>pecl.php.net</channel>
+ <summary>Provides faster json decoding through simdjson bindings for PHP</summary>
+ <description>Provides faster json decoding through simdjson bindings for PHP (Single Instruction, Multiple Data)</description>
+ <lead>
+  <name>Tyson Andre</name>
+  <user>tandre</user>
+  <email>tandre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2022-10-01</date>
+ <time>15:36:33</time>
+ <version>
+  <release>2.0.4</release>
+  <api>2.0.4</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</license>
+ <notes>
+* Add `-fvisibility=hidden` to compiler options to reduce compiled extension size by avoiding exporting symbols by default.
+* If the requested json parsing $depth is excessively large when reallocating larger buffers for the C simdjson parser,
+  then internally use a smaller $depth that would behave identically with lower memory usage. (#66)
+* Update simdjson to properly reject surrogate pairs with an invalid low surrogate. (https://en.wikipedia.org/wiki/UTF-16)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="ea1d2b7396f75c3839a97ebfe7b9b434" name="src/bindings.cpp" role="src" />
+   <file md5sum="b45519664dc28984bbccb35c9dfc89f6" name="src/bindings.h" role="src" />
+   <file md5sum="47447c624002f2504d4757d973fcbebe" name="src/simdjson.cpp" role="src" />
+   <file md5sum="5a03dbe0ccdf3d68aaa91341742165ff" name="src/simdjson.h" role="src" />
+   <file md5sum="29dad51cdfe61d6bb9f4b8280040ce24" name="tests/32bit_support.phpt" role="test" />
+   <file md5sum="1e00691d536862702e91412a07901265" name="tests/64bit_support.phpt" role="test" />
+   <file md5sum="689c6095b47b4e7d67c54045f224a912" name="tests/decode_args.phpt" role="test" />
+   <file md5sum="423c99b7bdc131ee0a8459fa74d907d9" name="tests/decode_exception.phpt" role="test" />
+   <file md5sum="b56b75129675c4625cc374aae0f085b7" name="tests/decode_integer_overflow.phpt" role="test" />
+   <file md5sum="86df7454c4a57c9666e0b614da061783" name="tests/decode_invalid_property.phpt" role="test" />
+   <file md5sum="2ccc2330395dff1df1070dd2b7b6ea3a" name="tests/decode_max_depth.phpt" role="test" />
+   <file md5sum="c67db400a5caa4cfa219d111501bf2af" name="tests/decode_max_depth_memory_reduction.phpt" role="test" />
+   <file md5sum="bc279aaeee7c86456724a2f82177d5e2" name="tests/decode_result.phpt" role="test" />
+   <file md5sum="5a559a08808dcff5351ed06896b2de04" name="tests/decode_strict_types.phpt" role="test" />
+   <file md5sum="fc820e5d140e8b4b774af0f359fbcfc2" name="tests/decode_types.phpt" role="test" />
+   <file md5sum="5a0ebb46825fcfab8f4551a4828927ea" name="tests/depth.phpt" role="test" />
+   <file md5sum="6143600e53a85dc730e9ee63ae050ad2" name="tests/is_valid.phpt" role="test" />
+   <file md5sum="aa8acaa48f2beeb60822f0fa23daff24" name="tests/is_valid_args.phpt" role="test" />
+   <file md5sum="dc3c8ea9855ab83973475152bb262100" name="tests/key_count.phpt" role="test" />
+   <file md5sum="67bc09770eb942561d1115c3a207d862" name="tests/key_count_args.phpt" role="test" />
+   <file md5sum="4ada73e1fcd6cf2439ed3e242025b2a5" name="tests/key_count_exception.phpt" role="test" />
+   <file md5sum="0a53039861dab8cb695f65805dd6cd04" name="tests/key_exists.phpt" role="test" />
+   <file md5sum="463a009473a5ff6e4424837f687ec0c0" name="tests/key_exists_args.phpt" role="test" />
+   <file md5sum="270c1945229398e89db0337963556ce4" name="tests/key_value_args.phpt" role="test" />
+   <file md5sum="8804d72c085d8e1b3c650fee0a8e1354" name="tests/key_value_deep_string.phpt" role="test" />
+   <file md5sum="275b9cedca489b7656d5d25601b0fc3c" name="tests/key_value_exception.phpt" role="test" />
+   <file md5sum="e5866791fa1470169b33b3fb9c1d81ec" name="tests/key_value_int.phpt" role="test" />
+   <file md5sum="87b0da2227906cdb2ee17621a5bd43c2" name="tests/key_value_result.phpt" role="test" />
+   <file md5sum="4c975f1861488158fde9003208ca2fe8" name="tests/uint64_overflow.phpt" role="test" />
+   <file md5sum="6716c344af0710d657bfdebd4ad27f79" name="tests/_files/result.json" role="test" />
+   <file md5sum="8428c66500069fee510a306ecdad8c1d" name="CMakeLists.txt" role="src" />
+   <file md5sum="5fc8879d73420f05b5fa5f8692d8894a" name="config.m4" role="src" />
+   <file md5sum="211f49e09a5ec5cf4feba8796148f08e" name="config.w32" role="src" />
+   <file md5sum="86b6e048c1b86fedd7ead13152dcb251" name="CREDITS" role="doc" />
+   <file md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="doc" />
+   <file md5sum="3be4d845a2a4b2c15c824ee8b6dbded6" name="php_simdjson.h" role="src" />
+   <file md5sum="6ccb2ee9bdf308c345e20ab408adc167" name="php_simdjson.cpp" role="src" />
+   <file md5sum="59246a603c0c1b1fd52bf6dc8f4748e6" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.3</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>simdjson</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2022-08-30</date>
+   <version>
+    <release>2.0.3</release>
+    <api>2.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</license>
+   <notes>
+* Fix error validating package.xml when uploading to PECL due to blank username of lead without a PECL account.
+   </notes>
+  </release>
+  <release>
+   <date>2022-08-30</date>
+   <version>
+    <release>2.0.2</release>
+    <api>2.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</license>
+   <notes>
+* Fix license metadata in package.xml
+   </notes>
+  </release>
+  <release>
+   <date>2022-08-29</date>
+   <version>
+    <release>2.0.1</release>
+    <api>2.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</license>
+   <notes>
+* On 32-bit builds, convert decoded 64-bit integers to floats if they would be out of range.
+   </notes>
+  </release>
+  <release>
+   <date>2022-08-15</date>
+   <version>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</license>
+   <notes>
+* Initial PECL release
+   </notes>
+  </release>
+ </changelog>
+</package>
