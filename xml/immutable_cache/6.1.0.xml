@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>immutable_cache</name>
+ <channel>pecl.php.net</channel>
+ <summary>immutable_cache - an shared memory cache of immutable values</summary>
+ <description>immutable_cache - an shared memory cache of immutable values. Based on APCu.</description>
+ <lead>
+  <name>Tyson Andre</name>
+  <user>tandre</user>
+  <email>tandre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2022-11-29</date>
+ <time>14:47:04</time>
+ <version>
+  <release>6.1.0</release>
+  <api>6.1.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+- Extend minimum supported php version from php 8.0 to 7.2
+- Work around bug adding &apos;-lpthread&apos; as a shared library dependency in php before 7.4.14. Related to https://bugs.php.net/bug.php?id=80402
+- Switch default for immutable_cache.serializer to &quot;default&quot; (store the php arrays and strings and scalars in shared memory rather than serialization when added value is an array)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="c9946a9370f2889754dabb5621cc8bbd" name="tests/apc_001.phpt" role="test" />
+   <file md5sum="1b0550b262a085bd1fc0fd2c654c135d" name="tests/apc_002.phpt" role="test" />
+   <file md5sum="50335d0931c8b6daffac88bac7dd11c1" name="tests/apc_003b.phpt" role="test" />
+   <file md5sum="427dbf144a62078d6f13dea6384837ca" name="tests/apc_003b_legacy.phpt" role="test" />
+   <file md5sum="07846232eab0047a2651d3ef6ceb2637" name="tests/apc_004.phpt" role="test" />
+   <file md5sum="6b6fc253dea201d55e87d0a455ce7a60" name="tests/apc_005.phpt" role="test" />
+   <file md5sum="fc6d43dc5bf5683b881b49ddfd680b20" name="tests/apc_005b.phpt" role="test" />
+   <file md5sum="70d1abdf866db784f05ca744526ca910" name="tests/apc_005c.phpt" role="test" />
+   <file md5sum="efb8b0aa378a55d093a6903be52fcd6d" name="tests/apc_006.phpt" role="test" />
+   <file md5sum="048a09962472954abc9c1c6b5abbf8eb" name="tests/apc_006_php73.phpt" role="test" />
+   <file md5sum="9ad688f7685da5110f16bd3f48234b2c" name="tests/apc_006_php81.phpt" role="test" />
+   <file md5sum="50f52741f510ad5086516944d41ed451" name="tests/apc_010.phpt" role="test" />
+   <file md5sum="8e3695279c91ec00366b9b17822d7ffc" name="tests/apc_011.phpt" role="test" />
+   <file md5sum="ef0fc8549ed8d0dea8d7bb9a01517386" name="tests/apc_013_exists.phpt" role="test" />
+   <file md5sum="889e3fc9271179fb75a4ccd898a6d480" name="tests/apc_014_store_ref.phpt" role="test" />
+   <file md5sum="4e64f887f063764bc2c29282ad88c8b3" name="tests/apc_015.phpt" role="test" />
+   <file md5sum="fef9dc8130d341e19dd7e086ed3a0193" name="tests/apc_016.phpt" role="test" />
+   <file md5sum="0f779bbe0ba252f1e1f307ce9a87aa29" name="tests/apc_017.phpt" role="test" />
+   <file md5sum="9f11207b7cdcb2b2ae51d16f402fda70" name="tests/apc_023.phpt" role="test" />
+   <file md5sum="7223f3dfabd1c8a89bc062c306dd75c4" name="tests/apc_024.phpt" role="test" />
+   <file md5sum="2f88cf81fc2dce8f3ae71ffcffcca0d7" name="tests/apc_025.phpt" role="test" />
+   <file md5sum="fb16e958b8de53f9c5a1bc3ce423bd74" name="tests/apc54_014.phpt" role="test" />
+   <file md5sum="1c0e7645172bd963475763d2967d19e4" name="tests/apc54_018.phpt" role="test" />
+   <file md5sum="07d3c6d8b40e5a2cef14e6b27d76a923" name="tests/apc_disabled.phpt" role="test" />
+   <file md5sum="741d0e3cf5077c860893b59a50f3f0f5" name="tests/apcu_fetch_empty_array.phpt" role="test" />
+   <file md5sum="6b5202cf0d869fc5b9345e8429d33fe4" name="tests/apcu_fetch_empty_array_reference.phpt" role="test" />
+   <file md5sum="604df87c773d6c9fe2a8c52bd1ff3f9e" name="tests/apc_store_array_int_keys.phpt" role="test" />
+   <file md5sum="842d700909b89f42d4db681e825f6086" name="tests/apc_store_array_with_refs.phpt" role="test" />
+   <file md5sum="b1804e6e2d9625f6349316b4335a3b94" name="tests/apc_store_reference.phpt" role="test" />
+   <file md5sum="551e2a258df94413380ad05c7891e52d" name="tests/apc_store_reference_php8.phpt" role="test" />
+   <file md5sum="1f20b2f9bbc8764ac6231e4713d5c802" name="tests/apc_store_string_reuse.phpt" role="test" />
+   <file md5sum="14cd8879cc105034143462849b8581eb" name="tests/apcu_sma_info.phpt" role="test" />
+   <file md5sum="bc41b673e4a314ac51a3a99e851ef27a" name="tests/bug63224.phpt" role="test" />
+   <file md5sum="a46c2cc267f1b26180099a9c27578ff9" name="tests/bug76145.phpt" role="test" />
+   <file md5sum="258cc67a839b35df85d7cdaef57710e9" name="tests/get_included_files_inc1.inc" role="test" />
+   <file md5sum="f1e8b517459a9ebd8dba964d4990fc31" name="tests/get_included_files_inc2.inc" role="test" />
+   <file md5sum="c95a47810e7195ebcc32b36c33d09f87" name="tests/get_included_files_inc3.inc" role="test" />
+   <file md5sum="8144dfa17baff3ab3f092adb1bf55c26" name="tests/ghbug176.phpt" role="test" />
+   <file md5sum="8c91b55b39af820f8d7575baabc41e7e" name="tests/ghbug168.phpt" role="test" />
+   <file md5sum="4610af1dc7d675ab80f5ac4d18e3308f" name="tests/ghbug185.phpt" role="test" />
+   <file md5sum="19a23482c213793b29813ccea2b915ab" name="tests/ghbug247.phpt" role="test" />
+   <file md5sum="82980308f7f74d90f5acc5c840d8efe3" name="tests/ghbug248.phpt" role="test" />
+   <file md5sum="1023357031e0cceb4cf922f2b919b108" name="tests/ghbug335-fail.phpt" role="test" />
+   <file md5sum="f5dddbb2d38dee72425444e4fdbd00a9" name="tests/immutable_cache_intern_strings.phpt" role="test" />
+   <file md5sum="3d9a700f1d36b85ace712e6b0ce6d6e6" name="tests/immutable_cache_immutable_arrays.phpt" role="test" />
+   <file md5sum="c6e08935a22c8974b308ac2c8fda91aa" name="tests/immutable_cache_immutable_arrays2.phpt" role="test" />
+   <file md5sum="4102a568b44b41246db4382680d73ee2" name="tests/iterator_001.phpt" role="test" />
+   <file md5sum="cf2da312fe25adb8692dd0dd4cd8c774" name="tests/iterator_002.phpt" role="test" />
+   <file md5sum="16f6eecaca9a7fdc1805fa144386a1bc" name="tests/iterator_003.phpt" role="test" />
+   <file md5sum="c81dd322039e7fabe9ef1eb4923ca2c9" name="tests/iterator_004.phpt" role="test" />
+   <file md5sum="4affb84f6ac4046bb9064a6ab35198ca" name="tests/iterator_006.phpt" role="test" />
+   <file md5sum="842e866de936dc1c068326c1d3e315bc" name="tests/iterator_007.phpt" role="test" />
+   <file md5sum="89582d6a6b1cc9c6baae285be5c3ad67" name="tests/iterator_008.phpt" role="test" />
+   <file md5sum="46a3671f981bdab2d544fcb127c761fd" name="tests/iterator_009.phpt" role="test" />
+   <file md5sum="cc53ae622a3e43cda526988ec105a2fa" name="tests/iterator_011.phpt" role="test" />
+   <file md5sum="a6e4a9e94bc9a61d7428491f5fa12811" name="tests/not_enough_shm.phpt" role="test" />
+   <file md5sum="ed86bb1f8dbd52313c35dee843cf85cb" name="tests/server_skipif.inc" role="test" />
+   <file md5sum="bb5284cb7b404bf3f64873a404142f92" name="tests/server_test.inc" role="test" />
+   <file md5sum="656a2f9ba8f105039089b69522f8fce4" name="tests/skipif.inc" role="test" />
+   <file md5sum="e09a631f35f21dfd15d9bf2431b21a06" name="tests/typed_prop.phpt" role="test" />
+   <file md5sum="28779d87940edb30a1986cc520d5619b" name="tests/data/abc.data" role="test" />
+   <file md5sum="a77d6ee236d985bab7f0d94298aada06" name="tests/bad/abc.data" role="test" />
+   <file md5sum="43919eae06c120bc65156604e62aa16a" name="immutable_cache_api.h" role="src" />
+   <file md5sum="fbf541034300e1fc17f666293b06e01f" name="immutable_cache_arginfo.h" role="src" />
+   <file md5sum="cd3a83ab5b358a25b3ae1984c6194738" name="php_immutable_cache.stub.php" role="src" />
+   <file md5sum="7e167347af74d20ae51dd0316a7bccff" name="php_immutable_cache_arginfo.h" role="src" />
+   <file md5sum="092f20479c00032e96582cf380436a57" name="php_immutable_cache_legacy_arginfo.h" role="src" />
+   <file md5sum="d08647be9967738d385c87cf7430d540" name="immutable_cache.c" role="src" />
+   <file md5sum="fca5281c21275dc6a353081f2895e079" name="immutable_cache_cache.c" role="src" />
+   <file md5sum="fcc26fd5c4d4bcad8dbe9d225be166c9" name="immutable_cache_cache.h" role="src" />
+   <file md5sum="46d33498abf526a00493f63167bd84b1" name="immutable_cache_globals.h" role="src" />
+   <file md5sum="3353ebcfa9aaaf031ef23104a0e262e6" name="immutable_cache.h" role="src" />
+   <file md5sum="b59914fe3b44f59b70b7543d56b780f5" name="immutable_cache_iterator.c" role="src" />
+   <file md5sum="dec272144fb8d1a7623a2d00bc975bfe" name="immutable_cache_iterator.h" role="src" />
+   <file md5sum="f285436a907782a137955cf1f0d1d075" name="immutable_cache_iterator.stub.php" role="src" />
+   <file md5sum="e24b536745bf8cc747e1f5adf2e62267" name="immutable_cache_iterator_arginfo.h" role="src" />
+   <file md5sum="2b57636100818d49ec7fe6015c85abbf" name="immutable_cache_iterator_legacy_arginfo.h" role="src" />
+   <file md5sum="22f1e5515720b36d11c8ca9775eea08a" name="immutable_cache_lock.c" role="src" />
+   <file md5sum="23194f4cc891fa6cbbe5398c76e1e5fa" name="immutable_cache_lock.h" role="src" />
+   <file md5sum="30f5d6764431caed731181763d0fa231" name="immutable_cache_mmap.c" role="src" />
+   <file md5sum="38d1f4c012c4ceb229c4e23b0f4c40ae" name="immutable_cache_mmap.h" role="src" />
+   <file md5sum="ceb07657164422f5996d2025fa308860" name="immutable_cache_mutex.c" role="src" />
+   <file md5sum="c8c56903a7ac7d222df249e09a093f14" name="immutable_cache_mutex.h" role="src" />
+   <file md5sum="d796c6391a1ad567e69c0a14a3594ebb" name="immutable_cache_persist.c" role="src" />
+   <file md5sum="4b0e5d80a905250d9dafc99bc67f31a0" name="immutable_cache.php" role="src" />
+   <file md5sum="38678a79beb9942b28d07b42dee43414" name="immutable_cache_php.h" role="src" />
+   <file md5sum="df7e82a99bb9da984afc78f7406da7d4" name="immutable_cache_php74_shim.h" role="src" />
+   <file md5sum="ad9da3ca9636c54917ff72ce41693f1f" name="immutable_cache_shm.c" role="src" />
+   <file md5sum="f0b34281dff97fa755ad4ebda580a079" name="immutable_cache_shm.h" role="src" />
+   <file md5sum="cf2a7798767955be092d804c0e5171cb" name="immutable_cache_signal.c" role="src" />
+   <file md5sum="487dd508f018216c989395636a9c10ee" name="immutable_cache_signal.h" role="src" />
+   <file md5sum="1a17c26f4571597e27458c15da236f8d" name="immutable_cache_sma.c" role="src" />
+   <file md5sum="b72f859e9ff2e1abfd4ad4dcc6a48a83" name="immutable_cache_sma.h" role="src" />
+   <file md5sum="275f6e5c35cac4992977ed76f2da9f8c" name="immutable_cache_stack.c" role="src" />
+   <file md5sum="e928ea8867f63f1f5dc4dff6448ffd38" name="immutable_cache_stack.h" role="src" />
+   <file md5sum="938c5315487cb83373d0b67c438a14ea" name="immutable_cache_strings.h" role="src" />
+   <file md5sum="23ce9d032f3c5faf742bf3e8c637c52b" name="immutable_cache_time.c" role="src" />
+   <file md5sum="25958c53f4f036cf1bf17f3c9f7ebe8a" name="immutable_cache_time.h" role="src" />
+   <file md5sum="47ffda932f9adf4e2522265b5cecbb88" name="immutable_cache_windows_srwlock_kernel.c" role="src" />
+   <file md5sum="699f9304dce3eb79fc36c3f9b67f29b7" name="immutable_cache_windows_srwlock_kernel.h" role="src" />
+   <file md5sum="9f0a26b24d3a3459fdfa70309f83c276" name="immutable_cache_serializer.h" role="src" />
+   <file md5sum="ad53376730d5c9ada41e12f3a5ca5b79" name="config.m4" role="src" />
+   <file md5sum="6ad2406e055417fa3d6f986eb350b06d" name="config.w32" role="src" />
+   <file md5sum="52dd90569008fee5bcdbb22d945b1108" name="LICENSE" role="doc" />
+   <file md5sum="952a5ed792946ce28ee5680f4c245f6b" name="Makefile.frag" role="src" />
+   <file md5sum="eea150699d3dffb2cdf7d243854189d7" name="NOTICE" role="doc" />
+   <file md5sum="b4211cae46b91c504584eab1ef30f00e" name="php_immutable_cache.c" role="src" />
+   <file md5sum="86377c3ac10cbd4461b1c6d1f7585e52" name="php_immutable_cache.h" role="src" />
+   <file md5sum="45124a2f77354b9caabd89636fd41a86" name="README.md" role="doc" />
+   <file md5sum="8ea96656d57bd169c80e699d6aa07eec" name="TECHNOTES.txt" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>immutable_cache</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="enable-immutable-cache-debug" prompt="Enable internal debugging in immutable_cache" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <date>2022-11-13</date>
+   <version>
+    <release>6.0.2</release>
+    <api>6.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Add support for `immutable_cache.protect_memory`, which will make the shared memory read-only (similar to https://www.php.net/manual/en/opcache.configuration.php#ini.opcache.protect-memory)
+
+  This will slow down applications that do a lot of writes.
+
+  However, as a side effect of how it&apos;s implemented (disables statistics tracking such as number of cache hits/misses, access times, etc), read-heavy applications would see a moderate performance boost.
+- Fix conflicts with other extensions when using shmget and IPC_PRIVATE on Windows. Work around bugs in php-src/TSRM/tsrm_win32.c&apos;s polyfill of shmget.
+   </notes>
+  </release>
+  <release>
+   <date>2022-11-13</date>
+   <version>
+    <release>6.0.2beta4</release>
+    <api>6.0.2beta4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Make extension version consistent with GitHub release version of 6.0.2
+- Add fine-grained locking with 16 different read locks based on key_hash % 16 to allow for higher parallel throughput
+  (A single pthread rwlock seemed to have a read bottleneck of around 10 million operations per second total on a laptop due to memory contention)
+- Align and pad shared memory locks to common sizes for cache lines (64 bytes) to fit in a cache line. https://lwn.net/Articles/531254/
+- Convert doubles to integers in immutable_cache_cache_info() and other debugging functions.
+- Raise the default immutable_cache.shm_size from &apos;32M&apos; to &apos;256M&apos;.
+- Fix detection of negative format bit flags in ImmutableCacheIterator
+   </notes>
+  </release>
+  <release>
+   <date>2022-11-12</date>
+   <version>
+    <release>6.0.0beta3</release>
+    <api>6.0.0beta3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Add support for immutable_cache.serializer=igbinary when configured with &apos;./configure --enable-immutable-cache-igbinary&apos; and igbinary is installed and enabled.
+- Remove unsupported $ttl from parameter list of immutable_cache_add and returned arrays.
+- Remove debugging statement that printed to stderr when a value was already persisted.
+- Update documentation
+- Reuse strings in array keys and cache entry key when persisting to shared memory.
+- Speed up persisting large numbers of values by rotating pointers to avoid zend_array hash table collisions.
+- Fix the way that the pthread linker flag was added.
+   </notes>
+  </release>
+  <release>
+   <date>2022-11-06</date>
+   <version>
+    <release>6.0.0beta2</release>
+    <api>6.0.0beta2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Initial release tag on https://github.com/TysonAndre/immutable_cache-pecl
+- Create immutable_cache based on APCu 5.1.23dev
+- Change the extension name, all ini settings, header/source files and symbols
+  to avoid conflicting with the installation of APCu on all OSes
+- Drop support for PHP &lt; 8.0 in the initial release (earlier PHP versions not tested yet)
+   </notes>
+  </release>
+ </changelog>
+</package>
