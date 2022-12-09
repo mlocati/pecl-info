@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>scoutapm</name>
+ <channel>pecl.php.net</channel>
+ <summary>Native Extension Component for ScoutAPM&apos;s PHP Agent</summary>
+ <description>ScoutAPM&apos;s extension for PHP provides additional capabilities to application monitoring over just using the base PHP userland library.</description>
+ <lead>
+  <name>James Titcumb</name>
+  <user>asgrim</user>
+  <email>james@asgrim.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Chris Schneider</name>
+  <user>cschneid</user>
+  <email>chris@scoutapm.com</email>
+  <active>no</active>
+ </lead>
+ <date>2022-12-09</date>
+ <time>11:39:07</time>
+ <version>
+  <release>1.9.0</release>
+  <api>1.9.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/MIT">MIT</license>
+ <notes>
+- Add PHP 8.2 support (#125)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="7974f6a74e3016982750a97f2ce1c494" name="tests/external.inc" role="test" />
+   <file md5sum="da2debd569a7d81c38a0a9127f38dc5d" name="tests/001-check-ext-loaded.phpt" role="test" />
+   <file md5sum="057337f3c763993ee0d60c9a2684926e" name="tests/002-file_get_contents.phpt" role="test" />
+   <file md5sum="591a284e393a29ae5daf419c1c615803" name="tests/003-scoutapm_get_calls-clears-calls-list.phpt" role="test" />
+   <file md5sum="aef78bbc5fffd1656264a3362e1c2e9c" name="tests/004-namespaced-fgc-is-not-logged.phpt" role="test" />
+   <file md5sum="72a77dd1cf0fc8a9424afc412bccb2e4" name="tests/005-requiring-external-files-handled.phpt" role="test" />
+   <file md5sum="7d19f3ba34eab0c6f8925c8020831f25" name="tests/006-anonymous-classes-handled.phpt" role="test" />
+   <file md5sum="d2864b9810b269d06ceccd52a3ca07f3" name="tests/007-evaled-code-handled.phpt" role="test" />
+   <file md5sum="a77138b6a0286d67cdce9713883c6272" name="tests/008-class-with-no-constructor-call-handled.phpt" role="test" />
+   <file md5sum="8ffad0c37a4d2a1a678ee816e61a23cf" name="tests/009-curl_exec.phpt" role="test" />
+   <file md5sum="cfcc167eb58a93ce701c5020f17ba53c" name="tests/010-fwrite-fread-fopen.phpt" role="test" />
+   <file md5sum="a0d2cd7c19f2eec71e65661472bcc06f" name="tests/010-fwrite-fread-tmpfile.phpt" role="test" />
+   <file md5sum="de6862a3a16f644744b75011af22c632" name="tests/011-pdo-exec.phpt" role="test" />
+   <file md5sum="88c1412c402f2513539693d4524c30fe" name="tests/011-pdo-query.phpt" role="test" />
+   <file md5sum="98a9d217aded0c027648fae46bdc5d7b" name="tests/011-pdostatement-execute-pdo-prepare.phpt" role="test" />
+   <file md5sum="fc9c5ca99c2c1a8ba06ec673eb437c92" name="tests/012-file_put_contents.phpt" role="test" />
+   <file md5sum="b4f4d03127a1433aa4ef66cf65627ddc" name="tests/013-fix-memory-leak-when-scoutapm_get_calls-not-called.phpt" role="test" />
+   <file md5sum="c5c37485573ff59bd081603b7f9f3d80" name="tests/014-predis-support.phpt" role="test" />
+   <file md5sum="4e28c3985b7dc3d1f59e4f8d36565673" name="tests/015-phpredis-support.phpt" role="test" />
+   <file md5sum="0c6e16bcef9832facaf31a37a27e3fda" name="tests/016-memcached-support.phpt" role="test" />
+   <file md5sum="f9122453688e90aa32cbdac68cd29057" name="tests/017-elastic-7-support.phpt" role="test" />
+   <file md5sum="4e57bead60e1ade1ebce30f7f643af16" name="tests/018-do-not-instrument-by-default.phpt" role="test" />
+   <file md5sum="d45b5645718e59a2d22d63b40db90da0" name="tests/019-url-method-capture-fgc.phpt" role="test" />
+   <file md5sum="5a8726b785ba7fab631cabd52dce945e" name="tests/020-url-method-capture-curl-post.phpt" role="test" />
+   <file md5sum="9e2e08ad41f8991b5fd0e13538d0015a" name="tests/021-url-method-capture-curl-customreq.phpt" role="test" />
+   <file md5sum="e71435cc85a029b24a75f19ed5316990" name="tests/022-elastic-8-support.phpt" role="test" />
+   <file md5sum="f204d1be7ea625446febab655a6d5d8f" name="tests/bug-47.phpt" role="test" />
+   <file md5sum="712940588a3d919ad3038539282f768e" name="tests/bug-49.phpt" role="test" />
+   <file md5sum="41e3c8c029e7d6f8a8757dedd4b549d8" name="tests/bug-55.phpt" role="test" />
+   <file md5sum="9a054056adfea83e1bd3e2442d266165" name="tests/bug-71.phpt" role="test" />
+   <file md5sum="781e2e97540bd55f86fe9b78482870d5" name="tests/bug-88.phpt" role="test" />
+   <file md5sum="e1e51cf1f13464cd7b79ec0c34eded83" name="tests/bug-93.phpt" role="test" />
+   <file md5sum="e78d9f82636d8ed64212ca0a93873df3" name="config.m4" role="src" />
+   <file md5sum="15d853ee148b53d49167fc216c0fb246" name="config.w32" role="src" />
+   <file md5sum="77041d108aaef1718b3f5904a4803c8a" name="scout_curl_wrapper.c" role="src" />
+   <file md5sum="056a8283b1ea427749b35d72c0e263be" name="scout_execute_ex.c" role="src" />
+   <file md5sum="41c3d534d9367d45a3c9fe02f800e8a6" name="scout_execute_ex.h" role="src" />
+   <file md5sum="3c6395e3eadd486ccba7b1ca2784671e" name="scout_extern.h" role="src" />
+   <file md5sum="dd890b5d543a51f19f6cd6fdc689e019" name="scout_file_wrapper.c" role="src" />
+   <file md5sum="3b75a8bebbc859973aa126f6157afc15" name="scout_functions.c" role="src" />
+   <file md5sum="a9164f63eea5220cef3fc9a3b9b4aa45" name="scout_internal_handlers.c" role="src" />
+   <file md5sum="2412f1bee2726ac48cb0709498e062dc" name="scout_internal_handlers.h" role="src" />
+   <file md5sum="be3c61005695da191d6c8e23463ac4a5" name="scout_observer.c" role="src" />
+   <file md5sum="f0cd74351ebbd3a6f3607f8cc5c50376" name="scout_pdo_wrapper.c" role="src" />
+   <file md5sum="5026c1f535fe68c7101e20247635912e" name="scout_recording.c" role="src" />
+   <file md5sum="cd3bd4476c6c9b5b62e145e1bfc24b67" name="scout_recording.h" role="src" />
+   <file md5sum="497fcb900369156c13960bdde094f8b2" name="scout_utils.c" role="src" />
+   <file md5sum="42fecdd3626e3c16215202e479f04225" name="zend_scoutapm.c" role="src" />
+   <file md5sum="b2eb3e0935b0fb21f439664ad41f55d9" name="zend_scoutapm.h" role="src" />
+   <file md5sum="4c19e3df3cfd23f0549ec5a117f6cfb8" name="README.md" role="doc" />
+   <file md5sum="121ee374d320b77783662acc3eeee92f" name="LICENSE" role="doc" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="EXPERIMENTAL" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.1.0</min>
+    <max>8.2.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.9.1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>scoutapm</providesextension>
+ <zendextsrcrelease />
+ <changelog>
+  <release>
+   <date>2022-10-18</date>
+   <time>07:30:00</time>
+   <version>
+    <release>1.8.3</release>
+    <api>1.8.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Improved MINFO output for curl availability (#126)
+   </notes>
+  </release>
+  <release>
+   <date>2022-08-26</date>
+   <time>10:30:00</time>
+   <version>
+    <release>1.8.2</release>
+    <api>1.8.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Enable HAVE_SCOUT_CURL if it is available in the Windows builds (#121)
+   </notes>
+  </release>
+  <release>
+   <date>2022-07-11</date>
+   <time>14:30:00</time>
+   <version>
+    <release>1.8.1</release>
+    <api>1.8.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Added automation to upload DLL for Windows releases (#112)
+   </notes>
+  </release>
+  <release>
+   <date>2022-06-29</date>
+   <time>11:30:00</time>
+   <version>
+    <release>1.8.0</release>
+    <api>1.8.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Added support for compiling on Windows (#109)
+   </notes>
+  </release>
+  <release>
+   <date>2022-04-21</date>
+   <time>10:00:00</time>
+   <version>
+    <release>1.7.0</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Pinned Elasticsearch to ^7.0 as ^8.0 has major BC breaks (#105)
+- Elasticsearch 8 support (#106)
+- Added release automation (#103)
+   </notes>
+  </release>
+  <release>
+   <date>2022-01-10</date>
+   <time>10:00:00</time>
+   <version>
+    <release>1.6.0</release>
+    <api>1.6.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Added support for PHP 8.1 (#101)
+   </notes>
+  </release>
+  <release>
+   <date>2021-12-24</date>
+   <time>14:00:00</time>
+   <version>
+    <release>1.5.1</release>
+    <api>1.5.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Fix json_encode usage where ext-json is shared or does not exist - thanks @remicollet (#100)
+   </notes>
+  </release>
+  <release>
+   <date>2021-12-23</date>
+   <time>09:00:00</time>
+   <version>
+    <release>1.5.0</release>
+    <api>1.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- file_get_contents and curl_exec now record HTTP methods (#96)
+   </notes>
+  </release>
+  <release>
+   <date>2021-10-29</date>
+   <time>09:00:00</time>
+   <version>
+    <release>1.4.3</release>
+    <api>1.4.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Fixed segfault when static anonymous functions are called (#94)
+   </notes>
+  </release>
+  <release>
+   <date>2021-06-29</date>
+   <time>13:00:00</time>
+   <version>
+    <release>1.4.2</release>
+    <api>1.4.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Fixed some missed free calls after DYNAMIC_MALLOC_SPRINTF usage in PHP 8 only (#92)
+   </notes>
+  </release>
+  <release>
+   <date>2021-06-29</date>
+   <time>12:00:00</time>
+   <version>
+    <release>1.4.1</release>
+    <api>1.4.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Fixed memory leaks from DYNAMIC_MALLOC_SPRINTF un-freed usages (#91)
+   </notes>
+  </release>
+  <release>
+   <date>2021-06-17</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.4.0</release>
+    <api>1.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Only instrument if specifically enabled with scoutapm_enable_instrumentation() (#89)
+   </notes>
+  </release>
+  <release>
+   <date>2021-06-17</date>
+   <time>09:00:00</time>
+   <version>
+    <release>1.3.0</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Userland function recording for PHP 7 with zend_execute_ex (#77)
+- Userland function recording for PHP 8 with improved Zend Observer API (#79)
+- Added Predis library function instrumentation (#80)
+- Add support for phpredis Redis extension instrumentation (#82)
+- Add instrumentation for Memcached (#84)
+- Add instrumentation for Elasticsearch PHP library (#85)
+- Change CI from Circle to GitHub Actions (#78)
+- Fix SKIP block for phpredis test (#83)
+   </notes>
+  </release>
+  <release>
+   <date>2021-03-19</date>
+   <time>12:15:00</time>
+   <version>
+    <release>1.2.2</release>
+    <api>1.2.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Do not try to record arguments if PDO::prepare returns a non-object (#72)
+   </notes>
+  </release>
+  <release>
+   <date>2021-02-05</date>
+   <time>16:37:00</time>
+   <version>
+    <release>1.2.1</release>
+    <api>1.2.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Fixing builds on ZTS mode (thanks @remicollet, #69)
+   </notes>
+  </release>
+  <release>
+   <date>2021-02-04</date>
+   <time>12:18:00</time>
+   <version>
+    <release>1.2.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Added support for PHP 8.0 (#66)
+   </notes>
+  </release>
+  <release>
+   <date>2020-02-19</date>
+   <time>14:53:00</time>
+   <version>
+    <release>1.1.1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Fixed typo in config.m4 for libcurl detection
+   </notes>
+  </release>
+  <release>
+   <date>2020-02-19</date>
+   <time>11:25:00</time>
+   <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Added support for PHP 7.4 (#60)
+- Improved cURL detection (thanks @remicollet, #58)
+   </notes>
+  </release>
+  <release>
+   <date>2019-11-06</date>
+   <time>08:26:00</time>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Fix segfault when trying to access args out of bounds (#48)
+- Fix exception raised when trying to fopen a file that does not exist (#50)
+- Removed notice emitted calling some functions (#51)
+   </notes>
+  </release>
+  <release>
+   <date>2019-11-04</date>
+   <time>11:50:00</time>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- More documentation into README.md (#38)
+- Better text matrix introduced, including PHP 7.4 tests (#40)
+- Improved argument handling for functions like `curl_exec`, `fwrite`, `fread`, `PDOStatement-&gt;execute` (#42, #43)
+- Bug fixes for #41 and #29 to help prevent bad configuration of overwritten functions (#44)
+   </notes>
+  </release>
+  <release>
+   <date>2019-09-27</date>
+   <time>10:18:00</time>
+   <version>
+    <release>0.0.4</release>
+    <api>0.0.4</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Fixed test failing because differing behaviour of sqlite in some versions
+- Define i/j etc to follow c89 rules (thanks @remicollet)
+   </notes>
+  </release>
+  <release>
+   <date>2019-09-17</date>
+   <time>11:15:00</time>
+   <version>
+    <release>0.0.3</release>
+    <api>0.0.3</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Fixed version number and naming convension so PECL uploader picks up on mismatches (last release was wrong)
+   </notes>
+  </release>
+  <release>
+   <date>2019-09-17</date>
+   <time>10:00:00</time>
+   <version>
+    <release>0.0.2</release>
+    <api>0.0.2</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Added extra compiler flags in development mode with `--enable-scoutapm-dev`
+- Fixed compilation errors surfaced by `--enable-scoutapm-dev` option
+- Added missing file `external.inc` in tests
+   </notes>
+  </release>
+  <release>
+   <date>2019-09-17</date>
+   <time>09:15:00</time>
+   <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="https://opensource.org/licenses/MIT">MIT</license>
+   <notes>
+- Basic monitoring of file_get_contents, file_put_contents, fwrite, fread, curl_exec, PDO-&gt;exec, PDO-&gt;query, PDOStatement-&gt;execute
+- Provides function scoutapm_get_calls() to return a list of recorded function calls
+   </notes>
+  </release>
+ </changelog>
+</package>
