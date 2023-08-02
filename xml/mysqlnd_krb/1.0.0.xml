@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>mysqlnd_krb</name>
+ <channel>pecl.php.net</channel>
+ <summary>Kerberos authentication plugin for mysqlnd</summary>
+ <description>The mysqlnd_krb extension is an authentication 
+plugin for mysqlnd that enables connections to MySQL accounts
+that use Kerberos authentication.
+
+If a MySQL account is configured with Kerberos authentication
+(using `IDENTIFIED WITH kerberos_authentication` clause
+of `CREATE USER`, see [1]) then normally `mysqlnd` will not
+be able to connect to such an account. With this plugin such
+connections are possible provided that user has appropriate
+tickets loaded into the Kerberos ticket cache (in this case
+no password is needed in the connection data).
+
+If a ticket for the MySQL service is not present in the cache
+the plugin can fetch the required ticket from Kerberos provided
+that user principal&apos;s password is given in the connection data.
+
+[1] https://dev.mysql.com/doc/refman/8.0/en/kerberos-pluggable-authentication.html</description>
+ <lead>
+  <name>MySQL Release Engineering</name>
+  <user>mysqlre</user>
+  <email>mysqlre@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2023-08-02</date>
+ <time>08:37:07</time>
+ <version>
+  <release>1.0.0</release>
+  <api>0.1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+Release
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="6130f509773658a84e3b00898a6b23c5" name="config.m4" role="src" />
+   <file md5sum="db93566f82cbcf944d3c841f0c28d085" name="php_mysqlnd_krb.c" role="src" />
+   <file md5sum="1e81eb015ff11e231593c750823eb9cd" name="auth_kerberos.cc" role="src" />
+   <file md5sum="40ea7166e4dba74375603de419c9ce0c" name="php_mysqlnd_krb.h" role="src" />
+   <file md5sum="826fc2276971a33dcda0e30a78234967" name="gssapi.h" role="src" />
+   <file md5sum="13a85059dfc351c4d1976df4a1cf9751" name="README" role="doc" />
+   <file md5sum="91e78b2fb2a617bff81099e199b7ca66" name="LICENSE" role="doc" />
+   <file md5sum="1c34f4553796d37b6471b636b3f3ad9d" name="CREDITS" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.4.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>mysqlnd_krb</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2023-08-02</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Initial release
+   </notes>
+  </release>
+ </changelog>
+</package>
