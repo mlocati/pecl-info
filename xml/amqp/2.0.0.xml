@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>amqp</name>
+ <channel>pecl.php.net</channel>
+ <summary>Communicate with any AMQP compliant server</summary>
+ <description>This extension can communicate with any AMQP spec 0-9-1 compatible server, such as RabbitMQ, OpenAMQP and Qpid, giving you the ability to create and delete exchanges and queues, as well as publish to any exchange and consume from any queue.</description>
+ <lead>
+  <name>Lars Strojny</name>
+  <user>lstrojny</user>
+  <email>lstrojny@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Pieter de Zwart</name>
+  <user>pdezwart</user>
+  <email>pdezwart@php.net</email>
+  <active>no</active>
+ </lead>
+ <developer>
+  <name>Bogdan Padalko</name>
+  <user>pinepain</user>
+  <email>pinepain@gmail.com</email>
+  <active>yes</active>
+ </developer>
+ <date>2023-08-20</date>
+ <time>11:12:46</time>
+ <version>
+  <release>2.0.0</release>
+  <api>2.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+Notable changes:
+
+ - Fix various API oddities, see https://github.com/php-amqp/php-amqp/tree/v2.0.0/UPGRADING.md for details
+ - Remove support for PHP 5
+ - Various bug fixes
+
+💡Most use-cases should not require much changes from 1.x but check out
+https://github.com/php-amqp/php-amqp/tree/v2.0.0/UPGRADING.md for a detailed upgrade guide
+
+
+All changes (chronologically):
+
+ - CentOS development environment (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/467)
+ - Ubuntu development containers (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/466)
+ - Test against upcoming PHP 8.3 (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/465)
+ - Make test host configurable (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/464)
+ - Cosmetics on type functions (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/commit/350202f)
+ - Configurable serialization/deserialization depth (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/463)
+ - Allow bitmask flags arguments to be nullable where previously AMQP_NOPARAM/zero was required (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/462)
+ - Fix generated commit URLs in changelogs (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/commit/4ee6159)
+ - Handle nested AMQP value serialization/deserialization (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/461)
+ - Document lack of reliability of AMQPConnection::isConnected (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/306)
+ - Prevent reuse of channel ID of broken channels (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/460)
+ - Gracefully handle zero as a heartbeat value (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/459)
+ - Build with the clang compiler on CI (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/457)
+ - Include stdint.h for PHP &gt;= 8.0 on Windows (Jan Ehrhardt) (https://github.com/php-amqp/php-amqp/issues/456)
+ - Fix segfault in setPort (Remi Collet &lt;remi@remirepo.net&gt;) (https://github.com/php-amqp/php-amqp/issues/455)
+ - Document BC changes (Lars Strojny &lt;lars@strojny.net&gt;)
+ - Document pseudo-bool method changes (Lars Strojny &lt;lars@strojny.net&gt;)
+ - Fix mangled header on MacOS (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/60)
+ - Validate argument parsing, add AMQPExchange::removeArgument() and AMQPQueue::removeArgument() (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/452)
+ - Skip SSL tests if certificates are missing (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/450)
+ - Check coding style and formatting of stub files (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/447)
+ - Parallelize test execution (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/444)
+ - Deterministic configuration for PHP CLI (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/443)
+ - Fix tag creation during release management (Lars Strojny &lt;lars@strojny.net&gt;)
+ - Move test-report.sh into infra (Lars Strojny &lt;lars@strojny.net&gt;)
+ - The big fat API renovation (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/437)
+ - Handle alpha/beta stability correctly (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/5546436)
+ - Expose better version information (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/438)
+ - Auto-format the codebase (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/436)
+ - More consistent return types for AMQPEnvelope (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/435)
+ - Update stubs (Lars Strojny &lt;lars@strojny.net&gt;)
+ - Fix parameter error handling in AMQPConnection and AMQPChannel (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/434)
+ - Increase credentials and identifier limits (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/433)
+ - Reliably clear consumer tag on AMQPQueue::cancel (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/432)
+ - Ignore failures on experimental builds (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/25)
+ - Update branch name (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/7)
+ - Bump shivammathur/setup-php from 2.25.3 to 2.25.4 (dependabot[bot]) (https://github.com/php-amqp/php-amqp/issues/431)
+ - PHP 8.2 refactorings (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/430)
+ - Fix php version check for static building (Misha Kulakovsky &lt;m@klkvsk.ru&gt;) (https://github.com/php-amqp/php-amqp/issues/425)
+ - Fix stub exception class (closes #427) (Lars Strojny &lt;lars@strojny.net&gt;)
+ - Document custom connection name in stubs (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/700000)
+ - Expose Delivery Mode through constants (Flávio Heleno &lt;flaviohbatista@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/420)
+ - Fix deprecation issue in PHP 8.1 for $consumerTag argument to AMQPQueue::consume() method (Liviu-Ionut Iosif) (https://github.com/php-amqp/php-amqp/issues/421)
+ - Fix: Deprecated: Creation of dynamic property (8.2) (Remi Collet &lt;remi@remirepo.net&gt;) (https://github.com/php-amqp/php-amqp/issues/418)
+ - Fix AMQPEnvelope::getDeliveryTag() return type (Flávio Heleno &lt;flaviohbatista@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/415)
+ - Fix ack/nack/reject param documentation (Flávio Heleno &lt;flaviohbatista@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/414)
+ - Mention time units in all timeout-related methods (Andrii Dembitskyi &lt;andrew.dembitskiy@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/410)
+
+For a complete list of changes see:
+https://github.com/php-amqp/php-amqp/compare/v1.11.0...v2.0.0
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="a9e0eab0f0e7b74216828f6b98329e91" name="config.m4" role="src" />
+   <file md5sum="b2c4391762341928e83c6c12c76677d1" name="config.w32" role="src" />
+   <file md5sum="fef7c9a5d92ed9043d5a8f39c9a99fa7" name="benchmark.php" role="doc" />
+   <file md5sum="c2bc5a8aa3fb7f8d0c924f584e20809d" name="CREDITS" role="doc" />
+   <file md5sum="b3e70313289e3ea66cae3089b7e571b8" name="LICENSE" role="doc" />
+   <file md5sum="faaa7130786487ae7bfda8adaeea93c2" name="tests/_test_helpers.php.inc" role="test" />
+   <file md5sum="c04fe5a36db5ad39ff138cdea335ea52" name="amqp.c" role="src" />
+   <file md5sum="8fbbb1f8c541abf8f07c7b60644db9ee" name="amqp_basic_properties.c" role="src" />
+   <file md5sum="a0101537ab6d719db5bc1de3c780a7eb" name="amqp_basic_properties.h" role="src" />
+   <file md5sum="84364df950da8f7f331f57edf909dc0a" name="amqp_channel.c" role="src" />
+   <file md5sum="72eb05aaedd3ba4f3813906a224aec82" name="amqp_channel.h" role="src" />
+   <file md5sum="37cae1c9e79964ed772a0b89c73f5c64" name="amqp_connection.c" role="src" />
+   <file md5sum="d15970adc8c79c8606bfb75ff12c81d4" name="amqp_connection.h" role="src" />
+   <file md5sum="29aaab3abb3453d395f89a48a9760783" name="amqp_connection_resource.c" role="src" />
+   <file md5sum="c61d73d2b514a65f20a39d561b3b8d20" name="amqp_connection_resource.h" role="src" />
+   <file md5sum="9d9106cfba6e6e24cc66f733aa42d182" name="amqp_decimal.c" role="src" />
+   <file md5sum="71d2f8c929bf674353ba2a6db828b00c" name="amqp_decimal.h" role="src" />
+   <file md5sum="71c2fd5efc02fc3a169ceb584bfcf8c3" name="amqp_envelope.c" role="src" />
+   <file md5sum="8cad06b8f3f4c8ff2d7ab599636a16f1" name="amqp_envelope.h" role="src" />
+   <file md5sum="9712eafa8912a401a039557c3a05e891" name="amqp_envelope_exception.c" role="src" />
+   <file md5sum="5866896bd551b43905ec4ee1b85e656e" name="amqp_envelope_exception.h" role="src" />
+   <file md5sum="7dcc14727b2f898a050bf60c00781ea7" name="amqp_exchange.c" role="src" />
+   <file md5sum="0ae7b70c8ee847cb1fc9ae6454577e2d" name="amqp_exchange.h" role="src" />
+   <file md5sum="20e10586296e00f26a684af78ea794e5" name="amqp_methods_handling.c" role="src" />
+   <file md5sum="4cb9e3197b3edda1821b80782ebe09a9" name="amqp_methods_handling.h" role="src" />
+   <file md5sum="54d107ba1b101840c7babde3fb4471e7" name="amqp_queue.c" role="src" />
+   <file md5sum="ce5b701dd7954a841eaa6d4c8efe39af" name="amqp_queue.h" role="src" />
+   <file md5sum="0ddb38802deecb94c016baec05538543" name="amqp_timestamp.c" role="src" />
+   <file md5sum="4f802b5afd10f5827a652bd00ebdbe2d" name="amqp_timestamp.h" role="src" />
+   <file md5sum="8b22953a7e77ffb11187ce528ea75ea9" name="amqp_type.c" role="src" />
+   <file md5sum="eea964bf578016436b14b6f0d73f5702" name="amqp_type.h" role="src" />
+   <file md5sum="1380ffd948b264e55b6ac276f4792950" name="php_amqp.h" role="src" />
+   <file md5sum="5d8e796ec45998ec58f8601849d8550f" name="php_amqp_version.h" role="src" />
+   <file md5sum="efb7ee50e51c3a1e3470fc6fc9e2ed74" name="tests/003-channel-consumers.phpt" role="test" />
+   <file md5sum="966886c4ddc6ac2fafb45c5cdc7dbd7e" name="tests/004-queue-consume-nested.phpt" role="test" />
+   <file md5sum="6956f4b87180da87bdc5535e222e41d3" name="tests/004-queue-consume-orphaned.phpt" role="test" />
+   <file md5sum="10f2f227116be4325a77d3d897973db3" name="tests/amqp_version.phpt" role="test" />
+   <file md5sum="f91faff0796833aefc18aa19ed40d2fd" name="tests/amqpbasicproperties.phpt" role="test" />
+   <file md5sum="21a31d354bbaf7b25d5fcb19da57384d" name="tests/amqpchannel_basicRecover.phpt" role="test" />
+   <file md5sum="4fe60e221b0ae748db73e379e2e674cd" name="tests/amqpchannel_close.phpt" role="test" />
+   <file md5sum="03a9e658a73a31da54220e336bff3181" name="tests/amqpchannel_confirmSelect.phpt" role="test" />
+   <file md5sum="d7e3918985d8a12bdf3ce7a9d3211982" name="tests/amqpchannel_construct_basic.phpt" role="test" />
+   <file md5sum="beef558370669dd807b3b06c1cad9779" name="tests/amqpchannel_construct_ini_global_prefetch_count.phpt" role="test" />
+   <file md5sum="f52b8f3a3ad28f637b8be70de662fa9a" name="tests/amqpchannel_construct_ini_global_prefetch_size.phpt" role="test" />
+   <file md5sum="c28bb0faac34c99d55d98833a1e1772b" name="tests/amqpchannel_construct_ini_prefetch_count.phpt" role="test" />
+   <file md5sum="b395151f13735bd4a814167ee324845e" name="tests/amqpchannel_construct_ini_prefetch_size.phpt" role="test" />
+   <file md5sum="d02be0c301813b1c9a658ee59cc693c5" name="tests/amqpchannel_getChannelId.phpt" role="test" />
+   <file md5sum="a88dc9ce8c16911025caf977df508bca" name="tests/amqpchannel_get_connection.phpt" role="test" />
+   <file md5sum="2ff44188c4c525c88693240a8503b856" name="tests/amqpchannel_multi_channel_connection.phpt" role="test" />
+   <file md5sum="88fd0acaba3a3db2eafc98c31c94a373" name="tests/amqpchannel_set_global_prefetch_count.phpt" role="test" />
+   <file md5sum="95b55dcd1c8d5fa5658b0a58bab4779f" name="tests/amqpchannel_set_global_prefetch_size.phpt" role="test" />
+   <file md5sum="b2a8ee777346ad1cdbfc25a224d52dee" name="tests/amqpchannel_set_prefetch_and_global_prefetch_count.phpt" role="test" />
+   <file md5sum="0e424d598022d07c4bb18114e238215c" name="tests/amqpchannel_set_prefetch_and_global_prefetch_size.phpt" role="test" />
+   <file md5sum="c09f61739a9055b8021c9ee090275401" name="tests/amqpchannel_set_prefetch_count.phpt" role="test" />
+   <file md5sum="0a44310a3df53a06a9a9e75062646e47" name="tests/amqpchannel_set_prefetch_size.phpt" role="test" />
+   <file md5sum="98fd95b22116dc182d5f5555c31c186c" name="tests/amqpchannel_slots_usage.phpt" role="test" />
+   <file md5sum="fdd9b4b224b2230905460316b229616a" name="tests/amqpchannel_validation.phpt" role="test" />
+   <file md5sum="14831e6c635d681630d17ea5f6cc8b09" name="tests/amqpchannel_var_dump.phpt" role="test" />
+   <file md5sum="11837ab022c3d6ffe7812c2b8134424a" name="tests/amqpconnection_connect_login_failure.phpt" role="test" />
+   <file md5sum="bb880c945e4629e341a49d5103b8f656" name="tests/amqpconnection_connection_getters.phpt" role="test" />
+   <file md5sum="2f1e1270cb65b55bde87947864ad04d3" name="tests/amqpconnection_construct_basic.phpt" role="test" />
+   <file md5sum="eca98180dc00c824a00ee9e49668cdc0" name="tests/amqpconnection_construct_ini_read_timeout.phpt" role="test" />
+   <file md5sum="533d19f130617f7ea414461f55a90aa3" name="tests/amqpconnection_construct_ini_timeout.phpt" role="test" />
+   <file md5sum="28ef86231f02aec3ecc0d276acb1d7a8" name="tests/amqpconnection_construct_ini_timeout_and_read_timeout.phpt" role="test" />
+   <file md5sum="a7216c1cd1298d817d5c8276a00ba349" name="tests/amqpconnection_construct_ini_timeout_default.phpt" role="test" />
+   <file md5sum="e6debf3d17a67e94ad12d56315945ffd" name="tests/amqpconnection_construct_params_by_value.phpt" role="test" />
+   <file md5sum="6f41f721bb3803569945bd4d4d882e4d" name="tests/amqpconnection_construct_with_connect_timeout.phpt" role="test" />
+   <file md5sum="520cafe2bd92c63677f5b7e71bb08d63" name="tests/amqpconnection_construct_with_connection_name.phpt" role="test" />
+   <file md5sum="efd7c78a371ad8e86d201799448b85c9" name="tests/amqpconnection_construct_with_limits.phpt" role="test" />
+   <file md5sum="61b914f14e1307568c672a090b9d748d" name="tests/amqpconnection_construct_with_rpc_timeout.phpt" role="test" />
+   <file md5sum="cbabdcccf3d7477d87eaf251c1f92f1f" name="tests/amqpconnection_construct_with_timeout.phpt" role="test" />
+   <file md5sum="36a4ea9c9da710ac0fab3d9f6a99672a" name="tests/amqpconnection_construct_with_timeout_and_read_timeout.phpt" role="test" />
+   <file md5sum="151c8d3e2191881054dddcda24db497d" name="tests/amqpconnection_construct_with_write_timeout.phpt" role="test" />
+   <file md5sum="d3d95b7f42e79edb79d65fe2b9f12a89" name="tests/amqpconnection_getUsedChannels.phpt" role="test" />
+   <file md5sum="4234e54a68cc255fcd1b12ea7514f39c" name="tests/amqpconnection_heartbeat.phpt" role="test" />
+   <file md5sum="ea6429050c45bed39599c2cb19b7c308" name="tests/amqpconnection_heartbeat_with_consumer.phpt" role="test" />
+   <file md5sum="b3c5be0c97fa4a05e9fb7e73732579f5" name="tests/amqpconnection_heartbeat_with_persistent.phpt" role="test" />
+   <file md5sum="5ae30be4fbd4a88129dc770f2511ac23" name="tests/amqpconnection_nullable_setters.phpt" role="test" />
+   <file md5sum="7cd51ba24cebb9348ffa837071b3f5ec" name="tests/amqpconnection_persistent_construct_basic.phpt" role="test" />
+   <file md5sum="ee72057edfd163ebb713ea2b73791d20" name="tests/amqpconnection_persistent_in_use.phpt" role="test" />
+   <file md5sum="23dd9e89397e3e1a81cb862c619816e4" name="tests/amqpconnection_persistent_reusable.phpt" role="test" />
+   <file md5sum="65a0b4a1d9807dcf043257e1d4c20b9a" name="tests/amqpconnection_setConnectionName.phpt" role="test" />
+   <file md5sum="f45debde302b3c3f0541a53edc1f9e20" name="tests/amqpconnection_setHost.phpt" role="test" />
+   <file md5sum="538a67c750067fa39aefa91ffb116860" name="tests/amqpconnection_setLogin.phpt" role="test" />
+   <file md5sum="ca5128765494a91a168b1135940d6c66" name="tests/amqpconnection_setPassword.phpt" role="test" />
+   <file md5sum="6aff25b6a0757128a8c92d7478d14bf4" name="tests/amqpconnection_setPort_int.phpt" role="test" />
+   <file md5sum="bd5817214e3ceac7a11ef55b02e7fdf5" name="tests/amqpconnection_setPort_out_of_range.phpt" role="test" />
+   <file md5sum="8762f56dcf85130f6cc4e17a414fc26e" name="tests/amqpconnection_setPort_string.phpt" role="test" />
+   <file md5sum="c60fe73cfdeef7d2674067e91400fa44" name="tests/amqpconnection_setReadTimeout_float.phpt" role="test" />
+   <file md5sum="9065f4438cbd07c04a1c0698549befeb" name="tests/amqpconnection_setReadTimeout_int.phpt" role="test" />
+   <file md5sum="ff2edb88012b5a51de1b2f6d5f7f95f5" name="tests/amqpconnection_setReadTimeout_out_of_range.phpt" role="test" />
+   <file md5sum="20fe46987ba67977f38652917bf6c0db" name="tests/amqpconnection_setReadTimeout_string.phpt" role="test" />
+   <file md5sum="7607efd3b436dd3b43811320a46642b1" name="tests/amqpconnection_setRpcTimeout_float.phpt" role="test" />
+   <file md5sum="57f8c63e2208304e8ff4f7220dad855f" name="tests/amqpconnection_setRpcTimeout_int.phpt" role="test" />
+   <file md5sum="e7b675b0046d7ebfcaa5381cc1240b1f" name="tests/amqpconnection_setRpcTimeout_out_of_range.phpt" role="test" />
+   <file md5sum="1e06af20018ecc9712efbc4b66b35435" name="tests/amqpconnection_setRpcTimeout_string.phpt" role="test" />
+   <file md5sum="cf40b6dea6b5c7731535ba42ccef55e0" name="tests/amqpconnection_setSaslMethod.phpt" role="test" />
+   <file md5sum="57bbad386280a4f205daa01682988561" name="tests/amqpconnection_setSaslMethod_invalid.phpt" role="test" />
+   <file md5sum="af2bfeaffe6e94c80da0bbb4f6dfd376" name="tests/amqpconnection_setTimeout_deprecated.phpt" role="test" />
+   <file md5sum="a2e03f22d11c94ccaee27d13c9e44363" name="tests/amqpconnection_setTimeout_float.phpt" role="test" />
+   <file md5sum="49661146a52af67518e8d443d87440fd" name="tests/amqpconnection_setTimeout_int.phpt" role="test" />
+   <file md5sum="d2727b7cd560b15945b1819373c0806b" name="tests/amqpconnection_setTimeout_out_of_range.phpt" role="test" />
+   <file md5sum="a622f3c1b0c0754cc135e1545cd2c2b5" name="tests/amqpconnection_setTimeout_string.phpt" role="test" />
+   <file md5sum="93f8cfd116fce9a8b0fef856866e0dcc" name="tests/amqpconnection_setVhost.phpt" role="test" />
+   <file md5sum="cecb4c2b76f79b2bc3868f89a8468239" name="tests/amqpconnection_setWriteTimeout_float.phpt" role="test" />
+   <file md5sum="8800dfdc1060adb012c26fb9c82783de" name="tests/amqpconnection_setWriteTimeout_int.phpt" role="test" />
+   <file md5sum="2dc2579aa5c71b71b00338ca2f8e91bf" name="tests/amqpconnection_setWriteTimeout_out_of_range.phpt" role="test" />
+   <file md5sum="c74b1b0b0e5ed10653db2fdb134c6678" name="tests/amqpconnection_setWriteTimeout_string.phpt" role="test" />
+   <file md5sum="998c3ae0533799b84d8d8908b52468ce" name="tests/amqpconnection_tls_basic.phpt" role="test" />
+   <file md5sum="7bc0093ba85b1b66785828a37a8fa3fd" name="tests/amqpconnection_tls_mtls.phpt" role="test" />
+   <file md5sum="eb7f056a6f664fe9296edaf293d649f7" name="tests/amqpconnection_tls_sasl.phpt" role="test" />
+   <file md5sum="82ffd6d27f8eff4a687df1db2b44149f" name="tests/amqpconnection_toomanychannels.phpt" role="test" />
+   <file md5sum="13a8852d6a550f6d5f36fbcf854e8304" name="tests/amqpconnection_validation.phpt" role="test" />
+   <file md5sum="673d0885df8ba769937be1b588c4bd6b" name="tests/amqpconnection_var_dump.phpt" role="test" />
+   <file md5sum="0136d0e9783911f26b15536636d939a6" name="tests/amqpdecimal.phpt" role="test" />
+   <file md5sum="34e4e2e3aaf4e8efd66f0e1cb9c4eae5" name="tests/amqpenvelope_construct.phpt" role="test" />
+   <file md5sum="c13f4f279606c442bb6181dbd064b743" name="tests/amqpenvelope_get_accessors.phpt" role="test" />
+   <file md5sum="676627907a877455246804538ec91595" name="tests/amqpenvelope_var_dump.phpt" role="test" />
+   <file md5sum="d669afd2e8fb05f457abaab85241dda1" name="tests/amqpexchange-declare-segfault.phpt" role="test" />
+   <file md5sum="26d3bc1964879cd5bbd795939150efef" name="tests/amqpexchange_attributes.phpt" role="test" />
+   <file md5sum="11d937b51693887c06f2aafc38061063" name="tests/amqpexchange_bind.phpt" role="test" />
+   <file md5sum="222db8c18807297723e97b15e06f5bdf" name="tests/amqpexchange_bind_with_arguments.phpt" role="test" />
+   <file md5sum="6854c577135b5fe8e6eaba947b02aa44" name="tests/amqpexchange_bind_without_key.phpt" role="test" />
+   <file md5sum="3ae10299bfdf46498e3956ed76854ce2" name="tests/amqpexchange_bind_without_key_with_arguments.phpt" role="test" />
+   <file md5sum="88379a3ac67ac7779d0a965a21678c1a" name="tests/amqpexchange_channel_refcount.phpt" role="test" />
+   <file md5sum="6b1d9edcced270b00eebc5100346489f" name="tests/amqpexchange_construct_basic.phpt" role="test" />
+   <file md5sum="d215b732ba92a793109f39bebab00832" name="tests/amqpexchange_declare_basic.phpt" role="test" />
+   <file md5sum="2e519c5f860cc1c8c312b8d64424adfd" name="tests/amqpexchange_declare_existent.phpt" role="test" />
+   <file md5sum="3886df40a26aa4abebd1d93e6d15bb11" name="tests/amqpexchange_declare_with_stalled_reference.phpt" role="test" />
+   <file md5sum="e02058b30b961a8c38b79bb4a0ace2cf" name="tests/amqpexchange_declare_without_name.phpt" role="test" />
+   <file md5sum="8a61660efd6a7e138600233626eee72b" name="tests/amqpexchange_declare_without_type.phpt" role="test" />
+   <file md5sum="8c38cf4356f2ce2cd2a1c24ab3a2cddc" name="tests/amqpexchange_delete_default_exchange.phpt" role="test" />
+   <file md5sum="b80bb01ed155ecbe5c42e967ee51de7e" name="tests/amqpexchange_delete_null_name.phpt" role="test" />
+   <file md5sum="ea6d19919233a510006efe1c022c0e43" name="tests/amqpexchange_get_channel.phpt" role="test" />
+   <file md5sum="414115dafa4f847fcc48d387c6020efc" name="tests/amqpexchange_get_connection.phpt" role="test" />
+   <file md5sum="f332817bd09dad9c6b8859f4af00d4ee" name="tests/amqpexchange_invalid_type.phpt" role="test" />
+   <file md5sum="1367b8c18a7704f407b221b95199c83d" name="tests/amqpexchange_name.phpt" role="test" />
+   <file md5sum="82bf77bed018031f6556ccdbe57ce005" name="tests/amqpexchange_publish_basic.phpt" role="test" />
+   <file md5sum="cfbe1c99497857fb3ba6e5252e06645b" name="tests/amqpexchange_publish_confirms.phpt" role="test" />
+   <file md5sum="81d087832493caaf5b21b9c033d1a360" name="tests/amqpexchange_publish_confirms_consume.phpt" role="test" />
+   <file md5sum="6da33c6115e66f85cb43065751dfcf01" name="tests/amqpexchange_publish_empty_routing_key.phpt" role="test" />
+   <file md5sum="4050f144b4803f373a3106210273a7f6" name="tests/amqpexchange_publish_mandatory.phpt" role="test" />
+   <file md5sum="41e4f0dd2a666f1ff5f4b02164b6d2ee" name="tests/amqpexchange_publish_mandatory_consume.phpt" role="test" />
+   <file md5sum="e2a29d31063cd367ba8760ca08d72ec4" name="tests/amqpexchange_publish_mandatory_multiple_channels_pitfall.phpt" role="test" />
+   <file md5sum="a5d7fadef2ab40be87ba69cd08bce5d5" name="tests/amqpexchange_publish_null_routing_key.phpt" role="test" />
+   <file md5sum="7082cc7becbdc70e782cdcba3dc9a36c" name="tests/amqpexchange_publish_with_decimal_header.phpt" role="test" />
+   <file md5sum="a77906071feea6d9ee3256597f792593" name="tests/amqpexchange_publish_with_null.phpt" role="test" />
+   <file md5sum="02f58d2059cba80b07490fd6493325dd" name="tests/amqpexchange_publish_with_properties.phpt" role="test" />
+   <file md5sum="3650afe1ff9471516916e8ce1bcf547b" name="tests/amqpexchange_publish_with_properties_ignore_num_header.phpt" role="test" />
+   <file md5sum="a8d84ae9a9e917e390974f3f3291ed45" name="tests/amqpexchange_publish_with_properties_ignore_unsupported_header_values.phpt" role="test" />
+   <file md5sum="5e90254a2fb0bc10086541b6c4d623e3" name="tests/amqpexchange_publish_with_properties_nested_header.phpt" role="test" />
+   <file md5sum="aa128b96880eb9d26c7624a2ac5b14e0" name="tests/amqpexchange_publish_with_properties_user_id_failure.phpt" role="test" />
+   <file md5sum="b08ecbd674c25d9d41d05359e222a4d5" name="tests/amqpexchange_publish_with_timestamp_header.phpt" role="test" />
+   <file md5sum="e99584ca4835d836aed2a7c138f2e494" name="tests/amqpexchange_publish_xdeath.phpt" role="test" />
+   <file md5sum="a1ee683d69ba5d1a13bcf1190dbd5514" name="tests/amqpexchange_setArgument.phpt" role="test" />
+   <file md5sum="7ee2d28174cd47bc750f0e2158739890" name="tests/amqpexchange_set_flag.phpt" role="test" />
+   <file md5sum="e7696d543f1d44bec6e934a2658c59a4" name="tests/amqpexchange_set_flags.phpt" role="test" />
+   <file md5sum="bdf7f2faade61ead480d82d3b274c03a" name="tests/amqpexchange_type.phpt" role="test" />
+   <file md5sum="fa8a63cd95367b63e89f2f4c6ae61312" name="tests/amqpexchange_unbind.phpt" role="test" />
+   <file md5sum="07bc2d1e412c1e72bee2ce78db5c77e4" name="tests/amqpexchange_unbind_with_arguments.phpt" role="test" />
+   <file md5sum="993fd0d23f87b01e557f4b7804047c34" name="tests/amqpexchange_unbind_without_key.phpt" role="test" />
+   <file md5sum="75331236ae90d112f4506289314e818d" name="tests/amqpexchange_unbind_without_key_with_arguments.phpt" role="test" />
+   <file md5sum="b9000af24cd9164fe72746ab452f3c40" name="tests/amqpexchange_var_dump.phpt" role="test" />
+   <file md5sum="e501cc834d1dcd0bfe59da7e7948d00e" name="tests/amqpqueue-cancel-no-consumers.phpt" role="test" />
+   <file md5sum="dae417925ff2fe53d8cd14d2ba93094a" name="tests/amqpqueue_attributes.phpt" role="test" />
+   <file md5sum="c0f1f64545ffb1e2aff0cbc33364431e" name="tests/amqpqueue_bind_basic.phpt" role="test" />
+   <file md5sum="17b7effafd98a438a92deb0adf2da29c" name="tests/amqpqueue_bind_basic_empty_routing_key.phpt" role="test" />
+   <file md5sum="6c30ee8955dcc4ed5d32d6995bf951b7" name="tests/amqpqueue_bind_basic_headers_arguments.phpt" role="test" />
+   <file md5sum="27dda0d5e1127e7f1856a95e92617160" name="tests/amqpqueue_bind_null_routing_key.phpt" role="test" />
+   <file md5sum="3d23be4471bf7d459ea8ba043c71eb27" name="tests/amqpqueue_cancel.phpt" role="test" />
+   <file md5sum="ff411efc7c7d675b302a28ccb11ad0ec" name="tests/amqpqueue_construct_basic.phpt" role="test" />
+   <file md5sum="378ff8e86e36677d8d63da0dbdb3a368" name="tests/amqpqueue_consume_basic.phpt" role="test" />
+   <file md5sum="0b015338ccc23a22af58d929eaaddf19" name="tests/amqpqueue_consume_multiple.phpt" role="test" />
+   <file md5sum="47b27e42c1c5e637392a79a85cdcfd39" name="tests/amqpqueue_consume_multiple_no_doubles.phpt" role="test" />
+   <file md5sum="904f050b8f74cb85ace4d20556eccc08" name="tests/amqpqueue_consume_nonexistent.phpt" role="test" />
+   <file md5sum="c82bb0b5ab6a6f99d3f458107d56d648" name="tests/amqpqueue_consume_null_consumer_key.phpt" role="test" />
+   <file md5sum="3c1ca9f0ad7c3015626dc3850279bd93" name="tests/amqpqueue_consume_timeout.phpt" role="test" />
+   <file md5sum="ff11af9c2ee9885eca0fa7d3ddb8b9b5" name="tests/amqpqueue_declare_basic.phpt" role="test" />
+   <file md5sum="1c242f0204906205d0697fb1df13521d" name="tests/amqpqueue_declare_with_arguments.phpt" role="test" />
+   <file md5sum="ae0d71b01c9dc6fbcc1b23041c29df16" name="tests/amqpqueue_declare_with_stalled_reference.phpt" role="test" />
+   <file md5sum="eea5ed60d0ce3b2dfdc750031b5617ff" name="tests/amqpqueue_delete_basic.phpt" role="test" />
+   <file md5sum="b61d257c266cf2824c2ea51b66901dfa" name="tests/amqpqueue_empty_name.phpt" role="test" />
+   <file md5sum="1b542e3cbd9dd4158a53163b24386dba" name="tests/amqpqueue_get_basic.phpt" role="test" />
+   <file md5sum="a9d960f929758bde3873b10cd259e507" name="tests/amqpqueue_get_channel.phpt" role="test" />
+   <file md5sum="d3d0ae7fc12aaea97acb5f6fd8dd42e8" name="tests/amqpqueue_get_connection.phpt" role="test" />
+   <file md5sum="9ce1d39c8c0ab01bc50af7d56ea20bd6" name="tests/amqpqueue_get_empty_body.phpt" role="test" />
+   <file md5sum="bcea50b2a5f624325b012d5c352c82c9" name="tests/amqpqueue_get_headers.phpt" role="test" />
+   <file md5sum="cadd44bce34247d2982c292782b70d99" name="tests/amqpqueue_get_nonexistent.phpt" role="test" />
+   <file md5sum="01b3f9a5c6eff170504ce4fe9827f2db" name="tests/amqpqueue_headers_with_bool.phpt" role="test" />
+   <file md5sum="2907ecd0eb5bb3c16f5dc8e76caad2bb" name="tests/amqpqueue_headers_with_float.phpt" role="test" />
+   <file md5sum="4dcaed80350ab0ba38c66a116ad02787" name="tests/amqpqueue_headers_with_null.phpt" role="test" />
+   <file md5sum="8e0c12535ed0607e0bcbef91d5d72e24" name="tests/amqpqueue_nack.phpt" role="test" />
+   <file md5sum="3b5c0e5e1602ef59fda481a7ff694cf0" name="tests/amqpqueue_nested_arrays.phpt" role="test" />
+   <file md5sum="a25b2d03317577199455a94930173c2a" name="tests/amqpqueue_nested_headers.phpt" role="test" />
+   <file md5sum="2dac510fd66286e187b2d77e009087bb" name="tests/amqpqueue_purge_basic.phpt" role="test" />
+   <file md5sum="308fd4e65dbda96b3b0413c40a28cf24" name="tests/amqpqueue_setArgument.phpt" role="test" />
+   <file md5sum="bc6332bbde48e810c1c6ced5694fc8d5" name="tests/amqpqueue_setFlags.phpt" role="test" />
+   <file md5sum="ae04f1ac0fe11f8119c2540e5f260430" name="tests/amqpqueue_unbind_basic_empty_routing_key.phpt" role="test" />
+   <file md5sum="dbe7978e064d9fa76605d02cc2e94601" name="tests/amqpqueue_unbind_basic_headers_arguments.phpt" role="test" />
+   <file md5sum="79288ddee5080cc581f8cdd53bbcb9c7" name="tests/amqpqueue_var_dump.phpt" role="test" />
+   <file md5sum="98a8f35bf0e3637c1b01f0c4751bc755" name="tests/amqptimestamp.phpt" role="test" />
+   <file md5sum="ca747b05bd91e8b51d796d952b734ace" name="tests/bug_17831.phpt" role="test" />
+   <file md5sum="1b10183fad5ccea9ed4c9eb793a08559" name="tests/bug_19707.phpt" role="test" />
+   <file md5sum="890bab35e5fc7e1ce5422d160b34c110" name="tests/bug_19840.phpt" role="test" />
+   <file md5sum="f36dd1d0fb15b7cb97f45ea8790578e2" name="tests/bug_351.phpt" role="test" />
+   <file md5sum="defe2e25270001426f6aa6addeb19fad" name="tests/bug_385.phpt" role="test" />
+   <file md5sum="58d3e34cfc6d4228a580d62e9c444678" name="tests/bug_61533.phpt" role="test" />
+   <file md5sum="fa90a17e659c0cfa0371f39e58394767" name="tests/bug_62354.phpt" role="test" />
+   <file md5sum="a259da8fb08a8ae9111f810210f938df" name="tests/bug_gh147.phpt" role="test" />
+   <file md5sum="16add262fad6045e74eaf193ce316410" name="tests/bug_gh155_direct_reply_to.phpt" role="test" />
+   <file md5sum="2b53f0dfe1600609b53f4b6b980aeb8f" name="tests/bug_gh50-1.phpt" role="test" />
+   <file md5sum="c285c3d99a3784c12d1bda75f20b217a" name="tests/bug_gh50-2.phpt" role="test" />
+   <file md5sum="c802f4632f542bddef9fd9578d66c866" name="tests/bug_gh50-3.phpt" role="test" />
+   <file md5sum="87fcaa6d7de40599ed3a02e61905f84d" name="tests/bug_gh50-4.phpt" role="test" />
+   <file md5sum="1612a504686bcb560e5ba841bdf379fe" name="tests/bug_gh53-2.phpt" role="test" />
+   <file md5sum="ed8ce08df960bb626dfb9e08c187832f" name="tests/bug_gh53.phpt" role="test" />
+   <file md5sum="708d72cd0a9a91311dea3857e0470642" name="tests/bug_gh72-1.phpt" role="test" />
+   <file md5sum="e07f7eefca1d55283da60da4180b2c79" name="tests/bug_gh72-2.phpt" role="test" />
+   <file md5sum="49a8ea25dfba3e16587ce18a9c9a277b" name="tests/ini_validation_failure.phpt" role="test" />
+   <file md5sum="7969fc6ed108aafdd8aeb501342c092e" name="tests/package-version.phpt" role="test" />
+   <file md5sum="e2aa659197336152306266db1b484007" name="tests/testtest.phpt" role="test" />
+   <file md5sum="6fad4616560147bbc44b315f0bd53fe0" name="stubs/AMQP.php" role="doc" />
+   <file md5sum="f651a90990a9eaab2886a54c0ca79d39" name="stubs/AMQPBasicProperties.php" role="doc" />
+   <file md5sum="a0187768f3d8d85622b555ebead8d226" name="stubs/AMQPChannel.php" role="doc" />
+   <file md5sum="d79254277f60751c4ba6697333af5d37" name="stubs/AMQPChannelException.php" role="doc" />
+   <file md5sum="27d2702dbda391c73a5413a0b119cfe2" name="stubs/AMQPConnection.php" role="doc" />
+   <file md5sum="da1cd6ac1b51f2433904ce770e6f4ca3" name="stubs/AMQPConnectionException.php" role="doc" />
+   <file md5sum="95b6ee8a349c3f2c56d9598ef2dd5984" name="stubs/AMQPDecimal.php" role="doc" />
+   <file md5sum="e7561d0c10606accfb0b2b37cf8f52e2" name="stubs/AMQPEnvelope.php" role="doc" />
+   <file md5sum="3e8664cbd98e06ae6b35c63ef1cab7c1" name="stubs/AMQPEnvelopeException.php" role="doc" />
+   <file md5sum="0b9b43b817a884d311f8f8013d8a5adc" name="stubs/AMQPException.php" role="doc" />
+   <file md5sum="6f36797b01b1b5b22fdc7dbb06ef8940" name="stubs/AMQPExchange.php" role="doc" />
+   <file md5sum="7d1035c7a2b82f9187b10f05fe882eed" name="stubs/AMQPExchangeException.php" role="doc" />
+   <file md5sum="438caf5734ceecb94151f1d7e8feac3b" name="stubs/AMQPQueue.php" role="doc" />
+   <file md5sum="d7da0562e86197fc6bb0d12af0a25495" name="stubs/AMQPQueueException.php" role="doc" />
+   <file md5sum="b470fdbb1cc6840abd403d000275a9c0" name="stubs/AMQPTimestamp.php" role="doc" />
+   <file md5sum="ad5c4a89ec22580ef404656e3258d1f5" name="stubs/AMQPValueException.php" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.4.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>amqp</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-librabbitmq-dir" prompt="Set the path to librabbitmq install prefix" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <date>2023-08-15</date>
+   <time>22:10:56</time>
+   <version>
+    <release>2.0.0RC1</release>
+    <api>2.0.0RC1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Handle nested AMQP value serialization/deserialization (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/461)
+ - Document lack of reliability of AMQPConnection::isConnected (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/306)
+ - Prevent reuse of channel ID of broken channels (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/460)
+ - Gracefully handle zero as a heartbeat value (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/459)
+ - Build with the clang compiler on CI (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/457)
+
+For a complete list of changes see:
+https://github.com/php-amqp/php-amqp/compare/v2.0.0beta2...v2.0.0RC1
+   </notes>
+  </release>
+  <release>
+   <date>2023-08-03</date>
+   <time>06:22:40</time>
+   <version>
+    <release>2.0.0beta2</release>
+    <api>2.0.0beta2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Include stdint.h for PHP &gt;= 8.0 on Windows (Jan Ehrhardt) (https://github.com/php-amqp/php-amqp/issues/456)
+ - Fix segfault in setPort (Remi Collet &lt;remi@remirepo.net&gt;) (https://github.com/php-amqp/php-amqp/issues/455)
+
+💡Check out https://github.com/php-amqp/php-amqp/tree/latest/UPGRADING.md for backward incompatible changes
+
+For a complete list of changes see:
+https://github.com/php-amqp/php-amqp/compare/v2.0.0beta1...v2.0.0beta2
+   </notes>
+  </release>
+  <release>
+   <date>2023-08-02</date>
+   <time>21:19:41</time>
+   <version>
+    <release>2.0.0beta1</release>
+    <api>2.0.0beta1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Document BC changes (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/0)
+ - Document pseudo-bool method changes (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/0)
+ - Fix mangled header on MacOS (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/60)
+ - Validate argument parsing, add AMQPExchange::removeArgument() and AMQPQueue::removeArgument() (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/452)
+ - Skip SSL tests if certificates are missing (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/450)
+ - Bump shivammathur/setup-php from 2.25.4 to 2.25.5 (dependabot[bot]) (https://github.com/php-amqp/php-amqp/issues/449)
+ - Check coding style and formatting of stub files (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/447)
+ - Parallelize test execution (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/444)
+ - Deterministic configuration for PHP CLI (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/443)
+ - Fix tag creation during release management (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/0)
+ - Move test-report.sh into infra (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/0)
+
+💡Check out https://github.com/php-amqp/php-amqp/tree/latest/UPGRADING.md for backward incompatible changes
+
+For a complete list of changes see:
+https://github.com/php-amqp/php-amqp/compare/v2.0.0alpha2...v2.0.0beta1
+   </notes>
+  </release>
+  <release>
+   <date>2023-07-29</date>
+   <time>08:51:15</time>
+   <version>
+    <release>2.0.0alpha1</release>
+    <api>2.0.0alpha1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- The big fat API renovation (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/437)
+ - Handle alpha/beta stability correctly (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/5546436)
+ - Expose better version information (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/438)
+ - Auto-format the codebase (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/436)
+ - More consistent return types for AMQPEnvelope (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/435)
+ - Update stubs (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/0)
+ - Fix parameter error handling in AMQPConnection and AMQPChannel (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/434)
+ - Increase credentials and identifier limits (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/433)
+ - Reliably clear consumer tag on AMQPQueue::cancel (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/432)
+ - Ignore failures on experimental builds (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/25)
+ - Update branch name (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/7)
+ - Bump shivammathur/setup-php from 2.25.3 to 2.25.4 (dependabot[bot]) (https://github.com/php-amqp/php-amqp/issues/431)
+ - PHP 8.2 refactorings (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/430)
+ - Fix php version check for static building (Misha Kulakovsky &lt;m@klkvsk.ru&gt;) (https://github.com/php-amqp/php-amqp/issues/425)
+ - Fix stub exception class (closes #427) (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/0)
+ - Document custom connection name in stubs (Lars Strojny &lt;lars@strojny.net&gt;) (https://github.com/php-amqp/php-amqp/issues/700000)
+ - Expose Delivery Mode through constants (Flávio Heleno &lt;flaviohbatista@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/420)
+ - Fix deprecation issue in PHP 8.1 for $consumerTag argument to AMQPQueue::consume() method (Liviu-Ionut Iosif) (https://github.com/php-amqp/php-amqp/issues/421)
+ - Fix: Deprecated: Creation of dynamic property (8.2) (Remi Collet &lt;remi@remirepo.net&gt;) (https://github.com/php-amqp/php-amqp/issues/418)
+ - Fix AMQPEnvelope::getDeliveryTag() return type (Flávio Heleno &lt;flaviohbatista@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/415)
+ - Fix ack/nack/reject param documentation (Flávio Heleno &lt;flaviohbatista@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/414)
+ - Mention time units in all timeout-related methods (Andrii Dembitskyi &lt;andrew.dembitskiy@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/410)
+
+For a complete list of changes see:
+https://github.com/php-amqp/php-amqp/compare/v1.11.0...v2.0.0alpha1
+   </notes>
+  </release>
+  <release>
+   <date>2021-12-01</date>
+   <time>11:13:57</time>
+   <version>
+    <release>1.11.0</release>
+    <api>1.11.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- PHP 8.1 compatibility (Lars Strojny &lt;lars.strojny@internations.org&gt;) (https://github.com/php-amqp/php-amqp/issues/405)
+ - Install RabbitMQ from tarball instead of git to improve speed (Michele Locati &lt;michele@locati.it&gt;) (https://github.com/php-amqp/php-amqp/issues/392)
+ - Improve release tooling (Lars Strojny &lt;lars.strojny@internations.org&gt;)
+
+For a complete list of changes see:
+https://github.com/php-amqp/php-amqp/compare/v1.11.0RC1...v1.11.0
+   </notes>
+  </release>
+  <release>
+   <date>2021-11-02</date>
+   <time>11:56:51</time>
+   <version>
+    <release>1.11.0RC1</release>
+    <api>1.11.0RC1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- PHP 8 support for Windows (Jan Ehrhardt &lt;github@ehrhardt.nl&gt;) (https://github.com/php-amqp/php-amqp/issues/396) - Add installation instructions for Windows (Marcos Rezende &lt;rezehnde@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/394) - Fixes AMQPConnection Stub typo (Grégoire Pineau &lt;lyrixx@lyrixx.info&gt;) (https://github.com/php-amqp/php-amqp/issues/401) - Fix AMQPQueue stub (Gocha Ossinkine &lt;ossinkine@ya.ru&gt;) (https://github.com/php-amqp/php-amqp/issues/404) - SetReadTimeout accepts float param (Andrii Dembitskyi &lt;andrew.dembitskiy@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/388) - Move from Travis CI to Github Actions (Vadim Borodavko &lt;vadim.borodavko@gmail.com&gt;) (https://github.com/php-amqp/php-amqp/issues/391) - Release tooling: handle RC stability properly (Lars Strojny &lt;lars.strojny@internations.org&gt;) (https://github.com/php-amqp/php-amqp/issues/71) - More robust release tooling (Lars Strojny &lt;lars.strojny@internations.org&gt;) (https://github.com/php-amqp/php-amqp/issues/0)For a complete list of changes see:https://github.com/php-amqp/php-amqp/compare/v1.11.0beta...v1.11.0RC1
+   </notes>
+  </release>
+  <release>
+   <date>2020-04-05</date>
+   <time>17:40:42</time>
+   <version>
+    <release>1.10.2</release>
+    <api>1.10.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Windows build: avoid variable lengths arrays (Christoph M. Becker) (https://github.com/pdezwart/php-amqp/issues/368)For a complete list of changes see:https://github.com/pdezwart/php-amqp/compare/v1.10.1...v1.10.2
+   </notes>
+  </release>
+  <release>
+   <date>2020-04-05</date>
+   <time>16:04:23</time>
+   <version>
+    <release>1.10.1</release>
+    <api>1.10.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fix Windows compatibility: avoid variable lengths arrays (Christoph M. Becker &lt;cmbecker69@gmx.de&gt;) (https://github.com/pdezwart/php-amqp/issues/368)For a complete list of changes see:https://github.com/pdezwart/php-amqp/compare/v1.10.0...v1.10.1
+   </notes>
+  </release>
+  <release>
+   <date>2020-04-03</date>
+   <time>19:17:00</time>
+   <version>
+    <release>1.10.0</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Adding global prefetch support (#366) (Terence Marks &lt;tezmarks@gmail.com&gt;) (https://github.com/pdezwart/php-amqp/issues/367) - Fix minimal librabbitmq in config.m4 and readme (Remi Collet &lt;remi@remirepo.net&gt;) (https://github.com/pdezwart/php-amqp/issues/347) - Support connection_name parameter for custom connection names in RabbitMQ (Alexandr Zolotukhin &lt;supersmile2009@gmail.com&gt;) (https://github.com/pdezwart/php-amqp/issues/363) - Fixed build on Travis CI (Alexandr Zolotukhin &lt;supersmile2009@gmail.com&gt;) (https://github.com/pdezwart/php-amqp/issues/365) - Make use of rpc_timeout in newer librabbitmq by introducing new constructor hash parameter (modulatix &lt;oleg.pereverzev@gmail.com&gt;) (https://github.com/pdezwart/php-amqp/issues/334) - Fix #355: Compile failure on php 7.4 (Christoph M. Becker &lt;cmbecker69@gmx.de&gt;) (https://github.com/pdezwart/php-amqp/issues/359) - Update amqp_type.c (Paweł Mikołajczuk &lt;pawel@mikolajczuk.in&gt;) (https://github.com/pdezwart/php-amqp/issues/360) - Build against PHP 7.4 (Carlos Barrero &lt;carlos.barrero@spotahome.com&gt;) (https://github.com/pdezwart/php-amqp/issues/361) - Pass params by value in AMQPConnection::__construct() (Sergei Karpov) (https://github.com/pdezwart/php-amqp/issues/346) - Fix explicit null-string for $routing_key in Queue::bind() and Exchange::publish() (Sergei Karpov) (https://github.com/pdezwart/php-amqp/issues/341) - No longer limited to PHP 5 (Lars Strojny &lt;lars.strojny@internations.org&gt;) (https://github.com/pdezwart/php-amqp/issues/0) - Fix minimal version to 5.6 (Remi Collet &lt;remi@famillecollet.com&gt;) (https://github.com/pdezwart/php-amqp/issues/338) - Back to dev (Lars Strojny &lt;lars.strojny@internations.org&gt;) (https://github.com/pdezwart/php-amqp/issues/1)For a complete list of changes see:https://github.com/pdezwart/php-amqp/compare/v1.9.4...v1.10.0
+   </notes>
+  </release>
+  <release>
+   <date>2017-10-19</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.9.4</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* Improved build environment (Olivier Dolbeau)        * Various bug fixes and improvements (Bogdan Padalko, yjqg6666)        * Support for PHP 7.3 (Remi Collet)For a complete list of changes see:https://github.com/pdezwart/php-amqp/compare/v1.9.3...v1.9.4
+   </notes>
+  </release>
+  <release>
+   <date>2017-10-19</date>
+   <time>16:00:00</time>
+   <version>
+    <release>1.9.3</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* Fix handling channel consumers (#284) (Bogdan Padalko)                * Add support for consumer tags (#282) (Bogdan Padalko)        For a complete list of changes see:        https://github.com/pdezwart/php-amqp/compare/v1.9.1...v1.9.3
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.9.1</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* Separate queue and exchange args to prevent segfault with opcache enabled (Bogdan Padalko)        For a complete list of changes see:        https://github.com/pdezwart/php-amqp/compare/v1.9.0...v1.9.1
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.9.0</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* AMQP types are now better supported through value objects (see #271, #269, #265) (Bogdan Padalko, Lars Strojny)For a complete list of changes see:https://github.com/pdezwart/php-amqp/compare/v1.8.0...v1.9.0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.9.0beta2</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* AMQP types are now better supported through value objects (see #271, #269, #265) (Bogdan Padalko, Lars Strojny)For a complete list of changes see:https://github.com/pdezwart/php-amqp/compare/v1.8.0...v1.9.0beta2
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.9.0beta1</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* AMQP types are now better supported through value objects (see #271, #269, #265) (Bogdan Padalko, Lars Strojny)            For a complete list of changes see:            https://github.com/pdezwart/php-amqp/compare/v1.8.0...v1.9.0beta1
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.8.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* Add SSL connection support (Bogdan Padalko)             * Support for server method handling: confirms (publisher acknowledgments) and basic.return (Bogdan Padalko)             * Add support for pkg-config (Remi Collet)             * Preserve AMQP server error code for exceptions (Bogdan Padalko)             * Add AMQPChannel::close() (Bogdan Padalko)             * Fix segfault when deleting an unknown exchange (Bogdan Padalko)             * Fix segfault with PHPUnit and xdebug for PHP 7 (Bogdan Padalko)             * Add publisher confirms (Bogdan Padalko)        For a complete list of changes see:        https://github.com/pdezwart/php-amqp/compare/v1.7.1...v1.8.0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.8.0beta2</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* Add SSL connection support (Bogdan Padalko)             * Support for server method handling: confirms (publisher acknowledgments) and basic.return (Bogdan Padalko)             * Add support for pkg-config (Remi Collet)             * Preserve AMQP server error code for exceptions (Bogdan Padalko)             * Add AMQPChannel::close() (Bogdan Padalko)             * Fix segfault when deleting an unknown exchange (Bogdan Padalko)             * Fix segfault with PHPUnit and xdebug for PHP 7 (Bogdan Padalko)             * Add publisher confirms (Bogdan Padalko)             * Fix 1.8.0 release (Lars Strojny)        For a complete list of changes see:        https://github.com/pdezwart/php-amqp/compare/v1.7.1...v1.8.0beta2
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* Add support for pkg-config (Remi Collet)     * Fixed wrongful truncation of amqp.password to the length of amqp.login (https://github.com/skobkars)For a complete list of changes see:https://github.com/pdezwart/php-amqp/compare/v1.7.0...v1.7.1
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* Add PHP7 support (Bogdan Padalko, Steffen Hanikel)     * Add AMQPEnvelope::hasHeader(), AMQPExchange::hasArgument() and AMQPQueue::hasArgument() to check whether specific header exists (Bogdan Padalko)     * Fix AMQPConnection::setPort() writes to wrong property (Bogdan Padalko)     * Add compiled librabbitmq version early check (Bogdan Padalko)     * Fix segfault when channel zval type != IS_OBJECT (Bogdan Padalko)     * Fix API breakage when rabbitmq-c &lt; 0.6.0 used (Bogdan Padalko)     * Close connection on library errors (Bogdan Padalko)     * Do not store connection resource ID string (Bogdan Padalko)     * Explicitly cleanup references on connection on cleanup (Bogdan Padalko)     * Show effective connection values when connection is active and passed values otherwise (Bogdad Padalko)     * Completely move to zend object custom objects (AMQPEnvelope, AMQPExchange and AMQPQueue) (Bogdan Padalko)     * Use zend object on custom objects for properties storing (AMQPConnection and AMQPChannel) (Bogdan Padalko)     * Fix not properly deleted connection resource. (Bogdan Padalko, Steffen Hanikel)     * Fix not properly allocated and freed amqp_table_t arguments table memory. (Bogdan Padalko, Steffen Hanikel)     * Upgrade vagrant box to Ubuntu 15.10 Wily Werwof (Bogdan Padalko)     * Fix various grammar and spelling mistakes (Artem Gordinsky)     * Update stubs (Sascha-Oliver Prolic)For a complete list of changes see:https://github.com/pdezwart/php-amqp/compare/v1.6.0...v1.7.0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.0alpha2</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* Fix AMQPConnection::setPort() writes to wrong property (Bogdan Padalko)  * Upgrade vagrant box to Ubuntu 15.10 Wily Werwof (Bogdan Padalko)  For a complete list of changes see:  https://github.com/pdezwart/php-amqp/compare/v1.7.0alpha1...v1.7.0alpha2
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.0alpha1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+* Add PHP7 support (Bogdan Padalko, Steffen Hanikel)      * Add AMQPEnvelope::hasHeader(), AMQPExchange::hasArgument() and AMQPQueue::hasArgument() to check whether specific header exists (Bogdan Padalko)      * Completely move to zend object custom objects (AMQPEnvelope, AMQPExchange and AMQPQueue) (Bogdan Padalko)      * Use zend object on custom objects for properties storing (AMQPConnection and AMQPChannel) (Bogdan Padalko)      * Fix not properly deleted connection resource. (Bogdan Padalko, Steffen Hanikel)      * Fix not properly allocated and freed amqp_table_t arguments table memory. (Bogdan Padalko, Steffen Hanikel)      For a complete list of changes see:      https://github.com/pdezwart/php-amqp/compare/v1.6.0...v1.7.0alpha1
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.6.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2015-11-03</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD style</license>
+   <notes>
+1.6.0 Release:  * Various build fixes (Remi Collet)  * librabbitmq 0.5 compatibility (Remi Collet)  For a complete list of changes see:  https://github.com/pdezwart/php-amqp/compare/v1.6.0beta4...v1.6.0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.6.0beta4</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <date>2015-09-18</date>
+   <notes>
+1.6.0beta4 Release:    * Add ability to re-attach consuming callback (Bogdan Padalko)    * Add AMQPQueue::getConsumerTag() method and fix consumer tag handling in AMQPQueue class methods (Bogdan Padalko)    * Add channel_max, frame_max and hearbeat support (see AMQPConnection::__construct() method) (librabbitmq version &gt;= 0.6.0 required) (Bogdan Padalko)    * Fix issue with message truncating to first null-byte during sending (Bogdan Padalko, special thanks to Alex Kazinskiy, Alvaro Videla and Michael Klishin)    * Fix issue with message truncating to first null-byte during sending (Bogdan Padalko)    * Fix invalid delivery mode returned by AMQPEnvelop::getDeliveryMode (Bogdan Padalko)    For a complete list of changes see:    https://github.com/pdezwart/php-amqp/compare/v1.6.0beta3...v1.6.0beta4
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.6.0beta3</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <date>2015-04-18</date>
+   <notes>
+1.6.0beta3 Release:    * Add basic.recover AMQP method support (see AMQPChannel::basicRecover() method) (Bogdan Padalko)    * Fix building on OS X (Bogdan Padalko)    For a complete list of changes see:    https://github.com/pdezwart/php-amqp/compare/v1.6.0beta2...v1.6.0beta3
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.6.0beta2</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <date>2015-01-27</date>
+   <notes>
+1.6.0beta2 Release:    * Pulled 1.6.0beta1, as it had the stable tag    * Add support for nested arguments values (Bogdan Padalko)    * Add auto_delete and internal flags support for AMQPExchange::declare (librabbitmq version &gt; 0.5.2 required) (Bogdan Padalko)    * Fix persistence support (Bogdan Padalko)    * Add AMQPExchange::unbind method and fix AMQPExchange::bind method. WARNING: this can potentially break BC (Bogdan Padalko)    * Add support to consume messages from multiple queues (Bogdan Padalko)    * Add AMQP_DURABLE flag support to AMQPExchange::setFlags (librabbitmq version &gt; 0.5.2 required) (Bogdan Padalko)    * Fix inconsistent INI values comparison which leads to deprecation warnings (Bogdan Padalko)    * Various segfault and memory leak fixes (Bogdan Padalko)     For a complete list of changes see:     https://github.com/pdezwart/php-amqp/compare/v1.4.0...v1.6.0beta2
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2014-04-14</date>
+   <notes>
+1.4.0 Release:    * Fix #72: Publishing to an exchange with an empty name is valid and should not throw an exception (lstrojny)    * Fix #77: AMQPQueue::delete() now no longer returns a boolean, but an integer of how many messages were deleted. WARNING: this can potentially break BC (Bogdan Padalko)    * Fix #75: adhering to the AMQP spec by closing channel and sometimes even the connection in case of certain errors (Bogdan Padalko)    * Fix #81: Add optional arguments parameter to bind()/unbind() (Michael Squires)    * Fix #82: additional getters (getChannel(), getConnection()) (Bogdan Padalko)    * Fix #92: fix various memory leaks in the AMQPConnection class (Lars Strojny)    * Using amqp_error_string2() instead of deprecated amqp_error_string() (Lars Strojny)    * Fix memory leaks in setHost, setLogin, setPassword, setVhost (Lars Strojny, Bogdan Padalko)    * Fixed a memleak in php_amqp_connect (Julien Pauli)    * Use rabbitmq-c defaults for max channels and default frame size (Bogdan Padalko)    * Fix socket timeout error when connecting over high-latency network (Bogdan Padalko)    For a complete list of changes see:    https://github.com/pdezwart/php-amqp/compare/v1.4.0beta2...v1.4.0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.0beta2</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <date>2014-03-08</date>
+   <notes>
+1.4.0beta2 Release:    * -    For a complete list of changes see:    https://github.com/pdezwart/php-amqp/compare/v1.4.0beta1...v1.4.0beta2
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.0beta1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <date>2014-01-15</date>
+   <notes>
+1.4.0beta1 Release:    * -    For a complete list of changes see:    https://github.com/pdezwart/php-amqp/compare/v1.3.0...v1.4.0beta1
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.3.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <date>2013-11-25</date>
+   <notes>
+1.3.0 Release:    * Allow retrieving auto-delete exchanges (Guilherme Blanco)    * Add connection timeout support. This requires bumping the version requirement for librabbitmq to &gt;= 0.4.1 (Bogdan Padalko)    For a complete list of changes see:    https://github.com/pdezwart/php-amqp/compare/v1.2.0...v1.3.0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2013-05-28</date>
+   <notes>
+1.2.0 Release:    * New methods AMQPChannel::getPrefetchCount() and AMQPChannel::getPrefetchSize()    * Deprecate AMQPQueue::declare() in favor of AMQPQueue::declareQueue()    * Deprecate AMQPExchange::declare() in favor of AMQPExchange::declareExchange()    * Smaller fixes to our stubs    For a complete list of changes see:    https://github.com/pdezwart/php-amqp/compare/v1.0.10...v1.2.0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.10</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2013-05-28</date>
+   <notes>
+1.0.10 Release:    * report correct version in module info (Lars Strojny)    * fix class interface definitions (Vladimir Kartaviy)    * add ability to bind a queue with an empty routing key (Vladimir Kartaviy)    * fix constant AMQP_IFUNUSED (Florin Patan, Bernhard Weisshuhn)    * added stubs for ide use (Vladimir Kartaviy, Bernhard Weisshuhn)    * Fixed memory leak in queue-&gt;declareQueue (Ilya a.k.a. coodix)    * support for php 5.5 (Lars Strojny)    * add support for read and write timeouts (Bogdan Padalko)    * fix memory leak in queue-&gt;consume (Dmitry Vinogradov)    * add support for custom exchange types (empi89)    * support for nested custom headers (Bernhard Weisshuhn)    * fix memory (Bernhard Weisshuhn)    For a complete list of changes see:    https://github.com/pdezwart/php-amqp/compare/v1.0.9...v1.0.10
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.9</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-11-13</date>
+   <notes>
+1.0.9 Release:    * Fix pecl relase
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.8</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-11-12</date>
+   <notes>
+1.0.8 Release:    * Skip var_dump test on PHP 5.2    * Initialize consumer tag string length to zero    * Support connection time outs    * Adding consumer_tag parameter to AMQPQueue::cancel    * Clean up error code handling
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.7</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-09-10</date>
+   <notes>
+1.0.7 Release:    * Adding missing macros
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.6</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-09-10</date>
+   <notes>
+1.0.6 Release:    * 62354: Segmentation fault when printing or dumping an object that contains an AMQP object    * Adding in missing tests    * Fixing release number in PHP information    * Adding .gitignore info for Git users    * Cleaning up debug handling
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.5</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-08-26</date>
+   <notes>
+1.0.5 Release:    * 62696: Incorrect exchange type    * Handles server connections being closed during consume and publish correctly    * 62628: Exception thrown in consume will lock PHP    * 61533: Segmentation fault when instantiating channel, queue or exchange with wrong object, then using it
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.4</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-07-18</date>
+   <notes>
+1.0.4 Release:    * 62549: Fixing broken persistent connection    * 62412: Fixing segfault due to destruction order    * 62411: Fixing declaration overload bug    * 62410: Fixing declaration overload for 5.4    * 61337: Adding License file    * 61749: Fixing handling for binary content in envelope    * 62087: Adding appropriate version information    * 62354: Enabling debugging dumping of objects    * 61351: Updating min PHP version requirements to 5.2.0
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-05-19</date>
+   <notes>
+1.0.3 Release:    * Fixing compilation issue with PHP 5.4    * Memory leak when using AMQPQueue::get from a queue with no messages
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-03-02</date>
+   <notes>
+1.0.1 Release:Fixed bug:    * 61247: Allow queue creation with empty queue name, and return auto generated name    * 61127: Segmentation fault when cleaning up an AMQPChannel without calling AMQPConnection::connect first
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2012-02-15</date>
+   <notes>
+1.0.0 Release:Changed/finalized API signature:    * Exposing AMQPChannel    * Exposing AMQPEnvelope    * Exposing more queue and exchange arguments and flags    * Exposing basic.qosAdded persistent connectionsCleaned up codebaseFixed memory leaks and segmentation faults
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2011-09-08</date>
+   <notes>
+0.3.1 Release:Fixed bug:    * 24323: Cannot get the name for auto-named reply-to queues
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.0</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2011-06-09</date>
+   <notes>
+0.3.0 Release:Fixed memory leaks in many functions (courtesy Jonathan Tansavatdi and Andy Wick)Fixed consume method to return proper valuesCleaned up variable usageFixed bugs:    * 22638: Unexpected exit code 1 with AMQPQueue::consume()    * 22698: AMQPQueue::consume
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.2</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2011-01-02</date>
+   <notes>
+0.2.2 Release:Made extension compatible with PHP lt 5.3 (courtesy John Skopis)Fixed wrong typing of message properties (courtesy John Skopis)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-12-10</date>
+   <notes>
+0.2.1 Release:Fixed refcount decrementing bug causing segfaults.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.0</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-12-10</date>
+   <notes>
+0.2.0 Release:Works with AMQP 0-8 and 0-9-1 (used by RabbitMQ 2.*)Modified AMQPConnection object:    * Requires call to &apos;connect&apos; method to connect (no longer connects on instantiation)    * Added support for disconnect and reconnect    * Added helper setters for port, host, vhost, login and passwordImproved consume method to block for MIN messages, and try to get MAX messages if availableFixed zval descoping bugsFixed bugs:    * 17809: Couldn&apos;t compile pecl extension under PHP 5.3    * 17831: Segmentation fault when the exchange doesn&apos;t exists    * 19707: AMQPQueue::get() doesn&apos;t return the message    * 19840: Connection Exception
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-08-19</date>
+   <notes>
+Updating extension to work with new rabbitmq-c library
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-06-19</date>
+   <notes>
+- Initial release
+   </notes>
+  </release>
+ </changelog>
+</package>
