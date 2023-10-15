@@ -1,0 +1,1528 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>event</name>
+ <channel>pecl.php.net</channel>
+ <summary>Provides interface to libevent library</summary>
+ <description>This is an extension to efficiently schedule I/O, time and signal based
+  events using the best I/O notification mechanism available for specific platform.
+  This is a port of libevent to the PHP infrastructure.
+
+  Version 1.0.0 introduces:
+  * new OO API breaking backwards compatibility
+  * support of libevent 2+ including HTTP, DNS, OpenSSL and the event listener.
+
+  Note, event-1.0.0 and greater is not compatible with previous versions.</description>
+ <lead>
+  <name>Ruslan Osmanov</name>
+  <user>osmanov</user>
+  <email>osmanov@php.net</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Anatol Belski</name>
+  <user>ab</user>
+  <email>ab@php.net</email>
+  <active>yes</active>
+ </developer>
+ <contributor>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </contributor>
+ <date>2023-10-14</date>
+ <time>16:48:10</time>
+ <version>
+  <release>3.1.0RC1</release>
+  <api>3.1.0RC1</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+- The loop will now be stopped if an event callback throws an exception.
+  This prevents user from losing control on the event loop.
+- EventDnsBase::__construct() now accepts bool|int as its second parameter:
+    * false and true have the same meaning as before;
+    * EventDnsBase::DISABLE_WHEN_INACTIVE - Do not prevent the libevent event loop from exiting when we have no active DNS requests.
+    * EventDnsBase::INITIALIZE_NAMESERVERS - Process resolv.conf.
+    * EventDnsBase::NAMESERVERS_NO_DEFAULT - Do not add default nameserver if there are no nameservers in resolv.conf.
+- Internally, a safer strlcpy() will be used instead of strcpy().
+- Fixed a segmentation fault that might occur in the EventHttpRequest callback.
+- Fixed a bug where the EventBuffer::copyout method didn&apos;t populate the output variable properly in PHP &gt;= 8.2 (thanks to Joseph Tseng).
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="a9ea8356df847e55287b033b3ddc3504" name="php5/classes/base.c" role="src" />
+   <file md5sum="7adcdbc9e8ec4c70fc322bea6250b528" name="php5/classes/buffer.c" role="src" />
+   <file md5sum="ec7d3daa1c59246bb719969d445451d9" name="php5/classes/buffer_event.c" role="src" />
+   <file md5sum="3c0390ac8f2495a205594dcea4605289" name="php5/classes/dns.c" role="src" />
+   <file md5sum="1da6da5ca3ff76eb64af32e4a088805e" name="php5/classes/event.c" role="src" />
+   <file md5sum="0d6a633f1ac6ff8a7889c6719c7b5620" name="php5/classes/event_config.c" role="src" />
+   <file md5sum="fe580fd1989782ce4d3d54634dc39135" name="php5/classes/event_util.c" role="src" />
+   <file md5sum="190ec5e7e6619bd746cbfaaf42e6c351" name="php5/classes/http.c" role="src" />
+   <file md5sum="58265733c881bc7e1ba51577fdf0f90a" name="php5/classes/http.h" role="src" />
+   <file md5sum="88fd5aa404cd7f11c94d66971ac654e3" name="php5/classes/http_connection.c" role="src" />
+   <file md5sum="627e130605fabaef0e8aaff4e0258038" name="php5/classes/http_request.c" role="src" />
+   <file md5sum="2676738c21d98c19f0a9c27e48829cee" name="php5/classes/listener.c" role="src" />
+   <file md5sum="eb2766c5434e5b4dc86c84ea9ec84c19" name="php5/classes/ssl_context.h" role="src" />
+   <file md5sum="41a0d69df51d746307afd3660c74e7f5" name="php5/classes/ssl_context.c" role="src" />
+   <file md5sum="a5711eca2e6f0cdc302021af71d6db9e" name="php5/src/common.h" role="src" />
+   <file md5sum="61fd8492178b81f34b80ab530f3107e8" name="php5/src/fe.c" role="src" />
+   <file md5sum="b425ec5444a798f599a48e9c6a91974c" name="php5/src/fe.h" role="src" />
+   <file md5sum="cd411af8032f309bb907c709587776d0" name="php5/src/pe.c" role="src" />
+   <file md5sum="800486e955bb0d5458d8b6628fb6d453" name="php5/src/priv.h" role="src" />
+   <file md5sum="c1ca74a876d99288bc1d5abbfbb4e570" name="php5/src/structs.h" role="src" />
+   <file md5sum="1c8a587ff60e5336b7473bdaabbd592f" name="php5/src/util.c" role="src" />
+   <file md5sum="eaae8c97e6e3efa03763254b4847390f" name="php5/src/util.h" role="src" />
+   <file md5sum="f5ca19f1f4b16cb850187a8b72434dd4" name="php5/php_event.c" role="src" />
+   <file md5sum="8eeecc64c36a8f813478e03302fbec78" name="php5/php_event.h" role="src" />
+   <file md5sum="4dd3da9070c354281db1af35d4b670a3" name="php7/classes/base.c" role="src" />
+   <file md5sum="bfbc63cd035cd4a10751b9f4e508c97b" name="php7/classes/buffer.c" role="src" />
+   <file md5sum="9fdf2f9822dcbd31c9c8841098bacd39" name="php7/classes/buffer_event.c" role="src" />
+   <file md5sum="bd5660a7e464c308b89b89d06337dd57" name="php7/classes/dns.c" role="src" />
+   <file md5sum="a7a15c144b99d00c9f0be6dd05c3a744" name="php7/classes/event.c" role="src" />
+   <file md5sum="3d53b559c71b0fd805c7ca8b2d9f811d" name="php7/classes/event_config.c" role="src" />
+   <file md5sum="ba1554e74e770ef91058ebe073d2b403" name="php7/classes/event_util.c" role="src" />
+   <file md5sum="6e87ef763b17e498d2f061193dedffc6" name="php7/classes/http.c" role="src" />
+   <file md5sum="2811628f52b4e54bea10428c3f90075c" name="php7/classes/http.h" role="src" />
+   <file md5sum="efd81e870cb3b732a1e2e53a5a701a99" name="php7/classes/http_connection.c" role="src" />
+   <file md5sum="c52570793108eaed9719b36a9cc1b5ec" name="php7/classes/http_request.c" role="src" />
+   <file md5sum="ddbc9e138072f39f744ff3e532ee7850" name="php7/classes/listener.c" role="src" />
+   <file md5sum="454cb536b094a0b70bfbb88d637531f4" name="php7/classes/ssl_context.h" role="src" />
+   <file md5sum="c99595d412abf931bc2ee512feb092d9" name="php7/classes/ssl_context.c" role="src" />
+   <file md5sum="dbc39427ad96958f512db00d87add265" name="php7/src/common.h" role="src" />
+   <file md5sum="4f91847d5f6099e0fba3644ad8fe895f" name="php7/src/fe.c" role="src" />
+   <file md5sum="12da923713568e496b81955ee92a1768" name="php7/src/fe.h" role="src" />
+   <file md5sum="82de0e2fcab5b7a766ec88673c572963" name="php7/src/pe.c" role="src" />
+   <file md5sum="6ff5e11f195bd5572c084dfa58692e50" name="php7/src/priv.h" role="src" />
+   <file md5sum="5ff39c43d9072716a7d59fa384d60ffd" name="php7/src/structs.h" role="src" />
+   <file md5sum="c7969e9fffea0d5b0edf0f62f539581b" name="php7/src/util.c" role="src" />
+   <file md5sum="9784b618689bb9cd8122ace842fdb580" name="php7/src/util.h" role="src" />
+   <file md5sum="2c7268ba39b3a050b065cf99982e408c" name="php7/php_event.c" role="src" />
+   <file md5sum="f4e6dc1e16cc670ff7d2101b9cbbeab5" name="php7/php_event.h" role="src" />
+   <file md5sum="03d108aba72cdebd1dbe9cebba2e0b84" name="php8/src/common.h" role="src" />
+   <file md5sum="78b1cd381327d3f2eb26845804cde025" name="php8/src/fe.c" role="src" />
+   <file md5sum="82de0e2fcab5b7a766ec88673c572963" name="php8/src/pe.c" role="src" />
+   <file md5sum="c8bab6d7a7ae8fddc19812b8cc606819" name="php8/src/priv.h" role="src" />
+   <file md5sum="5ff39c43d9072716a7d59fa384d60ffd" name="php8/src/structs.h" role="src" />
+   <file md5sum="0fee16f2ca9ee089bf9c8c29faa041ce" name="php8/src/util.c" role="src" />
+   <file md5sum="31c1bab22fe041866ada9f0b21fbaf12" name="php8/src/util.h" role="src" />
+   <file md5sum="4d5f12c33d9747c886f9988a9dd2c0a0" name="php8/classes/base.c" role="src" />
+   <file md5sum="7ae3f5f43bc54d89761001a40ffd106d" name="php8/classes/buffer.c" role="src" />
+   <file md5sum="23e32e54ea3af19957ea82ba26b1d059" name="php8/classes/buffer_event.c" role="src" />
+   <file md5sum="f2888e5c16c29976bf602b9ce8ddb69e" name="php8/classes/dns.c" role="src" />
+   <file md5sum="641348dd4acb430605d3bc9ac8ef187e" name="php8/classes/event.c" role="src" />
+   <file md5sum="d70328260dadce72aa8b8fdd5c0342ff" name="php8/classes/event_config.c" role="src" />
+   <file md5sum="c4064984bf6166058f41e9926a35ed92" name="php8/classes/event_util.c" role="src" />
+   <file md5sum="fd5a231740fa99d054eb9d6b5878f9c5" name="php8/classes/http.c" role="src" />
+   <file md5sum="2811628f52b4e54bea10428c3f90075c" name="php8/classes/http.h" role="src" />
+   <file md5sum="58e148f8077a06a7f9c1a8bb80e1cd7c" name="php8/classes/http_connection.c" role="src" />
+   <file md5sum="1f0d1527b9e61b0cc30dedf5b95acf5c" name="php8/classes/http_request.c" role="src" />
+   <file md5sum="54f8cdce370507f95efcfa68b138363d" name="php8/classes/listener.c" role="src" />
+   <file md5sum="c5e458a17a0941f2d1ade377f0aa06f7" name="php8/classes/ssl_context.c" role="src" />
+   <file md5sum="454cb536b094a0b70bfbb88d637531f4" name="php8/classes/ssl_context.h" role="src" />
+   <file md5sum="e1fc05ff55849e2baaac5a264e5d06c0" name="php8/php_event.c" role="src" />
+   <file md5sum="f4e6dc1e16cc670ff7d2101b9cbbeab5" name="php8/php_event.h" role="src" />
+   <file md5sum="5941b97b34d79865500659f10a9b93e4" name="php8/arginfo.h" role="src" />
+   <file md5sum="1a62bcb8b44fd1c18db58113555de1eb" name="php8/php_event_arginfo.h" role="src" />
+   <file md5sum="d10920de202295c0e290dabb76d73740" name="php8/php_event.stub.php.in" role="src" />
+   <file md5sum="79909a9fe09676375b7890cf98801587" name="examples/ssl-echo-server/server.php" role="doc" />
+   <file md5sum="a435ef897853e95d98eeeed1174c6972" name="examples/ssl-echo-server/client.php" role="doc" />
+   <file md5sum="b520d8a3880aeb7c5087b478a4a7e8b7" name="examples/buffer_proxy.php" role="doc" />
+   <file md5sum="e4c1e151fe9c4538abe37b9c89ae6208" name="examples/eio.php" role="doc" />
+   <file md5sum="19447737e3359eebb4ad069974a70420" name="examples/fibonacci_buffer.php" role="doc" />
+   <file md5sum="7c03acf3c1513ff1f1be29e63fafd9d2" name="examples/http.php" role="doc" />
+   <file md5sum="8633ab8d69021bbbb409ea4fb8c6305e" name="examples/http_accept.php" role="doc" />
+   <file md5sum="b48d2aac980ca9dadfd2c2b26836fa0e" name="examples/http_alias.php" role="doc" />
+   <file md5sum="b1b12a51cfd6a08e57139aa2fdd2baee" name="examples/http_bind.php" role="doc" />
+   <file md5sum="ab3ea54cc84562bc85bbce584c38ba9b" name="examples/http_closecb.php" role="doc" />
+   <file md5sum="49ee512cef5ccd31f4c9f5ee0eec4f47" name="examples/http_request.php" role="doc" />
+   <file md5sum="606a387e7fceb4e4032bca1f7ea0e50b" name="examples/httpv0client.php" role="doc" />
+   <file md5sum="aa03d89c32c57f2620d9dcd9cef485e0" name="examples/httpv0client2.php" role="doc" />
+   <file md5sum="2e1201889826e9a64658d83671b3d80b" name="examples/https.php" role="doc" />
+   <file md5sum="00567210e63aec6e7bdd202905c6cc37" name="examples/listener.php" role="doc" />
+   <file md5sum="00571702944b382cdf947b75fd13c37d" name="examples/misc.php" role="doc" />
+   <file md5sum="64de83aea3d0bc48fa3aac7e804f18b5" name="examples/signal.php" role="doc" />
+   <file md5sum="9c1154f9fcd429355e28530a5ca4fcc8" name="examples/sslfilter.php" role="doc" />
+   <file md5sum="0f36ed84ae1aa72da2fff32f93d4b1e0" name="examples/ssl-connection.php" role="doc" />
+   <file md5sum="62e8a329dd46d27fbceef03db8c831a2" name="examples/timer.php" role="doc" />
+   <file md5sum="097555adaa59f1cf9beba6b2f3539c8a" name="examples/uppercase_proxy.php" role="doc" />
+   <file md5sum="55908c601e52fbd6757972830518768f" name="tests/01-load.phpt" role="test" />
+   <file md5sum="9b4b08b5e6237a32c45be0aa7605ac54" name="tests/02-features.phpt" role="test" />
+   <file md5sum="915ac2a011c21d600da874c3e78d8928" name="tests/03-event-del.phpt" role="test" />
+   <file md5sum="4f5b1f60f1db59c2a3ed0a925df5d787" name="tests/04-bevent-socket.phpt" role="test" />
+   <file md5sum="6ab76ba7ba874f55330ba0e798539c2f" name="tests/05-buffer-pos.phpt" role="test" />
+   <file md5sum="2250f5bfa3d6469fb9e4759cd0d8b40c" name="tests/06-timer.phpt" role="test" />
+   <file md5sum="0964321c5c4d330fbbeb2c43564d3312" name="tests/07-listener-error-win32.phpt" role="test" />
+   <file md5sum="dbdd4d65d1bc733bba31edfa186b75ec" name="tests/07-listener-error.phpt" role="test" />
+   <file md5sum="31e021fb84b0c3591afeb582dcb316cb" name="tests/08-buffer.phpt" role="test" />
+   <file md5sum="a38f40860a87536866e338d87c7552f0" name="tests/09-gc-cycles.phpt" role="test" />
+   <file md5sum="3057481ce377a56e924228c940b33a93" name="tests/10-event-data-dtor.phpt" role="test" />
+   <file md5sum="1b64a5d3da12b03726734714e8315830" name="tests/11-gc-cycles.phpt" role="test" />
+   <file md5sum="57875d1bb7f82b79af80aa9bb5384799" name="tests/12-serialization.phpt" role="test" />
+   <file md5sum="305fd03b8d9dcae4af90f3c320a9b264" name="tests/13-bevent-pair.phpt" role="test" />
+   <file md5sum="ea8f68eaa8ad85dd0acc0d0d06b20ce2" name="tests/14-php5-httpconn-error.phpt" role="test" />
+   <file md5sum="8a0988169bf6bcd44d404dbda223a9e5" name="tests/15-php5-dnsbase-error.phpt" role="test" />
+   <file md5sum="0c3f845111509bdbaaa5063ceed21ee3" name="tests/16-php5-http-error.phpt" role="test" />
+   <file md5sum="8cdfdf028495e9f64b9ad1f6b4e63da6" name="tests/17-event-settimer-error.phpt" role="test" />
+   <file md5sum="f63808af66a2e275cea3efe6f89e4e50" name="tests/18-timer-error.phpt" role="test" />
+   <file md5sum="bf12cc2c06f7b8e24d14a2b65aab6144" name="tests/19-event-signal-error.phpt" role="test" />
+   <file md5sum="69f125bd9547b9cf6b37661438f1c686" name="tests/20-bevent-error.phpt" role="test" />
+   <file md5sum="0150bddebaee317373bdbf044408c21f" name="tests/21-bevent-sslfilter.phpt" role="test" />
+   <file md5sum="b79be9f1dd8c44d074660a570c2d08ae" name="tests/21-bevent-sslsocket.phpt" role="test" />
+   <file md5sum="ea83cd7970307f2707272770aa5f21b0" name="tests/22-php5-bevent-pair-error.phpt" role="test" />
+   <file md5sum="b5a323e0c00dbce164b07a7af04326b2" name="tests/23-php5-listener-error.phpt" role="test" />
+   <file md5sum="b46dfce25d46f9d1b7b4af7aa3f508e6" name="tests/24-php5-bevent-sslfilter-error.phpt" role="test" />
+   <file md5sum="abb944d7f5a4e0cf83c56bb01961a786" name="tests/25-php5-bevent-sslsocket-error.phpt" role="test" />
+   <file md5sum="c8858137cc9bb26790a10ac3a48057c0" name="tests/26-http-debug-info.phpt" role="test" />
+   <file md5sum="90e43088ae154f9ff3585ddc57b674c4" name="tests/27-event-util-create-socket.phpt" role="test" />
+   <file md5sum="379819702e26e60fa8c9a8373e7e34a6" name="tests/27-event-util-create-socket_php8.phpt" role="test" />
+   <file md5sum="12d82cb69baa81cc21b2da39901324ee" name="tests/28-bevent-ssl.phpt" role="test" />
+   <file md5sum="d513c41499bfbe837589cca8e058a3d0" name="tests/28-bevent-ssl1.1.0.phpt" role="test" />
+   <file md5sum="ec8d3bdcd51a08141e13ccfb61b01c55" name="tests/29-buffer-pullup.phpt" role="test" />
+   <file md5sum="de43b20d4afd378d5fd00e4bd6ac07c4" name="tests/30-listener-free.phpt" role="test" />
+   <file md5sum="52890165163bd861f6d728932c358239" name="tests/31-issue.phpt" role="test" />
+   <file md5sum="a711589325d292af73fe931b88d7f490" name="tests/32-buffer-copyout.phpt" role="test" />
+   <file md5sum="08b5014496a10ba34b752a91d22c5732" name="tests/33-bevent-event-cb-exception.phpt" role="test" />
+   <file md5sum="9a5526d20940e0bd985fce9241862354" name="tests/33-bevent-read-cb-exception.phpt" role="test" />
+   <file md5sum="3fbe595c4ac42a976cf834b1ba30a25d" name="tests/33-bevent-write-cb-exception.phpt" role="test" />
+   <file md5sum="a061a942ead0f0e8cd59e9cc0dd7c68d" name="tests/34-event-callback-exit.phpt" role="test" />
+   <file md5sum="b70b6ebfa952b7bd1d7be6ce093a60d8" name="tests/35-dns-base-parse-resolv-conf-error.phpt" role="test" />
+   <file md5sum="0e43b059ef5ab920c57f5f0910da2ea2" name="tests/36-dns-base-construct-init-flags.phpt" role="test" />
+   <file md5sum="3a997e8c2e9fb4312f0412d8851e2aba" name="tests/49-issue.phpt" role="test" />
+   <file md5sum="8e3108ac79af82e914f65436be71b25b" name="tests/54-event-config-set-flags.phpt" role="test" />
+   <file md5sum="47283b42e5a9407df9415ee19d4b2d6b" name="tests/61-issue.phpt" role="test" />
+   <file md5sum="e74e68474fe1e25c55f77be3991686d1" name="tests/61-issue_php_pre_8_2_0.phpt" role="test" />
+   <file md5sum="387fe97f6228630b00b81f6a50513256" name="tests/69-issue-event-cb-failure_php7.phpt" role="test" />
+   <file md5sum="2a5fb09afef32a1a76dcebf7fc8697b7" name="tests/69-issue-event-cb-failure_php8.phpt" role="test" />
+   <file md5sum="d23ec0a29971797554ac4cafede3dc4e" name="tests/69-issue-event-cb-failure_php_pre_8_2_0.phpt" role="test" />
+   <file md5sum="6b88069440828c69ec79b12d2b18013d" name="CREDITS" role="doc" />
+   <file md5sum="c9452b7b4c9308c73d8c3bc39f43561e" name="INSTALL.md" role="doc" />
+   <file md5sum="b602636d46a61c0ac0432bbf5c078fe4" name="LICENSE" role="doc" />
+   <file md5sum="dd64cb9cce12901fba4afa86f8cc189a" name="README.md" role="doc" />
+   <file md5sum="3d70128a97502c23817eae2f424eaf70" name="config.m4" role="src" />
+   <file md5sum="786215e2d14107e6e778cbd60efc23cd" name="config.w32" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.4.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0a1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>event</providesextension>
+ <extsrcrelease>
+  <configureoption default="no" name="enable-event-debug" prompt="Enable internal debugging in Event" />
+  <configureoption default="yes" name="enable-event-sockets" prompt="Enable sockets support in Event" />
+  <configureoption default="/usr" name="with-event-libevent-dir" prompt="libevent installation prefix" />
+  <configureoption default="no" name="with-event-pthreads" prompt="Include libevent&apos;s pthreads library and enable thread safety support in Event" />
+  <configureoption default="yes" name="with-event-extra" prompt="Include libevent protocol-specific functionality support including HTTP, DNS, and RPC" />
+  <configureoption default="yes" name="with-event-openssl" prompt="Include libevent OpenSSL support" />
+  <configureoption default="no" name="with-event-ns" prompt="PHP Namespace for all Event classes" />
+  <configureoption default="yes" name="with-openssl-dir" prompt="openssl installation prefix" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <version>
+    <release>3.1.0RC1</release>
+    <api>3.1.0RC1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- The loop will now be stopped if an event callback throws an exception.
+This prevents user from losing control on the event loop.
+- EventDnsBase::__construct() now accepts bool|int as its second parameter:
+* false and true have the same meaning as before;
+* EventDnsBase::DISABLE_WHEN_INACTIVE - Do not prevent the libevent event loop from exiting when we have no active DNS requests.
+* EventDnsBase::INITIALIZE_NAMESERVERS - Process resolv.conf.
+* EventDnsBase::NAMESERVERS_NO_DEFAULT - Do not add default nameserver if there are no nameservers in resolv.conf.
+- Internally, a safer strlcpy() will be used instead of strcpy().
+- Fixed a segmentation fault that might occur in the EventHttpRequest callback.
+- Fixed a bug where the EventBuffer::copyout method didn&apos;t populate the output variable properly in PHP &gt;= 8.2 (thanks to Joseph Tseng).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.8</release>
+    <api>3.0.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Set --with-openssl-dir configure option to &quot;yes&quot; by default.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.7</release>
+    <api>3.0.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added support for in-tree build (PR https://bitbucket.org/osmanov/pecl-event/pull-requests/18/support-in-tree-build by dixyes)
+Fixed tests/27-event-util-create-socket_php8.phpt on macOS
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.7RC1</release>
+    <api>3.0.7RC1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed #69: The event loop remained running when the user called exit() or an exception was thrown from the event callback. Now in these cases the loop will be stopped automatically.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.6</release>
+    <api>3.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed tests for the builds in debug mode where libevent complained about STDIN and STDOUT being not set to non-blocking mode
+Fixed build with OpenSSL 3.0 (Thanks to Remi Collet).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.5</release>
+    <api>3.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed a test not working with PHP 8.1.0alpha1
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.4</release>
+    <api>3.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Internal changes: Created a non-fastcall wrapper for zend_objects_new().
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.3</release>
+    <api>3.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed #66: Segmentation fault when calling EventConfig::avoidMethod because of incorrect arg info
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.2r1</release>
+    <api>3.0.2r1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Stable version release.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.2</release>
+    <api>3.0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Fixed #65: some methods had wrong argument/return type hints
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.1</release>
+    <api>3.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Fixed #64: build failed to find arginfo.h when invoked via pecl install event-beta
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.0</release>
+    <api>3.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Added PHP8 support.
+- Introduced strict type hinting.
+- Removed deprecated EventBufferEvent::sslFilter method.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.5.7</release>
+    <api>2.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Issue #61: fixed segfault that appeared after throwing exception from event handler in PHP 7.4.9+
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.5.6</release>
+    <api>2.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed a bug where numeric file descriptor was fetched from stdio stream incorrectly (issue #60)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.5.5</release>
+    <api>2.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Issue #60: fixed a segfault which appeared when Event::add was called on malformed or freed Event object
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.5.4</release>
+    <api>2.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed #59: PHP7 build errors with disabled SSL support
+Fixed build error with disabled sockets support
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.5.3</release>
+    <api>2.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed #56: a warning occurred randomly when PHP stream cast via php_stream_cast() without the PHP_STREAM_CAST_INTERNAL flag.
+Fixed build warnings with PHP 7.4.0-alpha1: &apos;incompatible pointer type&apos; warnings occurred in assignments to the write property handlers (thanks to Remi Collet).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.5.2</release>
+    <api>2.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed the value of EINPROGRESS constant in WIN32
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.5.1</release>
+    <api>2.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed build warnings with PHP 7.3
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.5.0</release>
+    <api>2.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Issue #54: Added EventConfig::setFlags() method. (There was no way to set EVENT_BASE_FLAG_* flags.)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.4.3</release>
+    <api>2.4.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed issue #53: EventBase::__construct now throws EventException if the features specified via the EventConfig parameter are not supported on the current platform.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.4.2</release>
+    <api>2.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed: SSL verification callback failed when EventSslContext was used with either EventBufferEvent::createSslFilter or EventBufferEvent::sslFilter.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.4.1</release>
+    <api>2.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed issue #52: namespace issues when installing via pecl command in non-interactive mode.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.4.0</release>
+    <api>2.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Replaced obsolete AC_TRY_COMPILE with AC_COMPILE_IFELSE in config.m4
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.4.0RC3</release>
+    <api>2.4.0RC3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed test error on RHEL 6/7 (thanks to Remi Collet).
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.4.0RC2</release>
+    <api>2.4.0RC2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed tests/12-serialization.phpt (thanks to Remi Collet)
+Fixed issue #49: &quot;Invalid file descriptor&quot; exceptions in PHP 7.2. Due to
+  Zend API changes in PHP 7.2, Event stream arguments were accepted by
+  reference.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.4.0RC1</release>
+    <api>2.4.0RC1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Issue #46: Class name conflict with Laravel and Lumen.
+  Added --with-event-ns configuration option.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.3.1</release>
+    <api>2.3.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed issue #40: Segmentation fault when trying to serialize instance of EventHttpRequest
+
+EventException will be thrown when the user tries to serialize or unserialize an instance of
+  EventBase, EventHttp, EventHttpRequest, EventHttpConnection, or EventConfig.
+
+Fixed issue #44: EventUtil class was final abstract
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.3.0</release>
+    <api>2.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed build errors with LibreSSL
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.3.0RC1</release>
+    <api>2.3.0RC1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Add: EventSslContext methods: setMinProtoVersion and setMaxProtoVersion for OpenSSL &gt;= 1.1.0.
+Add: EventSslContext constants: OPENSSL_VERSION_NUMBER and OPENSSL_VERSION_TEXT.
+Fix: compilation warnings regarding OpenSSL features deprecated in version 1.0.0 and newer.
+Deprecated: EventSslContext protocol version options are deprecated for OpenSSL &gt;= 1.1.0.
+  Use the new setMinProtoVersion and setMaxProtoVersion methods instead.
+Fix: build failed with custom openssl setup (non-standard --with-openssl-dir)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.1</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: issue #31 where numeric file descriptor caused segmentation fault
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.0</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Add: EventUtil::createSocket method(PHP5)
+Add: EventListener::free method
+Fix: issue #30 where building without SSL3 failed
+Fix: the class property names were wrapped in double quotes
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.0</release>
+    <api>2.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Add: EventUtil::SOCK_RAW constant
+Add: EventSslContext option constants: OPT_REQUIRE_CLIENT_CERT and OPT_VERIFY_CLIENT_ONCE
+Fix: EventBufferEvent::createPair caused segmentation fault in PHP7
+SSL Fixes:
+- chained self-signed certificate failed to pass with EventSslContext::OPT_ALLOW_SELF_SIGNED = TRUE
+- the server didn&apos;t set the list of CAs to be sent to the client when requesting a client certificate for underlying SSL structure
+- EventSslContext::OPT_ALLOW_SELF_SIGNED = TRUE accepted any self-signed certificate without regard to OPT_CA_FILE/OPT_CA_PATH
+Fix: PHP 7.1.0alpha1 build errors
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.4</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Issue #28: event-2.0.3 Windows build fails
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.3</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Issue #27: PHP &gt; 7.0.6RC1 build fails
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.2</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+PHP7: fixed random EDOM errors in EventUtil::setSocketOption
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.1</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+PHP7: Protected user callbacks from destruction within libevent callbacks
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed some memory issues in PHP7
+- SSL leaks
+- Possibility of implicit destruction of user vars
+- Unclean SSL bufferevent shutdown
+- EventBufferEvent::free() within a callback damaged zvals bound to corresponding bufferevent thereby causing SEGFAULT
+
+Fixed PHP5/PHP7 memory issue: string returned by EventBuffer::pullup() was not zero-terminated
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0RC2</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed Mac OS X build errors
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0RC1</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+PHP7 support added.
+
+Fixes:
+  - issue #23: memory leak in EventHttpConnection close callback + memory leaks in HTTP callbacks.
+  - Libevent &apos;unrecoverable&apos; fatal errors(fixed by stopping the loop in EventBase free-storage handler).
+
+API changes:
+  - EventUtil::createSocket method added(PHP7)
+  - removed the first(EventBase) argument of EventBufferEvent::sslFilter method, since the internal EventBase object must match EventBase object within the underlying EventBufferEvent
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.11.3</release>
+    <api>1.10.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Issue #20: SSL_GET_PREV_SESSION:session id context uninitialized
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.11.2</release>
+    <api>1.10.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Issue #6: memory leaks in EventHttp callbacks
+EventBufferEvent object returned by EventHttpRequest::getBufferEvent() should be freed explicitly,
+if the method is called from a userspace callback.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.11.1</release>
+    <api>1.10.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed build with old openssl (RHEL-5) (thanks to Remi Collet)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.11.0</release>
+    <api>1.10.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: exceptions thrown from EventHttp and EventBufferEvent userspace callbacks were not passed through back to user.
+Now the event loop will break and re-throw the exception.
+Add: EventBase::free method
+Add: EventBufferEvent methods:
+  - close
+  - sslGetCipherInfo
+  - sslGetCipherName
+  - sslGetCipherVersion
+  - sslGetProtocol
+Add: EventSslContext options:
+  - OPT_NO_SSLv2
+  - OPT_NO_SSLv3
+  - OPT_NO_TLSv1
+  - OPT_NO_TLSv1_1
+  - OPT_NO_TLSv1_2
+  - OPT_CIPHER_SERVER_PREFERENCE
+  - TLSv11_CLIENT_METHOD
+  - TLSv11_SERVER_METHOD
+  - TLSv12_CLIENT_METHOD
+  - TLSv12_SERVER_METHOD
+(Thanks to Mathieu CARBONNEAUX @ bitbucket.org)
+Issue #13: EventBufferEvent::__construct failed to accept a persistent
+socket client(STREAM_CLIENT_PERSISTENT)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.10.4</release>
+    <api>1.9.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: exceptions thrown from EventHttp and EventBufferEvent userspace callbacks were not passed through back to user.
+Now the event loop will break and re-throw the exception.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.10.3</release>
+    <api>1.9.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Issue #8: pecl install failed due to the REST API issues with Unicode
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.10.2</release>
+    <api>1.9.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: EventBufferEvent::read() accepted negative values
+Fix: TSRM context was not set in EventHttp::__construct (J. Fekete)
+Fix: refcounter in EventHttp&apos;s default callback (J. Fekete)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.10.1</release>
+    <api>1.9.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Deleted a troublesome phpt test
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.10.0</release>
+    <api>1.9.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Issue #3: Segmentation fault on EventHttpRequest-&gt;free() (Bitbucket&apos;s tracker).
+Add: EventHttpConnection::__construct() now optionally accepts EventSslContext argument (Issue #5).
+Add: EventHttp::__construct() now accepts EventSslContext object as argument.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.9.1</release>
+    <api>1.8.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: return value of EventBase::reInit() was inverted
+issue #7: PHP_EVENT_REQUIRE_BASE_BY_REF() didn&apos;t work in 5.6.0-dev (fixed by Remi Collet)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.9.0</release>
+    <api>1.8.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Windows support introduced(thanks to Anatol Belski &lt;ab@php.net&gt;)
+
+LIBEVENT_VERSION is now reported in phpinfo(Remi &lt;remi@php.net&gt;)
+
+ Forced passing EventBase argument by reference. A method accepting EventBase
+ will generate fatal error in case if corresponding argument is not passed by
+ reference.
+
+ EventBufferEvent::createPair method made static.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.8.1</release>
+    <api>1.8.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: Bug #65847 Issue with old libevent2 where evhttp_connection_get_bufferevent function was not available with libevent version &lt; 2.0.17 (thanks to Remi &lt;remi@php.net&gt;)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.8.0</release>
+    <api>1.8.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Add: EventHttpRequest methods: getBufferEvent, getConnection, closeConnection(thanks to rickysu at Bitbucket)
+Add: EventHttpConnection::setCloseCallback method
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.8</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: build error on Solaris
+Introduced negative dependencies: libevent extension, windows OS
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.7</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: incorrect handling of sockets extension dependency
+(a hack for distros installing sockets separately)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.6</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Change: sockets extension is now required(see bug #65597). The user can still
+turn off this requirement off explicitly with --disable-event-sockets configure
+option
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.5</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: build error with custom libevent installation prefixes like /lib(John Wamer)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.4</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: Segmentation fault caused by direct access to the zend object properties&apos; hash table
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.3</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: in php_event.c write_property function was non-static
+Fix: absence of get_gc property handler caused segfaults with gc_collect_cycles()
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.2</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: bug #65320 where we got build errors in attempts to compile event statically(thanks to florin)
+Fix: bug #65319 where config.m4 used &lt;php_version.h&gt; to detect current PHP version
+Fix: config.m4 included -levent_pthreads into LDFLAGS even --without-event-pthreads configuration
+Fix: evthread_use_pthreads() call skept due to a &quot;macro magic&quot;(PHP_EVENT_ASSERT)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.1</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: segmentation fault on gc_collect_cycles() after calling Event::free(), 5lava @ Bitbucket reported
+Fix: assignment reference to &quot;data&quot; property caused &apos;Fatal error:  Cannot assign by reference to overloaded object&apos;
+Fix: evnt object dtors sometimes didn&apos;t free the &apos;data&apos; member until the script shutdown phase
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.7.0</release>
+    <api>1.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Merged in 5lava/pecl-event (pull request #1) @bitbucket:
+Fix: EventBufferEvent::setTimeouts() didn&apos;t work with double values
+Fix: EventBuffer::copyout() didn&apos;t work in some cases
+Add: EventBuffer::readFrom() method (corresponds to evbuffer_read())
+Add: EventUtil::getSocketFD() method
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.6.2</release>
+    <api>1.6.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: bug #64678 where Fedora Packaging Guidlines required LICENSE file
+Fix: bug #64680 where we should check for SKIP_ONLINE_TESTS environment variable
+Fix: bug #64679 where we had buffer overflow caused by struct sockaddr_storage * pointer
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.6.1</release>
+    <api>1.6.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: bug #64652 where Event::__construct returned valid object, however, with
+uninitialized internal struct which caused segmentation faults in further
+method calls
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.6.0</release>
+    <api>1.6.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: bug #64551 with build failed on Mac OS X
+Fix: address argument of the listener accept callback contained garbage in case of a client connected via UNIX domain socket
+Add: EventBuffer::write, EventUtil::setSocketOption methods and some constants
+Refact: automatically set the upper bound of EventBuffer::search to the buffer length, if it is greater then the length
+Fix: make the code compatible with PHP 5.5.0 .. 5.6.0-dev
+Fix: build error with zts PHP setup
+Fix: build error with libevent_extra disabled
+Add: EventListener fd readonly property for numeric file descriptor of the socket associated with the listener
+Add: EventBuffer::substr method
+
+INCOMPATIBLE CHANGES!
+Renamed EventBuffer::remove to EventBuffer::read, EventBuffer::read now takes only max_bytes argument and returns string.
+Renamed EventBuffer::removeBuffer to EventBuffer::appendFrom
+EventBuffer::read now takes single argument &apos;size&apos; and returns the string read
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.5.1</release>
+    <api>1.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: EventBuffer::removeBuffer returned boolean instead of the number of bytes read
+Add: EventBuffer::fd property
+Change: EventBuffer class is not final any more
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.5.0</release>
+    <api>1.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: uninitialized socket caused segmentation fault in EventBufferEvent methods
+Del: EventBufferPosition class removed, EventBuffer::search now accepts and returns integers
+Add: EventBuffer::searchEol method
+Add: EventUtil::getSocketName method
+Add: EventListener::getSocketName method
+Fix: memory leak due to lack of zend_hash_destroy on the ssl context options
+Add: support of UNIX domain sockets in EventListener::__construct, EventBufferEvent::connect methods
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.0</release>
+    <api>1.4.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Add: HTTP server support:
+  * EventHttp methods: setMaxBodySize, setMaxHeadersSize, setTimeout,
+    addServerAlias, removeServerAlias setCallback, setDefaultCallback,
+    setAllowedMethods, setMaxBodySize, setMaxHeadersSize, setTimeout,
+    addServerAlias, removeServerAlias;
+  * EventHttpRequest class, callback and custom data can be bound to the
+    request for future use with EventHttpConnection
+  * New EventHttpConnection::makeRequest method allows to make custom HTTP
+    requests by means of EventHttpRequest class
+Change: make EventDnsBase parameter optional in EventHttpConnection::__construct
+Fix: classes/buffer_event.c: possible memory access violation in bufferevent callback
+Fix: turn off buggy libevent thread lock debugging when built with --enable-event-debug
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.3.0</release>
+    <api>1.3.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: possible memory access violations in EventBufferEvent input/output property handlers
+Change: Event::$timer_pending property removed; generic Event::$pending property added
+Fix: With OPT_LEAVE_SOCKETS_BLOCKING flag EventListener::__construct turned fd to non-blocking mode
+Fix: property and class HashTable&apos;s were not free&apos;d in MSHUTDOWN
+Add: Event::$data property
+Fix: Event::__construct failed with Event::TIMEOUT flag
+Fix: memory leak in EventBuffer::readLine
+Add: --with-event-pthreads configure option
+Fix: EventBase::reInit method&apos;s arginfo
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.6</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: with OpenSSL turned off got error: undefined symbol: zim_EventUtil_sslRandPoll
+Add: implemented get_properties property handler(is called when one casts an object to array)
+Refact: removed memory alloc for empty property hashtables
+Fix: heap corruption caused by EventBufferEvent callbacks(thanks to Marco Schuster)
+Fix: continuous calls to EventBufferEvent::setCallbacks didn&apos;t free old fci/fcc(thanks to Marco Schuster)
+Fix: possible heap corruption in EventListener&apos;s callback
+Add: EventBase::resume method
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.3</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: build errors
+Fix: undefined symbol SSLv2_*_method when SL_OP_NO_SSLv2 defined
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: non-static zend_always_inline function failed to compile with some (non-zts) php setups
+Change: static EventBuffer::addBuffer made non-static with one argument
+Add: EventBuffer expand, prepend, prependBuffer, drain, copyout, readLine, search,
+setPosition methods
+Add: EventBufferPosition class
+Fix: configure error in FreeBSD
+Add: OpenSSL support: EventBufferEvent methods: sslFilter, sslSocket, sslError, sslRenegotiate; EventSslContext class
+Add: EventBuffer::pullup method
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.1</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: the installer failed to determine location of src/common.h
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Procedural API converted to OOP API
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix: crash due to destruction of the internal bufferevent buffers (synced with oop branch)
+Fix: extra memory consumption caused by continuous calls to bufferevent_get_input/_output
+Fix: memory violation while parsing event_config_set_max_dispatch_interval parameters
+   </notes>
+  </release>
+  <release>
+   <date>2013-01-19</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Libevent 2+ support added
+   </notes>
+  </release>
+  <release>
+   <date>2004-12-16</date>
+   <lead>
+    <name>Wez Furlong</name>
+    <user>wez</user>
+    <email>wez@php.net</email>
+    <active>yes</active>
+   </lead>
+   <version>
+    <release>0.9.1</release>
+    <api>0.9.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added event_timeout() function for easily scheduling a callback after a certain
+period of time.  The timeout may be persistent to make the callback a recurrent
+event.
+
+Fixed an issue with timercmp() on windows that caused a busy wait when the
+scheduler could have performed a sleep.
+
+Windows scheduling engine now also processes the message queue while
+waiting; useful for COM/GUI based scripts.
+
+Fixed build for threaded systems with real signals.
+
+Supports epoll(4), poll(2) and select(2) IO notification engines.
+Support for /dev/poll and kqueue is pending.
+
+On Windows, currently only sockets can participate in the IO notification engine.
+   </notes>
+   <deps>
+    <dep rel="ge" type="php" version="4.3.0" />
+   </deps>
+  </release>
+  <version>
+   <release>1.2.5</release>
+   <api>1.2.1</api>
+  </version>
+  <version>
+   <release>1.2.4</release>
+   <api>1.2.1</api>
+  </version>
+  <stability>
+   <release>alpha</release>
+   <api>alpha</api>
+  </stability>
+  <stability>
+   <release>alpha</release>
+   <api>alpha</api>
+  </stability>
+  <license uri="http://www.php.net/license">PHP</license>
+  <license uri="http://www.php.net/license">PHP</license>
+  <notes>Fix: unneeded Z_ADDREF_P() calls in EventListener, EventBufferEvent constructors and factory methods
+Fix: EventListener cached file descriptor for all connections
+Change: EventBufferEvent enable/disable methods return bool now
+Change: instead of stream pass numeric file descriptor to EventListener&apos;s accept-connection callback
+Add: callbacks and the callback arg are now passed to EventBufferEvent::__construct as optional arguments</notes>
+  <notes>Fix: deleted redundant len argument of EventBuffer::readLine
+Fix: EventBuffer::readLine returned non-dup&apos;d string. Caused bugs with pointers.</notes>
+ </changelog>
+</package>
