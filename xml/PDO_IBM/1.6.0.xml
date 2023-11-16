@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>PDO_IBM</name>
+ <channel>pecl.php.net</channel>
+ <summary>PDO driver for IBM databases</summary>
+ <description>This extension provides an IBM database driver for PDO. This driver supports IBM DB2
+Universal Database, IBM Cloudscape, Apache Derby databases and IDS (Informix Data Server).</description>
+ <lead>
+  <name>Rahul Priyadarshi</name>
+  <user>rahulpriyadarshi</user>
+  <email>rahul.priyadarshi@in.ibm.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Amarnath Reddy N</name>
+  <user>vnkbabu</user>
+  <email>areddy@rocketsoftware.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Jesse Gorzinski</name>
+  <user>theprez</user>
+  <email>jgorzins@us.ibm.com</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Calvin Buckley</name>
+  <user>calvinb</user>
+  <email>calvin@cmpct.info</email>
+  <active>yes</active>
+ </developer>
+ <date>2023-11-15</date>
+ <time>19:01:28</time>
+ <version>
+  <release>1.6.0</release>
+  <api>1.3.4</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license>Apache License 2.0</license>
+ <notes>
+- Support for PHP 8.3
+- Support for boolean data type (IBM i 7.5, Db2/LUW 9.6)
+- Fix incorrect buffer size for SQLBindParameter (causing -902 otherwise)
+- Fix error handling for IBM i attributes
+- Improve error reporting when SQLGetDiagRec fails
+- Build system improvements for finding driver library
+- CI and test suite improvements
+ </notes>
+ <contents>
+  <dir name="/">
+   <file baseinstalldir="pdo_ibm" md5sum="8cd4755506051ff123463f4ff98c4fc5" name="tests/clob.dat" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="3bd8e73561413ba9205aa06e95a7a9d3" name="tests/fvt.inc" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="e57f8ea420f6e27910f6aa0f8533147c" name="tests/fvt400.inc" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="0d5b13d39833fc2b0bf010b5a4f1e3e1" name="tests/fvt_001_DbConn.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="2b94d712f2663436fc866c59c15c7b50" name="tests/fvt_002_CountRowsAffected.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="63ab669684faee4d58f999dad6ba8802" name="tests/fvt_003_ConnWrongUserPwd_01.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="0a5fd98f8a14efdb262db1481a977408" name="tests/fvt_004_ConnWrongUserPwd_02.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="23d7ad2ee8586d8960489cb90a0345a4" name="tests/fvt_005_DrvVersion.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="72a06839903b34d8148c42042b5dad84" name="tests/fvt_006_ErrConditions_01.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="8e9f3c3b59ffe5ba6c8ff3532416985d" name="tests/fvt_006_V5V6_ErrConditions_01.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="9695f729ff69db3590e379de0f1ca607" name="tests/fvt_007_ErrConditions_02.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="46b5c9ffc19d5863ef6a799c8eaf3734" name="tests/fvt_007_V5V6_ErrConditions_02.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="73581aaa258adbb10d316a484ddab49c" name="tests/fvt_008_ErrNonExistentTables.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="a578f3e17d7c92e24f049fd15e4f9612" name="tests/fvt_008_V5_ErrNonExistentTables.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="337f18e0c4bba64832d3bfdf65683fd4" name="tests/fvt_008_V6_ErrNonExistentTables.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="8329ccbf4eb9b7e6b2ae8d638d246d04" name="tests/fvt_009_ErrFaultySQL.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="e27eb734401dbf4ceda7fedb27f7f950" name="tests/fvt_009_V5V6_ErrFaultySQL.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="73307d43eb50efdd750d584cf58c0d35" name="tests/fvt_010_UpdateRowCount.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="8472ad63f7a9faa9a0e7b7e21b83fc4e" name="tests/fvt_011_DeleteRowCount.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="a2614273e4c3e97322fefd2b72a80ea8" name="tests/fvt_012_SelectRowCount.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="226ee6d03323fd3e6e6f1090d9a7c36d" name="tests/fvt_013_ScrollableCursorNegativeRow.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="839043a746f56c7bff2dd9acd4f04aba" name="tests/fvt_013_V5V6_ScrollableCursorNegativeRow.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="c36cf073c1262f6f0fac894c2b7f4298" name="tests/fvt_014_InsertDeleteRowCount.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="7af9ba9888f56cb988bf9b03e7388747" name="tests/fvt_015_InsertSelectClobBlobColumns.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="c7f7a70d60584878a4deea565bcfa2ae" name="tests/fvt_015_V5V6_InsertSelectClobBlobColumns.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="970a038e7c3901fa855b603ba21e9899" name="tests/fvt_016_InsertIntegerBindingString.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="5b30c2aa7fded88fca0429dc231d1d25" name="tests/fvt_017_InsertRetrieveLargeClobFile_01.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="306770957247c29e3294f2a291415d0e" name="tests/fvt_017b_InsertRetrieveLargeClobFile_02.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="1fd43ee6a6f1b4bf53806411631a29bc" name="tests/fvt_017b_V5V6_InsertRetrieveLargeClobFile_02.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="c1f047ad7a55f09d2882b4356fa19312" name="tests/fvt_017c_SelectLOBs.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="efb34fc03e85d5541dbafd4840887b3d" name="tests/fvt_017_V5V6_InsertRetrieveLargeClobFile_01.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="55e274f6a569c8d8857e9c4df9dbbf14" name="tests/fvt_018_QuoteString.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="eef3d63503ecce45a47ce8896c3cae4e" name="tests/fvt_020_Rollback.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="574c453208d216e55e55e8558341abc1" name="tests/fvt_021_Commit.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="92a37e1f6da9cf5e3a3f98ea335cad63" name="tests/fvt_022_RollbackAutocommitOFF.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="041e4017be22c37042e802bf35be40b9" name="tests/fvt_023_CommitAutocommitOFF.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="2c61b4da356c8b30f5bcd4200db6dab9" name="tests/fvt_023_V5V6_CommitAutocommitOFF.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="49543f9ffdf73f214eee5dd70bd2d9a3" name="tests/fvt_024_ChangeFetchModes.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="c71710cc0c531c9a28b041d43c85dab5" name="tests/fvt_024_V5V6_ChangeFetchModes.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="4b1b956aa728a86ba85dc91bd93cd0a8" name="tests/fvt_025_ColumnMetaData.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="4b1b956aa728a86ba85dc91bd93cd0a8" name="tests/fvt_025_V5V6_ColumnMetaData.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="949b1e837226fafec3a9983cb1faa4c0" name="tests/fvt_026_ErrCode.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="f090fe56b604b2f9edd024e50c0dea91" name="tests/fvt_026_V5V6_ErrCode.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="f6f4074155881892763729fb63d77fea" name="tests/fvt_027_FetchColModeOptions.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="7d897e8b9b70d01e7db0f524f2a9a7b4" name="tests/fvt_028_ExecutBasicSP.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="e3b7b439eeea7fe1feef2ff17c6b824c" name="tests/fvt_028_V5V6_ExecutBasicSP.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="8fd007e8b089ddc85e01692835581036" name="tests/fvt_030_PDOStatement_fetch.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="adb4fdf479dd5c828f83cad4398b90ea" name="tests/fvt_031_FetchOrientations.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="c3d8f0f59ecc06456c9f67ca13acab42" name="tests/fvt_031_V5V6_FetchOrientations.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="ec1f507262db232962758e5a2da5d48f" name="tests/fvt_032_FailureErrCodes.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="822041fe190553fde65ad11ae58af5d7" name="tests/fvt_032_V5V6_FailureErrCodes.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="084567c9b108327074627a3a0afd7eb9" name="tests/fvt_033_ErrNullConnParams.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="fda859c8565ebb3d629e76af9c89b58a" name="tests/fvt_033_V5V6_ErrNullConnParams.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="6dfc081ec7bc00c94f870350b5bf1edf" name="tests/fvt_034_ErrNonExistentTableInsert.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="deee80c2d1fb3748b7ff20bd7f74f9fb" name="tests/fvt_034_V5V6_ErrNonExistentTableInsert.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="f54b068ae696f7839cf933e2eeb56d50" name="tests/fvt_035_ExecReturnVal.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="2568a53830027d4f68df0d0cbc43caaf" name="tests/fvt_036_SettingDiffOpt.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="caaba5ffc2cc84d59eb47b5d9b6c5be3" name="tests/fvt_036_V5V6_SettingDiffOpt.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="f7aa10efe64401e7674946154676e74f" name="tests/fvt_038_LastInsertID.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="f3e25d6394217e03314447a2b1d34e88" name="tests/fvt_038_V5V6_LastInsertID.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="16aeb2729128aa08e081e01d1e63d534" name="tests/fvt_040_ServerInfo.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="9094612d08e849b23aed7c294478413c" name="tests/fvt_040_V5V6_ServerInfo.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="8dbf7ff4d0f6cf76a4d21c9f3eb606e9" name="tests/fvt_49872_ClearingErrCodes.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="e7c18d4fd4089b7592ef9cf125b84649" name="tests/fvt_49872_V5V6_ClearingErrCodes.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="8e08b333d219213ad75a00949b1b79f3" name="tests/fvt_66610_V6_stored_proc_io_char.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="3c6288b85193a4755e598a530e8a813d" name="tests/fvt_66620_V6_stored_proc_io_int.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="8fa5caeed02321016d8c40f0136d59e6" name="tests/fvt_66630_V6_stored_proc_io_real.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="ebb852ead707ac31ef9e704b00fa9a5e" name="tests/fvt_66640_V6_stored_proc_io_dec.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="2383ae04b09e549db8adb6e088c64d24" name="tests/fvt_66699_V6_xmlservice.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="d80023556fc858fe21668311add03fbf" name="tests/fvt_77710_V6_system_naming_libchar.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="b2e8268dd29d779ac5543b408e7ba51d" name="tests/fvt_77720_V6_system_naming_libint.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="d9e7a692837fc60210f086625f7b3751" name="tests/fvt_77730_V6_system_naming_libreal.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="78c4ba42a97bcb1f15035593125670e9" name="tests/fvt_77740_V6_system_naming_libdec.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="1f0988dc912d630f029f3b687b828a57" name="tests/fvt_trusted_context.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="5a6d5a0cf97d464883d408f3ce116dbf" name="tests/fvt_V5V6_isam_error.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="836e4aa68d4fff8a73af41cbbfd79705" name="tests/fvt_client_info.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="bed4b346700a6ddba450b81979fa1d97" name="tests/fvt_isam_error.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="9aec163ae6e41931a3ada932216e10a3" name="tests/fvt_V5V6_SQLParamData_fail.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="835794571f374e08cdb25cf6ec238d0c" name="tests/fvt_handle_empty_parameter.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="20490cb060cff5c325791703d7342de7" name="tests/fvt_boolean.phpt" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="6eeef30cba463bbc2ea5035cc97545fe" name="tests/large_blob.dat" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="53997b357abdbbba5e0ece8d913bd50c" name="tests/large_clob.dat" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="f19cce0bdb7d5c18826cd6f6f27b186e" name="tests/skipif.inc" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="e60305067a7c1e095230e9fc0f7923e1" name="tests/skipif.PASE" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="658e8dc0bf8b9a09b36994abf9242099" name="tests/spook.png" role="test" />
+   <file baseinstalldir="pdo_ibm" md5sum="38de783007c7c0dcc3f1465e3325e12c" name="tests/README400.txt" role="doc" />
+   <file baseinstalldir="pdo_ibm" md5sum="3ead4a5a8889d41aa33abbb86738152c" name="tests/TESTMATRIX" role="doc" />
+   <file baseinstalldir="pdo_ibm" md5sum="0d44108b4da41aad6652003e3e4e60a5" name="config.m4" role="src" />
+   <file baseinstalldir="pdo_ibm" md5sum="562705e61b9f09a7d4f8ef3c344baf74" name="config.w32" role="src" />
+   <file baseinstalldir="pdo_ibm" md5sum="0be1551cd87fcbfea558ffd74630c07a" name="CREDITS" role="doc" />
+   <file baseinstalldir="pdo_ibm" md5sum="2565745239557cee06d0fc4b2bbf05a5" name="LICENSE" role="doc" />
+   <file baseinstalldir="pdo_ibm" md5sum="d2268f5dd2feabd4ec2e169ae3d35f10" name="README.md" role="doc" />
+   <file baseinstalldir="pdo_ibm" md5sum="c940f38053f943b36f2487d0e7a25d96" name="ibm_driver.c" role="src" />
+   <file baseinstalldir="pdo_ibm" md5sum="818617a2ed08a54a1be13a4cb9a6aa1d" name="ibm_statement.c" role="src" />
+   <file baseinstalldir="pdo_ibm" md5sum="83626e44ce83dd4295807a0ee9a3c9b2" name="package.xml" role="src" />
+   <file baseinstalldir="pdo_ibm" md5sum="eb19107363dcd1a7c7e503d7e36a2b2d" name="pdo_ibm.c" role="src" />
+   <file baseinstalldir="pdo_ibm" md5sum="dc568335c6daefac30d591ba115e8570" name="php_pdo_ibm.h" role="src" />
+   <file baseinstalldir="pdo_ibm" md5sum="5df36a61a4123e09bc29c138b95d8c21" name="php_pdo_ibm_int.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.3.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>PDO_IBM</providesextension>
+ <extsrcrelease>
+  <configureoption name="with-pdo-ibm" prompt="DB2 install directory location?" />
+ </extsrcrelease>
+</package>
