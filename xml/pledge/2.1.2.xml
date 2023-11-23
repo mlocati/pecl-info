@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>pledge</name>
+ <channel>pecl.php.net</channel>
+ <summary>OpenBSD&apos;s pledge / unveil support</summary>
+ <description>This is a PHP extension that adds support for OpenBSD&apos;s pledge and unveil system calls.</description>
+ <lead>
+  <name>Tom Van Looy</name>
+  <user>tvlooy</user>
+  <email>tom@ctors.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2023-11-22</date>
+ <time>14:55:18</time>
+ <version>
+  <release>2.1.2</release>
+  <api>2.1.2</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://github.com/tvlooy/php-pledge/blob/master/LICENSE">ISC License</license>
+ <notes>
+- rename ini settings
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="1886a2a487e35e025e6fbb7b0adb1367" name="tests/pledge_dns_lookup.phpt" role="test" />
+   <file md5sum="811804b521843190458b5d0f6000180e" name="tests/pledge_increase_permissions.phpt" role="test" />
+   <file md5sum="1151359e7f5b6edb3af4347bbbf72794" name="tests/pledge_invalid_promise.phpt" role="test" />
+   <file md5sum="03870e80584a13008cf6fb66cd24f977" name="tests/pledge_read_file.phpt" role="test" />
+   <file md5sum="436a019dfe9d8ef23ee496d7c8f16960" name="tests/pledge_unix_socket.phpt" role="test" />
+   <file md5sum="b3320d8b769ac3c0b067c63023dbf6df" name="tests/pledge_violation.phpt" role="test" />
+   <file md5sum="c14ae4394d723f58a9a9d3f277f13075" name="tests/unveil_current_dir.phpt" role="test" />
+   <file md5sum="75c3add46c58e3f98ca3b64876f08d4f" name="tests/unveil_increase_attempt.phpt" role="test" />
+   <file md5sum="7692650def877eb90a7fe6ec45776f05" name="tests/unveil_pledge.phpt" role="test" />
+   <file md5sum="4ffedc9ddf4af0013b3607c1b2b96552" name="tests/unveil_readonly.phpt" role="test" />
+   <file md5sum="f0af9598880e8b6f8ae27eb0d7c04990" name="tests/reflection.phpt" role="test" />
+   <file md5sum="8217dcb619ded57aaff4ff0ad73aa020" name="LICENSE" role="doc" />
+   <file md5sum="7edb43e1087360e80776e0b399ef2822" name="README.md" role="doc" />
+   <file md5sum="4a4a7cb792a50575fc61fa90f6b7ba3e" name="config.m4" role="src" />
+   <file md5sum="967f74d564aea1d6baf36f250631ca4c" name="php_pledge.h" role="src" />
+   <file md5sum="1334fa5131b8264915dfdec7fc4103af" name="pledge.c" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>pledge</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2023-11-21</date>
+   <version>
+    <release>2.1.1</release>
+    <api>2.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/tvlooy/php-pledge/blob/master/LICENSE">ISC License</license>
+   <notes>
+- set the ini values on runtime init, so we use set them with php_admin_value in fpm config
+   </notes>
+  </release>
+  <release>
+   <date>2023-11-20</date>
+   <version>
+    <release>2.1.0</release>
+    <api>2.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/tvlooy/php-pledge/blob/master/LICENSE">ISC License</license>
+   <notes>
+- add support for openbsd.promises, openbsd.execpromises and openbsd.unveil ini directives
+   </notes>
+  </release>
+  <release>
+   <date>2022-10-07</date>
+   <version>
+    <release>2.0.3</release>
+    <api>2.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/tvlooy/php-pledge/blob/master/LICENSE">ISC License</license>
+   <notes>
+- handle EFAULT errors
+   </notes>
+  </release>
+  <release>
+   <date>2018-10-13</date>
+   <version>
+    <release>2.0.2</release>
+    <api>2.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/tvlooy/php-pledge/blob/master/LICENSE">ISC License</license>
+   <notes>
+- correct reflection information
+   </notes>
+  </release>
+  <release>
+   <date>2016-10-12</date>
+   <version>
+    <release>2.0.1</release>
+    <api>2.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/tvlooy/php-pledge/blob/master/LICENSE">ISC License</license>
+   <notes>
+- add unveil test
+   </notes>
+  </release>
+  <release>
+   <date>2016-10-04</date>
+   <version>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/tvlooy/php-pledge/blob/master/LICENSE">ISC License</license>
+   <notes>
+- add execpromises support to pledge()
+- add unveil()
+   </notes>
+  </release>
+  <release>
+   <date>2016-05-12</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="https://github.com/tvlooy/php-pledge/blob/master/LICENSE">ISC License</license>
+   <notes>
+- add pledge()
+   </notes>
+  </release>
+ </changelog>
+</package>
