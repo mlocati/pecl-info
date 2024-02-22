@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.14" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>dio</name>
+ <channel>pecl.php.net</channel>
+ <summary>Direct I/O functions</summary>
+ <description>PHP supports the direct io functions as described in the 
+Posix Standard (Section 6) for performing I/O functions at 
+a lower level than the C-Language stream I/O functions 
+(fopen(), fread(),..). 
+
+DIO provides functions and stream wrappers which provide raw and
+serial low level IO support.  The use of the DIO functions should 
+be considered only when direct control of a device is needed. 
+In all other cases, the standard filesystem functions are 
+more than adequate.</description>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Melanie Rhianna Lewis</name>
+  <user>cyberspice</user>
+  <email>cyberspice@php.net</email>
+  <active>no</active>
+ </lead>
+ <date>2024-02-22</date>
+ <time>11:31:24</time>
+ <version>
+  <release>0.3.0</release>
+  <api>0.3.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+ <notes>
+- drop support for PHP 5 and 7
+- add type hinting
+- raise TypeError and ValueError for unexpected parameters
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="e3404754241cdef688695f8af2bb3415" name="tests/dio_dup.phpt" role="test" />
+   <file md5sum="94e03eb70f37ccdb4f21a7d61dbf480f" name="tests/dio_fdopen.phpt" role="test" />
+   <file md5sum="ed38e6381ea0b9defb64fe346384c639" name="tests/dio_open.phpt" role="test" />
+   <file md5sum="107034f0d7343eb7b8c27039c7e7c3fa" name="tests/dio_raw_stream_001.phpt" role="test" />
+   <file md5sum="ad3e66a953189353753ce7c36544980d" name="tests/dio_raw_stream_002.phpt" role="test" />
+   <file md5sum="3b1c44e5761dc734c6b23e2b50bff601" name="tests/dio_raw_stream_003.phpt" role="test" />
+   <file md5sum="e09f26e4f6f24b21ed5f35512f946b07" name="tests/dio_raw_stream_004.phpt" role="test" />
+   <file md5sum="9a16048996d5785ca87a8aaf2f6552f7" name="tests/dio_raw_stream_005.phpt" role="test" />
+   <file md5sum="d70c86ac68da56b5cc466cb2452b5598" name="tests/dio_raw_stream_006.phpt" role="test" />
+   <file md5sum="8630c6a917d38a02c0df6430b76c0516" name="tests/dio_raw_stream_007.phpt" role="test" />
+   <file md5sum="c58084ff4c24f33c6596b832f1008b5b" name="tests/dio_stat.phpt" role="test" />
+   <file md5sum="6dc6a784c56012e5e6a35925c367f994" name="tests/dio_stat_win.phpt" role="test" />
+   <file md5sum="b04f7c5ce4a681715d6f99c281f7cf98" name="tests/dio_truncate.phpt" role="test" />
+   <file md5sum="e647e92b99e3effbfab71637f5ff0396" name="tests/dio_write.phpt" role="test" />
+   <file md5sum="2538c47803db1e23772bb08c3f80ed23" name="tests/gh12.phpt" role="test" />
+   <file md5sum="1d8f2c3eacceabc32f73bc572af7c98b" name="src/dio.c" role="src" />
+   <file md5sum="96fdffebd3214f9b561edd2d292eeba3" name="src/dio.stub.php" role="src" />
+   <file md5sum="c555c184f39c28554f30e01bfd3742f2" name="src/dio_arginfo.h" role="src" />
+   <file md5sum="6186960f7c85153c9d624e0fc90ec862" name="src/dio_common.c" role="src" />
+   <file md5sum="f2dc9609f3e5ea44f34cbc8836e3fac3" name="src/dio_posix.c" role="src" />
+   <file md5sum="b6e5632edc708c4690108cb7b1fd704e" name="src/dio_win32.c" role="src" />
+   <file md5sum="ec6516ed6225d2644b35e78e8350ebf7" name="src/dio_stream_wrappers.c" role="src" />
+   <file md5sum="1ad77bfa80f949034e572f8bfb2d5c74" name="src/php_dio.h" role="src" />
+   <file md5sum="69047696f5b3cb5e39b1f1c2f4f058ca" name="src/php_dio_common.h" role="src" />
+   <file md5sum="cede8e6f827d3b79a260e6a58888a8bf" name="src/php_dio_common_data.h" role="src" />
+   <file md5sum="72cf18293b5309fd35a90fd7c8dce47f" name="src/php_dio_posix.h" role="src" />
+   <file md5sum="a317715aeca9706f0d15a3e39c8a9846" name="src/php_dio_win32.h" role="src" />
+   <file md5sum="e96ad1eb278d5b804208805715520c79" name="src/php_dio_stream_wrappers.h" role="src" />
+   <file md5sum="7e571b888d585b31f9ef5edcc647fa30" name="LICENSE" role="doc" />
+   <file md5sum="43680d15e47b3e4a2ade557225cca42f" name="config.m4" role="src" />
+   <file md5sum="14c04a8437c979570df039ecef14290f" name="config.w32" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>dio</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2010-02-10</date>
+   <version>
+    <release>0.0.4RC4</release>
+    <api>0.0.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+package.xml added to support installation using pear installer
+Packaged so it can be used.
+   </notes>
+  </release>
+  <release>
+   <date>2012-02-17</date>
+   <version>
+    <release>0.0.5</release>
+    <api>0.0.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added dio_fdopen() and dio_dup().
+
+dio_fdopen() returns a dio resource for an integer UNIX style file descriptor.
+
+dio_dup() duplicates an existing stream.
+   </notes>
+  </release>
+  <release>
+   <date>2012-06-30</date>
+   <version>
+    <release>0.0.6</release>
+    <api>0.0.6</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixes for bugs #61989 (PECL package &quot;dio&quot; will not compile against PHP-5.4.3)
+and #62188 (Possible typo in errno check in dio_fdopen()).
+   </notes>
+  </release>
+  <release>
+   <date>2013-02-19</date>
+   <version>
+    <release>0.0.7</release>
+    <api>0.0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added far better windows error reporting. Warnings now raised when Win32 API
+calls return errors. The warnings include the underlying Windows error
+message.
+   </notes>
+  </release>
+  <release>
+   <date>2016-12-13</date>
+   <version>
+    <release>0.0.8</release>
+    <api>0.0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- PHP 7 compatible version
+   </notes>
+  </release>
+  <release>
+   <date>2016-12-13</date>
+   <version>
+    <release>0.0.9</release>
+    <api>0.0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- fix segfault in dio_raw (php 7, big endian)
+   </notes>
+  </release>
+  <release>
+   <date>2017-03-25</date>
+   <version>
+    <release>0.1.0</release>
+    <api>0.0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- Fixed memory leak in dio_read (Dawid Zamirski)
+- Fixed Bug #74209 dio_stat - appended nulls (Remi)
+   </notes>
+  </release>
+  <release>
+   <date>2020-04-16</date>
+   <version>
+    <release>0.2.0</release>
+    <api>0.0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- fix stream API for PHP 7.4+
+   </notes>
+  </release>
+  <release>
+   <date>2022-01-25</date>
+   <version>
+    <release>0.2.1</release>
+    <api>0.0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- fix windows build
+   </notes>
+  </release>
+  <release>
+   <date>2024-01-23</date>
+   <version>
+    <release>0.2.2</release>
+    <api>0.0.7</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- fix GH-12 Memory leak in dio_read
+   </notes>
+  </release>
+ </changelog>
+</package>
