@@ -49,9 +49,9 @@ class Update extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $progressBarSuffix = getenv('CI') === 'true' ? "\n" : '';
-        ProgressBar::setFormatDefinition('getting-package-details', 'Getting package details %bar% %current%/%max% %message% [%remaining% remaining]' . $progressBarSuffix);
-        ProgressBar::setFormatDefinition('listing-versions', 'Listing versions %bar% %current%/%max% %message% [%remaining% remaining]' . $progressBarSuffix);
-        ProgressBar::setFormatDefinition('analizyng-package-version-details', 'Inspecting versions %bar% %current%/%max% %message% [%remaining% remaining]' . $progressBarSuffix);
+        ProgressBar::setFormatDefinition('getting-package-details', 'Getting package details %bar% %current%/%max% [%remaining% remaining] %message%' . $progressBarSuffix);
+        ProgressBar::setFormatDefinition('listing-versions', 'Listing versions %bar% %current%/%max% [%remaining% remaining] %message%' . $progressBarSuffix);
+        ProgressBar::setFormatDefinition('analizyng-package-version-details', 'Inspecting versions %bar% %current%/%max% [%remaining% remaining] %message%' . $progressBarSuffix);
         $output->write('Reading package summary... ');
         $summary = $input->getArgument('packages') === [] ? new Summary() : $this->loadSummary();
         $output->writeln('done.');

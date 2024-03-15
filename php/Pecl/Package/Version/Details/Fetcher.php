@@ -219,6 +219,7 @@ class Fetcher
             case 'ds-1.2.7':
             case 'DTrace-1.0.0':
             case 'event-1.10.2':
+            case 'excimer-1.2.0':
             case 'hprose-1.0.0':
             case 'hprose-1.1.0':
             case 'hprose-1.2.0':

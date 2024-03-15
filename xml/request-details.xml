@@ -6,24 +6,18 @@
  <ca xlink:href="/rest/c/System">System</ca>
  <l>MIT</l>
  <s>Provides server-side request and response objects.</s>
- <d>This extension provides server-side request and response objects for PHP 7.
-These are *not* HTTP message objects proper. They are more like wrappers
-for existing global PHP variables and functions, with some limited
-additional convenience functionality.
+ <d>This extension provides server-side request and response objects for PHP.
 
-This extension defines two classes in the global namespace:
+These are *not* HTTP message objects proper. They are more like wrappers for existing global PHP variables and functions.
 
-- ServerRequest, composed of read-only copies of PHP superglobals and some
-  other commonly-used values, with methods for adding application-specific
-  request information in immutable fashion.
+Four classes and one interface are defined in the global namespace:
 
-- ServerResponse, essentially a wrapper around (and buffer for) response-
-  related PHP functions, with some additional convenience methods, and self-
-  sending capability.
+- _SapiRequest_, composed of read-only copies of PHP superglobals and some other commonly-used values.
 
-Documentation: https://github.com/pmjones/ext-request
+- _SapiUpload_, a value-object style descriptor of each uploaded file.
 
-A PHP 5 userland implementation that tracks this extension is available at
-https://packagist.org/packages/pmjones/request .</d>
+- _SapiResponse_ and _SapiResponseInterface_, essentially a wrapper around (and buffer for) response-related PHP functions.
+
+- _SapiResponseSender_, for sending a _SapiResponse_.</d>
  <r xlink:href="/rest/r/request"/>
 </p>
