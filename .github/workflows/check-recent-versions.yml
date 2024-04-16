@@ -36,7 +36,7 @@ jobs:
           EXTENSIONS="$(printf '%s' "${EXTENSIONS% }" | tr ' ' '\n' | sort | uniq | tr '\n' ' ')"
           printf 'done.\n'
           printf 'Found etensions: %s\n' "$EXTENSIONS"
-          printf '{list}={%s}\n' "$EXTENSIONS" >> $GITHUB_OUTPUT
+          printf 'list=%s\n' "$EXTENSIONS" >> $GITHUB_OUTPUT
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -77,7 +77,7 @@ jobs:
           else
             printf 'no changes detected.\n'
           fi
-          printf '{push}={%s}\n' "$PUSH" >> $GITHUB_OUTPUT
+          printf 'push=%s\n' "$PUSH" >> $GITHUB_OUTPUT
       - name: Configure git
         if: steps.check-changes.outputs.push == 'yes'
         run: |
