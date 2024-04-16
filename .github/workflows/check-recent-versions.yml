@@ -36,7 +36,7 @@ jobs:
           EXTENSIONS="$(printf '%s' "${EXTENSIONS% }" | tr ' ' '\n' | sort | uniq | tr '\n' ' ')"
           printf 'done.\n'
           printf 'Found etensions: %s\n' "$EXTENSIONS"
-          printf '::set-output name=list::%s\n' "$EXTENSIONS"
+          printf 'list=%s\n' "$EXTENSIONS" >> $GITHUB_OUTPUT
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -44,7 +44,7 @@ jobs:
           coverage: none
           tools: composer:v2
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install Composer dependencies
         run: composer install
       - name: Update packages
@@ -77,7 +77,7 @@ jobs:
           else
             printf 'no changes detected.\n'
           fi
-          printf '::set-output name=push::%s\n' "$PUSH"
+          printf 'push=%s\n' "$PUSH" >> $GITHUB_OUTPUT
       - name: Configure git
         if: steps.check-changes.outputs.push == 'yes'
         run: |
