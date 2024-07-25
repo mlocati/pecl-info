@@ -1,0 +1,1432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.15" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>oci8</name>
+ <channel>pecl.php.net</channel>
+ <summary>Extension for Oracle Database</summary>
+ <description>The OCI8 extension lets you access Oracle Database.
+
+Use &apos;pecl install oci8&apos; to install for PHP 8.2 and PHP 8.3.
+
+Use &apos;pecl install oci8-3.2.1&apos; to install for PHP 8.1.
+
+Use &apos;pecl install oci8-3.0.1&apos; to install for PHP 8.0.
+
+Use &apos;pecl install oci8-2.2.0&apos; to install for PHP 7.
+
+The current OCI8 extension can be linked with Oracle Client libraries from Oracle Database 11.2 or later.  (OCI8 3.0 and earlier can be linked with 10g or later).  The Oracle Client libraries are in the free Oracle Instant Client from https://www.oracle.com/database/technologies/instant-client.html.  They are also included in your database installation.
+
+Oracle&apos;s standard cross-version connectivity applies.  For example, PHP OCI8 linked with Oracle Client 19c can connect to Oracle Database 11.2 onward.  See Oracle&apos;s note &quot;Oracle Client / Server Interoperability Support&quot; (ID 207303.1) for details.</description>
+ <lead>
+  <name>Christopher Jones</name>
+  <user>sixd</user>
+  <email>sixd@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Tianfang Yang</name>
+  <user>tianfyan</user>
+  <email>tianfyan@php.net</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Antony Dovgal</name>
+  <user>tony2001</user>
+  <email>tony2001@php.net</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Wez Furlong</name>
+  <user>wez</user>
+  <email>wez@php.net</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Andi Gutmans</name>
+  <user>andi</user>
+  <email>andi@zend.com</email>
+  <active>no</active>
+ </lead>
+ <date>2024-07-24</date>
+ <time>23:16:51</time>
+ <version>
+  <release>3.4.0</release>
+  <api>3.4.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+This version has been tested with PHP 8.2 and PHP 8.3.
+
+Requires Oracle Client libraries from 11.2 or later.
+
+Added oci_pconnect() support for Oracle wallets
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="40025cc083185162f3a9531e9cff0af5" name="tests/array_bind_001.phpt" role="test" />
+   <file md5sum="8111328b7b7f1173f4205c5b6705573e" name="tests/array_bind_002.phpt" role="test" />
+   <file md5sum="72fd04524cad55d6d3014fca24a03df2" name="tests/array_bind_003.phpt" role="test" />
+   <file md5sum="c9bff5c0b668d634cd9069af599695e3" name="tests/array_bind_004.phpt" role="test" />
+   <file md5sum="22e1a831bd11f0c765da18f0752f4f7b" name="tests/array_bind_005.phpt" role="test" />
+   <file md5sum="5bfed8629cc77dcc795effbf6ba578ee" name="tests/array_bind_006.phpt" role="test" />
+   <file md5sum="ebb02f730d0f18956ccac258eefc2657" name="tests/array_bind_007.phpt" role="test" />
+   <file md5sum="79dcea8e2c18032a6fc314943c7dd49a" name="tests/array_bind_008.phpt" role="test" />
+   <file md5sum="d134b12e0984c56e9d406d23e2f3f318" name="tests/array_bind_009.phpt" role="test" />
+   <file md5sum="ae77585e919ad3becc61f048a6f4524b" name="tests/array_bind_010.phpt" role="test" />
+   <file md5sum="a8fe30f917461f95c0d0f31515ff5dcb" name="tests/array_bind_011.phpt" role="test" />
+   <file md5sum="0be34552cf4af55336e35faf0e8a141a" name="tests/array_bind_012.phpt" role="test" />
+   <file md5sum="72e9dcb345aa55ad7eba3d737a4260bd" name="tests/array_bind_013.phpt" role="test" />
+   <file md5sum="82fb96c692d6de9949f75595a2bb9641" name="tests/array_bind_014.phpt" role="test" />
+   <file md5sum="f6e11b2aab45ab0a013f1843e2f7a767" name="tests/array_bind_bdouble.phpt" role="test" />
+   <file md5sum="2b023d105333549aab09fcb1fa195fc4" name="tests/array_bind_bfloat.phpt" role="test" />
+   <file md5sum="bd146ed8d8f3facca719ee8e6f2c6d3d" name="tests/array_bind_date1.phpt" role="test" />
+   <file md5sum="70168c9ff897ffc8f1d7d7c424cabe53" name="tests/array_bind_date.phpt" role="test" />
+   <file md5sum="1fea376dca5cecf5e860851e27868872" name="tests/array_bind_float1.phpt" role="test" />
+   <file md5sum="e469a078aad56238d40df01bfc6ee7f7" name="tests/array_bind_float.phpt" role="test" />
+   <file md5sum="d1787e1e40a6a456460852f75519b6c6" name="tests/array_bind_int1.phpt" role="test" />
+   <file md5sum="116570047d2cd65aafcee57cb7ae7db0" name="tests/array_bind_int.phpt" role="test" />
+   <file md5sum="6227c3394f07636c2d4b5d103afdcf00" name="tests/array_bind_str1.phpt" role="test" />
+   <file md5sum="2d17c73f0d140dc1b85bb5ef994fdd53" name="tests/array_bind_str.phpt" role="test" />
+   <file md5sum="975420777ad25eefaf4edb3607fb21c8" name="tests/array_bind_uin.phpt" role="test" />
+   <file md5sum="89a6d7d5873283ea034d3aa8273df57e" name="tests/b47243_1.phpt" role="test" />
+   <file md5sum="b7051346aa6ab68ed2e5b671ed26b772" name="tests/b47243_2.phpt" role="test" />
+   <file md5sum="6ed33ec5f2897bc73f72fac5a2271734" name="tests/b47243_3.phpt" role="test" />
+   <file md5sum="0f08458627d50b3cf585074ef3710a94" name="tests/bind_boolean_1.phpt" role="test" />
+   <file md5sum="5c980393a365fb278267b93783c528dc" name="tests/bind_char_1.phpt" role="test" />
+   <file md5sum="67d7ddacab64450e0eb1d65e8d5929c3" name="tests/bind_char_2.phpt" role="test" />
+   <file md5sum="c33c05c07eef53eb25d2a81bb7f8ed0f" name="tests/bind_char_3.phpt" role="test" />
+   <file md5sum="bb7e5ee69f2d957f30f2d9acd7c41a3f" name="tests/bind_char_4.phpt" role="test" />
+   <file md5sum="d94331398e69ba8e3e0a59e45c48297f" name="tests/bind_empty.phpt" role="test" />
+   <file md5sum="2a973539c41ae20c9f8b2df3c403d7da" name="tests/bind_long.phpt" role="test" />
+   <file md5sum="f0d4418abdef5cd1580e23d1fb41115f" name="tests/bind_long_raw.phpt" role="test" />
+   <file md5sum="095593901bb846b78c0fed03d17cc6c4" name="tests/bind_misccoltypes_errs.phpt" role="test" />
+   <file md5sum="cbb1b8faf95cd4fb259f9da7e7697a86" name="tests/bind_misccoltypes_errs_21.phpt" role="test" />
+   <file md5sum="583b8aa641e3bda6eadcd4e0821cbc74" name="tests/bind_misccoltypes.phpt" role="test" />
+   <file md5sum="198cfceeae4bc0600f362a9c792eba5d" name="tests/bind_number.phpt" role="test" />
+   <file md5sum="18a50595d9c0b8c88968b0f3d82dab7d" name="tests/bind_number_21.phpt" role="test" />
+   <file md5sum="0e3daa6fe5c03643f16595298f128d25" name="tests/bind_query.phpt" role="test" />
+   <file md5sum="361ef9a673a5745e7537c5916f254d32" name="tests/bind_raw_2.phpt" role="test" />
+   <file md5sum="2e171edc0543f05e354d7eff973151c7" name="tests/bind_raw.phpt" role="test" />
+   <file md5sum="274aad6a1b646738e048ba32d60ed5e6" name="tests/bind_rowid.phpt" role="test" />
+   <file md5sum="0612842f5caa1fdc1e3c59ef864ebb5c" name="tests/bind_sqltafc.phpt" role="test" />
+   <file md5sum="e4bb1d2570e8a1f3653746a18ba33f4f" name="tests/bind_sqltchr_1.phpt" role="test" />
+   <file md5sum="99341d6a5bde7ec7bf28c6d5aa53e5e2" name="tests/bind_sqltchr_2.phpt" role="test" />
+   <file md5sum="7f69ba26ecf55403f6ef41f3eca7bd01" name="tests/bind_sqltint.phpt" role="test" />
+   <file md5sum="3e495d4a9af9a621b0574c0d736f76dd" name="tests/bind_sqltnum.phpt" role="test" />
+   <file md5sum="8688e82f82a552228b0ab5d07c7221e6" name="tests/bind_unsupported_1.phpt" role="test" />
+   <file md5sum="b0c53f986ca558e17be246c4573388e0" name="tests/bind_unsupported_2.phpt" role="test" />
+   <file md5sum="e942cb288c1c5635bbc19cf8d6514583" name="tests/bind_unsupported_3.phpt" role="test" />
+   <file md5sum="5bab0b5b76a5ae8908fe9a61bee6c7eb" name="tests/bug26133.phpt" role="test" />
+   <file md5sum="18bc2dba03754359962a0b32cb8dc5c2" name="tests/bug27303_1.phpt" role="test" />
+   <file md5sum="75b316a98a709f9456b357fdc2195f11" name="tests/bug27303_2.phpt" role="test" />
+   <file md5sum="2a7f41417290f89d7606870f8e83595c" name="tests/bug27303_3.phpt" role="test" />
+   <file md5sum="5a2b24d0ec32f7d8753b98a97feefe33" name="tests/bug27303_4.phpt" role="test" />
+   <file md5sum="104e79d9199e9f65d33995b0784d9d26" name="tests/bug32325.phpt" role="test" />
+   <file md5sum="b0e656b5fe7786a66a6ff3e6560cb66a" name="tests/bug35973.phpt" role="test" />
+   <file md5sum="fa4f953b5052dafb9754612605e8db2f" name="tests/bug36010.phpt" role="test" />
+   <file md5sum="3493b3a4a3616feeffc0e94503593463" name="tests/bug36096.phpt" role="test" />
+   <file md5sum="d30087e7d3a389925a04ad5f93d314a5" name="tests/bug36403.phpt" role="test" />
+   <file md5sum="cfdc02e05162118db14d769d48987ce1" name="tests/bug37220.phpt" role="test" />
+   <file md5sum="d120626060b7d897b280de2aab847cca" name="tests/bug37581.phpt" role="test" />
+   <file md5sum="5b70e789c3f39073a89e6ffa17a071f4" name="tests/bug38161.phpt" role="test" />
+   <file md5sum="236ab57f1d9cb9295a81ae1172463af2" name="tests/bug38173.phpt" role="test" />
+   <file md5sum="712fcee0199f1d3d59398f8fc30ac46f" name="tests/bug40078.phpt" role="test" />
+   <file md5sum="5d87d727f709b043202ccd1e2b713f9c" name="tests/bug40415.phpt" role="test" />
+   <file md5sum="19ffe02761d06aa0525c82a320c169ad" name="tests/bug41069.phpt" role="test" />
+   <file md5sum="6318c43f21125f0a6a2329d739e0f3c4" name="tests/bug42134.phpt" role="test" />
+   <file md5sum="3489bf955d4fc93c2f79485834080f6e" name="tests/bug42173.phpt" role="test" />
+   <file md5sum="1b1aa2bdf5c85f4371bfa041c930aed2" name="tests/bug42496_1.phpt" role="test" />
+   <file md5sum="1119d7aefadafde3f47614faa0d5486d" name="tests/bug42496_2.phpt" role="test" />
+   <file md5sum="e1ab774559c3cfd73550216924a2e745" name="tests/bug42841.phpt" role="test" />
+   <file md5sum="99e0e28acda3477fda1e8468e3241780" name="tests/bug43492_2.phpt" role="test" />
+   <file md5sum="306bfe17222bbbdfe3b5d260a11176e7" name="tests/bug43492.phpt" role="test" />
+   <file md5sum="00c380f99758e5abf6c6855b9bd1253e" name="tests/bug43497.phpt" role="test" />
+   <file md5sum="e1ad0685abbb7018b757dcf12d3cd5b2" name="tests/bug44008.phpt" role="test" />
+   <file md5sum="f52612ef941011a94a7796547e15b9b5" name="tests/bug44113.phpt" role="test" />
+   <file md5sum="fde625eadf8b1320ed1e682b9b0a6c7d" name="tests/bug44206.phpt" role="test" />
+   <file md5sum="142e3f2960a5a8f6e728f3d569102bc4" name="tests/bug45458.phpt" role="test" />
+   <file md5sum="604db50bd1a762be1f373116c4d722eb" name="tests/bug46994.phpt" role="test" />
+   <file md5sum="37230847efc7718012a9d91e11fe4050" name="tests/bug47189.phpt" role="test" />
+   <file md5sum="694601805d35d672608851493028c6db" name="tests/bug47281.phpt" role="test" />
+   <file md5sum="93ed7c185bb99aa8b0a2a7d9ef92d1c7" name="tests/bug47281_tt.phpt" role="test" />
+   <file md5sum="886703b3e47f3aab901b59cf22e7c93e" name="tests/bug51253.phpt" role="test" />
+   <file md5sum="d99536fcaf831fae680211e831ee14d1" name="tests/bug51291_1.phpt" role="test" />
+   <file md5sum="64e9e2a428aa0ebbadfe763452c11dd3" name="tests/bug51291_2.phpt" role="test" />
+   <file md5sum="812a398c77937df621e9283bfb90fc7f" name="tests/bug68298.phpt" role="test" />
+   <file md5sum="a6033aaa9b72c98e8511b4e6ac8a45fd" name="tests/bug70700.phpt" role="test" />
+   <file md5sum="c1e72adea09dca36df1eebe2aeea3915" name="tests/bug71148.phpt" role="test" />
+   <file md5sum="2fad7658eec7a709555d8fc851322f9c" name="tests/bug71422.phpt" role="test" />
+   <file md5sum="b1a40bc69c24e493afd38908909caab9" name="tests/bug71600.phpt" role="test" />
+   <file md5sum="0f255d17cf6f5f994b3fa83be6e82803" name="tests/bug72524.phpt" role="test" />
+   <file md5sum="3e7bdbceb65b1950141739ebb54a6983" name="tests/bug74625.phpt" role="test" />
+   <file md5sum="41a2507dbd0966aabdd0f68997d6cba8" name="tests/calltimeout1.phpt" role="test" />
+   <file md5sum="03e6d280eb4184ba95827fc8ad774f0d" name="tests/clientversion.phpt" role="test" />
+   <file md5sum="5bad06a4e4fca39075db4c565d1d64cd" name="tests/close.phpt" role="test" />
+   <file md5sum="911a9cc587ecdc8308f26ccdc2b90921" name="tests/coll_001.phpt" role="test" />
+   <file md5sum="36585bb75f58bce9752c9cbec02196ef" name="tests/coll_002_func.phpt" role="test" />
+   <file md5sum="8365331727e67cf039a5a335efd3aea4" name="tests/coll_002.phpt" role="test" />
+   <file md5sum="6479159fb1c1d042e801afe91cdb1de6" name="tests/coll_003_func.phpt" role="test" />
+   <file md5sum="4d8d0d4e0fb4c84ad8c903a978fee0a2" name="tests/coll_003.phpt" role="test" />
+   <file md5sum="72c6ebf9749a178b67cfc4ee09fa0cd4" name="tests/coll_004_func.phpt" role="test" />
+   <file md5sum="0c037f98cab2a464dff8c5f3efa301d7" name="tests/coll_004.phpt" role="test" />
+   <file md5sum="5d0c61db00b9161ce3b21463753983a9" name="tests/coll_009_func.phpt" role="test" />
+   <file md5sum="4e63d84ad3705a31daf2bb957c557cf3" name="tests/coll_009.phpt" role="test" />
+   <file md5sum="21e33be399d76782090abdaf2b2ae168" name="tests/coll_010_func.phpt" role="test" />
+   <file md5sum="40bee99eb8c8a1e0cf77fd02c1b8a738" name="tests/coll_010.phpt" role="test" />
+   <file md5sum="ecd6c8761d6849a022d6a9a3ebe66f92" name="tests/coll_011_func.phpt" role="test" />
+   <file md5sum="9da883cc3474cbb226b919f949277628" name="tests/coll_011.phpt" role="test" />
+   <file md5sum="3bd95a877c33b88e1d7efd4d0ae95278" name="tests/coll_012_func.phpt" role="test" />
+   <file md5sum="51c42b09b67acaa15a8eb86720ddb21e" name="tests/coll_012.phpt" role="test" />
+   <file md5sum="398bdcaa8f9c8350962eb6aef05d22d7" name="tests/coll_013_func.phpt" role="test" />
+   <file md5sum="d763c0209d0170d2c244bc5f5ffe0643" name="tests/coll_013.phpt" role="test" />
+   <file md5sum="5c93200692174c55f6bd31873aeb3176" name="tests/coll_014_func.phpt" role="test" />
+   <file md5sum="aefe12daa9e2dbf112f51016fe324c6b" name="tests/coll_014.phpt" role="test" />
+   <file md5sum="f82a5516efaf4e00d2fc0f64741c2a1d" name="tests/coll_015_func.phpt" role="test" />
+   <file md5sum="a3e2133930a6b86dc8336907e51d5e1b" name="tests/coll_015.phpt" role="test" />
+   <file md5sum="129f87b6ca918da0fb3aa4fe62a22720" name="tests/coll_016_func.phpt" role="test" />
+   <file md5sum="a77949def59afd91f68d6acd944a8611" name="tests/coll_016.phpt" role="test" />
+   <file md5sum="fe16fe48dfb29b6570ddcf6787502b80" name="tests/coll_017_func.phpt" role="test" />
+   <file md5sum="cf70a4dac22d3bd1f3f70df059ba7719" name="tests/coll_017.phpt" role="test" />
+   <file md5sum="ab939537f22daab2c3c2647f3f0627e3" name="tests/coll_018.phpt" role="test" />
+   <file md5sum="0e603d8fbb8c0ad11b13f55c4a33d4ad" name="tests/coll_019.phpt" role="test" />
+   <file md5sum="7d5677fc6b31b30dd5c8517098150bc8" name="tests/commit_001.phpt" role="test" />
+   <file md5sum="307a40bc548d08c856f446f26714fa62" name="tests/commit_002.phpt" role="test" />
+   <file md5sum="67285e31cff7a47e4cd911fdba0e6145" name="tests/CONFLICTS" role="test" />
+   <file md5sum="d97626c2c889fbe236e359836c86d9f7" name="tests/conn_attr_1.phpt" role="test" />
+   <file md5sum="a5d1669ba1c7f4186a8dfa3304201530" name="tests/conn_attr_2.phpt" role="test" />
+   <file md5sum="318c000f0a5bcf4b4e2d19acc69c1bf7" name="tests/conn_attr_3.phpt" role="test" />
+   <file md5sum="ed14622fcc80da18afe1cbe655c1078b" name="tests/conn_attr_4.phpt" role="test" />
+   <file md5sum="a5357abbd5f2efffedbda5b255a553a3" name="tests/conn_attr_5.phpt" role="test" />
+   <file md5sum="990a5dd754e99383fcfa457fa73be845" name="tests/conn_attr.inc" role="test" />
+   <file md5sum="5a3eef25d4c4e52bd927cbb25c19cc94" name="tests/connect_1.phpt" role="test" />
+   <file md5sum="10e5963ff34789bdc7b44b11a2743b66" name="tests/connect.inc" role="test" />
+   <file md5sum="f1428f23795de5f9260ce234c382c89d" name="tests/connect.phpt" role="test" />
+   <file md5sum="841338049fc1c8f8e3bfaf4a76a4e4a3" name="tests/connect_scope1.phpt" role="test" />
+   <file md5sum="473c4a04370996b9dc76fa657aa9b4ef" name="tests/connect_scope2.phpt" role="test" />
+   <file md5sum="5e5e0131d128ad032f0cd23469415601" name="tests/connect_scope_try1.phpt" role="test" />
+   <file md5sum="afe649c1756a6275c3a0e65259ecebbf" name="tests/connect_scope_try2.phpt" role="test" />
+   <file md5sum="37b56573cf7556015f940441fc7f19aa" name="tests/connect_scope_try3.phpt" role="test" />
+   <file md5sum="a85011831a811e3a647e018f0d5a8730" name="tests/connect_scope_try4.phpt" role="test" />
+   <file md5sum="6d686da75b614184e68e968e816e1a01" name="tests/connect_scope_try5.phpt" role="test" />
+   <file md5sum="05602f7a6f0a982e636ea8deb4e284fb" name="tests/connect_scope_try6.phpt" role="test" />
+   <file md5sum="941870b14e2c3709163dbbc65347765d" name="tests/connect_with_charset_001.phpt" role="test" />
+   <file md5sum="5aa76a2cad3532965ed7929b0a4e288e" name="tests/connect_without_oracle_home_11.phpt" role="test" />
+   <file md5sum="9106d42664c5b178e3fc7cfb7e22e0c6" name="tests/connect_without_oracle_home.phpt" role="test" />
+   <file md5sum="8e3a144f03f0bc271de5a33c5f6ce4c8" name="tests/create_table.inc" role="test" />
+   <file md5sum="6368f85b9fb6332b620cdfb7b9465462" name="tests/create_type.inc" role="test" />
+   <file md5sum="58823d38688f06fd2a59e53c69aa289f" name="tests/cursor_bind_err.phpt" role="test" />
+   <file md5sum="86320f217210577ff3b28864135e179b" name="tests/cursor_bind.phpt" role="test" />
+   <file md5sum="3a57147efa43a3581100e0e60868a15f" name="tests/cursors.phpt" role="test" />
+   <file md5sum="1a2ec41b8a8b507254e0c81af78817ac" name="tests/dbmsoutput.phpt" role="test" />
+   <file md5sum="ad1863cd58c40bcdc2330e76d7fbdf20" name="tests/db_op_1.phpt" role="test" />
+   <file md5sum="e82b90679eabf90b6be236fb83abf820" name="tests/db_op_2.phpt" role="test" />
+   <file md5sum="5140241e3d350c3aaa8755532f9c6629" name="tests/default_prefetch0.phpt" role="test" />
+   <file md5sum="445820d7d0f7bae98c7e1d1d161e6b86" name="tests/default_prefetch1.phpt" role="test" />
+   <file md5sum="d3800aba362540fa42e21d84ad883406" name="tests/default_prefetch2.phpt" role="test" />
+   <file md5sum="dbe53884ce6dc1a833c34b1bf1d41319" name="tests/define0.phpt" role="test" />
+   <file md5sum="28d2ff4e5fe96d7c3c85a202cc74cbe6" name="tests/define1.phpt" role="test" />
+   <file md5sum="e60f50b0c8ec7b3ba88f3ee6706b028e" name="tests/define2.phpt" role="test" />
+   <file md5sum="ea415b15a6604ae416e2cfb9cd9c7284" name="tests/define3.phpt" role="test" />
+   <file md5sum="67282f58bc7467e0c8c8c4c729b70e6b" name="tests/define4.phpt" role="test" />
+   <file md5sum="ea7f81d3bfc2fc3844a6c191ce53537b" name="tests/define5.phpt" role="test" />
+   <file md5sum="be4dc59e1c259925617ad982553a347c" name="tests/define6.phpt" role="test" />
+   <file md5sum="c9829f280bdebbc55c1db402f450d796" name="tests/define.phpt" role="test" />
+   <file md5sum="a75a1f1db0f4e63f13cf1d068676bf83" name="tests/descriptors.phpt" role="test" />
+   <file md5sum="717ac78756a9c8e67ed0340c406c8e28" name="tests/details.inc" role="test" />
+   <file md5sum="ce3794a0a33b8fc304cb5f021a715752" name="tests/drcp_cclass1.phpt" role="test" />
+   <file md5sum="d3bfca06014140b6ddd1748f6d8aaa29" name="tests/drcp_characterset.phpt" role="test" />
+   <file md5sum="781cf9b1c27859fa8d03f5540229e684" name="tests/drcp_conn_close1.phpt" role="test" />
+   <file md5sum="e95b993edb8ca6883ea24acf504ba7b5" name="tests/drcp_conn_close2.phpt" role="test" />
+   <file md5sum="8b752494cdfab2b1b7ee96b2cafef807" name="tests/drcp_connect1.phpt" role="test" />
+   <file md5sum="b697fdde63922f9b04c4f4f916fb79e4" name="tests/drcp_connection_class.phpt" role="test" />
+   <file md5sum="92ea8542a24eeac267bf9bfe6cc9844a" name="tests/drcp_functions.inc" role="test" />
+   <file md5sum="1e72d2c77d6fe42281c96f14f87225dd" name="tests/drcp_newconnect.phpt" role="test" />
+   <file md5sum="6439962144212a5a4badaf16671c0694" name="tests/drcp_pconn_close1.phpt" role="test" />
+   <file md5sum="add4d47d15c5f9c0a4c40553e544d220" name="tests/drcp_pconn_close2.phpt" role="test" />
+   <file md5sum="a43783c2210fe48f6e024d6d22bfa9f2" name="tests/drcp_privileged.phpt" role="test" />
+   <file md5sum="76a71952e1753e5e79df6d3f9488e226" name="tests/drcp_scope1.phpt" role="test" />
+   <file md5sum="7e44850d43b56b919193009190efe211" name="tests/drcp_scope2.phpt" role="test" />
+   <file md5sum="64bb2924f10b74cb75aeb563924cb20a" name="tests/drcp_scope3.phpt" role="test" />
+   <file md5sum="2a1cec194caa6a7ca9f7926fe23bda15" name="tests/drcp_scope4.phpt" role="test" />
+   <file md5sum="5d4702b73f3eedcd0aac8197a07b5434" name="tests/drcp_scope5.phpt" role="test" />
+   <file md5sum="86ddab03d3eb11a0429b3245ae43d5f2" name="tests/driver_name_11gR2.phpt" role="test" />
+   <file md5sum="e5bc5b82bbe3f10fea8bde16f19c229b" name="tests/driver_name.phpt" role="test" />
+   <file md5sum="361bca071e7b6979b617c47f93866d02" name="tests/drop_table.inc" role="test" />
+   <file md5sum="c317d89d5fa689cefbbe13b1defc1bb8" name="tests/drop_type.inc" role="test" />
+   <file md5sum="50f583a39e6f4fbf5273d141893126c6" name="tests/dupcolnames.phpt" role="test" />
+   <file md5sum="c24667026f2395db5a08212fad405d7d" name="tests/edition_1.phpt" role="test" />
+   <file md5sum="5a58ee2cae6e68270e03b5e74dfc2d99" name="tests/edition_2.phpt" role="test" />
+   <file md5sum="f6803468a7d31da38c69b411717ca6bc" name="tests/error1.phpt" role="test" />
+   <file md5sum="c7f3acd855df5af5c1540098160c0017" name="tests/error2.phpt" role="test" />
+   <file md5sum="f2f9ab6f40dc190c41a812bb2385e2c5" name="tests/error3.phpt" role="test" />
+   <file md5sum="3f6b3c3b32552d0bc0b6fe3ada8f3498" name="tests/error_bind_2.phpt" role="test" />
+   <file md5sum="bff7901e61f36a24d4538948a402d290" name="tests/error_bind_3.phpt" role="test" />
+   <file md5sum="b84414f8268ed8dfd83268407c71775a" name="tests/error_bind.phpt" role="test" />
+   <file md5sum="5dd6afc2a4e50a16aaec9700635be19e" name="tests/error_parse.phpt" role="test" />
+   <file md5sum="f4ac1dbff6d3de9fd343fffe9e5f5da0" name="tests/error.phpt" role="test" />
+   <file md5sum="ad1e0d87dd06ef482a2ab8be6efe40ee" name="tests/error_set.phpt" role="test" />
+   <file md5sum="3cdc0eb6c71ca5f2619161d3389fd295" name="tests/exec_fetch.phpt" role="test" />
+   <file md5sum="dc70712383897ea4ad09144b26797c6a" name="tests/execute_mode.phpt" role="test" />
+   <file md5sum="9012e49d3902d87c0b6cdbd6718d36fb" name="tests/existence_aliases.phpt" role="test" />
+   <file md5sum="19bc42acba8cec0cc1e739faf5140e2f" name="tests/extauth_01.phpt" role="test" />
+   <file md5sum="e788c829c560c5e61b2d23d935487e3f" name="tests/extauth_02.phpt" role="test" />
+   <file md5sum="30a1bef93c80a8d90843297ca431c916" name="tests/extauth_03.phpt" role="test" />
+   <file md5sum="24a82b551f358c9777b09cb55e126e63" name="tests/extauth_04.phpt" role="test" />
+   <file md5sum="503a035d59a809b2e780dd244b14d6e6" name="tests/fetch_all1.phpt" role="test" />
+   <file md5sum="00668188e73bbeb36db01262586a0d36" name="tests/fetch_all2.phpt" role="test" />
+   <file md5sum="83fe25d5b3c11fff0f1a69351042e7f7" name="tests/fetch_all3.phpt" role="test" />
+   <file md5sum="771ffc38b30a4b821619356da07db375" name="tests/fetch_all4.phpt" role="test" />
+   <file md5sum="09d21afed44200b7d982e789cc53c0f4" name="tests/fetch_all5.phpt" role="test" />
+   <file md5sum="465cfc5889a975d87c9144561dd35e2b" name="tests/fetch_array.phpt" role="test" />
+   <file md5sum="00dfac58c95cd0fd708fa3aab3bcab67" name="tests/fetch_assoc.phpt" role="test" />
+   <file md5sum="a47b92d2d1bc819085284a66a9340eb2" name="tests/fetch_object_1.phpt" role="test" />
+   <file md5sum="aaf3b9bceea568d28a962bde67a74680" name="tests/fetch_object_2.phpt" role="test" />
+   <file md5sum="e765e24cfffc39712391f23d58951e67" name="tests/fetch_object.phpt" role="test" />
+   <file md5sum="d070627eea764f58a9c625680f1ad632" name="tests/fetch.phpt" role="test" />
+   <file md5sum="f60639936d8b91f03cd97c34ab012e03" name="tests/fetch_row.phpt" role="test" />
+   <file md5sum="debb8f2100f8cb28b84dac6ee64d1919" name="tests/field_funcs1.phpt" role="test" />
+   <file md5sum="06525d192a98a745ed5d19072fe99433" name="tests/field_funcs2.phpt" role="test" />
+   <file md5sum="366548ccbb9073da83e9f3c341682d67" name="tests/field_funcs3.phpt" role="test" />
+   <file md5sum="f92f66f89dcc2f707c7312f0bef06067" name="tests/field_funcs.phpt" role="test" />
+   <file md5sum="c4b7e5753acac8005ea82bb5ac3a1c06" name="tests/imp_res_1.phpt" role="test" />
+   <file md5sum="3382bdacdec76803d0316726c58a4ba8" name="tests/imp_res_2.phpt" role="test" />
+   <file md5sum="f261acef9796f94934bdb375c4d1689c" name="tests/imp_res_3.phpt" role="test" />
+   <file md5sum="637dd4767b5fb47c92340fd5352697e8" name="tests/imp_res_4.phpt" role="test" />
+   <file md5sum="7cb20228bbcea1ff5f3afc02541bbfa4" name="tests/imp_res_5.phpt" role="test" />
+   <file md5sum="d686400465d6a88025c27a806070744d" name="tests/imp_res_6.phpt" role="test" />
+   <file md5sum="7b4539f8309d629efe0d2207487b827c" name="tests/imp_res_7.phpt" role="test" />
+   <file md5sum="23d759bb362efe90e9ad4ce614b861ed" name="tests/imp_res_call_error.phpt" role="test" />
+   <file md5sum="7d23908ceb1df32caa460abd36603284" name="tests/imp_res_cancel.phpt" role="test" />
+   <file md5sum="3ca9d0b249bd465957a08be5184f17da" name="tests/imp_res_close.phpt" role="test" />
+   <file md5sum="a110f5e2a555e45a80941543f41b9877" name="tests/imp_res_cursor.phpt" role="test" />
+   <file md5sum="3f0ec645b477e679fa15e6350b5e6980" name="tests/imp_res_dbmsoutput.phpt" role="test" />
+   <file md5sum="80913a7b3560b843f0209b6775c17c62" name="tests/imp_res_field.phpt" role="test" />
+   <file md5sum="1a244f7b0bad8ea192db46e7b2d9fc7e" name="tests/imp_res_func_error.phpt" role="test" />
+   <file md5sum="e058a75d22eedc9749808ef32f09a702" name="tests/imp_res_get_1.phpt" role="test" />
+   <file md5sum="67bead4b05a1ee3c76ae4882f4a1953c" name="tests/imp_res_get_2.phpt" role="test" />
+   <file md5sum="3e15425735941b1e834aeb48bcf1c918" name="tests/imp_res_get_3.phpt" role="test" />
+   <file md5sum="a40eb10c68383b8489524d20d3b33c80" name="tests/imp_res_get_4.phpt" role="test" />
+   <file md5sum="139f6f7352650116b9ec4d57fe152226" name="tests/imp_res_get_5.phpt" role="test" />
+   <file md5sum="3da31e20de556bc0fe7701f880df67cb" name="tests/imp_res_get_all.phpt" role="test" />
+   <file md5sum="257fdc478f280919656f060adcb05ec5" name="tests/imp_res_get_cancel.phpt" role="test" />
+   <file md5sum="501090800817a4c7b99468f356297aad" name="tests/imp_res_get_close_1.phpt" role="test" />
+   <file md5sum="b06bfae65badf550e53859e83a203484" name="tests/imp_res_get_close_2.phpt" role="test" />
+   <file md5sum="8b634c29d00503edfe83935b01461f51" name="tests/imp_res_get_close_3.phpt" role="test" />
+   <file md5sum="98d8236a7af7323decb5e6c27d679151" name="tests/imp_res_get_cursor.phpt" role="test" />
+   <file md5sum="64aeccc9ece52db846f091a815513e49" name="tests/imp_res_get_dbmsoutput.phpt" role="test" />
+   <file md5sum="0e9564dcd28ce02c7dc171b8f808b447" name="tests/imp_res_get_exec.phpt" role="test" />
+   <file md5sum="581c93dbbe691e14392ff57f3f950e18" name="tests/imp_res_get_none.phpt" role="test" />
+   <file md5sum="ab55c2fe964509da9964a39b1229c48d" name="tests/imp_res_insert.phpt" role="test" />
+   <file md5sum="475cb82ed4c46b2fbbe00d26582268c5" name="tests/imp_res_lob.phpt" role="test" />
+   <file md5sum="af18e284cd44661fb8699a2cd5bfba10" name="tests/imp_res_prefetch.phpt" role="test" />
+   <file md5sum="bf452e3a3182d565c0d00616552e12fc" name="tests/ini_1.phpt" role="test" />
+   <file md5sum="92268f6182be79c76cbacfb85eae7d54" name="tests/lob_001.phpt" role="test" />
+   <file md5sum="35d14a7b1780fd876d6b57f378683fb7" name="tests/lob_002.phpt" role="test" />
+   <file md5sum="705f789970fde63d4f320843e1eedba9" name="tests/lob_003.phpt" role="test" />
+   <file md5sum="5d8a115534c1474f995da888c39d80d2" name="tests/lob_004.phpt" role="test" />
+   <file md5sum="1faf18dd6e09ce84746b082d200ec22c" name="tests/lob_005.phpt" role="test" />
+   <file md5sum="b4e0370f6a146205dd360fc20c73f584" name="tests/lob_006.phpt" role="test" />
+   <file md5sum="ba28635cbf23a4c139467518867f7b39" name="tests/lob_007.phpt" role="test" />
+   <file md5sum="d4031dc34b36c0932db1a7e129e52e09" name="tests/lob_008.phpt" role="test" />
+   <file md5sum="287613347e1290c0c2601e058e25430a" name="tests/lob_009.phpt" role="test" />
+   <file md5sum="e613dce0280f649e03b3d55697acfe81" name="tests/lob_009.txt" role="test" />
+   <file md5sum="40952b59150f0f4b4a8cd2f2d051e26d" name="tests/lob_010.phpt" role="test" />
+   <file md5sum="e08a8560c23788a35ac83a1c472b4f34" name="tests/lob_011.phpt" role="test" />
+   <file md5sum="26fd3e0454c983d875b6c8dc9b45b9e5" name="tests/lob_012.phpt" role="test" />
+   <file md5sum="18e8d40647124c859a1e02f7504f7a68" name="tests/lob_013.phpt" role="test" />
+   <file md5sum="681b771d2d0fb0a460f839a795674b20" name="tests/lob_014.phpt" role="test" />
+   <file md5sum="2fec993e6b224344c62f41cd16b647f7" name="tests/lob_016.phpt" role="test" />
+   <file md5sum="54a8ef18eacc4af523c830e7ea7a5506" name="tests/lob_017.phpt" role="test" />
+   <file md5sum="c04db030c3d47b7e2bc68d2c246b5650" name="tests/lob_018.phpt" role="test" />
+   <file md5sum="5b17c6824f68dddb6fe4a99d2ecefebd" name="tests/lob_019.phpt" role="test" />
+   <file md5sum="b5ec749605693d0e029e8d42c9dca7ed" name="tests/lob_020.phpt" role="test" />
+   <file md5sum="e5255f4dcf450036533e164666015f14" name="tests/lob_021.phpt" role="test" />
+   <file md5sum="228ad83713689175c8a6f922ccfa07e5" name="tests/lob_022.phpt" role="test" />
+   <file md5sum="87482791a37ef58e7b9b776d0332d9ea" name="tests/lob_023.phpt" role="test" />
+   <file md5sum="ab807a96df6816f0234900a1d226def0" name="tests/lob_024.phpt" role="test" />
+   <file md5sum="3c061db948f8f7ae4997e21ab9e1bf1d" name="tests/lob_025.phpt" role="test" />
+   <file md5sum="a09560e5eeaf5782cc3c02cc2f3e7c73" name="tests/lob_026.phpt" role="test" />
+   <file md5sum="c50a79d1d38e27bc1c69f999db7b2048" name="tests/lob_027.phpt" role="test" />
+   <file md5sum="926f4fd04c5046849f05e2b30d7fccde" name="tests/lob_028.phpt" role="test" />
+   <file md5sum="f8816129cb93f25ba1f63e17167cd548" name="tests/lob_029.phpt" role="test" />
+   <file md5sum="b2ee0834a966fbaefe3b9e1bfdcdb9ea" name="tests/lob_030.phpt" role="test" />
+   <file md5sum="36a198ff13e9e5c23a781c4ed589d99a" name="tests/lob_031.phpt" role="test" />
+   <file md5sum="efb8741b9ad1ca58cfbd83773411a3ec" name="tests/lob_032.phpt" role="test" />
+   <file md5sum="45877766344ce61bb5eac03fa881d650" name="tests/lob_033.phpt" role="test" />
+   <file md5sum="185fc9e6c58f4715a1d3e744be530d97" name="tests/lob_034.phpt" role="test" />
+   <file md5sum="95161938f68809e9c331b7293de15fce" name="tests/lob_035.phpt" role="test" />
+   <file md5sum="71a46596b359ed1733b32a001e81678c" name="tests/lob_036.phpt" role="test" />
+   <file md5sum="0d570ff2b2a22eeef9f692224d7e5ab4" name="tests/lob_037.phpt" role="test" />
+   <file md5sum="9b41e3089921caef7b71bcf49b8adead" name="tests/lob_038.phpt" role="test" />
+   <file md5sum="016cab1871e66787da2908b1b6e64bd4" name="tests/lob_039.phpt" role="test" />
+   <file md5sum="d1800ad6f3f0dc7024ed337c9b92cf57" name="tests/lob_040.phpt" role="test" />
+   <file md5sum="69f07fb33555388a70778dc196c63460" name="tests/lob_041.phpt" role="test" />
+   <file md5sum="a3dd1af89c4b5cc2290526bff6fdaa24" name="tests/lob_042.phpt" role="test" />
+   <file md5sum="24f9f8f3c68123cdc8096cc19cbc811c" name="tests/lob_043.phpt" role="test" />
+   <file md5sum="54ff6de9fc2177ece966b0b080c1898e" name="tests/lob_044.phpt" role="test" />
+   <file md5sum="163cc121021b4923760e9e7ef8629d3a" name="tests/lob_aliases.phpt" role="test" />
+   <file md5sum="0a7d946a3fafb89df264f5cb0c39d67c" name="tests/lob_null.phpt" role="test" />
+   <file md5sum="3ced9ba78cbe4066780c59395d8bca1a" name="tests/lob_prefetch_ini.phpt" role="test" />
+   <file md5sum="d37dc2430d4b50ab72af1a33d71b9dbc" name="tests/lob_prefetch.phpt" role="test" />
+   <file md5sum="d4ce4859617150539fd2f6767f574c34" name="tests/lob_temp1.phpt" role="test" />
+   <file md5sum="89a1e7f661e46f632b527ccb2f05b025" name="tests/lob_temp2.phpt" role="test" />
+   <file md5sum="2b8bdeb66289dda168abae679c740b95" name="tests/lob_temp.phpt" role="test" />
+   <file md5sum="abec1e55278b81f574dfcaec7447c082" name="tests/minfo.phpt" role="test" />
+   <file md5sum="147384ed0b26ebf737cfa393eaccefcd" name="tests/null_byte_1.phpt" role="test" />
+   <file md5sum="83001eedbfc76818853a58a8f9cb979f" name="tests/null_byte_2.phpt" role="test" />
+   <file md5sum="3b537f89205d4504c8ccd17016ebd95a" name="tests/null_byte_3.phpt" role="test" />
+   <file md5sum="2c91d964f02a67890db0a269cd3a446b" name="tests/num.phpt" role="test" />
+   <file md5sum="76c131366d8d392a9a49a65b5f0b6332" name="tests/oci_execute_segfault.phpt" role="test" />
+   <file md5sum="23da03fa9518b5c628f043437c749f5c" name="tests/old_oci_close1.phpt" role="test" />
+   <file md5sum="555c3cf028869fdb634836b461da3bb1" name="tests/old_oci_close.phpt" role="test" />
+   <file md5sum="04b9ef0f3c81bc254af905752003bc11" name="tests/password_2.phpt" role="test" />
+   <file md5sum="5146fe19ae46032d8df3aedc4a787ba9" name="tests/password_new.phpt" role="test" />
+   <file md5sum="3a78d0d32e10944b2035cf5e9ef54561" name="tests/password.phpt" role="test" />
+   <file md5sum="96dd5e8fc1f71dc9889bb67a37fecfbe" name="tests/pecl_bug10194_blob_64.phpt" role="test" />
+   <file md5sum="5f152600a14cf9419764fc0ca4342b5f" name="tests/pecl_bug10194_blob.phpt" role="test" />
+   <file md5sum="cb6186b24ba826c8b03b8131e1eeacac" name="tests/pecl_bug10194.phpt" role="test" />
+   <file md5sum="b61d4c6eb27ce2f5dd873edf134a6b0c" name="tests/pecl_bug16035.phpt" role="test" />
+   <file md5sum="d18fe8e5be0dc7795b6bf74958677faa" name="tests/pecl_bug16842.phpt" role="test" />
+   <file md5sum="3ac7c4e23a066e28c95f794531626694" name="tests/pecl_bug6109.phpt" role="test" />
+   <file md5sum="3ea3cfdb72daa230f7bdd25217f9ef4e" name="tests/pecl_bug8816.phpt" role="test" />
+   <file md5sum="013d8bb2f07037356e81d507738af812" name="tests/persistent.phpt" role="test" />
+   <file md5sum="e6628db7e2dfe3752252253a00b5e415" name="tests/prefetch.phpt" role="test" />
+   <file md5sum="cd99440a857eb3ecbb2b9e69911d8add" name="tests/privileged_connect1.phpt" role="test" />
+   <file md5sum="0c5ea01ddc3058bf13037fb433b182ca" name="tests/privileged_connect.phpt" role="test" />
+   <file md5sum="dc89cd8e92c61bd80839bcf9aa49b43b" name="tests/refcur_prefetch_1.phpt" role="test" />
+   <file md5sum="d5927810a756e8afb816e2099e043262" name="tests/refcur_prefetch_2.phpt" role="test" />
+   <file md5sum="58c7e1187b6e99dfbe1d9a92b5dcfd85" name="tests/refcur_prefetch_3.phpt" role="test" />
+   <file md5sum="e3179224e5f4378bd0a3a407af19fca4" name="tests/refcur_prefetch_4.phpt" role="test" />
+   <file md5sum="4556890207f5b10061ea6b4fa82580c3" name="tests/select_null.phpt" role="test" />
+   <file md5sum="f3e08cf200eb401e986075455152e3bc" name="tests/serverversion.phpt" role="test" />
+   <file md5sum="914dc1adbdefd8d95a5c34ae8de0980d" name="tests/skipif.inc" role="test" />
+   <file md5sum="db85cda9a8ccdc6fe67fc57aaece60c9" name="tests/statement_cache.phpt" role="test" />
+   <file md5sum="df0ef4ae74a0452cc2594e43918aa9f5" name="tests/statement_type.phpt" role="test" />
+   <file md5sum="614fcbba1effb7caa27ef0ef25c27fcf" name="tests/test.gif" role="test" />
+   <file md5sum="8ed01d80caf71c6755de5ef086d4d137" name="tests/testping.phpt" role="test" />
+   <file md5sum="5c7c34abf7ea51936785062dbfcaeddc" name="tests/test.txt" role="test" />
+   <file md5sum="7e8b6d1f36695b06ff6188039f3f3603" name="tests/uncommitted.phpt" role="test" />
+   <file md5sum="6f5565849a5e4148b582d56839ad4973" name="tests/xmltype_01.phpt" role="test" />
+   <file md5sum="6f8a534a23500361fd436ad7d1e411d5" name="tests/xmltype_02.phpt" role="test" />
+   <file md5sum="e931545e9b7d6251649570bae392c926" name="config.m4" role="src" />
+   <file md5sum="3cf37e01ba4b65f55447c5f42bf20bb8" name="config.w32" role="src" />
+   <file md5sum="b6d668627d963205c96ed7ecdbf7a1a2" name="CREDITS" role="doc" />
+   <file md5sum="fd469cce1a919f0cc95bab7afb28d19d" name="LICENSE" role="doc" />
+   <file md5sum="68cf53fb4a5f25cea7fbbd4861e4a6e0" name="oci8.c" role="src" />
+   <file md5sum="7cd09abda650fdbb67092108bed1cddf" name="oci8_dtrace.d" role="src" />
+   <file md5sum="34b1100782c70c416f93b018d30931e0" name="oci8_collection.c" role="src" />
+   <file md5sum="bc89eadd72c7c91687c5c9f84e5a19f6" name="oci8_interface.c" role="src" />
+   <file md5sum="efceba041fd5c1e74f9a41c9dd35258d" name="oci8_lob.c" role="src" />
+   <file md5sum="ac7823ad12555e2821fed3b6e6f6a22e" name="oci8_statement.c" role="src" />
+   <file md5sum="76db5e0fe96786db645f6badf174218a" name="oci8_failover.c" role="src" />
+   <file md5sum="0b25720fc454b34314a17b8b696747f7" name="php_oci8.h" role="src" />
+   <file md5sum="c2f52ead888f871bc7a63fded64ac3f1" name="php_oci8_int.h" role="src" />
+   <file md5sum="4a02b12779920408eb37a682dbfa7bbd" name="oci8.stub.php" role="src" />
+   <file md5sum="5ad5dbfcdfb812dbb6f2bf5e831399b2" name="oci8_arginfo.h" role="src" />
+   <file md5sum="27a0d00e55d1d21357fff599a03456f0" name="oci8.ini" role="doc" />
+   <file md5sum="6d8ca7e9805325e6785691a8baa68d9d" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>oci8</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="with-oci8" prompt="Please provide the path to the ORACLE_HOME directory. Use &apos;instantclient,/path/to/instant/client/lib&apos; if you&apos;re compiling with Oracle Instant Client" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <version>
+    <release>3.3.0</release>
+    <api>3.3.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 8.2 only.
+
+Requires Oracle Client libraries from 11.2 or later.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.2.1</release>
+    <api>3.2.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 8.1 only.
+
+Requires Oracle Client libraries from 11.2 or later.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.2.0</release>
+    <api>3.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 8.1 only.
+
+Added oci8.prefetch_lob_size directive and oci_set_prefetch_lob() function to improve LOB query performance.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.1.0</release>
+    <api>3.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 8.0 only.
+
+Deprecated directive oci8.old_oci_close_semantics
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.1</release>
+    <api>3.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 8.0 only.
+
+Updated Windows build environment to build with newer Oracle Client libraries. (cmb)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>3.0.0</release>
+    <api>3.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 8.0 only.
+
+Deprecated old OCI8 function aliases. (Jens de Nies)
+
+Removed obsolete no-op function oci_internal_debug(). (Jens de Nies)
+
+The OCI-Lob class is now called OCILob for standards compliance.
+
+The OCI-Collection class is now called OCICollection for standards compliance.
+
+Generate arginfo from function stubs. (Jens de Nies)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.2.0</release>
+    <api>2.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 7 only.
+Added oci_set_call_timeout() for call timeouts. (Requires Oracle client libraries 18c or later)
+Added oci_set_db_operation() for the Oracle Database &apos;DBOP&apos; end-to-end-tracing attribute. (Requires Oracle 12.2 or later)
+Fixed bug #76804 (oci_pconnect with OCI_CRED_EXT not working). (KoenigsKind)
+Fixed installation on PHP 7.3.
+Internal change: Convert some parameter parsing to the Fast Parameter Parsing API.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.8</release>
+    <api>2.1.8</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 7 only.
+Fixed reference counting and memory issues. (Dmitry, Tianfang)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.7</release>
+    <api>2.1.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 7 only.
+Added oci_unregister_taf_callback()
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.6</release>
+    <api>2.1.6</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 7 only.
+Fixed bug #74625 (Integer overflow in oci_bind_array_by_name). (Ingmar Runge)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.5</release>
+    <api>2.1.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 7 only.
+Added TAF callback support (PR #2459, KoenigsKind)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.4</release>
+    <api>2.1.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 7 only.
+Fixed uninitialized data causing random crash
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.3</release>
+    <api>2.1.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 7 only.
+Fixed bug #71148 (Bind reference overwritten on PHP 7)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.2</release>
+    <api>2.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 7 only.
+Fixed invalid handle error with Implicit Result Sets
+Fixed bug #72524 (Binding null values triggers ORA-24816 error)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.1</release>
+    <api>2.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 7 only.
+Fixed bug #71600 (oci_fetch_all segfaults when selecting more than 8 columns)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.1.0</release>
+    <api>2.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This version is for PHP 7 only.
+Updated driver name format.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.10</release>
+    <api>2.0.10</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bug #68298 (OCI int overflow)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.9</release>
+    <api>2.0.9</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed oci_field_* reflection: $field can be a column name or index
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.8</release>
+    <api>2.0.8</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Enhancement - Improve performance of multi-row OCI_RETURN_LOB queries (Bug #66875)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.7</release>
+    <api>2.0.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added oci_bind_by_name() support for PL/SQL BOOLEAN type
+Build change: Fix source variable definition for C89 compatibility
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.6</release>
+    <api>2.0.6</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added a LICENSE file to make it easier for PECL binary distributions
+to conform with the license.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.5</release>
+    <api>2.0.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Bump PHP OCI8 2.0 minimum requirements to PHP 5.2 and Oracle client
+library 10.2.  (Use OCI8 1.4 for older PHP version support or if only
+Oracle 9.2 client libraries are available.)
+
+Re-enable php_oci8.dll and php_oci8_11g.dll for Windows builds so URL
+links work in the new Windows PECL infrastructure.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.4</release>
+    <api>2.0.4</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fix persistent memory usage with --enable-dtrace
+Export get_module() for Windows php_oci8_12c.dll
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.3</release>
+    <api>2.0.3</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Add the oci_set_client_identifier() value and statement structure pointer to several DTrace probes.
+Use &apos;phpoci&apos; as the DTrace provider name since uniqueness is required by the Linux fasttrap module.
+Update Windows builds to create only php_oci8_12c.dll.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.2</release>
+    <api>2.0.2</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Review and improve error handling code and data types.
+Fix oci_set_*($connection, ...) error handling so oci_error($connection) works.
+Add DTrace oci8-connection-close probe
+Add the connection handle to several DTrace probes.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.1</release>
+    <api>2.0.1</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed --enable-maintainer-zts mode.
+Allow Implicit Result Set statement resources to inherit the parent&apos;s current prefetch count.
+Allow OCI8 to be DTrace-enabled independently from core PHP.
+Require OCI8 to be configured &apos;shared&apos; when enabling DTrace support.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>devel</release>
+    <api>devel</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+- NEW FUNCTIONALITY:
+
+  - Added Implicit Result Set support for Oracle Database 12c.
+    Streaming of all IRS&apos;s returned from a PL/SQL block is available
+    via oci_fetch_array, oci_fetch_assoc, oci_fetch_object and
+    oci_fetch_row (but not oci_fetch or oci_fetch_all).
+    Alternatively individual IRS statement resources can be obtained
+    with the new function &apos;oci_get_implicit_resultset&apos; and passed to
+    any oci_fetch_* function.
+
+  - Added DTrace probes enabled with PHP&apos;s generic --enable-dtrace
+
+- IMPROVED FUNCTIONALITY:
+
+  - Using &apos;oci_execute($s, OCI_NO_AUTO_COMMIT)&apos; for a SELECT no
+    longer unnecessarily initiates an internal ROLLBACK during
+    connection close.  This can improve overall scalability by
+    reducing &quot;round trips&quot; between PHP and the database.
+
+- CHANGED FUNCTIONALITY:
+
+  - PHPINFO() CHANGES:
+
+    - The oci8.event and oci8.connection_class values are now shown
+      only when the Oracle client libraries support the respective
+      functionality.
+
+    - Connection statistics are now in a separate phpinfo() table.
+
+    - Temporary LOB and Collection support status lines in
+      phpinfo() were removed.  These features have always been
+      enabled since 2007.
+
+  - OCI_INTERNAL_DEBUG() CHANGES:
+
+    - The oci_internal_debug() function is now a no-op.  Use PHP&apos;s
+      --enable-dtrace functionality with DTrace or SystemTap instead.
+
+- INTERNAL CHANGES:
+
+  - Fixed a potential NULL pointer dereference flagged by Parfait
+    static code analysis.
+
+  - Extended testing of existing OCI8 functionality.
+
+  - Improved test output portability when using the PHP development
+    web server to run tests.
+
+  - Removed no-longer necessary Unicode patterns from tests
+    (vestiges of PHP&apos;s previous PHP 6 project)
+
+  - Improved build portability by removing compilation type cast
+    warnings with some compilers.
+
+  - Fixed compilation warnings when building with Oracle 9.2
+    client libraries.
+
+  - Updated code to use internal macro PHP_OCI_REGISTER_RESOURCE.
+
+  - Regularized code prototypes and fixed some in-line documentation
+    prototypes.
+
+  - Fixed code folding.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.10</release>
+    <api>1.4.10</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Bump PECL package info version check to allow PECL installs with PHP 5.5+
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.9</release>
+    <api>1.4.9</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Re-fixed bug #60901 (Improve &quot;tail&quot; syntax for AIX installation)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.8</release>
+    <api>1.4.8</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bug #63307 (Unused variable in oci8.c)
+Fixed bug #63265 (Add ORA-00028 to the PHP_OCI_HANDLE_ERROR macro)
+Fixed bug #60901 (Improve &quot;tail&quot; syntax for AIX installation)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.7</release>
+    <api>1.4.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bug #59985 (show normal warning text for OCI_NO_DATA)
+Fixed OCI8 part of bug #55748 (CVE-2011-4153: multiple NULL pointer dereferences with zend_strndup)
+Fixed OCI8 part of bug #55301 (multiple null pointer dereferences with calloc)
+Increased maximum Oracle error message buffer length for new Oracle 11.2.0.3 size
+Improve internal initialization failure error messages
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.6</release>
+    <api>1.4.6</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added oci_client_version() returning the run time Oracle client library version
+Made OCI8 extension buildable with PHP 5.4-development code
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.5</release>
+    <api>1.4.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Protect against null bytes in LOB filenames (http://news.php.net/php.internals/50202)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.4</release>
+    <api>1.4.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bug #53284 (Valgrind warnings in oci_set_* functions)
+Enhancement - improve startup failure error messages
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.3</release>
+    <api>1.4.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bug #51610 (Using oci_connect causes PHP to take a long time to exit). Requires Oracle 11.2.0.2 client libraries (or Oracle bug fix 9891199) for this patch to have an effect.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.2</release>
+    <api>1.4.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bug #52186 (phpinfo() shows 10.1 or 11.1 when installed with ORACLE_HOME 10.2 or 11.2)
+Fixed bug #51691 (Unnecessary realloc causes crashes in PHP trunk tests with interned strings)
+Fixed bug #51577 (Uninitialized memory reference with oci_bind_array_by_name)
+Fixed bug #51291 (oci_error doesn&apos;t report last error when called two times)
+
+OCI8 1.4.2 is included in PHP 5.3.3
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.1</release>
+    <api>1.4.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bug #49560 (Using LOBs causes slow PHP shutdown)
+Fixed bug #47281 ($php_errormsg is limited in size of characters)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.4.0</release>
+    <api>1.4.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+1. Introduce connection attribute functions:
+
+     oci_set_module_name
+     oci_set_action
+     oci_set_client_info
+     oci_set_client_identifier
+
+   These set values that are visible/used by the database.  They
+   are useful for tracing, authentication and auditing.
+
+2. Introduce connection attribute function:
+
+     oci_set_edition
+
+   Oracle 11g R2 &quot;editions&quot; allow multiple versions of DB objects
+   to exist at one time.  By setting different editions, two
+   different versions of an application can run concurrently,
+   making upgrading easier and faster.
+
+3. Set the DRIVER_NAME attribute of Oracle Database 11gR2
+   connections to aid application tracing.  The value used is to
+   &quot;PHP OCI8&quot; followed by the OCI8 version number.  Note the
+   version number may get truncated in DB views such as
+   v$session_connect_info.
+
+4. Allow the oci_set_prefetch value to be 0.  This is important in
+   some cases using REF CURSORS in Oracle 11gR2.
+
+5. Introduce OCI_NO_AUTO_COMMIT as an alias for the OCI_DEFAULT
+   constant (which is not the default value) used by oci_execute().
+
+6. Generate an error if an invalid resource type is used in
+   oci_bind_by_name
+
+7. Bug fixes:
+   PECL bug #16842 (oci_error returns false when NO_DATA_FOUND is raised)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.3.5</release>
+    <api>1.3.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bug #47243 (Crash at end of request shutdown on Windows)
+Fixed bug #46994 (CLOB size does not update when using CLOB IN OUT param in stored procedure)
+Fixed bug #46623 (phpinfo doesn&apos;t show compile time ORACLE_HOME with phpize)
+Fixed bug #45458 (Numeric keys for associative arrays are not handled properly) Note: not fixed when building with PHP 4 due to lack of PHP internal helper.
+Fixed PECL bug #16035 (oci_connect without ORACLE_HOME defined causes segfault)
+Fixed PECL bug #15988 (sqlnet.ora isn&apos;t read with older Oracle libraries)
+Fixed PECL bug #14268 (Allow &quot;pecl install oci8&quot; command to &quot;autodetect&quot; an Instant Client RPM install)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.3.4</release>
+    <api>1.3.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Enhancement - Allow External Authentication (not supported on Windows)
+Enhancement - Reflection will show function and method arguments with PHP 5.x
+Increase default oci8.default_prefetch from 10 to 100
+Correctly define SQLT_BDOUBLE and SQLT_BFLOAT constants with Oracle 10g ORACLE_HOME builds
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.3.3</release>
+    <api>1.3.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Changed OCI NLS initialization for consistency and technical correctness
+Removed obsolete macros
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.3.2</release>
+    <api>1.3.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Refine DRCP connection pooling functionality
+Do scope-end release for oci_pconnect (oci8.old_oci_close_semantics=1 gives old behavior)
+Fixed bug #44372 (compilation with Oracle 10gR1 libraries)
+Fixed PECL bug #12431 (PEAR install using x86_64 RPM builds)
+Allow builds with PHP 4.3.9 onwards
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.3.1</release>
+    <api>1.3.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed bug #44113 (New collection creation can fail with OCI-22303)
+Fixed bug #42841 (Crash with REF CURSORS when statement caching enabled)
+Fixed bug #42496 (Cursor leak selecting LOBs
+Fixed bug #43497 (Temporary LOB leak)
+Fixed PECL bug #12431 (ping functionality is broken)
+Allow compilation with 64bit Instant Client RPMs
+Allow -with-oci8=instantclient with no directory specified look for RPM install
+Refine DRCP functionality
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.3.0</release>
+    <api>1.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added DRCP and FAN support.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.5</release>
+    <api>1.2.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This release is based on the OCI8 included in PHP 5.2.6, with the addition of the fix for  http://pecl.php.net/bugs/bug.php?id=13523.
+--------
+Fixed bug #42496 (cursor leak selecting LOBs http://bugs.php.net/bug.php?id=42496
+Fixed bug #42841 (crash with REF CURSORS when statement caching enabled) http://bugs.php.net/bug.php?id=42841
+Fixed bug #43497 (Temporary LOB leak) http://bugs.php.net/bug.php?id=43497
+Fixed bug #44206 (OCI8 selecting ref cursors leads to ORA-1000 maximum open cursors reached).
+Fixed bug #44008 (OCI8 incorrect usage of OCI-Lob-&gt;close crashes PHP).
+Fixed bug #44113 (new collection creation can fail with OCI-22303) http://bugs.php.net/bug.php?id=44113
+Enhancement - make -with-oci8=instantclient with no directory specified look for RPM install
+Enhancement - compile with 64bit Instant Client RPMs (bug http://bugs.php.net/bug.php?id=41941, http://pecl.php.net/bugs/bug.php?id=13523)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.4</release>
+    <api>1.2.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed PECL bug #10194 (crash in Oracle client when memory limit reached in the callback)
+Fixed bug #42173 (oci_field_type fixes for INTERVAL and TIMESTAMP types)
+Fixed bug #42134 (oci_error() returns false after oci_new_collection() fails)
+Fixed bug #41917 (oci_field_precision and oci_field_scale datatypes fixed)
+Fixed bug #41711 (Null temporary lobs not supported)
+Fixed bug #41594 (Statement cache is flushed too frequently)
+Fixed bug #40415 (oci_fetch_all and nested cursors, allocate descriptors dynamically)
+Fixed segfault on rebinding and re-executing a statement with LOBs.
+Fixed compile failure in ZTS mode when collections support is missing.
+Allowed statement cache size to be set for non-persistent connections.
+Improved oci_password_change() to close persistent connections on shutdown (to update hashed connection details)
+Changed oci_pconnect() to behave like oci_connect() when SYSDBA and SYSOPER privileges are used.
+Various minor improvements.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.3</release>
+    <api>1.2.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2007-01-25</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed possible segfault in ZTS mode when statements containing sub-statements are destroyed in wrong order.
+Fixed bug #40078 (ORA-01405 when fetching NULL values using oci_bind_array_by_name()).
+Fixed bug #39988 (type argument of oci_define_by_name() is ignored).
+Fixed bug #39732 (oci_bind_array_by_name doesn&apos;t work on Solaris 64bit).
+Fixed PECL bug #8816 (issue in php_oci_statement_fetch with more than one piecewise column).
+Various minor improvements.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.2</release>
+    <api>1.2.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2006-08-24</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Reimplemented oci_lob_read() utilities using patch from Massimo Squillace (msquillace at sogei dot it), which should fix Unicode LOB problems.
+Fixed bug #38161 (oci_bind_by_name() returns garbage when Oracle didn&apos;t set the variable)
+Fixed bug #38173 (Freeing nested cursors causes OCI8 to segfault)
+Fixed bug #37886 (oci_connect may crash when charset parameter is given)
+Fixed bug #37931 (possible crash after database restart when using persistent connections)
+Fixed bug #37531 (oci8 persistent connection corruption)
+Fixed bug #37487 (oci_fetch_array() array-type should always default to OCI_BOTH)
+Fixed bug #37392 (Unnecessary call to OCITransRollback() at the end of request)
+Fixed bug #35973 (Error ORA-24806 occurs when trying to fetch a NCLOB field)
+Fixed bug #34005 (oci_password_change() fails). Patch by pholdaway at technocom-wireless dot com.
+Fixed PECL bug #8112 (Persistent connections misbehave when Apache process times out)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.1</release>
+    <api>1.2.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2006-05-02</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Added support for BINARY_DOUBLE and BINARY_FLOAT (see #36764)
+Changed oci_field_type() to return VARCHAR2 instead of VARCHAR (according to feature request #36800)
+Fixed bug #37059 (oci_bind_by_name() doesn&apos;t support RAW and LONG RAW fields)
+Fixed bug #37055 (incorrect reference counting for persistent OCI8 connections)
+Fixed bug #36934 (OCILob-&gt;read() doesn&apos;t move internal pointer when reading 0&apos;s)
+Fixed bug #36851 (Documentation and code discrepancies for NULL data)
+Fixed bug #36820 (Privileged connection with an Oracle password file fails)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.2.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2006-03-16</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Changed OCI8 code to use OCIServerVersion() instead of OCIPing(), which may crash Oracle server of version &lt; 10.2
+Fixed bug #36235 (ocicolumnname returns false before a successful fetch)
+Fixed bug #36096 (oci_result() returns garbage after oci_fetch() failed)
+Fixed bug #36055 (possible OCI8 crash in multithreaded environment)
+Fixed bug #36010 (Segfault when re-creating and re-executing statements with bound parameters)
+Fixed PECL bug #5571 (oci_new_connect() not closed by oci_close())
+Fixed bug #33383 (crash when retrieving empty BLOBs)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1.1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-09-22</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+Fixed segfault when binding empty values.
+Fixed problem with oci_error() without arguments.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.1</release>
+    <api>1.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2005-09-07</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+This release fixes a huge amount of bugs and adds support of
+statement caching, external credentials etc.
+See official announce for details.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2004-03-19</date>
+   <license uri="http://www.php.net/license">PHP</license>
+   <notes>
+package.xml added to support installation using pear installer
+   </notes>
+  </release>
+ </changelog>
+</package>
