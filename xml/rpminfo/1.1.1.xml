@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.15" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>rpminfo</name>
+ <channel>pecl.php.net</channel>
+ <summary>RPM information</summary>
+ <description>Retrieve RPM information using librpm, from local RPM file or from installed packages database.
+
+Documentation: https://www.php.net/rpminfo</description>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2024-09-03</date>
+ <time>13:12:08</time>
+ <version>
+  <release>1.1.1</release>
+  <api>1.1.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+ <notes>
+- display author and license in phpinfo
+- drop support for librpm &lt; 4.13
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="68906a068fb25ce5ecfbe9dec3791c27" name="examples/repomanage.php" role="doc" />
+   <file md5sum="e90d03f47ea41348b4958058f56ba717" name="examples/rpmvercmp.php" role="doc" />
+   <file md5sum="16bc5cf093521b11f75a7f7c643a74b3" name="examples/librpm.php" role="doc" />
+   <file md5sum="e0de7f6bae298c9debeec55218bc19a0" name="tests/001-presence.phpt" role="test" />
+   <file md5sum="4b58df5b37bfd297872314fb3378aff4" name="tests/002-rpmvercmp.phpt" role="test" />
+   <file md5sum="bc00fa0a7def5adb19e626264335b029" name="tests/003-rpminfo.phpt" role="test" />
+   <file md5sum="375f7f5909d5a9d2ebd780a6b0a44870" name="tests/004-constants.phpt" role="test" />
+   <file md5sum="1c99a8f81bf3ba265dd9efe5215c91fa" name="tests/005-rpminfo-full.phpt" role="test" />
+   <file md5sum="bf0a5085380f39e0aae6173e8bc5524e" name="tests/006-rpminfo-errors.phpt" role="test" />
+   <file md5sum="f34aed15e417022f37cbb5a2b57c5265" name="tests/007-rpmdbinfo.phpt" role="test" />
+   <file md5sum="8bd7128d636b6edcf9630805a7495117" name="tests/008-rpmdbsearch.phpt" role="test" />
+   <file md5sum="12bad4eec4c509ed2176c071558cc9c3" name="tests/009-rpmdbinfo2.phpt" role="test" />
+   <file md5sum="648d9d22d89faa4b23c309098c0c36f5" name="tests/011-rpmvercmp_error8.phpt" role="test" />
+   <file md5sum="52ea90e0ce7a9c292200afacf8b7b905" name="tests/012-rpmaddtag.phpt" role="test" />
+   <file md5sum="ce71496d047883b8ea5286bd50324f91" name="tests/013-rpmdbsearch-error.phpt" role="test" />
+   <file md5sum="7a028c26ac26feb3175134b011e41555" name="tests/014-stream.phpt" role="test" />
+   <file md5sum="25cdcc8e43bfea2af890751a990404be" name="tests/bidon.rpm" role="test" />
+   <file md5sum="e8cf0e7631e3e55fb41b25bc971220da" name="tests/bidon-src.rpm" role="test" />
+   <file md5sum="f54cb3ce82cb457c55b5f0f1e8898b51" name="config.m4" role="src" />
+   <file md5sum="76691f67c4f5f5a71e935c9141334e3a" name="php_rpminfo.h" role="src" />
+   <file md5sum="e9e67aeeb337990aae1ce5f161ee5bbc" name="rpminfo.c" role="src" />
+   <file md5sum="f62ff80cb5bd7b04ac33179577a88f12" name="rpminfo.stub.php" role="src" />
+   <file md5sum="1e17cf3655df5e4f4c71715f2fd0c233" name="rpminfo_arginfo.h" role="src" />
+   <file md5sum="520a7cfc1720f637ceca27e76ce9f1e3" name="CREDITS" role="doc" />
+   <file md5sum="c0af599f66d0461c5837c695fcbc5c1e" name="LICENSE" role="doc" />
+   <file md5sum="805a5a6f07613ab477f3109a8fce0e7f" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>rpminfo</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2023-11-10</date>
+   <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+   <notes>
+- check open_basedir restriction
+- new function: rpmgetsymlink(string $path, string $name): ?string
+   </notes>
+  </release>
+  <release>
+   <date>2023-10-13</date>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+   <notes>
+- fix stack smashing on 32-bit
+- allow retrieval of hardlink content
+   </notes>
+  </release>
+  <release>
+   <date>2023-10-12</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+   <notes>
+- implement rpm stream wrapper with librpm &gt;= 4.13
+   </notes>
+  </release>
+  <release>
+   <date>2023-09-26</date>
+   <version>
+    <release>0.7.0</release>
+    <api>0.7.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+   <notes>
+- add optional operator to rpmcmpver for consistency with version_compare
+- drop support for PHP 7
+   </notes>
+  </release>
+  <release>
+   <date>2021-06-18</date>
+   <version>
+    <release>0.6.0</release>
+    <api>0.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+   <notes>
+- generate arginfo from stub and add missing default values
+- raise dependency on PHP 7.2
+- raise exception on bad parameter value with PHP 8
+   </notes>
+  </release>
+  <release>
+   <date>2020-09-23</date>
+   <version>
+    <release>0.5.1</release>
+    <api>0.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- split tests for PHP 7/8
+- improve librpm example
+   </notes>
+  </release>
+  <release>
+   <date>2020-04-07</date>
+   <version>
+    <release>0.5.0</release>
+    <api>0.5.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- add rpmaddtag() function
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-25</date>
+   <version>
+    <release>0.4.2</release>
+    <api>0.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- improve reflection with better parameter names
+- speed optimization: open DB only once per request
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-18</date>
+   <version>
+    <release>0.4.1</release>
+    <api>0.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- fix build with RPM 4.12 (Fedora 21-22 only)
+- add type hinting in reflection
+- return NULL instead of FALSE on failure
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-13</date>
+   <version>
+    <release>0.4.0</release>
+    <api>0.4.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- improve search logic, use index when exists and no search mode
+- add &apos;full&apos; parameter to rpmdbsearch
+- allow &apos;rpmdbinfo&apos; to search on NEVR (instead of name only)
+- first &quot;stable&quot; release
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-12</date>
+   <version>
+    <release>0.3.1</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- allow search by Pkgid, Hdrid, Installtid with specific input
+- fix search with various other tags (Version, ...)
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-12</date>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- add rpmdbsearch function to search packages using
+  name, installed files, requires, provides...
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-11</date>
+   <version>
+    <release>0.2.3</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- fix gh#2 free allocated iterators to avoid &quot;DB2053 Freeing read locks...&quot; messages
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-11</date>
+   <version>
+    <release>0.2.2</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- Fix gh#1 rpmvercmp() incorrect comparison result
+   </notes>
+  </release>
+  <release>
+   <date>2018-02-12</date>
+   <version>
+    <release>0.2.1</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- add summary in minimal information set
+- retrieve array from metadata
+- add RPMSENSE_* macros
+   </notes>
+  </release>
+  <release>
+   <date>2018-02-08</date>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- new function:
+  array rpmdbinfo(string name [, bool full]);
+   </notes>
+  </release>
+  <release>
+   <date>2018-02-08</date>
+   <version>
+    <release>0.1.3dev</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- first pecl release
+- rpminfo(): add option to retrieve error message instead of raising a warning
+   </notes>
+  </release>
+  <release>
+   <date>2018-01-26</date>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- fix segfault in ZTS mode
+- define RPMVERSION constant
+   </notes>
+  </release>
+  <release>
+   <date>2018-01-26</date>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license>PHP 3.01</license>
+   <notes>
+- first release with 2 functions:
+  int rpmvercmp(string evr1, string evr2);
+  array rpminfo(string path [, bool full]);
+   </notes>
+  </release>
+ </changelog>
+</package>
