@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.15" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>xpass</name>
+ <channel>pecl.php.net</channel>
+ <summary>Extended password extension</summary>
+ <description>This extension provides password hashing algorithms used by Linux
+distributions, using extended crypt library (libxcrypt):
+
+* sha512 provided for legacy as used on some old distributions
+* yescrypt used on modern distributions</description>
+ <lead>
+  <name>Remi Collet</name>
+  <user>remi</user>
+  <email>remi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2024-09-13</date>
+ <time>12:27:05</time>
+ <version>
+  <release>1.1.0RC1</release>
+  <api>1.1.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+ <notes>
+- add crypt_gensalt(?string $prefix = null, int $count = 0): ?string {}
+- add crypt_preferred_method(): ?string {}
+- add crypt_checksalt(string $salt): int {}
+- add CRYPT_PREFIX_* and CRYPT_SALT_* constants
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="ae60ba8517195e92595ba21f20a1798b" name="tests/crypt_checksalt.phpt" role="test" />
+   <file md5sum="7aacd0abca2e3db04be91f3d75279791" name="tests/crypt_gensalt.phpt" role="test" />
+   <file md5sum="05605f804e1eb4535ead95cb4886bb9b" name="tests/crypt_preferred_method.phpt" role="test" />
+   <file md5sum="76b9c761a7a6774d4053b116b0ff766a" name="tests/password_compat.phpt" role="test" />
+   <file md5sum="0dcf6d6f3b4c3fa152ef29c7e5a07674" name="tests/sha512.phpt" role="test" />
+   <file md5sum="5493dbe7166ade5d9c3db6d15a306b9a" name="tests/xpass.phpt" role="test" />
+   <file md5sum="066145c1dbf6d9a171ae0cc36f716a8b" name="tests/yescrypt.phpt" role="test" />
+   <file md5sum="f5bcd07e97a0c5e6bae640cffebac2d7" name="config.m4" role="src" />
+   <file md5sum="737c06228bf73f2a2b3528df87580e10" name="php_xpass.h" role="src" />
+   <file md5sum="920652bdd75168900313551423671eb5" name="xpass.c" role="src" />
+   <file md5sum="675388cf3ffa63c924045c78eae52b6c" name="xpass.stub.php" role="src" />
+   <file md5sum="409a52040c063db5838f10f1d8bd6ed7" name="xpass_arginfo.h" role="src" />
+   <file md5sum="889e5d5866dc6c4b3a8874dc351e6425" name="CREDITS" role="doc" />
+   <file md5sum="c0af599f66d0461c5837c695fcbc5c1e" name="LICENSE" role="doc" />
+   <file md5sum="52a7d6e04b5a1e823ae087016115b749" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>xpass</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2024-09-09</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+   <notes>
+- first GA release
+   </notes>
+  </release>
+  <release>
+   <date>2024-09-02</date>
+   <version>
+    <release>1.0.0RC2</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+   <notes>
+- fix libxcrypt algorithm detection (@zeriyoshi)
+   </notes>
+  </release>
+  <release>
+   <date>2024-08-28</date>
+   <version>
+    <release>1.0.0RC1</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license filesource="LICENSE" uri="https://www.php.net/license/3_01.txt">PHP-3.01</license>
+   <notes>
+- first RC release
+   </notes>
+  </release>
+ </changelog>
+</package>
