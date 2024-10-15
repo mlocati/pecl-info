@@ -53,7 +53,7 @@
                 <div class="float-right">
                   <b-button
                     v-bind:href="
-                      'https://pecl.php.net/package-changelog.php?package=' + selectedPackage.name
+                      `https://pecl.php.net/package-changelog.php?package=${selectedPackage.name}`
                     "
                     size="sm"
                     variant="info"
@@ -62,32 +62,24 @@
                   &nbsp;
                   <b-button
                     v-bind:href="
-                      'https://pecl.php.net/package/' + selectedPackage.name
+                      `https://pecl.php.net/package/${selectedPackage.name}`
                     "
                     size="sm"
                     variant="primary"
                     >More details</b-button
                   >
+                </div>
               </div>
             </b-alert>
-            <b-alert
-              v-if="
-                !selectedPackage.phpv ||
-                  selectedPackage.phpv.length === 0 ||
-                  !selectedPackage.confopts ||
-                  selectedPackage.confopts.length === 0
-              "
-              show
-              variant="warning"
-            >
-              No versions available
-            </b-alert>
-            <b-card
-              v-if="selectedPackage.phpv && selectedPackage.phpv.length"
-              header="PHP Versions"
-              class="mb-2"
-            >
-              <table class="table table-striped">
+            <b-card header="PHP Versions" class="mb-2">
+              <b-alert
+                v-if="!selectedPackage.phpv || !selectedPackage.phpv.length"
+                show
+                variant="warning"
+              >
+                No data available
+              </b-alert>
+              <table v-else class="table table-striped">
                 <thead>
                   <tr>
                     <th>Package versions</th>
@@ -105,12 +97,17 @@
                 </tbody>
               </table>
             </b-card>
-            <b-card
-              v-if="selectedPackage.confopts && selectedPackage.confopts.length"
-              header="Configure Options"
-              class="mb-2"
-            >
-              <table class="table table-striped">
+            <b-card header="Configure Options" class="mb-2">
+              <b-alert
+                v-if="
+                  !selectedPackage.confopts || !selectedPackage.confopts.length
+                "
+                show
+                variant="warning"
+              >
+                No data available
+              </b-alert>
+              <table v-else class="table table-striped">
                 <thead>
                   <tr>
                     <th>Package versions</th>
@@ -122,6 +119,33 @@
                     v-for="co in selectedPackage.confopts"
                     v-bind:key="selectedPackage.name + '@' + co.v.join(',')"
                     v-bind:data="co"
+                    v-bind:compact-versions="compactVersions"
+                  />
+                </tbody>
+              </table>
+            </b-card>
+            <b-card header="Required Packages" class="mb-2">
+              <b-alert
+                v-if="
+                  !selectedPackage.reqpkgs || !selectedPackage.reqpkgs.length
+                "
+                show
+                variant="warning"
+              >
+                No data available
+              </b-alert>
+              <table v-else class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Package versions</th>
+                    <th>Required package</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <view-required-packages
+                    v-for="rp in selectedPackage.reqpkgs"
+                    v-bind:key="selectedPackage.name + '@' + rp.name"
+                    v-bind:data="rp"
                     v-bind:compact-versions="compactVersions"
                   />
                 </tbody>
@@ -140,12 +164,14 @@ import VueBootstrapTypeahead from "vue-bootstrap-typeahead";
 import { getSummary, PackageSummary } from "./Summary";
 import ViewPhpVersions from "./components/ViewPhpVersions.vue";
 import ViewConfigureOptions from "./components/ViewConfigureOptions.vue";
+import ViewRequiredPackages from "./components/ViewRequiredPackages.vue";
 
 @Component({
   components: {
     VueBootstrapTypeahead,
     ViewPhpVersions,
-    ViewConfigureOptions
+    ViewConfigureOptions,
+    ViewRequiredPackages
   }
 })
 export default class App extends Vue {

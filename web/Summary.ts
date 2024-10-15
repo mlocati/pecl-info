@@ -17,6 +17,19 @@ export interface CompatibleConfigureOptions {
   readonly opts?: ReadonlyArray<ConfigureOption>;
 }
 
+interface RequiredPackage {
+  readonly n: string;
+  readonly m?: string;
+  readonly M?: string;
+  readonly x?: ReadonlyArray<string>;
+  readonly u?: string;
+}
+
+export interface CompatibleRequiredPackages {
+  readonly v: ReadonlyArray<string>;
+  readonly pkgs?: ReadonlyArray<RequiredPackage>;
+}
+
 export interface PackageSummary {
   readonly name: string;
   readonly license: string;
@@ -24,6 +37,7 @@ export interface PackageSummary {
   readonly description: string;
   readonly phpv?: ReadonlyArray<CompatiblePHPVersions>;
   readonly confopts?: ReadonlyArray<CompatibleConfigureOptions>;
+  readonly reqpkgs?: ReadonlyArray<CompatibleRequiredPackages>;
 }
 
 let data: ReadonlyArray<PackageSummary> | undefined;

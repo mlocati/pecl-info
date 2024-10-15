@@ -27,7 +27,7 @@ import { CompatibleConfigureOptions } from "../Summary";
 @Component
 export default class ViewConfigureOptions extends Vue {
   @Prop() private data!: CompatibleConfigureOptions;
-  @Prop() private compactVersions! : boolean;
+  @Prop() private compactVersions!: boolean;
   private get versionDescription(): string {
     if (!this.compactVersions) {
       return this.data.v.join(", ");
