@@ -4,17 +4,17 @@ declare(strict_types=1);
 namespace PeclInfo\Summary\Package;
 
 use JsonSerializable;
-use PeclInfo\Pecl\Package\Version\ConfigureOption;
 use PeclInfo\Pecl\Package\Version\Details;
+use PeclInfo\Pecl\Package\Version\RequiredPackage;
 use PeclInfo\Pecl\VersionComparer;
 use RuntimeException;
 
-class CompatibleConfigureOptions implements JsonSerializable
+class CompatibleRequiredPackages implements JsonSerializable
 {
     /**
-     * @var \PeclInfo\Pecl\Package\Version\ConfigureOption[]
+     * @var \PeclInfo\Pecl\Package\Version\RequiredPackage[]
      */
-    private array $configureOptions = [];
+    private array $requiredPackages = [];
 
     /**
      * @var string[]
@@ -22,19 +22,19 @@ class CompatibleConfigureOptions implements JsonSerializable
     private array $versions = [];
 
     /**
-     * @param \PeclInfo\Pecl\Package\Version\ConfigureOption[] $configureOptions
+     * @param \PeclInfo\Pecl\Package\Version\RequiredPackage[] $requiredPackages
      */
-    public function __construct(array $configureOptions)
+    public function __construct(array $requiredPackages)
     {
-        $this->configureOptions = $configureOptions;
+        $this->requiredPackages = $requiredPackages;
     }
 
     /**
-     * @return \PeclInfo\Pecl\Package\Version\ConfigureOption[]
+     * @return \PeclInfo\Pecl\Package\Version\RequiredPackage[]
      */
-    public function getConfigureOptions(): array
+    public function getRequiredPackages(): array
     {
-        return $this->configureOptions;
+        return $this->requiredPackages;
     }
 
     /**
@@ -61,9 +61,9 @@ class CompatibleConfigureOptions implements JsonSerializable
         return $this->versions;
     }
 
-    public function isCompatibleWith(Details $details): bool
+    public function isCompatibleWith(Details $info): bool
     {
-        return json_encode($this->getConfigureOptions()) === json_encode($details->getConfigureOptions());
+        return json_encode($this->getRequiredPackages()) === json_encode($info->getRequiredPackages());
     }
 
     /**
@@ -77,9 +77,9 @@ class CompatibleConfigureOptions implements JsonSerializable
             'v' => $this->getVersions(),
         ];
 
-        $configureOptions = $this->getConfigureOptions();
-        if ($configureOptions !== []) {
-            $result['opts'] = $configureOptions;
+        $requiredPackages = $this->getRequiredPackages();
+        if ($requiredPackages !== []) {
+            $result['pkgs'] = $requiredPackages;
         }
 
         return $result;
@@ -96,18 +96,18 @@ class CompatibleConfigureOptions implements JsonSerializable
         if (!is_array($versions) || $versions === []) {
             throw new RuntimeException('Missing/invalid versions key for ' . __CLASS__);
         }
-        $serializedConfigureOptions = $value['opts'] ?? [];
-        if (!is_array($serializedConfigureOptions)) {
-            throw new RuntimeException('Missing/invalid configure options key for ' . __CLASS__);
+        $serializedRequiredPackages = $value['pkgs'] ?? [];
+        if (!is_array($serializedRequiredPackages)) {
+            throw new RuntimeException('Missing/invalid required packages key for ' . __CLASS__);
         }
-        $configureOptions = [];
-        foreach ($serializedConfigureOptions as $serializedConfigureOption) {
-            if (!is_array($serializedConfigureOption)) {
-                throw new RuntimeException('Missing/invalid configure options key for ' . __CLASS__);
+        $requiredPackages = [];
+        foreach ($serializedRequiredPackages as $serializedRequiredPackage) {
+            if (!is_array($serializedRequiredPackage)) {
+                throw new RuntimeException('Missing/invalid required packages key for ' . __CLASS__);
             }
-            $configureOptions[] = ConfigureOption::fromJSON($serializedConfigureOption);
+            $requiredPackages[] = RequiredPackage::fromJSON($serializedRequiredPackage);
         }
-        $result = new static($configureOptions);
+        $result = new static($requiredPackages);
         foreach ($versions as $version) {
             if (!is_string($version) || $version === '') {
                 throw new RuntimeException('Missing/invalid versions key for ' . __CLASS__);

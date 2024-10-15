@@ -15,6 +15,7 @@ use PeclInfo\Summary;
 use PeclInfo\Summary\Package;
 use PeclInfo\Summary\Package\CompatibleConfigureOptions;
 use PeclInfo\Summary\Package\CompatiblePHPVersions;
+use PeclInfo\Summary\Package\CompatibleRequiredPackages;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
@@ -222,6 +223,7 @@ class Update extends Command
         $callback(null);
         $currentCompatiblePHPVersions = null;
         $currentCompatibleConfigureOptions = null;
+        $currentCompatibleRequiredPackages = null;
         foreach ($packageVersions as $packageVersion) {
             $callback($packageVersion);
             $detailsFetcher = new PackageVersionDetailsFetcher($packageVersion);
@@ -236,6 +238,11 @@ class Update extends Command
                 $package->addCompatibleConfigureOptions($currentCompatibleConfigureOptions);
             }
             $currentCompatibleConfigureOptions->addVersion($packageVersion->getVersion());
+            if ($currentCompatibleRequiredPackages === null || !$currentCompatibleRequiredPackages->isCompatibleWith($details)) {
+                $currentCompatibleRequiredPackages = new CompatibleRequiredPackages($details->getRequiredPackages());
+                $package->addCompatibleRequiredPackages($currentCompatibleRequiredPackages);
+            }
+            $currentCompatibleRequiredPackages->addVersion($packageVersion->getVersion());
         }
         $summary->setPackage($package);
     }

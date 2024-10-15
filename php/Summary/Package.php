@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace PeclInfo\Summary;
 
 use JsonSerializable;
+use PeclInfo\Pecl\Package\Details;
 use PeclInfo\Summary\Package\CompatibleConfigureOptions;
 use PeclInfo\Summary\Package\CompatiblePHPVersions;
+use PeclInfo\Summary\Package\CompatibleRequiredPackages;
 use RuntimeException;
-use PeclInfo\Pecl\Package\Details;
 
 class Package implements JsonSerializable
 {
@@ -23,6 +24,11 @@ class Package implements JsonSerializable
      * @var \PeclInfo\Summary\Package\CompatibleConfigureOptions[]
      */
     private $compatibleConfigureOptions = [];
+
+    /**
+     * @var \PeclInfo\Summary\Package\CompatibleRequiredPackages[]
+     */
+    private $compatibleRequiredPackages = [];
 
     public function __construct(Details $details)
     {
@@ -71,6 +77,24 @@ class Package implements JsonSerializable
     }
 
     /**
+     * @return \PeclInfo\Summary\Package\CompatibleRequiredPackages[]
+     */
+    public function getCompatibleRequiredPackages(): array
+    {
+        return $this->compatibleRequiredPackages;
+    }
+
+    /**
+     * @return $this
+     */
+    public function addCompatibleRequiredPackages(CompatibleRequiredPackages $value): self
+    {
+        $this->compatibleRequiredPackages[] = $value;
+
+        return $this;
+    }
+
+    /**
      * {@inheritdoc}
      *
      * @see \JsonSerializable::jsonSerialize()
@@ -88,8 +112,16 @@ class Package implements JsonSerializable
             $result['phpv'] = $compatiblePHPVersions;
         }
         $compatibleConfigureOptions = $this->getCompatibleConfigureOptions();
-        if ($compatiblePHPVersions !== []) {
-            $result['confopts'] = $compatibleConfigureOptions;
+        if ($compatibleConfigureOptions !== []) {
+            if (count($compatibleConfigureOptions) > 1 || $compatibleConfigureOptions[0]->getConfigureOptions() !== []) {
+                $result['confopts'] = $compatibleConfigureOptions;
+            }
+        }
+        $compatibleRequiredPackages = $this->getCompatibleRequiredPackages();
+        if ($compatibleRequiredPackages !== []) {
+            if (count($compatibleRequiredPackages) > 1 || $compatibleRequiredPackages[0]->getRequiredPackages() !== []) {
+                $result['reqpkgs'] = $compatibleRequiredPackages;
+            }
         }
 
         return $result;
@@ -131,13 +163,23 @@ class Package implements JsonSerializable
         }
         $list = $value['confopts'] ?? [];
         if (!is_array($list)) {
-            throw new RuntimeException('Missing/invalid compatible configure optipns key for ' . __CLASS__);
+            throw new RuntimeException('Missing/invalid compatible configure options key for ' . __CLASS__);
         }
         foreach ($list as $item) {
             if (!is_array($item)) {
-                throw new RuntimeException('Missing/invalid compatible configure optipns key for ' . __CLASS__);
+                throw new RuntimeException('Missing/invalid compatible configure options key for ' . __CLASS__);
             }
             $result->addCompatibleConfigureOptions(CompatibleConfigureOptions::fromJSON($item));
+        }
+        $list = $value['reqpkgs'] ?? [];
+        if (!is_array($list)) {
+            throw new RuntimeException('Missing/invalid compatible required packages key for ' . __CLASS__);
+        }
+        foreach ($list as $item) {
+            if (!is_array($item)) {
+                throw new RuntimeException('Missing/invalid compatible required packages key for ' . __CLASS__);
+            }
+            $result->addCompatibleRequiredPackages(CompatibleRequiredPackages::fromJSON($item));
         }
 
         return $result;

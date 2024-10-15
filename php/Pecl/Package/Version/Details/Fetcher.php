@@ -8,6 +8,7 @@ use DOMXPath;
 use PeclInfo\Pecl\Package\Version;
 use PeclInfo\Pecl\Package\Version\ConfigureOption;
 use PeclInfo\Pecl\Package\Version\Details;
+use PeclInfo\Pecl\Package\Version\RequiredPackage;
 use Phar;
 use PharData;
 use PharException;
@@ -167,6 +168,62 @@ class Fetcher
                 $configureOptionNode->getAttribute('name'),
                 $configureOptionNode->getAttribute('prompt'),
                 $configureOptionNode->hasAttribute('default') ? $configureOptionNode->getAttribute('default') : null
+            ));
+        }
+        foreach ($xpath->query("/{$ns}package/{$ns}dependencies/{$ns}required/{$ns}package") as $requiredPackageNode) {
+            $names = $xpath->query("./{$ns}name", $requiredPackageNode);
+            switch ($names->length) {
+                case 0:
+                    throw new RuntimeException('Missing name required package');
+                case 1:
+                    $name = trim($names[0]->textContent);
+                    break;
+                default:
+                    throw new RuntimeException('Too many names of required package');
+            }
+            $minVersions = $xpath->query("./{$ns}min", $requiredPackageNode);
+            switch ($minVersions->length) {
+                case 0:
+                    $minVersion = '';
+                    break;
+                case 1:
+                    $minVersion = trim($minVersions[0]->textContent);
+                    break;
+                default:
+                    throw new RuntimeException('Too many names of required package');
+            }
+            $maxVersions = $xpath->query("./{$ns}max", $requiredPackageNode);
+            switch ($maxVersions->length) {
+                case 0:
+                    $maxVersion = '';
+                    break;
+                case 1:
+                    $maxVersion = trim($maxVersions[0]->textContent);
+                    break;
+                default:
+                    throw new RuntimeException('Too many names of required package');
+            }
+            $excludedVersions = [];
+            foreach ($xpath->query("./{$ns}excluded", $requiredPackageNode) as $excludedVersionNode) {
+                $excludedVersions[] = (string) $excludedVersionNode;
+            }
+            $uris = $xpath->query("./{$ns}uri", $requiredPackageNode);
+            switch ($uris->length) {
+                case 0:
+                    $uri = '';
+                    break;
+                case 1:
+                    $uri = trim($uris[0]->textContent);
+                    break;
+                default:
+                    throw new RuntimeException('Too many names of required package');
+            }
+            $details->addRequiredPackage(new RequiredPackage(
+                $name,
+                $minVersion,
+                $maxVersion,
+                $excludedVersions,
+                $uri
             ));
         }
 
