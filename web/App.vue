@@ -71,15 +71,14 @@
                 </div>
               </div>
             </b-alert>
-            <b-card header="PHP Versions" class="mb-2">
-              <b-alert
+            <b-card header="PHP Versions" class="mb-2 pi-section">
+              <div
                 v-if="!selectedPackage.phpv || !selectedPackage.phpv.length"
-                show
-                variant="warning"
+                class="text-muted"
               >
-                No data available
-              </b-alert>
-              <table v-else class="table table-striped">
+                No data available.
+              </div>
+              <table v-else class="table table-striped table-sm my-0 pi-section">
                 <thead>
                   <tr>
                     <th>Package versions</th>
@@ -97,17 +96,16 @@
                 </tbody>
               </table>
             </b-card>
-            <b-card header="Configure Options" class="mb-2">
-              <b-alert
+            <b-card header="Configure Options" class="mb-2 pi-section">
+              <div
                 v-if="
                   !selectedPackage.confopts || !selectedPackage.confopts.length
                 "
-                show
-                variant="warning"
+                class="text-muted"
               >
-                No data available
-              </b-alert>
-              <table v-else class="table table-striped">
+                No data available.
+              </div>
+              <table v-else class="table table-striped table-sm my-0 pi-section">
                 <thead>
                   <tr>
                     <th>Package versions</th>
@@ -124,17 +122,16 @@
                 </tbody>
               </table>
             </b-card>
-            <b-card header="Required Packages" class="mb-2">
-              <b-alert
+            <b-card header="Required Packages" class="mb-2 pi-section">
+              <div
                 v-if="
                   !selectedPackage.reqpkgs || !selectedPackage.reqpkgs.length
                 "
-                show
-                variant="warning"
+                class="text-muted"
               >
-                No data available
-              </b-alert>
-              <table v-else class="table table-striped">
+                No data available.
+              </div>
+              <table v-else class="table table-striped table-sm my-0 pi-section">
                 <thead>
                   <tr>
                     <th>Package versions</th>
@@ -238,5 +235,11 @@ export default class App extends Vue {
 }
 .load-error {
   white-space: pre-wrap;
+}
+.card.pi-section>.card-header {
+  font-weight: bold;
+}
+table.pi-section>thead>tr>* {
+  border-top: 0;
 }
 </style>
