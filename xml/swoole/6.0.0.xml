@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>swoole</name>
  <channel>pecl.php.net</channel>
  <summary>Event-driven asynchronous and concurrent networking engine with high performance for PHP.</summary>
@@ -24,18 +24,6 @@
   <active>yes</active>
  </lead>
  <developer>
-  <name>Twosee</name>
-  <user>twosee</user>
-  <email>twosee@php.net</email>
-  <active>yes</active>
- </developer>
- <developer>
-  <name>Shen Zhe</name>
-  <user>shenzhe</user>
-  <email>shenzhe163@gmail.com</email>
-  <active>no</active>
- </developer>
- <developer>
   <name>Lu Fei</name>
   <user>lufei</user>
   <email>lufei@php.net</email>
@@ -47,71 +35,136 @@
   <email>doubaokun@php.net</email>
   <active>yes</active>
  </developer>
- <date>2024-06-24</date>
- <time>02:32:13</time>
+ <date>2024-12-16</date>
+ <time>08:02:22</time>
  <version>
   <release>6.0.0</release>
   <api>6.0</api>
  </version>
  <stability>
-  <release>alpha</release>
-  <api>alpha</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license uri="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</license>
  <notes>
-- Swoole supports multi-threading mode. When PHP is in ZTS mode and Swoole is compiled with --enable-swoole-thread, the multi-threading mode can be utilized.
-- Added a new thread management class Swoole\Thread.
-- Introduced thread lock Swoole\Thread\Lock.
-- Added thread atomic counter Swoole\Thread\Atomic, Swoole\Thread\Atomic\Long.
-- Added safe concurrent containers Swoole\Thread\Map, Swoole\Thread\ArrayList, Swoole\Thread\Queue.
-- File asynchronous operations support iouring as the underlying engine. Installing liburing and compiling Swoole with --enable-iouring enables asynchronous operations for functions like file_get_contents, file_put_contents, fopen, fclose, fread, fwrite, mkdir, unlink, fsync, fdatasync, rename, fstat, lstat, filesize through iouring.
-- Upgraded Boost Context to version 1.84. Now, Loongson CPUs can also supports coroutines.
-- Fixed the issue where installation via pecl was not possible.
-- Fixed the bug where setting keepalive was not possible for Swoole\Coroutine\FastCGI\Client.
-- Fixed the issue where exceeding the max_input_vars would throw an error, causing the process to restart repeatedly.
-- Fixed unknown issues caused by using Swoole\Event::wait() within a coroutine.
-- Fixed the problem where proc_open does not support pty in coroutine mode.
-- Fixed segmentation fault issues with pdo_sqlite on PHP 8.3.
-- Fixed unnecessary warnings during the compilation of Swoole.
-- Fixed the error thrown by zend_fetch_resource2_ex when STDOUT/STDERR are already closed.
-- Fixed ineffective set_tcp_nodelay configuration.
-- Fixed the occasional unreachable branch issue during file upload.
-- Fixed the problem where setting dispatch_func would cause PHP&apos;s internals to throw errors.
-- Fixed the deprecation of AC_PROG_CC_C99 in autoconf &gt;= 2.70.
-- Capture exceptions when thread creation fails.
-- Fixed the undefined problem with _tsrm_ls_cache.
-- Fixed the fatal compile error with GCC 14.
-- Removed unnecessary checks for socket structs.
-- Upgraded Swoole Library.
-- Added support for status code 451 in Swoole\Http\Response.
-- Synchronized file operation code across different PHP versions.
-- Synchronized pdo operation code across different PHP versions.
-- Optimized the code for Socket::ssl_recv().
-- Improved config.m4; some configurations can now set library locations via pkg-config.
-- Optimized the use of dynamic arrays during request header parsing.
-- Optimized file descriptor fd lifecycle issues in multi-threading mode.
-- Optimized some fundamental coroutine logic.
-- No longer supports PHP 8.0.
-- No longer supports Swoole\Coroutine\MySQL coroutine client.
-- No longer supports Swoole\Coroutine\Redis coroutine client.
-- No longer supports Swoole\Coroutine\PostgreSQL coroutine client.
-- Swoole-v6.0.0-alpha is a test version and cannot be used in any production environment; it is for testing purposes only.
+- Added multi-threading support, require the ZTS version of PHP. Add `--enable-swoole-thread` option to the configure command to activate it.
+- Added a new thread class `Swoole\Thread`. @matyhtf
+- Introduced thread lock `Swoole\Thread\Lock`. @matyhtf
+- Added thread atomic counter `Swoole\Thread\Atomic`, `Swoole\Thread\Atomic\Long`. @matyhtf
+- Added safe concurrent containers `Swoole\Thread\Map`, `Swoole\Thread\ArrayList`, `Swoole\Thread\Queue`. @matyhtf
+- The file asynchronous operation supports using `io_uring` as the underlying engine for file asynchronous operations. When liburing is installed and Swoole is compiled with the --enable-iouring option, the asynchronous operations of functions such as file_get_contents, file_put_contents, fopen, fclose, fread, fwrite, mkdir, unlink, fsync, fdatasync, rename, fstat, lstat, and filesize will be implemented by io_uring. @matyhtf @NathanFreeman
+- Upgraded `Boost Context` to version 1.84. Now, Loongson CPUs can also support coroutines. @NathanFreeman
+- Added `Swoole\Thread\Map::find()` method. @matyhtf
+- Added `Swoole\Thread\ArrayList::find()` method. @matyhtf
+- Added `Swoole\Thread\ArrayList::offsetUnset()` method. @matyhtf
+- Added `Swoole\Process::getAffinity()` method. @matyhtf
+- Added `Swoole\Thread::setName()` method. @matyhtf
+- Added `Swoole\Thread::setAffinity()` method. @matyhtf
+- Added `Swoole\Thread::getAffinity()` method. @matyhtf
+- Added `Swoole\Thread::setPriority()` method. @matyhtf
+- Added `Swoole\Thread::getPriority()` method. @matyhtf
+- Added `Swoole\Thread::gettid()` method.
+- The file asynchronous engine `iouring` supports multi-threaded polling mode `IORING_SETUP_SQPOLL`. @NathanFreeman
+- Added `iouring_workers` to modify the number of `iouring` threads. @NathanFreeman
+- Added `iouring_flags` to support modifying the `iouring` working mode. @NathanFreeman
+- Added `Swoole\Thread\Barrier` for multi-thread synchronization barrier. @matyhtf
+- Added new function and class to set cookies. @matyhtf @NathanFreeman
+- Added `non-blocking, reentrant coroutine mutex lock`, which can be used between processes/threads without blocking them. @NathanFreeman
+- `Swoole\Coroutine\Socket::getOption()` supports the `TCP_INFO` option. @matyhtf
+- `Swoole\Client` synchronous blocking client supports `http` proxy. @matyhtf
+- Added asynchronous non-blocking `TCP/UDP/Unix socket` client `Swoole\Async\Client`. @matyhtf
+- Optimized the `Swoole\Redis\Server::format()` method to support zero-copy memory, support `redis` nested structure. @matyhtf
+- Supports the high-performance compression tool `Zstd`. You only need to add `--enable-zstd` when compiling `Swoole`, and then `zstd` can be used to compress or decode responses between the `http` client and server. @NathanFreeman
+- Fixed the issue where installation via `pecl` was not possible. @remicollet
+- Fixed the bug where setting `keepalive` was not possible for `Swoole\Coroutine\FastCGI\Client`. @NathanFreeman
+- Fixed the issue where exceeding the `max_input_vars` would throw an error, causing the process to restart repeatedly. @NathanFreeman
+- Fixed unknown issues caused by using `Swoole\Event::wait()` within a coroutine. @matyhtf
+- Fixed the problem where `proc_open` does not support pty in coroutine mode. @matyhtf
+- Fixed segmentation fault issues with `pdo_sqlite` on PHP 8.3. @NathanFreeman
+- Fixed unnecessary warnings during the compilation of `Swoole`. @Appla @NathanFreeward
+- Fixed the error thrown by zend_fetch_resource2_ex when `STDOUT/STDERR` are already closed. @Appla @matyhtf
+- Fixed ineffective `set_tcp_nodelay` configuration. @matyhtf
+- Fixed the occasional unreachable branch issue during file upload. @NathanFreeman
+- Fixed the problem where setting `dispatch_func` would cause PHP&apos;s internals to throw errors. @NathanFreeman
+- Fixed the deprecation of AC_PROG_CC_C99 in autoconf &gt;= 2.70. @petk
+- Capture exceptions when thread creation fails. @matyhtf
+- Fixed the undefined problem with `_tsrm_ls_cache`. @jingjingxyk
+- Fixed the fatal compile error with `GCC 14`. @remicollet
+- Fixed the dynamic property issue in `Swoole\Http2\Request`. @guandeng
+- Fixed the occasional resource unavailability issue in the `pgsql` coroutine client. @NathanFreeman
+- Fixed the issue of 503 errors due to not resetting related parameters during process restart. @matyhtf
+- Fixed the inconsistency between `$request-&gt;server[&apos;request_method&apos;]` and `$request-&gt;getMethod()` when `HTTP2` is enabled. @matyhtf
+- Fixed incorrect `content-type` when uploading files. @matyhtf
+- Fixed code errors in the `http2` coroutine client. @matyhtf
+- Fixed the missing `worker_id` property in `Swoole\Server`. @cjavad
+- Fixed errors related to `brotli` in `config.m4`. @fundawang
+- Fixed the invalid `Swoole\Http\Response::create` under multi-threading. @matyhtf
+- Fixed compilation errors in the `macos` environment. @matyhtf
+- Fixed the issue of threads not being able to exit safely. @matyhtf
+- Fixed the issue where the static variable for response time returned by `Swoole\Http\Response` in multi-threaded mode was not generated separately for each thread. @matyhtf @NathanFreeman
+- Fixed `Fatal error` issue caused by `PHP-8.4`&apos;s `timeout` feature in ZTS mode. @matyhtf
+- Fixed compatibility issue with the `exit()` `hook` function for `PHP-8.4`. @remicollet
+- Fixed the issue where `Swoole\Thread::getNativeId()` did not work in `cygwin`. @matyhtf
+- Fixed the issue causing `SIGSEGV` in `Swoole\Coroutine::getaddrinfo()` method. @matyhtf
+- Fixed the issue where the runtime TCP module did not support dynamically enabling SSL encryption. @matyhtf
+- Fixed the issue where the HTTP client had an incorrect timeout after running for a long time. @matyhtf
+- Fixed the problem where the mutex lock of `Swoole\Table` could not be used before the process exited. @matyhtf
+- Fixed the failure of `Swoole\Server::stop()` when using named parameters. @matyhtf
+- Fixed the crash caused by `Swoole\Thread\Map::toArray()` not copying the key. @matyhtf
+- Fixed the issue of being unable to delete nested numeric keys in `Swoole\Thread\Map`. @matyhtf
+- Removed unnecessary checks for `socket structs`. @petk
+- Upgraded Swoole Library. @deminy
+- Added support for status code 451 in `Swoole\Http\Response`. @abnegate
+- Synchronized `file` operation code across different PHP versions. @NathanFreeman
+- Synchronized `pdo` operation code across different PHP versions. @NathanFreeman
+- Optimized the code for `Socket::ssl_recv()`. @matyhtf
+- Improved config.m4; some configurations can now set library locations via `pkg-config`. @NathanFreeman
+- Optimized the use of dynamic arrays during `request header parsing`. @NathanFreeman
+- Optimized file descriptor `fd` lifecycle issues in multi-threading mode. @matyhtf
+- Optimized some fundamental coroutine logic. @matyhtf
+- Upgraded the Oracle database version for CI testing. @gvenzl
+- Optimized the underlying logic of `sendfile`. @matyhtf
+- Replaced `PHP_DEF_HAVE` with `AC_DEFINE_UNQUOTED` in `config.m4`. @petk
+- Optimized the logic related to `heartbeat`, `shutdown`, and `stop` for the server in multi-threaded mode. @matyhtf
+- Optimized to avoid linking `librt` when `glibc` version is greater than 2.17. @matyhtf
+- Enhanced the HTTP client to accept duplicate request headers. @matyhtf
+- Optimized `Swoole\Http\Response::write()`. @matyhtf
+- `Swoole\Http\Response::write()` can now send HTTP/2 protocol. @matyhtf
+- Compatible with `PHP 8.4`. @matyhtf @NathanFreeman
+- Added the ability for asynchronous writing at the underlying socket level. @matyhtf
+- Optimized `Swoole\Http\Response`. @NathanFreeman
+- Improved underlying error messages. @matyhtf
+- Supported sharing PHP native sockets in multi-threaded mode. @matyhtf
+- Optimized static file service and fixed static file path error issues. @matyhtf
+- Multi-thread mode `SWOOLE_THREAD` supports restarting worker threads. @matyhtf
+- Multi-thread mode `SWOOLE_THREAD` supports starting timers in the `Manager` thread. @matyhtf
+- Compatible with the `curl` extension of `PHP-8.4`. @matyhtf @NathanFreeman
+- Rewrite the underlying `Swoole` code using `iouring`. @matyhtf @NathanFreeman
+- Optimized timers so that synchronous processes do not depend on signals. @matyhtf
+- Optimized the `Swoole\Coroutine\System::waitSignal()` method to allow listening to multiple signals simultaneously. @matyhtf
+- No longer supports `PHP 8.0`.
+- No longer supports `Swoole\Coroutine\MySQL` coroutine client.
+- No longer supports `Swoole\Coroutine\Redis` coroutine client.
+- No longer supports `Swoole\Coroutine\PostgreSQL` coroutine client.
+- Removed `Swoole\Coroutine\System::fread()`, `Swoole\Coroutine\System::fwrite()`, and `Swoole\Coroutine\System::fgets()` methods.
  </notes>
  <contents>
   <dir name="/">
-   <file md5sum="113efb1405290017d329a130e5190450" name="CMakeLists.txt" role="src" />
+   <file md5sum="b89f367baa6c7228f4bc1fb2257febe9" name="CMakeLists.txt" role="src" />
    <file md5sum="86f038dbf47e4e98ba300c981398c4fb" name="LICENSE" role="doc" />
    <file md5sum="190ad7d46423b1e4772d1a90b7d123a5" name="Makefile.frag" role="src" />
-   <file md5sum="2e5eafd947dc5cd541738400efd22c68" name="README.md" role="doc" />
+   <file md5sum="4f6e081bc4f31e5228b62f5de5d1a221" name="README.md" role="doc" />
    <file md5sum="f3a164dab46060d6855edd264416e7f1" name="codecov.yml" role="src" />
-   <file md5sum="e71191c41f5a8bab93f5201ecf0b1286" name="config.m4" role="src" />
-   <file md5sum="f091d3b314b242bcd31aa594d33e0af0" name="core-tests/CMakeLists.txt" role="src" />
+   <file md5sum="a296be785c311836bbaba62e4a1ea83a" name="composer.json" role="src" />
+   <file md5sum="c5384eb381bc807659714359586bf029" name="config.m4" role="src" />
+   <file md5sum="a8b0b1bad6b33f1e299de3dc5d2e8095" name="core-tests/CMakeLists.txt" role="src" />
    <file md5sum="abf7447b836f78336d899253eda4a688" name="core-tests/README-CN.md" role="doc" />
-   <file md5sum="e23932577b6ca0a0ad6af18fcdac39ba" name="core-tests/README.md" role="doc" />
+   <file md5sum="870abae5465fd1e3d4d5829aa7362ac2" name="core-tests/README.md" role="doc" />
    <file md5sum="8dda1585da35395112a627b6b4893400" name="core-tests/deps/llhttp/include/llhttp.h" role="src" />
    <file md5sum="2bb89ebba4de15e794bfaba2f9324db1" name="core-tests/deps/llhttp/src/api.c" role="src" />
    <file md5sum="8989408e241d446fef7baaff76f87c8c" name="core-tests/deps/llhttp/src/http.c" role="src" />
    <file md5sum="23e161cd6b609e0f56354fa71a2c7cd9" name="core-tests/deps/llhttp/src/llhttp.c" role="src" />
+   <file md5sum="ef78db7b37ed198f36b83d79d9a3eb3d" name="core-tests/docker-compose.yml" role="src" />
    <file md5sum="4576c90a14be726c38fe5154d2b6ec42" name="core-tests/fuzz/cases/req1.bin" role="src" />
    <file md5sum="73f3fac4a33794675f62f49271fcf364" name="core-tests/fuzz/cases/req2.bin" role="src" />
    <file md5sum="4d574e1cf56674a17451b0914ee2eb8c" name="core-tests/fuzz/project.json" role="src" />
@@ -119,68 +172,70 @@
    <file md5sum="2bc5ffb89160dca5cdb290502470f98c" name="core-tests/include/httplib_client.h" role="src" />
    <file md5sum="ab0a24287ed8b7f3832b788a6bf4f7ea" name="core-tests/include/httplib_server.h" role="src" />
    <file md5sum="a660c80c9ea6ed17eae9d6ba3130d812" name="core-tests/include/redis_client.h" role="src" />
-   <file md5sum="4a3391146f55785a741e12f82b135f8d" name="core-tests/include/test_core.h" role="src" />
+   <file md5sum="e8637d908361d8ecfcbe10cac44fa411" name="core-tests/include/test_core.h" role="src" />
    <file md5sum="448c5a90c1076161553f557de9ea5995" name="core-tests/include/test_coroutine.h" role="src" />
    <file md5sum="510dcb95256124268a6efb9c3c1f3ba5" name="core-tests/include/test_process.h" role="src" />
    <file md5sum="90e70fe0aee81d00761ce28630ae3b76" name="core-tests/include/test_server.h" role="src" />
-   <file md5sum="f2bb39738d411be5fea5c0764debbd9d" name="core-tests/run.sh" role="src" />
+   <file md5sum="8beb6dd3bcfdd0f2b534c042e68076b6" name="core-tests/run.sh" role="src" />
    <file md5sum="57e5af913338937b70bbd578e2a61567" name="core-tests/samples/CMakeLists.txt" role="src" />
    <file md5sum="2d885ebe128a9563dfa3bdddaccfa9da" name="core-tests/samples/src/s1.cc" role="src" />
    <file md5sum="1c5603637910607b0665cf49e91444cd" name="core-tests/src/_lib/http.cpp" role="src" />
    <file md5sum="0511bdafe1c8ea0c1df258073855a2c0" name="core-tests/src/_lib/process.cpp" role="src" />
    <file md5sum="4bfd7d624916e8146a272905e9732749" name="core-tests/src/_lib/redis.cpp" role="src" />
    <file md5sum="888563eee98622633e7bd7f0d8789e11" name="core-tests/src/_lib/server.cpp" role="src" />
-   <file md5sum="444358eda63595f4b095f0f16ba5c580" name="core-tests/src/core/base.cpp" role="src" />
+   <file md5sum="79dd338beae8ab39c7e3ae10bd986052" name="core-tests/src/core/base.cpp" role="src" />
    <file md5sum="5c49268493eed96cedb8a24a6e035ad9" name="core-tests/src/core/channel.cpp" role="src" />
    <file md5sum="5d4c187def0d47eb5006058b80582bb3" name="core-tests/src/core/hash.cpp" role="src" />
    <file md5sum="3d95a5ea57f3c1bf8f4ccdbdfcac3447" name="core-tests/src/core/heap.cpp" role="src" />
-   <file md5sum="81301040a40546dd0c682acb2bd5e2ff" name="core-tests/src/core/log.cpp" role="src" />
-   <file md5sum="3f829291f1865d1c7c456ea6d6d64638" name="core-tests/src/core/string.cpp" role="src" />
+   <file md5sum="374fbb1da77d938e18a2cbb50cc66eb5" name="core-tests/src/core/log.cpp" role="src" />
+   <file md5sum="72213e38c2803435e9cb8b67bade6851" name="core-tests/src/core/string.cpp" role="src" />
    <file md5sum="1ac80b2bd559391138e3f9e674173caa" name="core-tests/src/core/time.cpp" role="src" />
+   <file md5sum="10096204702a6f42acf67266d5ee8416" name="core-tests/src/core/util.cpp" role="src" />
    <file md5sum="1d11a4be0a47c13e10d6fb3505b5ab49" name="core-tests/src/core/wheel_timer.cpp" role="src" />
-   <file md5sum="756ac4fe02ee4391ca552323584d1ca4" name="core-tests/src/coroutine/async.cpp" role="src" />
+   <file md5sum="a643027a5ddf64e7bacc2881d643a20d" name="core-tests/src/coroutine/async.cpp" role="src" />
    <file md5sum="dae1af7fce613a31a1147cd43bf5f428" name="core-tests/src/coroutine/base.cpp" role="src" />
    <file md5sum="f066fa5a17e98b0496fa78669a792e88" name="core-tests/src/coroutine/channel.cpp" role="src" />
    <file md5sum="04c652e1f672be72bed15342ffcabced" name="core-tests/src/coroutine/gethostbyname.cpp" role="src" />
    <file md5sum="c2757c8b70c7b952f29a556460b63118" name="core-tests/src/coroutine/hook.cpp" role="src" />
-   <file md5sum="e0a2ba6327f79941b655a9d37bf7d157" name="core-tests/src/coroutine/http_server.cpp" role="src" />
-   <file md5sum="f1b482f117e6ce0848badd26d064063e" name="core-tests/src/coroutine/socket.cpp" role="src" />
-   <file md5sum="e6d403d7db754295f549129cfaa05dc7" name="core-tests/src/coroutine/system.cpp" role="src" />
-   <file md5sum="13877632bfb57e78bdefe1248328e5e9" name="core-tests/src/lock/lock.cpp" role="src" />
-   <file md5sum="543276b0a66775cc1e33f782c4731111" name="core-tests/src/main.cpp" role="src" />
-   <file md5sum="8756c95b89ed1af358302bf862b4f928" name="core-tests/src/memory/buffer.cpp" role="src" />
+   <file md5sum="cde793e75808a528ef6a275858ee7015" name="core-tests/src/coroutine/http_server.cpp" role="src" />
+   <file md5sum="8d41c7d1d7047943f122bee8e1f40be7" name="core-tests/src/coroutine/socket.cpp" role="src" />
+   <file md5sum="b4f0bfc23bb0499c118e63c844d4b7c5" name="core-tests/src/coroutine/system.cpp" role="src" />
+   <file md5sum="e5396f0cdbee2298311710627395529e" name="core-tests/src/lock/lock.cpp" role="src" />
+   <file md5sum="b2d1a57d344ec4e13d178e655bfb3550" name="core-tests/src/main.cpp" role="src" />
+   <file md5sum="0775231359051527a665e5e7412250b1" name="core-tests/src/memory/buffer.cpp" role="src" />
    <file md5sum="25d4be6d083adcfe4a5b8e560fc00380" name="core-tests/src/memory/fixed_pool.cpp" role="src" />
    <file md5sum="514ede98eead0cc06bc4c2e485631f83" name="core-tests/src/memory/global_memory.cpp" role="src" />
    <file md5sum="b843bfb4e5f74b4557ad64750963209d" name="core-tests/src/memory/lru_cache.cpp" role="src" />
    <file md5sum="53ae55fd43a5e77fa7adc3117aa8dfe3" name="core-tests/src/memory/ringbuffer.cpp" role="src" />
    <file md5sum="3bb471b3d8f379491542edc60e716ecf" name="core-tests/src/memory/table.cpp" role="src" />
-   <file md5sum="cae10d125fa7ca9990df05eb1057295f" name="core-tests/src/network/client.cpp" role="src" />
-   <file md5sum="bc729ba2e8724196bacb648241a8f93e" name="core-tests/src/network/dns.cpp" role="src" />
-   <file md5sum="1f2413cb7aa5ce6996014a827a9dbdef" name="core-tests/src/network/socket.cpp" role="src" />
-   <file md5sum="dddd5c6935e7dc35ec4c491baf5c82f5" name="core-tests/src/network/stream.cpp" role="src" />
-   <file md5sum="9dc7e6f39676e373b419e5f5d24279f4" name="core-tests/src/os/async.cpp" role="src" />
+   <file md5sum="c72156c4ae9bca880c85006fff37d4b0" name="core-tests/src/network/client.cpp" role="src" />
+   <file md5sum="e32f95ab0cca1616e7abac4e697da95b" name="core-tests/src/network/dns.cpp" role="src" />
+   <file md5sum="8c6e8104bfcd17a2c8cd393660755d9f" name="core-tests/src/network/socket.cpp" role="src" />
+   <file md5sum="8de5ec500a39c836564265ce2ca290c2" name="core-tests/src/network/stream.cpp" role="src" />
+   <file md5sum="5bbd6e89c0789a490dfacff537caa3b9" name="core-tests/src/os/async.cpp" role="src" />
+   <file md5sum="150d1ec5b55a80a89d33b9ecd3f2bd65" name="core-tests/src/os/file.cpp" role="src" />
    <file md5sum="521b98efb6a97b98b0899ebacc5d0659" name="core-tests/src/os/msg_queue.cpp" role="src" />
    <file md5sum="b718b41fa38d76fac33dc1f6a4e83e4a" name="core-tests/src/os/pipe.cpp" role="src" />
-   <file md5sum="821b3c9ba50823bd26d2697251067c31" name="core-tests/src/os/process_pool.cpp" role="src" />
+   <file md5sum="63eb909a679448ec395381ca88cdb0e4" name="core-tests/src/os/process_pool.cpp" role="src" />
    <file md5sum="cda20cd2c97a5cc0f784da40e6dc7c38" name="core-tests/src/os/signal.cpp" role="src" />
    <file md5sum="af5a9b48b3a759a0292b1ee9e3449301" name="core-tests/src/os/timer.cpp" role="src" />
-   <file md5sum="74c1e55f02a127cc4d44489695d7d659" name="core-tests/src/os/wait.cpp" role="src" />
+   <file md5sum="fce92a8cd22eb50481f777b3e26ed6a4" name="core-tests/src/os/wait.cpp" role="src" />
    <file md5sum="c75873a851faa8fbb3d9a65d4262b942" name="core-tests/src/protocol/base.cpp" role="src" />
    <file md5sum="f022919f4262743436ae47dd26c614f4" name="core-tests/src/protocol/base64.cpp" role="src" />
    <file md5sum="3482ca44209d189de4dad8c7f89f395c" name="core-tests/src/protocol/http2.cpp" role="src" />
    <file md5sum="27c036631a7be056b17b54cf139b2df6" name="core-tests/src/protocol/mime_type.cpp" role="src" />
    <file md5sum="cfceae0dc38cdea7660dda9d156b34a2" name="core-tests/src/protocol/redis.cpp" role="src" />
-   <file md5sum="546a0b8bf733a722ca2a1704c4e39316" name="core-tests/src/reactor/base.cpp" role="src" />
+   <file md5sum="ba1dfc30058f7c1630bdfc59e4bada87" name="core-tests/src/reactor/base.cpp" role="src" />
    <file md5sum="04c477e0c9512bb73b4c0a478a155d17" name="core-tests/src/server/buffer.cpp" role="src" />
    <file md5sum="f8b7b1efd57a11e4a32e231eb269f8c3" name="core-tests/src/server/http.cpp" role="src" />
    <file md5sum="cb2d809bc75e7487017394e1c6ed7a97" name="core-tests/src/server/http_parser.cpp" role="src" />
    <file md5sum="0a663c513d149f053331ea582924fb7e" name="core-tests/src/server/message_bus.cpp" role="src" />
    <file md5sum="9e7a55541cfe1a4d55628be8ccceecc8" name="core-tests/src/server/multipart_parser.cpp" role="src" />
-   <file md5sum="4480b7ec620815ea27b6405b4b510e50" name="core-tests/src/server/server.cpp" role="src" />
-   <file md5sum="f442291730c11f0224afab703bd2259e" name="docs/CHANGELOG.md" role="doc" />
+   <file md5sum="79a2cced26467b804215acbdad7873dc" name="core-tests/src/server/server.cpp" role="src" />
+   <file md5sum="85e9323ce2c9a51bfcb8b9dd13510fa1" name="docs/CHANGELOG.md" role="doc" />
    <file md5sum="624586f75e3452028291251fa1a10dc2" name="docs/CODE-STYLE.md" role="doc" />
    <file md5sum="c2838e577c68a512b6b731d03ee95da9" name="docs/CPPLINT.cfg" role="src" />
-   <file md5sum="26c2e980447f34105704fa5b5db32d06" name="docs/SUPPORTED.md" role="doc" />
+   <file md5sum="34a049a22ba8729236e33f5a2ea82aa7" name="docs/SUPPORTED.md" role="doc" />
    <file md5sum="e0cb30e01517bd6966a4357845b57db1" name="docs/TESTS.md" role="doc" />
    <file md5sum="e2ef98839a16404b49471fcafb715709" name="docs/google-style.xml" role="src" />
    <file md5sum="30fd526e093890807ffb46d7eaa547fe" name="docs/sponsors.md" role="doc" />
@@ -311,9 +366,9 @@
    <file md5sum="b6c0be5ca3945839457688a29cf43639" name="examples/coroutine/websocket/client.php" role="doc" />
    <file md5sum="61b44e495fb185e0aa1ad71a502a8aaf" name="examples/coroutine/websocket/co_server.php" role="doc" />
    <file md5sum="eb197ab5adda0e31650c89d5af3c579d" name="examples/coroutine/websocket/server.php" role="doc" />
-   <file md5sum="c7667b8c2f5dabcaa7d4b5a9889e29a1" name="examples/cpp/Makefile" role="doc" />
-   <file md5sum="15d230de5168223f4306086a5ce72c70" name="examples/cpp/co.cc" role="doc" />
-   <file md5sum="57e29bbe0e0275f815024fed360e1b1c" name="examples/cpp/repeat.cc" role="doc" />
+   <file md5sum="1b7f158ce405f753f3b97537718063ed" name="examples/cpp/Makefile" role="doc" />
+   <file md5sum="e3766326587a180b3272e26de3075993" name="examples/cpp/co.cc" role="doc" />
+   <file md5sum="b0795f2df732480a5e0c1e22d546d766" name="examples/cpp/repeat.cc" role="doc" />
    <file md5sum="50cf0080299d31ede5a382f151d4e66b" name="examples/cpp/test_server.cc" role="doc" />
    <file md5sum="e68e6fadc9fe29d65666bb3da86f4917" name="examples/curl/hook.php" role="doc" />
    <file md5sum="f2e029442f79461d7668005c332a22ba" name="examples/curl/multi.php" role="doc" />
@@ -344,6 +399,7 @@
    <file md5sum="e6f5caae6c7d5cf3886d07580ed8afff" name="examples/http/static_handler.php" role="doc" />
    <file md5sum="c897d1410af8f2c74fba11b1db511e9e" name="examples/http/test.txt" role="doc" />
    <file md5sum="4edfdbc481858cee343240b38950555c" name="examples/http2/server.php" role="doc" />
+   <file md5sum="eae8acdb5dac6fbecc9aefed0b3cea49" name="examples/http2/streaming.php" role="doc" />
    <file md5sum="e0fc004cdc455fd7509a2032274675bf" name="examples/http2/test.html" role="doc" />
    <file md5sum="7aa310f16e4219b9614ef0fb1a0bfc7e" name="examples/ipv6/tcp_client.php" role="doc" />
    <file md5sum="213b3c328770f6311be3670bc86cce2c" name="examples/ipv6/tcp_server.php" role="doc" />
@@ -397,11 +453,11 @@
    <file md5sum="f49c0ae93c3cd48f25cd8c25d37f18bf" name="examples/process_pool/send.php" role="doc" />
    <file md5sum="13c9c292ca385e40cd554d27bf33963c" name="examples/runtime/coroutine.php" role="doc" />
    <file md5sum="1665e2a50a74188a427100e90d1af45c" name="examples/runtime/curl.php" role="doc" />
-   <file md5sum="d9b977c7d51834f3f330177bd2258cff" name="examples/runtime/file.php" role="doc" />
+   <file md5sum="436882c581419274cdd8e73073052d6e" name="examples/runtime/file.php" role="doc" />
    <file md5sum="60d69d2e6b053c5b459f9761563ae511" name="examples/runtime/gethostbyname.php" role="doc" />
    <file md5sum="a6fd41cd42dad7c1ce88e89db4629a35" name="examples/runtime/include.php" role="doc" />
    <file md5sum="67d1ec2d0757b69adcb707b43c232b92" name="examples/runtime/mkdir.php" role="doc" />
-   <file md5sum="794c35124f350fd2338b3386ec353d28" name="examples/runtime/oci.php" role="doc" />
+   <file md5sum="a0ce6f59db2e9131b0aa8fd0dd13ccfb" name="examples/runtime/oci.php" role="doc" />
    <file md5sum="8b7617a0337aafa5564537872bb3e7a8" name="examples/runtime/odbc.php" role="doc" />
    <file md5sum="6e25b220658f523a31b094079ee96def" name="examples/runtime/read.php" role="doc" />
    <file md5sum="4d2683b0fa239f885a5d6f5082f9f79d" name="examples/runtime/rename.phpt" role="doc" />
@@ -416,7 +472,7 @@
    <file md5sum="1cf13f97d8ae3ffbb507f05161805d85" name="examples/server/db_pool.php" role="doc" />
    <file md5sum="01d01776fcb8e9d271967b64ca5b8cf8" name="examples/server/dispatch_func.php" role="doc" />
    <file md5sum="31a3e5a8b1d1e54590a0c56715b2ead0" name="examples/server/dispatch_stream.php" role="doc" />
-   <file md5sum="418173040918fbc54417271fb138da67" name="examples/server/echo.php" role="doc" />
+   <file md5sum="ad41b594ee3fd661b0ff4049f36e34a6" name="examples/server/echo.php" role="doc" />
    <file md5sum="8580bf1bfdbac7f98f5f892d1cb9b3f7" name="examples/server/eof_client.php" role="doc" />
    <file md5sum="85012207f0c7702f9e96a657f49f61f5" name="examples/server/eof_server.php" role="doc" />
    <file md5sum="955471d03901c2c1c40865ae089c6a4c" name="examples/server/getReceivedTime.php" role="doc" />
@@ -500,15 +556,19 @@
    <file md5sum="8afc9824906fe355c1ec6ee1c39751eb" name="examples/thread/atomic.php" role="doc" />
    <file md5sum="cc0d4dcf513e3e1e316ec7492805d841" name="examples/thread/benchmark.php" role="doc" />
    <file md5sum="8a4bee7b95cf4ba8cf6f9130811bac24" name="examples/thread/co.php" role="doc" />
+   <file md5sum="f77469a3568d234eec717f182c128ead" name="examples/thread/exit.php" role="doc" />
    <file md5sum="7981a8119eff5d39219009a1a54f4571" name="examples/thread/lock.php" role="doc" />
+   <file md5sum="8bcb2605bb86c50440ff933c31b622ee" name="examples/thread/map.php" role="doc" />
    <file md5sum="207d32ec984bf5e0746145e1f8e7d184" name="examples/thread/mt.php" role="doc" />
+   <file md5sum="132c3e6027e2bbb8b28a6f9f0e2519f7" name="examples/thread/nested_map.php" role="doc" />
    <file md5sum="c0a439a25e4db254c224a7b4468be6ba" name="examples/thread/pipe.php" role="doc" />
    <file md5sum="0d86e62abae67a55e7ed9820894dc0c5" name="examples/thread/run_test.php" role="doc" />
    <file md5sum="8d8ca582e0e96bc7397327dd6f1e86fe" name="examples/thread/server.php" role="doc" />
    <file md5sum="6d15d9e22861031e58cc0a039f559963" name="examples/thread/signal.php" role="doc" />
+   <file md5sum="4641c252c75bf4848a6059577035900b" name="examples/thread/socket.php" role="doc" />
    <file md5sum="2fa95162997585e2a5ceedeb22777261" name="examples/thread/test.php" role="doc" />
    <file md5sum="c5054c915c40c4931960e3b42c4168b7" name="examples/thread/thread_pool.php" role="doc" />
-   <file md5sum="04cdceb8c94bccfc3f6fac0cebb3ddac" name="examples/thread/thread_server.php" role="doc" />
+   <file md5sum="a101d157026e432d2ce60383afe56677" name="examples/thread/thread_server.php" role="doc" />
    <file md5sum="cab520cf5803b27cc8e17aa51a41c50c" name="examples/timer/after.php" role="doc" />
    <file md5sum="84db9333791a4ee50fc9819b59213bd8" name="examples/timer/clear.php" role="doc" />
    <file md5sum="a10a0258c8ede7ab12d3aa258ed2dcee" name="examples/timer/enable_coroutine.php" role="doc" />
@@ -531,41 +591,43 @@
    <file md5sum="1c1c96fd2cf8330db0bfa936ce82f3b9" name="examples/www/file2.txt" role="doc" />
    <file md5sum="f4c382072d866e428688f5761bc1af7a" name="examples/www/index.html" role="doc" />
    <file md5sum="974d4d4e5c05e40faea2b8941aea0fe8" name="examples/www/index.txt" role="doc" />
-   <file md5sum="72e83f4a6b428d0ea4136bc67eff8b37" name="ext-src/php_swoole.cc" role="src" />
+   <file md5sum="069bf1bef2c6dfd106199e96e245b230" name="ext-src/php_swoole.cc" role="src" />
    <file md5sum="757833df3dd1fcbd385dc9843d6a9295" name="ext-src/php_swoole_call_stack.h" role="src" />
-   <file md5sum="706bef077b2f0919acb3a9e18f8a3470" name="ext-src/php_swoole_client.h" role="src" />
+   <file md5sum="5cffae6341aa9f7a112f64312adaacb9" name="ext-src/php_swoole_client.h" role="src" />
    <file md5sum="49dcf83147f4e20b11c51a8f195d1054" name="ext-src/php_swoole_coroutine.h" role="src" />
    <file md5sum="9596a1d761fc4954021123d9c982c82c" name="ext-src/php_swoole_coroutine_system.h" role="src" />
-   <file md5sum="a0d8d9b85a58c9dae1bd197f80981e6a" name="ext-src/php_swoole_curl.h" role="src" />
+   <file md5sum="4f2ea788528e3c55506418b98cd18972" name="ext-src/php_swoole_curl.h" role="src" />
    <file md5sum="31d1fc84abb4c40977cd3f1d4a25f2e1" name="ext-src/php_swoole_cxx.cc" role="src" />
-   <file md5sum="7c4b5addec319be7f7b219f2a856fab2" name="ext-src/php_swoole_cxx.h" role="src" />
-   <file md5sum="1e0d7e0d7a416c8d3ffe93bf603f4b8a" name="ext-src/php_swoole_http.h" role="src" />
+   <file md5sum="37d98e4a8150fbe2e7b4742883568841" name="ext-src/php_swoole_cxx.h" role="src" />
+   <file md5sum="0a24f7d5c4374e2e198f1c884c153125" name="ext-src/php_swoole_http.h" role="src" />
    <file md5sum="b3f8f21dd65297a4a6fe8ff4e4918e84" name="ext-src/php_swoole_http_server.h" role="src" />
-   <file md5sum="70d458426760178becc4c35e91e696ef" name="ext-src/php_swoole_library.h" role="src" />
-   <file md5sum="ce035403c0c686b9b64e1857ca59d479" name="ext-src/php_swoole_odbc.h" role="src" />
-   <file md5sum="fc7459d52777885138def408b7da1134" name="ext-src/php_swoole_oracle.h" role="src" />
-   <file md5sum="aed3545d3d517765ccc52227462f7c2c" name="ext-src/php_swoole_pgsql.h" role="src" />
-   <file md5sum="a720fe2a3e7bf4b701ac9a8dfe8d46fd" name="ext-src/php_swoole_private.h" role="src" />
+   <file md5sum="80bdf5fdd9e38a9448511f203d2dbdea" name="ext-src/php_swoole_library.h" role="src" />
+   <file md5sum="6e35473c4bcb0236db1561bdd109faf8" name="ext-src/php_swoole_odbc.h" role="src" />
+   <file md5sum="500a9bbefcc145c73f562597e8615cc8" name="ext-src/php_swoole_oracle.h" role="src" />
+   <file md5sum="c24a62bf4690aa820727e8c0c8d88bcf" name="ext-src/php_swoole_pgsql.h" role="src" />
+   <file md5sum="cd8d3b9aeba9734707c82e658e23bd35" name="ext-src/php_swoole_private.h" role="src" />
    <file md5sum="831208a29281eed9a791f2ce5dca322b" name="ext-src/php_swoole_process.h" role="src" />
-   <file md5sum="cb788b56939b0424416f734c4d349bae" name="ext-src/php_swoole_server.h" role="src" />
-   <file md5sum="49b81b2e8af80baf6f8d154d10f569cd" name="ext-src/php_swoole_sqlite.h" role="src" />
-   <file md5sum="756675852a9358e07bc9b08893f7273a" name="ext-src/php_swoole_thread.h" role="src" />
-   <file md5sum="31d5ceb6aebd58019b6dd4b38ac85cd3" name="ext-src/stubs/php_swoole.stub.php" role="src" />
-   <file md5sum="279a09965d30fadd943825a1cab4d2fb" name="ext-src/stubs/php_swoole_arginfo.h" role="src" />
+   <file md5sum="433f080321abbd2b0fb7117a2e259c4b" name="ext-src/php_swoole_server.h" role="src" />
+   <file md5sum="53ade2ddcabb06a4f468c92e433e66a2" name="ext-src/php_swoole_sqlite.h" role="src" />
+   <file md5sum="fc0e7ea2762f8ad3aae14846a39f80bc" name="ext-src/php_swoole_thread.h" role="src" />
+   <file md5sum="bd9fb25807ef78bb51d30d5d80781b4e" name="ext-src/stubs/php_swoole.stub.php" role="src" />
+   <file md5sum="a5f42fc0cef973cde6d819a25db9d6aa" name="ext-src/stubs/php_swoole_arginfo.h" role="src" />
    <file md5sum="edd431c48506c5f044af5b05e9f748aa" name="ext-src/stubs/php_swoole_atomic.stub.php" role="src" />
    <file md5sum="b8dd116d686a427316f36b24f4dd2c59" name="ext-src/stubs/php_swoole_atomic_arginfo.h" role="src" />
    <file md5sum="2bdca98c1cdd175d0a0182e0afc1981d" name="ext-src/stubs/php_swoole_channel_coro.stub.php" role="src" />
    <file md5sum="5a979a323e86309eef5901e0fada7445" name="ext-src/stubs/php_swoole_channel_coro_arginfo.h" role="src" />
-   <file md5sum="522c071e8ee340d26bf493d54efc26b8" name="ext-src/stubs/php_swoole_client.stub.php" role="src" />
-   <file md5sum="1c5be7266e3a4a9af523fa52d1de6afd" name="ext-src/stubs/php_swoole_client_arginfo.h" role="src" />
+   <file md5sum="5a16a0ec6d9a724e8066d99f641d73b6" name="ext-src/stubs/php_swoole_client.stub.php" role="src" />
+   <file md5sum="83e642382bb055865e57ae006b63aa7d" name="ext-src/stubs/php_swoole_client_arginfo.h" role="src" />
+   <file md5sum="06b576a135563494a359d87ba509f393" name="ext-src/stubs/php_swoole_client_async.stub.php" role="src" />
+   <file md5sum="c974e9a0e3c3ff506a7064e919cf72e7" name="ext-src/stubs/php_swoole_client_async_arginfo.h" role="src" />
    <file md5sum="c98163776c120f06bed644a440f5801c" name="ext-src/stubs/php_swoole_client_coro.stub.php" role="src" />
    <file md5sum="081cd64fca0dc53ca8e29e7cdf3672d9" name="ext-src/stubs/php_swoole_client_coro_arginfo.h" role="src" />
    <file md5sum="1b2ec62393d326866207e886cb72a788" name="ext-src/stubs/php_swoole_coroutine.stub.php" role="src" />
    <file md5sum="41f3ba036d649805ff339a5247e91103" name="ext-src/stubs/php_swoole_coroutine_arginfo.h" role="src" />
    <file md5sum="915ac8a5f2059e2658e3cc0087b2df2a" name="ext-src/stubs/php_swoole_coroutine_scheduler.stub.php" role="src" />
    <file md5sum="fe492afbf27d07f52e008d65a18eca8b" name="ext-src/stubs/php_swoole_coroutine_scheduler_arginfo.h" role="src" />
-   <file md5sum="1a2c1760bd3682fa80b6b90fb66053f8" name="ext-src/stubs/php_swoole_coroutine_system.stub.php" role="src" />
-   <file md5sum="e5f783c0e99cd4e01a7ada80c7871818" name="ext-src/stubs/php_swoole_coroutine_system_arginfo.h" role="src" />
+   <file md5sum="6899769551c0a435d211341c88465723" name="ext-src/stubs/php_swoole_coroutine_system.stub.php" role="src" />
+   <file md5sum="38a0cc4f599a058f642a02c29e0e7721" name="ext-src/stubs/php_swoole_coroutine_system_arginfo.h" role="src" />
    <file md5sum="de91632648f63b7f16bfb8ec7499bfd9" name="ext-src/stubs/php_swoole_event.stub.php" role="src" />
    <file md5sum="c02823a37be29f8666031438913f2b2a" name="ext-src/stubs/php_swoole_event_arginfo.h" role="src" />
    <file md5sum="d38db3289992ce9534c815f11f9a9a26" name="ext-src/stubs/php_swoole_ex.stub.php" role="src" />
@@ -574,143 +636,153 @@
    <file md5sum="0e1579ff976a382b8b7c514080a9cb98" name="ext-src/stubs/php_swoole_http2_client_coro_arginfo.h" role="src" />
    <file md5sum="b3f92d01adad3364a8d60d63da13791b" name="ext-src/stubs/php_swoole_http_client_coro.stub.php" role="src" />
    <file md5sum="d475bc41b208389b93654860f314a84c" name="ext-src/stubs/php_swoole_http_client_coro_arginfo.h" role="src" />
+   <file md5sum="5761d52ee144c885f293bcbf802a8eab" name="ext-src/stubs/php_swoole_http_cookie.stub.php" role="src" />
+   <file md5sum="406b43b216998580d00606048ee22640" name="ext-src/stubs/php_swoole_http_cookie_arginfo.h" role="src" />
    <file md5sum="29d1d849a1aecc8d22db43f98d5b1b37" name="ext-src/stubs/php_swoole_http_request.stub.php" role="src" />
    <file md5sum="0e3ff59a3359796357b6644e4438282a" name="ext-src/stubs/php_swoole_http_request_arginfo.h" role="src" />
-   <file md5sum="44082e650a379dedf43206118bfd4246" name="ext-src/stubs/php_swoole_http_response.stub.php" role="src" />
-   <file md5sum="3c09e9cef937b68d0f2f06d403effdac" name="ext-src/stubs/php_swoole_http_response_arginfo.h" role="src" />
-   <file md5sum="0c6e6f79ef6bc30b0e0367cd923b8902" name="ext-src/stubs/php_swoole_http_server_coro.stub.php" role="src" />
-   <file md5sum="d928608bdc3ea7b81eff5e960ec821e7" name="ext-src/stubs/php_swoole_http_server_coro_arginfo.h" role="src" />
+   <file md5sum="ad99e2ba394296b69dc60bc43082e568" name="ext-src/stubs/php_swoole_http_response.stub.php" role="src" />
+   <file md5sum="8fd119295ab279768ff8b9ad96d45474" name="ext-src/stubs/php_swoole_http_response_arginfo.h" role="src" />
+   <file md5sum="8cbb79792f7160d29f2a4f185cd89a66" name="ext-src/stubs/php_swoole_http_server_coro.stub.php" role="src" />
+   <file md5sum="4972ad66ab5788cde80b0295cd0233ec" name="ext-src/stubs/php_swoole_http_server_coro_arginfo.h" role="src" />
    <file md5sum="9ca88fc038b99fa3263b7034d07f0f35" name="ext-src/stubs/php_swoole_lock.stub.php" role="src" />
    <file md5sum="988cf596c999ee390293cb0d29809248" name="ext-src/stubs/php_swoole_lock_arginfo.h" role="src" />
    <file md5sum="e5ba410f2e11b3337efdbd368b510125" name="ext-src/stubs/php_swoole_name_resolver.stub.php" role="src" />
    <file md5sum="4ce3633ce8d5f7a7b9bc034f77956f38" name="ext-src/stubs/php_swoole_name_resolver_arginfo.h" role="src" />
-   <file md5sum="69b68a7cc834ed7cd5711db7e4fadfa4" name="ext-src/stubs/php_swoole_process.stub.php" role="src" />
-   <file md5sum="39121bf4137b6eeffe8ceff5caa1852f" name="ext-src/stubs/php_swoole_process_arginfo.h" role="src" />
+   <file md5sum="3bfb5ccf9efa237ed96c51e7f841fe33" name="ext-src/stubs/php_swoole_process.stub.php" role="src" />
+   <file md5sum="2f9bee64e6ed52e3d75337aa2b1dc699" name="ext-src/stubs/php_swoole_process_arginfo.h" role="src" />
    <file md5sum="c025ff931488e05d90163690e4d89d3b" name="ext-src/stubs/php_swoole_process_pool.stub.php" role="src" />
    <file md5sum="efa399b848dd07f96575bcd4840e9253" name="ext-src/stubs/php_swoole_process_pool_arginfo.h" role="src" />
    <file md5sum="3583b4c23db67ed775a1352e4f05db8d" name="ext-src/stubs/php_swoole_redis_server.stub.php" role="src" />
    <file md5sum="1dbdd539760a00e94e2144bdb2fdeb71" name="ext-src/stubs/php_swoole_redis_server_arginfo.h" role="src" />
-   <file md5sum="35471248235618a95e07e0d4c26eab30" name="ext-src/stubs/php_swoole_runtime.stub.php" role="src" />
-   <file md5sum="eea188a2170fac296223579881e6e8ee" name="ext-src/stubs/php_swoole_runtime_arginfo.h" role="src" />
-   <file md5sum="f7cd65b8310d2b84be260571416dc33e" name="ext-src/stubs/php_swoole_server.stub.php" role="src" />
-   <file md5sum="4798cd6931215d127e7bb29b7aeef72a" name="ext-src/stubs/php_swoole_server_arginfo.h" role="src" />
+   <file md5sum="616753bcc312de28367fd6514e686cc0" name="ext-src/stubs/php_swoole_runtime.stub.php" role="src" />
+   <file md5sum="b4bf648b5207ecdc21935824b7ce7a0e" name="ext-src/stubs/php_swoole_runtime_arginfo.h" role="src" />
+   <file md5sum="034a09fe17893e89f3f40e40f437b410" name="ext-src/stubs/php_swoole_server.stub.php" role="src" />
+   <file md5sum="f0767232d1cf1d4ff9bc6d29824e6fb6" name="ext-src/stubs/php_swoole_server_arginfo.h" role="src" />
    <file md5sum="810a0e1e7c24bfc4442a66a2c40419f7" name="ext-src/stubs/php_swoole_server_port.stub.php" role="src" />
    <file md5sum="180ebb2b43858c892af808319ab09fa5" name="ext-src/stubs/php_swoole_server_port_arginfo.h" role="src" />
    <file md5sum="2c327bc40d47ccc73f7c9245eb49eb03" name="ext-src/stubs/php_swoole_socket_coro.stub.php" role="src" />
    <file md5sum="41e525696a35847dbfb4aadf243ed9b6" name="ext-src/stubs/php_swoole_socket_coro_arginfo.h" role="src" />
    <file md5sum="10fd6ddd55cf7b0cac5f38594d75bf07" name="ext-src/stubs/php_swoole_table.stub.php" role="src" />
    <file md5sum="32b03f4bea4415094c83aa95fd893be2" name="ext-src/stubs/php_swoole_table_arginfo.h" role="src" />
-   <file md5sum="50b4eed4c2154365bc492256e24f88c1" name="ext-src/stubs/php_swoole_thread.stub.php" role="src" />
-   <file md5sum="eebf1d5f7dffb784fac92e46509904e0" name="ext-src/stubs/php_swoole_thread_arginfo.h" role="src" />
-   <file md5sum="de58b6de3217b8bbf7c835dc0cb9934c" name="ext-src/stubs/php_swoole_thread_arraylist.stub.php" role="src" />
-   <file md5sum="a9fbd46b64868aeb767d021d3c36b2a9" name="ext-src/stubs/php_swoole_thread_arraylist_arginfo.h" role="src" />
-   <file md5sum="fef1806b33a4621aaf55225d94dcbc78" name="ext-src/stubs/php_swoole_thread_atomic.stub.php" role="src" />
-   <file md5sum="6097d19df7cc2e9ad28f8d224e4e5254" name="ext-src/stubs/php_swoole_thread_atomic_arginfo.h" role="src" />
-   <file md5sum="254b9cc129c7437283db90600adf3bd0" name="ext-src/stubs/php_swoole_thread_lock.stub.php" role="src" />
-   <file md5sum="a0746b16a01013f032a407ead289f2d0" name="ext-src/stubs/php_swoole_thread_lock_arginfo.h" role="src" />
-   <file md5sum="173dbe44a38bfd27807ad4cc202d0739" name="ext-src/stubs/php_swoole_thread_map.stub.php" role="src" />
-   <file md5sum="c5c43161d30499f85f145a6b8dfd539e" name="ext-src/stubs/php_swoole_thread_map_arginfo.h" role="src" />
-   <file md5sum="6e2556414380ca7b7e151818e22a9b6d" name="ext-src/stubs/php_swoole_thread_queue.stub.php" role="src" />
-   <file md5sum="f481601a93adb3b8a6ba318bc900d9c0" name="ext-src/stubs/php_swoole_thread_queue_arginfo.h" role="src" />
+   <file md5sum="45ba98fce7160d78b6726313be5a9fa1" name="ext-src/stubs/php_swoole_thread.stub.php" role="src" />
+   <file md5sum="898007b08fd797d3fd59ebd38a4cbe8e" name="ext-src/stubs/php_swoole_thread_arginfo.h" role="src" />
+   <file md5sum="3e58601673c6e61cdf1a8c88377e6b25" name="ext-src/stubs/php_swoole_thread_arraylist.stub.php" role="src" />
+   <file md5sum="e27d0ea71d60b3cb86f75e9a6f9f0e71" name="ext-src/stubs/php_swoole_thread_arraylist_arginfo.h" role="src" />
+   <file md5sum="2a07a6a000327edcd117f816aba7d094" name="ext-src/stubs/php_swoole_thread_atomic.stub.php" role="src" />
+   <file md5sum="13b8d83c39eb96d2883e97ef4e44f327" name="ext-src/stubs/php_swoole_thread_atomic_arginfo.h" role="src" />
+   <file md5sum="786b0d787014ddbe31b5f5c0345c4acc" name="ext-src/stubs/php_swoole_thread_barrier.stub.php" role="src" />
+   <file md5sum="746e7231d7fe0d87c2788b32baee70ac" name="ext-src/stubs/php_swoole_thread_barrier_arginfo.h" role="src" />
+   <file md5sum="4db053d528780fb1a82f29afaf051b56" name="ext-src/stubs/php_swoole_thread_lock.stub.php" role="src" />
+   <file md5sum="bb7bb81210f5f7d11f19e323cea33929" name="ext-src/stubs/php_swoole_thread_lock_arginfo.h" role="src" />
+   <file md5sum="e19623a1337a5c531471860be28afee9" name="ext-src/stubs/php_swoole_thread_map.stub.php" role="src" />
+   <file md5sum="4e567e199112a8a88353ff38a7c0ae91" name="ext-src/stubs/php_swoole_thread_map_arginfo.h" role="src" />
+   <file md5sum="053b2462f97a22c9b5cc4e7e69f85334" name="ext-src/stubs/php_swoole_thread_queue.stub.php" role="src" />
+   <file md5sum="92019d442170e8812e288b222bf6fb9e" name="ext-src/stubs/php_swoole_thread_queue_arginfo.h" role="src" />
    <file md5sum="3c5fdec69e46ffee1e9b0ac0a7c1e8e3" name="ext-src/stubs/php_swoole_timer.stub.php" role="src" />
    <file md5sum="ca170f4f35850c5c6970d5fe079c3726" name="ext-src/stubs/php_swoole_timer_arginfo.h" role="src" />
    <file md5sum="c4d1fe9a2a2cec3f789cd8c5db12f300" name="ext-src/stubs/php_swoole_websocket.stub.php" role="src" />
    <file md5sum="bdfe899e4e6bf972adcb16674e9155e5" name="ext-src/stubs/php_swoole_websocket_arginfo.h" role="src" />
-   <file md5sum="f2be0499741d0a1025a2748aaf30892d" name="ext-src/swoole_admin_server.cc" role="src" />
-   <file md5sum="95de007b5fd2e47a50d75fe6a02565ee" name="ext-src/swoole_async_coro.cc" role="src" />
+   <file md5sum="37407aae8e506d04593188902ff12e34" name="ext-src/swoole_admin_server.cc" role="src" />
+   <file md5sum="4efc4ab5f6c5382a7b624ee3345b07f0" name="ext-src/swoole_async_coro.cc" role="src" />
    <file md5sum="725395cb8256093be52b5b0002538eee" name="ext-src/swoole_atomic.cc" role="src" />
-   <file md5sum="602a19f3a895af39ce42486e8deb3f1e" name="ext-src/swoole_channel_coro.cc" role="src" />
-   <file md5sum="06cf55f669f1267cb9a1b96b6be121b4" name="ext-src/swoole_client.cc" role="src" />
-   <file md5sum="3aa1d1e2e6a5ec85268a9d40c9baf790" name="ext-src/swoole_client_coro.cc" role="src" />
-   <file md5sum="ea9a5eca786626c79d80af814174bbfe" name="ext-src/swoole_coroutine.cc" role="src" />
-   <file md5sum="a046c18aaeb0114fdd3a0d2bc8036a11" name="ext-src/swoole_coroutine_scheduler.cc" role="src" />
-   <file md5sum="fd3fe503063573f1d3842c2ace45e79c" name="ext-src/swoole_coroutine_system.cc" role="src" />
-   <file md5sum="48e6f922a089f38a657b58df6baaec5d" name="ext-src/swoole_curl.cc" role="src" />
-   <file md5sum="b1ed4431a7f7fe4573dcbdd779cfd2bf" name="ext-src/swoole_event.cc" role="src" />
-   <file md5sum="959a272ff8144d2033c32e0baf6e09ff" name="ext-src/swoole_http2_client_coro.cc" role="src" />
-   <file md5sum="b4c3a5882fbc44a3b71e9bf1e15875eb" name="ext-src/swoole_http2_server.cc" role="src" />
-   <file md5sum="7fb8ae84cf5ab7e5c829afee8f739401" name="ext-src/swoole_http_client_coro.cc" role="src" />
-   <file md5sum="cc91c3fefd09d47c9bfd184a0e939522" name="ext-src/swoole_http_request.cc" role="src" />
-   <file md5sum="ec63485e54fca9cf49ba41d318e79ae7" name="ext-src/swoole_http_response.cc" role="src" />
-   <file md5sum="1b8c9d4d02c334124b308e95f83210f0" name="ext-src/swoole_http_server.cc" role="src" />
-   <file md5sum="f38cb9790eb2a760c3853df2a55c51ca" name="ext-src/swoole_http_server_coro.cc" role="src" />
-   <file md5sum="12a3fc5d0c6c02cf1bed8d3c1701f287" name="ext-src/swoole_lock.cc" role="src" />
-   <file md5sum="bb0cb7ec69c3001192d7f76e1eb69643" name="ext-src/swoole_name_resolver.cc" role="src" />
-   <file md5sum="59cbcd81e67c8707551b261f3c828de4" name="ext-src/swoole_odbc.cc" role="src" />
-   <file md5sum="54db024f4c4c27df8292dbe59d741745" name="ext-src/swoole_oracle.cc" role="src" />
-   <file md5sum="86b3e0e7ebbf33729500b2046f49a927" name="ext-src/swoole_pgsql.cc" role="src" />
-   <file md5sum="6f9e37dca3d5045d4f624bc0b9974e5c" name="ext-src/swoole_process.cc" role="src" />
-   <file md5sum="86c67952be3deb0ab8c55e64a39643ba" name="ext-src/swoole_process_pool.cc" role="src" />
-   <file md5sum="714b13d7a8d706fe74dab4525781559b" name="ext-src/swoole_redis_server.cc" role="src" />
-   <file md5sum="1d3ebf349aad866cc7c8e652d7972a63" name="ext-src/swoole_runtime.cc" role="src" />
-   <file md5sum="7772d7f5e85459ae2454d6498678cc35" name="ext-src/swoole_server.cc" role="src" />
-   <file md5sum="986b8538de1551e00852e294a3358824" name="ext-src/swoole_server_port.cc" role="src" />
-   <file md5sum="ba77da099c96d9c7d5d2d546a1659b66" name="ext-src/swoole_socket_coro.cc" role="src" />
-   <file md5sum="584b9a7b063dc48e9deaf029b30003e5" name="ext-src/swoole_sqlite.cc" role="src" />
-   <file md5sum="f6ff5bd0c5037b886430179e2b3ae206" name="ext-src/swoole_table.cc" role="src" />
-   <file md5sum="6134121c6633ca006695e6ba2a13bfc4" name="ext-src/swoole_thread.cc" role="src" />
-   <file md5sum="69d23363e041a0654cba0aeab58312f3" name="ext-src/swoole_thread_arraylist.cc" role="src" />
-   <file md5sum="fa37814bdaee04d83b81ac72f93a7fd0" name="ext-src/swoole_thread_atomic.cc" role="src" />
-   <file md5sum="22580acf07a787c273013248157108de" name="ext-src/swoole_thread_lock.cc" role="src" />
-   <file md5sum="777a5e1e6b568866b23ea402424dcb6b" name="ext-src/swoole_thread_map.cc" role="src" />
-   <file md5sum="d47c0cea67ff47851ee7f3cc75b5abed" name="ext-src/swoole_thread_queue.cc" role="src" />
+   <file md5sum="4a79c3bbcfa063f00e2528eba800f08d" name="ext-src/swoole_channel_coro.cc" role="src" />
+   <file md5sum="f36aed888efbbf7c87e717704e3833e9" name="ext-src/swoole_client.cc" role="src" />
+   <file md5sum="d46357a1981b32fabbd9cb28de8fea6a" name="ext-src/swoole_client_async.cc" role="src" />
+   <file md5sum="bc85adceacab73dd9da501f07b869523" name="ext-src/swoole_client_coro.cc" role="src" />
+   <file md5sum="2e062787a3cfe05662fd58d35172d8be" name="ext-src/swoole_coroutine.cc" role="src" />
+   <file md5sum="ccdb6277d07fe6482f1a20af6ff10b02" name="ext-src/swoole_coroutine_scheduler.cc" role="src" />
+   <file md5sum="b45262e686df04bbb75b9e8c9e0a05a7" name="ext-src/swoole_coroutine_system.cc" role="src" />
+   <file md5sum="9a990afe7c0e35c787d0fc538f67783d" name="ext-src/swoole_curl.cc" role="src" />
+   <file md5sum="672caaad4ab9706e75e314d1256c4b68" name="ext-src/swoole_curl_interface.h" role="src" />
+   <file md5sum="2ea7593973f0872b6f5c1763612dabf7" name="ext-src/swoole_event.cc" role="src" />
+   <file md5sum="492772551680a7ad01aa95fa863563d3" name="ext-src/swoole_http2_client_coro.cc" role="src" />
+   <file md5sum="b1f9385434d091d0e42d0a601e6cd969" name="ext-src/swoole_http2_server.cc" role="src" />
+   <file md5sum="47e55dedcad8cc53a92c770115201622" name="ext-src/swoole_http_client_coro.cc" role="src" />
+   <file md5sum="cfdef233ca266d76fbe6eea5e50249c5" name="ext-src/swoole_http_cookie.cc" role="src" />
+   <file md5sum="843a2c6c2a2cf62cd1158ff922829a5e" name="ext-src/swoole_http_request.cc" role="src" />
+   <file md5sum="10c24a03f94f4a48c498a57d5fdb382b" name="ext-src/swoole_http_response.cc" role="src" />
+   <file md5sum="f921f3cc48200c0d3683232652c2fd54" name="ext-src/swoole_http_server.cc" role="src" />
+   <file md5sum="e75bf943d695f93c98d49ef81b7c5d14" name="ext-src/swoole_http_server_coro.cc" role="src" />
+   <file md5sum="2b3bcbea570254e5fa3ca13a003bd695" name="ext-src/swoole_lock.cc" role="src" />
+   <file md5sum="bb9016b35016d9e8de1282ed8d2a4d7a" name="ext-src/swoole_name_resolver.cc" role="src" />
+   <file md5sum="c88eb135af490a2c0fc95f2efb757793" name="ext-src/swoole_odbc.cc" role="src" />
+   <file md5sum="c10b618663482607689337b0db8dbcb9" name="ext-src/swoole_oracle.cc" role="src" />
+   <file md5sum="fc7fcf3f019f254831ca9b8a198315d1" name="ext-src/swoole_pgsql.cc" role="src" />
+   <file md5sum="92634e4ef12af91610b2a39197a16e51" name="ext-src/swoole_process.cc" role="src" />
+   <file md5sum="870e944a2b40facd8b3f1fd44b87de6a" name="ext-src/swoole_process_pool.cc" role="src" />
+   <file md5sum="8795a814ce7b046bcc7be9e83b9ab555" name="ext-src/swoole_redis_server.cc" role="src" />
+   <file md5sum="7a7ecec7394e2eff4770b7266683bd20" name="ext-src/swoole_runtime.cc" role="src" />
+   <file md5sum="ad176e77e5821fc5e98cbbdf9eeec263" name="ext-src/swoole_server.cc" role="src" />
+   <file md5sum="a3728d688f779abd269d390340de8d8a" name="ext-src/swoole_server_port.cc" role="src" />
+   <file md5sum="31986d28e230beb7f74e449481ca1a5e" name="ext-src/swoole_socket_coro.cc" role="src" />
+   <file md5sum="3d375fec3d9e9c2dffe2b2c550772026" name="ext-src/swoole_sqlite.cc" role="src" />
+   <file md5sum="6ec6be35ac428041f655e01ccd8d4c7a" name="ext-src/swoole_table.cc" role="src" />
+   <file md5sum="613218f5cd0b813cf00a3a10fc3bd811" name="ext-src/swoole_thread.cc" role="src" />
+   <file md5sum="9b851e322d1831c087ed7d3571260be3" name="ext-src/swoole_thread_arraylist.cc" role="src" />
+   <file md5sum="46b7fb7181bb82e54b51fe55402139ad" name="ext-src/swoole_thread_atomic.cc" role="src" />
+   <file md5sum="b2e3606e7972f7bfefddbacf8031c733" name="ext-src/swoole_thread_barrier.cc" role="src" />
+   <file md5sum="08509879e9bb5b1c9a3c4910c868e43a" name="ext-src/swoole_thread_lock.cc" role="src" />
+   <file md5sum="5f44dfa03cb4ae671fb20c2c6efb57c3" name="ext-src/swoole_thread_map.cc" role="src" />
+   <file md5sum="8e27caa4c1dd28f53c8f4874196bb0da" name="ext-src/swoole_thread_queue.cc" role="src" />
    <file md5sum="0d2051c228785fb36c0bd21a77b79d43" name="ext-src/swoole_timer.cc" role="src" />
-   <file md5sum="2174d04b09eafd33be842f6322aabd83" name="ext-src/swoole_websocket_server.cc" role="src" />
+   <file md5sum="2d12cc75cba8fe90a98d8b0dd05eaa1a" name="ext-src/swoole_websocket_server.cc" role="src" />
    <file md5sum="045e782a4d66e2f94a449487e4e84d58" name="gdbinit" role="doc" />
    <file md5sum="fb53b91e602d1c936b7f3592aa1d99d9" name="include/helper/kqueue.h" role="src" />
-   <file md5sum="c72a5f12e6224c5bbe1c3aad6c50f953" name="include/swoole.h" role="src" />
-   <file md5sum="3642e8877e183bc0bb839d4b7e95282b" name="include/swoole_api.h" role="src" />
+   <file md5sum="c3b4e0ef5c13d6b44a6ba32623903fc2" name="include/swoole.h" role="src" />
+   <file md5sum="844ddf08ddf0bc5ba4f984b9872579a0" name="include/swoole_api.h" role="src" />
    <file md5sum="e2afa823750589f16c405809149fbcb8" name="include/swoole_asm_context.h" role="src" />
-   <file md5sum="535518a45b6a6a3dfc16fd123934f85f" name="include/swoole_async.h" role="src" />
-   <file md5sum="3e74e12ce9562eaa5d38a36d2fcf4223" name="include/swoole_atomic.h" role="src" />
+   <file md5sum="83522e9aa379e698e68e40b9bdc97f93" name="include/swoole_async.h" role="src" />
+   <file md5sum="875848fad19e0803040458e0aa133759" name="include/swoole_atomic.h" role="src" />
    <file md5sum="88ba4db4f2318777b8748d87427376dd" name="include/swoole_base64.h" role="src" />
-   <file md5sum="7306e47f15a4d6a6fc24a57d7e4bb6e7" name="include/swoole_buffer.h" role="src" />
-   <file md5sum="c93bd80a2345ccc28bf3029e74a0a31b" name="include/swoole_c_api.h" role="src" />
+   <file md5sum="cdfa22076c71757a32e98a4dc0df958f" name="include/swoole_buffer.h" role="src" />
+   <file md5sum="d9bfeb4eec3f109cc2850a07e4e05c91" name="include/swoole_c_api.h" role="src" />
    <file md5sum="0d6d008063d70623d77171ac96df311c" name="include/swoole_channel.h" role="src" />
-   <file md5sum="e04480f03377e3d80809bcc67b592c94" name="include/swoole_client.h" role="src" />
-   <file md5sum="32a4d6ff5dba166b1bef15de2b89fc6d" name="include/swoole_config.h" role="src" />
-   <file md5sum="2c9d3a0a58f58f11203903dbaf73b00f" name="include/swoole_coroutine.h" role="src" />
-   <file md5sum="963ec5f53d8cb6c040b06e5212c19a1c" name="include/swoole_coroutine_c_api.h" role="src" />
+   <file md5sum="363760fc4cdc753c413a4c303f2be23d" name="include/swoole_client.h" role="src" />
+   <file md5sum="127d689af40ece10b7dc4e62e8144c85" name="include/swoole_config.h" role="src" />
+   <file md5sum="fa576c09487a19011e46f424e26a90c6" name="include/swoole_coroutine.h" role="src" />
+   <file md5sum="92f05aa332d4855b85a0550e8981624a" name="include/swoole_coroutine_c_api.h" role="src" />
    <file md5sum="76e36a00a49b544a738ba391b6cb7406" name="include/swoole_coroutine_channel.h" role="src" />
    <file md5sum="c3c3a2402b00cd50d6fc4421e99cb1bd" name="include/swoole_coroutine_context.h" role="src" />
-   <file md5sum="6d7194ca62fca04b797ee6d40a7441f3" name="include/swoole_coroutine_socket.h" role="src" />
-   <file md5sum="e4bd6b1946734944f36bf9b0340a434f" name="include/swoole_coroutine_system.h" role="src" />
+   <file md5sum="a154023a64ee3196493da00deb359277" name="include/swoole_coroutine_socket.h" role="src" />
+   <file md5sum="f1e27cc0f8b357caa2dda63e8653710f" name="include/swoole_coroutine_system.h" role="src" />
    <file md5sum="31affc9a1f13816eaebe56cb959d72f0" name="include/swoole_dtls.h" role="src" />
-   <file md5sum="89f1d24a54073007dff3d6887d415ecc" name="include/swoole_error.h" role="src" />
-   <file md5sum="4ab0f8d3befe8de220d8af5bbe7970f6" name="include/swoole_file.h" role="src" />
+   <file md5sum="1ed80ce45b16a4d41bdc1f2b991e3b65" name="include/swoole_error.h" role="src" />
+   <file md5sum="e0e5212b57ce7bded22fe449d6cdf9c1" name="include/swoole_file.h" role="src" />
    <file md5sum="f9764823851c4d7dc77bd9207a937fe0" name="include/swoole_file_hook.h" role="src" />
    <file md5sum="4dcff7a761c80d7455a2fe275ff44e05" name="include/swoole_hash.h" role="src" />
    <file md5sum="daa1f25ba92bae3f77ab85736f7db5a6" name="include/swoole_heap.h" role="src" />
    <file md5sum="721328863dd80f6c3c6a8e55744e28d5" name="include/swoole_http.h" role="src" />
    <file md5sum="0862169e8428e7f696c7732001c4365b" name="include/swoole_http2.h" role="src" />
-   <file md5sum="93a69020dd199f9f1c6025a33d132022" name="include/swoole_lock.h" role="src" />
+   <file md5sum="79def78348b2ed9a4611183218b666be" name="include/swoole_iouring.h" role="src" />
+   <file md5sum="99e4d80774c5663e739167cd26b1b5c6" name="include/swoole_lock.h" role="src" />
    <file md5sum="06cd459b28773342b193f02766b1ea87" name="include/swoole_log.h" role="src" />
    <file md5sum="876658cbdc6430f0609835ace388c3ff" name="include/swoole_lru_cache.h" role="src" />
    <file md5sum="e579304811b5ef3c5495b54b9dbb930e" name="include/swoole_memory.h" role="src" />
-   <file md5sum="49173767117e20b896d6363d498fc1eb" name="include/swoole_message_bus.h" role="src" />
+   <file md5sum="303b912bcfbaaed06628a282e19222f7" name="include/swoole_message_bus.h" role="src" />
    <file md5sum="043f3168b1c4486ea9860690a63743cb" name="include/swoole_mime_type.h" role="src" />
    <file md5sum="52bd08d2901764cd239bb39fd7bcee62" name="include/swoole_mqtt.h" role="src" />
    <file md5sum="4fad4c8315f488439ae910fb6638d39b" name="include/swoole_msg_queue.h" role="src" />
    <file md5sum="cb386013d1705c7e458b75ca4dc0ddb5" name="include/swoole_pipe.h" role="src" />
-   <file md5sum="d407f019081c22ecb90bd4b3d5ed7fa7" name="include/swoole_process_pool.h" role="src" />
-   <file md5sum="a8891b79907872f9223302157f1eb346" name="include/swoole_protocol.h" role="src" />
-   <file md5sum="6a9ecb87dd7203a6150027ee1c99eecf" name="include/swoole_proxy.h" role="src" />
+   <file md5sum="d2eebe6ebf4363c632d60a8dd33c51c3" name="include/swoole_process_pool.h" role="src" />
+   <file md5sum="d16832519e9114a4146ef1aab139e462" name="include/swoole_protocol.h" role="src" />
+   <file md5sum="fcd7844e53b8f8cf1ed782e11b74559b" name="include/swoole_proxy.h" role="src" />
    <file md5sum="4273996924015f8a165bf501596dcc11" name="include/swoole_reactor.h" role="src" />
    <file md5sum="77ec42771cb47910513a4e7de00a7ecb" name="include/swoole_redis.h" role="src" />
-   <file md5sum="912ad9fe2747e86b71d22aa5adc810a4" name="include/swoole_server.h" role="src" />
-   <file md5sum="f0d6bd74fdab59c65573f75c2815d07b" name="include/swoole_signal.h" role="src" />
-   <file md5sum="aaaee7bd9cf519d1443ee349d80657da" name="include/swoole_socket.h" role="src" />
+   <file md5sum="e1a3f42837ee4a53a84c5c2fb733b4dd" name="include/swoole_server.h" role="src" />
+   <file md5sum="fc33fde472da4f813a504330c5edf648" name="include/swoole_signal.h" role="src" />
+   <file md5sum="8a46743c16d129665ce9c4ef80ae313f" name="include/swoole_socket.h" role="src" />
    <file md5sum="0aed4457eddd690af1dc9dd8ddc0c19e" name="include/swoole_socket_hook.h" role="src" />
    <file md5sum="2a23f1c368e3777bdb8f5af4066447ed" name="include/swoole_ssl.h" role="src" />
-   <file md5sum="da926029154729b48631f956c66579ce" name="include/swoole_static_handler.h" role="src" />
-   <file md5sum="577b3d221c23682066752900e2e1742d" name="include/swoole_string.h" role="src" />
-   <file md5sum="2f66d8c813f682fb630a159703fcd727" name="include/swoole_table.h" role="src" />
-   <file md5sum="acb1855f6e61dd0a305291d32eac8395" name="include/swoole_timer.h" role="src" />
-   <file md5sum="9f96b9e9e16cd8c489ab919b4537331d" name="include/swoole_util.h" role="src" />
-   <file md5sum="01d7f64987b517aace724b2fc4eec50d" name="include/swoole_version.h" role="src" />
+   <file md5sum="2f18e6c4099923c40a2996f3c95deb97" name="include/swoole_static_handler.h" role="src" />
+   <file md5sum="a13e42723d9b9cd6f34f29fc4dee6854" name="include/swoole_string.h" role="src" />
+   <file md5sum="280c36a01a50890f9c83473495601168" name="include/swoole_table.h" role="src" />
+   <file md5sum="58d06c28a84b96111ed4d49ae85a17ff" name="include/swoole_thread.h" role="src" />
+   <file md5sum="0b50a9423b782724ec51aeb5865665cb" name="include/swoole_timer.h" role="src" />
+   <file md5sum="0376104d4a96d41068e2a088d7f1f420" name="include/swoole_util.h" role="src" />
+   <file md5sum="f621faa9f1b69d4f189940550925ae0f" name="include/swoole_version.h" role="src" />
    <file md5sum="e29a5264a98005ae920179d7b58f2806" name="include/swoole_websocket.h" role="src" />
    <file md5sum="fdef229fe8755b638737c4ea0d964801" name="include/swoole_wheel_timer.h" role="src" />
-   <file md5sum="6b8da7833c41e1fe3d7dd16bc0283011" name="php_swoole.h" role="src" />
+   <file md5sum="aa1b6b8c01864d825ce02ec31c3ba017" name="php_swoole.h" role="src" />
    <file md5sum="6137cde4893c59f76f005a8123d8e8e6" name="scripts/.gitignore" role="src" />
    <file md5sum="008000dcf1e01ba60b28b43e20d48c46" name="scripts/clear.sh" role="src" />
    <file md5sum="199d6947944fddfed1b1836a84e87c6c" name="scripts/code-format.sh" role="src" />
@@ -718,101 +790,104 @@
    <file md5sum="829178206fbe30ab120cf7af29a73cbd" name="scripts/debug/swoole_info.php" role="src" />
    <file md5sum="85ce1a4505781216bbeeeb67d23498d7" name="scripts/debug/swoole_table_implements.php" role="src" />
    <file md5sum="21e92e3b2114af98bd546e56913c6981" name="scripts/docker-compile-with-iouring.sh" role="src" />
-   <file md5sum="56781851a8e502398ea33025107fb800" name="scripts/docker-compile-with-thread.sh" role="src" />
-   <file md5sum="a238c1be3b2922bc42a8cbbc80c6a2da" name="scripts/docker-compile.sh" role="src" />
-   <file md5sum="7ffdc39199b2c89c8de62b18f3578282" name="scripts/docker-compose.yml" role="src" />
+   <file md5sum="97864aa1b889a93b77c3e521ebf81515" name="scripts/docker-compile-with-thread.sh" role="src" />
+   <file md5sum="62a2d0f779f84450533a46ad9ebf355a" name="scripts/docker-compile.sh" role="src" />
+   <file md5sum="843d0c136eac18658c5cc200ad5e2c0b" name="scripts/docker-compose.yml" role="src" />
    <file md5sum="d9b6ad65fa5bfbf126d447423e2e60f5" name="scripts/docker-iouring-route.sh" role="src" />
    <file md5sum="6faa2c0adecc14c398191f4fd60e3d43" name="scripts/docker-route.sh" role="src" />
    <file md5sum="b38b2e7ab6ad7cbf3c6dee00119121da" name="scripts/docker-thread-route.sh" role="src" />
-   <file md5sum="6e759e651ebde5006389bdd938fbd993" name="scripts/library.sh" role="src" />
-   <file md5sum="21b5a965b7987043103d6f06d06e74f5" name="scripts/make.sh" role="src" />
+   <file md5sum="8a407032a7ee60f0c50048d9e2b9c0d3" name="scripts/install-deps-on-ubuntu.sh" role="src" />
+   <file md5sum="7d69544a1f095fbed8bf356d9c699066" name="scripts/library.sh" role="src" />
+   <file md5sum="d278402d8e40263a471308e24f981154" name="scripts/make.sh" role="src" />
    <file md5sum="ec48d37d3c9b7c038d5db5dda566eda3" name="scripts/pecl-install.sh" role="src" />
+   <file md5sum="9fea8bf95ad5af48e0feb28adc7a1db1" name="scripts/rename.php" role="src" />
    <file md5sum="0c5d920994f82e4db9c892b4e17a6491" name="scripts/route.sh" role="src" />
-   <file md5sum="aa5f09d8fd466acdc82223c6f31873ae" name="scripts/run-tests.sh" role="src" />
+   <file md5sum="c3f77a91e0e07d538de7609ee67340cc" name="scripts/run-tests.sh" role="src" />
    <file md5sum="72e76bcae110a16c965d7f90bede0950" name="scripts/simple-compile-on-github.sh" role="src" />
    <file md5sum="e6f672ab2b8641dfc1002c79ad76ead5" name="scripts/simple-compile.sh" role="src" />
-   <file md5sum="05bac97d5312f6ad7f34f6b5c32f9a71" name="src/core/base.cc" role="src" />
+   <file md5sum="e14b41dcdb42fdf6f62b10e9f23a96bb" name="src/core/base.cc" role="src" />
    <file md5sum="088aa4a305f63315d1d90b594eacde25" name="src/core/base64.cc" role="src" />
    <file md5sum="873ddff1e9c1387a9d05f3dfd3639467" name="src/core/channel.cc" role="src" />
    <file md5sum="dcf531f3abbd70f13250e359f5229aea" name="src/core/crc32.cc" role="src" />
-   <file md5sum="36e2c5be2fa47279519808e930f10daf" name="src/core/error.cc" role="src" />
+   <file md5sum="cb851dbf620af0ea2518ab156b306eef" name="src/core/error.cc" role="src" />
    <file md5sum="1bc6efd3fce206b40ffa6bc440cf8edc" name="src/core/heap.cc" role="src" />
    <file md5sum="f2528da11af6b9534025b6ebfad5c2a2" name="src/core/log.cc" role="src" />
-   <file md5sum="f9e08900d3af21af391b2e9aa0044a29" name="src/core/string.cc" role="src" />
-   <file md5sum="64d6958e63a91fefc65e9d3e281688f9" name="src/core/timer.cc" role="src" />
+   <file md5sum="ca400e89ce3967d853e27cac01902f0c" name="src/core/string.cc" role="src" />
+   <file md5sum="bdb52c541056084601cd8dde19eed573" name="src/core/timer.cc" role="src" />
    <file md5sum="1417c41e46c1880396889dcf27f0abdc" name="src/coroutine/base.cc" role="src" />
    <file md5sum="91b66d4541caa942f0051a298e8555fd" name="src/coroutine/channel.cc" role="src" />
    <file md5sum="946ec591f21dfb31fb48fa6d36e95323" name="src/coroutine/context.cc" role="src" />
    <file md5sum="c2e49301c5b5fe85ab19905c7b92fc76" name="src/coroutine/file_lock.cc" role="src" />
-   <file md5sum="60a0148b7994eb29e9813fb81a3c1ea6" name="src/coroutine/hook.cc" role="src" />
-   <file md5sum="1b3e54fa5f7844660c3f1dda0b5458a1" name="src/coroutine/iouring.cc" role="src" />
-   <file md5sum="d0be47dba1341b4acee95e92f979a3c3" name="src/coroutine/socket.cc" role="src" />
-   <file md5sum="e66d987d7ee07f0623612be8d173cc08" name="src/coroutine/system.cc" role="src" />
+   <file md5sum="f42ea1d4d65eb870c8808c287eaafb65" name="src/coroutine/hook.cc" role="src" />
+   <file md5sum="98564d5dec16a40205f04ad2299a704a" name="src/coroutine/iouring.cc" role="src" />
+   <file md5sum="382d3baf0edcecd0d4c1c60a60ebf654" name="src/coroutine/socket.cc" role="src" />
+   <file md5sum="77fa9ddfbb3e4d55efb032f22641b6ef" name="src/coroutine/system.cc" role="src" />
    <file md5sum="3001de59704b0598b7e6ff633d8424ae" name="src/coroutine/thread_context.cc" role="src" />
+   <file md5sum="2547796a6d1cdb7b222e127ae7d88492" name="src/lock/barrier.cc" role="src" />
+   <file md5sum="e88a003378bed3be949f88394131c9c8" name="src/lock/coroutine_lock.cc" role="src" />
    <file md5sum="a0a3c4ef19c75e2aa48cf70272b90a80" name="src/lock/mutex.cc" role="src" />
    <file md5sum="6a064950bd8a563114b17a7139ffab03" name="src/lock/rw_lock.cc" role="src" />
    <file md5sum="53447d704a3ab69d0b45d7b8f390aee1" name="src/lock/spin_lock.cc" role="src" />
-   <file md5sum="05bf3006b4de387e412ef9797b8b6484" name="src/memory/buffer.cc" role="src" />
+   <file md5sum="07d605eca18620ca3ac02caa63fb1063" name="src/memory/buffer.cc" role="src" />
    <file md5sum="1149c6898f4f970a3a0320e4eade494b" name="src/memory/fixed_pool.cc" role="src" />
    <file md5sum="70ab14889912656a135844bf864edf64" name="src/memory/global_memory.cc" role="src" />
    <file md5sum="697955b535e754c07bb326c451c92571" name="src/memory/ring_buffer.cc" role="src" />
    <file md5sum="932a485f88463f80380b251de69dad4a" name="src/memory/shared_memory.cc" role="src" />
-   <file md5sum="0a08f91ac3310d756ee0eb93e7a058e7" name="src/memory/table.cc" role="src" />
-   <file md5sum="d71636d9387e4e93b15d34aee990a99b" name="src/network/address.cc" role="src" />
-   <file md5sum="1fb9f78da5546adbae6c468250aeb22c" name="src/network/client.cc" role="src" />
-   <file md5sum="d2471d7a560814ccaaf787a9b27a5c54" name="src/network/dns.cc" role="src" />
-   <file md5sum="4894473a74117c05410ffb36143f8a50" name="src/network/socket.cc" role="src" />
+   <file md5sum="3777ba9fd350636dc5a81b32b4165cad" name="src/memory/table.cc" role="src" />
+   <file md5sum="43af30472936dc1c23f618afc5825334" name="src/network/address.cc" role="src" />
+   <file md5sum="385d069e06775ef6b1f368b082f2a770" name="src/network/client.cc" role="src" />
+   <file md5sum="38b668af91c56dbf0d6b8c645bc40791" name="src/network/dns.cc" role="src" />
+   <file md5sum="7e03bda96fa325a0cfa9c75e5ed19eb2" name="src/network/socket.cc" role="src" />
    <file md5sum="9c833ed5dd6540cbb91b3b2b550bf731" name="src/network/stream.cc" role="src" />
    <file md5sum="56a7ea8352b243f21f9e6e6e9ad10a05" name="src/os/async_thread.cc" role="src" />
-   <file md5sum="eebc9b31dc2492de28ded7231fb9e2e0" name="src/os/base.cc" role="src" />
-   <file md5sum="cbc9f25b6013b66df77c0d8a0e66aa49" name="src/os/file.cc" role="src" />
-   <file md5sum="a34f4806732b01b1e992ad027400fcd8" name="src/os/iouring.cc" role="src" />
+   <file md5sum="d40b9e73f37366e4d2aa156f44e0df4d" name="src/os/base.cc" role="src" />
+   <file md5sum="ea6fa1bc5f5c2d6a14a2e38054b1304c" name="src/os/file.cc" role="src" />
    <file md5sum="97a4a4bea6721fe6f19a0ff6ac5148f7" name="src/os/msg_queue.cc" role="src" />
    <file md5sum="110e2fcfbcee9e79ae2b9341f7ea5cb7" name="src/os/pipe.cc" role="src" />
-   <file md5sum="fd7dc635c0f57262407d5005b3c9b230" name="src/os/process_pool.cc" role="src" />
-   <file md5sum="a2c2656cac3cbc91a1decc5fb0fa0fbf" name="src/os/sendfile.cc" role="src" />
-   <file md5sum="461ed008853cec6db6638ed842130eb7" name="src/os/signal.cc" role="src" />
-   <file md5sum="361fe7502c3c8da54026aa073d5d96be" name="src/os/timer.cc" role="src" />
+   <file md5sum="ce1cf843cdc2a23d60212f82b26c889c" name="src/os/process_pool.cc" role="src" />
+   <file md5sum="06696b8919c952bcf36c22884e066846" name="src/os/sendfile.cc" role="src" />
+   <file md5sum="1c7ca797687c91836119374e8efc09db" name="src/os/signal.cc" role="src" />
+   <file md5sum="242f82fa5d52ccf34e264ce236e394b9" name="src/os/timer.cc" role="src" />
    <file md5sum="efb9faffa2ac7d46407a84032bbbd52e" name="src/os/unix_socket.cc" role="src" />
-   <file md5sum="da6fcc3de83ebc5b654a173c5678d4e2" name="src/os/wait.cc" role="src" />
+   <file md5sum="ff5db590de520f11675b5865733d8935" name="src/os/wait.cc" role="src" />
    <file md5sum="c3049e85a279a4aa23978f426f060d0c" name="src/protocol/base.cc" role="src" />
-   <file md5sum="caa78b21381958883aa3ad040c9997f4" name="src/protocol/dtls.cc" role="src" />
-   <file md5sum="90a6ad895294d01ba49c4962df8e8095" name="src/protocol/http.cc" role="src" />
+   <file md5sum="fdb18f3589ae21c806bafe367d9c68ac" name="src/protocol/dtls.cc" role="src" />
+   <file md5sum="86aede63025bc68efaadd7e3513b5e63" name="src/protocol/http.cc" role="src" />
    <file md5sum="6bfb289de7033c5436d0206700d83a1b" name="src/protocol/http2.cc" role="src" />
-   <file md5sum="0acaaac603f2e334d848e446ea24055d" name="src/protocol/message_bus.cc" role="src" />
+   <file md5sum="9d0ea034cfebd66b13f5dbfd357ff874" name="src/protocol/message_bus.cc" role="src" />
    <file md5sum="6bfead0cdab2d4af82e12d58a493d4f2" name="src/protocol/mime_type.cc" role="src" />
    <file md5sum="cdd4872a787df84e2929ccaa3e83d0ad" name="src/protocol/mqtt.cc" role="src" />
    <file md5sum="94ff26d2aaf8851c86e4f3da1a8bae38" name="src/protocol/redis.cc" role="src" />
    <file md5sum="4ef43b49630c1fde2ba27228d70ce874" name="src/protocol/socks5.cc" role="src" />
    <file md5sum="9803dc98ebc7468d47de50fdf4bc7785" name="src/protocol/ssl.cc" role="src" />
    <file md5sum="6e7fd7b8830af735298a8d71f8ee3f5c" name="src/protocol/websocket.cc" role="src" />
-   <file md5sum="b5a7f6ce517ec2a885713611a133b389" name="src/reactor/base.cc" role="src" />
+   <file md5sum="b23211262d1c33183109658c85f8c1f1" name="src/reactor/base.cc" role="src" />
    <file md5sum="0ccf6bba428b0f5088b32bce9090d6b1" name="src/reactor/epoll.cc" role="src" />
    <file md5sum="0cab5f78dbcbe968bade79bcb7756aec" name="src/reactor/kqueue.cc" role="src" />
    <file md5sum="f160f14c39616de83e9a73b692896275" name="src/reactor/poll.cc" role="src" />
    <file md5sum="ed91700c5056b2395dfdd849591e244f" name="src/reactor/select.cc" role="src" />
-   <file md5sum="1f27e89b3345a627c333ed173ceccbae" name="src/server/base.cc" role="src" />
-   <file md5sum="66d79397bbe1582a0c46e4e37b1a5988" name="src/server/manager.cc" role="src" />
-   <file md5sum="9e5df0ea4ab366248345013aebc958a5" name="src/server/master.cc" role="src" />
-   <file md5sum="e2280861bb59e18212f5d3cb387cf0ff" name="src/server/port.cc" role="src" />
-   <file md5sum="b79ee45a0589875479f8eb38ad6a61e9" name="src/server/process.cc" role="src" />
-   <file md5sum="050be0b60de103aaa4b17c4b471df302" name="src/server/reactor_process.cc" role="src" />
-   <file md5sum="07719da26d7de802bd6db7dec1ed99ce" name="src/server/reactor_thread.cc" role="src" />
-   <file md5sum="52336c496af188ca7ec3d0f9cbc41f4d" name="src/server/static_handler.cc" role="src" />
-   <file md5sum="c4344c0072fc0e7084863db140855033" name="src/server/task_worker.cc" role="src" />
-   <file md5sum="854921824dcdedc35147dae2cfe36761" name="src/server/thread.cc" role="src" />
-   <file md5sum="c21511e3e0ef07a5f76fe4cae7417e66" name="src/server/worker.cc" role="src" />
-   <file md5sum="45b91e717e670e853fe6c7936383f997" name="src/wrapper/event.cc" role="src" />
-   <file md5sum="6a769d0193bc80d21830c5cd9f108d40" name="src/wrapper/http.cc" role="src" />
-   <file md5sum="3998cd11354b32d9b1458a1a87519be5" name="src/wrapper/timer.cc" role="src" />
+   <file md5sum="a8873c038f740283faf559d440888ddf" name="src/server/base.cc" role="src" />
+   <file md5sum="51f5c004dd0c60ff7e75770dcd70d4ea" name="src/server/manager.cc" role="src" />
+   <file md5sum="f68dc4954ee8981f1413451dd42486c5" name="src/server/master.cc" role="src" />
+   <file md5sum="fe6833d87fcdffbf2d256b32fc17b92b" name="src/server/port.cc" role="src" />
+   <file md5sum="3685d3c47cd1b0551b17a9ad74458fd8" name="src/server/process.cc" role="src" />
+   <file md5sum="8d3719888ac18ef9a55cfb55947d797b" name="src/server/reactor_process.cc" role="src" />
+   <file md5sum="325c273068a9b3effe4842c2fd706c9e" name="src/server/reactor_thread.cc" role="src" />
+   <file md5sum="53fbed736a4de3901bebc5f7da96997c" name="src/server/static_handler.cc" role="src" />
+   <file md5sum="98f4107a2174c460241d76528c39a7b4" name="src/server/task_worker.cc" role="src" />
+   <file md5sum="07c63e3efbc49edda954fb6c1da18976" name="src/server/thread.cc" role="src" />
+   <file md5sum="69dbe785fd49d5389fcd2dbb807f81ad" name="src/server/worker.cc" role="src" />
+   <file md5sum="c59c458d170ef594f528f35fc9c178c9" name="src/wrapper/event.cc" role="src" />
+   <file md5sum="fa78ade63056ed87caca91192c6c3267" name="src/wrapper/http.cc" role="src" />
+   <file md5sum="a0d90f56dd5cf9b5134eb59ecb16be24" name="src/wrapper/timer.cc" role="src" />
    <file md5sum="15b1fbe2030ca75af62ad867327a6d04" name="tests/.php-cs-fixer.dist.php" role="test" />
    <file md5sum="34705536287bf9df83965244f06032d9" name="tests/CONTRIBUTION" role="test" />
    <file md5sum="83bbc428671c91697b673f7aa93beabd" name="tests/README.md" role="test" />
    <file md5sum="4c2eb577521f19791d8011bd1c960feb" name="tests/clean" role="test" />
-   <file md5sum="8edef73f0d7ebb61e410aba91956c1ab" name="tests/include/api/curl_multi.php" role="test" />
-   <file md5sum="fb698eab96aa280120e8089aa4103b4c" name="tests/include/api/exit.php" role="test" />
+   <file md5sum="bc7618e839bc2b936f23071c6c17a9c3" name="tests/include/api/curl_multi.php" role="test" />
+   <file md5sum="533d816772e30dc14bc31bc4342a4aee" name="tests/include/api/exit.php" role="test" />
    <file md5sum="2fb433f054fd7673b90ada49461b5211" name="tests/include/api/http_server.php" role="test" />
-   <file md5sum="77f892267e5eafba1c6ac3fd926d18b9" name="tests/include/api/http_test_cases.php" role="test" />
+   <file md5sum="f998b230d8351dddf71776fb565040b3" name="tests/include/api/http_test_cases.php" role="test" />
    <file md5sum="7ebc5d6b3fa9e54d0bf8f3c53730d2f6" name="tests/include/api/ssl-ca/ca-cert.pem" role="test" />
    <file md5sum="7fdfb544209e8dd235595ed6808d06a4" name="tests/include/api/ssl-ca/ca-key.pem" role="test" />
    <file md5sum="ffbd3969ad66bd7c0e52b7ac98496c91" name="tests/include/api/ssl-ca/ca-req.csr" role="test" />
@@ -824,7 +899,8 @@
    <file md5sum="a2432885c2c2ee7d585c6209e9e256b4" name="tests/include/api/ssl-ca/server-req.csr" role="test" />
    <file md5sum="b724f304431820aeb28e1248aba9abad" name="tests/include/api/swoole_callback/swoole_cannot_destroy_active_lambda_function.php" role="test" />
    <file md5sum="0cea0bbc4da4545b32b63901f90d6e14" name="tests/include/api/swoole_client/connect_timeout.php" role="test" />
-   <file md5sum="8841b6847b67f7cd5ef92d3e5060a18c" name="tests/include/api/swoole_client/connect_twice.php" role="test" />
+   <file md5sum="8050d841373981f7eff3bc901418087b" name="tests/include/api/swoole_client/connect_twice.php" role="test" />
+   <file md5sum="cfcd2ed5e1e4261fb80bad2554797ff4" name="tests/include/api/swoole_client/http_get.php" role="test" />
    <file md5sum="9acd0a1f1cc41027a97dd008500ce0b1" name="tests/include/api/swoole_client/opcode_client.php" role="test" />
    <file md5sum="45d5fcf24c89bcfd88f608cbaedae638" name="tests/include/api/swoole_client/simple_client.php" role="test" />
    <file md5sum="87862440deede3161d1e299dd95de01e" name="tests/include/api/swoole_client/socket_free.php" role="test" />
@@ -842,7 +918,7 @@
    <file md5sum="ae03f26ca2cc8591695015a8e93f8c81" name="tests/include/api/swoole_server/simple_server.php" role="test" />
    <file md5sum="bb54bc424e5d99c2b31b52df529a7c7a" name="tests/include/api/swoole_server/simple_tcp_server.php" role="test" />
    <file md5sum="85edcbcd29602293a9792cc827d90bfb" name="tests/include/api/swoole_server/simple_udp_server.php" role="test" />
-   <file md5sum="2c73cfb2ab8e4ba0ee190368b34320e3" name="tests/include/api/swoole_server/tcp_serv.php" role="test" />
+   <file md5sum="4bfa54c506fb4cceb89bba5d8e18cf00" name="tests/include/api/swoole_server/tcp_serv.php" role="test" />
    <file md5sum="e2472b01fce47ea25e39826d202ff6ff" name="tests/include/api/swoole_server/tcp_task_server.php" role="test" />
    <file md5sum="8469ba21495ed4998b98ac6ea669c02b" name="tests/include/api/swoole_server/testsendfile.txt" role="test" />
    <file md5sum="a6c402949fdb848141fca94573cacbde" name="tests/include/api/swoole_timer/accurate_test.php" role="test" />
@@ -860,10 +936,11 @@
    <file md5sum="cb59a9912bafc946525b0ad3d21938ad" name="tests/include/api/test_classes/A2.php" role="test" />
    <file md5sum="43b0e2ab87921d71c47e5f7dd2d4c5a0" name="tests/include/api/test_classes/B.php" role="test" />
    <file md5sum="e83ce108f64a502c21816564040d44a1" name="tests/include/bootstrap.php" role="test" />
-   <file md5sum="74a864f46b6501b3ddfa440ee9935c6c" name="tests/include/config.php" role="test" />
-   <file md5sum="a76adcf6c4afd9df6dc6ea23a9e7f30f" name="tests/include/functions.php" role="test" />
-   <file md5sum="d8297fbdfdf15d2b408f81bb4888810d" name="tests/include/lib/composer.json" role="test" />
+   <file md5sum="52dea4966e7cd1a7e5eecb9bfbec5b34" name="tests/include/config.php" role="test" />
+   <file md5sum="e11ad6eb95c200ad7643bd3013be655e" name="tests/include/functions.php" role="test" />
+   <file md5sum="d85627832f4c083973cfb54f210406ae" name="tests/include/lib/composer.json" role="test" />
    <file md5sum="23c458581b1d4c26add4d9a3da4f9692" name="tests/include/lib/src/Assert.php" role="test" />
+   <file md5sum="8c4980dec7b1062c1016979aa0aa4816" name="tests/include/lib/src/ChildProcess.php" role="test" />
    <file md5sum="665b224f1fff57b10a797d86b2581aeb" name="tests/include/lib/src/CoServer.php" role="test" />
    <file md5sum="bdebf55644a8f9b445cc6f515ef02c5e" name="tests/include/lib/src/CurlManager.php" role="test" />
    <file md5sum="d184e2c04a747e332b400dfa5c03b295" name="tests/include/lib/src/DbWrapper.php" role="test" />
@@ -883,7 +960,7 @@
    <file md5sum="239a24bfd03ba214547f8b5172e05d0e" name="tests/include/lib/src/WaitRef.php" role="test" />
    <file md5sum="991af166d51168ba14bebb2af7813925" name="tests/include/lib/src/responder/get.php" role="test" />
    <file md5sum="f3632259727f5b72b09c0e4c0764c9f9" name="tests/include/macos/phpstorm.py" role="test" />
-   <file md5sum="df532db168aeaa5df57d8cc40dc9cd8c" name="tests/include/skipif.inc" role="test" />
+   <file md5sum="9a177c75221c003a4ae389f888f8c19b" name="tests/include/skipif.inc" role="test" />
    <file md5sum="cfb3618193607ef04429c50ef167023f" name="tests/include/ssl_certs/ca.crt" role="test" />
    <file md5sum="e0eb71da8fff826b8ae54687d081dbe9" name="tests/include/ssl_certs/ca.csr" role="test" />
    <file md5sum="d1b20e8878b65663318be013e0cd1bdb" name="tests/include/ssl_certs/ca.key" role="test" />
@@ -912,7 +989,7 @@
    <file md5sum="6bcc9413f4e3d01bfd3e350901479ec8" name="tests/pgsql.sql" role="test" />
    <file md5sum="13355c8bba1131f4aa6b1f2cf4fb6e96" name="tests/php-cs-fixer" role="test" />
    <file md5sum="4dc005508f41b037d78d42751e1ea2bd" name="tests/run-tests" role="test" />
-   <file md5sum="16613b3ee498d2e33a07252e530620ce" name="tests/start.sh" role="test" />
+   <file md5sum="6b0a173eebd1feece108eaa6d63cabca" name="tests/start.sh" role="test" />
    <file md5sum="b4d43977c1a17f6149ea7a4f75be3022" name="tests/swoole_atomic/atomic.phpt" role="test" />
    <file md5sum="01eb8c36fb47270befca734b468b0896" name="tests/swoole_atomic/dtor_in_child.phpt" role="test" />
    <file md5sum="cb688caca92032457dab39eda0837c77" name="tests/swoole_atomic/multi_wakeup.phpt" role="test" />
@@ -945,7 +1022,7 @@
    <file md5sum="b13828ba22b5d77c94825414fcd44c3c" name="tests/swoole_channel_coro/hybird_chan2.phpt" role="test" />
    <file md5sum="6e400a2ca6c9a161e3aaa9a1ae6c6c20" name="tests/swoole_channel_coro/hybird_chan3.phpt" role="test" />
    <file md5sum="eddc41209952c09183bf04d982cb528c" name="tests/swoole_channel_coro/lock.phpt" role="test" />
-   <file md5sum="ef76f0edd118305a34e916ee1ec37b3b" name="tests/swoole_channel_coro/no_ctor.phpt" role="test" />
+   <file md5sum="33cf756334223a76f509c3f7f3e07f4e" name="tests/swoole_channel_coro/no_ctor.phpt" role="test" />
    <file md5sum="fe40f6de4f491a3638c492dd7a0708cb" name="tests/swoole_channel_coro/pool.phpt" role="test" />
    <file md5sum="be4f75ad174279c0e15f687e98eda8d3" name="tests/swoole_channel_coro/pop_after_close.phpt" role="test" />
    <file md5sum="e733c4920497de753b834629a3e93fe6" name="tests/swoole_channel_coro/pop_close1.phpt" role="test" />
@@ -963,6 +1040,28 @@
    <file md5sum="0cd526795c034ee67d748d001dbb97ca" name="tests/swoole_channel_coro/push_timeout3.phpt" role="test" />
    <file md5sum="c534d3557b828103a9aed560947d147e" name="tests/swoole_channel_coro/push_timeout4.phpt" role="test" />
    <file md5sum="ccad9df215cb8b8648997ecbe65a0f13" name="tests/swoole_channel_coro/type.phpt" role="test" />
+   <file md5sum="e70dbfc356b60867dafed96c0669b247" name="tests/swoole_client_async/base.phpt" role="test" />
+   <file md5sum="ef49b23942d8dd3b40f13c7affbdd91f" name="tests/swoole_client_async/big_package_memory_leak.phpt" role="test" />
+   <file md5sum="6fe492d6863db57c482d8b725976210e" name="tests/swoole_client_async/buffer_full.phpt" role="test" />
+   <file md5sum="bd2f5583023fa96a1be4a9a00c92e5c1" name="tests/swoole_client_async/connect_dns.phpt" role="test" />
+   <file md5sum="2d8d7661643001a1de6de304e7013c7e" name="tests/swoole_client_async/connect_refuse.phpt" role="test" />
+   <file md5sum="3f8c5e60347889a528f73ddabea52ab5" name="tests/swoole_client_async/connect_refuse_udg.phpt" role="test" />
+   <file md5sum="670fd21c8ca8aa730c3513d55251307c" name="tests/swoole_client_async/connect_refuse_unix.phpt" role="test" />
+   <file md5sum="352d3d94f6021abb2793c639c487caa2" name="tests/swoole_client_async/connect_timeout.phpt" role="test" />
+   <file md5sum="ec87712b40cc1688ef3c63d8754115c2" name="tests/swoole_client_async/connect_twice.phpt" role="test" />
+   <file md5sum="81f70c35b164e3f69a89f3c99a3ff28e" name="tests/swoole_client_async/enableSSL.phpt" role="test" />
+   <file md5sum="5df57c196716fddb1e9891db2eb06822" name="tests/swoole_client_async/enableSSL_bad_callback.phpt" role="test" />
+   <file md5sum="bc3ce144142342fff698f56efd01c9b3" name="tests/swoole_client_async/enableSSL_before_connect.phpt" role="test" />
+   <file md5sum="8aa3887e4d5459f0ba0df2a5ec1922ef" name="tests/swoole_client_async/eof.phpt" role="test" />
+   <file md5sum="f79cbc11df5b7d7657e37ced5c60581d" name="tests/swoole_client_async/eof_close.phpt" role="test" />
+   <file md5sum="4cc71f3c60d44b7343ee7274a654249d" name="tests/swoole_client_async/getSocket_bug.phpt" role="test" />
+   <file md5sum="23217e4868eba38cb35a27b89ec0785a" name="tests/swoole_client_async/getpeername.phpt" role="test" />
+   <file md5sum="15ef14cad22218d1197974bd85846930" name="tests/swoole_client_async/getsockname.phpt" role="test" />
+   <file md5sum="9afa113dfe255bfd452f1863023ecca1" name="tests/swoole_client_async/length_protocol.phpt" role="test" />
+   <file md5sum="a6010f9b3aa7352b6e4e2aa04e0079f5" name="tests/swoole_client_async/length_protocol_func.phpt" role="test" />
+   <file md5sum="c977c8f32d1d2db288046d4e4d9bf503" name="tests/swoole_client_async/port_invalid.phpt" role="test" />
+   <file md5sum="26e16368fa45e8a18f26a1f34e7f43f1" name="tests/swoole_client_async/sendfile.phpt" role="test" />
+   <file md5sum="fa987cc70a6b4ccf703eda369a8ee0a4" name="tests/swoole_client_async/sleep_wake.phpt" role="test" />
    <file md5sum="5284d297b4116b642dac2e390fb3f839" name="tests/swoole_client_coro/bug_2346.phpt" role="test" />
    <file md5sum="2bee19a76c07689dacd7aa01cdaa738a" name="tests/swoole_client_coro/close.phpt" role="test" />
    <file md5sum="3977c71fb5282399a9a62e80e888a784" name="tests/swoole_client_coro/close_in_other_co.phpt" role="test" />
@@ -1017,9 +1116,12 @@
    <file md5sum="841790f21a96b8b97971f049295e2e6f" name="tests/swoole_client_sync/connect_1.phpt" role="test" />
    <file md5sum="46adb7e6084f7920e87a6f062c8c5dd3" name="tests/swoole_client_sync/connect_2.phpt" role="test" />
    <file md5sum="5132dfc0d4688c662e4b29c4997108a7" name="tests/swoole_client_sync/connect_3.phpt" role="test" />
+   <file md5sum="aea66d000387c096e2f7eada9f7398fc" name="tests/swoole_client_sync/enableSSL.phpt" role="test" />
+   <file md5sum="90c6a7af62abd0ea4d2aa6ec32cc88b5" name="tests/swoole_client_sync/enableSSL_2.phpt" role="test" />
    <file md5sum="754a8c5865f79208f4ed15e96da23977" name="tests/swoole_client_sync/eof.phpt" role="test" />
    <file md5sum="365cc3ac9ffa9f90a81b747e72d202d5" name="tests/swoole_client_sync/eof_close.phpt" role="test" />
    <file md5sum="ac07a31a846133019b0960cbed8414a0" name="tests/swoole_client_sync/eof_timeout.phpt" role="test" />
+   <file md5sum="f9f557e31cf44579926ad12da7035918" name="tests/swoole_client_sync/http_proxy.phpt" role="test" />
    <file md5sum="e0e25e2e3f798d19da3025583adcca9d" name="tests/swoole_client_sync/keep1.phpt" role="test" />
    <file md5sum="db59b224f6c4df4ae62d6b52850598af" name="tests/swoole_client_sync/keep2.phpt" role="test" />
    <file md5sum="0325d3741e0e4df5fa262a3bd324999a" name="tests/swoole_client_sync/keep3.phpt" role="test" />
@@ -1037,6 +1139,7 @@
    <file md5sum="b1e8967836819fd2246d5462361eae01" name="tests/swoole_client_sync/send_recv.phpt" role="test" />
    <file md5sum="c99eff63bd35e5db25f9321135148707" name="tests/swoole_client_sync/sendfile.phpt" role="test" />
    <file md5sum="ee01733223641c43c23698adc558b4fe" name="tests/swoole_client_sync/sendto.phpt" role="test" />
+   <file md5sum="17d24b841018a9940e502c64dc9da249" name="tests/swoole_client_sync/socks5_proxy.phpt" role="test" />
    <file md5sum="95a83297446fb72152935e7ec02c8b9d" name="tests/swoole_client_sync/ssl_recv_timeout.phpt" role="test" />
    <file md5sum="53880b75dd20461cc53e76c1a9e8f3ff" name="tests/swoole_client_sync/sync_send_recv.phpt" role="test" />
    <file md5sum="93e51e1a05fd09c455a50eb49daff6aa" name="tests/swoole_client_sync/udg_send_timeout.phpt" role="test" />
@@ -1049,10 +1152,10 @@
    <file md5sum="a66b9c70a0f770fdaf7242df496569c4" name="tests/swoole_coroutine/async_callback/signal.phpt" role="test" />
    <file md5sum="349295357f69a0ca0f28961c2d40659b" name="tests/swoole_coroutine/async_callback/timer.phpt" role="test" />
    <file md5sum="f51a80b33e569d89b3ecc02c4794fe88" name="tests/swoole_coroutine/autoload.phpt" role="test" />
-   <file md5sum="d9592e1661e605c947b0e387f6df5937" name="tests/swoole_coroutine/autoload_not_found.phpt" role="test" />
+   <file md5sum="e2f1c01d39be02a13d1ee29ecd478932" name="tests/swoole_coroutine/autoload_not_found.phpt" role="test" />
    <file md5sum="1805a6f318453e0177f80f82342ff6c5" name="tests/swoole_coroutine/autoload_not_found_not_in_coroutine.phpt" role="test" />
    <file md5sum="d5c0ba67e8d5df5dded5e2db097cc0b8" name="tests/swoole_coroutine/autoload_not_in_coroutine.phpt" role="test" />
-   <file md5sum="eca6f2359c96dcd095a54f0d37d9a88e" name="tests/swoole_coroutine/bailout/co_redis_in_shutdown_function.phpt" role="test" />
+   <file md5sum="c8d78bd2f6ed498914cae057cb99da07" name="tests/swoole_coroutine/bailout/co_redis_in_shutdown_function.phpt" role="test" />
    <file md5sum="5a26f1ad982883e4edfd27f4057b04cd" name="tests/swoole_coroutine/bailout/error.phpt" role="test" />
    <file md5sum="28e84a2ff8e6ee069b3f05796642c1c2" name="tests/swoole_coroutine/bailout/error_in.phpt" role="test" />
    <file md5sum="205c743486f0ec122246475fbdd1eedf" name="tests/swoole_coroutine/bailout/error_internal.phpt" role="test" />
@@ -1076,10 +1179,10 @@
    <file md5sum="9017a739d2fc87a7e01ae9255404fc13" name="tests/swoole_coroutine/cancel/sleep.phpt" role="test" />
    <file md5sum="a3c16e07c67fa58f74817bf17d06e7a8" name="tests/swoole_coroutine/cancel/socket.phpt" role="test" />
    <file md5sum="af742915d09463a23d4530ca27f35e10" name="tests/swoole_coroutine/cancel/suspend.phpt" role="test" />
-   <file md5sum="c8082f9667bfe28aea351f14cf1eee41" name="tests/swoole_coroutine/cancel/wait.phpt" role="test" />
+   <file md5sum="aab02ffcd3acd59353c431a386069b9b" name="tests/swoole_coroutine/cancel/wait.phpt" role="test" />
    <file md5sum="471afd32d67c693096df662076692f78" name="tests/swoole_coroutine/cancel/wait_event.phpt" role="test" />
    <file md5sum="3504a9325213b263bb8abf3365805c88" name="tests/swoole_coroutine/cancel/wait_signal.phpt" role="test" />
-   <file md5sum="53851fdd935f9ae195beb7d99ebfc18a" name="tests/swoole_coroutine/check.phpt" role="test" />
+   <file md5sum="e6af1b1e0a6944c81c99e17c3fd1bb3f" name="tests/swoole_coroutine/check.phpt" role="test" />
    <file md5sum="0dde9cf3902fc9cef8e1c2c0178b051f" name="tests/swoole_coroutine/cid.phpt" role="test" />
    <file md5sum="8551100af85597cd49e63a1b6c407a1c" name="tests/swoole_coroutine/create_after_rshutdown.phpt" role="test" />
    <file md5sum="4d4e7c5acd0f44f000369e2395fbe09a" name="tests/swoole_coroutine/current.phpt" role="test" />
@@ -1090,7 +1193,7 @@
    <file md5sum="2d8eb7afe7aa941cba31209a1b2e47de" name="tests/swoole_coroutine/defer/defer_in_try.phpt" role="test" />
    <file md5sum="0fed7f3b0ccdd1d95455bef348f89656" name="tests/swoole_coroutine/destruct/destruct1.phpt" role="test" />
    <file md5sum="7e31d07969bdf0ecce936f409b5c7f14" name="tests/swoole_coroutine/destruct/destruct2.phpt" role="test" />
-   <file md5sum="eab65b8b03949c830bba13275847b339" name="tests/swoole_coroutine/destruct/destruct3.phpt" role="test" />
+   <file md5sum="8614f9d9549024807a90fd05154bce58" name="tests/swoole_coroutine/destruct/destruct3.phpt" role="test" />
    <file md5sum="ff65b020036230d3eda792d69a4a89aa" name="tests/swoole_coroutine/dnslookup_1.phpt" role="test" />
    <file md5sum="838f119be8fb6d58dcbe25e2b5128c50" name="tests/swoole_coroutine/dnslookup_2.phpt" role="test" />
    <file md5sum="916a16d70b8c00043c4af8bd0b3bb016" name="tests/swoole_coroutine/dnslookup_3.phpt" role="test" />
@@ -1103,7 +1206,7 @@
    <file md5sum="c5d29d00018e85c9e8d15ff32895ce96" name="tests/swoole_coroutine/exception.phpt" role="test" />
    <file md5sum="501ebb6d7b238921ae7fc1af1ebe3cae" name="tests/swoole_coroutine/exception/core_error.phpt" role="test" />
    <file md5sum="a6475da868cb47483baebc081a940e3f" name="tests/swoole_coroutine/exception/defer1.phpt" role="test" />
-   <file md5sum="10934137c4325aba7a9c9aac7578bb14" name="tests/swoole_coroutine/exception/defer2.phpt" role="test" />
+   <file md5sum="b6bee12fa3eb21adc91ce6adf787483b" name="tests/swoole_coroutine/exception/defer2.phpt" role="test" />
    <file md5sum="318274d669d498ba52eebcdb0e45c0fa" name="tests/swoole_coroutine/exception/dtor.phpt" role="test" />
    <file md5sum="3c0c539722406c4161088b963c47db56" name="tests/swoole_coroutine/exception/empty.phpt" role="test" />
    <file md5sum="5ee98e051d14199490394dd8a4056285" name="tests/swoole_coroutine/exception/error.phpt" role="test" />
@@ -1116,8 +1219,10 @@
    <file md5sum="95a0bd3977cf43f5af7dff3918b7a5bb" name="tests/swoole_coroutine/exception/yield1.phpt" role="test" />
    <file md5sum="8e7434c971a35459a1893a0f39a90ed3" name="tests/swoole_coroutine/execute_time.phpt" role="test" />
    <file md5sum="08786169c45f4568a17f8ef3564dd00d" name="tests/swoole_coroutine/exists.phpt" role="test" />
-   <file md5sum="b1209eaa6d5a8ad61feaeebc461ba541" name="tests/swoole_coroutine/exit.phpt" role="test" />
-   <file md5sum="727225f6d26ca1749f4b41cfb07d2db3" name="tests/swoole_coroutine/exit_exception_backtrace.phpt" role="test" />
+   <file md5sum="71743f771c5f95121124904370eb3c88" name="tests/swoole_coroutine/exit.phpt" role="test" />
+   <file md5sum="2e1c9606ba54c458edd6d5efc9560b82" name="tests/swoole_coroutine/exit_84.phpt" role="test" />
+   <file md5sum="094e241e29ce74ece0e11c5ec93b7052" name="tests/swoole_coroutine/exit_exception_backtrace.phpt" role="test" />
+   <file md5sum="09988a37f8ca9a61fa548aa2f8ca9e3d" name="tests/swoole_coroutine/exit_exception_backtrace_84.phpt" role="test" />
    <file md5sum="892578a361af8251fbc427ead8edbd24" name="tests/swoole_coroutine/fatal_error.phpt" role="test" />
    <file md5sum="6304c968bb0900d4318011c3e9ac081a" name="tests/swoole_coroutine/forbidden_case/array_map.phpt" role="test" />
    <file md5sum="32a5751f0d2fd0be40e20d8448f69290" name="tests/swoole_coroutine/forbidden_case/call_user.phpt" role="test" />
@@ -1149,8 +1254,8 @@
    <file md5sum="0a7e53f8db9ba48ba0afdea1a0c675df" name="tests/swoole_coroutine/new_server.phpt" role="test" />
    <file md5sum="c797a601aabf123d139642e2a5b0fc23" name="tests/swoole_coroutine/no_inline_func.phpt" role="test" />
    <file md5sum="54095eab52e0d986744384b6497c241f" name="tests/swoole_coroutine/output/create.phpt" role="test" />
-   <file md5sum="8ff9a4958dfd7c777e5b901c27a1fc17" name="tests/swoole_coroutine/output/in_nested_co.phpt" role="test" />
-   <file md5sum="a9dcb474c0b1e28a51b7202709c04704" name="tests/swoole_coroutine/output/ob_main.phpt" role="test" />
+   <file md5sum="418c5871436f5a93f5aae8f2b352a0cf" name="tests/swoole_coroutine/output/in_nested_co.phpt" role="test" />
+   <file md5sum="536f5947399f811a390591a6b30d21aa" name="tests/swoole_coroutine/output/ob_main.phpt" role="test" />
    <file md5sum="e0f4f2a15f93533cf11a73bb0c1bc079" name="tests/swoole_coroutine/output/output_control.phpt" role="test" />
    <file md5sum="d662b7ddac950e3d70eef96d0a3f308c" name="tests/swoole_coroutine/parallel1.phpt" role="test" />
    <file md5sum="5f743aa04de6d4c35ebaf73884d2010b" name="tests/swoole_coroutine/parallel2.phpt" role="test" />
@@ -1192,9 +1297,8 @@
    <file md5sum="700741310e12dfd0b23d854108f35e03" name="tests/swoole_coroutine_scheduler/start_in_server_shutdown.phpt" role="test" />
    <file md5sum="6646fcdc2bfc90324c59e2c93b5ec0ce" name="tests/swoole_coroutine_scheduler/start_in_server_worker_stop.phpt" role="test" />
    <file md5sum="0928b222a0b95bfc19ae3ad7b6be4f73" name="tests/swoole_coroutine_system/aio_thread_num.phpt" role="test" />
-   <file md5sum="43b368cefb5cf559c7b42192c2893823" name="tests/swoole_coroutine_system/fread.phpt" role="test" />
-   <file md5sum="c6826fadaa238c4d9dc6a93121801080" name="tests/swoole_coroutine_system/fwrite.phpt" role="test" />
-   <file md5sum="9864ffb41db826d1820e70fa7d2a9e3c" name="tests/swoole_coroutine_system/getaddrinfo.phpt" role="test" />
+   <file md5sum="3870c49bd66b751be9e49acefbcd7fd8" name="tests/swoole_coroutine_system/getaddrinfo.phpt" role="test" />
+   <file md5sum="739ad1ddb21215035360659831a2ae01" name="tests/swoole_coroutine_system/getaddrinfo_timeout.phpt" role="test" />
    <file md5sum="b18af44e324020e5bd96d71463b98909" name="tests/swoole_coroutine_system/gethostbyname.phpt" role="test" />
    <file md5sum="4f0cc61bd2be777af5beee4dea005f4d" name="tests/swoole_coroutine_system/gethostbyname_ipv6.phpt" role="test" />
    <file md5sum="df0190f8373fffe05cf542e84c8a5d80" name="tests/swoole_coroutine_system/gethostbyname_timeout.phpt" role="test" />
@@ -1203,16 +1307,16 @@
    <file md5sum="a0a8def626099d4e362d424871a47bf4" name="tests/swoole_coroutine_system/wait.phpt" role="test" />
    <file md5sum="eb77028128bbf3d37c876feaf79fe4ef" name="tests/swoole_coroutine_system/waitEvent.phpt" role="test" />
    <file md5sum="7efd6f84313276ffaca33f4a4f5fce6a" name="tests/swoole_coroutine_system/waitPid.phpt" role="test" />
-   <file md5sum="474374bd8ab6c332f2b4e26dd5ddec39" name="tests/swoole_coroutine_system/waitSignal.phpt" role="test" />
+   <file md5sum="7664452bba7126089fc935c593c418d2" name="tests/swoole_coroutine_system/waitSignal.phpt" role="test" />
+   <file md5sum="0fcf30e70414c174e07e0ce680ac8e9b" name="tests/swoole_coroutine_system/waitSignal_2.phpt" role="test" />
    <file md5sum="c83c9894a0e1c1b10fcf471bf0d91c61" name="tests/swoole_coroutine_system/writefile.phpt" role="test" />
    <file md5sum="3f3cbe2c0634ccd91585dd8ce9f60a73" name="tests/swoole_coroutine_system/writefile_append.phpt" role="test" />
    <file md5sum="2858ceabcef000710943d1e4aad0cce5" name="tests/swoole_coroutine_util/dns_lookup.phpt" role="test" />
    <file md5sum="bb5b9efae2613d86d5d21a779c2377d7" name="tests/swoole_coroutine_util/exec.phpt" role="test" />
    <file md5sum="a9069275b003961e55853eff69b09d53" name="tests/swoole_coroutine_util/exec_sleep.phpt" role="test" />
-   <file md5sum="56a03ba67803b874c571ea083515eb9b" name="tests/swoole_coroutine_util/fgets.phpt" role="test" />
-   <file md5sum="03de1321be6d509c00450098f6afa608" name="tests/swoole_coroutine_util/fread.phpt" role="test" />
-   <file md5sum="8d7d2502c546f2b1f55d04ae5a26d178" name="tests/swoole_coroutine_util/fread_seek.phpt" role="test" />
-   <file md5sum="189a8f36b1fa3c47b6f271699cc4a433" name="tests/swoole_coroutine_util/fwrite.phpt" role="test" />
+   <file md5sum="4750b25bb196f120f43993be2cc7f2a6" name="tests/swoole_coroutine_util/fgets.phpt" role="test" />
+   <file md5sum="c070e157f38f9c86b9650c4eb7f5a503" name="tests/swoole_coroutine_util/fread.phpt" role="test" />
+   <file md5sum="9bf1d28624eab20585f3d2e44a84870f" name="tests/swoole_coroutine_util/fwrite.phpt" role="test" />
    <file md5sum="5e0cf0efb9d04b6796a997b602b05f09" name="tests/swoole_coroutine_util/list_coroutine.phpt" role="test" />
    <file md5sum="16330d353f381c11e5d1288ee7506c7c" name="tests/swoole_coroutine_util/task_worker.phpt" role="test" />
    <file md5sum="115f6bdd5641a79adb9a64db6e73b142" name="tests/swoole_coroutine_wait_group/base.phpt" role="test" />
@@ -1246,7 +1350,7 @@
    <file md5sum="611152a92b76f085c21d6357d8063874" name="tests/swoole_curl/error.phpt" role="test" />
    <file md5sum="e56914cf87dc8b78a5e7dc72e75dd5db" name="tests/swoole_curl/event_exit.phpt" role="test" />
    <file md5sum="96249e4e171d95bb611f6aa0ef2ba4ab" name="tests/swoole_curl/exec_twice.phpt" role="test" />
-   <file md5sum="5857177c4e0836a7285df1daa2f22a6e" name="tests/swoole_curl/fatal_error_in_callback.phpt" role="test" />
+   <file md5sum="8a45e97ef28554d0f84b8b98d13f9642" name="tests/swoole_curl/fatal_error_in_callback.phpt" role="test" />
    <file md5sum="c70c0b2a6fa70ad6833bffebae3222d6" name="tests/swoole_curl/ftp.phpt" role="test" />
    <file md5sum="a96ec9521eafb34ced0f4aa0c324d4b3" name="tests/swoole_curl/guzzle.phpt" role="test" />
    <file md5sum="9cfc895a6e36dd97a139727e2b961cea" name="tests/swoole_curl/guzzle/cancel.phpt" role="test" />
@@ -1300,7 +1404,7 @@
    <file md5sum="0a29ef23ea1cefe36d0a5587e45471e0" name="tests/swoole_curl/share/1.phpt" role="test" />
    <file md5sum="f1cd401cc4ab157f0e0ff8b6edca927d" name="tests/swoole_curl/share/5.phpt" role="test" />
    <file md5sum="41a13b2d7bb83643bb8550b4a2a69747" name="tests/swoole_curl/sleep.phpt" role="test" />
-   <file md5sum="b6094231ce5f14f335b48d302471c3b8" name="tests/swoole_curl/ssl/version.phpt" role="test" />
+   <file md5sum="bf6c16260914f163a4cb5e8e0663dc2b" name="tests/swoole_curl/ssl/version.phpt" role="test" />
    <file md5sum="838d44e08a737430638afdd7394bd3af" name="tests/swoole_curl/symfony-noco.phpt" role="test" />
    <file md5sum="58b44aa2bdd3ad156360a2fd0e23285b" name="tests/swoole_curl/symfony.phpt" role="test" />
    <file md5sum="5bf9424cf19f0c1bc497378b9525a272" name="tests/swoole_curl/template" role="test" />
@@ -1314,7 +1418,7 @@
    <file md5sum="c2cabdd9d6266591eeb9ea5433a38897" name="tests/swoole_curl/undefined_behavior/6.phpt" role="test" />
    <file md5sum="24ef8aaa928d307f444cb9cc1c621591" name="tests/swoole_curl/undefined_behavior/7.phpt" role="test" />
    <file md5sum="b7357c2c12c68880a3b5dee582b40361" name="tests/swoole_curl/undefined_behavior/8.phpt" role="test" />
-   <file md5sum="67f2c579ddbb437a4e7cc99ceeb92a27" name="tests/swoole_curl/upload/1.phpt" role="test" />
+   <file md5sum="7b21232d23db347824e8cba993238127" name="tests/swoole_curl/upload/1.phpt" role="test" />
    <file md5sum="c6434ca244f576c9a8323f85bf08ea17" name="tests/swoole_curl/upload/2.phpt" role="test" />
    <file md5sum="fb4aa8361ec2030bc1060f93dfe842f1" name="tests/swoole_curl/upload/3.phpt" role="test" />
    <file md5sum="b7ccd82df5898d81032f2576cf05e168" name="tests/swoole_curl/upload/curl_testdata1.txt" role="test" />
@@ -1365,19 +1469,19 @@
    <file md5sum="d89c44c709d58ea190bd4f6aaf10818c" name="tests/swoole_function/swoole_set_process_name.phpt" role="test" />
    <file md5sum="63233c8948cbacb9cc7df9b88cf9e1d1" name="tests/swoole_function/swoole_strerror.phpt" role="test" />
    <file md5sum="db1427516ebfb9d6a574f5c0978aaf1f" name="tests/swoole_function/swoole_version.phpt" role="test" />
-   <file md5sum="539cd2a34c8d8a28fc6fcd80e270b7c4" name="tests/swoole_global/channel_construct_check.phpt" role="test" />
+   <file md5sum="715e13ffddc4ed23513fe9a4adcb4399" name="tests/swoole_global/channel_construct_check.phpt" role="test" />
    <file md5sum="b1d6332005ed4d6fd218b333effb4377" name="tests/swoole_global/closed_stdout.phpt" role="test" />
    <file md5sum="6c623937fea3a170af833ea4d06b64c1" name="tests/swoole_global/create_deny.phpt" role="test" />
    <file md5sum="4bfe91e9d8106a67562cda29dda5c043" name="tests/swoole_global/function_alias.phpt" role="test" />
    <file md5sum="8ce1ff2a7c4e6ae02f17d33e563f5cb0" name="tests/swoole_global/serialize_deny.phpt" role="test" />
-   <file md5sum="cfc37eec6aad5b93d4185eecc4a0d02d" name="tests/swoole_global/socket_construct_check.phpt" role="test" />
+   <file md5sum="347f5b33dfef6e39209b7c75f448e863" name="tests/swoole_global/socket_construct_check.phpt" role="test" />
    <file md5sum="73d7d427408cf6187ea87f7cb77eae0a" name="tests/swoole_global/too_many_objects.phpt" role="test" />
    <file md5sum="4ca0c1f745cd2c7f54291a8bacce79e3" name="tests/swoole_global/unset_deny.phpt" role="test" />
    <file md5sum="eaba74ffb48fea55a3da913ff401d734" name="tests/swoole_global/unset_property_01.phpt" role="test" />
    <file md5sum="c84bc130727557913de3013058a8aa74" name="tests/swoole_global/unset_property_02.phpt" role="test" />
    <file md5sum="12865aa2786f68ab37b8785c9833a000" name="tests/swoole_global/unset_property_03.phpt" role="test" />
    <file md5sum="3298f1db19ca39453460e87a50cedd10" name="tests/swoole_http2_client_coro/bug_5127.phpt" role="test" />
-   <file md5sum="0d53540718802a062137e7bbbcf62f65" name="tests/swoole_http2_client_coro/connect_twice.phpt" role="test" />
+   <file md5sum="03c1333ca3415853e8a9e773dcbe2435" name="tests/swoole_http2_client_coro/connect_twice.phpt" role="test" />
    <file md5sum="50bed84dc8d65a1c077ff3d336c2d31a" name="tests/swoole_http2_client_coro/cookies.phpt" role="test" />
    <file md5sum="c1f2372b0129cdcbeaa64ceabfa92de8" name="tests/swoole_http2_client_coro/error.phpt" role="test" />
    <file md5sum="6106b9434f3348fcee1729ad0ca466ac" name="tests/swoole_http2_client_coro/goaway.phpt" role="test" />
@@ -1400,17 +1504,20 @@
    <file md5sum="4299fc1298b7c0b4b36d413928ef7cec" name="tests/swoole_http2_server/big_data.phpt" role="test" />
    <file md5sum="524836e729ae2f7014ee5b04c18f2775" name="tests/swoole_http2_server/compression.phpt" role="test" />
    <file md5sum="7fc756dc191978b1e90c0a7c5d7d6e14" name="tests/swoole_http2_server/compression_types.phpt" role="test" />
+   <file md5sum="ab33cf1700a8dd34453851352cfc2831" name="tests/swoole_http2_server/getMethod.phpt" role="test" />
    <file md5sum="a3e0693ad33400b76f8d153ab8fa497e" name="tests/swoole_http2_server/goaway.phpt" role="test" />
    <file md5sum="68476555071c626b6b7b7f2b916aa58c" name="tests/swoole_http2_server/http2_headers.phpt" role="test" />
    <file md5sum="8098875783a120e7590f7c5c418fd0fc" name="tests/swoole_http2_server/issue_4365.phpt" role="test" />
    <file md5sum="6ef8095704714f85a21c7089bacc76ec" name="tests/swoole_http2_server/max_concurrency.phpt" role="test" />
-   <file md5sum="c83535e81dda2559039df060df3c636f" name="tests/swoole_http2_server/nghttp2_big_data.phpt" role="test" />
+   <file md5sum="15b326c928cdbeb9667366b314fa6764" name="tests/swoole_http2_server/nghttp2_big_data.phpt" role="test" />
    <file md5sum="9260c31570c68f6c835cd993a9621d2c" name="tests/swoole_http2_server/no_compression.phpt" role="test" />
    <file md5sum="cd209d67922a81963d19ba6d3a5d8dc6" name="tests/swoole_http2_server/ping.phpt" role="test" />
    <file md5sum="1da46d33ae43be27b6ab36369fd46e49" name="tests/swoole_http2_server/sendfile.phpt" role="test" />
    <file md5sum="7b224f69940813a97eb2fce2862aab89" name="tests/swoole_http2_server/sendfile_content_type.phpt" role="test" />
    <file md5sum="a7b9b2d7f1f4b4a841f9520655bdc19a" name="tests/swoole_http2_server/sendfile_set_content_type.phpt" role="test" />
    <file md5sum="7cf569b5a09f73e0ee7e48f64ed58ce3" name="tests/swoole_http2_server/static_handler.phpt" role="test" />
+   <file md5sum="00fe4c7e94797101b9ad85ced017a9c2" name="tests/swoole_http2_server/streaming.phpt" role="test" />
+   <file md5sum="7b8bd7f4db2390e6d46f4fc8a23650c6" name="tests/swoole_http2_server/streaming_2.phpt" role="test" />
    <file md5sum="ee03b054d42dc29f11ca753446866b87" name="tests/swoole_http2_server/trailer.phpt" role="test" />
    <file md5sum="423998e05a6310f0ff34654977077f3c" name="tests/swoole_http2_server/worker_max_concurrency.phpt" role="test" />
    <file md5sum="13ec953836018c070d5ebf66d9e50648" name="tests/swoole_http2_server_coro/cookies.phpt" role="test" />
@@ -1429,11 +1536,12 @@
    <file md5sum="223c1b94c6841e75f23f91969df6f124" name="tests/swoole_http_client_coro/cookies_set_bug.phpt" role="test" />
    <file md5sum="21bf665b39e5b7e416724b21d3563841" name="tests/swoole_http_client_coro/defer.phpt" role="test" />
    <file md5sum="9c3dd9688fba182561204031ca32ae48" name="tests/swoole_http_client_coro/defer_02.phpt" role="test" />
-   <file md5sum="79724b7cc87fb0932ee8dfbd14896104" name="tests/swoole_http_client_coro/disable_keep_alive.phpt" role="test" />
+   <file md5sum="5e6987f0c719e62d2b8fcb60e8a9c480" name="tests/swoole_http_client_coro/disable_keep_alive.phpt" role="test" />
    <file md5sum="73a562ef9f2b55701bfc7304a9750cfd" name="tests/swoole_http_client_coro/download.phpt" role="test" />
    <file md5sum="57316213a167834c1ca000fff56d299b" name="tests/swoole_http_client_coro/download_302.phpt" role="test" />
    <file md5sum="e3990dc095aeef4e7895121bc9a59ed7" name="tests/swoole_http_client_coro/download_failed.phpt" role="test" />
    <file md5sum="8f0ac4b984725d344e678dc8b24eebd0" name="tests/swoole_http_client_coro/download_filename_bug.phpt" role="test" />
+   <file md5sum="1f8f3d08573982e0126de00f607793a3" name="tests/swoole_http_client_coro/duplicate_header.phpt" role="test" />
    <file md5sum="c0599547437651ac1aca148279c4415d" name="tests/swoole_http_client_coro/error_handler.phpt" role="test" />
    <file md5sum="f50e778cd445216a002faf790748de85" name="tests/swoole_http_client_coro/get.phpt" role="test" />
    <file md5sum="0d76717b761d15cf8a8b7af3fcde033d" name="tests/swoole_http_client_coro/get_header_out_after_close.phpt" role="test" />
@@ -1443,18 +1551,19 @@
    <file md5sum="b33d024c0a8a7b6e3bac245145c0082f" name="tests/swoole_http_client_coro/h2c_upgrade.phpt" role="test" />
    <file md5sum="f9f1f6f87caf64783a6ac80346bfffe2" name="tests/swoole_http_client_coro/head_method.phpt" role="test" />
    <file md5sum="b23b3252ee09fd840238393c9743bf54" name="tests/swoole_http_client_coro/host.phpt" role="test" />
-   <file md5sum="2379aa19f3dcf7e2b0cdc5028d77358f" name="tests/swoole_http_client_coro/http_proxy.phpt" role="test" />
+   <file md5sum="7f9fea113cf9dbc206077d332b609164" name="tests/swoole_http_client_coro/http_chunk.phpt" role="test" />
+   <file md5sum="914104e91dfc5d4b5a0a6200a3b3f2d2" name="tests/swoole_http_client_coro/http_proxy.phpt" role="test" />
    <file md5sum="77e72ff11a6a3783f4ce7e9adacbe504" name="tests/swoole_http_client_coro/http_proxy_443.phpt" role="test" />
    <file md5sum="849a99f46364bebab3fb7f10c0815d2a" name="tests/swoole_http_client_coro/http_proxy_with_host_port.phpt" role="test" />
    <file md5sum="31b03a2dc0790f81289846cd12727b0e" name="tests/swoole_http_client_coro/http_upload_big.phpt" role="test" />
    <file md5sum="4e24a99ce02122e298abab9e79a434dc" name="tests/swoole_http_client_coro/https.phpt" role="test" />
    <file md5sum="d822550e051d1cf1ff77f56af9c56339" name="tests/swoole_http_client_coro/https_upload_big.phpt" role="test" />
-   <file md5sum="f5204c57f04518cd22f760480de90051" name="tests/swoole_http_client_coro/issue_2664.phpt" role="test" />
+   <file md5sum="ad8f5a5b89a870755559aa85d3d660fe" name="tests/swoole_http_client_coro/issue_2664.phpt" role="test" />
    <file md5sum="307bdf854bc3924c5f830bbbb16d245a" name="tests/swoole_http_client_coro/keep_alive.phpt" role="test" />
    <file md5sum="f345f74d1c03a43181a2cb7dfeb2c619" name="tests/swoole_http_client_coro/long_domain.phpt" role="test" />
    <file md5sum="b16b7825a4233255c75f55c186735cf3" name="tests/swoole_http_client_coro/lowercase_header.phpt" role="test" />
    <file md5sum="8365b8148eee74902d154537a957e97c" name="tests/swoole_http_client_coro/multi.phpt" role="test" />
-   <file md5sum="af510528f3d50fb88b858a49cad56f08" name="tests/swoole_http_client_coro/multi_and_reuse.phpt" role="test" />
+   <file md5sum="00a8fa399f1d355b43c59c09b6053fd4" name="tests/swoole_http_client_coro/multi_and_reuse.phpt" role="test" />
    <file md5sum="b1abdce70ea4076030a1b7d9baccf278" name="tests/swoole_http_client_coro/parser.phpt" role="test" />
    <file md5sum="36d880c859f49d1a753b69d9c3048bfc" name="tests/swoole_http_client_coro/post_array.phpt" role="test" />
    <file md5sum="b3fea943cb28c69f1269ae0218595cd5" name="tests/swoole_http_client_coro/reconnect_but_failed.phpt" role="test" />
@@ -1482,8 +1591,8 @@
    <file md5sum="66309af4eaf201870b950f5a484887cd" name="tests/swoole_http_client_coro/websocket/ssl_2.phpt" role="test" />
    <file md5sum="875b1cf3f793f709493d57c0ea2729f4" name="tests/swoole_http_client_coro/websocket/timeout.phpt" role="test" />
    <file md5sum="07fe0e1b817ba3daa49b5eb654f36388" name="tests/swoole_http_client_coro/websocket/upgrade_after_get.phpt" role="test" />
-   <file md5sum="6a0821d2ae906301397581d2b10bc693" name="tests/swoole_http_client_coro/write_func_1.phpt" role="test" />
-   <file md5sum="796d97ff73420257735399ee0dd616e7" name="tests/swoole_http_client_coro/write_func_2.phpt" role="test" />
+   <file md5sum="8226e06aa83f984ba009db231f993b56" name="tests/swoole_http_client_coro/write_func_1.phpt" role="test" />
+   <file md5sum="12de6250c9f7563bdd456a5579cbb4c2" name="tests/swoole_http_client_coro/write_func_2.phpt" role="test" />
    <file md5sum="293434c7508532f5884b9a12fdf2c25c" name="tests/swoole_http_server/0.phpt" role="test" />
    <file md5sum="19c182c6a1d1c078161eeb1137ac3b5b" name="tests/swoole_http_server/If_Modified_Since.phpt" role="test" />
    <file md5sum="c1bb66fd5fba6f303d10577bd8c0d509" name="tests/swoole_http_server/buffer_output_size.phpt" role="test" />
@@ -1499,24 +1608,26 @@
    <file md5sum="7263fadf1321f0971be037078bc95cbc" name="tests/swoole_http_server/bug_5107.phpt" role="test" />
    <file md5sum="2d1392c0e85ecf3f658fed3297082924" name="tests/swoole_http_server/bug_5114.phpt" role="test" />
    <file md5sum="540dee09c081ec9ce5b0629e262146c9" name="tests/swoole_http_server/bug_5146.phpt" role="test" />
-   <file md5sum="a6534d5df69e418ae36b5a774cdd7a2a" name="tests/swoole_http_server/bug_5186.phpt" role="test" />
+   <file md5sum="88279c6c81d2087c32be3bedca65696e" name="tests/swoole_http_server/bug_5186.phpt" role="test" />
    <file md5sum="0854f8dc7ce9940daf7ed66cd90bd4f3" name="tests/swoole_http_server/bug_compression_level.phpt" role="test" />
    <file md5sum="76e081968d8114b64811644811db1ce7" name="tests/swoole_http_server/bug_get_request_data_after_end.phpt" role="test" />
    <file md5sum="437b1eeaccac8a69ae853050d9a9edef" name="tests/swoole_http_server/callback_new_obj_method.phpt" role="test" />
    <file md5sum="0b3245a903582bf418a7d9424076c9f3" name="tests/swoole_http_server/callback_new_static_method.phpt" role="test" />
    <file md5sum="cd310b2888b448c14444d89419f5484f" name="tests/swoole_http_server/callback_string.phpt" role="test" />
    <file md5sum="2ba6892a760fabf3cf69ab7ae0e21eba" name="tests/swoole_http_server/callback_with_internal_function.phpt" role="test" />
-   <file md5sum="97ae44727e60ee5b8acfed1f8959b38a" name="tests/swoole_http_server/callback_with_private.phpt" role="test" />
-   <file md5sum="f544adfcb01655e6752c0d7563907f8e" name="tests/swoole_http_server/callback_with_protected.phpt" role="test" />
-   <file md5sum="e2ebe1b2bea180a453ee08dd597c9acc" name="tests/swoole_http_server/chunk.phpt" role="test" />
+   <file md5sum="1893bf061f4053914ad83c220d8e1f41" name="tests/swoole_http_server/callback_with_private.phpt" role="test" />
+   <file md5sum="5b3fc5ea75523bd712e3c124ee924974" name="tests/swoole_http_server/callback_with_protected.phpt" role="test" />
+   <file md5sum="55e351fb48c87dca7d48b5abb2bae6d4" name="tests/swoole_http_server/chunk.phpt" role="test" />
+   <file md5sum="a63e2a18497da71bf55612487fbbcc6c" name="tests/swoole_http_server/chunk_with_end_data.phpt" role="test" />
    <file md5sum="7941ae1867b8c1fc3a3b372d13817f3d" name="tests/swoole_http_server/chunked_pipeline_request.phpt" role="test" />
    <file md5sum="e7f4e93fd857f2c2001b07689dd78c66" name="tests/swoole_http_server/co_switching.phpt" role="test" />
    <file md5sum="7749b7020ea1de106ce5d17d02846296" name="tests/swoole_http_server/compression.phpt" role="test" />
    <file md5sum="ba8453ec8ee9283ffc8aacee7f8cd86c" name="tests/swoole_http_server/compression_min_length.phpt" role="test" />
    <file md5sum="6624b41b24216ac67ce96904425ba3da" name="tests/swoole_http_server/compression_types.phpt" role="test" />
+   <file md5sum="b9d017d5d9abd3d3f88883c3d601f54c" name="tests/swoole_http_server/cookieAlias.phpt" role="test" />
    <file md5sum="556de016b0c16599d3ea82168ff4bac8" name="tests/swoole_http_server/cookie_delete.phpt" role="test" />
-   <file md5sum="b13d6e0ef2d3385e308bb750f6e88c78" name="tests/swoole_http_server/cookie_samesite.phpt" role="test" />
-   <file md5sum="46fe289fb8b552016c9d0ff04bcecc56" name="tests/swoole_http_server/cookie_vs_rawcookie.phpt" role="test" />
+   <file md5sum="d33be5624b97eb1d448797a979859860" name="tests/swoole_http_server/cookie_samesite.phpt" role="test" />
+   <file md5sum="8c6729f5b18ac588a8b09c4450d0cd78" name="tests/swoole_http_server/cookie_vs_rawcookie.phpt" role="test" />
    <file md5sum="0061289ccf357d5ea054c1c5a9e44861" name="tests/swoole_http_server/cookies.phpt" role="test" />
    <file md5sum="ec67a59b2d96ea62bf31bf528c5b7f03" name="tests/swoole_http_server/cookies_parse.phpt" role="test" />
    <file md5sum="609cfe62ce7cbf06ad399fa55d91c586" name="tests/swoole_http_server/create_request.phpt" role="test" />
@@ -1542,13 +1653,16 @@
    <file md5sum="1f65bdc7bbd85a6c5bcfa47e6950fe9f" name="tests/swoole_http_server/json_encode.phpt" role="test" />
    <file md5sum="eef52b46b879fbaf8bf9cc177c5713e7" name="tests/swoole_http_server/json_encode2.phpt" role="test" />
    <file md5sum="53aa6aeeff8f0453c382378b4877a1ea" name="tests/swoole_http_server/large_url.phpt" role="test" />
-   <file md5sum="b0c9dea5d0d9884508d08d31b268181b" name="tests/swoole_http_server/max-age.phpt" role="test" />
+   <file md5sum="2f1c8ef707e2910e7b763155c9ce433e" name="tests/swoole_http_server/max-age.phpt" role="test" />
    <file md5sum="0494b5811ab1b6619b680185d6f25e1d" name="tests/swoole_http_server/max_concurrency.phpt" role="test" />
    <file md5sum="b47008da203a19a4d2c55d0cb9aaba73" name="tests/swoole_http_server/max_coro_num.phpt" role="test" />
    <file md5sum="8f8356643c2261f95d6f213b1a23230b" name="tests/swoole_http_server/max_input_vars.phpt" role="test" />
    <file md5sum="1e914cc03eee952810c5bb66a20601e7" name="tests/swoole_http_server/mixed_server.phpt" role="test" />
+   <file md5sum="11feca8ae312ee74579f4ccaded0e39a" name="tests/swoole_http_server/new_cookie.phpt" role="test" />
    <file md5sum="c336d9067af419d609ae58dd849d2b43" name="tests/swoole_http_server/no_compression.phpt" role="test" />
    <file md5sum="26fe3e0c5680679a92d4f81d6abbe4c6" name="tests/swoole_http_server/numeric_header_name.phpt" role="test" />
+   <file md5sum="a658243106a9cee0625ec559572e8826" name="tests/swoole_http_server/objectCookie.phpt" role="test" />
+   <file md5sum="06120deb75d59888686e319f14aeccdd" name="tests/swoole_http_server/objectCookieMemory.phpt" role="test" />
    <file md5sum="e4f826392a793c933533cf0b3defefab" name="tests/swoole_http_server/octane_bug_651.phpt" role="test" />
    <file md5sum="782b99c82d39817915026af6f541f7c4" name="tests/swoole_http_server/pipeline.phpt" role="test" />
    <file md5sum="c8461bd55ea2d6582ff70ebc4f4664de" name="tests/swoole_http_server/post.phpt" role="test" />
@@ -1556,8 +1670,10 @@
    <file md5sum="48be5b6d1ae6adff5cfa1c1571b90152" name="tests/swoole_http_server/range.phpt" role="test" />
    <file md5sum="b895040aaa6d1fd38744c8a2fbd658d6" name="tests/swoole_http_server/range2.phpt" role="test" />
    <file md5sum="9c3ee843ca6f594042a668c77df471a5" name="tests/swoole_http_server/rawContent.phpt" role="test" />
-   <file md5sum="ceb3a7076a3ff0f8c54e9062e06bbb99" name="tests/swoole_http_server/rawCookie.phpt" role="test" />
+   <file md5sum="22447879d9bc048378dae9038810c8e1" name="tests/swoole_http_server/rawCookie.phpt" role="test" />
    <file md5sum="d77ac2bbc8c8a9ab16b0d235ad15ca69" name="tests/swoole_http_server/redirect.phpt" role="test" />
+   <file md5sum="b7ef330a75e60a2c295eca5eb6b66fbf" name="tests/swoole_http_server/reset_concurrency_with_base.phpt" role="test" />
+   <file md5sum="a1667c6384f62b51d42cf00991166c0f" name="tests/swoole_http_server/reset_concurrency_with_process.phpt" role="test" />
    <file md5sum="4edf62ed492635fa66246eb0735892c7" name="tests/swoole_http_server/response_create.phpt" role="test" />
    <file md5sum="f5db870f559cbecfc030e96c420e249a" name="tests/swoole_http_server/send_empty_file.phpt" role="test" />
    <file md5sum="31582060d40da8b4852a8dc423a45bc3" name="tests/swoole_http_server/send_yield.phpt" role="test" />
@@ -1575,14 +1691,18 @@
    <file md5sum="219ec2bce363555018b3de63c1a11f5e" name="tests/swoole_http_server/static_handler.phpt" role="test" />
    <file md5sum="0af88650cfccf47ae322d5368fa44c74" name="tests/swoole_http_server/static_handler/locations.phpt" role="test" />
    <file md5sum="c320d2224bd0ed955b2f874b7089b17b" name="tests/swoole_http_server/static_handler/mimetype_not_exists.phpt" role="test" />
-   <file md5sum="85cec470472838423dd71201d2bc6623" name="tests/swoole_http_server/static_handler/read_link_file.phpt" role="test" />
+   <file md5sum="0594ca3eb508ef713928683d911f3446" name="tests/swoole_http_server/static_handler/read_link_2.phpt" role="test" />
+   <file md5sum="56c899ffab07823ff6f7752187d2e7d4" name="tests/swoole_http_server/static_handler/read_link_file.phpt" role="test" />
    <file md5sum="03708b20c25532efa66f2ee43747bfc6" name="tests/swoole_http_server/static_handler/relative_path.phpt" role="test" />
+   <file md5sum="3feb5b257d088590c77a2e3fc8da1d11" name="tests/swoole_http_server/static_handler/relative_path_2.phpt" role="test" />
+   <file md5sum="10c8319099682c7966ede2ea6268a973" name="tests/swoole_http_server/static_handler/relative_path_3.phpt" role="test" />
    <file md5sum="1fc204f384816637fdeb76295bcb9194" name="tests/swoole_http_server/static_handler/urldecode.phpt" role="test" />
    <file md5sum="97e1c4635782d8afe7b2a699f19b3c4b" name="tests/swoole_http_server/task/enable_coroutine.phpt" role="test" />
    <file md5sum="13ec661f6b6793b5eadbf188fc671a21" name="tests/swoole_http_server/task/enable_coroutine_with_wrong_usage.phpt" role="test" />
    <file md5sum="4aede9ad63b919d3277ffd7cce151975" name="tests/swoole_http_server/task/use_object.phpt" role="test" />
+   <file md5sum="c08b90146d2bdeb60b328baf274a8845" name="tests/swoole_http_server/tmp-content-type.phpt" role="test" />
    <file md5sum="f1155b9c38442abfa7bd46ad8a40e924" name="tests/swoole_http_server/too_many_special_chars_in_cookie.phpt" role="test" />
-   <file md5sum="a3d375a9e2233945907d8693390bc894" name="tests/swoole_http_server/trailer.phpt" role="test" />
+   <file md5sum="014285c5302c2dd15ba1d52f7257e3be" name="tests/swoole_http_server/trailer.phpt" role="test" />
    <file md5sum="6b227bd48cc56d80c832e14fcc06c4e8" name="tests/swoole_http_server/unixsocket.phpt" role="test" />
    <file md5sum="0342334684a024d9bb7ef90bd0cc64e6" name="tests/swoole_http_server/unixsocket2.phpt" role="test" />
    <file md5sum="7021f5330bf98bee270545f67b529526" name="tests/swoole_http_server/unset_response_header.phpt" role="test" />
@@ -1597,15 +1717,16 @@
    <file md5sum="d8a87fb6a5d4f1109c3197cae5fcca33" name="tests/swoole_http_server/upload_file_empty.phpt" role="test" />
    <file md5sum="0a722bf25f409e44a30c9073dd9aee88" name="tests/swoole_http_server/upload_max_filesize.phpt" role="test" />
    <file md5sum="baf5294512407dcbec24dadf9f52c2fe" name="tests/swoole_http_server/worker_max_concurrency.phpt" role="test" />
+   <file md5sum="4a8e88c8c86d374dac9144b77291020a" name="tests/swoole_http_server/zstd.phpt" role="test" />
    <file md5sum="0eb92e357d45f2bc08870eb05726d3d7" name="tests/swoole_http_server_coro/bad_request.phpt" role="test" />
    <file md5sum="0d4e67337d0253ef38fa53fc67568b6c" name="tests/swoole_http_server_coro/bug_2682.phpt" role="test" />
    <file md5sum="2ec002d49d6d4456703d4ab612c8eb41" name="tests/swoole_http_server_coro/bug_3025.phpt" role="test" />
    <file md5sum="7aaeebd43dd1e2acc367f2e75c549920" name="tests/swoole_http_server_coro/bug_4519.phpt" role="test" />
    <file md5sum="62121fae711f56951ec04e40367baf4b" name="tests/swoole_http_server_coro/bug_no_handle.phpt" role="test" />
-   <file md5sum="6e30086a54d12dcb1336b4c60ddf6216" name="tests/swoole_http_server_coro/check_cookie_crlf.phpt" role="test" />
+   <file md5sum="85a504a83ddfd85ab1c0a075810e9113" name="tests/swoole_http_server_coro/check_cookie_crlf.phpt" role="test" />
    <file md5sum="fe96301ef04a1f3df24f1dd2acd56a55" name="tests/swoole_http_server_coro/check_http_header_crlf.phpt" role="test" />
    <file md5sum="49dbafbbb3c9cad4dae6063a12489f97" name="tests/swoole_http_server_coro/chunked_pipeline_request.phpt" role="test" />
-   <file md5sum="ab23474befbcd1f6d33e5b7f94167597" name="tests/swoole_http_server_coro/close_socket.phpt" role="test" />
+   <file md5sum="9e2b5e6f773d632d3ce8e3f242788139" name="tests/swoole_http_server_coro/close_socket.phpt" role="test" />
    <file md5sum="f2818b8b47e9a1f08ad788ea581db0f9" name="tests/swoole_http_server_coro/compression_min_length.phpt" role="test" />
    <file md5sum="33b258c896e1ddb196f8331615ff1205" name="tests/swoole_http_server_coro/compression_types.phpt" role="test" />
    <file md5sum="4c11a6af9fb7596bf3e36152a981c392" name="tests/swoole_http_server_coro/create_response.phpt" role="test" />
@@ -1638,6 +1759,7 @@
    <file md5sum="9272c651145ca58cd8ecd604015437f0" name="tests/swoole_http_server_coro/websocket_compression.phpt" role="test" />
    <file md5sum="87265e48deacf6141fe9d44d0579f4a5" name="tests/swoole_http_server_coro/websocket_mixed.phpt" role="test" />
    <file md5sum="607e8a3b8fd9eb8394b135a88273acd1" name="tests/swoole_http_server_coro/websocket_ping_pong.phpt" role="test" />
+   <file md5sum="d0b4e3fc8efc00f11b38af1d43fc438d" name="tests/swoole_iouring/mix.phpt" role="test" />
    <file md5sum="fbbbf3013c30f92650e52ae614aeb8bd" name="tests/swoole_library/array_object/base.phpt" role="test" />
    <file md5sum="7a8cb28b493527094eed4c9395a77e9f" name="tests/swoole_library/database/mysqli.phpt" role="test" />
    <file md5sum="8534cbcde93ca65a29459ec8852204fa" name="tests/swoole_library/database/pdo.phpt" role="test" />
@@ -1651,6 +1773,8 @@
    <file md5sum="0b296f05f67412c907fcb04e612f641a" name="tests/swoole_library/string_object/base.phpt" role="test" />
    <file md5sum="789b24e21ab8092ec106e65df9b77103" name="tests/swoole_library/wait_group/normal.phpt" role="test" />
    <file md5sum="679912e29824252de2a84722eaf95f59" name="tests/swoole_library/wait_group/timeout.phpt" role="test" />
+   <file md5sum="3c7974aa812170f474f7293f4de1a2e3" name="tests/swoole_lock/coroutine_lock.phpt" role="test" />
+   <file md5sum="cddef3cb0a39be7a7f66e24fcd83a0ba" name="tests/swoole_lock/coroutine_trylock.phpt" role="test" />
    <file md5sum="75a52e844ff16a8c6c4ee80667526c72" name="tests/swoole_lock/lockwait_twice.phpt" role="test" />
    <file md5sum="f1a955e60aef4a85d0f1faefb17af139" name="tests/swoole_lock/mutex.phpt" role="test" />
    <file md5sum="5b187a68ee18468779ab596f93697708" name="tests/swoole_lock/mutex_robust.phpt" role="test" />
@@ -1662,13 +1786,13 @@
    <file md5sum="c8cdbef6f7e530141e4755e3ef440692" name="tests/swoole_pdo_odbc/sleep.phpt" role="test" />
    <file md5sum="4971903f4d6a55b33cdbaff74de9fcb4" name="tests/swoole_pdo_odbc/transaction.phpt" role="test" />
    <file md5sum="6e3af280ee30c21120bd3da971913b83" name="tests/swoole_pdo_oracle/bug41996.phpt" role="test" />
-   <file md5sum="1d9c6486c652938bb6ab6d7ece5e21d7" name="tests/swoole_pdo_oracle/bug44301.phpt" role="test" />
+   <file md5sum="8db3d2e866cd4c1c4836649b9deba08b" name="tests/swoole_pdo_oracle/bug44301.phpt" role="test" />
    <file md5sum="3ee16d167a7f33b547ca73523d09f874" name="tests/swoole_pdo_oracle/bug46274.phpt" role="test" />
    <file md5sum="65e0368889a3b1103bbed12c7a77c7c8" name="tests/swoole_pdo_oracle/bug46274_2.phpt" role="test" />
    <file md5sum="2b40586a92abbf8bc9a3eda215ddd2c2" name="tests/swoole_pdo_oracle/bug54379.phpt" role="test" />
    <file md5sum="1e8948f4c0cd22508dbb87506884cab6" name="tests/swoole_pdo_oracle/bug57702.phpt" role="test" />
    <file md5sum="2429ec5796b1c03481365e69b376b6e4" name="tests/swoole_pdo_oracle/bug60994.phpt" role="test" />
-   <file md5sum="2de7733810905755b84d0f62e401a0ec" name="tests/swoole_pdo_oracle/bug_33707.phpt" role="test" />
+   <file md5sum="552c53fcfa0d9d51c47b0e8d5289fa4b" name="tests/swoole_pdo_oracle/bug_33707.phpt" role="test" />
    <file md5sum="2684fa7fd6fc11da363e2348f278ce57" name="tests/swoole_pdo_oracle/checkliveness.phpt" role="test" />
    <file md5sum="d85276daf7260b2be04b7841a01e36ba" name="tests/swoole_pdo_oracle/coroutint.phpt" role="test" />
    <file md5sum="0b6e8fa5af5bb009d218cef2c31307a0" name="tests/swoole_pdo_oracle/oci_success_with_info.phpt" role="test" />
@@ -1764,51 +1888,52 @@
    <file md5sum="81b15dc81101da2af104e45cd3a1d8cf" name="tests/swoole_pdo_sqlite/pdo_sqlite_tostring_exception.phpt" role="test" />
    <file md5sum="a28d1267d9ab61b04c64dafc862de817" name="tests/swoole_pdo_sqlite/pdo_sqlite_transaction.phpt" role="test" />
    <file md5sum="0a39f59e60e2ec2e32c6dd84cbc63892" name="tests/swoole_process/alarm.phpt" role="test" />
+   <file md5sum="6bafcdc65309792bc228e1f85a565ec7" name="tests/swoole_process/close.phpt" role="test" />
    <file md5sum="9fff772aac370b786c62482af1c799a7" name="tests/swoole_process/coro/ipc.phpt" role="test" />
    <file md5sum="ddcaee4dd4e48328bbab41dc8775fbb1" name="tests/swoole_process/coro/set_protocol.phpt" role="test" />
    <file md5sum="cf45900de88d96c5e5b465d69c6286f5" name="tests/swoole_process/coro/signal.phpt" role="test" />
    <file md5sum="f515778d5506763cb96ec22e5ef85590" name="tests/swoole_process/coro/start.phpt" role="test" />
+   <file md5sum="3773f3b96fd91fee76f0eed841ce30d6" name="tests/swoole_process/ctor.phpt" role="test" />
    <file md5sum="ba757e3344f68673a706c353fdce60ba" name="tests/swoole_process/daemon.phpt" role="test" />
+   <file md5sum="8945db0a72dd080151cdfea7e34330fa" name="tests/swoole_process/deamon.phpt" role="test" />
    <file md5sum="c209ce970be3eeb49c9dd5a7dbd4f8a2" name="tests/swoole_process/echo.py" role="test" />
    <file md5sum="72fb4f1d7a4ddcf0b39b9ef04c4e6b64" name="tests/swoole_process/enable_coroutine.phpt" role="test" />
-   <file md5sum="87700e54286defb2b3cad7812d25e3b4" name="tests/swoole_process/exception.phpt" role="test" />
+   <file md5sum="4bb39a42dbd74f841db685e5e6e65c9f" name="tests/swoole_process/exception.phpt" role="test" />
+   <file md5sum="cb9e0b16fca787e0f3798f8c018f294c" name="tests/swoole_process/exec.phpt" role="test" />
+   <file md5sum="4e710588109a85d7ceef5c7f39380c7b" name="tests/swoole_process/exit.phpt" role="test" />
+   <file md5sum="c6debd1d51e407cef01f968ac2beb22c" name="tests/swoole_process/freeQueue.phpt" role="test" />
+   <file md5sum="fb1132c179667dca14918077673062de" name="tests/swoole_process/getaffinity.phpt" role="test" />
    <file md5sum="6a1450f05829760cc50b01e039bec8de" name="tests/swoole_process/ignore_sigpipe.phpt" role="test" />
    <file md5sum="393348cb4063d4f76a03dcd35fd31eb2" name="tests/swoole_process/ignore_sigpipe_2.phpt" role="test" />
+   <file md5sum="1ff34c2ff888d6710e5f323614b97b21" name="tests/swoole_process/kill.phpt" role="test" />
    <file md5sum="51fa3c853decd639e18d680fb82d5d7d" name="tests/swoole_process/msgq_capacity.phpt" role="test" />
-   <file md5sum="8ce2d6979b3407849eddbfe9b5efcfb1" name="tests/swoole_process/null_callback.phpt" role="test" />
+   <file md5sum="2433d1dbf44c13d651f106be80b0acbd" name="tests/swoole_process/name.phpt" role="test" />
+   <file md5sum="e63ed622170bd952de7f7a1015c8e1c4" name="tests/swoole_process/null_callback.phpt" role="test" />
+   <file md5sum="81e39b1681dbb415133aebafda66b50c" name="tests/swoole_process/pop.phpt" role="test" />
    <file md5sum="f5974460d684ebad712af7f26b4317a4" name="tests/swoole_process/priority.phpt" role="test" />
    <file md5sum="735b23e008cc25d549648227a5cb9998" name="tests/swoole_process/priority_error.phpt" role="test" />
    <file md5sum="5227c5ce7e3a561157cc030788a5d5e9" name="tests/swoole_process/process_exec.phpt" role="test" />
    <file md5sum="b07b1f3226d86699d3048a5c8adc0ed8" name="tests/swoole_process/process_msgqueue.phpt" role="test" />
    <file md5sum="cc58d0fc817f484a40bc2cd603bba52b" name="tests/swoole_process/process_push.phpt" role="test" />
    <file md5sum="0b19c062949f3e4453043578ac5fd203" name="tests/swoole_process/process_select.phpt" role="test" />
+   <file md5sum="4f0cae9d13627a1d39ff076792e9cf90" name="tests/swoole_process/push.phpt" role="test" />
+   <file md5sum="d074489915fccddf096406eaa3f1b097" name="tests/swoole_process/read.phpt" role="test" />
+   <file md5sum="7d53a140149b8c69374a273d140f3cf0" name="tests/swoole_process/redirect.phpt" role="test" />
+   <file md5sum="32b75d5494c0e7c3d4db022377dd4bd2" name="tests/swoole_process/setaffinity.phpt" role="test" />
    <file md5sum="01c51cbead1d07577995adfd1343f430" name="tests/swoole_process/signal.phpt" role="test" />
    <file md5sum="f37c65e11b1889e42ba1494356fe2f07" name="tests/swoole_process/signal_in_manager.phpt" role="test" />
    <file md5sum="5b3f6462fbcfcc889179607edfb73078" name="tests/swoole_process/signal_in_task_worker.phpt" role="test" />
    <file md5sum="156c1c892ef5b508c93b26d5e049b57a" name="tests/swoole_process/signal_twice.phpt" role="test" />
-   <file md5sum="6bafcdc65309792bc228e1f85a565ec7" name="tests/swoole_process/swoole_process_close.phpt" role="test" />
-   <file md5sum="3773f3b96fd91fee76f0eed841ce30d6" name="tests/swoole_process/swoole_process_ctor.phpt" role="test" />
-   <file md5sum="8945db0a72dd080151cdfea7e34330fa" name="tests/swoole_process/swoole_process_deamon.phpt" role="test" />
-   <file md5sum="cb9e0b16fca787e0f3798f8c018f294c" name="tests/swoole_process/swoole_process_exec.phpt" role="test" />
-   <file md5sum="4e710588109a85d7ceef5c7f39380c7b" name="tests/swoole_process/swoole_process_exit.phpt" role="test" />
-   <file md5sum="c6debd1d51e407cef01f968ac2beb22c" name="tests/swoole_process/swoole_process_freeQueue.phpt" role="test" />
-   <file md5sum="1ff34c2ff888d6710e5f323614b97b21" name="tests/swoole_process/swoole_process_kill.phpt" role="test" />
-   <file md5sum="2433d1dbf44c13d651f106be80b0acbd" name="tests/swoole_process/swoole_process_name.phpt" role="test" />
-   <file md5sum="81e39b1681dbb415133aebafda66b50c" name="tests/swoole_process/swoole_process_pop.phpt" role="test" />
-   <file md5sum="4f0cae9d13627a1d39ff076792e9cf90" name="tests/swoole_process/swoole_process_push.phpt" role="test" />
-   <file md5sum="d074489915fccddf096406eaa3f1b097" name="tests/swoole_process/swoole_process_read.phpt" role="test" />
-   <file md5sum="7d53a140149b8c69374a273d140f3cf0" name="tests/swoole_process/swoole_process_redirect.phpt" role="test" />
-   <file md5sum="c7f52e104bede0f9ebbb257ea5cc3dd3" name="tests/swoole_process/swoole_process_setaffinity.phpt" role="test" />
-   <file md5sum="f00a4713a535c78746ffa458d4669ebb" name="tests/swoole_process/swoole_process_start.phpt" role="test" />
-   <file md5sum="b55a7bf1dfee894a28b7beb6d706580c" name="tests/swoole_process/swoole_process_useQueue.phpt" role="test" />
-   <file md5sum="0e3f88cdfc94e38c7edd0d4b83befb68" name="tests/swoole_process/swoole_process_wait.phpt" role="test" />
-   <file md5sum="3acbcc1a3b15a258a2c6b49f7d9b6cd4" name="tests/swoole_process/swoole_process_write.phpt" role="test" />
+   <file md5sum="f00a4713a535c78746ffa458d4669ebb" name="tests/swoole_process/start.phpt" role="test" />
    <file md5sum="5980e212634edeffa8362b6ea3bfc02c" name="tests/swoole_process/timeout.phpt" role="test" />
+   <file md5sum="b55a7bf1dfee894a28b7beb6d706580c" name="tests/swoole_process/useQueue.phpt" role="test" />
+   <file md5sum="0e3f88cdfc94e38c7edd0d4b83befb68" name="tests/swoole_process/wait.phpt" role="test" />
    <file md5sum="db5f4705c32b6bb71be0d06e98374876" name="tests/swoole_process/wait_signal.phpt" role="test" />
+   <file md5sum="3acbcc1a3b15a258a2c6b49f7d9b6cd4" name="tests/swoole_process/write.phpt" role="test" />
    <file md5sum="e4cc312bddc3f30bc134f78bc9c6386a" name="tests/swoole_process/write_in_worker.phpt" role="test" />
    <file md5sum="0ae3c45207116885cd5c2cd3a4dca428" name="tests/swoole_process_pool/bug_2652.phpt" role="test" />
    <file md5sum="a58a30c12147312bbf122e952a2392b4" name="tests/swoole_process_pool/create_websocket_server.phpt" role="test" />
-   <file md5sum="21b39212a7ab0efa22a4faccbdcb7878" name="tests/swoole_process_pool/detach.phpt" role="test" />
+   <file md5sum="055b57605f5fc448ee6ecdabc5cba8fc" name="tests/swoole_process_pool/detach.phpt" role="test" />
    <file md5sum="b1baa82f1e9dd709c060be851013bc20" name="tests/swoole_process_pool/enable_coroutine.phpt" role="test" />
    <file md5sum="5e649d14441c0fad72cae492a917bd53" name="tests/swoole_process_pool/enable_coroutine2.phpt" role="test" />
    <file md5sum="e9d80778d01d7c5403fe65f33ba39738" name="tests/swoole_process_pool/export_socket.phpt" role="test" />
@@ -1817,6 +1942,7 @@
    <file md5sum="ba6e6c665293cbf4a697978b847f2d24" name="tests/swoole_process_pool/getprocess_3.phpt" role="test" />
    <file md5sum="c5113a2276806284098a59af9c670d47" name="tests/swoole_process_pool/getprocess_4.phpt" role="test" />
    <file md5sum="75ddf8c73a091bc4a842ef39fa8359ae" name="tests/swoole_process_pool/getprocess_5.phpt" role="test" />
+   <file md5sum="15e49621371b50bd70f7ae6d78246639" name="tests/swoole_process_pool/master_callback.phpt" role="test" />
    <file md5sum="116a76d34c89b28243fc6da5139dc490" name="tests/swoole_process_pool/master_pid.phpt" role="test" />
    <file md5sum="647390943d19a6a8a592de04c0ecd0dc" name="tests/swoole_process_pool/message.phpt" role="test" />
    <file md5sum="c9887364cd956eecac76b49fd05c2813" name="tests/swoole_process_pool/message_async.phpt" role="test" />
@@ -1830,29 +1956,30 @@
    <file md5sum="8377da1129c88b55c207a6493ca99e7b" name="tests/swoole_process_pool/socket_coro.phpt" role="test" />
    <file md5sum="c25915238504b6712221e0f37b8147ac" name="tests/swoole_process_pool/start_pool_twice_in_same_process.phpt" role="test" />
    <file md5sum="a621eba3488a87c137ddad8141b3ea04" name="tests/swoole_process_pool/start_twice.phpt" role="test" />
-   <file md5sum="dfb536b7b3c76b0f161959548b2ce0ae" name="tests/swoole_redis_server/big_packet.phpt" role="test" />
-   <file md5sum="d7d693beb23cb505a318b877a86eab16" name="tests/swoole_redis_server/format.phpt" role="test" />
+   <file md5sum="1c4b84278bd741b9a431a1851debf129" name="tests/swoole_process_pool/worker_exit_1.phpt" role="test" />
+   <file md5sum="852f0f6c02abbb22a1ff9c440006c737" name="tests/swoole_redis_server/big_packet.phpt" role="test" />
+   <file md5sum="b8d2f6a74ab3fcfe3910dd4d3c9f39c0" name="tests/swoole_redis_server/format.phpt" role="test" />
    <file md5sum="1c72cf31b91a285fdb063f05560ad238" name="tests/swoole_redis_server/getHandler.phpt" role="test" />
+   <file md5sum="07a48cbadf3af32e8ad8b1c3473064d5" name="tests/swoole_redis_server/nested_map.phpt" role="test" />
    <file md5sum="f3798c2d1459cddb88ca3e5c0a1cb1a5" name="tests/swoole_runtime/accept.phpt" role="test" />
    <file md5sum="86452cda6665969484f3dbab7a2a4270" name="tests/swoole_runtime/accept_timeout.phpt" role="test" />
-   <file md5sum="1eae1aa02d6695bc845edaa2ced9593d" name="tests/swoole_runtime/base.phpt" role="test" />
+   <file md5sum="05affdfbb28bc2f5d630db256e214864" name="tests/swoole_runtime/base.phpt" role="test" />
    <file md5sum="39d6c3a4a049b459ea8be6dc2779296c" name="tests/swoole_runtime/bindto.phpt" role="test" />
    <file md5sum="a1cf97c5b519807d67b9a182c3f5e172" name="tests/swoole_runtime/block.phpt" role="test" />
    <file md5sum="4d971f493662b6ddc5994e0f938f152d" name="tests/swoole_runtime/bug_4657.phpt" role="test" />
    <file md5sum="135a737ab04262c926fa79af243ebead" name="tests/swoole_runtime/bug_5104.phpt" role="test" />
-   <file md5sum="ebd0e3893cdd36aa0684656411fd9268" name="tests/swoole_runtime/capture_peer_cert.phpt" role="test" />
    <file md5sum="2e75cf725031c2b3c57c21f92a54dcab" name="tests/swoole_runtime/destruct.phpt" role="test" />
    <file md5sum="e25c6255ca40277b39702b4d13495365" name="tests/swoole_runtime/enable_crypto.phpt" role="test" />
    <file md5sum="f01103bca0edf025b56489305d32a20b" name="tests/swoole_runtime/file_hook/a.inc" role="test" />
    <file md5sum="4c87fe1a640e64d794c2e9306e7e46cb" name="tests/swoole_runtime/file_hook/b.inc" role="test" />
-   <file md5sum="b83fd16aa4ea9f54150940fef30161ec" name="tests/swoole_runtime/file_hook/bug_4327.phpt" role="test" />
+   <file md5sum="87ae508ad56a25566067546a3f9cd209" name="tests/swoole_runtime/file_hook/bug_4327.phpt" role="test" />
    <file md5sum="2389cd154149df2e2610cc00493a9294" name="tests/swoole_runtime/file_hook/bug_ftell_2g.phpt" role="test" />
    <file md5sum="87d0e668c3e46fe049cacf5665fe9eac" name="tests/swoole_runtime/file_hook/bug_scandir.phpt" role="test" />
-   <file md5sum="58ba2e9a012c624c019a7737ab8c7b18" name="tests/swoole_runtime/file_hook/co_fread.phpt" role="test" />
+   <file md5sum="37d8fd4a8e42219afd328003e48a949c" name="tests/swoole_runtime/file_hook/fgets.phpt" role="test" />
    <file md5sum="0cfc551a8ddb9c1fbdbc407fd3253034" name="tests/swoole_runtime/file_hook/flock.phpt" role="test" />
+   <file md5sum="1324eeb1acc182d79ea4ad5883c6c2a2" name="tests/swoole_runtime/file_hook/fread.phpt" role="test" />
    <file md5sum="c854e451693047062b69ed73ffe0c0e6" name="tests/swoole_runtime/file_hook/include.phpt" role="test" />
    <file md5sum="2f6080b6b2b639c624ccbfdb9f5afa29" name="tests/swoole_runtime/file_hook/include_2.phpt" role="test" />
-   <file md5sum="b1c06e37452a79b0aa3e950beb6fefd0" name="tests/swoole_runtime/file_hook/iouring.phpt" role="test" />
    <file md5sum="b4a05e60f511ca0718f73b9c92da288f" name="tests/swoole_runtime/file_hook/lock_ex.phpt" role="test" />
    <file md5sum="bebb4575805d1364723ede3aaab73bf7" name="tests/swoole_runtime/file_hook/lock_nb_1.phpt" role="test" />
    <file md5sum="18ce96f05dd53fbe2a96b0346c1af7a5" name="tests/swoole_runtime/file_hook/lock_nb_2.phpt" role="test" />
@@ -1941,10 +2068,12 @@
    <file md5sum="fb31590d0677e3ec06bab114e31284fd" name="tests/swoole_runtime/sockets/tcp_server.phpt" role="test" />
    <file md5sum="45837a3d406e5634929ef10a944539fc" name="tests/swoole_runtime/sockets/timeout.phpt" role="test" />
    <file md5sum="b700b6216f3059bbd4104e3f86effd07" name="tests/swoole_runtime/sockets/udp.phpt" role="test" />
+   <file md5sum="df53caaa1757273f24fb3b76e9e8fe80" name="tests/swoole_runtime/ssl/capture_peer_cert.phpt" role="test" />
+   <file md5sum="170f0bb2b50fc24eb791b68f0553e51c" name="tests/swoole_runtime/ssl/client.phpt" role="test" />
+   <file md5sum="f0e6716b9390933be38b98b221d7ea0d" name="tests/swoole_runtime/ssl/enable_crypto.phpt" role="test" />
    <file md5sum="3a35e7d7adae0c47219064f139845f3a" name="tests/swoole_runtime/ssl/local_cert.phpt" role="test" />
+   <file md5sum="4edc7bbbf3698255a6a3b6791b5ba0f8" name="tests/swoole_runtime/ssl/server.phpt" role="test" />
    <file md5sum="b431e70d1d022d22577541ad04244f9c" name="tests/swoole_runtime/ssl/without_key.phpt" role="test" />
-   <file md5sum="c4aef8c7363ce4a063109ed682c28cf0" name="tests/swoole_runtime/ssl_client.phpt" role="test" />
-   <file md5sum="d2644db64e2656f1901dfdbc007ea8d4" name="tests/swoole_runtime/ssl_server.phpt" role="test" />
    <file md5sum="972c129682cb910713b4596e6caa8a1d" name="tests/swoole_runtime/stdin.phpt" role="test" />
    <file md5sum="3b2e69962e455c3db4a9afd3e48f00aa" name="tests/swoole_runtime/stream_context.phpt" role="test" />
    <file md5sum="7857eb1c54171f9c0e1f769b14345615" name="tests/swoole_runtime/stream_context_pass_null.phpt" role="test" />
@@ -1982,7 +2111,7 @@
    <file md5sum="3b8153dc5c7e2084101e0c45f87e415e" name="tests/swoole_server/addProcess_with_tick.phpt" role="test" />
    <file md5sum="1157c8830ca5e37fec98de7d9a67f7ee" name="tests/swoole_server/base/reload_1.phpt" role="test" />
    <file md5sum="2bf95d125fef080cac6b59dd545dea02" name="tests/swoole_server/base/reload_2.phpt" role="test" />
-   <file md5sum="4388c935af84e80a790b9853c114f537" name="tests/swoole_server/base/shutdown.phpt" role="test" />
+   <file md5sum="533a498f8b9c569473c434a9bba6b5b4" name="tests/swoole_server/base/shutdown.phpt" role="test" />
    <file md5sum="f6c31253ca9577e2c9352e7df12178de" name="tests/swoole_server/base/shutdown_single.phpt" role="test" />
    <file md5sum="f81b713777101e71a242dbcc155eb588" name="tests/swoole_server/bigPipeMessage.phpt" role="test" />
    <file md5sum="9f41c4d9da03fe55c93b61ee4ccb3e6f" name="tests/swoole_server/big_session_id.phpt" role="test" />
@@ -2034,8 +2163,8 @@
    <file md5sum="4b2c237f7b80cd51a5263b111a1f73f8" name="tests/swoole_server/event/start.phpt" role="test" />
    <file md5sum="ee4c94f5157e517aff9f566bef21e49b" name="tests/swoole_server/event/worker_exit.phpt" role="test" />
    <file md5sum="b595edfc66dce3f1f4004f32d274521f" name="tests/swoole_server/exist.phpt" role="test" />
-   <file md5sum="5c7cd89b5ca03999fde62ab69eea7237" name="tests/swoole_server/force_reload.phpt" role="test" />
-   <file md5sum="dc0aefd2baf711b2535262f0dd041f05" name="tests/swoole_server/force_reload2.phpt" role="test" />
+   <file md5sum="67f1502a9ace801e7ba889fab65632ac" name="tests/swoole_server/force_reload.phpt" role="test" />
+   <file md5sum="fb09b4d1037a47a0beea752474b4a9d3" name="tests/swoole_server/force_reload2.phpt" role="test" />
    <file md5sum="ffada8e71db26adca78d3b0ff0f6e665" name="tests/swoole_server/force_reload3.phpt" role="test" />
    <file md5sum="d3b1ec39db8acaa0915e6c9453fe7995" name="tests/swoole_server/force_reload4.phpt" role="test" />
    <file md5sum="06c917e73c5f4f7f578a8a25740624c5" name="tests/swoole_server/getCallback.phpt" role="test" />
@@ -2071,11 +2200,12 @@
    <file md5sum="9172557538ef0112a7226ded572b2240" name="tests/swoole_server/max_request_threshold.phpt" role="test" />
    <file md5sum="741a7d51e74ced33fad83b43492208e5" name="tests/swoole_server/memory_leak/length.phpt" role="test" />
    <file md5sum="2741755804de283f13593af5645629bc" name="tests/swoole_server/memory_leak/pipe_message.phpt" role="test" />
-   <file md5sum="4121586729f8b5a60775df5de20955d3" name="tests/swoole_server/memory_leak/task.phpt" role="test" />
+   <file md5sum="989b9f991d47871eea6ebdb427d56c97" name="tests/swoole_server/memory_leak/task.phpt" role="test" />
    <file md5sum="10c1de078c9619c73c54b9b776326536" name="tests/swoole_server/memory_leak/tcp.phpt" role="test" />
    <file md5sum="a96d41592b15ba960e7bd6318665bd5b" name="tests/swoole_server/mqtt/length_offset.phpt" role="test" />
    <file md5sum="389b814ea581e9cb4dd87a56461c2e76" name="tests/swoole_server/mqtt/recv_fail.phpt" role="test" />
    <file md5sum="c10ddaba7c6de786634928c418208224" name="tests/swoole_server/mqtt/send_big_pack.phpt" role="test" />
+   <file md5sum="d1a7261360404833584666b7e7cf606f" name="tests/swoole_server/named_parameters.phpt" role="test" />
    <file md5sum="0701638ba9297843990bfe37310fe4f4" name="tests/swoole_server/new_twice.phpt" role="test" />
    <file md5sum="e614d50458110d1c3b5dbd1fdbaf9c12" name="tests/swoole_server/object/event.phpt" role="test" />
    <file md5sum="fb9ae94426ba32ef1b8f80e49dbc4fe5" name="tests/swoole_server/object/getManagerPid.phpt" role="test" />
@@ -2084,9 +2214,10 @@
    <file md5sum="46cee55667f39e6eaaa0e4a407c0b0cf" name="tests/swoole_server/object/getWorkerPid.phpt" role="test" />
    <file md5sum="7427291fed06a5c88f90e781110d3048" name="tests/swoole_server/object/packet.phpt" role="test" />
    <file md5sum="f2630620af07799df9e922aee145987e" name="tests/swoole_server/object/pipe_message.phpt" role="test" />
-   <file md5sum="9a39605553bec2f038dc7766139b6377" name="tests/swoole_server/object/status_info.phpt" role="test" />
+   <file md5sum="f2e45341357467ab7232ce5fd9bd937d" name="tests/swoole_server/object/status_info.phpt" role="test" />
    <file md5sum="c7a48d9cedd9a9c6a9a06dd50372bdd3" name="tests/swoole_server/object/task_result.phpt" role="test" />
    <file md5sum="6c26a937c6e955c774c444f3c203b856" name="tests/swoole_server/onReload.phpt" role="test" />
+   <file md5sum="370f77bd75c2447685af86c42418887d" name="tests/swoole_server/parse_option_to_size.phpt" role="test" />
    <file md5sum="13e68c250162e894724de3ea77569ee4" name="tests/swoole_server/pid_file.phpt" role="test" />
    <file md5sum="7f67c642d36a91aa2966b215836a32ef" name="tests/swoole_server/protect.phpt" role="test" />
    <file md5sum="4b938841aa28242f1ab3ca47fc6e5a54" name="tests/swoole_server/protect_false.phpt" role="test" />
@@ -2146,7 +2277,7 @@
    <file md5sum="ca540f1ee6c679c4d2d787b77f98233b" name="tests/swoole_server/task/bug_2585.phpt" role="test" />
    <file md5sum="fde78b99dcadcb1a6e095dd56f2a77d4" name="tests/swoole_server/task/callback_is_null.phpt" role="test" />
    <file md5sum="00a177b005f7edf4767c2b627365dd81" name="tests/swoole_server/task/enable_coroutine.phpt" role="test" />
-   <file md5sum="46437d1208a39bda99362f2d92361aa2" name="tests/swoole_server/task/finish_timeout.phpt" role="test" />
+   <file md5sum="ac4f6524e471ebfb6bd5eaaee6012385" name="tests/swoole_server/task/finish_timeout.phpt" role="test" />
    <file md5sum="79e8b5d9c4c30a748a811cf6084ed0a8" name="tests/swoole_server/task/huge_data.phpt" role="test" />
    <file md5sum="3c3b89bada0f55dfdf33e14504ae49d6" name="tests/swoole_server/task/idle_worekr_num.phpt" role="test" />
    <file md5sum="bf6ad8494757dafc9e1a2e6c3ca8bfd1" name="tests/swoole_server/task/invalid_packet.phpt" role="test" />
@@ -2162,9 +2293,9 @@
    <file md5sum="3c65843d0b767bf40e50cb8083f8e204" name="tests/swoole_server/task/task_in_master.phpt" role="test" />
    <file md5sum="9d6af88b6b7b9c5c3f175e1bb47e66be" name="tests/swoole_server/task/task_in_task_worker.phpt" role="test" />
    <file md5sum="c7ff3fbd56670c164fc78153259d96d8" name="tests/swoole_server/task/task_in_user_process.phpt" role="test" />
-   <file md5sum="2a98bd05b78e9406b9d2c976c4cdd3d9" name="tests/swoole_server/task/task_ipc_mode_2.phpt" role="test" />
-   <file md5sum="521dc9e82d55f052a38fbf4c94c6289b" name="tests/swoole_server/task/task_ipc_mode_3.phpt" role="test" />
-   <file md5sum="0dbf6355ebe78764d400cf3d0f261018" name="tests/swoole_server/task/task_max_request.phpt" role="test" />
+   <file md5sum="39ed6000b807686b181db0c862016e0c" name="tests/swoole_server/task/task_ipc_mode_2.phpt" role="test" />
+   <file md5sum="dbdd3aeb67728632125a7ee5521a0123" name="tests/swoole_server/task/task_ipc_mode_3.phpt" role="test" />
+   <file md5sum="237645b728d12b088728ce485d04e1c0" name="tests/swoole_server/task/task_max_request.phpt" role="test" />
    <file md5sum="a5b1fcb25fea4c41ed0580220d864e47" name="tests/swoole_server/task/task_pack.phpt" role="test" />
    <file md5sum="348dbc0d5bef4a96b9935fff0715ab10" name="tests/swoole_server/task/task_queue.phpt" role="test" />
    <file md5sum="71dc16fbcaca5e33a2c48b8fb8063b7c" name="tests/swoole_server/task/task_wait.phpt" role="test" />
@@ -2185,7 +2316,7 @@
    <file md5sum="f9bdee777e1ebfb472f4cd2e99f461db" name="tests/swoole_server_coro/length_1.phpt" role="test" />
    <file md5sum="14818339dc8dea9b1a568280065783c4" name="tests/swoole_server_coro/random_port.phpt" role="test" />
    <file md5sum="034fd847bc2eb627aa594c3754175a72" name="tests/swoole_server_coro/reuse_port.phpt" role="test" />
-   <file md5sum="122bba18007b525b7a13a57c09d80ef9" name="tests/swoole_server_coro/ssl.phpt" role="test" />
+   <file md5sum="ffa2f536672083b5813ce7f95dea08a9" name="tests/swoole_server_coro/ssl.phpt" role="test" />
    <file md5sum="23d6629454ab11203781f2fa4e909a96" name="tests/swoole_server_coro/tcp.phpt" role="test" />
    <file md5sum="715fdc52de2362d50ca9752e44a48f7e" name="tests/swoole_server_port/connections.phpt" role="test" />
    <file md5sum="73e35c385d8d29c35403b917cc58fd43" name="tests/swoole_server_port/duplicate_registered.phpt" role="test" />
@@ -2193,7 +2324,7 @@
    <file md5sum="6d3277e0deedf7ae5b731ee26bd6ee9a" name="tests/swoole_server_port/heartbeat_2.phpt" role="test" />
    <file md5sum="196e59a7f48a67744f87e1db8323b225" name="tests/swoole_server_port/heartbeat_3.phpt" role="test" />
    <file md5sum="e661e8e15ac6e4bb9611f8c5e33d66c2" name="tests/swoole_server_port/http.phpt" role="test" />
-   <file md5sum="5e05ac02102b366b2ec79f4e18df5b1e" name="tests/swoole_server_port/multi_port.phpt" role="test" />
+   <file md5sum="c9972e29edb646eac624d53dc2f10592" name="tests/swoole_server_port/multi_port.phpt" role="test" />
    <file md5sum="b93aee8e958b1cacbccd921ff9b2df9c" name="tests/swoole_server_port/sub_handshake.phpt" role="test" />
    <file md5sum="c0e6aa9d90388a4dbf15b872e4f9ce71" name="tests/swoole_server_port/tcp_eof.phpt" role="test" />
    <file md5sum="c0e2b396226d93b9f9d51569b268dca3" name="tests/swoole_socket_coro/accept.phpt" role="test" />
@@ -2207,6 +2338,7 @@
    <file md5sum="753fc689b07534e7bedb85475e493951" name="tests/swoole_socket_coro/fd.phpt" role="test" />
    <file md5sum="100be95b900bc322964f9a1eb1ec3232" name="tests/swoole_socket_coro/getBoundCid.phpt" role="test" />
    <file md5sum="746888fd653e6fccbd249f8e9bd5ddcc" name="tests/swoole_socket_coro/getopt/get.phpt" role="test" />
+   <file md5sum="27b85251c77bd2d1f5185cb0f5795b9c" name="tests/swoole_socket_coro/getopt/tcpinfo.phpt" role="test" />
    <file md5sum="c0fa89a43aa8ebd353c690c94e4e4b75" name="tests/swoole_socket_coro/getpeername.phpt" role="test" />
    <file md5sum="489b912dde0f25e60da9b068eb73f52e" name="tests/swoole_socket_coro/getsockname.phpt" role="test" />
    <file md5sum="4b985293cdfd5726df0878ac31bed1db" name="tests/swoole_socket_coro/icmp.phpt" role="test" />
@@ -2244,7 +2376,7 @@
    <file md5sum="df6443f6e80e7b59c00ee7f2441ad9ec" name="tests/swoole_socket_coro/setopt/recvtimeo.phpt" role="test" />
    <file md5sum="7e14ea3d3a152d83fbb5c3d2f78e5a33" name="tests/swoole_socket_coro/setopt/reuse.phpt" role="test" />
    <file md5sum="2678c61bab9f75eed8c5aa966e51a411" name="tests/swoole_socket_coro/shutdown.phpt" role="test" />
-   <file md5sum="7ac4653dcc575b610ff4343a13c93336" name="tests/swoole_socket_coro/ssl.phpt" role="test" />
+   <file md5sum="ba7c553f3a044683bb1f1e8029435566" name="tests/swoole_socket_coro/ssl.phpt" role="test" />
    <file md5sum="8776150faeb55694ab127e83413ac080" name="tests/swoole_socket_coro/ssl_bad_server.phpt" role="test" />
    <file md5sum="b005cc021d402c8770295b992e732b73" name="tests/swoole_socket_coro/tcp-c10k.phpt" role="test" />
    <file md5sum="034c16e63a8c5eb4948435337760d79c" name="tests/swoole_socket_coro/ulimit.phpt" role="test" />
@@ -2275,18 +2407,43 @@
    <file md5sum="e80ff1792ff821e196f0f42c4f3a767a" name="tests/swoole_table/stats.phpt" role="test" />
    <file md5sum="c54a4deb2de0d8528d8b98a82be655e8" name="tests/swoole_table/type_conv.phpt" role="test" />
    <file md5sum="5d0167b45f1602b5c2961e6efdc8ce5a" name="tests/swoole_thread/add_update.phpt" role="test" />
+   <file md5sum="9b7be098c935a1ddc608088c11cfdb99" name="tests/swoole_thread/affinity.phpt" role="test" />
+   <file md5sum="712cd367ffb61db1baba46f26d754e15" name="tests/swoole_thread/arraylist.phpt" role="test" />
    <file md5sum="5ea7aace31aed5d7eda722b588df77d5" name="tests/swoole_thread/async-io.phpt" role="test" />
    <file md5sum="7886576e81a783f778057d7978397764" name="tests/swoole_thread/atomic_ctor.phpt" role="test" />
+   <file md5sum="07399f48f209fd8e8c456ae01c136de7" name="tests/swoole_thread/barrier.phpt" role="test" />
    <file md5sum="62576629c76faec6a9b049ab07426c33" name="tests/swoole_thread/co-stream.phpt" role="test" />
-   <file md5sum="9441fab5535dee65e3f3cf11331ecb24" name="tests/swoole_thread/fatal_error_1.phpt" role="test" />
-   <file md5sum="bb8a5fc72058f1d58faf62a12ab5e32a" name="tests/swoole_thread/fatal_error_2.phpt" role="test" />
+   <file md5sum="6502f90f92e7deec5e27202f15072977" name="tests/swoole_thread/empty_args.phpt" role="test" />
+   <file md5sum="3a47c1b0079d4a32cb28836c217fad91" name="tests/swoole_thread/exit.phpt" role="test" />
+   <file md5sum="439a06eeb6758e5f11060a75eb1ee68c" name="tests/swoole_thread/fatal_error_1.phpt" role="test" />
+   <file md5sum="2511fb747a5470655c6a3f4569371a44" name="tests/swoole_thread/fatal_error_2.phpt" role="test" />
+   <file md5sum="de677921575e198aaecde3dfcb706677" name="tests/swoole_thread/fatal_error_3.phpt" role="test" />
    <file md5sum="e10e71cba9215e7e1eb3b3fc0af0b261" name="tests/swoole_thread/incr.phpt" role="test" />
-   <file md5sum="78c422dd7b12b31fd08990652055d56d" name="tests/swoole_thread/info.phpt" role="test" />
+   <file md5sum="bd42f0ba6f057b40cad14a99397e9d47" name="tests/swoole_thread/info.phpt" role="test" />
    <file md5sum="332ebfe42f96f446a01f8ba19798b4d8" name="tests/swoole_thread/lock.phpt" role="test" />
-   <file md5sum="061dedd03a933adad4de1adb905b4c28" name="tests/swoole_thread/pipe.phpt" role="test" />
-   <file md5sum="903809ebafbf59cfcbc0957e7c27aefa" name="tests/swoole_thread/queue.phpt" role="test" />
-   <file md5sum="2e5734e9f99c21746169ffe94ab8d8a4" name="tests/swoole_thread/server/base.phpt" role="test" />
-   <file md5sum="86aa7270997915cda85966766e3d1055" name="tests/swoole_thread/server/send_large_packet.phpt" role="test" />
+   <file md5sum="732d1bdb79e47c69ff75b937b2fa9788" name="tests/swoole_thread/map.phpt" role="test" />
+   <file md5sum="4c7cbffcda7779e1949ff79a7c7fbd3b" name="tests/swoole_thread/map2array.phpt" role="test" />
+   <file md5sum="c431989fa132bae9769fd0315e54a30d" name="tests/swoole_thread/name.phpt" role="test" />
+   <file md5sum="faa9ae88d37030f53eb9e72524a11c58" name="tests/swoole_thread/numeric_strkey.phpt" role="test" />
+   <file md5sum="26cade2a77c7e247c97736187073f191" name="tests/swoole_thread/php_socket.phpt" role="test" />
+   <file md5sum="73179dfa1885d08776998ad1b35b5ec3" name="tests/swoole_thread/pipe.phpt" role="test" />
+   <file md5sum="aec6223b2252a22293f248cc5cb9e6df" name="tests/swoole_thread/priority.phpt" role="test" />
+   <file md5sum="14bdfeb0f7e7ced49e29ee7d70f10d05" name="tests/swoole_thread/queue.phpt" role="test" />
+   <file md5sum="7a1261791adcc70867f309e69c0af844" name="tests/swoole_thread/queue_notify_all.phpt" role="test" />
+   <file md5sum="99012484c4e815a1263671ce15dc7536" name="tests/swoole_thread/server/base.phpt" role="test" />
+   <file md5sum="372155a16d7bb751289de1b0eed9145e" name="tests/swoole_thread/server/create_response.phpt" role="test" />
+   <file md5sum="230a9edcb96326a47f0ad4c09958eb28" name="tests/swoole_thread/server/exit.phpt" role="test" />
+   <file md5sum="e153a776f3aeb2838edf35cb032a957e" name="tests/swoole_thread/server/fatal_error.phpt" role="test" />
+   <file md5sum="c17a5f7c3e9b8abccf6464e5ea374ba0" name="tests/swoole_thread/server/heartbeat.phpt" role="test" />
+   <file md5sum="6835138cd0738cb03f95839b01f2847e" name="tests/swoole_thread/server/manager_timer.phpt" role="test" />
+   <file md5sum="cfa7aaa225a2e7ec9c5362ea11bb2c1a" name="tests/swoole_thread/server/reload.phpt" role="test" />
+   <file md5sum="703aa3d21623fa40395cc1a8fc42530d" name="tests/swoole_thread/server/reload_task_workers.phpt" role="test" />
+   <file md5sum="73e3a1d904cd27a82c3e552d1c142964" name="tests/swoole_thread/server/reset_concurrency.phpt" role="test" />
+   <file md5sum="3c5239babd3978b21cfc0a4864fc3229" name="tests/swoole_thread/server/send_in_user_process.phpt" role="test" />
+   <file md5sum="63323cf218c6134271de898eb005b014" name="tests/swoole_thread/server/send_large_packet.phpt" role="test" />
+   <file md5sum="84a8b8efe6d57454c4392dac6db5f900" name="tests/swoole_thread/server/stop_worker.phpt" role="test" />
+   <file md5sum="cff89368a84da2db96ef917286c83851" name="tests/swoole_thread/server/websocket.phpt" role="test" />
+   <file md5sum="695e6960fe177041ec0da82a33eb526a" name="tests/swoole_thread/shell_exec.phpt" role="test" />
    <file md5sum="0c07a0160e3dc20cbc18e6214bc0d9b0" name="tests/swoole_thread/signal.phpt" role="test" />
    <file md5sum="a02f05839b1446a72784c5c676bd901b" name="tests/swoole_thread/stdio.phpt" role="test" />
    <file md5sum="09ababdaccd4124b36759041f2891db8" name="tests/swoole_thread/stream.phpt" role="test" />
@@ -2297,7 +2454,7 @@
    <file md5sum="4395d8f56b173ffe4e5af1a7d45c2f26" name="tests/swoole_timer/bug_4794.phpt" role="test" />
    <file md5sum="ec00448601e59c76f62aa6d337fcd144" name="tests/swoole_timer/bug_4794_2.phpt" role="test" />
    <file md5sum="1674840e1e09dcbe56a432abc9dde835" name="tests/swoole_timer/bug_4794_3.phpt" role="test" />
-   <file md5sum="f658f46228ca017c5882bd0d0e3bef64" name="tests/swoole_timer/bug_4794_4.phpt" role="test" />
+   <file md5sum="5cc1448f730f093c700ec2de6ae27fcb" name="tests/swoole_timer/bug_4794_4.phpt" role="test" />
    <file md5sum="38abefd25d01b38ad5b9b6bd1299aa38" name="tests/swoole_timer/bug_4794_5.phpt" role="test" />
    <file md5sum="085849127a903ba0d070fb6041725e1c" name="tests/swoole_timer/bug_4794_6.phpt" role="test" />
    <file md5sum="9438f6e7beba13e4c94605272488217f" name="tests/swoole_timer/bug_4794_7.phpt" role="test" />
@@ -2452,12 +2609,11 @@
    <file md5sum="4b581c6eb1af4e01a846771e976ee7cd" name="thirdparty/nlohmann/thirdparty/hedley/hedley.hpp" role="src" />
    <file md5sum="7157ecea0ac94ade4314325eada0e1da" name="thirdparty/nlohmann/thirdparty/hedley/hedley_undef.hpp" role="src" />
    <file md5sum="5ebd5be8e2a89f634486445bd164bef0" name="thirdparty/php/LICENSE" role="doc" />
-   <file md5sum="3826632bccc02405ab866138cc085384" name="thirdparty/php/curl/curl_arginfo.h" role="src" />
-   <file md5sum="1726fa0e956c91efcd806ca73ea84e4c" name="thirdparty/php/curl/curl_interface.h" role="src" />
-   <file md5sum="4c958786eb885e0a7234be144201a0bd" name="thirdparty/php/curl/curl_private.h" role="src" />
-   <file md5sum="ab999fe9d976d35cbec0f9d692fc5130" name="thirdparty/php/curl/interface.cc" role="src" />
-   <file md5sum="f62850aaede868fef4c68262d865034e" name="thirdparty/php/curl/multi.cc" role="src" />
-   <file md5sum="09723b15da8498ccde0621b0871f2198" name="thirdparty/php/curl/php_curl.h" role="src" />
+   <file md5sum="0db67b185b8d8d789702dde138ca2543" name="thirdparty/php/curl/curl_arginfo.h" role="src" />
+   <file md5sum="5db1713f3a75c17ee7ed4f6e76742308" name="thirdparty/php/curl/curl_private.h" role="src" />
+   <file md5sum="687d8680b5901dca8ae57e887043a7e1" name="thirdparty/php/curl/interface.cc" role="src" />
+   <file md5sum="5fccff6ef2fbd1e04a7c03f4024d6108" name="thirdparty/php/curl/multi.cc" role="src" />
+   <file md5sum="4bd4d29ac82ffa1663731ea3b11522a4" name="thirdparty/php/curl/php_curl.h" role="src" />
    <file md5sum="cab62fd5542ff7f21243085c397253d1" name="thirdparty/php/main/SAPI.h" role="src" />
    <file md5sum="8a32dd679f0426e586a7dc1e3c35e39e" name="thirdparty/php/sockets/conversions.cc" role="src" />
    <file md5sum="fcbb360cbf91d6a1d8f5adf0832fdffc" name="thirdparty/php/sockets/conversions.h" role="src" />
@@ -2466,29 +2622,14 @@
    <file md5sum="9ce80d30bf3861b3f29029a5f101f337" name="thirdparty/php/sockets/php_sockets_cxx.h" role="src" />
    <file md5sum="f2f5468e7be997c20b37b9fff75e81d6" name="thirdparty/php/sockets/sendrecvmsg.cc" role="src" />
    <file md5sum="1fb0b76567e601ded7c9b10a9df3bf2d" name="thirdparty/php/sockets/sockaddr_conv.cc" role="src" />
-   <file md5sum="242f699a7fc429982b02ae9aaa62b496" name="thirdparty/php/standard/proc_open.cc" role="src" />
+   <file md5sum="ac5e03378bda5ba03e909e70f6918325" name="thirdparty/php/standard/proc_open.cc" role="src" />
    <file md5sum="56c85bd6c523990e442cd6e43d52a0c0" name="thirdparty/php/standard/proc_open.h" role="src" />
    <file md5sum="0256904548b82b4ec799b0752f41f990" name="thirdparty/php/standard/var_decoder.cc" role="src" />
    <file md5sum="72872d9123bd1b8a6c616e1bba4cedf3" name="thirdparty/php/streams/php_streams_int.h" role="src" />
-   <file md5sum="e2753d98c22728c3fcb582e59aa8194c" name="thirdparty/php/streams/plain_wrapper.c" role="src" />
-   <file md5sum="91b42405efbba6a13b6e603db72d5360" name="thirdparty/php80/pdo_oci/oci_driver.c" role="src" />
-   <file md5sum="29de6db05e96576a076287dd7f5ab207" name="thirdparty/php80/pdo_oci/oci_statement.c" role="src" />
-   <file md5sum="9290aeb59d350b1bef9573d85346c737" name="thirdparty/php80/pdo_oci/php_pdo_oci_int.h" role="src" />
-   <file md5sum="8144df0c032dd0350df2522bc1f3de05" name="thirdparty/php80/pdo_odbc/odbc_driver.c" role="src" />
-   <file md5sum="6094e66a95b606cb5a64d7f2f4fc52ad" name="thirdparty/php80/pdo_odbc/odbc_stmt.c" role="src" />
-   <file md5sum="a03986b3968de21a82c02ee9ee8ec611" name="thirdparty/php80/pdo_odbc/php_pdo_odbc_int.h" role="src" />
-   <file md5sum="a25ac36514cde1a734f17188f4d7c9e8" name="thirdparty/php80/pdo_pgsql/pgsql_driver.c" role="src" />
-   <file md5sum="e2684b3614962c2978b77e6141ce152e" name="thirdparty/php80/pdo_pgsql/pgsql_driver_arginfo.h" role="src" />
-   <file md5sum="1bf086fbbaf668c9ea2603ed781374bf" name="thirdparty/php80/pdo_pgsql/pgsql_statement.c" role="src" />
-   <file md5sum="79b68f9995efcb89f4d901098795a8f9" name="thirdparty/php80/pdo_pgsql/php_pdo_pgsql_int.h" role="src" />
-   <file md5sum="a7473b2dad9c6da5a21831224d2d2ce3" name="thirdparty/php80/pdo_sqlite/php_pdo_sqlite_int.h" role="src" />
-   <file md5sum="96f1cc9304478d2e2deb0493a8bbe535" name="thirdparty/php80/pdo_sqlite/sqlite_driver.c" role="src" />
-   <file md5sum="abf217c52fe0d1e4d434531ae1c666e5" name="thirdparty/php80/pdo_sqlite/sqlite_driver.stub.php" role="src" />
-   <file md5sum="0f18af51cb2173a9c994739bcd457275" name="thirdparty/php80/pdo_sqlite/sqlite_driver_arginfo.h" role="src" />
-   <file md5sum="1c086de4298327e80c997498859d4e3e" name="thirdparty/php80/pdo_sqlite/sqlite_statement.c" role="src" />
+   <file md5sum="b4695684ae2bf54067acc7a8274e2941" name="thirdparty/php/streams/plain_wrapper.c" role="src" />
    <file md5sum="d85365edfadf6dc5c0218ac61e33eeee" name="thirdparty/php81/pdo_oci/oci_driver.c" role="src" />
    <file md5sum="d8c198c5bcc95a3179ba0d0cac67c47f" name="thirdparty/php81/pdo_oci/oci_statement.c" role="src" />
-   <file md5sum="6cc96bd23eef6747fe5279a0e923986f" name="thirdparty/php81/pdo_oci/php_pdo_oci_int.h" role="src" />
+   <file md5sum="26091c9d26f0601bea981e0ded862d2e" name="thirdparty/php81/pdo_oci/php_pdo_oci_int.h" role="src" />
    <file md5sum="fb1d77bbc545feb26c8bab08bb5379d1" name="thirdparty/php81/pdo_odbc/odbc_driver.c" role="src" />
    <file md5sum="bd57d5166704393557cad48b1f12be17" name="thirdparty/php81/pdo_odbc/odbc_stmt.c" role="src" />
    <file md5sum="41ad46976db7d3e245096974778584a9" name="thirdparty/php81/pdo_odbc/php_pdo_odbc_int.h" role="src" />
@@ -2501,26 +2642,49 @@
    <file md5sum="91fd827dbde291dc8584c229ded1f8cb" name="thirdparty/php81/pdo_sqlite/sqlite_driver.stub.php" role="src" />
    <file md5sum="7c236b16ae05ba251e6d4be49252d064" name="thirdparty/php81/pdo_sqlite/sqlite_driver_arginfo.h" role="src" />
    <file md5sum="8495e1e60095c3e44b99a6d21393c268" name="thirdparty/php81/pdo_sqlite/sqlite_statement.c" role="src" />
-   <file md5sum="8a5f3768327c94d686a8aeb9888b5959" name="thirdparty/php83/pdo_oci/oci_driver.c" role="src" />
-   <file md5sum="9aa1c6cfacf29d7181715e00bec1b348" name="thirdparty/php83/pdo_oci/oci_statement.c" role="src" />
-   <file md5sum="86f0a27c362693e8b7d1e38968889416" name="thirdparty/php83/pdo_oci/php_pdo_oci_int.h" role="src" />
-   <file md5sum="6369a2b7bb966f90fcd19ab369630486" name="thirdparty/php83/pdo_odbc/odbc_driver.c" role="src" />
-   <file md5sum="77c84b75fa14795fd8f5dfbbfce84b35" name="thirdparty/php83/pdo_odbc/odbc_stmt.c" role="src" />
+   <file md5sum="73f0c2e95182b4809434d54c4ce4a1fe" name="thirdparty/php83/pdo_oci/oci_driver.c" role="src" />
+   <file md5sum="64c5f289a9b854632aea3f920fcc1f56" name="thirdparty/php83/pdo_oci/oci_statement.c" role="src" />
+   <file md5sum="4e2f1612caa2e1f864bd96a18fd64a44" name="thirdparty/php83/pdo_oci/php_pdo_oci_int.h" role="src" />
+   <file md5sum="3d6150609ace7f62931cc69d2a0a0afe" name="thirdparty/php83/pdo_odbc/odbc_driver.c" role="src" />
+   <file md5sum="ab9b3833755448177f900b87d945f54c" name="thirdparty/php83/pdo_odbc/odbc_stmt.c" role="src" />
    <file md5sum="41ad46976db7d3e245096974778584a9" name="thirdparty/php83/pdo_odbc/php_pdo_odbc_int.h" role="src" />
-   <file md5sum="f0026c4086a3433489a31b817a0cc90d" name="thirdparty/php83/pdo_pgsql/pgsql_driver.c" role="src" />
+   <file md5sum="9f18db606396a40763debf97ab7bfcfd" name="thirdparty/php83/pdo_pgsql/pgsql_driver.c" role="src" />
    <file md5sum="915ebd7e93ea42fa2a899c4326655a4c" name="thirdparty/php83/pdo_pgsql/pgsql_driver_arginfo.h" role="src" />
-   <file md5sum="eb904765cb1a21c51e29b7d543a3d8bc" name="thirdparty/php83/pdo_pgsql/pgsql_statement.c" role="src" />
+   <file md5sum="f649ce318f7d438d5641c5f56db566ae" name="thirdparty/php83/pdo_pgsql/pgsql_statement.c" role="src" />
    <file md5sum="38ab31b31bb5b285f4adba13f711558f" name="thirdparty/php83/pdo_pgsql/php_pdo_pgsql_int.h" role="src" />
    <file md5sum="ad05a7bdeae3ff9756a9f7e8d9b853fe" name="thirdparty/php83/pdo_sqlite/php_pdo_sqlite_int.h" role="src" />
-   <file md5sum="64997ef9bfa415fa2953aafca5a36edc" name="thirdparty/php83/pdo_sqlite/sqlite_driver.c" role="src" />
+   <file md5sum="ac1106f09e046d10ba60adeb6899b82f" name="thirdparty/php83/pdo_sqlite/sqlite_driver.c" role="src" />
    <file md5sum="d6f7e7103a93033bb527d3c27e8061cf" name="thirdparty/php83/pdo_sqlite/sqlite_driver.stub.php" role="src" />
    <file md5sum="03dc4a9cc4ab6693893b1207fd1723f0" name="thirdparty/php83/pdo_sqlite/sqlite_driver_arginfo.h" role="src" />
-   <file md5sum="8f18846c65b6068eeec70798ff1a1d81" name="thirdparty/php83/pdo_sqlite/sqlite_statement.c" role="src" />
+   <file md5sum="9265cba6a9c38ae7bbd53fabb38a535a" name="thirdparty/php83/pdo_sqlite/sqlite_statement.c" role="src" />
+   <file md5sum="c2ede8b162a44169e9f85a6421a82871" name="thirdparty/php84/curl/curl_arginfo.h" role="src" />
+   <file md5sum="d3a21e83fbf2c0a28fd293f73aff2762" name="thirdparty/php84/curl/curl_private.h" role="src" />
+   <file md5sum="4b3d4f3d60c6c86cb295f4e0c3726e5f" name="thirdparty/php84/curl/interface.cc" role="src" />
+   <file md5sum="d1fc3669320b8b6918ad9eb299dc94b3" name="thirdparty/php84/curl/multi.cc" role="src" />
+   <file md5sum="c6a46a9392369fba40e8107f9cc7865e" name="thirdparty/php84/curl/php_curl.h" role="src" />
+   <file md5sum="fd469cce1a919f0cc95bab7afb28d19d" name="thirdparty/php84/pdo_oci/LICENSE" role="doc" />
+   <file md5sum="4ba3c2de3168b468cd22d69b82d886e7" name="thirdparty/php84/pdo_oci/oci_driver.c" role="src" />
+   <file md5sum="faa8060fcecd3943985c17e2411cac21" name="thirdparty/php84/pdo_oci/oci_statement.c" role="src" />
+   <file md5sum="223f950720b77030a5b9f2b254caaf3e" name="thirdparty/php84/pdo_oci/php_pdo_oci_int.h" role="src" />
+   <file md5sum="ed035571bccfa688b76ad23e9ecf0b0a" name="thirdparty/php84/pdo_odbc/odbc_driver.c" role="src" />
+   <file md5sum="f45eb4e63452e0b30abd40088d72f4eb" name="thirdparty/php84/pdo_odbc/odbc_stmt.c" role="src" />
+   <file md5sum="d1235ba1472ce9e177f52d4f0980aaa1" name="thirdparty/php84/pdo_odbc/php_pdo_odbc_int.h" role="src" />
+   <file md5sum="47a94fe79da49c5905fdea8333cb347d" name="thirdparty/php84/pdo_pgsql/pgsql_driver.c" role="src" />
+   <file md5sum="1b4ee0ed3879da35eaac29c81f55561a" name="thirdparty/php84/pdo_pgsql/pgsql_driver_arginfo.h" role="src" />
+   <file md5sum="aa359a3437a8bf1c6d781f090d2ea528" name="thirdparty/php84/pdo_pgsql/pgsql_sql_parser.c" role="src" />
+   <file md5sum="4bf89dfd4a8dc5bc51d24857c821a406" name="thirdparty/php84/pdo_pgsql/pgsql_statement.c" role="src" />
+   <file md5sum="133a4ee820c18d441cd9c61756a61967" name="thirdparty/php84/pdo_pgsql/php_pdo_pgsql_int.h" role="src" />
+   <file md5sum="0dfae39a543feb1777135c5d42e2c41e" name="thirdparty/php84/pdo_sqlite/php_pdo_sqlite_int.h" role="src" />
+   <file md5sum="ddfd9d3b5cfcd277dbba72a5a62ef6a3" name="thirdparty/php84/pdo_sqlite/sqlite_driver.c" role="src" />
+   <file md5sum="d6f7e7103a93033bb527d3c27e8061cf" name="thirdparty/php84/pdo_sqlite/sqlite_driver.stub.php" role="src" />
+   <file md5sum="3bb28d3ae2a7b2167a5b9dd958aab8e1" name="thirdparty/php84/pdo_sqlite/sqlite_driver_arginfo.h" role="src" />
+   <file md5sum="076c308aa0896d4ee1b9cc3bb3a73f27" name="thirdparty/php84/pdo_sqlite/sqlite_sql_parser.c" role="src" />
+   <file md5sum="12ae4763654e8f00fd86a95a12b8269a" name="thirdparty/php84/pdo_sqlite/sqlite_statement.c" role="src" />
    <file md5sum="f0a194d91882d990ffd1a402d44e2303" name="thirdparty/swoole_http_parser.c" role="src" />
    <file md5sum="a64cb3264599d03b88c4cbce7caac2d8" name="thirdparty/swoole_http_parser.h" role="src" />
    <file md5sum="1d31508bd11052ef923e6a6d00684269" name="tools/analysis.php" role="src" />
    <file md5sum="91e4d63b630266ce9b79a82bbc284ea8" name="tools/arginfo-check.php" role="src" />
-   <file md5sum="bf3c4908c49eb10e7a40791797e4111b" name="tools/bootstrap.php" role="src" />
+   <file md5sum="908267a1f23e550cffb7a72826d06229" name="tools/bootstrap.php" role="src" />
    <file md5sum="e1f760a935083a16257d7f913fc71210" name="tools/build-library.php" role="src" />
    <file md5sum="102e1d625207099b89ec798d537d967a" name="tools/code-generator.php" role="src" />
    <file md5sum="bda735d2c255d4e29cc5c5525a7ee5ec" name="tools/composer.json" role="src" />
@@ -2552,12 +2716,13 @@
  </dependencies>
  <providesextension>swoole</providesextension>
  <extsrcrelease>
-  <configureoption default="no" name="enable-sockets" prompt="enable sockets supports?" />
+  <configureoption default="no" name="enable-sockets" prompt="enable sockets support?" />
   <configureoption default="no" name="enable-openssl" prompt="enable openssl support?" />
   <configureoption default="no" name="enable-mysqlnd" prompt="enable mysqlnd support?" />
   <configureoption default="no" name="enable-swoole-curl" prompt="enable curl support?" />
   <configureoption default="no" name="enable-cares" prompt="enable cares support?" />
   <configureoption default="yes" name="enable-brotli" prompt="enable brotli support?" />
+  <configureoption default="no" name="enable-zstd" prompt="enable zstd support?" />
   <configureoption default="no" name="enable-swoole-pgsql" prompt="enable PostgreSQL database support?" />
   <configureoption default="no" name="with-swoole-odbc" prompt="enable ODBC database support?" />
   <configureoption default="no" name="with-swoole-oracle" prompt="enable Oracle database support?" />
