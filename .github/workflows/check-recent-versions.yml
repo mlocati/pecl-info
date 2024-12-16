@@ -13,7 +13,8 @@ jobs:
     name: Check and update
     runs-on: ubuntu-latest
     steps:
-      - name: Retrieve recently updated extensions
+      -
+        name: Retrieve recently updated extensions
         id: retrieve-extensions
         run: |
           printf 'Downloading PECL feed... '
@@ -38,19 +39,24 @@ jobs:
           printf 'done.\n'
           printf 'Found etensions: %s\n' "$EXTENSIONS"
           printf 'list=%s\n' "$EXTENSIONS" >> $GITHUB_OUTPUT
-      - name: Install PHP
+      -
+        name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
           coverage: none
           tools: composer:v2
-      - name: Checkout
+      -
+        name: Checkout
         uses: actions/checkout@v4
-      - name: Install Composer dependencies
+      -
+        name: Install Composer dependencies
         run: composer install
-      - name: Update packages
+      -
+        name: Update packages
         run: ./bin/pecl-info update --ansi --no-interaction --update-packages --update-versions ${{ steps.retrieve-extensions.outputs.list }}
-      - name: Check changes
+      -
+        name: Check changes
         id: check-changes
         run: |
           PUSH=no
@@ -79,14 +85,17 @@ jobs:
             printf 'no changes detected.\n'
           fi
           printf 'push=%s\n' "$PUSH" >> $GITHUB_OUTPUT
-      - name: Configure git
+      -
+        name: Configure git
         if: steps.check-changes.outputs.push == 'yes'
         run: |
-          git config --local user.name 'Michele Locati'
-          git config --local user.email 'michele@locati.it'
-      - name: Commit changed files
+          git config --local user.name 'GitHub'
+          git config --local user.email 'noreply@github.com'
+      -
+        name: Commit changed files
         if: steps.check-changes.outputs.push == 'yes'
         run: git commit -m 'Automatic update of recent PECL packages'
-      - name: Push back to the remote repository
+      -
+        name: Push back to the remote repository
         if: steps.check-changes.outputs.push == 'yes'
         run: git push
