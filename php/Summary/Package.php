@@ -99,7 +99,7 @@ class Package implements JsonSerializable
      *
      * @see \JsonSerializable::jsonSerialize()
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $result = [
             'name' => $this->getDetails()->getPackageName(),

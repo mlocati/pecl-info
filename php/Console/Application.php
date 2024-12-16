@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace PeclInfo\Console;
 
 use Symfony\Component\Console\Application as ConsoleApplication;

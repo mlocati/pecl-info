@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 set_error_handler(
     static function ($errno, $errstr, $errfile, $errline) {

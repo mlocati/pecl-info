@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace PeclInfo\Pecl\Package\Version\Details;
 
 use DOMDocument;
@@ -76,6 +77,7 @@ class Fetcher
             $file = "{$dir}/dpx-{$i}-" . mt_rand() . '.tar.gs';
             if (!file_exists($file)) {
                 touch($file);
+
                 return $file;
             }
         }

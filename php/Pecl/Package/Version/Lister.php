@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace PeclInfo\Pecl\Package\Version;
 
 use DOMDocument;
@@ -83,7 +84,7 @@ class Lister
         try {
             return file_get_contents(sprintf(static::URL, strtolower($this->getPackageName())));
         } catch (RuntimeException $x) {
-            if (preg_match('/file_get_contents\b.*\bfailed to open stream: HTTP request failed! .* 404 Not Found/', $x->getMessage())) {
+            if (preg_match('/file_get_contents\b.*\bfailed to open stream: HTTP request failed! .* 404 Not Found/i', $x->getMessage())) {
                 return null;
             }
             throw $x;

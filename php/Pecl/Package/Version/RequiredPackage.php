@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace PeclInfo\Pecl\Package\Version;
 
 use JsonSerializable;
@@ -69,7 +70,7 @@ class RequiredPackage implements JsonSerializable
      *
      * @see \JsonSerializable::jsonSerialize()
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $result = [
             'n' => $this->getName(),

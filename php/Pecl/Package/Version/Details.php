@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace PeclInfo\Pecl\Package\Version;
 
 use PeclInfo\Pecl\Package\Version;
@@ -76,6 +77,7 @@ class Details
             if ($cmp === 0) {
                 throw new RuntimeException("Duplicated required package: {$a->getName()}");
             }
+
             return $cmp;
         });
         $this->requiredPackages = $requiredPackages;

@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace PeclInfo\Summary\Package;
 
 use JsonSerializable;
@@ -69,7 +70,7 @@ class CompatiblePHPVersions implements JsonSerializable
      *
      * @see \JsonSerializable::jsonSerialize()
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         $result = [
             'v' => $this->getVersions(),

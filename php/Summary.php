@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace PeclInfo;
 
 use JsonSerializable;
@@ -54,7 +55,7 @@ class Summary implements JsonSerializable
      *
      * @see \JsonSerializable::jsonSerialize()
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->getPackages();
     }

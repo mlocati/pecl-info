@@ -16,9 +16,11 @@
         }
     },
     "require": {
-        "php": "^7.4 || ^8",
-        "friendsofphp/php-cs-fixer": "^2.17",
-        "symfony/console": "^5.2"
+        "php": "^8.3",
+        "symfony/console": "^7.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.65"
     },
     "config": {
         "optimize-autoloader": true,
@@ -28,6 +30,7 @@
         "bin/pecl-info"
     ],
 	"scripts": {
-		"lint": "php-cs-fixer fix --path-mode=intersection --config=./.php_cs.dist"
+		"cs:check": "php-cs-fixer check --verbose --diff",
+        "cs:fix": "php-cs-fixer fix --diff"
 	}
 }
