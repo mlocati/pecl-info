@@ -8,6 +8,8 @@ on:
         type: string
         default: ''
         required: false
+  schedule:
+    - cron: "0 8 * * 3"
 
 jobs:
   check:
@@ -69,7 +71,7 @@ jobs:
       -
         name: Commit changed files
         if: steps.check-changes.outputs.push == 'yes'
-        run: git commit -m 'Automatic update of recent PECL packages'
+        run: git commit -m 'Rebuilding all packages'
       -
         name: Push back to the remote repository
         if: steps.check-changes.outputs.push == 'yes'
