@@ -37,7 +37,7 @@ jobs:
         id: check-changes
         run: |
           PUSH=no
-          printf 'Checking changes in downloaded XML files...'
+          printf 'Checking changes in downloaded XML files... '
           if test -n "$(git status --porcelain xml)"; then
             printf 'changes detected!\n'
             git add --all xml
@@ -45,7 +45,7 @@ jobs:
           else
             printf 'no changes detected.\n'
           fi
-          printf 'Checking changes in generated JSON files (public)...'
+          printf 'Checking changes in generated JSON files (public)... '
           if test -n "$(git status --porcelain public)"; then
             printf 'changes detected!\n'
             git add --all public
@@ -53,7 +53,7 @@ jobs:
           else
             printf 'no changes detected.\n'
           fi
-          printf 'Checking changes in generated JSON files (docs/data)...'
+          printf 'Checking changes in generated JSON files (docs/data)... '
           if test -n "$(git status --porcelain docs/data)"; then
             printf 'changes detected!\n'
             git add --all docs/data
