@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.16" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>opentelemetry</name>
+ <channel>pecl.php.net</channel>
+ <summary>OpenTelemetry auto-instrumentation support extension</summary>
+ <description>https://github.com/open-telemetry/opentelemetry-php-instrumentation</description>
+ <lead>
+  <name>Brett McBride</name>
+  <user>brettmc</user>
+  <email>brett@example.com</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Przemek Delewski</name>
+  <user>pdelewski</user>
+  <email>pdelewski@example.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2025-01-22</date>
+ <time>23:58:00</time>
+ <version>
+  <release>1.1.2</release>
+  <api>1.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license filesource="LICENSE" uri="https://opensource.org/license/apache-2-0/">Apache 2.0</license>
+ <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.1.2
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="898e876ec332fe88bd458d83dcf44c49" name="tests/mocks/SpanAttribute.php" role="test" />
+   <file baseinstalldir="/" md5sum="1ee98feb267d9c74bea02822e188788e" name="tests/mocks/WithSpanHandlerDumpAttributes.php" role="test" />
+   <file baseinstalldir="/" md5sum="4b3817a51b3f53260534d5b6f0ad25a3" name="tests/mocks/WithSpanHandler.php" role="test" />
+   <file baseinstalldir="/" md5sum="561176e08d0f7bf6b3c9bb8f20aedd06" name="tests/mocks/WithSpan.php" role="test" />
+   <file baseinstalldir="/" md5sum="efbb1d5611606d3514d9d7d4a27515b2" name="tests/with_span/attribute_named_params_passed_to_pre_hook.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="97820e984b404bf2f478d4db79110b27" name="tests/with_span/attribute_on_method.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3144d0901b3be28064eb3d693d47ef91" name="tests/with_span/attribute_on_interface.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6ed9a9c2c66fd35e119289607ec34ad5" name="tests/with_span/attribute_params_skipped_if_hooked.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4e16b72f2b8bd96a5974a84045d253b4" name="tests/with_span/disable.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7dfb5b3db67620c2ac3cd6a241f163ab" name="tests/with_span/attribute_on_function.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f31dda336c7853638d0d1966a60a9c85" name="tests/with_span/attribute_on_interface_with_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b1e894f4ba3dbc6ea64fb286c2ee155c" name="tests/with_span/attribute_params_passed_to_pre_hook.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="93c237f1438e823f40953b831bcec4b6" name="tests/with_span/customize_handlers.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="08fecb62a070236442e496ee681d2b02" name="tests/with_span/invalid_callback.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bb25bee741692920a509380f0db00c0d" name="tests/span_attribute/attribute_on_interface.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a31141131f5040334bd33c9f3b022f9a" name="tests/span_attribute/function_params_non_simple.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5798def62d30276feb12aefeaaa9163e" name="tests/span_attribute/function_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6db84ea762f41f5306ef3a11bc3449ac" name="tests/span_attribute/method_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0d7d70c70194fd90129309c727ce3c43" name="tests/span_attribute/span_attribute_attribute_priority.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="973355a685459d98e75dd4bd9cfadda3" name="tests/001.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="877627c6bc898ee8892800f6e04c8fd1" name="tests/002.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="996cfdac56788ae838ad7c94dcd352b2" name="tests/003.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8488c1a7e2f63a80d292d3334714dcb1" name="tests/004.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6d4d9f89c89e05f265a4b80b2617e50b" name="tests/005.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d660f1add557d553be6b6266f578bfdf" name="tests/006.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d93b63162d5845d40c5256e97ea556c5" name="tests/007.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b7ecae78e84cc9e3ff345e2102836bb3" name="tests/008.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d6bb696016e46f9113b219c86c528a7e" name="tests/009.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="7945a484c86a0f22db4fb418695502df" name="tests/010.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ce0391c4bbae56118b30f5b706a47e26" name="tests/calling_die_lead_to_segfault.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a4826c5e948b6e24099634d645ea5e5e" name="tests/disable_does_nothing_with_bad_data.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="307e7865b5f5a8032c562144cd0eb0cc" name="tests/disable_hook_function_validation.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="eaa4eebbb07cf820bb2b10c77b23ea73" name="tests/disabled_with_conflicting_extension.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6a9b0e366adba6be6f8af45b8bc1494a" name="tests/expand_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="aedc96db46ca296fb75d8e4be56fb5b3" name="tests/expand_params_extend.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="37b06344694f94e760629105b27948e3" name="tests/expand_params_extend_internal.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="3555af5cc14febe8c9b6ef1af516f753" name="tests/expand_params_extend_internal_long.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0bc1a2d281f520bade865b3b0cf69514" name="tests/expand_params_extend_limit.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4cef309a9d17b1a912cba029b416fa57" name="tests/expand_params_extra.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6ed5f5fcf7d86af6a57fdea3cf0547fa" name="tests/expand_params_internal.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d4794361b64ba7c31da708606abcd23b" name="tests/function_closure.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6ef6f604c161dff5e7278434a5bd0b69" name="tests/function_first_class_callable.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="157d191cfc6d310af054c07c86792ad7" name="tests/function_internal.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="2c971bd4c39a5b872d775d69a4ffb411" name="tests/hooks_throw_exception.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1937acc54adeede0ff38b4791277773f" name="tests/hooks_throw_exception_for_failed_call.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="921d74c8134adb17d490eaaca5f06331" name="tests/hooks_throw_exception_error_handler.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="bc94fd4e112806a529d921aaa9fe59b6" name="tests/ini_set.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="1c7836c0725329011985f10ef2a416e0" name="tests/invalid_post_callback_signature.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ce1da84adce9045c4fa0fcc9da04ca14" name="tests/invalid_pre_callback_signature.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="4251c34a6b816f3466d4b64e79d13c0f" name="tests/invalid_pre_callback_signature_with_function.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0e42cc0372372f7f81dee30fa6c25a04" name="tests/modify_extra_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8e8232cec8abce1bc537b4bf28f51aac" name="tests/modify_extra_params_internal.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="efafb508e935499fde3ee594af4bf126" name="tests/modify_named_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="b641f638665a94719040805abe618ada" name="tests/modify_named_params_internal.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="6566bb31091a9e6a45d0c68bece977a5" name="tests/modify_named_params_invalid.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="d67d7a44e571201a162febfbffca5828" name="tests/modify_named_params_twice.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="fd98fb50f2ffd7cdb3185fd62b2fedb8" name="tests/modify_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a80de1e8d566a7ab5d759b2a22b24400" name="tests/multiple_hooks_modify_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="09529021d96f62a9f4904c04c76e1fb6" name="tests/multiple_hooks_modify_returnvalue.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0648c23869b91551543103d51370d641" name="tests/post_hook_return_ignored_without_type.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0906905203e3cfae65663216e436f2e6" name="tests/post_hook_returns_cloned_modified_object.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="159aec49d99165d73f6ff75f45effeb9" name="tests/post_hook_throws_exception.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="629ef5740a6be48b3e56022b700d0459" name="tests/post_hook_type_error.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f29e0df6239c453d218df4c01cb066ea" name="tests/reimplemented_interface.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8f95323ee7b2d40b41802efd8e164ea6" name="tests/return_expanded_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="ce656eba6ce52f67b4e72e9f164f56e0" name="tests/return_expanded_params_internal.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="79bf79d31625a227e4423217c6fe901a" name="tests/return_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="439392f8811e229ba48601db7adafe21" name="tests/return_params_internal.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="a35a5f13c81680a6a4073cdff9729e5c" name="tests/return_reduced_params.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="26b03023e45e55d136e5f6999f002dda" name="tests/static_method.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="fb300bd01c8888fced6ebb8874f68cda" name="tests/unwind_exit.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="42030a8e13665e2c0bbde79d8ff45292" name=".clang-format" role="src" />
+   <file baseinstalldir="/" md5sum="778949a4f45e4a8c7fa77ece166054f4" name="config.m4" role="src" />
+   <file baseinstalldir="/" md5sum="83792c407824843b8755ba0e655d5262" name="config.w32" role="src" />
+   <file baseinstalldir="/" md5sum="84ef28d52525b053408208fe02314afb" name="opentelemetry.c" role="src" />
+   <file baseinstalldir="/" md5sum="62d8cc6b83a64fbe1ca4f1e3112218b4" name="opentelemetry.stub.php" role="src" />
+   <file baseinstalldir="/" md5sum="a1b6151402a4c4cb6074f2b9ddcc230b" name="opentelemetry_arginfo.h" role="src" />
+   <file baseinstalldir="/" md5sum="239d9e46ce41a83f64ef34bb82529781" name="otel_observer.c" role="src" />
+   <file baseinstalldir="/" md5sum="020c799bef840df54124b12b22e132b9" name="otel_observer.h" role="src" />
+   <file baseinstalldir="/" md5sum="7a8063a21719ad75b51959f20a53511d" name="php_opentelemetry.h" role="src" />
+   <file baseinstalldir="/" md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>opentelemetry</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2023-03-30</date>
+   <time />
+   <version>
+    <release>1.0.0beta2</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license filesource="LICENSE" uri="https://opensource.org/license/apache-2-0/">Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.0beta2
+   </notes>
+  </release>
+  <release>
+   <date>2023-04-01</date>
+   <time>00:32:40</time>
+   <version>
+    <release>1.0.0beta3</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.0beta3
+   </notes>
+  </release>
+  <release>
+   <date>2023-04-19</date>
+   <time>12:25:51</time>
+   <version>
+    <release>1.0.0beta4</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.0beta4
+   </notes>
+  </release>
+  <release>
+   <date>2023-05-10</date>
+   <time>14:16:02</time>
+   <version>
+    <release>1.0.0beta5</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.0beta5
+   </notes>
+  </release>
+  <release>
+   <date>2023-06-14</date>
+   <time>08:44:49</time>
+   <version>
+    <release>1.0.0beta6</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.0beta6
+   </notes>
+  </release>
+  <release>
+   <date>2023-09-04</date>
+   <time>23:35:51</time>
+   <version>
+    <release>1.0.0beta7</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.0beta7
+   </notes>
+  </release>
+  <release>
+   <date>2023-09-12</date>
+   <time>02:23:02</time>
+   <version>
+    <release>1.0.0RC1</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.0RC1
+   </notes>
+  </release>
+  <release>
+   <date>2023-10-17</date>
+   <time>03:23:33</time>
+   <version>
+    <release>1.0.0RC2</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.0RC2
+   </notes>
+  </release>
+  <release>
+   <date>2023-10-19</date>
+   <time>21:45:44</time>
+   <version>
+    <release>1.0.0RC3</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.0RC3
+   </notes>
+  </release>
+  <release>
+   <date>2023-10-25</date>
+   <time>12:19:13</time>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.0
+   </notes>
+  </release>
+  <release>
+   <date>2024-01-24</date>
+   <time>23:26:21</time>
+   <version>
+    <release>1.0.1beta1</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.1beta1
+   </notes>
+  </release>
+  <release>
+   <date>2024-01-27</date>
+   <time>21:38:56</time>
+   <version>
+    <release>1.0.1beta2</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.1beta2
+   </notes>
+  </release>
+  <release>
+   <date>2024-02-04</date>
+   <time>23:00:16</time>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.1
+   </notes>
+  </release>
+  <release>
+   <date>2024-02-05</date>
+   <time>02:56:40</time>
+   <version>
+    <release>1.0.2beta1</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.2beta1
+   </notes>
+  </release>
+  <release>
+   <date>2024-03-18</date>
+   <time>04:43:21</time>
+   <version>
+    <release>1.0.2beta2</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.2beta2
+   </notes>
+  </release>
+  <release>
+   <date>2024-03-24</date>
+   <time>22:47:18</time>
+   <version>
+    <release>1.0.2beta3</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.2beta3
+   </notes>
+  </release>
+  <release>
+   <date>2024-04-11</date>
+   <time>01:50:37</time>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.2
+   </notes>
+  </release>
+  <release>
+   <date>2024-05-01</date>
+   <time>12:29:42</time>
+   <version>
+    <release>1.0.3beta1</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.3beta1
+   </notes>
+  </release>
+  <release>
+   <date>2024-05-04</date>
+   <time>00:03:28</time>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.0.3
+   </notes>
+  </release>
+  <release>
+   <date>2024-08-29</date>
+   <time>23:46:59</time>
+   <version>
+    <release>1.1.0beta1</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.1.0beta1
+   </notes>
+  </release>
+  <release>
+   <date>2024-09-04</date>
+   <time>00:06:19</time>
+   <version>
+    <release>1.1.0beta2</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.1.0beta2
+   </notes>
+  </release>
+  <release>
+   <date>2024-09-09</date>
+   <time>12:14:40</time>
+   <version>
+    <release>1.1.0beta3</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.1.0beta3
+   </notes>
+  </release>
+  <release>
+   <date>2024-10-02</date>
+   <time>12:51:08</time>
+   <version>
+    <release>1.1.0</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.1.0
+   </notes>
+  </release>
+  <release>
+   <date>2025-01-20</date>
+   <time>05:27:20</time>
+   <version>
+    <release>1.1.1</release>
+    <api>1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license>Apache 2.0</license>
+   <notes>
+See https://github.com/open-telemetry/opentelemetry-php-instrumentation/releases/tag/1.1.1
+   </notes>
+  </release>
+ </changelog>
+</package>
