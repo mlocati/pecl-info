@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.10.15" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>phpy</name>
+ <channel>pecl.php.net</channel>
+ <summary>A library for inter-calling Python and PHP</summary>
+ <description>This extension allows PHP to directly use Python modules and functions without RPC.
+        Including Pytorch, transformer, numpy, tensorflow and other Python AI libraries, which can be used like calling
+        PHP functions.</description>
+ <lead>
+  <name>Tianfeng.Han</name>
+  <user>tianfenghan</user>
+  <email>rango@swoole.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2025-03-06</date>
+ <time>05:40:34</time>
+ <version>
+  <release>1.0.11</release>
+  <api>1.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.apache.org/licenses/LICENSE-2.0.html">Apache2.0</license>
+ <notes>
+- Added PyCore::raise() to throw exceptions to the Python layer.
+- Added PyNamedFn function, which converts PHP functions into Python functions, complete with annotations, parameters, and return type information.
+- Added the PyEnum function to transform PHP classes containing only constants into Python Enums.
+- Added the bin/phpy tool.
+- Added the argument_as_object option
+- Fixed a bug in PyTuple::offsetExists where it returned false for negative input parameters.
+- Added a PyClass::__init() callback, which is invoked within the init method of Python classes.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="cbb1d7f4bfd0eee5f9cb71035ae4bed7" name="README.md" role="doc" />
+   <file md5sum="3a8398a20cf5bb5976c1e266b129b9bd" name="LICENSE" role="doc" />
+   <file md5sum="c10c9f3ce199c2d5f06f605833bf1ea3" name="config.m4" role="src" />
+   <file md5sum="21416ced7d712d16a1789e16a432323d" name="config.w32" role="src" />
+   <file md5sum="5a1a8c23440bcd99217341dde649368c" name=".clang-format" role="src" />
+   <file md5sum="87c71903c9fb0d443ad43281066db840" name="phpy.cc" role="src" />
+   <file md5sum="68518858cae293f9a636d7b0c5b5a606" name="php_phpy.h" role="src" />
+   <file md5sum="2f80a6819b68ed6c493b04477960e48e" name="include/phpy.h" role="src" />
+   <file md5sum="626831c4732de56421a28166f682166d" name="stubs/phpy_core_arginfo.h" role="src" />
+   <file md5sum="53c4e7fd761ebff669492bd4160c3f37" name="stubs/phpy_dict_arginfo.h" role="src" />
+   <file md5sum="472e41631d1289713364c24dc5044d18" name="stubs/phpy_error_arginfo.h" role="src" />
+   <file md5sum="4e185dc9be0060871372fa13ab0c4b27" name="stubs/phpy_fn_arginfo.h" role="src" />
+   <file md5sum="f7a40d311473a93c979c822a582a80e2" name="stubs/phpy_iter_arginfo.h" role="src" />
+   <file md5sum="f3ea26659974895b67f2695fb317e1da" name="stubs/phpy_list_arginfo.h" role="src" />
+   <file md5sum="974f5aeadda2972f646abda0b215811d" name="stubs/phpy_module_arginfo.h" role="src" />
+   <file md5sum="ace33be594a85e4dd55cfd50eb0dcac6" name="stubs/phpy_object_arginfo.h" role="src" />
+   <file md5sum="60d6dd3d50d668cfafbc07b0d5b4939d" name="stubs/phpy_sequence_arginfo.h" role="src" />
+   <file md5sum="90ac78a21ca22363c22ea3c52d31c53b" name="stubs/phpy_set_arginfo.h" role="src" />
+   <file md5sum="3111bae12f1a334014e22bb0b15a881a" name="stubs/phpy_str_arginfo.h" role="src" />
+   <file md5sum="1e1e162c930d52e4ff1ade0ac588f1ab" name="stubs/phpy_tuple_arginfo.h" role="src" />
+   <file md5sum="3e6c1b2ed3fd370c6d87e6d2a8f7d6fc" name="stubs/phpy_type_arginfo.h" role="src" />
+   <file md5sum="ea64b8961a6c6fce99779723fb84cb4b" name="stubs/phpy_core.stub.php" role="src" />
+   <file md5sum="5b263d55489b8bf5c540a9e16a71be24" name="stubs/phpy_dict.stub.php" role="src" />
+   <file md5sum="56d38b5c2a3619e482ced71d55275fc0" name="stubs/phpy_error.stub.php" role="src" />
+   <file md5sum="08bc47451ff38895b064bc55d44a10c2" name="stubs/phpy_fn.stub.php" role="src" />
+   <file md5sum="a2efc7338346b11c7d8634bcc646e251" name="stubs/phpy_iter.stub.php" role="src" />
+   <file md5sum="1cf5a48d1867f310c3c7715a5ab19cc6" name="stubs/phpy_list.stub.php" role="src" />
+   <file md5sum="e86ebdae6e90c33eec5be34f5789432a" name="stubs/phpy_module.stub.php" role="src" />
+   <file md5sum="e26fb0e9e20307c715d6dfd62dd76c1a" name="stubs/phpy_object.stub.php" role="src" />
+   <file md5sum="9cfe276efb66126e9a17e13d51247344" name="stubs/phpy_sequence.stub.php" role="src" />
+   <file md5sum="449806d69e1cbe7fb09951b1e5fc27de" name="stubs/phpy_set.stub.php" role="src" />
+   <file md5sum="40648fb7939b34fbbd71c1a4ff27615b" name="stubs/phpy_str.stub.php" role="src" />
+   <file md5sum="58ca6b408122c027974f1a31823b698f" name="stubs/phpy_tuple.stub.php" role="src" />
+   <file md5sum="f94a296da44ffaf8ce4ddcc823a0c0c3" name="stubs/phpy_type.stub.php" role="src" />
+   <file md5sum="f312e054bc25ed262f2b2d82ea8f267f" name="src/bridge/core.cc" role="src" />
+   <file md5sum="f37e7dcafd9f44671f6fa2d852b7a22b" name="src/php/core.cc" role="src" />
+   <file md5sum="186fcc6e2879c772ce3246272feb7cf2" name="src/php/dict.cc" role="src" />
+   <file md5sum="d675e976291688fc37e5953733dbfb25" name="src/php/error.cc" role="src" />
+   <file md5sum="eb782cdf09ec59ad8fa38cb74066a7c0" name="src/php/fn.cc" role="src" />
+   <file md5sum="77ac29116062aa7cf4bdc9b6f45e642c" name="src/php/iter.cc" role="src" />
+   <file md5sum="37ce32915a447fa6671aa85af6cb7a9d" name="src/php/list.cc" role="src" />
+   <file md5sum="afbb60263b5a4f1fc0233d63720b4634" name="src/php/module.cc" role="src" />
+   <file md5sum="c48f565ffd4bfc047965958fd2f9dd20" name="src/php/object.cc" role="src" />
+   <file md5sum="c5677ebf4beeea1c0a5bf7d9a07e60ad" name="src/php/sequence.cc" role="src" />
+   <file md5sum="b123dc6cf4395ebb0791e7099d859fed" name="src/php/set.cc" role="src" />
+   <file md5sum="57ee24ba6b06979893738bad03f285ed" name="src/php/str.cc" role="src" />
+   <file md5sum="2b3c9d40173bf1eff79fabb5e2f3fdd0" name="src/php/tuple.cc" role="src" />
+   <file md5sum="e3e22c935ecc29b6996a6bc623cec740" name="src/php/type.cc" role="src" />
+   <file md5sum="0b0f8369ca1c07e8c0b4ed67b49abc2f" name="src/python/array.cc" role="src" />
+   <file md5sum="fe6d9d01e23b38d71e9640a55b7bbc3f" name="src/python/callable.cc" role="src" />
+   <file md5sum="2c90f5dda5fd02ef0e57bc4b536bad18" name="src/python/class.cc" role="src" />
+   <file md5sum="d6b52860f029fffff1b89aa244e94fe8" name="src/python/module.cc" role="src" />
+   <file md5sum="df3ef3e073e90e1712f0d6c27f40a099" name="src/python/object.cc" role="src" />
+   <file md5sum="6c95945daefd87158129ad89fae7a3a5" name="src/python/reference.cc" role="src" />
+   <file md5sum="9c5195eb89ba7680622de0f52f5276c9" name="src/python/resource.cc" role="src" />
+   <file md5sum="f6a6ab9ce6db9a65ed695790c1cc94b3" name="src/python/string.cc" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>phpy</providesextension>
+ <extsrcrelease>
+  <configureoption default="python3-config" name="with-python-config" prompt="Specify the path of python-config" />
+ </extsrcrelease>
+</package>
