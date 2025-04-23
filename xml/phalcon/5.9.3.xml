@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.16" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>phalcon</name>
+ <channel>pecl.php.net</channel>
+ <summary>Phalcon is a full stack PHP framework offering low resource consumption and high performance.</summary>
+ <description>Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high
+    performance. Its unique architecture allows the framework to always be memory resident, offering its functionality
+    whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.</description>
+ <lead>
+  <name>Anton Vasiliev</name>
+  <user>jeckerson</user>
+  <email>anton@phalcon.io</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Nikolaos Dimopoulos</name>
+  <user>niden</user>
+  <email>nikos@phalcon.io</email>
+  <active>yes</active>
+ </lead>
+ <date>2025-04-22</date>
+ <time>18:57:21</time>
+ <version>
+  <release>5.9.3</release>
+  <api>5.9.3</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://license.phalcon.io">BSD 3-Clause License</license>
+ <notes>
+Full changelog can be found at: https://github.com/phalcon/cphalcon/blob/master/CHANGELOG-5.0.md
+
+### Changed
+- Added Multi-Stage Dockerfile and Github action for release Docker images to ghcr.io and Docker Hub. [#16752](https://github.com/phalcon/cphalcon/issues/16752)
+
+### Added
+
+- Added `Phalcon\Mvc\Router::setUriSource()` to allow URI processing from `$_GET[&apos;url&apos;]` or `$_SERVER[&apos;REQUEST_URI&apos;]` as it was in v3 [#16741](https://github.com/phalcon/cphalcon/issues/16741)
+
+### Fixed
+
+- Fixed `Phalcon\Mvc\Router` to correctly handle numeric URI parts as it was in v3 [#16741](https://github.com/phalcon/cphalcon/issues/16741)
+- Fixed `Phalcon\Mvc\Model\Binder` to use ReflectionParameter::getType() instead of deprecated method, PHP 8.0 or higher issue. [#16742](https://github.com/phalcon/cphalcon/issues/16742)
+- Fixed `Phalcon\Mvc\Model\Query` to check if cache entry exists. [#16747](https://github.com/phalcon/cphalcon/issues/16747)
+- Fixed `Phalcon\Mvc\Router` to correctly match route when using query string URIs. [#16749](https://github.com/phalcon/cphalcon/issues/16749)
+- Fixed `Phalcon\Mvc\Model::cloneResultset` to properly parse fields that do not accept `null` values [#16736](https://github.com/phalcon/cphalcon/issues/16736)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="605b108f1e0f081d2175d4648254d104" name="config.m4" role="src" />
+   <file md5sum="30ca2ce4562668288e9c867ee30002c7" name="config.w32" role="src" />
+   <file md5sum="fb338ffc8fbfc0b5a78b108bfefa448e" name="phalcon.zep.c" role="src" />
+   <file md5sum="ccf9ed9b3b6a4d95d3c2c9089871b81e" name="phalcon.zep.h" role="src" />
+   <file md5sum="24e546b45a18ac37e65624cd7bd5fa37" name="php_phalcon.h" role="src" />
+   <file md5sum="d203bdf1a0b2d361f36cd0e0d9c23c74" name="LICENSE.txt" role="doc" />
+   <file md5sum="0079fc53a9c7f37740bed70294dd2295" name="CHANGELOG-5.0.md" role="doc" />
+   <file md5sum="3e5802d234e4311b08b1e73df07eb5fc" name="CODE_OF_CONDUCT.md" role="doc" />
+   <file md5sum="67bdb8625f7e41763bd695117f7f38f1" name="CODE_OWNERS.TXT" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+    <max>8.4.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>phalcon</providesextension>
+ <extsrcrelease />
+</package>
