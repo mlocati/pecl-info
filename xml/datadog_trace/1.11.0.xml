@@ -1,0 +1,1698 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>datadog_trace</name>
+ <channel>pecl.php.net</channel>
+ <summary>APM and distributed tracing for PHP</summary>
+ <description>The Datadog PHP Tracer brings APM and distributed tracing to PHP.</description>
+ <lead>
+  <name>Anil Mahtani Mirchandani</name>
+  <user>anilm3</user>
+  <email>anilm3@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Levi Morrison</name>
+  <user>levim</user>
+  <email>levim@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Luca Abbati</name>
+  <user>labbati</user>
+  <email>luca.abbati@gmail.com</email>
+  <active>no</active>
+ </lead>
+ <lead>
+  <name>Bob Weinand</name>
+  <user>bwoebi</user>
+  <email>bwoebi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Pierre Bonet</name>
+  <user>pierotibou</user>
+  <email>pierotibou@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Alejandro Estringana Ruiz</name>
+  <user>estringanadd</user>
+  <email>estringanadd@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Florian Engelhardt</name>
+  <user>flowcontrol</user>
+  <email>flo@dotbox.org</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Luc Vieillescazes</name>
+  <user>iamluc</user>
+  <email>luc@vieillescazes.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2025-07-29</date>
+ <time>14:47:27</time>
+ <version>
+  <release>1.11.0</release>
+  <api>1.11.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://github.com/DataDog/dd-trace-php/blob/master/LICENSE">BSD 3-Clause</license>
+ <notes>
+## All products
+### Internal
+- Implement new SSI configuration telemetry #3301
+
+### Fixed
+- Treat opcache.jit=0 as JIT disabled #3337
+
+## Tracer
+### Changed
+- Add knuth sampling formula #3281
+- Add db.type to PDO integration #3350
+
+### Fixed
+- Fix dd_patch_zend_call_known_function on early PHP 8 versions on Windows #3326
+- Fix DogStatsD client crash when endpoint is unreachable #3344
+- Fix trailing ; in tracestate #3354
+- Fix DD_TRACE_AGENT_URL panic without scheme and path #3358
+
+### Internal
+- Fixup the otel.env.invalid metric name #3284
+- Bump the required rust version to 1.84.1 #3299
+- Add redaction in autoload_php_file #3313
+- Reduce telemetry sent #3316
+- Adding telemetry for baggage propagation #3353
+- Make max memory of sidecar configurable DataDog/libdatadog#1105
+- Fix possible remote config deadlock DataDog/libdatadog#1161
+
+## Profiling
+### Fixed
+- Fewer borrows, less panics on borrows #3295
+- Validate opline before access #3319
+- Do not call zend_jit_status() on affected versions #3356
+- Revert to more stable hooking for allocation profiling #3361
+
+### Internal
+- Bump Rust version #3330
+- Bump patch versions, drop indexmap #3338
+
+## Application Security Management
+### Added
+- Truncate input #3250
+- Implement ATO v2 functions #3263, #3315
+- Schema extraction with DD_APM_TRACING_ENABLED=false #3269
+- Parse authorization header #3279
+- Add forwarded header and private IP #3345
+
+### Changed
+- Update SLO metrics #3239
+- Update event obfuscation regex #3290
+
+### Fixed
+- Fix rate limiter #3331
+
+### Internal
+- Send some telemetry logs from the helper #3236
+- Fix warnings on clang-tidy-17 #3287
+- Upgrade boost to 1.86 #3289
+- Upgrade waf #3323
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="c39173cbae1fc7c8024eb188d766264f" name="components/atomic_win32_polyfill.h" role="src" />
+   <file md5sum="476046e56e1d30b4c91c74a33f8025dc" name="components/container_id/container_id.c" role="src" />
+   <file md5sum="2a07329ffbb072262bdd629dbe156ad6" name="components/container_id/container_id.h" role="src" />
+   <file md5sum="ed405ae681cb3a1c474be0e0d2c8264b" name="components/log/log.c" role="src" />
+   <file md5sum="4316ec5f10243add768c6b482c2d13f7" name="components/log/log.h" role="src" />
+   <file md5sum="a352c5c1de7857b3381d3d5d3e5ad7a9" name="components/pthread_polyfill.h" role="src" />
+   <file md5sum="11d3347d1bfb0958c510e72b49efb6f4" name="components/sapi/sapi.c" role="src" />
+   <file md5sum="aa3decb20be523968e8422c4ff362def" name="components/sapi/sapi.h" role="src" />
+   <file md5sum="bc2f194115c8ffb284cba8dba60c2905" name="components/stack-sample/stack-sample.c" role="src" />
+   <file md5sum="84c527b8fec9be5305dafa067b9e385c" name="components/stack-sample/stack-sample.h" role="src" />
+   <file md5sum="64f26f669bca7637603c9b0193f100a1" name="components/string_view/string_view.c" role="src" />
+   <file md5sum="38170fe16a887c00e5cd64d3cbde0277" name="components/string_view/string_view.h" role="src" />
+   <file md5sum="362d1db4d582377f71334e2d34ef81b5" name="components-rs/common.h" role="src" />
+   <file md5sum="f9df4ef9919fb63c11da27321d4f1fd0" name="components-rs/crashtracker.h" role="src" />
+   <file md5sum="d7c5569a923bbba305ebe29d84d82a6a" name="components-rs/ddtrace.h" role="src" />
+   <file md5sum="c236d60b5e6a081f616e407829654add" name="components-rs/library-config.h" role="src" />
+   <file md5sum="43960fc10d3b2c079b7532f212564ecb" name="components-rs/live-debugger.h" role="src" />
+   <file md5sum="8d7f11d864c528097c3664faca022359" name="components-rs/sidecar.h" role="src" />
+   <file md5sum="0262c646e3bfedb4121f68187f924bf7" name="components-rs/telemetry.h" role="src" />
+   <file md5sum="7b0f0a44792f2470da695236b2bcc2e1" name="ext/agent_info.c" role="src" />
+   <file md5sum="7d2abfff435ffa480482c0952d18d8e6" name="ext/agent_info.h" role="src" />
+   <file md5sum="7e6150699061c74f47ea834f453c3563" name="ext/arrays.c" role="src" />
+   <file md5sum="4553a9759a2f97cf003dc84279b30001" name="ext/arrays.h" role="src" />
+   <file md5sum="cc63cf9c21151aebcac8ceb630ebb750" name="ext/asm_event.c" role="src" />
+   <file md5sum="b104bfc8f25332194b8e840db75a925f" name="ext/asm_event.h" role="src" />
+   <file md5sum="7dc4e1fdd51f7c0b0bd450d7cf975585" name="ext/auto_flush.c" role="src" />
+   <file md5sum="b3ef02b07f8e3c846c8d9a8459c89b78" name="ext/auto_flush.h" role="src" />
+   <file md5sum="90a52fac1606bffcf4465b3c985e1c22" name="ext/autoload_php_files.c" role="src" />
+   <file md5sum="784683d26478a757ef2253f81938b965" name="ext/autoload_php_files.h" role="src" />
+   <file md5sum="1e50966529aa044e32dbbf173419cc79" name="ext/code_origins.c" role="src" />
+   <file md5sum="3b8f4a94d8bbb7e450c77952456ebc49" name="ext/code_origins.h" role="src" />
+   <file md5sum="fc6909c486966e67e056fbea0a65b922" name="ext/collect_backtrace.c" role="src" />
+   <file md5sum="69c6a3c039b12e13b5008fa80827600e" name="ext/collect_backtrace.h" role="src" />
+   <file md5sum="04ac8467a84cc26ced1e7e6733d415d1" name="ext/comms_php.c" role="src" />
+   <file md5sum="0ceec6cd09ad9085168e3f4464f9865b" name="ext/comms_php.h" role="src" />
+   <file md5sum="0a0b10b1471671a84619ed4d13cbb107" name="ext/compat_string.c" role="src" />
+   <file md5sum="5344c2e1ffbeb0bf08c400cd5e99f5d5" name="ext/compat_string.h" role="src" />
+   <file md5sum="c23000e67036a7b249859886c33cac7e" name="ext/compatibility.h" role="src" />
+   <file md5sum="8dc93b7dd10d87d7eb65ba9a2194d35c" name="ext/coms.c" role="src" />
+   <file md5sum="4aeadfc04b35b04905156a09b54dd809" name="ext/coms.h" role="src" />
+   <file md5sum="afc8d80d6122c0a1c04e10b5f20be175" name="ext/configuration.c" role="src" />
+   <file md5sum="06be129dadf3a8e6b99faf2b5382dedd" name="ext/configuration.h" role="src">
+    <tasks:replace from="@php_dir@" to="php_dir" type="pear-config" />
+    <tasks:replace from="_BUILD_FROM_PECL_" to="PHP_VERSION_ID" type="php-const" />
+   </file>
+   <file md5sum="c529c09881d33eca7157b11e8534acbb" name="ext/crashtracking_windows.c" role="src" />
+   <file md5sum="b04ddb2032ed7cc6799f439155fe7818" name="ext/crashtracking_windows.h" role="src" />
+   <file md5sum="9b935b1f82a2f25446e59123c5c7d76a" name="ext/ddshared.c" role="src" />
+   <file md5sum="137c34ed62da124c826382916657b96d" name="ext/ddshared.h" role="src" />
+   <file md5sum="65749803504afff4b23f8ed36866afc6" name="ext/ddtrace.c" role="src" />
+   <file md5sum="f43adbdcf5f9b99bc22193c3491a2594" name="ext/ddtrace.h" role="src" />
+   <file md5sum="d8ade5b9bb4722e35a2a21bc2974fbd1" name="ext/ddtrace_arginfo.h" role="src" />
+   <file md5sum="493fa673c43ae65cf1cbc2431f291a9e" name="ext/ddtrace_export.h" role="src" />
+   <file md5sum="463dac7a492a733e5ba3c83c0d5e920d" name="ext/ddtrace_string.h" role="src" />
+   <file md5sum="340a4c236c3dafd18c977110bba9b59c" name="ext/distributed_tracing_headers.c" role="src" />
+   <file md5sum="9050a7719f0b046201655d7f65482780" name="ext/distributed_tracing_headers.h" role="src" />
+   <file md5sum="b0beef49d39f7dc60a7504a876243771" name="ext/dogstatsd.c" role="src" />
+   <file md5sum="313b8297c7fc0c01b0c06aa8ff34b002" name="ext/dogstatsd.h" role="src" />
+   <file md5sum="bde4d6d37dfac070eb0fd1fbefbba4b2" name="ext/dogstatsd_client.c" role="src" />
+   <file md5sum="7f2a214bc7b04c56bb2772331aeca42a" name="ext/dogstatsd_client.h" role="src" />
+   <file md5sum="f7642cc69296c4fef3ccee5fbfdc6c97" name="ext/engine_api.c" role="src" />
+   <file md5sum="dca0ac021eb18e31a396a58d33888cd9" name="ext/engine_api.h" role="src" />
+   <file md5sum="d4f5c07d35d66ca40a113db44c79989e" name="ext/engine_hooks.c" role="src" />
+   <file md5sum="4223bf85a013aae1a47fddf1777115d2" name="ext/engine_hooks.h" role="src" />
+   <file md5sum="d5efe74f0e779311ccea3b2175374d30" name="ext/exception_serialize.c" role="src" />
+   <file md5sum="861a5150e4908f165400809cad43011d" name="ext/exception_serialize.h" role="src" />
+   <file md5sum="ee1d065b0bc829442fa39116c7b0c25f" name="ext/excluded_modules.c" role="src" />
+   <file md5sum="4daa669262c1610e19e2eacf4b9c5e7d" name="ext/excluded_modules.h" role="src" />
+   <file md5sum="5bfab2043b6d43431f0aaca2fa951156" name="ext/git.c" role="src" />
+   <file md5sum="b08cb0e3cb6df92180d2a452ba41697c" name="ext/git.h" role="src" />
+   <file md5sum="39c2fce9d8bac2a0e7e219347edc19da" name="ext/handlers_api.c" role="src" />
+   <file md5sum="105b92a0efa715a42438513725a80ea6" name="ext/handlers_api.h" role="src" />
+   <file md5sum="1d04f84b585097719b098b1f31dfff89" name="ext/handlers_curl.c" role="src" />
+   <file md5sum="89ccacf1900cdda754bf5af23c0825b8" name="ext/handlers_curl_php7.c" role="src" />
+   <file md5sum="27e4c7bf07c2c1d0bd5d280ef96cd088" name="ext/handlers_exception.c" role="src" />
+   <file md5sum="edd1cd8d8e95f5b2052e798baaaefa18" name="ext/handlers_exception.h" role="src" />
+   <file md5sum="3ee1df206714e2c585e60a25756098fb" name="ext/handlers_fiber.c" role="src" />
+   <file md5sum="4a188878ca0750f72f5506dd2de88529" name="ext/handlers_fiber.h" role="src" />
+   <file md5sum="ed0dc0d4dc5c2908e1795aaf62185740" name="ext/handlers_http.h" role="src" />
+   <file md5sum="d6414fa90655379769b4ecb7123a6a7a" name="ext/handlers_internal.c" role="src" />
+   <file md5sum="29f859ae92a2feb621b51e94a618999d" name="ext/handlers_internal.h" role="src" />
+   <file md5sum="f909de63bee71622770948182d35ed53" name="ext/handlers_kafka.c" role="src" />
+   <file md5sum="8522a1392cb76d5705560a7e18bd959d" name="ext/handlers_pcntl.c" role="src" />
+   <file md5sum="240dbe88acee62b1ed14a7a682c467b6" name="ext/handlers_signal.c" role="src" />
+   <file md5sum="4d6f353dcad1314d37867787a6ff1b1d" name="ext/hook/uhook.c" role="src" />
+   <file md5sum="3a3bf295cd10b3289eab299051c9a72c" name="ext/hook/uhook.h" role="src" />
+   <file md5sum="c3131ee35bd83b2568e524587861dcb3" name="ext/hook/uhook_arginfo.h" role="src" />
+   <file md5sum="b8f45e8f1bba82609d0d186d07ae4933" name="ext/hook/uhook_attributes.c" role="src" />
+   <file md5sum="914c9dca05e1514ce3feee193b3249fa" name="ext/hook/uhook_attributes_arginfo.h" role="src" />
+   <file md5sum="7e1cbcc080e76ed870f773b35c7d9031" name="ext/hook/uhook_legacy.c" role="src" />
+   <file md5sum="f56506c6eaf09a8f046bfca39b59f727" name="ext/hook/uhook_otel.c" role="src" />
+   <file md5sum="0c187b34ef818a66d0ee2af7e14ddb62" name="ext/inferred_proxy_headers.c" role="src" />
+   <file md5sum="35b70928516792434064c0fd261a5311" name="ext/inferred_proxy_headers.h" role="src" />
+   <file md5sum="e7c47214f2a3ca50c1f4741a6e136d16" name="ext/integrations/exec_integration.c" role="src" />
+   <file md5sum="046d1594acf31ba2c11ea3d84e09cbb4" name="ext/integrations/exec_integration.h" role="src" />
+   <file md5sum="428a34598e69245e6cef1a412e284452" name="ext/integrations/exec_integration_arginfo.h" role="src" />
+   <file md5sum="afcef59b28b148e8bf1a9a1d48ac5232" name="ext/integrations/integrations.c" role="src" />
+   <file md5sum="0aa5ac3bfb47f9324be5a24d9aa7947b" name="ext/integrations/integrations.h" role="src" />
+   <file md5sum="93faffdb1a33b7f1141b06bec899e343" name="ext/ip_extraction.c" role="src" />
+   <file md5sum="aa2742bd3ffd4025263741263d6980cb" name="ext/ip_extraction.h" role="src" />
+   <file md5sum="b8cbd943323de7aa87d4fb945e7af535" name="ext/limiter/limiter.c" role="src" />
+   <file md5sum="952a3234b7d8a50b3c59bcbc0415c96d" name="ext/limiter/limiter.h" role="src" />
+   <file md5sum="d17b73d41e2bd8f75fce82e59ff4c2e3" name="ext/live_debugger.c" role="src" />
+   <file md5sum="7895f16d929fff5f759f241710354f46" name="ext/live_debugger.h" role="src" />
+   <file md5sum="e5acdfebfce3fbf27f929112bdc458d4" name="ext/logging.c" role="src" />
+   <file md5sum="4e13c0fc8412dd2bdf50a9a8c3e49fd0" name="ext/logging.h" role="src" />
+   <file md5sum="86066b833964e0796c7cccab603fe217" name="ext/macros.h" role="src" />
+   <file md5sum="ddd179aa55019dbf8bf74044dcab54c2" name="ext/memory_limit.c" role="src" />
+   <file md5sum="a2be890fa8ba20c7b767b3c9214bbbd1" name="ext/memory_limit.h" role="src" />
+   <file md5sum="da8c233dbec5ed4804d20d962fd82a1f" name="ext/otel_config.c" role="src" />
+   <file md5sum="1d7e188d1806c68b0af6d370aaa4c888" name="ext/otel_config.h" role="src" />
+   <file md5sum="45d6b523d7356557695eb8d16e7be06f" name="ext/priority_sampling/priority_sampling.c" role="src" />
+   <file md5sum="84ed2d6b5f4e91408874cf986d1430d6" name="ext/priority_sampling/priority_sampling.h" role="src" />
+   <file md5sum="1b7421fbefa91475579c2144ec19f7f2" name="ext/profiling.c" role="src" />
+   <file md5sum="5a42d6be1b89d06ddd2daac39b1c6775" name="ext/profiling.h" role="src" />
+   <file md5sum="00c3f76a1f4f51d810a83d4cc5b7629f" name="ext/random.c" role="src" />
+   <file md5sum="cc1a68f862a9b86e4569b4acb51eb6fd" name="ext/random.h" role="src" />
+   <file md5sum="0688d5e0b29a35a00241647970176379" name="ext/remote_config.c" role="src" />
+   <file md5sum="def269009669f8b3cee8f09a9003c1d7" name="ext/remote_config.h" role="src" />
+   <file md5sum="0d0818a427257fde2a3c104a346b8163" name="ext/serializer.c" role="src" />
+   <file md5sum="b7a8f34be5ce42f4df524e4e0bd55bf0" name="ext/serializer.h" role="src" />
+   <file md5sum="277c04d404809c1d9a38a1c5c5f4443f" name="ext/sidecar.c" role="src" />
+   <file md5sum="53fce043789b85fa2557cdbaaae83677" name="ext/sidecar.h" role="src" />
+   <file md5sum="9b4de9e3ff518f7e42fff27965576742" name="ext/signals.c" role="src" />
+   <file md5sum="4bae6c5c11206dd3f23deac879f12312" name="ext/signals.h" role="src" />
+   <file md5sum="23733f28feee13dd93c02f088abe173c" name="ext/span.c" role="src" />
+   <file md5sum="1b73fe50934d4e4d41cf7ac9578088d6" name="ext/span.h" role="src" />
+   <file md5sum="a7accf65caf04c3cb83353d3226e1924" name="ext/standalone_limiter.c" role="src" />
+   <file md5sum="acf90c65e39208d352d3a434ed72eb3c" name="ext/standalone_limiter.h" role="src" />
+   <file md5sum="074fb36055f3d37785e598a30598104e" name="ext/startup_logging.c" role="src" />
+   <file md5sum="7277051c050c2b558c29bdbc6d939f7c" name="ext/startup_logging.h" role="src" />
+   <file md5sum="9030d70d1ba5aa9e755b490a04be8e05" name="ext/telemetry.c" role="src" />
+   <file md5sum="18c2bdfcc87810248dd3ff80163c5ad2" name="ext/telemetry.h" role="src" />
+   <file md5sum="d4dbff1e9aca7f7ae15aca7321f33d63" name="ext/threads.c" role="src" />
+   <file md5sum="a1c1bd4244b27f9d7112e5061f3d0968" name="ext/threads.h" role="src" />
+   <file md5sum="eaa4032b0fdc5ba18c66c5b421ffc19f" name="ext/trace_source.c" role="src" />
+   <file md5sum="1da2c2974c2f036473b9cbec43b1bb6d" name="ext/trace_source.h" role="src" />
+   <file md5sum="b9a7eda94c51b19a87d2da71d4df2e21" name="ext/tracer_tag_propagation/tracer_tag_propagation.c" role="src" />
+   <file md5sum="eb0d27cf631fce5cb1b2e7797edeee94" name="ext/tracer_tag_propagation/tracer_tag_propagation.h" role="src" />
+   <file md5sum="6cc74f161fca175b4a15fb3633105935" name="ext/uri_normalization.h" role="src" />
+   <file md5sum="821730568840e003960a9d297fd73705" name="ext/user_request.c" role="src" />
+   <file md5sum="9f78d8318b213941db7d20734a442b5e" name="ext/user_request.h" role="src" />
+   <file md5sum="f9d20569e5077a01f8fa9946cd6d4706" name="ext/vendor/mpack/mpack.c" role="src" />
+   <file md5sum="9af488f3a0140d99bde3e4b7587a3e0b" name="ext/vendor/mpack/mpack.h" role="src" />
+   <file md5sum="becdee1c300553715d9301c3a831b949" name="ext/vendor/mt19937/mt19937-64.c" role="src" />
+   <file md5sum="fdcb5001bb790438ac1c522c8fb076d5" name="ext/vendor/mt19937/mt19937-64.h" role="src" />
+   <file md5sum="4a39596f3c58d2eb764e62662a1ceab5" name="ext/weakrefs.c" role="src" />
+   <file md5sum="090e4bcb59a19a520bb4a237995a1420" name="ext/zend_hrtime.c" role="src" />
+   <file md5sum="e85f87f41fe049784ad3a0b268f98674" name="ext/zend_hrtime.h" role="src" />
+   <file md5sum="8c526cbe35b70acc1bab51912ba71b0e" name="src/dogstatsd/client.c" role="src" />
+   <file md5sum="c5794aa384b3f020f100f3c18fba70f2" name="src/dogstatsd/dogstatsd_client/client.h" role="src" />
+   <file md5sum="9142973133e0be8289cda4412f74289d" name="zend_abstract_interface/config/config.c" role="src" />
+   <file md5sum="ca291b0c16063c5a030108b52f84b517" name="zend_abstract_interface/config/config.h" role="src" />
+   <file md5sum="8ed01f9a11f51ab6e7b0e246f8ee0dd5" name="zend_abstract_interface/config/config_decode.c" role="src" />
+   <file md5sum="92d763d5077b0d615e9d9dc45caf082f" name="zend_abstract_interface/config/config_decode.h" role="src" />
+   <file md5sum="146b86a850bf836caebeaadafec8de86" name="zend_abstract_interface/config/config_ini.c" role="src" />
+   <file md5sum="848d6ed1a5c6e313711e127658d9eb85" name="zend_abstract_interface/config/config_ini.h" role="src" />
+   <file md5sum="3cee29fef6628d1b5bb978d7d68153b4" name="zend_abstract_interface/config/config_runtime.c" role="src" />
+   <file md5sum="b89538a65cc346dced4d144b41f5b2a1" name="zend_abstract_interface/config/config_stable_file.c" role="src" />
+   <file md5sum="40cebdd2248972493fd7d3ab502cd9be" name="zend_abstract_interface/config/config_stable_file.h" role="src" />
+   <file md5sum="bd226239ccfe36994a9b62b96a603819" name="zend_abstract_interface/config/tests/config_test_helpers.h" role="src" />
+   <file md5sum="7409e1ff688882d0be96afa5e0785ff7" name="zend_abstract_interface/config/tests/ext_zai_config.h" role="src" />
+   <file md5sum="606ff7021a3421eab56995a81df8b654" name="zend_abstract_interface/env/env.c" role="src" />
+   <file md5sum="defa4ed45d909e980fbb6ee2f8a8310d" name="zend_abstract_interface/env/env.h" role="src" />
+   <file md5sum="9a58f2f553edd550a66ad739a7dd3986" name="zend_abstract_interface/exceptions/exceptions.c" role="src" />
+   <file md5sum="f6521fcdf286347d7a044dcef5c83d2a" name="zend_abstract_interface/exceptions/exceptions.h" role="src" />
+   <file md5sum="d6018c0da17ecbb34857396afa9345cf" name="zend_abstract_interface/headers/headers.c" role="src" />
+   <file md5sum="828507b0361e744c3d7a3541f5f982cf" name="zend_abstract_interface/headers/headers.h" role="src" />
+   <file md5sum="e4fa75c485e9a9333eabd565b7877e55" name="zend_abstract_interface/hook/hook.c" role="src" />
+   <file md5sum="89e79baecf001c86b5f36b0fefb382d0" name="zend_abstract_interface/hook/hook.h" role="src" />
+   <file md5sum="1642ceeb147ead734ba28a8da9beb532" name="zend_abstract_interface/hook/table.h" role="src" />
+   <file md5sum="b9a8ec4d5e2db4b46df7f8381e1a0f51" name="zend_abstract_interface/interceptor/php7/interceptor.c" role="src" />
+   <file md5sum="67984fba7d36564f80b672df2f6c2588" name="zend_abstract_interface/interceptor/php7/interceptor.h" role="src" />
+   <file md5sum="e95cf812849071824079c5b623311367" name="zend_abstract_interface/interceptor/php7/resolver.c" role="src" />
+   <file md5sum="63e5d50d99d2086c4c1b13c3652a47e6" name="zend_abstract_interface/interceptor/php8/interceptor.c" role="src" />
+   <file md5sum="830ca792b747dfb183ecc7826da75138" name="zend_abstract_interface/interceptor/php8/interceptor.h" role="src" />
+   <file md5sum="7c741063d5d7b9fe6bd796b90eb5f51a" name="zend_abstract_interface/interceptor/php8/resolver.c" role="src" />
+   <file md5sum="505d9b617b639134f75231f8ac46c96f" name="zend_abstract_interface/interceptor/php8/resolver_pre-8_2.c" role="src" />
+   <file md5sum="53921921d5f28c13f81109aa81f6fe96" name="zend_abstract_interface/jit_utils/jit_blacklist.c" role="src" />
+   <file md5sum="9aaa23efd162d90a8543c192aa6c682e" name="zend_abstract_interface/jit_utils/jit_blacklist.h" role="src" />
+   <file md5sum="857f047106e2f1ef98ffbf9197ca53ab" name="zend_abstract_interface/json/json.c" role="src" />
+   <file md5sum="72a0949781f002b4e82f6649c5c530c9" name="zend_abstract_interface/json/json.h" role="src" />
+   <file md5sum="50f7e24d8b93feab0fbcbd4b29e1085e" name="zend_abstract_interface/sandbox/php7/sandbox.c" role="src" />
+   <file md5sum="01c85050e9f72bcf286e47a7f480d144" name="zend_abstract_interface/sandbox/php8/sandbox.c" role="src" />
+   <file md5sum="a7dac3543f5d626bfbca55090c79e327" name="zend_abstract_interface/sandbox/sandbox.h" role="src" />
+   <file md5sum="4e7196dba52c0f4ae01dda5e9c1c8de0" name="zend_abstract_interface/symbols/api/call.h" role="src" />
+   <file md5sum="9fb5c9764121c68a651c4e8b69d39b14" name="zend_abstract_interface/symbols/api/class.h" role="src" />
+   <file md5sum="64d49d19ad46467ded534371052b0440" name="zend_abstract_interface/symbols/api/constant.h" role="src" />
+   <file md5sum="e14e7b760918c781e05c282fcbda2aa4" name="zend_abstract_interface/symbols/api/function.h" role="src" />
+   <file md5sum="8369a7bb3dc619072bbf0913a21b9ff8" name="zend_abstract_interface/symbols/api/local.h" role="src" />
+   <file md5sum="fd3f3644e4f16a6c8b54681b921e7474" name="zend_abstract_interface/symbols/api/property.h" role="src" />
+   <file md5sum="a94ae21485a08dcc15ddf82f5fbd83d3" name="zend_abstract_interface/symbols/call.c" role="src" />
+   <file md5sum="e9e3796b224d4b13f67fa5496e83b5b3" name="zend_abstract_interface/symbols/lookup.c" role="src" />
+   <file md5sum="f5cd2868bf5a007395abf9c3aede9f49" name="zend_abstract_interface/symbols/symbols.h" role="src" />
+   <file md5sum="1e396e2003923358777bebcc31a1841d" name="zend_abstract_interface/tsrmls_cache.h" role="src" />
+   <file md5sum="d956304f2c0d8ce32ed881aedb7ef670" name="zend_abstract_interface/uri_normalization/uri_normalization.c" role="src" />
+   <file md5sum="394fceea1fd0c1978b74473637b61183" name="zend_abstract_interface/uri_normalization/uri_normalization.h" role="src" />
+   <file md5sum="4c4f7fee44105bf9cf34ef703d184f5d" name="zend_abstract_interface/zai_assert/zai_assert.h" role="src" />
+   <file md5sum="7a62c9f3827c5bcb5aa4136e7a333c33" name="zend_abstract_interface/zai_string/string.c" role="src" />
+   <file md5sum="0852a87589afabdea0ab659aa85f6143" name="zend_abstract_interface/zai_string/string.h" role="src" />
+   <file md5sum="3d243e637a7ab801d1f30861f9a67c1c" name="Cargo.toml" role="src" />
+   <file md5sum="7533f7426757d4bf6ada0c45260dbd7a" name="Cargo.lock" role="src" />
+   <file md5sum="d301657ed9f8c93e4d04283131d12b4b" name="components-rs/Cargo.toml" role="src" />
+   <file md5sum="25b071fde869956914b1a76c776c3d72" name="components-rs/bytes.rs" role="src" />
+   <file md5sum="d1c9249b6c5f268e74a3cd090fa804b6" name="components-rs/lib.rs" role="src" />
+   <file md5sum="8aa0eb5cb35250d58e6a574e37e0d64a" name="components-rs/log.rs" role="src" />
+   <file md5sum="6c3af671c00b0736c1fd24a987315674" name="components-rs/php_sidecar_mockgen/Cargo.toml" role="src" />
+   <file md5sum="518b74adf58fe0eeb91be38cb594a085" name="components-rs/php_sidecar_mockgen/src/bin/php_sidecar_mockgen.rs" role="src" />
+   <file md5sum="6de1ef29e8964a830dbca1ff679757fe" name="components-rs/remote_config.rs" role="src" />
+   <file md5sum="7b9b47f3a96435c592816811e14c2df0" name="components-rs/sidecar.rs" role="src" />
+   <file md5sum="0ea064e000d8df851e3b48db2deb9229" name="components-rs/telemetry.rs" role="src" />
+   <file md5sum="5c321a30ac6542770a81937671475c1a" name="libdatadog/datadog-alloc/Cargo.toml" role="src" />
+   <file md5sum="db40acfe25a33ad2f4fd57d846f8ad28" name="libdatadog/datadog-alloc/src/chain.rs" role="src" />
+   <file md5sum="0c71c873fb95ea304f870547aaabe35c" name="libdatadog/datadog-alloc/src/lib.rs" role="src" />
+   <file md5sum="ca179d4e6368d7a4da0fefac8c799c66" name="libdatadog/datadog-alloc/src/linear.rs" role="src" />
+   <file md5sum="b5a2d89c5477e90e4d1050a64ad3c66f" name="libdatadog/datadog-alloc/src/utils.rs" role="src" />
+   <file md5sum="09847f0a9c4df611182d466f665871a7" name="libdatadog/datadog-alloc/src/virtual_alloc.rs" role="src" />
+   <file md5sum="852468751b76ddb17d17e10167e027d3" name="libdatadog/build-common/Cargo.toml" role="src" />
+   <file md5sum="2220a63ded256fe15417f05817673357" name="libdatadog/build-common/src/cbindgen.rs" role="src" />
+   <file md5sum="cb75c7ced3f925b60391692c39e9c1a3" name="libdatadog/build-common/src/lib.rs" role="src" />
+   <file md5sum="4824457da959a23507a23ebe60866e91" name="libdatadog/datadog-crashtracker/Cargo.toml" role="src" />
+   <file md5sum="19e9dc1c4e976d94232d8d8a8196f187" name="libdatadog/datadog-crashtracker/build.rs" role="src" />
+   <file md5sum="f0dd37f6b2cee6d31e5c47851c47f062" name="libdatadog/datadog-crashtracker/src/README.md" role="src" />
+   <file md5sum="9761e8b8b5b0ca05f0f267ca7b74b9e6" name="libdatadog/datadog-crashtracker/src/bin/crashtracker_receiver.rs" role="src" />
+   <file md5sum="b30a7815cba124ed76f5094ab7dd10a9" name="libdatadog/datadog-crashtracker/src/collector/additional_tags.rs" role="src" />
+   <file md5sum="2ee83c5081024458f62aee5ae5e2c63f" name="libdatadog/datadog-crashtracker/src/collector/api.rs" role="src" />
+   <file md5sum="64854f4c6a22bc3ecb809cffac949290" name="libdatadog/datadog-crashtracker/src/collector/atomic_set.rs" role="src" />
+   <file md5sum="78f244ceba0c987f08649c435533dc50" name="libdatadog/datadog-crashtracker/src/collector/collector_manager.rs" role="src" />
+   <file md5sum="971eb154850d40b4f117604a8581fc26" name="libdatadog/datadog-crashtracker/src/collector/counters.rs" role="src" />
+   <file md5sum="5cbd51aac974c49d5a77e00647df5112" name="libdatadog/datadog-crashtracker/src/collector/crash_handler.rs" role="src" />
+   <file md5sum="a54422e3b9ea05c8eb8c23e36aeb2948" name="libdatadog/datadog-crashtracker/src/collector/emitters.rs" role="src" />
+   <file md5sum="de484b89059a933d226133596a0d4563" name="libdatadog/datadog-crashtracker/src/collector/mod.rs" role="src" />
+   <file md5sum="762fb24dc9a8d70aaebf7184eff73dc2" name="libdatadog/datadog-crashtracker/src/collector/process_handle.rs" role="src" />
+   <file md5sum="b2d27df6d28677ee56854672c78c498a" name="libdatadog/datadog-crashtracker/src/collector/receiver_manager.rs" role="src" />
+   <file md5sum="1ceccb8d0ec3d221f5127b5381015eaa" name="libdatadog/datadog-crashtracker/src/collector/saguard.rs" role="src" />
+   <file md5sum="6df46017c10a3fdbf2e40318a76b00c5" name="libdatadog/datadog-crashtracker/src/collector/signal_handler_manager.rs" role="src" />
+   <file md5sum="7934327e1cb88546aceeee4204f0e709" name="libdatadog/datadog-crashtracker/src/collector/spans.rs" role="src" />
+   <file md5sum="a81b5598f480a2f9630db7fcb8f694f8" name="libdatadog/datadog-crashtracker/src/collector_windows/api.rs" role="src" />
+   <file md5sum="c574d2b0d0a82dfdb8b581e9ab23859c" name="libdatadog/datadog-crashtracker/src/collector_windows/mod.rs" role="src" />
+   <file md5sum="b1ae9e235cd2c4c2d4c6d0abff8aea2c" name="libdatadog/datadog-crashtracker/src/crash_info/builder.rs" role="src" />
+   <file md5sum="07bb9cb3d5c292295a733d0f429370d0" name="libdatadog/datadog-crashtracker/src/crash_info/emit_sicodes.c" role="src" />
+   <file md5sum="8e16a04c99345fe96fea8ec08129f9b3" name="libdatadog/datadog-crashtracker/src/crash_info/error_data.rs" role="src" />
+   <file md5sum="198a3c2bf5e3560a43a69ae3cfe6bdb8" name="libdatadog/datadog-crashtracker/src/crash_info/experimental.rs" role="src" />
+   <file md5sum="c45fe9c2079f48e78a8e07c23998effa" name="libdatadog/datadog-crashtracker/src/crash_info/metadata.rs" role="src" />
+   <file md5sum="f578f753060ac9f60c046ebb2348c1f4" name="libdatadog/datadog-crashtracker/src/crash_info/mod.rs" role="src" />
+   <file md5sum="09632abfbda75ed1228ba365caaeb9b5" name="libdatadog/datadog-crashtracker/src/crash_info/os_info.rs" role="src" />
+   <file md5sum="3fbef95128ab5d68961927e994d64900" name="libdatadog/datadog-crashtracker/src/crash_info/proc_info.rs" role="src" />
+   <file md5sum="acdcfee98c8ca1ee2997d332dc4e6f60" name="libdatadog/datadog-crashtracker/src/crash_info/sig_info.rs" role="src" />
+   <file md5sum="234dff2ed292f0d8c02bff556cefc2f6" name="libdatadog/datadog-crashtracker/src/crash_info/spans.rs" role="src" />
+   <file md5sum="7472e22edc9ef8eea052b5f632e99d27" name="libdatadog/datadog-crashtracker/src/crash_info/stacktrace.rs" role="src" />
+   <file md5sum="4b5d61fcffccb32cee84584de54ddc0f" name="libdatadog/datadog-crashtracker/src/crash_info/telemetry.rs" role="src" />
+   <file md5sum="1a78f3dcdf2fcd76371e33a81b58ef53" name="libdatadog/datadog-crashtracker/src/crash_info/test_utils.rs" role="src" />
+   <file md5sum="99407a579b176dc940e775cc2cb895eb" name="libdatadog/datadog-crashtracker/src/crash_info/unknown_value.rs" role="src" />
+   <file md5sum="bab7b2742d2ff3ba41d2c698c25dd3db" name="libdatadog/datadog-crashtracker/src/lib.rs" role="src" />
+   <file md5sum="98a164be28a86cdb7fe2661c8bad8425" name="libdatadog/datadog-crashtracker/src/receiver/entry_points.rs" role="src" />
+   <file md5sum="1ae6996263d4767616d397e693535c55" name="libdatadog/datadog-crashtracker/src/receiver/mod.rs" role="src" />
+   <file md5sum="d8954763c8bdd1620699f804d2347f9e" name="libdatadog/datadog-crashtracker/src/receiver/receive_report.rs" role="src" />
+   <file md5sum="7f0aa11dd9b27fe5d4a0927b7cddaf49" name="libdatadog/datadog-crashtracker/src/shared/configuration.rs" role="src" />
+   <file md5sum="6cb39b32f82e00333242d95b73ae76c3" name="libdatadog/datadog-crashtracker/src/shared/constants.rs" role="src" />
+   <file md5sum="d60273ca4d2403ae480a248ac178fd65" name="libdatadog/datadog-crashtracker/src/shared/mod.rs" role="src" />
+   <file md5sum="5c96e24a852478ba848a519893861863" name="libdatadog/datadog-crashtracker-ffi/Cargo.toml" role="src" />
+   <file md5sum="3109ddf7fc4541112a73b0ef0762c9be" name="libdatadog/datadog-crashtracker-ffi/build.rs" role="src" />
+   <file md5sum="4cb9566c46794e2d1a3c178f751c973d" name="libdatadog/datadog-crashtracker-ffi/src/collector/additional_tags.rs" role="src" />
+   <file md5sum="ec068ec5d28730d97f1caef4ca2c2dc9" name="libdatadog/datadog-crashtracker-ffi/src/collector/counters.rs" role="src" />
+   <file md5sum="504f61c3a1365d5b90b03f2815f8901b" name="libdatadog/datadog-crashtracker-ffi/src/collector/datatypes.rs" role="src" />
+   <file md5sum="713f269cfdc22664df3f2293a14ab1e3" name="libdatadog/datadog-crashtracker-ffi/src/collector/mod.rs" role="src" />
+   <file md5sum="3dff29ebbdb7087d62a2f91e2fad65e0" name="libdatadog/datadog-crashtracker-ffi/src/collector/spans.rs" role="src" />
+   <file md5sum="9c206bd2d9adf391113d963a19a4a882" name="libdatadog/datadog-crashtracker-ffi/src/collector_windows/api.rs" role="src" />
+   <file md5sum="c574d2b0d0a82dfdb8b581e9ab23859c" name="libdatadog/datadog-crashtracker-ffi/src/collector_windows/mod.rs" role="src" />
+   <file md5sum="c338a8bb8e40c4f14fa3b2f25112d8e0" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/api.rs" role="src" />
+   <file md5sum="67870b8a7b69dad627707f6a28ea6c70" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/builder.rs" role="src" />
+   <file md5sum="9c6495b2d7b16a3efd479409785624ad" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/metadata.rs" role="src" />
+   <file md5sum="29d4316a6d64a598a9c5f487d55d68ab" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/mod.rs" role="src" />
+   <file md5sum="86a21f86b5a45eb331e159dec47e973d" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/os_info.rs" role="src" />
+   <file md5sum="f1251b2044beb12647e05d18968c614c" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/proc_info.rs" role="src" />
+   <file md5sum="ad057b86eb1dde01f34a2881143c2b4c" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/sig_info.rs" role="src" />
+   <file md5sum="1e3c7b44bca90f16f00fe195e630ad3b" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/span.rs" role="src" />
+   <file md5sum="4592676d42ea51534005fd9fb16279ff" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/stackframe.rs" role="src" />
+   <file md5sum="ec47564b5cf82c344fe1a976a47afb07" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/stacktrace.rs" role="src" />
+   <file md5sum="0b6d9fb1489c738acf7acca0d4bc6690" name="libdatadog/datadog-crashtracker-ffi/src/crash_info/thread_data.rs" role="src" />
+   <file md5sum="a2d3c24ed6953d419e8c43fcb8d66918" name="libdatadog/datadog-crashtracker-ffi/src/demangler/datatypes.rs" role="src" />
+   <file md5sum="b1291063b106bf38cd6142425791c1d1" name="libdatadog/datadog-crashtracker-ffi/src/demangler/mod.rs" role="src" />
+   <file md5sum="0f3623d41d191200b89d5b127ba6d15d" name="libdatadog/datadog-crashtracker-ffi/src/lib.rs" role="src" />
+   <file md5sum="88f4aea7967f021eb3b1715803cca31b" name="libdatadog/datadog-crashtracker-ffi/src/receiver.rs" role="src" />
+   <file md5sum="75b2408d3e6ac81108d28bc5da845f76" name="libdatadog/datadog-crashtracker-ffi/tests/test_app/src/main.rs" role="src" />
+   <file md5sum="2708532cd93b6dcfc0f776c4aa75b11a" name="libdatadog/data-pipeline/Cargo.toml" role="src" />
+   <file md5sum="b984562e782880744ca1313f1a851a21" name="libdatadog/data-pipeline/examples/send-traces-with-stats.rs" role="src" />
+   <file md5sum="97084321b696e563549ef135f985ab3f" name="libdatadog/data-pipeline/src/agent_info/fetcher.rs" role="src" />
+   <file md5sum="ce03261bbcf52ba8a7d88f7d38997906" name="libdatadog/data-pipeline/src/agent_info/mod.rs" role="src" />
+   <file md5sum="1d0cef3eaa89f7abba34e19886119ea2" name="libdatadog/data-pipeline/src/agent_info/schema.rs" role="src" />
+   <file md5sum="17d931f31e60ec49c578c1d5ecf2977c" name="libdatadog/data-pipeline/src/health_metrics.rs" role="src" />
+   <file md5sum="832ed50f7f605952cb7b496be89836c1" name="libdatadog/data-pipeline/src/lib.rs" role="src" />
+   <file md5sum="4651a9b67d08d34312a41ad4195a044b" name="libdatadog/data-pipeline/src/pausable_worker.rs" role="src" />
+   <file md5sum="ab60b68b64845e494c0463d96a10c4c5" name="libdatadog/data-pipeline/src/span_concentrator/aggregation.rs" role="src" />
+   <file md5sum="e2ab6453e3f7748fdada7d2cf9d13c47" name="libdatadog/data-pipeline/src/span_concentrator/mod.rs" role="src" />
+   <file md5sum="d6616ee5acbf5da9c7351a05276a8db0" name="libdatadog/data-pipeline/src/span_concentrator/tests.rs" role="src" />
+   <file md5sum="2b5d3e2d0e0d6bd53c218492b0b14c7f" name="libdatadog/data-pipeline/src/stats_exporter.rs" role="src" />
+   <file md5sum="e5306b450c8ce55a88107c9ad8f31c02" name="libdatadog/data-pipeline/src/telemetry/error.rs" role="src" />
+   <file md5sum="46b965e13d1ef84a32cebdb63a054997" name="libdatadog/data-pipeline/src/telemetry/metrics.rs" role="src" />
+   <file md5sum="14fa67035e1582e865b25ab398cad040" name="libdatadog/data-pipeline/src/telemetry/mod.rs" role="src" />
+   <file md5sum="516c8f4fffce5742178c71cd782d02c1" name="libdatadog/data-pipeline/src/trace_exporter/agent_response.rs" role="src" />
+   <file md5sum="a3fb6959e918260ed743b1a437199826" name="libdatadog/data-pipeline/src/trace_exporter/builder.rs" role="src" />
+   <file md5sum="902ef179ada40ce7cc1ba388d3c34255" name="libdatadog/data-pipeline/src/trace_exporter/error.rs" role="src" />
+   <file md5sum="955236459de36c5faec1d813db4ec611" name="libdatadog/data-pipeline/src/trace_exporter/metrics.rs" role="src" />
+   <file md5sum="bca7de8926bca39ac7c52cfd0371debf" name="libdatadog/data-pipeline/src/trace_exporter/mod.rs" role="src" />
+   <file md5sum="01dc67c839adaddbb48d40524bc481c8" name="libdatadog/ddcommon/Cargo.toml" role="src" />
+   <file md5sum="570b5386ba3dc83261dc6604b33df4a9" name="libdatadog/ddcommon/src/azure_app_services.rs" role="src" />
+   <file md5sum="bf49a2791d6c282c4fb2ab4d51f1e01d" name="libdatadog/ddcommon/src/config.rs" role="src" />
+   <file md5sum="9fc305089dd623efacf210774cd3ec10" name="libdatadog/ddcommon/src/connector/conn_stream.rs" role="src" />
+   <file md5sum="5d43fd58ca77d43bdaabc25b64f17707" name="libdatadog/ddcommon/src/connector/errors.rs" role="src" />
+   <file md5sum="58c7568d75d8a51d4c52b6b626e19f5d" name="libdatadog/ddcommon/src/connector/mod.rs" role="src" />
+   <file md5sum="7d63409168dfdcfbf7502254a4ea3e61" name="libdatadog/ddcommon/src/connector/named_pipe.rs" role="src" />
+   <file md5sum="dfb71412e62a7a874821166b54dd04bb" name="libdatadog/ddcommon/src/connector/uds.rs" role="src" />
+   <file md5sum="0ca65e12ccc6bfd69808cb5103b35ad3" name="libdatadog/ddcommon/src/cstr.rs" role="src" />
+   <file md5sum="90bd30b24f7781b0a253562830238f7b" name="libdatadog/ddcommon/src/entity_id/mod.rs" role="src" />
+   <file md5sum="bd8cdedbd19c60b55acd22e4b1c2a98a" name="libdatadog/ddcommon/src/entity_id/unix/cgroup_inode.rs" role="src" />
+   <file md5sum="fafd89e8b543d23c950ce4d319e898c9" name="libdatadog/ddcommon/src/entity_id/unix/container_id.rs" role="src" />
+   <file md5sum="913fd279166184a320c509634f5fb2f5" name="libdatadog/ddcommon/src/entity_id/unix/mod.rs" role="src" />
+   <file md5sum="5878f5de5f706768225adaa25a81f124" name="libdatadog/ddcommon/src/hyper_migration.rs" role="src" />
+   <file md5sum="90c0ea51a95eb8db16bc820ed8829223" name="libdatadog/ddcommon/src/lib.rs" role="src" />
+   <file md5sum="c8a6e7dc6e0069a2f88b0a1a09b9aa25" name="libdatadog/ddcommon/src/rate_limiter.rs" role="src" />
+   <file md5sum="891208d08e87254ec33ee83614783a5f" name="libdatadog/ddcommon/src/tag.rs" role="src" />
+   <file md5sum="8e1f10eebd7650367396859aeb9f8229" name="libdatadog/ddcommon/src/timeout.rs" role="src" />
+   <file md5sum="e1559322fb38179642b0bff50a1e6ae5" name="libdatadog/ddcommon/src/unix_utils/execve.rs" role="src" />
+   <file md5sum="4ff1115aab23e1595d2926850aa626d2" name="libdatadog/ddcommon/src/unix_utils/file_ops.rs" role="src" />
+   <file md5sum="6b0b9beda33179fb1f1bbe8f16713d9e" name="libdatadog/ddcommon/src/unix_utils/fork.rs" role="src" />
+   <file md5sum="1208e2639e34f2842104d1ce57637a6e" name="libdatadog/ddcommon/src/unix_utils/mod.rs" role="src" />
+   <file md5sum="5982d2da5390bfae7e49adacdff70670" name="libdatadog/ddcommon/src/unix_utils/process.rs" role="src" />
+   <file md5sum="a7d7bb215f1e996f434889ac80ca4926" name="libdatadog/ddcommon/src/worker.rs" role="src" />
+   <file md5sum="88e0f3218724a840b9feb547d1133f55" name="libdatadog/ddcommon-ffi/Cargo.toml" role="src" />
+   <file md5sum="67787f97bd0f734746ed88d416a1f192" name="libdatadog/ddcommon-ffi/build.rs" role="src" />
+   <file md5sum="3133ce6b5f27f941f4d2f929cb20efa6" name="libdatadog/ddcommon-ffi/src/array_queue.rs" role="src" />
+   <file md5sum="61a331ab64e2fc3dd227e7967db842e4" name="libdatadog/ddcommon-ffi/src/cstr.rs" role="src" />
+   <file md5sum="299893aad5a33369f58fd8c338354820" name="libdatadog/ddcommon-ffi/src/endpoint.rs" role="src" />
+   <file md5sum="6cb1b7868e8d8d062e160682b5a83c81" name="libdatadog/ddcommon-ffi/src/error.rs" role="src" />
+   <file md5sum="c2398784781e315653e4faa770ef4e8c" name="libdatadog/ddcommon-ffi/src/handle.rs" role="src" />
+   <file md5sum="777caa357d6bac7e9b77b1523ddb6ad2" name="libdatadog/ddcommon-ffi/src/lib.rs" role="src" />
+   <file md5sum="65f3d6be34222c3b9853093d8ab6003e" name="libdatadog/ddcommon-ffi/src/option.rs" role="src" />
+   <file md5sum="87825e8d6c99a9efda24261c3282aa2a" name="libdatadog/ddcommon-ffi/src/result.rs" role="src" />
+   <file md5sum="b4c6a8f107621286dd7dbe9659f188e9" name="libdatadog/ddcommon-ffi/src/slice.rs" role="src" />
+   <file md5sum="c6b760249688fb2b9392873211bbe871" name="libdatadog/ddcommon-ffi/src/slice_mut.rs" role="src" />
+   <file md5sum="9d7606b74bf364ab2ae81729ac3d1df9" name="libdatadog/ddcommon-ffi/src/string.rs" role="src" />
+   <file md5sum="7712a0b726818bed11284c3f1d50e21e" name="libdatadog/ddcommon-ffi/src/tags.rs" role="src" />
+   <file md5sum="f1e90098c06f65cabf8afd902c751aae" name="libdatadog/ddcommon-ffi/src/timespec.rs" role="src" />
+   <file md5sum="0daa6268025db7d7fe7669f73c8dc9d6" name="libdatadog/ddcommon-ffi/src/utils.rs" role="src" />
+   <file md5sum="ca468551510af677f5a7eeae412ccd8e" name="libdatadog/ddcommon-ffi/src/vec.rs" role="src" />
+   <file md5sum="a6475661aa4303e338a6cfd5209ee37c" name="libdatadog/ddsketch/Cargo.toml" role="src" />
+   <file md5sum="d7bbff558eb351b21b43022692432e88" name="libdatadog/ddsketch/build.rs" role="src" />
+   <file md5sum="1be4d5d03d19dfef766836b5fe5708db" name="libdatadog/ddsketch/src/lib.rs" role="src" />
+   <file md5sum="105b1b543b1f124057a97b5872261225" name="libdatadog/ddsketch/src/pb.rs" role="src" />
+   <file md5sum="de2566a23d66dffe3746579f70befeb0" name="libdatadog/ddsketch/src/pb/DDSketch.proto" role="src" />
+   <file md5sum="d4621a5a657ef3f525579ae8b79e16ed" name="libdatadog/ddtelemetry/Cargo.toml" role="src" />
+   <file md5sum="6d7790479a3772c5873909af3535d72f" name="libdatadog/ddtelemetry/examples/tm-metrics-worker-test.rs" role="src" />
+   <file md5sum="a770f5f67c16c44b632c4d2b902bbd01" name="libdatadog/ddtelemetry/examples/tm-ping.rs" role="src" />
+   <file md5sum="a03fde35d2b5152ddfb0439721e6bc27" name="libdatadog/ddtelemetry/examples/tm-send-sketch.rs" role="src" />
+   <file md5sum="5aef57536d7735606eaf4a80e0816331" name="libdatadog/ddtelemetry/examples/tm-worker-test.rs" role="src" />
+   <file md5sum="921200d8d522ca22469f1b2286d95e0e" name="libdatadog/ddtelemetry/src/config.rs" role="src" />
+   <file md5sum="ed3773e608ea8d330f2ca90e142a7aa6" name="libdatadog/ddtelemetry/src/data/common.rs" role="src" />
+   <file md5sum="144da59dc95319aaf60709d12231f345" name="libdatadog/ddtelemetry/src/data/metrics.rs" role="src" />
+   <file md5sum="376c2b7653c00d356d37bb2d7a9451ca" name="libdatadog/ddtelemetry/src/data/mod.rs" role="src" />
+   <file md5sum="f27456fb68319c4449282e7be3c2f02e" name="libdatadog/ddtelemetry/src/data/payload.rs" role="src" />
+   <file md5sum="ffb5a23135fa01388a309bbba8224c83" name="libdatadog/ddtelemetry/src/data/payloads.rs" role="src" />
+   <file md5sum="194eefc05831fc3329387e5c6e21c228" name="libdatadog/ddtelemetry/src/info.rs" role="src" />
+   <file md5sum="43aea86a89d6aef517ae3ed0ea0531f1" name="libdatadog/ddtelemetry/src/lib.rs" role="src" />
+   <file md5sum="8894e9f325176f06e87b1c09916b6310" name="libdatadog/ddtelemetry/src/metrics.rs" role="src" />
+   <file md5sum="27801711d34779b7c175c55b2fe5c15d" name="libdatadog/ddtelemetry/src/worker/http_client.rs" role="src" />
+   <file md5sum="197f0829d7fc11a3f192189e0487ff56" name="libdatadog/ddtelemetry/src/worker/mod.rs" role="src" />
+   <file md5sum="820dc5a1f9278dc91f7d66a50449a171" name="libdatadog/ddtelemetry/src/worker/scheduler.rs" role="src" />
+   <file md5sum="2756f0ee08ebbe535c80d603aee72e73" name="libdatadog/ddtelemetry/src/worker/store.rs" role="src" />
+   <file md5sum="b7ea0847498ecbc99c7d9f3acae7e013" name="libdatadog/ddtelemetry-ffi/Cargo.toml" role="src" />
+   <file md5sum="9982f8ca2aa865897b48a2b5209dbffb" name="libdatadog/ddtelemetry-ffi/build.rs" role="src" />
+   <file md5sum="9605aaff0f2fa2ba5ea7c51dd31d6bd0" name="libdatadog/ddtelemetry-ffi/src/builder.rs" role="src" />
+   <file md5sum="c9da48b9fa3720a709a2dc108fa21094" name="libdatadog/ddtelemetry-ffi/src/builder/expanded.rs" role="src" />
+   <file md5sum="b70cdaa092aa3228799e4533a357e521" name="libdatadog/ddtelemetry-ffi/src/builder/macros.rs" role="src" />
+   <file md5sum="b566afe0eb7402c3e6d2d64fefb3f43a" name="libdatadog/ddtelemetry-ffi/src/lib.rs" role="src" />
+   <file md5sum="9eb5b68cb9cfdc3b91daef9995442bb1" name="libdatadog/ddtelemetry-ffi/src/worker_handle.rs" role="src" />
+   <file md5sum="ec8ef357909182484021ff7ede14610f" name="libdatadog/dogstatsd-client/Cargo.toml" role="src" />
+   <file md5sum="e8336bb466f0851c4f13ac718acf2fc8" name="libdatadog/dogstatsd-client/src/lib.rs" role="src" />
+   <file md5sum="f9df833e3f71492f11a698961835ff26" name="libdatadog/datadog-ipc/Cargo.toml" role="src" />
+   <file md5sum="f7c3b27fd9ebce6afe6c1a791a6425ae" name="libdatadog/datadog-ipc/plugins/Cargo.toml" role="src" />
+   <file md5sum="1ad92118a31c55a883ed44174113ed81" name="libdatadog/datadog-ipc/plugins/src/lib.rs" role="src" />
+   <file md5sum="a1e5866fb2b4fb024ddc4bc8f0a786ec" name="libdatadog/datadog-ipc/src/example_interface.rs" role="src" />
+   <file md5sum="af09d0b8db74a061a9c3c1e34a075dd0" name="libdatadog/datadog-ipc/src/handles.rs" role="src" />
+   <file md5sum="5fbd3ff22a8c960d40c5535c12a7a292" name="libdatadog/datadog-ipc/src/lib.rs" role="src" />
+   <file md5sum="40591c6732e4bd6e176b01939a6b3b71" name="libdatadog/datadog-ipc/src/platform/channel/metadata.rs" role="src" />
+   <file md5sum="2dfa9b55a25138ae0e939f9e6e9de2c6" name="libdatadog/datadog-ipc/src/platform/channel/mod.rs" role="src" />
+   <file md5sum="0dd5595c813c643ee73e03c0dbbeed81" name="libdatadog/datadog-ipc/src/platform/mem_handle.rs" role="src" />
+   <file md5sum="d17160c500a5439935c63f0500276a22" name="libdatadog/datadog-ipc/src/platform/message.rs" role="src" />
+   <file md5sum="0cb605f6bc0a008cbe01c8b0fb3f6ddb" name="libdatadog/datadog-ipc/src/platform/mod.rs" role="src" />
+   <file md5sum="87fcf987abe0c5395d7f9a8ba5943ce1" name="libdatadog/datadog-ipc/src/platform/platform_handle.rs" role="src" />
+   <file md5sum="eed560398282f62e9604900f6406c30a" name="libdatadog/datadog-ipc/src/platform/unix/channel.rs" role="src" />
+   <file md5sum="a6c494273213c8007f1fd28e9c5de3c0" name="libdatadog/datadog-ipc/src/platform/unix/channel/async_channel.rs" role="src" />
+   <file md5sum="252b71b8f4b7788d8d2b5d42fb607e9f" name="libdatadog/datadog-ipc/src/platform/unix/channel/metadata.rs" role="src" />
+   <file md5sum="6dda476c705652760a6adbe649e79f38" name="libdatadog/datadog-ipc/src/platform/unix/locks.rs" role="src" />
+   <file md5sum="42bd974da102d0348d4eb6ad930f7133" name="libdatadog/datadog-ipc/src/platform/unix/mem_handle.rs" role="src" />
+   <file md5sum="c3964ae4fb0fa260a6f756cacd4330a1" name="libdatadog/datadog-ipc/src/platform/unix/mem_handle_macos.rs" role="src" />
+   <file md5sum="aed7e31eac2bae41041ef0e86e5d1579" name="libdatadog/datadog-ipc/src/platform/unix/message.rs" role="src" />
+   <file md5sum="184b8b7fc11811bb6e861e2d1af51c4e" name="libdatadog/datadog-ipc/src/platform/unix/mod.rs" role="src" />
+   <file md5sum="5cf417324e53023825118ef50c0407d8" name="libdatadog/datadog-ipc/src/platform/unix/platform_handle.rs" role="src" />
+   <file md5sum="4d9b740deef26b9e12c0135839dc92f7" name="libdatadog/datadog-ipc/src/platform/unix/sockets.rs" role="src" />
+   <file md5sum="e2b2c6650a90be5f24809034fec5081a" name="libdatadog/datadog-ipc/src/platform/windows/channel.rs" role="src" />
+   <file md5sum="076dcdf7642132f72329400a0bc9880e" name="libdatadog/datadog-ipc/src/platform/windows/channel/async_channel.rs" role="src" />
+   <file md5sum="978e36c6cea21d8416096a4b8f3a3a76" name="libdatadog/datadog-ipc/src/platform/windows/channel/metadata.rs" role="src" />
+   <file md5sum="2d557cbb319256cc25e52c5f1c43f2e9" name="libdatadog/datadog-ipc/src/platform/windows/mem_handle.rs" role="src" />
+   <file md5sum="8f2e4fa70f350e2acf5990ef678a14d3" name="libdatadog/datadog-ipc/src/platform/windows/message.rs" role="src" />
+   <file md5sum="285a6e33f5e09e2bbb34baafabc09cff" name="libdatadog/datadog-ipc/src/platform/windows/mod.rs" role="src" />
+   <file md5sum="2843f743349d355666c1b3c895c61625" name="libdatadog/datadog-ipc/src/platform/windows/named_pipe.rs" role="src" />
+   <file md5sum="03676fe93297852bd714ffd013ea86cb" name="libdatadog/datadog-ipc/src/platform/windows/platform_handle.rs" role="src" />
+   <file md5sum="6ec7870ac19353fb8e4e29183de6f8d5" name="libdatadog/datadog-ipc/src/rate_limiter.rs" role="src" />
+   <file md5sum="2c9cd2382091d13c046e51439af04bc2" name="libdatadog/datadog-ipc/src/sequential.rs" role="src" />
+   <file md5sum="59d0fe7984b391df448e5d6320e5dbe2" name="libdatadog/datadog-ipc/src/transport/blocking.rs" role="src" />
+   <file md5sum="55f16f89236ed36f977464721cf6f883" name="libdatadog/datadog-ipc/src/transport/mod.rs" role="src" />
+   <file md5sum="4565f8f78a9091f9cf35a6172d351320" name="libdatadog/datadog-ipc/tarpc/Cargo.toml" role="src" />
+   <file md5sum="38d3e07166a330c55f9416fbf95c08bd" name="libdatadog/datadog-ipc/tarpc/examples/compression.rs" role="src" />
+   <file md5sum="1984920c76372c7804a7fa2cd4d2df77" name="libdatadog/datadog-ipc/tarpc/examples/custom_transport.rs" role="src" />
+   <file md5sum="4cf23b1bdd6d6703b241703eeba88ae9" name="libdatadog/datadog-ipc/tarpc/examples/pubsub.rs" role="src" />
+   <file md5sum="ed005865fb781fd42cb971433a813fb7" name="libdatadog/datadog-ipc/tarpc/examples/readme.rs" role="src" />
+   <file md5sum="f75f07ad2ff2c043c50a5e61aa7493c6" name="libdatadog/datadog-ipc/tarpc/examples/tracing.rs" role="src" />
+   <file md5sum="c55407dbcc5260439192832dd60d7332" name="libdatadog/datadog-ipc/tarpc/src/cancellations.rs" role="src" />
+   <file md5sum="be7bb34419d2c1e0bd152ff05f5abe4f" name="libdatadog/datadog-ipc/tarpc/src/client.rs" role="src" />
+   <file md5sum="3e74219f1f4c9a695c718266a60f8843" name="libdatadog/datadog-ipc/tarpc/src/client/in_flight_requests.rs" role="src" />
+   <file md5sum="36d984cdbf68cdb9681502ef3ce4988d" name="libdatadog/datadog-ipc/tarpc/src/context.rs" role="src" />
+   <file md5sum="52180a9a5195653b042c3259e81c9c00" name="libdatadog/datadog-ipc/tarpc/src/lib.rs" role="src" />
+   <file md5sum="c79240fe80efaf7fbab91554cadd6bcd" name="libdatadog/datadog-ipc/tarpc/src/serde_transport.rs" role="src" />
+   <file md5sum="4040cea1bd8005331ee6a92c4d9765fd" name="libdatadog/datadog-ipc/tarpc/src/server.rs" role="src" />
+   <file md5sum="54fa6951788b91bd1765a87de810b038" name="libdatadog/datadog-ipc/tarpc/src/server/in_flight_requests.rs" role="src" />
+   <file md5sum="926bf83b8ac1dd897e4a23f47ce9b3d0" name="libdatadog/datadog-ipc/tarpc/src/server/incoming.rs" role="src" />
+   <file md5sum="79a267dde2df8ea42d9b2492be9e885b" name="libdatadog/datadog-ipc/tarpc/src/server/limits.rs" role="src" />
+   <file md5sum="9314c42bb966cd2413daf39102756826" name="libdatadog/datadog-ipc/tarpc/src/server/limits/channels_per_key.rs" role="src" />
+   <file md5sum="04b11c5ece84fd36e4207646862e3511" name="libdatadog/datadog-ipc/tarpc/src/server/limits/requests_per_channel.rs" role="src" />
+   <file md5sum="8ab2b0082d38cd86ea1eab1f3323da65" name="libdatadog/datadog-ipc/tarpc/src/server/testing.rs" role="src" />
+   <file md5sum="76f0da5cb9a5e03729a6c4aaf1f0d8f1" name="libdatadog/datadog-ipc/tarpc/src/server/tokio.rs" role="src" />
+   <file md5sum="be674c7a5445f67702d6582d56b9852c" name="libdatadog/datadog-ipc/tarpc/src/trace.rs" role="src" />
+   <file md5sum="0237ff3706c792acfeee763b8eee8b7f" name="libdatadog/datadog-ipc/tarpc/src/transport.rs" role="src" />
+   <file md5sum="4d160a99b617d02ccc8a9f99b9e8e63d" name="libdatadog/datadog-ipc/tarpc/src/transport/channel.rs" role="src" />
+   <file md5sum="55e796a8fde4f8881ed5ec312d9c9877" name="libdatadog/datadog-ipc/tarpc/src/util.rs" role="src" />
+   <file md5sum="220673f3672da2f9f0521b60712136fb" name="libdatadog/datadog-ipc/tarpc/src/util/serde.rs" role="src" />
+   <file md5sum="8dc7738c2731527881732e9b2a40f426" name="libdatadog/datadog-ipc/tarpc/tests/dataservice.rs" role="src" />
+   <file md5sum="31f95ce86b67ec65b21214b7b8a9f726" name="libdatadog/datadog-ipc/tarpc/tests/service_functional.rs" role="src" />
+   <file md5sum="c5904f5f630221ac0550e4cb2f63a65f" name="libdatadog/datadog-ipc-macros/Cargo.toml" role="src" />
+   <file md5sum="e055c2572d100709079c7b268de32e91" name="libdatadog/datadog-ipc-macros/src/lib.rs" role="src" />
+   <file md5sum="e22f295e77f981198636a6887e4d29c4" name="libdatadog/datadog-library-config/Cargo.toml" role="src" />
+   <file md5sum="e0cf207009bdc9b9f4649609aa85f8b0" name="libdatadog/datadog-library-config/src/lib.rs" role="src" />
+   <file md5sum="52bc19e90e30b9b79d5a2d92607f4c56" name="libdatadog/datadog-library-config/src/tracer_metadata.rs" role="src" />
+   <file md5sum="d9968993a23712ad913e2de718b99250" name="libdatadog/datadog-library-config-ffi/Cargo.toml" role="src" />
+   <file md5sum="0368cd38cc93b8a2eef3d48b87e4a162" name="libdatadog/datadog-library-config-ffi/build.rs" role="src" />
+   <file md5sum="581cc37b79c36463e52510735a597096" name="libdatadog/datadog-library-config-ffi/src/lib.rs" role="src" />
+   <file md5sum="5ddde1ac8ce05a43cdb28f623f476e65" name="libdatadog/datadog-library-config-ffi/src/tracer_metadata.rs" role="src" />
+   <file md5sum="6353393f3bf5fe6c903ce0d6f989f73f" name="libdatadog/datadog-live-debugger/Cargo.toml" role="src" />
+   <file md5sum="908d985dbf6d16dcb2f336050afa3ef9" name="libdatadog/datadog-live-debugger/src/debugger_defs.rs" role="src" />
+   <file md5sum="6213ec2483c783d6ce1d56fc52a4a7d6" name="libdatadog/datadog-live-debugger/src/expr_defs.rs" role="src" />
+   <file md5sum="064a28b9e5f3603ec302823ddcb0a79e" name="libdatadog/datadog-live-debugger/src/expr_eval.rs" role="src" />
+   <file md5sum="25b4ec6dfb9eb26860cb6e759b891ff7" name="libdatadog/datadog-live-debugger/src/lib.rs" role="src" />
+   <file md5sum="b9c525cd89087a1e8123c53b5f6e5aa9" name="libdatadog/datadog-live-debugger/src/parse_json.rs" role="src" />
+   <file md5sum="aec20a48e4b316e7c945ed6a9bd1dc2a" name="libdatadog/datadog-live-debugger/src/probe_defs.rs" role="src" />
+   <file md5sum="05cfb61bf7ef34c8bf9e54f9ed641c8b" name="libdatadog/datadog-live-debugger/src/redacted_names.rs" role="src" />
+   <file md5sum="4dcceaf37c820ffbab304a620aeb0be4" name="libdatadog/datadog-live-debugger/src/sender.rs" role="src" />
+   <file md5sum="fdf6d44745bc05e5c3b1d17ba3bf1f8e" name="libdatadog/datadog-live-debugger-ffi/Cargo.toml" role="src" />
+   <file md5sum="befe273ef5ae7f5e72e4e50d86c37b08" name="libdatadog/datadog-live-debugger-ffi/build.rs" role="src" />
+   <file md5sum="42168746859c65ffed056299152f6a1a" name="libdatadog/datadog-live-debugger-ffi/src/data.rs" role="src" />
+   <file md5sum="d2baad1a5f6bdedabd05515ef86da216" name="libdatadog/datadog-live-debugger-ffi/src/evaluator.rs" role="src" />
+   <file md5sum="6b9d161cd9f53325fe698ae3acbcd924" name="libdatadog/datadog-live-debugger-ffi/src/lib.rs" role="src" />
+   <file md5sum="4b6f121aeb2401d2eb332b89fd01cf90" name="libdatadog/datadog-live-debugger-ffi/src/parse.rs" role="src" />
+   <file md5sum="a882132d7ea0f136317ee4091e726d9a" name="libdatadog/datadog-live-debugger-ffi/src/send_data.rs" role="src" />
+   <file md5sum="f1ca0bfd250a3037ea9796e8213b7ea3" name="libdatadog/datadog-live-debugger-ffi/src/sender.rs" role="src" />
+   <file md5sum="edf550f2db9e6e893a5a535a23aa4cff" name="libdatadog/datadog-remote-config/Cargo.toml" role="src" />
+   <file md5sum="95b941c35bff0b985ecc8b8dfa9c9526" name="libdatadog/datadog-remote-config/examples/remote_config_fetch.rs" role="src" />
+   <file md5sum="0f73801d40b96667b8f40e8eba551462" name="libdatadog/datadog-remote-config/src/config/agent_config.rs" role="src" />
+   <file md5sum="50386aefcb643a04a47ec3340967c27c" name="libdatadog/datadog-remote-config/src/config/agent_task.rs" role="src" />
+   <file md5sum="6a377c7b3a0653bbfadb95e58b6a2dd6" name="libdatadog/datadog-remote-config/src/config/dynamic.rs" role="src" />
+   <file md5sum="610a58cac8ebd09fca88ca3c601b386b" name="libdatadog/datadog-remote-config/src/config/mod.rs" role="src" />
+   <file md5sum="645bc75b71126011d6d07f0438e2e6f9" name="libdatadog/datadog-remote-config/src/fetch/fetcher.rs" role="src" />
+   <file md5sum="87475f2da17054d705e393fab30c9b28" name="libdatadog/datadog-remote-config/src/fetch/mod.rs" role="src" />
+   <file md5sum="0d684f2ffacbb2fbeeae770f86e79375" name="libdatadog/datadog-remote-config/src/fetch/multitarget.rs" role="src" />
+   <file md5sum="da76f168c6ec8757059f0e3edfbbd932" name="libdatadog/datadog-remote-config/src/fetch/shared.rs" role="src" />
+   <file md5sum="66249bb21462157da60593dd585d28f2" name="libdatadog/datadog-remote-config/src/fetch/single.rs" role="src" />
+   <file md5sum="b9655ce91bb35bc943d68d12cfa3250a" name="libdatadog/datadog-remote-config/src/fetch/test_server.rs" role="src" />
+   <file md5sum="5d8fa1fcb827796c31e43600cc395f48" name="libdatadog/datadog-remote-config/src/file_change_tracker.rs" role="src" />
+   <file md5sum="1cc612ac33ffb8ceb7e46db43ae7d7f2" name="libdatadog/datadog-remote-config/src/file_storage.rs" role="src" />
+   <file md5sum="8f229872c6e49c7a352230bcf0597af6" name="libdatadog/datadog-remote-config/src/lib.rs" role="src" />
+   <file md5sum="c0ec091b727b56ea610c76956b5b444f" name="libdatadog/datadog-remote-config/src/parse.rs" role="src" />
+   <file md5sum="6d564e1a466713415d0883e0cd40aa86" name="libdatadog/datadog-remote-config/src/path.rs" role="src" />
+   <file md5sum="29b4879b5150d7efd57a11134bbb47cb" name="libdatadog/datadog-remote-config/src/targets.rs" role="src" />
+   <file md5sum="979c2bdf4b7d5b72421eb7fa6c206666" name="libdatadog/datadog-sidecar/Cargo.toml" role="src" />
+   <file md5sum="1d208eee554b33c95122f4ca30168d29" name="libdatadog/datadog-sidecar/src/agent_remote_config.rs" role="src" />
+   <file md5sum="364d6b7a1dcedc517bc112a75123af2b" name="libdatadog/datadog-sidecar/src/config.rs" role="src" />
+   <file md5sum="23cead7cd892ee09f3f10bc807b48180" name="libdatadog/datadog-sidecar/src/crashtracker.rs" role="src" />
+   <file md5sum="a44c1ee41043c9824a06fb727bac4a81" name="libdatadog/datadog-sidecar/src/dump.rs" role="src" />
+   <file md5sum="3c41247c2b94e8bb32398f21e5312be5" name="libdatadog/datadog-sidecar/src/entry.rs" role="src" />
+   <file md5sum="f3d346dd6590dfabfff2c577ef2ea172" name="libdatadog/datadog-sidecar/src/lib.rs" role="src" />
+   <file md5sum="deb135b3a84e23aa8acca5403baa8338" name="libdatadog/datadog-sidecar/src/log.rs" role="src" />
+   <file md5sum="06d4c21dc06a859f06b146ba91383a95" name="libdatadog/datadog-sidecar/src/one_way_shared_memory.rs" role="src" />
+   <file md5sum="9ad52ae9b645c89ebc01d28d7eabba96" name="libdatadog/datadog-sidecar/src/self_telemetry.rs" role="src" />
+   <file md5sum="d31077ed195a88253920b1ebc80d6dd0" name="libdatadog/datadog-sidecar/src/service/agent_info.rs" role="src" />
+   <file md5sum="39b9671c0fda5488a144cee254a7a0ef" name="libdatadog/datadog-sidecar/src/service/blocking.rs" role="src" />
+   <file md5sum="e1e171403a1e3f3200df260be692a8ad" name="libdatadog/datadog-sidecar/src/service/debugger_diagnostics_bookkeeper.rs" role="src" />
+   <file md5sum="12ac3d05e92c81356cc9947fbf753bd5" name="libdatadog/datadog-sidecar/src/service/exception_hash_rate_limiter.rs" role="src" />
+   <file md5sum="26c4b8769042e490a57bf714b976aab9" name="libdatadog/datadog-sidecar/src/service/instance_id.rs" role="src" />
+   <file md5sum="33f389b068871f8ba387e1b9df47755e" name="libdatadog/datadog-sidecar/src/service/mod.rs" role="src" />
+   <file md5sum="e36a78e669516c97af7971c120fc0bfc" name="libdatadog/datadog-sidecar/src/service/queue_id.rs" role="src" />
+   <file md5sum="ec4c4c61d6cce0314055d23644515e91" name="libdatadog/datadog-sidecar/src/service/remote_configs.rs" role="src" />
+   <file md5sum="e267d83cf0d1d7d3886543a3e2265a85" name="libdatadog/datadog-sidecar/src/service/request_identification.rs" role="src" />
+   <file md5sum="f5c7e7ed51a1ebaa6096faed6313e652" name="libdatadog/datadog-sidecar/src/service/runtime_info.rs" role="src" />
+   <file md5sum="95efb90b60c37f49a5b59a23d3b53a33" name="libdatadog/datadog-sidecar/src/service/runtime_metadata.rs" role="src" />
+   <file md5sum="08258b9cf3d6dda5b8165bda8c4e4fca" name="libdatadog/datadog-sidecar/src/service/serialized_tracer_header_tags.rs" role="src" />
+   <file md5sum="27b18ae4495d98f2a3998caa1eac1099" name="libdatadog/datadog-sidecar/src/service/session_info.rs" role="src" />
+   <file md5sum="00bb00c9ed2529b9b5c4ee648ee96b9e" name="libdatadog/datadog-sidecar/src/service/sidecar_interface.rs" role="src" />
+   <file md5sum="13bc13607de1b83946b508fd6a01d0c5" name="libdatadog/datadog-sidecar/src/service/sidecar_server.rs" role="src" />
+   <file md5sum="0ed76be6aefc1aac81ca739f734b9cc2" name="libdatadog/datadog-sidecar/src/service/telemetry.rs" role="src" />
+   <file md5sum="d7282454ff8c8911b6c67e045cbe2b05" name="libdatadog/datadog-sidecar/src/service/tracing/mod.rs" role="src" />
+   <file md5sum="de0f903e75f62f7024a14e3d2fd1384c" name="libdatadog/datadog-sidecar/src/service/tracing/trace_flusher.rs" role="src" />
+   <file md5sum="2fdb211a71709eed492becec64f4ca61" name="libdatadog/datadog-sidecar/src/service/tracing/trace_send_data.rs" role="src" />
+   <file md5sum="8f4312e94cb672703eea75654548dfe0" name="libdatadog/datadog-sidecar/src/setup/mod.rs" role="src" />
+   <file md5sum="49501366402e4214086324efcdff270a" name="libdatadog/datadog-sidecar/src/setup/unix.rs" role="src" />
+   <file md5sum="b44be0711a4ac1226325a26c9a5c2f5d" name="libdatadog/datadog-sidecar/src/setup/windows.rs" role="src" />
+   <file md5sum="638ef9f8cdc16f8d1d73f271f5c5bfcc" name="libdatadog/datadog-sidecar/src/shm_remote_config.rs" role="src" />
+   <file md5sum="553cdcb1e17e08505e5d204d877d910a" name="libdatadog/datadog-sidecar/src/tokio_util.rs" role="src" />
+   <file md5sum="dedd1fa2ffdf17e0eff03e8dd2b21bf8" name="libdatadog/datadog-sidecar/src/tracer.rs" role="src" />
+   <file md5sum="65d106f468a24e0a7ea09b386cfc8d65" name="libdatadog/datadog-sidecar/src/unix.rs" role="src" />
+   <file md5sum="60044946425cbbc0c8ad14c218856ccc" name="libdatadog/datadog-sidecar/src/watchdog.rs" role="src" />
+   <file md5sum="e64447c6484a69f6f34671bd1c3881a8" name="libdatadog/datadog-sidecar/src/windows.rs" role="src" />
+   <file md5sum="88326c234cc201afce0dc82844680bca" name="libdatadog/datadog-sidecar-ffi/Cargo.toml" role="src" />
+   <file md5sum="c2bbedb1371bd7e76af739b808e71b5f" name="libdatadog/datadog-sidecar-ffi/src/lib.rs" role="src" />
+   <file md5sum="b6d56c0c1e04ca099e732f8e7bf66d90" name="libdatadog/datadog-sidecar-ffi/src/span.rs" role="src" />
+   <file md5sum="af8890f2b815f69404888d3325752eff" name="libdatadog/datadog-sidecar-macros/Cargo.toml" role="src" />
+   <file md5sum="92379a12f383b60c2a022aad2786acfd" name="libdatadog/datadog-sidecar-macros/src/lib.rs" role="src" />
+   <file md5sum="afb51985b37b9446555d7bad6fd608be" name="libdatadog/spawn_worker/Cargo.toml" role="src" />
+   <file md5sum="7ad24600447dd5bde47cb69a73c9eadb" name="libdatadog/spawn_worker/build.rs" role="src" />
+   <file md5sum="fbe9ae82400f3c2cddcb3b453dc08742" name="libdatadog/spawn_worker/src/crashtracking_trampoline.cpp" role="src" />
+   <file md5sum="fceb4001a81b6a035408f3eec30c9635" name="libdatadog/spawn_worker/src/ld_preload_trampoline.c" role="src" />
+   <file md5sum="b153917210656afcf296b14c1895e526" name="libdatadog/spawn_worker/src/lib.rs" role="src" />
+   <file md5sum="ea5fdb3d339ec679a8c60ed772706e4f" name="libdatadog/spawn_worker/src/trampoline.c" role="src" />
+   <file md5sum="4bac35a898c0561d8e25436eb73c5fd3" name="libdatadog/spawn_worker/src/unix/fork.rs" role="src" />
+   <file md5sum="d66fb6475ad051a550f467b2f8807625" name="libdatadog/spawn_worker/src/unix/mod.rs" role="src" />
+   <file md5sum="92d670792cf5a0f56d19202ccc70fdb3" name="libdatadog/spawn_worker/src/unix/spawn.rs" role="src" />
+   <file md5sum="f5367ce5e864f85be1cf8a237d9935f2" name="libdatadog/spawn_worker/src/win32.rs" role="src" />
+   <file md5sum="edc15bc5bf69caf3d2f26e332b863f47" name="libdatadog/tinybytes/Cargo.toml" role="src" />
+   <file md5sum="e46164021ebb8b2591925bcf1e4c50d2" name="libdatadog/tinybytes/src/bytes_string.rs" role="src" />
+   <file md5sum="4df4c81254e55cad71d0e77b3d3e7fa0" name="libdatadog/tinybytes/src/lib.rs" role="src" />
+   <file md5sum="7fda4b88c52d9caf4a543d7088b6104d" name="libdatadog/tinybytes/src/test.rs" role="src" />
+   <file md5sum="4bb5778d2a18b914de3f4e95dbbf8276" name="libdatadog/tools/cc_utils/Cargo.toml" role="src" />
+   <file md5sum="077f386feb9c55e3a843d9c5d351ae7e" name="libdatadog/tools/cc_utils/src/lib.rs" role="src" />
+   <file md5sum="ccddb1e858df747be61c3de9714c94d9" name="libdatadog/tools/sidecar_mockgen/Cargo.toml" role="src" />
+   <file md5sum="c919ece7ff79abd2aba12b8703e44554" name="libdatadog/tools/sidecar_mockgen/src/bin/sidecar_mockgen.rs" role="src" />
+   <file md5sum="541c9dcefe004156a3e4d35d5c7006b6" name="libdatadog/tools/sidecar_mockgen/src/lib.rs" role="src" />
+   <file md5sum="8032d496c35a00a56e18cfa7481b69e7" name="libdatadog/datadog-trace-normalization/Cargo.toml" role="src" />
+   <file md5sum="065d3288eaba245a89c50a0fa20cb84f" name="libdatadog/datadog-trace-normalization/src/lib.rs" role="src" />
+   <file md5sum="be2745a632d93789f5b296617f42b1fd" name="libdatadog/datadog-trace-normalization/src/normalize_utils.rs" role="src" />
+   <file md5sum="f1316f5e010581daf5c2d9b1df2ed563" name="libdatadog/datadog-trace-normalization/src/normalizer.rs" role="src" />
+   <file md5sum="354f4891399c16aadcaa2ef4da854d85" name="libdatadog/datadog-trace-normalization/src/utf8_helpers.rs" role="src" />
+   <file md5sum="34f7bb26c84496433e05600e21ae06e9" name="libdatadog/datadog-trace-obfuscation/Cargo.toml" role="src" />
+   <file md5sum="3c3c01b7c99f826a65f85a5ac7711f6c" name="libdatadog/datadog-trace-obfuscation/src/credit_cards.rs" role="src" />
+   <file md5sum="74089daed927ba40c8c20bc5e2afa507" name="libdatadog/datadog-trace-obfuscation/src/http.rs" role="src" />
+   <file md5sum="24ccb65d694efad22c65c4abab682e34" name="libdatadog/datadog-trace-obfuscation/src/ip_address.rs" role="src" />
+   <file md5sum="58a26e3d6fc8659ec36f70d1861da05e" name="libdatadog/datadog-trace-obfuscation/src/lib.rs" role="src" />
+   <file md5sum="6c3c2291492e04791ed430c70757f811" name="libdatadog/datadog-trace-obfuscation/src/memcached.rs" role="src" />
+   <file md5sum="fbf15d1399e6d03cd0a299b4f671a3e1" name="libdatadog/datadog-trace-obfuscation/src/obfuscate.rs" role="src" />
+   <file md5sum="a18ccc02c0a0581e21770205cb3d1502" name="libdatadog/datadog-trace-obfuscation/src/obfuscation_config.rs" role="src" />
+   <file md5sum="1be3d3505edb15e0e7fef732307ecd91" name="libdatadog/datadog-trace-obfuscation/src/redis.rs" role="src" />
+   <file md5sum="1894f49ca898b4d8f6a5f1a5cb508652" name="libdatadog/datadog-trace-obfuscation/src/redis_tokenizer.rs" role="src" />
+   <file md5sum="8be586f59ffec7530ae2965607c7b295" name="libdatadog/datadog-trace-obfuscation/src/replacer.rs" role="src" />
+   <file md5sum="8ce85b87cfb1705b6059eb4accf83b7f" name="libdatadog/datadog-trace-obfuscation/src/sql.rs" role="src" />
+   <file md5sum="367cf4c38e212280b1d7ef679c741c3e" name="libdatadog/datadog-trace-protobuf/Cargo.toml" role="src" />
+   <file md5sum="ef0e7497b483e4bbc91e8e1c79ba4500" name="libdatadog/datadog-trace-protobuf/build.rs" role="src" />
+   <file md5sum="74eed4489b6bbf88077c8d3337bdbb0c" name="libdatadog/datadog-trace-protobuf/src/deserializers.rs" role="src" />
+   <file md5sum="a0438d30144524bf7c66d2d6c9a285a1" name="libdatadog/datadog-trace-protobuf/src/lib.rs" role="src" />
+   <file md5sum="d0dbf6a89028aadd1bf2d7e4cf3fbae0" name="libdatadog/datadog-trace-protobuf/src/pb.rs" role="src" />
+   <file md5sum="e7c61efc4efbf6ecc135edaa14888e06" name="libdatadog/datadog-trace-protobuf/src/pb/agent_payload.proto" role="src" />
+   <file md5sum="a8418bc2e0bff468cdbcf7bd22ab80bd" name="libdatadog/datadog-trace-protobuf/src/pb/descriptor.proto" role="src" />
+   <file md5sum="d0ff4bc7f20e76b5b2df236eca67a7c3" name="libdatadog/datadog-trace-protobuf/src/pb/remoteconfig.proto" role="src" />
+   <file md5sum="2f2c59cf95029affeb2967808fe8dd01" name="libdatadog/datadog-trace-protobuf/src/pb/span.proto" role="src" />
+   <file md5sum="15b536c3f025a6f27a509c423e8c79f5" name="libdatadog/datadog-trace-protobuf/src/pb/stats.proto" role="src" />
+   <file md5sum="c37b4e3b79e86e79bcbbd04c0ed7cb49" name="libdatadog/datadog-trace-protobuf/src/pb/tracer_payload.proto" role="src" />
+   <file md5sum="1bc21770cdff8adb950653e7041b09bf" name="libdatadog/datadog-trace-protobuf/src/pb_test.rs" role="src" />
+   <file md5sum="07ff428c8fe82f6c71c305c15d8b1f88" name="libdatadog/datadog-trace-protobuf/src/remoteconfig.rs" role="src" />
+   <file md5sum="4750d620727937f6fc112d4e77678b72" name="libdatadog/datadog-trace-protobuf/src/serde.rs" role="src" />
+   <file md5sum="4f60bc7b437520d4e597fe8196cfa60f" name="libdatadog/datadog-trace-utils/Cargo.toml" role="src" />
+   <file md5sum="7cb0e230612d115158828e787f8d990b" name="libdatadog/datadog-trace-utils/src/config_utils.rs" role="src" />
+   <file md5sum="9f65fc63ec163915433eb04ea4d94a35" name="libdatadog/datadog-trace-utils/src/lib.rs" role="src" />
+   <file md5sum="dcf7985f5d7baa44c7d7d7f9997d4b30" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/decode/error.rs" role="src" />
+   <file md5sum="3d27a2e60af9c26340ff5b1f69814c64" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/decode/map.rs" role="src" />
+   <file md5sum="e0fb458ae31f09515c4e735c2150f0da" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/decode/meta_struct.rs" role="src" />
+   <file md5sum="c9d0e5db4d8a88a430709a35e6be3208" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/decode/metrics.rs" role="src" />
+   <file md5sum="c5a51f88876097f749052ed5c44d23d4" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/decode/mod.rs" role="src" />
+   <file md5sum="b73a0bd230445ad50f6577909ca9420a" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/decode/number.rs" role="src" />
+   <file md5sum="3917b077eb913767eb602ef4e9245ffe" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/decode/span_event.rs" role="src" />
+   <file md5sum="79213bebaf721fe3050e2b2be5d3025c" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/decode/span_link.rs" role="src" />
+   <file md5sum="cce6fbaeab030de124718a46d63892a4" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/decode/string.rs" role="src" />
+   <file md5sum="bbc96e483b03689aeea09ca82d359747" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/mod.rs" role="src" />
+   <file md5sum="6fc2c2df763ce8b1560063eaf1721250" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/v04/mod.rs" role="src" />
+   <file md5sum="41c857ed2a878a0691d6fa4f9915f48d" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/v04/span.rs" role="src" />
+   <file md5sum="2176346d15f83584a7d28e86eee37579" name="libdatadog/datadog-trace-utils/src/msgpack_decoder/v05/mod.rs" role="src" />
+   <file md5sum="617de4280c4e311e5e16409f1b0a1c9e" name="libdatadog/datadog-trace-utils/src/msgpack_encoder/mod.rs" role="src" />
+   <file md5sum="65cebc1500d8e448d8c048159e68629e" name="libdatadog/datadog-trace-utils/src/msgpack_encoder/v04/mod.rs" role="src" />
+   <file md5sum="fe7d3aa26e60983ef4e4946145e4fc7c" name="libdatadog/datadog-trace-utils/src/msgpack_encoder/v04/span.rs" role="src" />
+   <file md5sum="0fee6167a6a1491f830f08ce7eb96e8a" name="libdatadog/datadog-trace-utils/src/send_data/mod.rs" role="src" />
+   <file md5sum="e9657b9188708ccc58c9eed083bf432f" name="libdatadog/datadog-trace-utils/src/send_data/send_data_result.rs" role="src" />
+   <file md5sum="bef18dce5f768cd2a0c6d45b3e445dda" name="libdatadog/datadog-trace-utils/src/send_with_retry/mod.rs" role="src" />
+   <file md5sum="44944331e1dcf7743cf308cf48aef51e" name="libdatadog/datadog-trace-utils/src/send_with_retry/retry_strategy.rs" role="src" />
+   <file md5sum="06e772d9c5e67c194b1ae65006fb4fd6" name="libdatadog/datadog-trace-utils/src/span/mod.rs" role="src" />
+   <file md5sum="cbe18869a0397a00e91542218d1404ec" name="libdatadog/datadog-trace-utils/src/span/trace_utils.rs" role="src" />
+   <file md5sum="8552fa1c42adcf3939dac07b2f9c9773" name="libdatadog/datadog-trace-utils/src/span/v05/dict.rs" role="src" />
+   <file md5sum="9002f4705676eef608d247e611249db6" name="libdatadog/datadog-trace-utils/src/span/v05/mod.rs" role="src" />
+   <file md5sum="0efe4704ef0eebd003bdf74c56cb7fea" name="libdatadog/datadog-trace-utils/src/stats_utils.rs" role="src" />
+   <file md5sum="04333bfff753d8def87d95df792036c0" name="libdatadog/datadog-trace-utils/src/test_utils/datadog_test_agent.rs" role="src" />
+   <file md5sum="9e931f577837252b8ddbb1f59ca6314e" name="libdatadog/datadog-trace-utils/src/test_utils/mod.rs" role="src" />
+   <file md5sum="6755cef82a10809dbba7e09bbaf544a3" name="libdatadog/datadog-trace-utils/src/trace_utils.rs" role="src" />
+   <file md5sum="d042cbc22b9ce77993df99e33333fbe0" name="libdatadog/datadog-trace-utils/src/tracer_header_tags.rs" role="src" />
+   <file md5sum="9cae32de4c18acf226c29bb9ea03f83e" name="libdatadog/datadog-trace-utils/src/tracer_payload.rs" role="src" />
+   <file md5sum="a06b4a58f6476634994b9c38474c7e37" name="libdatadog/Cargo.toml" role="src" />
+   <file md5sum="2aae4f293b2958cf71f06a65ffdd1d28" name="tests/ext/DDTrace/ContainsBinaryCharacter.php" role="test" />
+   <file md5sum="abad92cd2abb9762945831e99c5f5f63" name="tests/ext/DDTrace/OpenBaseDir.php" role="test" />
+   <file md5sum="735bd09ddbef251f64d2f5f200bced8c" name="tests/ext/DDTrace/RaisesException.php" role="test" />
+   <file md5sum="eb0ef1c491cdd6140b67a01ab0b54c00" name="tests/ext/DDTrace/RaisesFatalError.php" role="test" />
+   <file md5sum="069fdc389dd17aa49a9d67e7635e54e3" name="tests/ext/DDTrace/RaisesNotice.php" role="test" />
+   <file md5sum="c2463761ff8e044fa15885db7d3b75d7" name="tests/ext/DDTrace/SanityCheck.php" role="test" />
+   <file md5sum="98e9b591a3640d212b244e5a72e39eeb" name="tests/ext/active_span.phpt" role="test" />
+   <file md5sum="78c482b3468e68220ae452f6869f6780" name="tests/ext/add_global_tag_on_userland_and_internal_spans.phpt" role="test" />
+   <file md5sum="b4000079f918fb0c615fb68c004e27be" name="tests/ext/alias_logs.phpt" role="test" />
+   <file md5sum="823b7bd764351554f91d0732ba84805a" name="tests/ext/appsec/sca_flag_is_sent_01.phpt" role="test" />
+   <file md5sum="270f6fb7fe2d49b1c2af4ec0198b3371" name="tests/ext/appsec/sca_flag_is_sent_02.phpt" role="test" />
+   <file md5sum="8ee431d22eca880c70d4c7a37a41b61a" name="tests/ext/appsec/sca_flag_is_sent_03.phpt" role="test" />
+   <file md5sum="8f73e509920722cb98b4b248c1d4fad2" name="tests/ext/appsec/sca_flag_is_sent_04.phpt" role="test" />
+   <file md5sum="657f4ee79c9c42634b8d1d5278194a1f" name="tests/ext/appsec/sca_flag_is_sent_05.phpt" role="test" />
+   <file md5sum="eb0488e8428235a80d5aeef641f02996" name="tests/ext/appsec/sca_test.inc" role="test" />
+   <file md5sum="ed0c893b12b9e2b5e51b67284e897e75" name="tests/ext/autoload-php-files/dd_init_open_basedir.phpt" role="test" />
+   <file md5sum="f0f52c6bf08dc5010e1b8717167d93f7" name="tests/ext/autoload-php-files/default_spl_autoloader.phpt" role="test" />
+   <file md5sum="0afe8b2775e2e1c321bfb0254387cab7" name="tests/ext/autoload-php-files/error_get_last_is_unaffected.phpt" role="test" />
+   <file md5sum="8077016942f96ae36fd39bd5cd227eca" name="tests/ext/autoload-php-files/file_contains_non_printable_character.phpt" role="test" />
+   <file md5sum="70e0d31fe0018de43ac8ed0a3a8b45db" name="tests/ext/autoload-php-files/file_not_found.phpt" role="test" />
+   <file md5sum="540d4e43776d3092d61d7d760b2a869b" name="tests/ext/autoload-php-files/ignores_exceptions.phpt" role="test" />
+   <file md5sum="f2d0aa17c31b5c051b3866d41a9d6057" name="tests/ext/autoload-php-files/ignores_fatal_errors.phpt" role="test" />
+   <file md5sum="3ed426808daed6f2f3331c039e6d704b" name="tests/ext/autoload-php-files/legacy_autoloader.phpt" role="test" />
+   <file md5sum="ea642a549529eb63d78493b7a0296cef" name="tests/ext/autoload-php-files/skip_default_autoloader.phpt" role="test" />
+   <file md5sum="6a71a2886f47538d5b3c499cd2044295" name="tests/ext/autoload-php-files/skip_registered_autoloader_match.phpt" role="test" />
+   <file md5sum="16fbf1dd52d35f39db869d9eda1307c1" name="tests/ext/autoload-php-files/splautoload.inc" role="test" />
+   <file md5sum="f61304c3f61bce6681aae15032641074" name="tests/ext/background-sender/agent_headers.phpt" role="test" />
+   <file md5sum="66754a05a2a494db1ff2285f0c61868c" name="tests/ext/background-sender/agent_headers_container_id.phpt" role="test" />
+   <file md5sum="3bc907d5278d53fbd3e8d18e0ed412cb" name="tests/ext/background-sender/agent_headers_container_id_empty.phpt" role="test" />
+   <file md5sum="2b43cd62110a0222ba2f755c4e91d9c8" name="tests/ext/background-sender/agent_headers_container_id_fargate.phpt" role="test" />
+   <file md5sum="b642480a81661aab86757bf00c55ef8d" name="tests/ext/background-sender/agent_headers_ignore_userland.phpt" role="test" />
+   <file md5sum="405530f5c0e2eab501fee78af444c50f" name="tests/ext/background-sender/agent_headers_unix_domain_socket.phpt" role="test" />
+   <file md5sum="3fa6fe92588f3df6c3fe3a54b3201221" name="tests/ext/background-sender/agent_sampling-standalone-asm_01.phpt" role="test" />
+   <file md5sum="4fc1545d1039af71358ef37680180041" name="tests/ext/background-sender/agent_sampling-standalone-asm_02.phpt" role="test" />
+   <file md5sum="bd6f6d4ee3738a463c217de5899e3c08" name="tests/ext/background-sender/agent_sampling-standalone-asm_03.phpt" role="test" />
+   <file md5sum="c2a9a53f01b9625fb1e35e1d392cfaf1" name="tests/ext/background-sender/agent_sampling.phpt" role="test" />
+   <file md5sum="520a750e8fca80f9e6878a85b9af2d1b" name="tests/ext/background-sender/agent_sampling_sidecar.phpt" role="test" />
+   <file md5sum="cb8f1e3e82b1e58e9a109398cea5352b" name="tests/ext/background-sender/background_sender_ipv6_support.phpt" role="test" />
+   <file md5sum="6686d7765cc208e67c56bc4be6f8251c" name="tests/ext/background-sender/background_sender_restores_capabilities.phpt" role="test" />
+   <file md5sum="74de959dab7204d49c3279eeff539d1f" name="tests/ext/background-sender/background_sender_survives_setuid.phpt" role="test" />
+   <file md5sum="f77a766c10066cda91d2109121886a13" name="tests/ext/background-sender/default_unix_domain_socket_agent.phpt" role="test" />
+   <file md5sum="039a3dc88adf3ae2c53588989cddf582" name="tests/ext/background-sender/sidecar_fallback.phpt" role="test" />
+   <file md5sum="52c91bdbe2a284d9b6d499c9b46c5294" name="tests/ext/background-sender/sidecar_handles_invalid_agent_url.phpt" role="test" />
+   <file md5sum="b0d517aeac97f07268ccaf5eda45f5d4" name="tests/ext/base_service.phpt" role="test" />
+   <file md5sum="350c459383c72663b018bc0ea8ef5828" name="tests/ext/bridge/_files_tracer.php" role="test" />
+   <file md5sum="b9c497a642f513651376e35e43cec9cd" name="tests/ext/call_user_func/namespaced-array.phpt" role="test" />
+   <file md5sum="6266167e54cac2dea481224be83289cb" name="tests/ext/call_user_func/namespaced.phpt" role="test" />
+   <file md5sum="aa1171292e30b5fb7d0cddbf9e2a9259" name="tests/ext/call_user_func/not-namespaced-array.phpt" role="test" />
+   <file md5sum="6e89d3c0f9022da25269acf1d855ad77" name="tests/ext/call_user_func/not-namespaced.phpt" role="test" />
+   <file md5sum="f00dc15c1fa551b8910ec5307d41f95b" name="tests/ext/check_memory_under_limit_default.phpt" role="test" />
+   <file md5sum="96f768c1b50e106b6e22dc5f75800415" name="tests/ext/check_memory_under_limit_high_limit.phpt" role="test" />
+   <file md5sum="969d53fa839aae4e2d2abf3352c1b3fc" name="tests/ext/check_memory_under_limit_high_user_limit.phpt" role="test" />
+   <file md5sum="5dc74bbc849c7d5aedd73fe04281f816" name="tests/ext/check_memory_under_limit_low_user_limit.phpt" role="test" />
+   <file md5sum="65ad0a8446e73d4fe8f50b5bd39a46df" name="tests/ext/close_spans_until.phpt" role="test" />
+   <file md5sum="d5a88bed14ba6a7777c3fd5c25d7876b" name="tests/ext/crashtracker_and_backtrace_are_mutually_exclusive.phpt" role="test" />
+   <file md5sum="27e118c7a39f6e02323c6b3c42d3493f" name="tests/ext/crashtracker_jit_tags.phpt" role="test" />
+   <file md5sum="35120d99e2d5cec613c23a9b444e25ba" name="tests/ext/crashtracker_segfault.phpt" role="test" />
+   <file md5sum="ea564f09048ffa5251653739db8fcf7f" name="tests/ext/crashtracker_segfault_disabled.phpt" role="test" />
+   <file md5sum="5f30dba8e8e7d042975de635c5baadf7" name="tests/ext/crashtracker_segfault_windows.phpt" role="test" />
+   <file md5sum="8f9dd2a6aa98c44b8fa3ee94be363deb" name="tests/ext/dd_trace_coms_empty_stacks_correctly_recycled.phpt" role="test" />
+   <file md5sum="c9258fc4f4bc43394bfa45dc6fa18cd4" name="tests/ext/dd_trace_current_context.phpt" role="test" />
+   <file md5sum="c971e6e59c1b51b6b7421b574b215e85" name="tests/ext/dd_trace_current_context_noenv.phpt" role="test" />
+   <file md5sum="8b14f9f0a2a13b9e90615c808cc9c013" name="tests/ext/dd_trace_log_file.phpt" role="test" />
+   <file md5sum="ebdd40a3f1587926945cf0c6d9b4e0a6" name="tests/ext/dd_trace_multiple_write.phpt" role="test" />
+   <file md5sum="5dc739ccc1adb810b896fea278a8f328" name="tests/ext/dd_trace_send_traces_via_thread_001.phpt" role="test" />
+   <file md5sum="c7704d3235810e7d23c37647886021ee" name="tests/ext/dd_trace_send_traces_via_thread_002.phpt" role="test" />
+   <file md5sum="44a5c4eda6a39c577cfe13d1864d44bd" name="tests/ext/dd_trace_serialize_header_to_meta.phpt" role="test" />
+   <file md5sum="7fe05d6b4b32b9e8a84f8a21237a9c35" name="tests/ext/dd_trace_serialize_msgpack.phpt" role="test" />
+   <file md5sum="1f13213bb7d1076d1fdedede53c962f6" name="tests/ext/dd_trace_serialize_msgpack_error.phpt" role="test" />
+   <file md5sum="42523ed0b2f9f02e2148b9419fcd49c5" name="tests/ext/dd_trace_serialize_msgpack_id_in_meta.phpt" role="test" />
+   <file md5sum="c765b53e5cb7cd288b78663e987395b7" name="tests/ext/dd_trace_serialize_msgpack_reference.phpt" role="test" />
+   <file md5sum="15218aadcdf73ea30455dadbcd8d0f40" name="tests/ext/dd_trace_span_data_get_link.phpt" role="test" />
+   <file md5sum="cf08ae2f2c874c56797fe87d05e0d121" name="tests/ext/dd_trace_span_data_serialization_with_links.phpt" role="test" />
+   <file md5sum="7bcce43f69a76eace3fb14fa1e398dbd" name="tests/ext/dd_trace_tracer_is_limited_memory.phpt" role="test" />
+   <file md5sum="196cc625cf1356a151387b36dc1c5bf3" name="tests/ext/disabling_root_span_generation_at_runtime.phpt" role="test" />
+   <file md5sum="c5426b8b88a7a16a25110d6c67f010d0" name="tests/ext/distributed_tracestate_consumption.phpt" role="test" />
+   <file md5sum="d0bc6c7c99807882bd2af3b387b83500" name="tests/ext/distributed_tracing/baggage/baggage_span_tags.phpt" role="test" />
+   <file md5sum="7f50f73cfa4a8043256bba4bf2b2106c" name="tests/ext/distributed_tracing/baggage/baggage_span_tags_empty.phpt" role="test" />
+   <file md5sum="9072d43889b87b1c5eec2bc9f27ea2cf" name="tests/ext/distributed_tracing/baggage/baggage_span_tags_keys.phpt" role="test" />
+   <file md5sum="7d8e90071446378da939669c8b36b7be" name="tests/ext/distributed_tracing/baggage/baggage_span_tags_wildcard.phpt" role="test" />
+   <file md5sum="8daca335562492a986aeeebf35f5a620" name="tests/ext/distributed_tracing/baggage/distributed_trace_baggage_alone.phpt" role="test" />
+   <file md5sum="d29b99cd90be61bc368ec209d2213166" name="tests/ext/distributed_tracing/baggage/distributed_trace_baggage_configured_bytes.phpt" role="test" />
+   <file md5sum="15fcd6edc0ef6b50cfa5da6ce82846ec" name="tests/ext/distributed_tracing/baggage/distributed_trace_baggage_configured_items.phpt" role="test" />
+   <file md5sum="cd243320aea6533c7424e12a46c8c606" name="tests/ext/distributed_tracing/baggage/distributed_trace_baggage_context_propagated.phpt" role="test" />
+   <file md5sum="18fbde1266f94f8774edbc152e9a85fb" name="tests/ext/distributed_tracing/baggage/distributed_trace_baggage_decoding_encoding.phpt" role="test" />
+   <file md5sum="c6347f3d97d841916f84db914cd13f13" name="tests/ext/distributed_tracing/baggage/distributed_trace_baggage_default.phpt" role="test" />
+   <file md5sum="d3b49245d66274e1ccf510b265f67719" name="tests/ext/distributed_tracing/baggage/distributed_trace_baggage_first.phpt" role="test" />
+   <file md5sum="ee5940ced9861a4008ede28307959c75" name="tests/ext/distributed_tracing/distributed_trace_asm_standalone_01.phpt" role="test" />
+   <file md5sum="18f4ea0acf2d8b57995db44eba97b647" name="tests/ext/distributed_tracing/distributed_trace_asm_standalone_02.phpt" role="test" />
+   <file md5sum="0aa22650664d058c0e17d2bde0f5a458" name="tests/ext/distributed_tracing/distributed_trace_asm_standalone_03.phpt" role="test" />
+   <file md5sum="9c035c1c7d0a27adc3576d5146d59980" name="tests/ext/distributed_tracing/distributed_trace_asm_standalone_04.phpt" role="test" />
+   <file md5sum="575f299fa39eb3a400fc9b9a1ba42d47" name="tests/ext/distributed_tracing/distributed_trace_asm_standalone_05.phpt" role="test" />
+   <file md5sum="f95caaa915caf4f6361f4a373d72e5f8" name="tests/ext/distributed_tracing/distributed_trace_asm_standalone_06.phpt" role="test" />
+   <file md5sum="f345133f566069506b8d3de0709aa8c1" name="tests/ext/distributed_tracing/distributed_trace_asm_standalone_07.phpt" role="test" />
+   <file md5sum="73eeb4502ba00ea2a3c8116d377bb738" name="tests/ext/distributed_tracing/distributed_trace_asm_standalone_08.phpt" role="test" />
+   <file md5sum="b98db41eb11b16d7ef8c119a4927ba11" name="tests/ext/distributed_tracing/distributed_trace_asm_standalone_09.phpt" role="test" />
+   <file md5sum="c70c836e40159ee3f775732ebe457844" name="tests/ext/distributed_tracing/distributed_trace_bogus_ids.phpt" role="test" />
+   <file md5sum="b3d8e3c8961ae8b0b1ccf6780107976e" name="tests/ext/distributed_tracing/distributed_trace_conflicting_span_ids_dd_tracecontext.phpt" role="test" />
+   <file md5sum="fb53c5a0000fc8452ad5b66054924e73" name="tests/ext/distributed_tracing/distributed_trace_conflicting_span_ids_tracecontext.phpt" role="test" />
+   <file md5sum="19ddb150da732cc071796e36eb9f7cd9" name="tests/ext/distributed_tracing/distributed_trace_consume_array.phpt" role="test" />
+   <file md5sum="0b9ea9e22fcc32d874b8d94f1d02857e" name="tests/ext/distributed_tracing/distributed_trace_consume_func.phpt" role="test" />
+   <file md5sum="5f712eeb15c66d97c24f01b735144e21" name="tests/ext/distributed_tracing/distributed_trace_generate.phpt" role="test" />
+   <file md5sum="21a3bae8a777f04d96a172114b29960e" name="tests/ext/distributed_tracing/distributed_trace_inherit.phpt" role="test" />
+   <file md5sum="f1def80d2f91e2c233990ad0b28eba93" name="tests/ext/distributed_tracing/distributed_trace_inherit_b3-single-span.phpt" role="test" />
+   <file md5sum="9945e4faf043dd9daa74ee2f364ce366" name="tests/ext/distributed_tracing/distributed_trace_inherit_b3-single-span_no_sampling.phpt" role="test" />
+   <file md5sum="61f273d30da73f28343d8bdf1c49e2cb" name="tests/ext/distributed_tracing/distributed_trace_inherit_b3.phpt" role="test" />
+   <file md5sum="14e9f956f549cb3718fb1053a1fc0337" name="tests/ext/distributed_tracing/distributed_trace_overwrite.phpt" role="test" />
+   <file md5sum="75464564620c0cbf18bb3bee8910dd8b" name="tests/ext/distributed_tracing/distributed_trace_overwrite_active_span.phpt" role="test" />
+   <file md5sum="252fee649fa364fd5124bca140ca8cd1" name="tests/ext/distributed_tracing/distributed_trace_reset_context_on_init.phpt" role="test" />
+   <file md5sum="8e0ac514fac58dcf2c442905b74a35d3" name="tests/ext/distributed_tracing/distributed_trace_span_link_from_headers.phpt" role="test" />
+   <file md5sum="049c0433cbf618e3258ee9d6411cddc4" name="tests/ext/distributed_tracing/distributed_trace_span_link_from_headers_invalid_tags.phpt" role="test" />
+   <file md5sum="65a71cba07d32c86adca1f59efcfa998" name="tests/ext/do_not_check_if_class_or_function_exists_by_default.phpt" role="test" />
+   <file md5sum="bdb5cfb7b9e0fac3678384f1a7851a50" name="tests/ext/dogstatsd/disabled_if_agentless.phpt" role="test" />
+   <file md5sum="0e9e2ca80f90901651c2c802aa2e07b3" name="tests/ext/dogstatsd/metrics_over_udp.phpt" role="test" />
+   <file md5sum="afba8d46f58fe4c9938caf4b46fcf9ca" name="tests/ext/dogstatsd/metrics_over_udp_unreachable.phpt" role="test" />
+   <file md5sum="dedb61d37a04dc20d175af94db6fb236" name="tests/ext/dogstatsd/metrics_over_uds.phpt" role="test" />
+   <file md5sum="82f8704290b51a910c7d2dbbd78f4888" name="tests/ext/dogstatsd/metrics_over_uds_unreachable.phpt" role="test" />
+   <file md5sum="d3bb6eb02c8ab7bcf23e4680755a97b9" name="tests/ext/dogstatsd/metrics_uds.inc" role="test" />
+   <file md5sum="79c1245a01f75ecef0ae284a72f0acc9" name="tests/ext/dropped_spans_have_negative_duration.phpt" role="test" />
+   <file md5sum="044063b547206aca8c7178a736392a77" name="tests/ext/error_status_configuration/http_error_status_client_configuration.phpt" role="test" />
+   <file md5sum="e1bf9b9c9b33255e30b4ee7b6a8a0afc" name="tests/ext/error_status_configuration/http_error_status_parsing.phpt" role="test" />
+   <file md5sum="0e095ea28735b18bf60fc760b8e45601" name="tests/ext/extension_disabled.phpt" role="test" />
+   <file md5sum="14adeea7fc0eefdc5ca10fab26fc8373" name="tests/ext/extension_no_static_tls.phpt" role="test" />
+   <file md5sum="e8b25007ff837b48014b8ab5f0063b2c" name="tests/ext/extract_ip_addr.phpt" role="test" />
+   <file md5sum="7487a26f094081145eb4fd3a26285504" name="tests/ext/extract_ip_addr_header_env.phpt" role="test" />
+   <file md5sum="c8cd0ce5e014178811322c00ef60f5c3" name="tests/ext/extract_ip_addr_header_ini.phpt" role="test" />
+   <file md5sum="bb07d2076c38549ec871b5775a891a2b" name="tests/ext/extract_ip_addr_precedence.phpt" role="test" />
+   <file md5sum="4d2428e5fad627740ce24f692e1d73c5" name="tests/ext/extract_ip_private_01.phpt" role="test" />
+   <file md5sum="60895c5cae5127f7223d9d1e26532c89" name="tests/ext/extract_server_values.phpt" role="test" />
+   <file md5sum="a0c23fb077fc2d7b1ceded7e78fbcfff" name="tests/ext/fibers/enable_tracer_in_fiber.phpt" role="test" />
+   <file md5sum="4af438e4622b2cadbb366b7071222594" name="tests/ext/fibers/fiber_observer_bailout.phpt" role="test" />
+   <file md5sum="f9c7826dc2c2804f7470be5192dc43c4" name="tests/ext/fibers/fiber_stack_switch.phpt" role="test" />
+   <file md5sum="619fe81fe257a7eae1bccbae5092b060" name="tests/ext/fibers/fiber_switch_tracer_disabled.phpt" role="test" />
+   <file md5sum="159ca001216ec88fa71d1c8596cffe75" name="tests/ext/flush-autofinish.phpt" role="test" />
+   <file md5sum="aca14b56b66113fbe7ba13f86b1f429e" name="tests/ext/force_flush_traces.phpt" role="test" />
+   <file md5sum="4c9150ffd343c81fe6ba0cad595566f6" name="tests/ext/from_php_7_3_bug61728.phpt" role="test" />
+   <file md5sum="466a7255e76c9af92c2068b0e769625c" name="tests/ext/from_php_7_3_test_user_streams_consumed_bug.phpt" role="test" />
+   <file md5sum="a32b3fb7dc875e1b0edc889ba8fb3037" name="tests/ext/generate_128_bit_trace_id.phpt" role="test" />
+   <file md5sum="13712d4681c29cbe0bea2d8c819bc122" name="tests/ext/get_memory_limit_0_percent.phpt" role="test" />
+   <file md5sum="54b3b003cd1654892dcb51c598cd651a" name="tests/ext/get_memory_limit_default.phpt" role="test" />
+   <file md5sum="ab4b3293fc6ad968c5f6617a36d784c3" name="tests/ext/get_memory_limit_set_by_absolute.phpt" role="test" />
+   <file md5sum="bd11bfa7a2378a71e9935d0ab566c611" name="tests/ext/get_memory_limit_set_by_percentage.phpt" role="test" />
+   <file md5sum="3f47ade1ae73dd4751d4aa2b83a572b0" name="tests/ext/get_memory_limit_unlimited_default.phpt" role="test" />
+   <file md5sum="bd44b8cbb6f36012a69d0527c778472f" name="tests/ext/get_memory_limit_unlimited_set_by_absolute.phpt" role="test" />
+   <file md5sum="1ea89f90758cf4c30640ca1b6f1fb833" name="tests/ext/get_memory_limit_unlimited_set_by_percentage.phpt" role="test" />
+   <file md5sum="50752d412b784ae9719c2d67d3a6e74f" name="tests/ext/includes/clear_skipif_telemetry.inc" role="test" />
+   <file md5sum="da7e0920504d0a67303e0bdfa74c0682" name="tests/ext/includes/dummy_filesystem_integration.inc" role="test" />
+   <file md5sum="50199b552e40ceeb9a6ae5035adf078f" name="tests/ext/includes/fake_global_tracer.inc" role="test" />
+   <file md5sum="7eadb10168c9ea9780f5a20736853930" name="tests/ext/includes/fake_scope.inc" role="test" />
+   <file md5sum="fbfd411fb90c3437b74e4932d368c663" name="tests/ext/includes/fake_span.inc" role="test" />
+   <file md5sum="44f18ea308493d718b9949e963e5085e" name="tests/ext/includes/fake_tracer.inc" role="test" />
+   <file md5sum="158a9da861c458c85d948f4127ab191e" name="tests/ext/includes/fake_tracer_exception.inc" role="test" />
+   <file md5sum="c3dd54217ad716b16749c955da1b23f7" name="tests/ext/includes/git_functions.inc" role="test" />
+   <file md5sum="f57fba44ba0ebb79815970a4be24f0e4" name="tests/ext/includes/intermediary_call.inc" role="test" />
+   <file md5sum="578ceaab92b74343a807b02029bdce0b" name="tests/ext/includes/request_init_hook.inc" role="test" />
+   <file md5sum="58400146e76dfb8ad4b809464f68de72" name="tests/ext/includes/request_replayer.inc" role="test" />
+   <file md5sum="1732b64f496cd56cecfb3cea179f76fa" name="tests/ext/includes/sanity_check.php" role="test" />
+   <file md5sum="86708156cdc24438f74395236b0932b0" name="tests/ext/includes/skipif_no_dev_env.inc" role="test" />
+   <file md5sum="9cb8f884053cb7cd3f357c2346202424" name="tests/ext/inferred_proxy/alter_service.phpt" role="test" />
+   <file md5sum="bc27e5dc98f30279c97fa4d7274e9092" name="tests/ext/inferred_proxy/basic_test.phpt" role="test" />
+   <file md5sum="a6a05173628546ca4904f895ee5b575b" name="tests/ext/inferred_proxy/consume_distributed_tracing_headers.phpt" role="test" />
+   <file md5sum="70fb2b64d9011decaf0369ebc60e23f5" name="tests/ext/inferred_proxy/distributed_tracing.phpt" role="test" />
+   <file md5sum="9095ac4b91a18bf66231db82ad51021a" name="tests/ext/inferred_proxy/error_propagated.phpt" role="test" />
+   <file md5sum="432a7f5999690b8b688a5b081ee573b8" name="tests/ext/inferred_proxy/fallback_service_name.phpt" role="test" />
+   <file md5sum="14c51b729f7f591c9afdcbc5c4251462" name="tests/ext/inferred_proxy/incomplete_headers.phpt" role="test" />
+   <file md5sum="cc950e211ef9f29e7d56e0c61732c900" name="tests/ext/inferred_proxy/multiple_traces.phpt" role="test" />
+   <file md5sum="82cd9dad9b38e7e8a916ce0f9af0823a" name="tests/ext/inferred_proxy/propagated_tags_after_span_start.phpt" role="test" />
+   <file md5sum="06aee6982571121a6715b97e5b9ee208" name="tests/ext/inferred_proxy/propagated_tags_before_span_start.phpt" role="test" />
+   <file md5sum="e150ee0fc527a23c93ddf71080af5623" name="tests/ext/inferred_proxy/sampling_rules.phpt" role="test" />
+   <file md5sum="383d3e9f515f2d6c8025cf5010368564" name="tests/ext/inherit_meta_from_parent.phpt" role="test" />
+   <file md5sum="0e59c93e318f8ccc8a1e0811fd31fb5d" name="tests/ext/integrations/curl/curl_helper.inc" role="test" />
+   <file md5sum="80ff037bd60de75039105d44bbc57f06" name="tests/ext/integrations/curl/curl_release_on_shutdown.phpt" role="test" />
+   <file md5sum="651e372a204d234311c437461c022fd6" name="tests/ext/integrations/curl/distributed_tracing.inc" role="test" />
+   <file md5sum="e1c185ee92ef0e722d6de614b2a80775" name="tests/ext/integrations/curl/distributed_tracing_curl.phpt" role="test" />
+   <file md5sum="d9c982d76ea624a6decc7ddeb1a6be10" name="tests/ext/integrations/curl/distributed_tracing_curl_copy_handle.phpt" role="test" />
+   <file md5sum="5be39e3535be0b36ed07d824d83d78c9" name="tests/ext/integrations/curl/distributed_tracing_curl_disabled_baggage.phpt" role="test" />
+   <file md5sum="2dbe5d0c1072954fcd66e4daf47cab74" name="tests/ext/integrations/curl/distributed_tracing_curl_drop_dm.phpt" role="test" />
+   <file md5sum="6541beef54fb3a2cd4d74d0e646c268c" name="tests/ext/integrations/curl/distributed_tracing_curl_existing_headers_001.phpt" role="test" />
+   <file md5sum="d25e8e9e17c2a686ea03bfb2471b4099" name="tests/ext/integrations/curl/distributed_tracing_curl_existing_headers_002.phpt" role="test" />
+   <file md5sum="42cfcecc586cfec5824d7ac4499139df" name="tests/ext/integrations/curl/distributed_tracing_curl_existing_headers_003.phpt" role="test" />
+   <file md5sum="a361c8f67286a4e40ea935acba72e0a6" name="tests/ext/integrations/curl/distributed_tracing_curl_existing_headers_004.phpt" role="test" />
+   <file md5sum="3f30575f392c8ec1a90a36cb1d5f08e5" name="tests/ext/integrations/curl/distributed_tracing_curl_existing_headers_005.phpt" role="test" />
+   <file md5sum="d8a33f13fec1d4dea80c6bc4824fbb08" name="tests/ext/integrations/curl/distributed_tracing_curl_existing_headers_006.phpt" role="test" />
+   <file md5sum="168125bfd77cfc11a7c813fea9e1c388" name="tests/ext/integrations/curl/distributed_tracing_curl_existing_headers_007.phpt" role="test" />
+   <file md5sum="569a2a0054b6fa8e45b863ffe761db07" name="tests/ext/integrations/curl/distributed_tracing_curl_invalid_tags.phpt" role="test" />
+   <file md5sum="91cc2a19c0be3d3e3aa531a1e24653bb" name="tests/ext/integrations/curl/distributed_tracing_curl_multi_exec_001.phpt" role="test" />
+   <file md5sum="701c0fa77692e75622e44a3fc3eef90c" name="tests/ext/integrations/curl/distributed_tracing_curl_multi_exec_002.phpt" role="test" />
+   <file md5sum="d644b3c50805f77d566a642a5c8038c6" name="tests/ext/integrations/curl/distributed_tracing_curl_multi_exec_003.phpt" role="test" />
+   <file md5sum="4d281648c0cc429fa2a6619486a98fa5" name="tests/ext/integrations/curl/distributed_tracing_curl_multi_exec_copy_handle.phpt" role="test" />
+   <file md5sum="6f5fc6707912c4fcc84721bfe9d2b85b" name="tests/ext/integrations/curl/distributed_tracing_curl_multi_exec_disable.phpt" role="test" />
+   <file md5sum="f2734ef2a0e4fa6d1b0ed118b1c25648" name="tests/ext/integrations/curl/distributed_tracing_curl_multi_exec_existing_headers_001.phpt" role="test" />
+   <file md5sum="df59d2d4d128b6aedecae28b90ebf307" name="tests/ext/integrations/curl/distributed_tracing_curl_multi_exec_existing_headers_002.phpt" role="test" />
+   <file md5sum="958c06457784ed8a4588fbe149022360" name="tests/ext/integrations/curl/distributed_tracing_curl_propagate_asm_event.phpt" role="test" />
+   <file md5sum="4956dae8a01d1e6b374234f5352a9ede" name="tests/ext/integrations/curl/distributed_tracing_curl_propagate_custom_tags.phpt" role="test" />
+   <file md5sum="8ec71829c588acbfac628458a8171cc6" name="tests/ext/integrations/curl/distributed_tracing_curl_propagate_tags.phpt" role="test" />
+   <file md5sum="f43e0744c0373c7f97fcb5f91a74a3f8" name="tests/ext/integrations/curl/distributed_tracing_curl_sampling_priority.phpt" role="test" />
+   <file md5sum="1a0a2d0eeb2036eadec2a1d06692c0dd" name="tests/ext/integrations/curl/distributed_tracing_curl_tracestate.phpt" role="test" />
+   <file md5sum="ec6b987ae24615adba7051d95bf6386d" name="tests/ext/integrations/source_code/001/git_metadata_injection_from_valid_files.phpt" role="test" />
+   <file md5sum="19c8dacc0c7f8d02152759e076921f36" name="tests/ext/integrations/source_code/002/git_metadata_injection_from_invalid_files.phpt" role="test" />
+   <file md5sum="eb4dd238e0c5578d9f87183c65f5062e" name="tests/ext/integrations/source_code/commit_sha_env_var.phpt" role="test" />
+   <file md5sum="de4446eb964ee4ab708beb7000cd91f4" name="tests/ext/integrations/source_code/git_metadata_injection_from_env.phpt" role="test" />
+   <file md5sum="cd594c0d836c62557cde89ffa9ab22a3" name="tests/ext/integrations/source_code/git_metadata_injection_from_global_tags.phpt" role="test" />
+   <file md5sum="f4ebc81763bee5ac51bf3716252cab56" name="tests/ext/integrations/source_code/git_metadata_injection_remove_credentials_from_env.phpt" role="test" />
+   <file md5sum="71631098c70ae780bd989df26d410965" name="tests/ext/integrations/source_code/repository_url_env_var.phpt" role="test" />
+   <file md5sum="5be26351509f64c7820aae12873d22ca" name="tests/ext/ip_collection_01.phpt" role="test" />
+   <file md5sum="46795d4ecb7cfc38d994f12f15ebf3bd" name="tests/ext/ip_collection_02.phpt" role="test" />
+   <file md5sum="8204876ead8c53e26a53ca4d6be2cd46" name="tests/ext/ip_collection_03.phpt" role="test" />
+   <file md5sum="2e1b91dceab5055422a4ead27c4b264f" name="tests/ext/ip_collection_04.phpt" role="test" />
+   <file md5sum="2e1b91dceab5055422a4ead27c4b264f" name="tests/ext/ip_collection_05.phpt" role="test" />
+   <file md5sum="808c9d963be7d42b1662681e34b7460c" name="tests/ext/library_config/CONFLICTS" role="test" />
+   <file md5sum="60be64e71a07c5e3daf54b8d7eb124df" name="tests/ext/library_config/fleet_config.phpt" role="test" />
+   <file md5sum="2fc3cfbe4a79624d8cf2fdc37dfbc4db" name="tests/ext/library_config/fleet_config.yaml" role="test" />
+   <file md5sum="008252246db1bba06ce001b088487147" name="tests/ext/library_config/fleet_config_overloads_env.phpt" role="test" />
+   <file md5sum="0762f2cd196ea39fd8493fbf89dfdf5a" name="tests/ext/library_config/fleet_config_overloads_ini.phpt" role="test" />
+   <file md5sum="2f298dae5742eeca5ca636628e6ec32d" name="tests/ext/library_config/local_config.phpt" role="test" />
+   <file md5sum="19c360af1c283539f458bc75eca71204" name="tests/ext/library_config/local_config.yaml" role="test" />
+   <file md5sum="98981ea12600feac928b0068bcf43f99" name="tests/ext/library_config/local_config_does_not_overload_env.phpt" role="test" />
+   <file md5sum="68afd5635c65b4337e213abefe6be257" name="tests/ext/library_config/local_config_overloads_ini.phpt" role="test" />
+   <file md5sum="96a534c554126b4937f5658441f45a87" name="tests/ext/limiter/001-limiter-disabled.phpt" role="test" />
+   <file md5sum="c9a5bd1cf82e7560c42e037fb70fc625" name="tests/ext/limiter/002-limiter-reached.phpt" role="test" />
+   <file md5sum="f518a7f31121158fd0ac81a876bee4d8" name="tests/ext/limiter/003-limiter-with-asm-standalone.phpt" role="test" />
+   <file md5sum="cd4171504067fa6c2c2ddc52a422033b" name="tests/ext/live-debugger/debugger_log_probe.phpt" role="test" />
+   <file md5sum="d4a45c79e17fe6ab767416993f4206b9" name="tests/ext/live-debugger/debugger_metric_probe.phpt" role="test" />
+   <file md5sum="f573d69416a5bd325a5e16061a85b559" name="tests/ext/live-debugger/debugger_span_decoration_probe.phpt" role="test" />
+   <file md5sum="fdf8ed31e00815285636b0b89f2b62a9" name="tests/ext/live-debugger/debugger_span_probe.phpt" role="test" />
+   <file md5sum="259efe6e41baf432b63d8c8eb3853723" name="tests/ext/live-debugger/debugger_span_probe_class.phpt" role="test" />
+   <file md5sum="bb485afcbc362d8b89c15c18aeb3a091" name="tests/ext/live-debugger/exception-replay_001.phpt" role="test" />
+   <file md5sum="9c464c9ef2a665e868b12940928c79cf" name="tests/ext/live-debugger/exception-replay_002.phpt" role="test" />
+   <file md5sum="caf4122ca2958afc08b0970e474a862a" name="tests/ext/live-debugger/exception-replay_non_regression_2989_mysqli.phpt" role="test" />
+   <file md5sum="f6b73a5eb15269dccb645156c7a3a17c" name="tests/ext/live-debugger/live_debugger.inc" role="test" />
+   <file md5sum="12ffc0a70426cc0bfd9395fe43b32e98" name="tests/ext/logging_default_value.phpt" role="test" />
+   <file md5sum="2f5bd91849eb41f5c93eb5bb9718579d" name="tests/ext/meta_struct.phpt" role="test" />
+   <file md5sum="f92ff28e79a3f3cab65ddcb37e52bac4" name="tests/ext/nested_exceptions.phpt" role="test" />
+   <file md5sum="1354b654bfa1c45ce57a03289191fa60" name="tests/ext/otel_config_remapping.phpt" role="test" />
+   <file md5sum="5c2041bce94cb7fc108d0304cb41917e" name="tests/ext/otel_http_response_status_code_remapping.phpt" role="test" />
+   <file md5sum="f00a433e26bef66c9203127bcf4fa503" name="tests/ext/otel_http_response_status_code_remapping_precedence.phpt" role="test" />
+   <file md5sum="39c2cefc39c3b145b46f60afa58d3e21" name="tests/ext/otel_http_status_code_remapping.phpt" role="test" />
+   <file md5sum="bd33041ec305656c337934706e12022e" name="tests/ext/pcntl/functions.inc" role="test" />
+   <file md5sum="66702444fc81c83f51a7f496b37eb548" name="tests/ext/pcntl/pcntl_fork_long_running_autoflush.phpt" role="test" />
+   <file md5sum="f491632c17a0fb54b84e894f0c68b791" name="tests/ext/pcntl/pcntl_fork_long_running_manual.phpt" role="test" />
+   <file md5sum="8c29cb3e568204847a6bae0f26cce296" name="tests/ext/pcntl/pcntl_fork_reseed_span_id.phpt" role="test" />
+   <file md5sum="6feab2266dec76a76556c95e96cb351c" name="tests/ext/pcntl/pcntl_fork_short_running_multiple.phpt" role="test" />
+   <file md5sum="4cb56d56c5d740abed6baa30f75d802a" name="tests/ext/pcntl/pcntl_fork_short_running_nested.phpt" role="test" />
+   <file md5sum="fc4d4eb2f2d99b4019fd754cc7ff7d3f" name="tests/ext/pcntl/pcntl_fork_short_running_single.phpt" role="test" />
+   <file md5sum="2da6fca0273c2f2ba3b76a5638eba0e4" name="tests/ext/peer_service_disabled_default.phpt" role="test" />
+   <file md5sum="4fecdcb8436c8f08a0fe8b970f589c1d" name="tests/ext/peer_service_honor_user_value.phpt" role="test" />
+   <file md5sum="53ea815b81a1fd8013b3f14676025afd" name="tests/ext/peer_service_remapping.phpt" role="test" />
+   <file md5sum="5fe36fdbd8db27ea2159d35576a7138b" name="tests/ext/peer_service_sources_not_serialized_when_set.phpt" role="test" />
+   <file md5sum="aacf11b0fb59060ba027cf5c682498fa" name="tests/ext/peer_service_use_first_available_tag.phpt" role="test" />
+   <file md5sum="7326b1a7dfcbc267cc94b9baaad1fbdb" name="tests/ext/peer_service_sources_not_serialized_when_unset.phpt" role="test" />
+   <file md5sum="4cd77d3c73b91641ffd7232b04f3827f" name="tests/ext/peer_service_wrong_values.phpt" role="test" />
+   <file md5sum="4d93d7ad4f990d95e8fbed81dd966a85" name="tests/ext/priority_sampling/001-default-sampling.phpt" role="test" />
+   <file md5sum="a42f3ac09b42ac19bc85d24740201b39" name="tests/ext/priority_sampling/002-user-reject.phpt" role="test" />
+   <file md5sum="ddb8465af4ef7d77ef64de355d4bff28" name="tests/ext/priority_sampling/003-user-keep.phpt" role="test" />
+   <file md5sum="2c64da1817780dee2c9c31b728145e24" name="tests/ext/priority_sampling/004-rule-basic.phpt" role="test" />
+   <file md5sum="16dac4ddcf537abf0621bcd19c358ae4" name="tests/ext/priority_sampling/005-rule-name.phpt" role="test" />
+   <file md5sum="f2c24729be2de8da26abc1517de2957b" name="tests/ext/priority_sampling/006-rule-name-reject.phpt" role="test" />
+   <file md5sum="7e55ef38edc924b59680bc44aaa3aa85" name="tests/ext/priority_sampling/007-rule-service.phpt" role="test" />
+   <file md5sum="005948f39ccff97cddc08e21eb400be9" name="tests/ext/priority_sampling/008-rule-service-reject.phpt" role="test" />
+   <file md5sum="727fd19892fca9586830b59656313989" name="tests/ext/priority_sampling/009-rule-name-service.phpt" role="test" />
+   <file md5sum="25a55dac0134f297ec0aef6d1349ef0b" name="tests/ext/priority_sampling/010-rule-name-service-reject.phpt" role="test" />
+   <file md5sum="d5035356e7292b0f22ed21a4c70633d9" name="tests/ext/priority_sampling/011-preset.phpt" role="test" />
+   <file md5sum="8e90469592436fa3c3758d0ab2c63958" name="tests/ext/priority_sampling/012-default.phpt" role="test" />
+   <file md5sum="bd0180c8102c75ee73070e9338d63c61" name="tests/ext/priority_sampling/013-rule-service-mapped.phpt" role="test" />
+   <file md5sum="6503cbede5407687accbb325623ae2df" name="tests/ext/priority_sampling/014-rule-resource.phpt" role="test" />
+   <file md5sum="7d7aa64611a63b712bbc8fc532d96fa5" name="tests/ext/priority_sampling/015-rule-resource-reject.phpt" role="test" />
+   <file md5sum="d186aaae9964c9ca391ea0674019825a" name="tests/ext/priority_sampling/016-rule-tag.phpt" role="test" />
+   <file md5sum="b6018d70c5e15e4556b5cd7a270a9f18" name="tests/ext/priority_sampling/017-rule-tag-reject.phpt" role="test" />
+   <file md5sum="0c0b9be7aa9e753be20ab6634e5ec135" name="tests/ext/priority_sampling/018-manual.drop.phpt" role="test" />
+   <file md5sum="8aa588c2b2ec00fa0d80695eaf7e9527" name="tests/ext/priority_sampling/019-manual.keep.phpt" role="test" />
+   <file md5sum="974dc2d544e3d1c4a7d3193af486a72b" name="tests/ext/priority_sampling/020-rule-nonroot.phpt" role="test" />
+   <file md5sum="576b48da968eb3711de1b00921fc5fb2" name="tests/ext/priority_sampling/021-rule-name-as-glob-with-question-mark.phpt" role="test" />
+   <file md5sum="8f52ab7b94ce9608d39440ea57a61bac" name="tests/ext/priority_sampling/022-rule-name-as-glob-with-multiple-criterias.phpt" role="test" />
+   <file md5sum="c50e52616fc1b89b887402d45824ae80" name="tests/ext/priority_sampling/023-manual.keep-distributed_overwrite.phpt" role="test" />
+   <file md5sum="e54e9ee61b4151d5be8c251bbaafb14a" name="tests/ext/priority_sampling/024-deterministic-sampling.phpt" role="test" />
+   <file md5sum="1a6eb5ef78195617fc283e47ccb19e78" name="tests/ext/priority_sampling/asm-standalone.phpt" role="test" />
+   <file md5sum="1f026bca92fe69ed19214de2d1363421" name="tests/ext/priority_sampling/gh-1828.phpt" role="test" />
+   <file md5sum="a4ecd5ce5be9700e757e3753daf31f69" name="tests/ext/priority_sampling/invalid-json-rule.phpt" role="test" />
+   <file md5sum="07bfe7521c2be1d1f10414dd0b69d13f" name="tests/ext/priority_sampling/invalid-regex-rule.phpt" role="test" />
+   <file md5sum="8be708801bf5f9fb70bf23240f6dc019" name="tests/ext/priority_sampling/manual_global_override.phpt" role="test" />
+   <file md5sum="0448ec813d047c68b258162fbcb85aad" name="tests/ext/profiling/runtime_id_01.phpt" role="test" />
+   <file md5sum="f49e67996264b1f3df13edecceb361ad" name="tests/ext/profiling/runtime_id_02.phpt" role="test" />
+   <file md5sum="6fbfaf0a2967c023acb38f407fa4c008" name="tests/ext/read_c_configuration.phpt" role="test" />
+   <file md5sum="5cdb299ecd1752884814c8d5c0d41559" name="tests/ext/referrer_extraction_01.phpt" role="test" />
+   <file md5sum="8bf6e654571b241b57b023d358f5f573" name="tests/ext/referrer_extraction_02.phpt" role="test" />
+   <file md5sum="70a4ae804dce3ea512d112ecb3c92def" name="tests/ext/referrer_extraction_03.phpt" role="test" />
+   <file md5sum="9551908c20e57cca8b1e1e266c997e3f" name="tests/ext/referrer_extraction_04.phpt" role="test" />
+   <file md5sum="21c76683b5690b73bf37f82bb0b6a396" name="tests/ext/referrer_extraction_05.phpt" role="test" />
+   <file md5sum="de01907a03451263b1ce65b629302d18" name="tests/ext/remote_config/dynamic_config_auto_update.phpt" role="test" />
+   <file md5sum="4132243ec5e19b31eaa8f488114fe21e" name="tests/ext/remote_config/dynamic_config_update.phpt" role="test" />
+   <file md5sum="776b84fd820776f6fd948a60eb9524a3" name="tests/ext/remote_config/remote_config.inc" role="test" />
+   <file md5sum="f4a20d248e5912dd11643ae9148c917f" name="tests/ext/request-replayer/dd_trace_agent_env.phpt" role="test" />
+   <file md5sum="ade51e4a3a6784ce95dfe30377431e9d" name="tests/ext/request-replayer/dd_trace_exception_span_event.phpt" role="test" />
+   <file md5sum="1e8e134cf318ac6e3f73e685f2d6cdaf" name="tests/ext/request-replayer/dd_trace_span_event.phpt" role="test" />
+   <file md5sum="f23eb8f2286d7dc876c3ef1b37152074" name="tests/ext/request-replayer/dd_trace_span_link_with_exception.phpt" role="test" />
+   <file md5sum="e7a1e3d4b4b09bf3ff547e209ed78715" name="tests/ext/request_timeout_01.phpt" role="test" />
+   <file md5sum="923c621e42ba511e0d6918556191a7e0" name="tests/ext/retrieve_128_bit_trace_id.phpt" role="test" />
+   <file md5sum="bd99e891b2638cd9a9ce1ffbc3d51b8e" name="tests/ext/root_span_http_client_ip.phpt" role="test" />
+   <file md5sum="8f931bf6eb4514474e7f0c16330d4a86" name="tests/ext/root_span_http_client_ip_custom_header.phpt" role="test" />
+   <file md5sum="f9d956ab33dfa0d56a70c4196eca1fb1" name="tests/ext/root_span_http_client_ip_duplicate_ip_headers.phpt" role="test" />
+   <file md5sum="3efc82653f9c1f458b8b83e1acd7713e" name="tests/ext/root_span_http_client_ip_x_forwarded_for.phpt" role="test" />
+   <file md5sum="bb9dba0d1f66384ed1bfbeb32be9da01" name="tests/ext/root_span_http_useragent.phpt" role="test" />
+   <file md5sum="a9d7d6e2bade2a95baee8586b1738b57" name="tests/ext/root_span_url_as_resource_names.phpt" role="test" />
+   <file md5sum="cae35d4f39bdefbdafa0071f44b8c125" name="tests/ext/root_span_url_as_resource_names_no_host.phpt" role="test" />
+   <file md5sum="c7eb6c44ce91f22643e3428864cd4e33" name="tests/ext/root_span_url_with_post_array.phpt" role="test" />
+   <file md5sum="247b4fd20a87cfa27a8c50ff7dfd6ac4" name="tests/ext/root_span_url_with_post_array_allowed.phpt" role="test" />
+   <file md5sum="bc4e321192a40ce823f7dfd190f0e147" name="tests/ext/root_span_url_with_post_fields.phpt" role="test" />
+   <file md5sum="34b6bdacaf7da4b0c7722c98709062c4" name="tests/ext/root_span_url_with_post_implicit_array_key.phpt" role="test" />
+   <file md5sum="b685a631fcf51722ef45d5c38a260954" name="tests/ext/root_span_url_with_post_no_param.phpt" role="test" />
+   <file md5sum="8f61fd69cd7ccd4bdd12003712bec9df" name="tests/ext/root_span_url_with_post_no_param_set.phpt" role="test" />
+   <file md5sum="44923175ad8485203b30c46f51b2b814" name="tests/ext/root_span_url_with_post_only_allowed_params.phpt" role="test" />
+   <file md5sum="8e301f1b3d5e5152163312a8b741ee1f" name="tests/ext/root_span_url_with_post_simple_whitelist.phpt" role="test" />
+   <file md5sum="c088cf7c44af8b430f2b18ae08305995" name="tests/ext/root_span_url_with_query_params.phpt" role="test" />
+   <file md5sum="ea3abce8d9ed1d1f384be125e80e0848" name="tests/ext/root_span_url_with_query_params_obfuscation.phpt" role="test" />
+   <file md5sum="8ac3bdae331055766b121b6930a84681" name="tests/ext/root_span_url_with_query_params_obfuscation_empty.phpt" role="test" />
+   <file md5sum="06d7f8bce68d03b4ad4a9d02761867e5" name="tests/ext/root_span_url_with_query_params_whitelist.phpt" role="test" />
+   <file md5sum="a7293e77872ab3281ed3d47258308ecf" name="tests/ext/root_span_url_without_query_params.phpt" role="test" />
+   <file md5sum="b92adcd0985bc036a3a06d5008e54db1" name="tests/ext/runtime_ini_env_version_change.phpt" role="test" />
+   <file md5sum="f7d0a018fe8d0e5694098149e2b9aac2" name="tests/ext/sandbox-prehook/access_modifier_method_access_hook.phpt" role="test" />
+   <file md5sum="1ad85c463870512ab00b07c24750f9fc" name="tests/ext/sandbox-prehook/access_modifier_property_access_hook.phpt" role="test" />
+   <file md5sum="198c6084fa4266823bec0a728655df8a" name="tests/ext/sandbox-prehook/args_copy_before_mutation.phpt" role="test" />
+   <file md5sum="40d920aabeb8f0218e2814bd26996e0b" name="tests/ext/sandbox-prehook/close_on_exit.phpt" role="test" />
+   <file md5sum="8b1c115cb1e0f35057cee2e4e6410643" name="tests/ext/sandbox-prehook/closure_arg_exception.phpt" role="test" />
+   <file md5sum="3aa8cd74dba4743c7b1e8e573911d0a5" name="tests/ext/sandbox-prehook/closure_arg_retval.phpt" role="test" />
+   <file md5sum="c84a1e002ec9b74149ccaf00e137a692" name="tests/ext/sandbox-prehook/dd_trace_function_internal.phpt" role="test" />
+   <file md5sum="d97cebf9316d221f7683445abd852a2e" name="tests/ext/sandbox-prehook/dd_trace_function_userland.phpt" role="test" />
+   <file md5sum="032160cfc32d71a01ea0a34c29b9e033" name="tests/ext/sandbox-prehook/dd_trace_method.phpt" role="test" />
+   <file md5sum="649fe07a7ca795464fd1d8cf62a4cda2" name="tests/ext/sandbox-prehook/dd_trace_method_binds_called_object.phpt" role="test" />
+   <file md5sum="899f3a9f94fd65806c043db18fdef3d4" name="tests/ext/sandbox-prehook/drop_spans.phpt" role="test" />
+   <file md5sum="0d7f4bffc2a4a8586c9c6c566f883b96" name="tests/ext/sandbox-prehook/exception_error_log.phpt" role="test" />
+   <file md5sum="eed69698747b7b6387f7d545fc2003bf" name="tests/ext/sandbox-prehook/exception_handling.phpt" role="test" />
+   <file md5sum="2af1080ef629086e7dff4608f7ae4159" name="tests/ext/sandbox-prehook/exceptions_and_errors_are_ignored_in_tracing_closure.phpt" role="test" />
+   <file md5sum="501b12b1a730f833ed4b7c08d2cc3e2f" name="tests/ext/sandbox-prehook/exit_and_drop_span.phpt" role="test" />
+   <file md5sum="948dcbf7a67367d46b25089cf92b4e68" name="tests/ext/sandbox-prehook/keep_spans_in_limited_tracing_userland_functions.phpt" role="test" />
+   <file md5sum="202a6b1c06637b765f8a969edfe531e5" name="tests/ext/sandbox-prehook/new_static.phpt" role="test" />
+   <file md5sum="9b247cb81bfa65b4c5f5779d5f03411c" name="tests/ext/sandbox-prehook/trace_static_method.phpt" role="test" />
+   <file md5sum="9ad87d81e1cfcde5492a652cb681ed0f" name="tests/ext/sandbox-prehook/variable_length_parameter_list.phpt" role="test" />
+   <file md5sum="692d2a320720eaa952e5cf74e758c7dc" name="tests/ext/sandbox-prehook/variadic_args_internal.phpt" role="test" />
+   <file md5sum="0e1c8cc87b80f3a53a73b1eb9dbfd77b" name="tests/ext/sandbox-regression/abstract_method_hook.phpt" role="test" />
+   <file md5sum="80664d3321764e993bc0d091e5c9908d" name="tests/ext/sandbox-regression/access_modifier_method_access_hook.phpt" role="test" />
+   <file md5sum="7146d0c6e5f92896afc7a06229ef5d4d" name="tests/ext/sandbox-regression/access_modifier_property_access_hook.phpt" role="test" />
+   <file md5sum="50d5ac855acbef110d6b3d306e8fcec4" name="tests/ext/sandbox-regression/allow_overriding_before_overrided_methods_functions_are_defined.phpt" role="test" />
+   <file md5sum="557e908d7bc69bdbd049154d60e6846b" name="tests/ext/sandbox-regression/case_insensitive_method_hook.phpt" role="test" />
+   <file md5sum="293880c0cdc93f58952eeb84352d6822" name="tests/ext/sandbox-regression/class_resolver_bailout_hook.phpt" role="test" />
+   <file md5sum="484507fa88706ec277208ef75c142d1f" name="tests/ext/sandbox-regression/closure_accessing_outside_variables.phpt" role="test" />
+   <file md5sum="442409c7eb73815d46e720843fd0bcab" name="tests/ext/sandbox-regression/closure_set_inside_object_methods.phpt" role="test" />
+   <file md5sum="fd61ef6193c88c63fce956239264cd00" name="tests/ext/sandbox-regression/dd_trace_tracer_is_limited_hard.phpt" role="test" />
+   <file md5sum="e09172e1e41562371187ccfcfcf09967" name="tests/ext/sandbox-regression/dd_trace_tracer_limiter_reset_flush.phpt" role="test" />
+   <file md5sum="b3528b673bb1768cc06125cc8b68a6df" name="tests/ext/sandbox-regression/destructor_called_when_this_gets_out_of_scope.phpt" role="test" />
+   <file md5sum="5a4ad4ee17dfc3b10e68ee713fc8b906" name="tests/ext/sandbox-regression/disable_tracing_disables_tracing.phpt" role="test" />
+   <file md5sum="5ffafc419bd5d2abd4383331e7283294" name="tests/ext/sandbox-regression/do_not_check_if_class_or_function_exists_by_default.phpt" role="test" />
+   <file md5sum="a689413b665a107a6eed00bb1c9f96c5" name="tests/ext/sandbox-regression/extension_disabled.phpt" role="test" />
+   <file md5sum="633a97f1956617bf913d6828d9ef4229" name="tests/ext/sandbox-regression/handle_many_hooks.phpt" role="test" />
+   <file md5sum="15d110a311864e70e064787e9549a112" name="tests/ext/sandbox-regression/limiter_reset_flush_with_open_spans.phpt" role="test" />
+   <file md5sum="37aba04b3240a0e80b11a22540e253ab" name="tests/ext/sandbox-regression/method_invoked_via_reflection.phpt" role="test" />
+   <file md5sum="472d542cab3063e3bcdac866ed42f9c1" name="tests/ext/sandbox-regression/method_returning_array.phpt" role="test" />
+   <file md5sum="8d76fed18a82f02289571f40e7d521b0" name="tests/ext/sandbox-regression/multiple_instrumentations.phpt" role="test" />
+   <file md5sum="2bdc1d2079a20ff90c1888f19d43f509" name="tests/ext/sandbox-regression/namespaces.phpt" role="test" />
+   <file md5sum="be1b313ae3a0b3c78094d1d092917284" name="tests/ext/sandbox-regression/nested_dropped_spans.phpt" role="test" />
+   <file md5sum="30c7d25dee9eb2f5939c6a52c25bf5c5" name="tests/ext/sandbox-regression/overriding_construct.phpt" role="test" />
+   <file md5sum="3211b7982f00acd91ac5ee6fdc58833c" name="tests/ext/sandbox-regression/overriding_method_defined_in_parent.phpt" role="test" />
+   <file md5sum="65d956d26ae3bea9430f780b45b8f15a" name="tests/ext/sandbox-regression/private_method_hook.phpt" role="test" />
+   <file md5sum="5fb44861735817888fc2c46798499909" name="tests/ext/sandbox-regression/private_self_access.phpt" role="test" />
+   <file md5sum="be0a5c413e963fa221ff3f6a5ce0e9f3" name="tests/ext/sandbox-regression/protected_method_hook.phpt" role="test" />
+   <file md5sum="82c74a0d037e48133419cd33a9e8fdcf" name="tests/ext/sandbox-regression/recursion.phpt" role="test" />
+   <file md5sum="eed5ea1a21e7cbf68fcc873f9295e068" name="tests/ext/sandbox-regression/reset_configured_overrides.phpt" role="test" />
+   <file md5sum="58327d4d44a1acf87a5ecd065bdf48f1" name="tests/ext/sandbox-regression/reset_function_tracing.phpt" role="test" />
+   <file md5sum="b142972eb949d5678dc051972b78a0d4" name="tests/ext/sandbox-regression/return_value_passed.phpt" role="test" />
+   <file md5sum="f51c1a865060274617b7ca0d69444cd1" name="tests/ext/sandbox-regression/simple_function_hook.phpt" role="test" />
+   <file md5sum="0951b164d39692b3665cd24f44233149" name="tests/ext/sandbox-regression/simple_method_hook.phpt" role="test" />
+   <file md5sum="de4c6c2aafa7e11d7424f0cd58eead42" name="tests/ext/sandbox-regression/throw_exception.phpt" role="test" />
+   <file md5sum="b94d81b6c9712c966611a1ce850d1a6c" name="tests/ext/sandbox-regression/trace_method_or_function_that_will_exist_later.phpt" role="test" />
+   <file md5sum="40277c5ae394cfa5d191deb4f36a008f" name="tests/ext/sandbox-regression/trace_static_method.phpt" role="test" />
+   <file md5sum="3b77b0d259be82049577947015c4db97" name="tests/ext/sandbox-regression/trampoline_install_fake_closure_hook.phpt" role="test" />
+   <file md5sum="62b2d3d36b1373dc2c4e4ca02989ca3a" name="tests/ext/sandbox-regression/uncaught_exception_with_finally.phpt" role="test" />
+   <file md5sum="3ece144377dc0d033799e10aa9092260" name="tests/ext/sandbox-regression/used_dispatch_should_not_free.phpt" role="test" />
+   <file md5sum="b1b2940681160ba7377889980e34ee43" name="tests/ext/sandbox-regression/variable_length_parameter_list.phpt" role="test" />
+   <file md5sum="f7d0022c94f2e9cf7dbc325e12b79f48" name="tests/ext/sandbox-regression/very_nested_functions.phpt" role="test" />
+   <file md5sum="a191297c1c7d6d08e0be155c74cf24bd" name="tests/ext/sandbox-regression/with_params_function_hook.phpt" role="test" />
+   <file md5sum="a28b28ddc5f04d96386cd05a4296f8b6" name="tests/ext/sandbox-regression/with_params_method_hook.phpt" role="test" />
+   <file md5sum="22ccd92aefdfa7b8e4ca58403fa24f9f" name="tests/ext/sandbox/abstract_trait_hook.phpt" role="test" />
+   <file md5sum="17f326afa063bdcbcb4d127631579dbe" name="tests/ext/sandbox/abstract_trait_hook_inherit.phpt" role="test" />
+   <file md5sum="509d7db6c4f1c4e2f4243f399efa4c9f" name="tests/ext/sandbox/auto_flush.phpt" role="test" />
+   <file md5sum="f9f2564d0920a36f4a2aaea257d298ed" name="tests/ext/sandbox/auto_flush_attach_exception.phpt" role="test" />
+   <file md5sum="5e3744738d8edfa6024f03897f5155d1" name="tests/ext/sandbox/auto_flush_disables_tracing.phpt" role="test" />
+   <file md5sum="12e8aeb4f62d46f2b097906fa0df91d8" name="tests/ext/sandbox/auto_flush_sandbox_exception.phpt" role="test" />
+   <file md5sum="2c269e4c56ce653f0ad9c939dd8ae123" name="tests/ext/sandbox/auto_flush_userland_root_span.phpt" role="test" />
+   <file md5sum="029d78397ad9b027e3f272bd6dea2a3a" name="tests/ext/sandbox/cake_01.phpt" role="test" />
+   <file md5sum="9b9be7d96feecf1365d8a9166c7a8818" name="tests/ext/sandbox/cake_02.phpt" role="test" />
+   <file md5sum="83723883e22f5827f137941dcf0f2a54" name="tests/ext/sandbox/close-on-exit-retval.phpt" role="test" />
+   <file md5sum="00ea0b2cb8f5ffc7092a566fcfe7ecb6" name="tests/ext/sandbox/close-on-exit.phpt" role="test" />
+   <file md5sum="1b767e1e70fd9a365c9a30d86614b3da" name="tests/ext/sandbox/dd_dumper.inc" role="test" />
+   <file md5sum="308a26e3b354d8f23459647046436170" name="tests/ext/sandbox/dd_trace_closed_spans_count.phpt" role="test" />
+   <file md5sum="180351e3f4e198c197c36259cbbd09a2" name="tests/ext/sandbox/dd_trace_function_alias.phpt" role="test" />
+   <file md5sum="9bc53fc0a40c834200ac76c0d7eef7ae" name="tests/ext/sandbox/dd_trace_function_alias_overwrite.phpt" role="test" />
+   <file md5sum="41cf4740ae636cb23837ab100ed14dea" name="tests/ext/sandbox/dd_trace_function_complex.phpt" role="test" />
+   <file md5sum="364277054e5b2331b2ccad447ab35d53" name="tests/ext/sandbox/dd_trace_function_internal.phpt" role="test" />
+   <file md5sum="300ad8b40ad50224185bd84056afa210" name="tests/ext/sandbox/dd_trace_function_userland.phpt" role="test" />
+   <file md5sum="ed09ad1ee38dbe4061d6937e61fee4bf" name="tests/ext/sandbox/dd_trace_method.phpt" role="test" />
+   <file md5sum="15360d5b03ba458dda5c937dceaf15e0" name="tests/ext/sandbox/dd_trace_method_alias.phpt" role="test" />
+   <file md5sum="5a73f15f180f9637a9bb8b40725f094b" name="tests/ext/sandbox/dd_trace_method_binds_called_object.phpt" role="test" />
+   <file md5sum="d304fd0c675898700a639295898bc762" name="tests/ext/sandbox/default_span_properties.phpt" role="test" />
+   <file md5sum="88064cddd31dce0bca510c5626f2ec0a" name="tests/ext/sandbox/default_span_properties_method.phpt" role="test" />
+   <file md5sum="eb4a4fcfa9592b2d0d1a12279f6a463f" name="tests/ext/sandbox/deferred_load_attempt_loading_once.phpt" role="test" />
+   <file md5sum="9d32585232405de007728900a3a6858b" name="tests/ext/sandbox/deferred_load_fatal.phpt" role="test" />
+   <file md5sum="09aee0991c2da81f88edd758717370a4" name="tests/ext/sandbox/deferred_load_missing_interface.phpt" role="test" />
+   <file md5sum="a24099dd9de5628c7812d2c2caa96ad7" name="tests/ext/sandbox/deferred_load_using_function.phpt" role="test" />
+   <file md5sum="06348a3dac13c0f8e5f7736aa464e16c" name="tests/ext/sandbox/die_in_sandbox.phpt" role="test" />
+   <file md5sum="628204432be6db85ecad246e921b04d1" name="tests/ext/sandbox/drop_spans.phpt" role="test" />
+   <file md5sum="80238a40e733d04fc3ffb555c54065a8" name="tests/ext/sandbox/errors_are_flagged_from_userland.phpt" role="test" />
+   <file md5sum="3aaa17738661e9fb8e4d93ed5d2e275e" name="tests/ext/sandbox/exception_does_not_close_span_that_catches.phpt" role="test" />
+   <file md5sum="8b04cde1e69236c9d3ed207bd3bcb899" name="tests/ext/sandbox/exception_error_log.phpt" role="test" />
+   <file md5sum="892c172751b939ec8a18d2627ca1adac" name="tests/ext/sandbox/exception_from_user_error_handler_internal.phpt" role="test" />
+   <file md5sum="ac2a85a5656dd5ee5dcf38a80fe22425" name="tests/ext/sandbox/exception_handled_for_correct_catch_block.phpt" role="test" />
+   <file md5sum="c59852e712176002b0b3541d9cf9b0d4" name="tests/ext/sandbox/exception_handled_in_correct_catch_frame.phpt" role="test" />
+   <file md5sum="05bdb6e0dcdf5e3fe91c455abfe0be34" name="tests/ext/sandbox/exception_handled_in_multicatch.phpt" role="test" />
+   <file md5sum="684c25818bb2258c93197e59b9cb16ea" name="tests/ext/sandbox/exception_handled_with_finally.phpt" role="test" />
+   <file md5sum="f7fb2d949b2cf43a76552ab639878aa9" name="tests/ext/sandbox/exception_handling.phpt" role="test" />
+   <file md5sum="52b73a21fbb7ab052f25dc9341c415dd" name="tests/ext/sandbox/exception_is_defined.phpt" role="test" />
+   <file md5sum="798448ca3a82fd199da891353e059e02" name="tests/ext/sandbox/exceptions_and_errors_are_ignored_in_tracing_closure.phpt" role="test" />
+   <file md5sum="fbbd82892e2a774c73476edbe977ea89" name="tests/ext/sandbox/exceptions_are_passed_to_the_tracing_closure.phpt" role="test" />
+   <file md5sum="e24cb0676de5c5b6ba0106a9ed98c22b" name="tests/ext/sandbox/exceptions_in_original_call_rethrown_in_tracing_closure.phpt" role="test" />
+   <file md5sum="3abacd4e037b1a59bcb69aa5eb9dc23d" name="tests/ext/sandbox/exceptions_in_tracing_closure_and_original_call.phpt" role="test" />
+   <file md5sum="e599bc52537e0cf72029692e6421f5f6" name="tests/ext/sandbox/exit_and_drop_span.phpt" role="test" />
+   <file md5sum="6bf5a6044d6744348635257f29777baa" name="tests/ext/sandbox/fatal_errors_are_tracked_001.phpt" role="test" />
+   <file md5sum="6b0bcd6f8456b709890670b75a811eeb" name="tests/ext/sandbox/fatal_errors_are_tracked_002.phpt" role="test" />
+   <file md5sum="24ed2a0a5fd5c2ed163c738defa789c5" name="tests/ext/sandbox/fatal_errors_are_tracked_003.phpt" role="test" />
+   <file md5sum="b0ad90d2f88c712c9489ab668c4d385f" name="tests/ext/sandbox/fatal_errors_are_tracked_004.phpt" role="test" />
+   <file md5sum="4ff746816cc04a4788ae92573492de09" name="tests/ext/sandbox/fatal_errors_are_tracked_005.phpt" role="test" />
+   <file md5sum="bec7d547fb58200396b7468a8fb08d6d" name="tests/ext/sandbox/fatal_errors_ignored_in_shutdown.phpt" role="test" />
+   <file md5sum="c3b49dea0349b1ca3aaff76c84d5bc8d" name="tests/ext/sandbox/fatal_errors_ignored_in_tracing_closure.phpt" role="test" />
+   <file md5sum="ed38c8d7fcabe4758f546b40cae93848" name="tests/ext/sandbox/generator.phpt" role="test" />
+   <file md5sum="99069ef46daf2f7b497079cf839d03ed" name="tests/ext/sandbox/generator_in_object.phpt" role="test" />
+   <file md5sum="43c7628c564ac6ffa00bb2e2a833ab76" name="tests/ext/sandbox/generator_with_exception.phpt" role="test" />
+   <file md5sum="cb4b93edb454bc0c69ab3ec637976955" name="tests/ext/sandbox/generator_with_return.phpt" role="test" />
+   <file md5sum="1de26318320f406a4bda18f528e70a4f" name="tests/ext/sandbox/generator_yield_from.phpt" role="test" />
+   <file md5sum="bc17a778e5109ad27a0dd29dd3b7fc9f" name="tests/ext/sandbox/get_last_error.phpt" role="test" />
+   <file md5sum="c439f49f4df0960f4fc586ad81564e6d" name="tests/ext/sandbox/hook_function/01.phpt" role="test" />
+   <file md5sum="5abaed64414c1e1fb3c1c8dcc4104bd4" name="tests/ext/sandbox/hook_function/02.phpt" role="test" />
+   <file md5sum="636c530df0f9ef0e20b31756f36655d8" name="tests/ext/sandbox/hook_function/03.phpt" role="test" />
+   <file md5sum="a4d7dfb51e1f8dc37e452c26edc179cf" name="tests/ext/sandbox/hook_function/dropping_trace_hook.phpt" role="test" />
+   <file md5sum="b86b41e67a3cdb880404b635998d1b7f" name="tests/ext/sandbox/hook_function/hook_does_not_leak_error.phpt" role="test" />
+   <file md5sum="d039731ef0ecfb09453badf2571ddb8e" name="tests/ext/sandbox/hook_function/hook_internal_fake_closure.phpt" role="test" />
+   <file md5sum="7050b5c78756183b071d9c6d78afc5d1" name="tests/ext/sandbox/hook_function/posthook_01.phpt" role="test" />
+   <file md5sum="e0a39902e652a314582f718b084fb5e9" name="tests/ext/sandbox/hook_function/posthook_02.phpt" role="test" />
+   <file md5sum="d29ac51f9147cbec5a3ee6569d4a7e92" name="tests/ext/sandbox/hook_function/posthook_03.phpt" role="test" />
+   <file md5sum="41eabce1195216b6b10cdfbb0adf3598" name="tests/ext/sandbox/hook_function/posthook_access_01.phpt" role="test" />
+   <file md5sum="3c6b149b53c07195ebdbcea2a05db1a6" name="tests/ext/sandbox/hook_function/posthook_error_01.phpt" role="test" />
+   <file md5sum="316d68300c3bd2da7f1a947c55aab631" name="tests/ext/sandbox/hook_function/posthook_error_02.phpt" role="test" />
+   <file md5sum="0fbaf849402b6545dbf79da47dee97e3" name="tests/ext/sandbox/hook_function/posthook_exceptions_01.phpt" role="test" />
+   <file md5sum="02b846b221f85d8a347c1e29d20b7a6d" name="tests/ext/sandbox/hook_function/posthook_exceptions_02.phpt" role="test" />
+   <file md5sum="06a114eafa4bbdfad8e3135e1bc2869e" name="tests/ext/sandbox/hook_function/posthook_exceptions_03.phpt" role="test" />
+   <file md5sum="22a71c4302b04e3632b3204038b20760" name="tests/ext/sandbox/hook_function/posthook_exceptions_04.phpt" role="test" />
+   <file md5sum="39c75b6ff86138b9029589cee624eef6" name="tests/ext/sandbox/hook_function/posthook_exit_01.phpt" role="test" />
+   <file md5sum="fcd8590ea912e61ec6473a86ddce4cbe" name="tests/ext/sandbox/hook_function/posthook_exit_02.phpt" role="test" />
+   <file md5sum="9d8f26388f1c1537a191514238ff9e8f" name="tests/ext/sandbox/hook_function/posthook_limited_01.phpt" role="test" />
+   <file md5sum="0dc2c5bcd1e8d4de317cef48451025cb" name="tests/ext/sandbox/hook_function/posthook_variadic.phpt" role="test" />
+   <file md5sum="29e15a25934f73d2f7f3b27919155494" name="tests/ext/sandbox/hook_function/prehook_01.phpt" role="test" />
+   <file md5sum="fcaf2d44d52cb1a24a149b4267bdb24c" name="tests/ext/sandbox/hook_function/prehook_02.phpt" role="test" />
+   <file md5sum="e6664c25d7cf408c464fe20dfa8d4019" name="tests/ext/sandbox/hook_function/prehook_03.phpt" role="test" />
+   <file md5sum="8886c1fe181bc1bb492e365a03041065" name="tests/ext/sandbox/hook_function/prehook_access_01.phpt" role="test" />
+   <file md5sum="a9d6fd5b1fd32758f45e503f825474de" name="tests/ext/sandbox/hook_function/prehook_error_01.phpt" role="test" />
+   <file md5sum="3553ade9636c0f399bac8f43bd8cd90c" name="tests/ext/sandbox/hook_function/prehook_error_02.phpt" role="test" />
+   <file md5sum="3291fa673266adce84919f0257d5203b" name="tests/ext/sandbox/hook_function/prehook_exceptions_01.phpt" role="test" />
+   <file md5sum="17a5285915a16d8792f344f42255c968" name="tests/ext/sandbox/hook_function/prehook_exceptions_02.phpt" role="test" />
+   <file md5sum="fcf8e5e8a16e9f2d02f446896a609db4" name="tests/ext/sandbox/hook_function/prehook_exceptions_03.phpt" role="test" />
+   <file md5sum="de1db8972ca987dfc54fefeb3363e667" name="tests/ext/sandbox/hook_function/prehook_exceptions_04.phpt" role="test" />
+   <file md5sum="91e7a8d8bd6f1e7308de68ca5a73b314" name="tests/ext/sandbox/hook_function/prehook_variadic.phpt" role="test" />
+   <file md5sum="adf6360a2608fd8912d540ee1b1f73a0" name="tests/ext/sandbox/hook_function/recursion.phpt" role="test" />
+   <file md5sum="260d6da6e1e9cf4cdb543f3e4266cc23" name="tests/ext/sandbox/hook_limit.phpt" role="test" />
+   <file md5sum="476da075eff25627f23fb3eb83458c43" name="tests/ext/sandbox/hook_method/01.phpt" role="test" />
+   <file md5sum="aa4523bc561750d05d7cd2ea97922753" name="tests/ext/sandbox/hook_method/02.phpt" role="test" />
+   <file md5sum="9daa9f9304e23aad7a3de9abe5ee8dc0" name="tests/ext/sandbox/hook_method/03.phpt" role="test" />
+   <file md5sum="11939da9ee2408560faabfdd7e448efc" name="tests/ext/sandbox/hook_method/hook_extended_internal_class.phpt" role="test" />
+   <file md5sum="723edb6def04d536ee0f120c542395fb" name="tests/ext/sandbox/hook_method/posthook_01.phpt" role="test" />
+   <file md5sum="d5d7b8e16f8e21defad0d544e07a5840" name="tests/ext/sandbox/hook_method/posthook_02.phpt" role="test" />
+   <file md5sum="d297503b16902f3490e65a21e5436d8f" name="tests/ext/sandbox/hook_method/posthook_03.phpt" role="test" />
+   <file md5sum="29d0eb211ecf0bdbd780572b8691173e" name="tests/ext/sandbox/hook_method/posthook_04.phpt" role="test" />
+   <file md5sum="1729548028ae3f42ab94f3020045162a" name="tests/ext/sandbox/hook_method/posthook_05.phpt" role="test" />
+   <file md5sum="1fc5cfa3241ff8b326ea38763039b694" name="tests/ext/sandbox/hook_method/posthook_06.phpt" role="test" />
+   <file md5sum="2d1daf4dcf1102a12e5f1ac81144039f" name="tests/ext/sandbox/hook_method/posthook_07.phpt" role="test" />
+   <file md5sum="eda348f81c4c286af881ac6491c84df5" name="tests/ext/sandbox/hook_method/posthook_access_01.phpt" role="test" />
+   <file md5sum="175a94c44245d1a2b71547880e171f68" name="tests/ext/sandbox/hook_method/posthook_error_01.phpt" role="test" />
+   <file md5sum="d3a8554f012f60784ed6f1111f79606f" name="tests/ext/sandbox/hook_method/posthook_error_02.phpt" role="test" />
+   <file md5sum="43ccf8721655f59fdd9d3eace985b124" name="tests/ext/sandbox/hook_method/posthook_exceptions_01.phpt" role="test" />
+   <file md5sum="a360357ec2a34b57ee9cd5f5512a1f2b" name="tests/ext/sandbox/hook_method/posthook_exceptions_02.phpt" role="test" />
+   <file md5sum="cf4574afab0695f58642c2b0c3d09a8d" name="tests/ext/sandbox/hook_method/posthook_exit_01.phpt" role="test" />
+   <file md5sum="c6b61669294875bdb16c1203358ea6d9" name="tests/ext/sandbox/hook_method/posthook_exit_02.phpt" role="test" />
+   <file md5sum="408c8321a66bef760b37d0d2ea6842f5" name="tests/ext/sandbox/hook_method/posthook_scope_01.phpt" role="test" />
+   <file md5sum="460c912c15dee50d17c5af8473a01235" name="tests/ext/sandbox/hook_method/posthook_scope_02.phpt" role="test" />
+   <file md5sum="783ea854e310019b42ba7a5801c54f72" name="tests/ext/sandbox/hook_method/posthook_scope_03.phpt" role="test" />
+   <file md5sum="91c01a2a900eab97e589cf2b3eb5c3b2" name="tests/ext/sandbox/hook_method/posthook_span_ids_01.phpt" role="test" />
+   <file md5sum="ea662baef58b7345e683df21e9b7c7fe" name="tests/ext/sandbox/hook_method/posthook_span_ids_02.phpt" role="test" />
+   <file md5sum="7f62def65b4d410537854f179183efe3" name="tests/ext/sandbox/hook_method/prehook_01.phpt" role="test" />
+   <file md5sum="c7337cc6578151476271dad36125b1d7" name="tests/ext/sandbox/hook_method/prehook_02.phpt" role="test" />
+   <file md5sum="35138b4f5aaef831811d570ad9fd9484" name="tests/ext/sandbox/hook_method/prehook_03.phpt" role="test" />
+   <file md5sum="dd267b57ef2916f5b81df224b95e78d8" name="tests/ext/sandbox/hook_method/prehook_04.phpt" role="test" />
+   <file md5sum="1e011e2ba574fb6645f4ad9abcdc4339" name="tests/ext/sandbox/hook_method/prehook_05.phpt" role="test" />
+   <file md5sum="2e1dd7a61604a32b637cc2f26f9be456" name="tests/ext/sandbox/hook_method/prehook_access_01.phpt" role="test" />
+   <file md5sum="f22f6834ebb1f100e8631206c2a6049e" name="tests/ext/sandbox/hook_method/prehook_error_01.phpt" role="test" />
+   <file md5sum="db1ddf65171ddb141668c75590f163c4" name="tests/ext/sandbox/hook_method/prehook_error_02.phpt" role="test" />
+   <file md5sum="f64faa1de9809f7e10724d0ab3ee7867" name="tests/ext/sandbox/hook_method/prehook_exceptions_01.phpt" role="test" />
+   <file md5sum="c9eaac2daeb46d1ed6084a221866a5d6" name="tests/ext/sandbox/hook_method/prehook_exceptions_02.phpt" role="test" />
+   <file md5sum="d95a82f376b1b78c9d087b7c1be5b839" name="tests/ext/sandbox/hook_method/prehook_scope_01.phpt" role="test" />
+   <file md5sum="7a52aa999141e4e2c402872ae17f76b7" name="tests/ext/sandbox/hook_method/prehook_scope_02.phpt" role="test" />
+   <file md5sum="b6fa5b234f0d7cba585185ef3e3811ab" name="tests/ext/sandbox/hook_method/prehook_scope_03.phpt" role="test" />
+   <file md5sum="f4a68f86fcc60ec362c0556467395b5e" name="tests/ext/sandbox/hook_method/prehook_span_ids_01.phpt" role="test" />
+   <file md5sum="e4414eb6791b573ab8c96a1788a0ded6" name="tests/ext/sandbox/hook_method/prehook_span_ids_02.phpt" role="test" />
+   <file md5sum="cb9b82c095f636fc3f016b5688363ddf" name="tests/ext/sandbox/install_hook/allow_nested_hook.phpt" role="test" />
+   <file md5sum="2c727547f93a11fbe9ec17908348f3e2" name="tests/ext/sandbox/install_hook/exclude_inherited_hook.phpt" role="test" />
+   <file md5sum="3064364727082e0dd0d79a763bdb8042" name="tests/ext/sandbox/install_hook/get_source_file.phpt" role="test" />
+   <file md5sum="b1dccb88a1ca1e03bc3204e933258e4e" name="tests/ext/sandbox/install_hook/hook_file.phpt" role="test" />
+   <file md5sum="bb8f4677535c3f1f0b295ef978620446" name="tests/ext/sandbox/install_hook/hook_internal_fake_closure.phpt" role="test" />
+   <file md5sum="dbfe7cfa1075e25ecb9d423b7be51aaf" name="tests/ext/sandbox/install_hook/hook_internal_inherited_constructor.phpt" role="test" />
+   <file md5sum="31d00acc2a9c99fed8279190f9f7d813" name="tests/ext/sandbox/install_hook/hook_not_invoked_if_tracer_disabled.phpt" role="test" />
+   <file md5sum="6169ceb58e73c3b389d029748ce9fc75" name="tests/ext/sandbox/install_hook/hook_scoped_file.phpt" role="test" />
+   <file md5sum="6e4d279d1ddadf5b3de5e728131df58c" name="tests/ext/sandbox/install_hook/install_hook_return_by_ref.phpt" role="test" />
+   <file md5sum="47b905a8aed38357ed48bc755b3af5cb" name="tests/ext/sandbox/install_hook/override_argument_jit.phpt" role="test" />
+   <file md5sum="bfd224b19f70aee5239f2884c7b35551" name="tests/ext/sandbox/install_hook/override_default_argument.phpt" role="test" />
+   <file md5sum="e730091d3a8594bf3a4b8bf9bdffdde2" name="tests/ext/sandbox/install_hook/override_exception.phpt" role="test" />
+   <file md5sum="49adcb975b46c93645ba4b18966254d7" name="tests/ext/sandbox/install_hook/remove_executing_hook.phpt" role="test" />
+   <file md5sum="316fcdf3a9c7e3d3bb502b8b74e71693" name="tests/ext/sandbox/install_hook/remove_hook_null_logger.phpt" role="test" />
+   <file md5sum="f14645d4b60ae03f98e0ab5bdffc6977" name="tests/ext/sandbox/install_hook/replace_generator.phpt" role="test" />
+   <file md5sum="0e068681b42da938ed224ea10bd3de7f" name="tests/ext/sandbox/install_hook/replace_hook_args.phpt" role="test" />
+   <file md5sum="cfe7129ab92ee0da797dd51d2ffcad44" name="tests/ext/sandbox/install_hook/replace_hook_args_internal.phpt" role="test" />
+   <file md5sum="ae7eb1d4b239b79b21a2ff3fef2df311" name="tests/ext/sandbox/install_hook/replace_hook_retval.phpt" role="test" />
+   <file md5sum="2891b4dfd7214d6e8cfb985f97077e07" name="tests/ext/sandbox/install_hook/suppress_call.phpt" role="test" />
+   <file md5sum="e1cf808f131d38e9943c61c375ec9b3d" name="tests/ext/sandbox/install_hook/suppress_call_jit.phpt" role="test" />
+   <file md5sum="72dd305d9ae16eaabcba0c1c031de723" name="tests/ext/sandbox/install_hook/testinclude.inc" role="test" />
+   <file md5sum="ea45a25b76cf0ef0bf502582f52511af" name="tests/ext/sandbox/install_hook/trace_callable.phpt" role="test" />
+   <file md5sum="c7e60bc18cbcea74cfc77e6f2cdfe268" name="tests/ext/sandbox/install_hook/trace_closure.phpt" role="test" />
+   <file md5sum="e4bbe1dfec9bc1aea6bbb8e2ae0a1c93" name="tests/ext/sandbox/install_hook/trace_closure_from_callable.phpt" role="test" />
+   <file md5sum="de0fcb7b52f26372b8e3b9e759bec269" name="tests/ext/sandbox/install_hook/trace_closure_ge_php_84.phpt" role="test" />
+   <file md5sum="3b7076abc455702c315691515b9f488f" name="tests/ext/sandbox/install_hook/trace_file.phpt" role="test" />
+   <file md5sum="4055f275ba2d0d2dfc3f8b41348464ed" name="tests/ext/sandbox/install_hook/trace_function.phpt" role="test" />
+   <file md5sum="870807f4b6fc8c375341d004cca29ee8" name="tests/ext/sandbox/install_hook/trace_generator.phpt" role="test" />
+   <file md5sum="4acba6ed33c6076b2f4a30d3106393ba" name="tests/ext/sandbox/install_hook/trace_generator_ge_php_84.phpt" role="test" />
+   <file md5sum="4d38b071e91080d8f9ad9d8394870f3a" name="tests/ext/sandbox/install_hook/trace_generator_jit.phpt" role="test" />
+   <file md5sum="8c90d0c72bccda8591cce9b0c0c63033" name="tests/ext/sandbox/interface_hook.phpt" role="test" />
+   <file md5sum="541577003e245049ba3258a946380ceb" name="tests/ext/sandbox/interface_hook_internal.phpt" role="test" />
+   <file md5sum="d7df7ad47e7fc26264a6ca6f903fc77d" name="tests/ext/sandbox/interface_inherit_hook.phpt" role="test" />
+   <file md5sum="febbad00e3b5cbbeca86fa704faee59a" name="tests/ext/sandbox/interface_inherit_hook_explicit_reimplement.phpt" role="test" />
+   <file md5sum="5062f7ecfb47a174401f389ef15070d8" name="tests/ext/sandbox/interface_inherit_hook_multiple.phpt" role="test" />
+   <file md5sum="2f0b73850bbb51f3fe03071b39f0e2a0" name="tests/ext/sandbox/internal_hook_jit.phpt" role="test" />
+   <file md5sum="a4fba7c168fd97b1f1550f221b69bec9" name="tests/ext/sandbox/keep_spans_in_limited_tracing_internal_functions.phpt" role="test" />
+   <file md5sum="65c5ec8771b60af8f060a63205eda686" name="tests/ext/sandbox/keep_spans_in_limited_tracing_internal_methods.phpt" role="test" />
+   <file md5sum="f8535b14b21f97fde83c641e0d70985e" name="tests/ext/sandbox/keep_spans_in_limited_tracing_userland_functions.phpt" role="test" />
+   <file md5sum="11a5cd3774606a693b12a8e76b741b10" name="tests/ext/sandbox/keep_spans_in_limited_tracing_userland_methods.phpt" role="test" />
+   <file md5sum="977923dbb8eaa64e11e69679d6f6153f" name="tests/ext/sandbox/manual_flush.phpt" role="test" />
+   <file md5sum="eca317a14a0a9ae7f30d5c3fcfd2993f" name="tests/ext/sandbox/new_static.phpt" role="test" />
+   <file md5sum="b0bd71534c6073a63c99e0ee1b6f35b7" name="tests/ext/sandbox/non-zero_duration.phpt" role="test" />
+   <file md5sum="646be09ff644f483c3706375340fb030" name="tests/ext/sandbox/preinitialized_tracing_of_method.phpt" role="test" />
+   <file md5sum="2e67d4ec75f8b3a7b992dd26bc5529d6" name="tests/ext/sandbox/return_by_ref.phpt" role="test" />
+   <file md5sum="4856048418576fcc1ba2e9568f4c571e" name="tests/ext/sandbox/retval_is_null_with_exception.phpt" role="test" />
+   <file md5sum="cb89ef6bc7fd08d6abb8ff5de6279075" name="tests/ext/sandbox/safe_to_string_metadata.phpt" role="test" />
+   <file md5sum="46c7a070d4c85a0ee2e265d498983d5d" name="tests/ext/sandbox/safe_to_string_metadata_drops_invalid_keys.phpt" role="test" />
+   <file md5sum="dbbbfd3c93c1ee930296898284294cc8" name="tests/ext/sandbox/safe_to_string_metadata_ge_php_84.phpt" role="test" />
+   <file md5sum="884e9ae5daf774a15fcee4382fa522f3" name="tests/ext/sandbox/safe_to_string_metrics.phpt" role="test" />
+   <file md5sum="135ec0c6261f06e30ff5d3757d44996b" name="tests/ext/sandbox/safe_to_string_properties.phpt" role="test" />
+   <file md5sum="ca1574f3a13aba539396fb0899979f97" name="tests/ext/sandbox/span_clone.phpt" role="test" />
+   <file md5sum="8dca28b9f3729cd3d5a2a13348a815a5" name="tests/ext/sandbox/span_resource_serialization.phpt" role="test" />
+   <file md5sum="10fc7aa19db0a037079a611bf709c06b" name="tests/ext/sandbox/spans_out_of_sync_01.phpt" role="test" />
+   <file md5sum="719a336bc6847ee32abe32b79354d4fa" name="tests/ext/sandbox/spans_out_of_sync_02.phpt" role="test" />
+   <file md5sum="162e6b46dd0929af2d9bd4551529d598" name="tests/ext/sandbox/spans_out_of_sync_03.phpt" role="test" />
+   <file md5sum="07d9b6e090ccf8f89d4302c0c62cebb2" name="tests/ext/sandbox/spans_out_of_sync_04.phpt" role="test" />
+   <file md5sum="42d719a96c3e843fc891aaafeec03e86" name="tests/ext/sandbox/spans_out_of_sync_05.phpt" role="test" />
+   <file md5sum="7022c0bf6997b0cc934cd040b1263c0b" name="tests/ext/sandbox/spans_out_of_sync_06.phpt" role="test" />
+   <file md5sum="d8c79d5fd2b2e3fc19e6052e573ae60b" name="tests/ext/sandbox/static_tracing_closures_will_not_bind_this.phpt" role="test" />
+   <file md5sum="631b47e7a601b0aa30a33ead52a288a4" name="tests/ext/sandbox/variadic_args_internal.phpt" role="test" />
+   <file md5sum="900432722f7c906f3c88b24b355e7681" name="tests/ext/sandbox/variadic_no_args.phpt" role="test" />
+   <file md5sum="fc14eb194259312ec0f6a0a87ea8769c" name="tests/ext/sandbox/vm_var_types_return.phpt" role="test" />
+   <file md5sum="63598e6202c26693d89b738d39dad680" name="tests/ext/segfault_backtrace_disabled.phpt" role="test" />
+   <file md5sum="813ae2401be16b0bee3e24632842b074" name="tests/ext/segfault_backtrace_enabled.phpt" role="test" />
+   <file md5sum="e004cfabaa81a4bbe1fb855133729b6e" name="tests/ext/set_distributed_tracing_context_wrong_param.phpt" role="test" />
+   <file md5sum="693c69ee0ea6415f6e269372890d39fa" name="tests/ext/set_user_no_metadata.phpt" role="test" />
+   <file md5sum="6af76ab26858d33492df9133ae6fb076" name="tests/ext/set_user_with_metadata.phpt" role="test" />
+   <file md5sum="4b4b6570e51f30fd432ce094cf15a401" name="tests/ext/set_user_with_propagation_by_default.phpt" role="test" />
+   <file md5sum="2f540cd8a48f0f2cb910db2e74c2da6e" name="tests/ext/set_user_with_propagation_override_default.phpt" role="test" />
+   <file md5sum="adbd81f3e55921dad07f6459f4e6d910" name="tests/ext/set_user_without_propagation_override_default.phpt" role="test" />
+   <file md5sum="8e047c8bf930c26ec72fdeb38aea5a11" name="tests/ext/show_actual_active_span_in_hook.phpt" role="test" />
+   <file md5sum="e2ab887d2366d2606493c18df5df41a6" name="tests/ext/sidecar_disabled_when_telemetry_disabled.phpt" role="test" />
+   <file md5sum="7e86a5c010bc0f48edadfb745a1237f0" name="tests/ext/sidecar_enabled.phpt" role="test" />
+   <file md5sum="e4a7bc5035986454f2cdcb9a222c6408" name="tests/ext/single-span_sampling/accept-single-span.phpt" role="test" />
+   <file md5sum="e83898b848c38251a04725858c931ed5" name="tests/ext/single-span_sampling/check-sample-rate.phpt" role="test" />
+   <file md5sum="eac36836ab3d86d8c8e49667f41431b5" name="tests/ext/single-span_sampling/limited-single-span-with-match.phpt" role="test" />
+   <file md5sum="ec75b68d8445bdaedb455758cc2f450f" name="tests/ext/single-span_sampling/limited-single-span.phpt" role="test" />
+   <file md5sum="c80e0cd39f182a01cf268d207e2fcd17" name="tests/ext/single-span_sampling/name-matching-single-span.phpt" role="test" />
+   <file md5sum="9d3ea1882a099aff58889dcf4355397e" name="tests/ext/single-span_sampling/read-single-span-sampling-config-from-file.config.json" role="test" />
+   <file md5sum="74e64f883a6bed0679753c939e43c1a0" name="tests/ext/single-span_sampling/read-single-span-sampling-config-from-file.phpt" role="test" />
+   <file md5sum="cd71e387f5740a0f3d749d852fd1c608" name="tests/ext/span_create_observer.phpt" role="test" />
+   <file md5sum="d9c9aa32c59b6c54f47973ab11c230a7" name="tests/ext/span_on_close.phpt" role="test" />
+   <file md5sum="bb88b482205afa6eea68fc92b2ff94ae" name="tests/ext/span_stack/span_stack_clone.phpt" role="test" />
+   <file md5sum="94f6875140db1aa951e0426949fa41f2" name="tests/ext/span_stack/span_stack_swap.phpt" role="test" />
+   <file md5sum="94445e9521af56a1de58fb83b2639354" name="tests/ext/span_stack/span_stack_swap_traced_function.phpt" role="test" />
+   <file md5sum="1c0a30181fad30e5dd003292b51cb5ca" name="tests/ext/span_stack/span_trace_stack_autoclose.phpt" role="test" />
+   <file md5sum="10b50990afc8b866c20e3ed70a10af6b" name="tests/ext/span_stack/span_trace_swap.phpt" role="test" />
+   <file md5sum="7e559e9406500eedcca75f8eaef56428" name="tests/ext/span_stack/stack_dropped_parent.phpt" role="test" />
+   <file md5sum="960f309912c88540c289c23b179af6a2" name="tests/ext/span_stack/start_span_new_trace.phpt" role="test" />
+   <file md5sum="8502ae062b691b7420602381df819e56" name="tests/ext/span_stack/start_span_stack.phpt" role="test" />
+   <file md5sum="6c5d212ca8987a95c7edf2e7a7644886" name="tests/ext/span_stack/start_top_level_span_stack.phpt" role="test" />
+   <file md5sum="f3fb93e3184a427958e6c29b8fe18926" name="tests/ext/span_with_parent_property_access.phpt" role="test" />
+   <file md5sum="8b39d0e476a548ba7e9cd7dce959208c" name="tests/ext/span_with_removed_exception.phpt" role="test" />
+   <file md5sum="cf689a536b6a21255a57417f53c72672" name="tests/ext/start_span_with_all_properties.phpt" role="test" />
+   <file md5sum="b832157b91784a8aea998213d7b195f0" name="tests/ext/start_span_without_closing.phpt" role="test" />
+   <file md5sum="78558ac6b260d246ae3ea1d2dafd6b21" name="tests/ext/start_span_without_closing_autofinish.phpt" role="test" />
+   <file md5sum="f896200fc06723df4e1dc6d468d04e75" name="tests/ext/startup_logging.inc" role="test" />
+   <file md5sum="56927f9bedc7315d236fde0b7f132f7f" name="tests/ext/startup_logging.phpt" role="test" />
+   <file md5sum="4a3c218a7cd0f77a7311db6f292af674" name="tests/ext/startup_logging_config.phpt" role="test" />
+   <file md5sum="6b4059c24574b6c56785f44f834c1281" name="tests/ext/startup_logging_diagnostics.phpt" role="test" />
+   <file md5sum="fa34d01549abd68d30441905752247bf" name="tests/ext/startup_logging_disabled.phpt" role="test" />
+   <file md5sum="e4c33e552f15210c997ffdf65a7511c1" name="tests/ext/startup_logging_json.phpt" role="test" />
+   <file md5sum="57536992b42c696b9c7cad3dcf9145b1" name="tests/ext/startup_logging_json_config.phpt" role="test" />
+   <file md5sum="4ef1f137d607c580a3a41a47a116124d" name="tests/ext/startup_logging_skipif.inc" role="test" />
+   <file md5sum="ca200ff6d6ca0c57e754faa6dac0f069" name="tests/ext/startup_logging_skipif_unix.inc" role="test" />
+   <file md5sum="b7b6430b32dcbec2cad24cb8f74c607f" name="tests/ext/startup_logging_skipif_unix_83.inc" role="test" />
+   <file md5sum="71625b9dda13fc8f9e2d1c6b9f481b0d" name="tests/ext/telemetry/composer.phpt" role="test" />
+   <file md5sum="0d6bbfea4c69a7b6160d6698724ef735" name="tests/ext/telemetry/config.phpt" role="test" />
+   <file md5sum="38034122f4f165adf821e38b70cae96a" name="tests/ext/telemetry/curl_helper.inc" role="test" />
+   <file md5sum="855e49699f9accc03bc3a7827233bf97" name="tests/ext/telemetry/disabled.phpt" role="test" />
+   <file md5sum="2266a27e729433707cdde9b5b43f4ca5" name="tests/ext/telemetry/integration.phpt" role="test" />
+   <file md5sum="6d7b031894ffe63709e9774199cfe8a3" name="tests/ext/telemetry/integration_filesystem_01.phpt" role="test" />
+   <file md5sum="ed93e3f721dd85010abeb8fd65fa5640" name="tests/ext/telemetry/integration_filesystem_02.phpt" role="test" />
+   <file md5sum="0bf08516d42991cb90844c43f5e6a715" name="tests/ext/telemetry/integration_filesystem_03.phpt" role="test" />
+   <file md5sum="c997dd9f6ad20d0df8e347d173d79602" name="tests/ext/telemetry/integration_filesystem_04.phpt" role="test" />
+   <file md5sum="89b4bd2dd962c10c9bd04ac0100d65ad" name="tests/ext/telemetry/integration_runtime_error.phpt" role="test" />
+   <file md5sum="3ba4b14280c19d32de35522bf865bbfa" name="tests/ext/telemetry/metrics_logs_created.phpt" role="test" />
+   <file md5sum="9f4379146439feff1c8cab4caea94777" name="tests/ext/telemetry/metrics_spans_created.phpt" role="test" />
+   <file md5sum="a697aafeecd28ac454213a8eafb3cb01" name="tests/ext/telemetry/simple.phpt" role="test" />
+   <file md5sum="a70f011c1c72d752e50ea5abd4d32079" name="tests/ext/telemetry/vendor/autoload.php" role="test" />
+   <file md5sum="6061aa4dda9884fa31f60222869d12cb" name="tests/ext/telemetry/vendor/composer/installed.json" role="test" />
+   <file md5sum="50de3c3906defc6f06c510af934d7844" name="tests/ext/test_special_attributes.phpt" role="test" />
+   <file md5sum="f0176d0618bdc5c362685bb9f5ed896d" name="tests/ext/test_special_attributes_bis.phpt" role="test" />
+   <file md5sum="d59bee0762563b9328c81cbeb6bd7822" name="tests/ext/traced_attribute.phpt" role="test" />
+   <file md5sum="49d30e8a5edf6b0f159c38c0912ff0f1" name="tests/ext/traced_attribute_delayed.phpt" role="test" />
+   <file md5sum="78d1d0956acfb9d462d7a10b28fd83fd" name="tests/ext/traced_internal_functions_override_01.phpt" role="test" />
+   <file md5sum="0ea2d33fa7d267a06348765af235fed6" name="tests/ext/traced_internal_functions_override_02.phpt" role="test" />
+   <file md5sum="f73c5a6b670cb11719b477cca55e0245" name="tests/ext/track_user_login_failure_01.phpt" role="test" />
+   <file md5sum="84e4b9fdbdd4693a4c3295fdf3b23f56" name="tests/ext/track_user_login_failure_02.phpt" role="test" />
+   <file md5sum="fd387aa2e8fc21b8980f338b4fa01e3a" name="tests/ext/track_user_login_failure_03.phpt" role="test" />
+   <file md5sum="21721941d4f0034153daaa0d7006a3c6" name="tests/ext/track_user_login_success_01.phpt" role="test" />
+   <file md5sum="e2224ecc0a53c0560b8fa31e3d41dd9f" name="tests/ext/track_user_login_success_02.phpt" role="test" />
+   <file md5sum="0889baeeaf51756d0c87fb0aa5d08d58" name="tests/ext/track_user_login_success_03.phpt" role="test" />
+   <file md5sum="f65967159a8f395a9a7353a4c55fe412" name="tests/ext/track_user_login_success_04.phpt" role="test" />
+   <file md5sum="01db6abd87de7c55755ba3d04fdc6207" name="tests/ext/track_user_login_success_05.phpt" role="test" />
+   <file md5sum="aa53e8d7e97e94cccdd84f602aac6740" name="tests/ext/track_user_login_success_06.phpt" role="test" />
+   <file md5sum="9375119b2f89b3e86f7a082e5a3db090" name="tests/ext/track_user_login_success_07.phpt" role="test" />
+   <file md5sum="ce0a05378cf81049ac25d4130207cae8" name="tests/ext/ust.phpt" role="test" />
+   <file md5sum="b996cbaed6e71f321391007633bb262a" name="tests/ext/try_drop_span.phpt" role="test" />
+   <file md5sum="bb26e9bebb96b94ecafae940f7001dc8" name="tests/ext/try_drop_span_root.phpt" role="test" />
+   <file md5sum="d5c0d431dc5df7f922c7810ace303d04" name="tests/ext/ust_precedence_over_ddtags.phpt" role="test" />
+   <file md5sum="ba45156bf76028a861a2f7b930283fad" name="tests/ext/ust_via_ddtags.phpt" role="test" />
+   <file md5sum="2e986800625da8c621f75e4a4685621a" name="tests/ext/wrong-parameter-errors/DDTrace_hook_function.phpt" role="test" />
+   <file md5sum="de71429b5cdf40de32a23b2515db04a0" name="tests/ext/wrong-parameter-errors/DDTrace_hook_method.phpt" role="test" />
+   <file md5sum="7a729ad668229028dd5098846b5508df" name="tests/ext/wrong-parameter-errors/DDTrace_trace_function.phpt" role="test" />
+   <file md5sum="a449dcad7d754e50203bd8d1b4ebde54" name="tests/ext/wrong-parameter-errors/DDTrace_trace_id.phpt" role="test" />
+   <file md5sum="598027d1e862a5694a41bdf6f2c2ec95" name="tests/ext/wrong-parameter-errors/DDTrace_trace_method.phpt" role="test" />
+   <file md5sum="4797bc9057bfbd9efb55459f7d171e4d" name="tests/ext/wrong-parameter-errors/dd_trace_send_traces_via_thread.phpt" role="test" />
+   <file md5sum="3e0d351afd6aba8aeb286cd9423cd252" name="tests/ext/wrong-parameter-errors/set_distributed_tracing_context.phpt" role="test" />
+   <file md5sum="ebd859619931087db3b661b898cfa39a" name="tests/ext/background-sender/stubs/cgroup.docker" role="test" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="tests/ext/background-sender/stubs/cgroup.empty" role="test" />
+   <file md5sum="6f36654d6419107d0de0022619e5c264" name="tests/ext/background-sender/stubs/cgroup.fargate.1.4" role="test" />
+   <file md5sum="fcb935eb2511fe3f67efe242fc135d8d" name="m4/ax_execinfo.m4" role="src" />
+   <file md5sum="eba8acaefcef230ee1852093bdea2ea1" name="m4/polyfill.m4" role="src" />
+   <file md5sum="60c681542216c036feb57110b88f4b99" name="m4/threads.m4" role="src" />
+   <file md5sum="60c90c40accffbe6fc235a4fb887f129" name="config.m4" role="src" />
+   <file md5sum="7533f7426757d4bf6ada0c45260dbd7a" name="Cargo.lock" role="src" />
+   <file md5sum="613abc45743a8f82e126d4c13059c606" name="src/DDTrace/Integrations/AMQP/AMQPIntegration.php" role="php" />
+   <file md5sum="8ebd07ea423fe22a93a84bc327da93c2" name="src/DDTrace/Integrations/CakePHP/CakePHPIntegration.php" role="php" />
+   <file md5sum="ae43138281614d488aefa9c92cffe82a" name="src/DDTrace/Integrations/CakePHP/V2/CakePHPIntegrationLoader.php" role="php" />
+   <file md5sum="ee19326beb968d6e5f4f78f5041cabe4" name="src/DDTrace/Integrations/CakePHP/V3/CakePHPIntegrationLoader.php" role="php" />
+   <file md5sum="e6d7bcff041387819bdfd74c1a1855ed" name="src/DDTrace/Integrations/CodeIgniter/V2/CodeIgniterIntegration.php" role="php" />
+   <file md5sum="fb12e965f114abf743813c2388766d63" name="src/DDTrace/Integrations/Curl/CurlIntegration.php" role="php" />
+   <file md5sum="c1e98b33915e6a69d453abd784c896be" name="src/DDTrace/Integrations/DatabaseIntegrationHelper.php" role="php" />
+   <file md5sum="66157bf7accca6587f50d9fa051477bf" name="src/DDTrace/Integrations/Drupal/DrupalIntegration.php" role="php" />
+   <file md5sum="bd81c5b886fbf5e000eaca79ff2ef6a9" name="src/DDTrace/Integrations/ElasticSearch/V1/ElasticSearchCommon.php" role="php" />
+   <file md5sum="4a7dbb2e52963e59e1ba497b56b7dfe9" name="src/DDTrace/Integrations/ElasticSearch/V1/ElasticSearchIntegration.php" role="php" />
+   <file md5sum="faf86ff35eb804336263710e6ed59ed8" name="src/DDTrace/Integrations/ElasticSearch/V8/ElasticSearchIntegration.php" role="php" />
+   <file md5sum="309fcb8607c1a120118ffb1a8c2abbc7" name="src/DDTrace/Integrations/Eloquent/EloquentIntegration.php" role="php" />
+   <file md5sum="f6ac18256b66644f3966902d4ab78b8c" name="src/DDTrace/Integrations/Exec/ExecIntegration.php" role="php" />
+   <file md5sum="b6606aa57c1cb2e6dae099f0e987b7be" name="src/DDTrace/Integrations/Filesystem/FilesystemIntegration.php" role="php" />
+   <file md5sum="18c68cf37db4d4a399f5a07048ed79b5" name="src/DDTrace/Integrations/Frankenphp/FrankenphpIntegration.php" role="php" />
+   <file md5sum="096d1b45e40be37e8470eeeafada8776" name="src/DDTrace/Integrations/GoogleSpanner/GoogleSpannerIntegration.php" role="php" />
+   <file md5sum="18eb6d9e35c0236f99c8abe87e9c377c" name="src/DDTrace/Integrations/Guzzle/GuzzleIntegration.php" role="php" />
+   <file md5sum="864a93dd789518133b2d00086d11674b" name="src/DDTrace/Integrations/HttpClientIntegrationHelper.php" role="php" />
+   <file md5sum="436e89c4ed87c63e21ea83809af32c96" name="src/DDTrace/Integrations/Integration.php" role="php" />
+   <file md5sum="7aaa9090ea0c2100f833f046aef98d03" name="src/DDTrace/Integrations/Kafka/KafkaIntegration.php" role="php" />
+   <file md5sum="d182833d206bf0d20bba4f99047a2974" name="src/DDTrace/Integrations/Laminas/LaminasIntegration.php" role="php" />
+   <file md5sum="0d4497859158a84579fd6531571f2c5d" name="src/DDTrace/Integrations/Laravel/LaravelIntegration.php" role="php" />
+   <file md5sum="f28370afa1c712d4701717543985d937" name="src/DDTrace/Integrations/Laravel/LaravelIntegrationException.php" role="php" />
+   <file md5sum="9192b549d4acc8c8ba371cc0eafda1d4" name="src/DDTrace/Integrations/LaravelQueue/LaravelQueueIntegration.php" role="php" />
+   <file md5sum="6d565fe557234353599c5c81cd4ba9b5" name="src/DDTrace/Integrations/Logs/LogsIntegration.php" role="php" />
+   <file md5sum="a18ce4d64880ae4627850044be847bf7" name="src/DDTrace/Integrations/Lumen/LumenIntegration.php" role="php" />
+   <file md5sum="7d4228b196762f2f56b67e488239dbfc" name="src/DDTrace/Integrations/Magento/MagentoIntegration.php" role="php" />
+   <file md5sum="7c8b1ad0d5d16049c0e44466835a04dc" name="src/DDTrace/Integrations/Memcache/MemcacheIntegration.php" role="php" />
+   <file md5sum="89d06f9ac27931afd877531dfa015393" name="src/DDTrace/Integrations/Memcached/MemcachedIntegration.php" role="php" />
+   <file md5sum="2cbc22d04877c01493acdf2754f7ab14" name="src/DDTrace/Integrations/Mongo/MongoIntegration.php" role="php" />
+   <file md5sum="ed1ae0a1e48547e7967e8dc387b44331" name="src/DDTrace/Integrations/MongoDB/DatadogSubscriberLoader.php" role="php" />
+   <file md5sum="93341930c6a9f49b9a43850154bb48ff" name="src/DDTrace/Integrations/MongoDB/DatadogSubscriberWithReturnTypes.php" role="php" />
+   <file md5sum="297f325d7448adbe74837c1ba266585f" name="src/DDTrace/Integrations/MongoDB/DatadogSubscriberWithoutReturnTypes.php" role="php" />
+   <file md5sum="50308584ec2dbac6160ac576d2c056f1" name="src/DDTrace/Integrations/MongoDB/MongoDBIntegration.php" role="php" />
+   <file md5sum="c0df20654938c3fcdef4007e901a1470" name="src/DDTrace/Integrations/Mysqli/MysqliCommon.php" role="php" />
+   <file md5sum="efffdbbe95b6e93363535f1de60d21b2" name="src/DDTrace/Integrations/Mysqli/MysqliIntegration.php" role="php" />
+   <file md5sum="2c2dee59a1e8cffaff91140b06520c55" name="src/DDTrace/Integrations/Nette/NetteIntegration.php" role="php" />
+   <file md5sum="b7b68daa131a752ef006046baa58d9c7" name="src/DDTrace/Integrations/OpenAI/OpenAIIntegration.php" role="php" />
+   <file md5sum="d0f2da5075c6ed31e31d33ae3ec0cca0" name="src/DDTrace/Integrations/PDO/PDOIntegration.php" role="php" />
+   <file md5sum="0283a143a9f0a278f388d4721c4e25ab" name="src/DDTrace/Integrations/PHPRedis/PHPRedisIntegration.php" role="php" />
+   <file md5sum="41c19c3bf3f7357a81688388884c1db9" name="src/DDTrace/Integrations/Pcntl/PcntlIntegration.php" role="php" />
+   <file md5sum="aa87280ed390252d3676cba8f8a5b8b0" name="src/DDTrace/Integrations/Predis/PredisIntegration.php" role="php" />
+   <file md5sum="7e0b3a00845e6e3503b105b56775d3ba" name="src/DDTrace/Integrations/Psr18/Psr18Integration.php" role="php" />
+   <file md5sum="9596d2f0d9a4a6bfd1f256eac0a628ac" name="src/DDTrace/Integrations/Ratchet/RatchetIntegration.php" role="php" />
+   <file md5sum="4f22096ac0a33f9e7cc7eac575206851" name="src/DDTrace/Integrations/Roadrunner/RoadrunnerIntegration.php" role="php" />
+   <file md5sum="811583b9ea3a6c48ec4c4668eacdb893" name="src/DDTrace/Integrations/SQLSRV/SQLSRVIntegration.php" role="php" />
+   <file md5sum="677feae46078717a87d1ad3e95962ef8" name="src/DDTrace/Integrations/Slim/SlimIntegration.php" role="php" />
+   <file md5sum="15ca638a187b4040b2ee92c7ffd304c6" name="src/DDTrace/Integrations/Swoole/SwooleIntegration.php" role="php" />
+   <file md5sum="80a330a699f37f2ed0ba0e1b75caae28" name="src/DDTrace/Integrations/Symfony/SymfonyIntegration.php" role="php" />
+   <file md5sum="245e1b46a78bfee5b3660ad0283df19b" name="src/DDTrace/Integrations/SymfonyMessenger/DDTraceStamp.php" role="php" />
+   <file md5sum="e0d20c1f72783df20a5e5728ed09ea80" name="src/DDTrace/Integrations/SymfonyMessenger/SymfonyMessengerIntegration.php" role="php" />
+   <file md5sum="1261f77406a16796e29ea0f64b4c9de8" name="src/DDTrace/Integrations/WordPress/WordPressIntegration.php" role="php" />
+   <file md5sum="c5a7015dedc5df1be0dd1e1885aaac2e" name="src/DDTrace/Integrations/WordPress/WordPressIntegrationLoader.php" role="php" />
+   <file md5sum="2eeec32c5ebef5b343a9c7c935e5ac2d" name="src/DDTrace/Integrations/Yii/YiiIntegration.php" role="php" />
+   <file md5sum="2468ee2b1e8c6c0b3eb58ab858fdb789" name="src/DDTrace/Integrations/ZendFramework/V1/Ddtrace.php" role="php" />
+   <file md5sum="d8c1e55e1066c2aa5e4e2d1bece12b54" name="src/DDTrace/Integrations/ZendFramework/V1/TraceRequest.php" role="php" />
+   <file md5sum="bdebea23295ec6430e2929348b8f43b2" name="src/DDTrace/Integrations/ZendFramework/ZendFrameworkIntegration.php" role="php" />
+   <file md5sum="1cb44221bd1ed5e3b2e5470c4ee92079" name="src/DDTrace/OpenTelemetry/CachedInstrumentation.php" role="php" />
+   <file md5sum="2fa9884912ca6b571e66d86ab633bc26" name="src/DDTrace/OpenTelemetry/Context.php" role="php" />
+   <file md5sum="8d886dd19d96d0013f8bbf0a55b10560" name="src/DDTrace/OpenTelemetry/Convention.php" role="php" />
+   <file md5sum="02062edef62872fe7240dbb7d6f41dbe" name="src/DDTrace/OpenTelemetry/Span.php" role="php" />
+   <file md5sum="45c22a2589328de7635cfc989c00c7a1" name="src/DDTrace/OpenTelemetry/SpanBuilder.php" role="php" />
+   <file md5sum="7d4c078e21f7c635052d73859972d785" name="src/DDTrace/OpenTelemetry/SpanContext.php" role="php" />
+   <file md5sum="0e85c08d771cc2532800f762788f65c0" name="src/DDTrace/OpenTracer/Scope.php" role="php" />
+   <file md5sum="86fc4741444e4807fcb125128c21eef6" name="src/DDTrace/OpenTracer/ScopeManager.php" role="php" />
+   <file md5sum="02c9033795ec0c05dfc5439b46d485fb" name="src/DDTrace/OpenTracer/Span.php" role="php" />
+   <file md5sum="bea520da9cdbbfb9154d4eba1673457c" name="src/DDTrace/OpenTracer/SpanContext.php" role="php" />
+   <file md5sum="c5317dc50cdfa6c0a3941a8683f5081e" name="src/DDTrace/OpenTracer/Tracer.php" role="php" />
+   <file md5sum="bf7e61e16905c786675e54db407f2ffb" name="src/DDTrace/OpenTracer1/Scope.php" role="php" />
+   <file md5sum="9ee97893a3f968fca67af36b5e9a2acd" name="src/DDTrace/OpenTracer1/ScopeManager.php" role="php" />
+   <file md5sum="a7837bb89096466ce88ea1521caf1c3d" name="src/DDTrace/OpenTracer1/Span.php" role="php" />
+   <file md5sum="9966eeb7c5356a150f0be8315b3b8846" name="src/DDTrace/OpenTracer1/SpanContext.php" role="php" />
+   <file md5sum="43d2317dd81cf1e58260bab3f58c13d7" name="src/DDTrace/OpenTracer1/Tracer.php" role="php" />
+   <file md5sum="c941726503ad220bd7a28328f6998d08" name="src/DDTrace/Processing/TraceAnalyticsProcessor.php" role="php" />
+   <file md5sum="1f743079086581152a3361a4d4d0f223" name="src/DDTrace/Propagator.php" role="php" />
+   <file md5sum="9bc44d164751eea717f076467f770380" name="src/DDTrace/Propagators/Noop.php" role="php" />
+   <file md5sum="3a73ecd5cea866de522aa6ba81d07a86" name="src/DDTrace/Propagators/TextMap.php" role="php" />
+   <file md5sum="e3b0b63c66616500a54adc1c85773bdf" name="src/DDTrace/Scope.php" role="php" />
+   <file md5sum="11fac45b1700ee2dcaaff2292f3a162b" name="src/DDTrace/ScopeManager.php" role="php" />
+   <file md5sum="39efd792bf8c2e3b148e2668d804c2f2" name="src/DDTrace/Span.php" role="php" />
+   <file md5sum="6aead3cdef5e161b02997f4d62e5ea9d" name="src/DDTrace/SpanContext.php" role="php" />
+   <file md5sum="9e8bbc1cde13fbddb0d879eba075d292" name="src/DDTrace/Time.php" role="php" />
+   <file md5sum="61a02168aa95671eb8ac2716e857a43b" name="src/DDTrace/Tracer.php" role="php" />
+   <file md5sum="9bcf86d433619a6816e065be6d85a7e9" name="src/DDTrace/Transport/Internal.php" role="php" />
+   <file md5sum="89fabbc395a8dd9112afa81cb7738f81" name="src/DDTrace/Transport/Noop.php" role="php" />
+   <file md5sum="8085e7ca794735b6b7e9057eaa006dfa" name="src/DDTrace/Util/Normalizer.php" role="php" />
+   <file md5sum="ec50d3840efa88affdc9fd61cbf0acb9" name="src/DDTrace/Util/Obfuscation.php" role="php" />
+   <file md5sum="2aad67c6c0468c15404b037108da2473" name="src/DDTrace/Util/ObjectKVStore.php" role="php" />
+   <file md5sum="4f3dae0b57b225ac1ca1022b2bb42360" name="src/DDTrace/Util/Runtime.php" role="php" />
+   <file md5sum="e9e5877edc1a97c2eae6a99143c75426" name="src/DDTrace/Util/Versions.php" role="php" />
+   <file md5sum="f72496979047d9e9eed3090267bc1d69" name="src/api/Contracts/Scope.php" role="php" />
+   <file md5sum="b165dab0ad945b56c2cb5b8477b6fda9" name="src/api/Contracts/ScopeManager.php" role="php" />
+   <file md5sum="67d20f160a45655dca1ad512bf38928c" name="src/api/Contracts/Span.php" role="php" />
+   <file md5sum="441f2bc8244b028ccac18c319026e78a" name="src/api/Contracts/SpanContext.php" role="php" />
+   <file md5sum="ddff65984bbd46b21767a8c4082e2c7f" name="src/api/Contracts/Tracer.php" role="php" />
+   <file md5sum="de298772305199b318b4a73270be58f5" name="src/api/Data/Span.php" role="php" />
+   <file md5sum="8893b88588660b889786ef9c90f4e59d" name="src/api/Data/SpanContext.php" role="php" />
+   <file md5sum="69dfc33da91372531abe47d7d15836f9" name="src/api/Exceptions/InvalidReferenceArgument.php" role="php" />
+   <file md5sum="4204980b338b996597634e7f673fd227" name="src/api/Exceptions/InvalidReferencesSet.php" role="php" />
+   <file md5sum="e6180688afc154571b5796c2d282c0ed" name="src/api/Exceptions/InvalidSpanArgument.php" role="php" />
+   <file md5sum="69413ac1150d401b1b074c43ef1e63be" name="src/api/Exceptions/InvalidSpanOption.php" role="php" />
+   <file md5sum="83d9d23ee908860fb05772866aa81052" name="src/api/Exceptions/UnsupportedFormat.php" role="php" />
+   <file md5sum="29bf116560b90e6ce4841dacc5c68d04" name="src/api/Format.php" role="php" />
+   <file md5sum="e1b55746b791bae98890dcae25781740" name="src/api/GlobalTracer.php" role="php" />
+   <file md5sum="72d17e6eb57ce5f1ac2016ed152f5cac" name="src/api/Http/Urls.php" role="php" />
+   <file md5sum="444dd4a0b56386440c7b6c990453701b" name="src/api/Log/AbstractLogger.php" role="php" />
+   <file md5sum="d4522b7aca1ec0ea15f817e38e73dc8d" name="src/api/Log/DatadogLogger.php" role="php" />
+   <file md5sum="f2773935ba6689a2000347664adc86cc" name="src/api/Log/ErrorLogLogger.php" role="php" />
+   <file md5sum="8c1be47fef153e85f6b5d535c4e3e05b" name="src/api/Log/InterpolateTrait.php" role="php" />
+   <file md5sum="3e995c009d2fb961350d74f1ec6c575a" name="src/api/Log/LogLevel.php" role="php" />
+   <file md5sum="4c1f32d476023c7725071464538cd325" name="src/api/Log/Logger.php" role="php" />
+   <file md5sum="f317863bc70f74f56bbb2ff9ec48d665" name="src/api/Log/LoggerInterface.php" role="php" />
+   <file md5sum="d3350865db00961a224f282f9226848c" name="src/api/Log/LoggingTrait.php" role="php" />
+   <file md5sum="6c6070a4fb8cc2d684c72315d97f5341" name="src/api/Log/NullLogger.php" role="php" />
+   <file md5sum="6e31c02e5cc055d22c709b74f4d533b9" name="src/api/Log/PsrLogger.php" role="php" />
+   <file md5sum="fc8e249e822512f3bb0a35ad4276d8e4" name="src/api/NoopScope.php" role="php" />
+   <file md5sum="cb7f658576adc0b520b1964a19a80574" name="src/api/NoopScopeManager.php" role="php" />
+   <file md5sum="ee62a352bc701708fee102eb1bdc3dea" name="src/api/NoopSpan.php" role="php" />
+   <file md5sum="9588e60d3b7aa9b93c7b3b9fa6aa72c4" name="src/api/NoopSpanContext.php" role="php" />
+   <file md5sum="dd8a5438f4bf16c07fa2a9c193ccc384" name="src/api/NoopTracer.php" role="php" />
+   <file md5sum="dca554183dd2f357aa2febc10fb8bf1c" name="src/api/Obfuscation/WildcardToRegex.php" role="php" />
+   <file md5sum="fccbf72a0a5f599ee513b12605580104" name="src/api/Reference.php" role="php" />
+   <file md5sum="72d765d077bd0d39c6fbb348d5b9e103" name="src/api/Sampling/PrioritySampling.php" role="php" />
+   <file md5sum="3b0731ce608c16b3eb46038dd944154a" name="src/api/StartSpanOptions.php" role="php" />
+   <file md5sum="c2d20b88a2ea32176f94a102f940df63" name="src/api/Tag.php" role="php" />
+   <file md5sum="bb0d181f3141f3aa7b1c18d9c711ddb8" name="src/api/Transport.php" role="php" />
+   <file md5sum="a94cfb8279bc1b1fa01a7066f3e2a679" name="src/api/Type.php" role="php" />
+   <file md5sum="4149569ceb4ad0cc720d9798680463d6" name="src/bridge/_generated_api.php" role="php" />
+   <file md5sum="00f4118dfcc65b12c47713360b684dc8" name="src/bridge/_generated_tracer.php" role="php" />
+   <file md5sum="2a1298495d9cd5497078331f66196425" name="src/bridge/_generated_opentelemetry.php" role="php" />
+   <file md5sum="7e805436e9c140bbd7d01df0930b59f5" name="src/ddtrace_php_api.stubs.php" role="php" />
+   <file md5sum="60c90c40accffbe6fc235a4fb887f129" name="config.m4" role="src" />
+   <file md5sum="d952e8aaf242e2fdc7a492be4a0a297d" name="config.w32" role="src" />
+   <file md5sum="317c1af0e00b0bc8cccae6360c376822" name="ddtrace.sym" role="src" />
+   <file md5sum="bb613e7eb49ee4eec4715159104dc091" name="compile_rust.sh" role="src" />
+   <file md5sum="39b92f95161468f12c2f6b99b9551458" name="VERSION" role="src" />
+   <file md5sum="7c5f120328154a96ac92763304d42ef9" name="CHANGELOG.md" role="doc" />
+   <file md5sum="5636590911408058e6d575352d457503" name="LICENSE" role="doc" />
+   <file md5sum="924540c0427fd3654193cc72c3fc14d3" name="LICENSE.Apache" role="doc" />
+   <file md5sum="463a4073421f11403eb4bb9736e48512" name="LICENSE.BSD3" role="doc" />
+   <file md5sum="06b7ba1fc87c01b0c8ff3f4b2f1f687b" name="NOTICE" role="doc" />
+   <file md5sum="75b9e66a760834f5ec09626194669c4d" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0</min>
+    <max>8.4.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+   <extension>
+    <name>json</name>
+   </extension>
+  </required>
+ </dependencies>
+ <providesextension>ddtrace</providesextension>
+ <extsrcrelease>
+  <filelist>
+   <install as="datadog_trace/src/DDTrace/Integrations/AMQP/AMQPIntegration.php" name="src/DDTrace/Integrations/AMQP/AMQPIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/CakePHP/CakePHPIntegration.php" name="src/DDTrace/Integrations/CakePHP/CakePHPIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/CakePHP/V2/CakePHPIntegrationLoader.php" name="src/DDTrace/Integrations/CakePHP/V2/CakePHPIntegrationLoader.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/CakePHP/V3/CakePHPIntegrationLoader.php" name="src/DDTrace/Integrations/CakePHP/V3/CakePHPIntegrationLoader.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/CodeIgniter/V2/CodeIgniterIntegration.php" name="src/DDTrace/Integrations/CodeIgniter/V2/CodeIgniterIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Curl/CurlIntegration.php" name="src/DDTrace/Integrations/Curl/CurlIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/DatabaseIntegrationHelper.php" name="src/DDTrace/Integrations/DatabaseIntegrationHelper.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Drupal/DrupalIntegration.php" name="src/DDTrace/Integrations/Drupal/DrupalIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/ElasticSearch/V1/ElasticSearchCommon.php" name="src/DDTrace/Integrations/ElasticSearch/V1/ElasticSearchCommon.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/ElasticSearch/V1/ElasticSearchIntegration.php" name="src/DDTrace/Integrations/ElasticSearch/V1/ElasticSearchIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/ElasticSearch/V8/ElasticSearchIntegration.php" name="src/DDTrace/Integrations/ElasticSearch/V8/ElasticSearchIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Eloquent/EloquentIntegration.php" name="src/DDTrace/Integrations/Eloquent/EloquentIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Exec/ExecIntegration.php" name="src/DDTrace/Integrations/Exec/ExecIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Filesystem/FilesystemIntegration.php" name="src/DDTrace/Integrations/Filesystem/FilesystemIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Frankenphp/FrankenphpIntegration.php" name="src/DDTrace/Integrations/Frankenphp/FrankenphpIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/GoogleSpanner/GoogleSpannerIntegration.php" name="src/DDTrace/Integrations/GoogleSpanner/GoogleSpannerIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Guzzle/GuzzleIntegration.php" name="src/DDTrace/Integrations/Guzzle/GuzzleIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/HttpClientIntegrationHelper.php" name="src/DDTrace/Integrations/HttpClientIntegrationHelper.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Integration.php" name="src/DDTrace/Integrations/Integration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Kafka/KafkaIntegration.php" name="src/DDTrace/Integrations/Kafka/KafkaIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Laminas/LaminasIntegration.php" name="src/DDTrace/Integrations/Laminas/LaminasIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Laravel/LaravelIntegration.php" name="src/DDTrace/Integrations/Laravel/LaravelIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Laravel/LaravelIntegrationException.php" name="src/DDTrace/Integrations/Laravel/LaravelIntegrationException.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/LaravelQueue/LaravelQueueIntegration.php" name="src/DDTrace/Integrations/LaravelQueue/LaravelQueueIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Logs/LogsIntegration.php" name="src/DDTrace/Integrations/Logs/LogsIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Lumen/LumenIntegration.php" name="src/DDTrace/Integrations/Lumen/LumenIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Magento/MagentoIntegration.php" name="src/DDTrace/Integrations/Magento/MagentoIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Memcache/MemcacheIntegration.php" name="src/DDTrace/Integrations/Memcache/MemcacheIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Memcached/MemcachedIntegration.php" name="src/DDTrace/Integrations/Memcached/MemcachedIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Mongo/MongoIntegration.php" name="src/DDTrace/Integrations/Mongo/MongoIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/MongoDB/DatadogSubscriberLoader.php" name="src/DDTrace/Integrations/MongoDB/DatadogSubscriberLoader.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/MongoDB/DatadogSubscriberWithReturnTypes.php" name="src/DDTrace/Integrations/MongoDB/DatadogSubscriberWithReturnTypes.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/MongoDB/DatadogSubscriberWithoutReturnTypes.php" name="src/DDTrace/Integrations/MongoDB/DatadogSubscriberWithoutReturnTypes.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/MongoDB/MongoDBIntegration.php" name="src/DDTrace/Integrations/MongoDB/MongoDBIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Mysqli/MysqliCommon.php" name="src/DDTrace/Integrations/Mysqli/MysqliCommon.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Mysqli/MysqliIntegration.php" name="src/DDTrace/Integrations/Mysqli/MysqliIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Nette/NetteIntegration.php" name="src/DDTrace/Integrations/Nette/NetteIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/OpenAI/OpenAIIntegration.php" name="src/DDTrace/Integrations/OpenAI/OpenAIIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/PDO/PDOIntegration.php" name="src/DDTrace/Integrations/PDO/PDOIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/PHPRedis/PHPRedisIntegration.php" name="src/DDTrace/Integrations/PHPRedis/PHPRedisIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Pcntl/PcntlIntegration.php" name="src/DDTrace/Integrations/Pcntl/PcntlIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Predis/PredisIntegration.php" name="src/DDTrace/Integrations/Predis/PredisIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Psr18/Psr18Integration.php" name="src/DDTrace/Integrations/Psr18/Psr18Integration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Ratchet/RatchetIntegration.php" name="src/DDTrace/Integrations/Ratchet/RatchetIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Roadrunner/RoadrunnerIntegration.php" name="src/DDTrace/Integrations/Roadrunner/RoadrunnerIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/SQLSRV/SQLSRVIntegration.php" name="src/DDTrace/Integrations/SQLSRV/SQLSRVIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Slim/SlimIntegration.php" name="src/DDTrace/Integrations/Slim/SlimIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Swoole/SwooleIntegration.php" name="src/DDTrace/Integrations/Swoole/SwooleIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Symfony/SymfonyIntegration.php" name="src/DDTrace/Integrations/Symfony/SymfonyIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/SymfonyMessenger/DDTraceStamp.php" name="src/DDTrace/Integrations/SymfonyMessenger/DDTraceStamp.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/SymfonyMessenger/SymfonyMessengerIntegration.php" name="src/DDTrace/Integrations/SymfonyMessenger/SymfonyMessengerIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/WordPress/WordPressIntegration.php" name="src/DDTrace/Integrations/WordPress/WordPressIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/WordPress/WordPressIntegrationLoader.php" name="src/DDTrace/Integrations/WordPress/WordPressIntegrationLoader.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/Yii/YiiIntegration.php" name="src/DDTrace/Integrations/Yii/YiiIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/ZendFramework/V1/Ddtrace.php" name="src/DDTrace/Integrations/ZendFramework/V1/Ddtrace.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/ZendFramework/V1/TraceRequest.php" name="src/DDTrace/Integrations/ZendFramework/V1/TraceRequest.php" />
+   <install as="datadog_trace/src/DDTrace/Integrations/ZendFramework/ZendFrameworkIntegration.php" name="src/DDTrace/Integrations/ZendFramework/ZendFrameworkIntegration.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTelemetry/CachedInstrumentation.php" name="src/DDTrace/OpenTelemetry/CachedInstrumentation.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTelemetry/Context.php" name="src/DDTrace/OpenTelemetry/Context.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTelemetry/Convention.php" name="src/DDTrace/OpenTelemetry/Convention.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTelemetry/Span.php" name="src/DDTrace/OpenTelemetry/Span.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTelemetry/SpanBuilder.php" name="src/DDTrace/OpenTelemetry/SpanBuilder.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTelemetry/SpanContext.php" name="src/DDTrace/OpenTelemetry/SpanContext.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTracer/Scope.php" name="src/DDTrace/OpenTracer/Scope.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTracer/ScopeManager.php" name="src/DDTrace/OpenTracer/ScopeManager.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTracer/Span.php" name="src/DDTrace/OpenTracer/Span.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTracer/SpanContext.php" name="src/DDTrace/OpenTracer/SpanContext.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTracer/Tracer.php" name="src/DDTrace/OpenTracer/Tracer.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTracer1/Scope.php" name="src/DDTrace/OpenTracer1/Scope.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTracer1/ScopeManager.php" name="src/DDTrace/OpenTracer1/ScopeManager.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTracer1/Span.php" name="src/DDTrace/OpenTracer1/Span.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTracer1/SpanContext.php" name="src/DDTrace/OpenTracer1/SpanContext.php" />
+   <install as="datadog_trace/src/DDTrace/OpenTracer1/Tracer.php" name="src/DDTrace/OpenTracer1/Tracer.php" />
+   <install as="datadog_trace/src/DDTrace/Processing/TraceAnalyticsProcessor.php" name="src/DDTrace/Processing/TraceAnalyticsProcessor.php" />
+   <install as="datadog_trace/src/DDTrace/Propagator.php" name="src/DDTrace/Propagator.php" />
+   <install as="datadog_trace/src/DDTrace/Propagators/Noop.php" name="src/DDTrace/Propagators/Noop.php" />
+   <install as="datadog_trace/src/DDTrace/Propagators/TextMap.php" name="src/DDTrace/Propagators/TextMap.php" />
+   <install as="datadog_trace/src/DDTrace/Scope.php" name="src/DDTrace/Scope.php" />
+   <install as="datadog_trace/src/DDTrace/ScopeManager.php" name="src/DDTrace/ScopeManager.php" />
+   <install as="datadog_trace/src/DDTrace/Span.php" name="src/DDTrace/Span.php" />
+   <install as="datadog_trace/src/DDTrace/SpanContext.php" name="src/DDTrace/SpanContext.php" />
+   <install as="datadog_trace/src/DDTrace/Time.php" name="src/DDTrace/Time.php" />
+   <install as="datadog_trace/src/DDTrace/Tracer.php" name="src/DDTrace/Tracer.php" />
+   <install as="datadog_trace/src/DDTrace/Transport/Internal.php" name="src/DDTrace/Transport/Internal.php" />
+   <install as="datadog_trace/src/DDTrace/Transport/Noop.php" name="src/DDTrace/Transport/Noop.php" />
+   <install as="datadog_trace/src/DDTrace/Util/Normalizer.php" name="src/DDTrace/Util/Normalizer.php" />
+   <install as="datadog_trace/src/DDTrace/Util/Obfuscation.php" name="src/DDTrace/Util/Obfuscation.php" />
+   <install as="datadog_trace/src/DDTrace/Util/ObjectKVStore.php" name="src/DDTrace/Util/ObjectKVStore.php" />
+   <install as="datadog_trace/src/DDTrace/Util/Runtime.php" name="src/DDTrace/Util/Runtime.php" />
+   <install as="datadog_trace/src/DDTrace/Util/Versions.php" name="src/DDTrace/Util/Versions.php" />
+   <install as="datadog_trace/src/api/Contracts/Scope.php" name="src/api/Contracts/Scope.php" />
+   <install as="datadog_trace/src/api/Contracts/ScopeManager.php" name="src/api/Contracts/ScopeManager.php" />
+   <install as="datadog_trace/src/api/Contracts/Span.php" name="src/api/Contracts/Span.php" />
+   <install as="datadog_trace/src/api/Contracts/SpanContext.php" name="src/api/Contracts/SpanContext.php" />
+   <install as="datadog_trace/src/api/Contracts/Tracer.php" name="src/api/Contracts/Tracer.php" />
+   <install as="datadog_trace/src/api/Data/Span.php" name="src/api/Data/Span.php" />
+   <install as="datadog_trace/src/api/Data/SpanContext.php" name="src/api/Data/SpanContext.php" />
+   <install as="datadog_trace/src/api/Exceptions/InvalidReferenceArgument.php" name="src/api/Exceptions/InvalidReferenceArgument.php" />
+   <install as="datadog_trace/src/api/Exceptions/InvalidReferencesSet.php" name="src/api/Exceptions/InvalidReferencesSet.php" />
+   <install as="datadog_trace/src/api/Exceptions/InvalidSpanArgument.php" name="src/api/Exceptions/InvalidSpanArgument.php" />
+   <install as="datadog_trace/src/api/Exceptions/InvalidSpanOption.php" name="src/api/Exceptions/InvalidSpanOption.php" />
+   <install as="datadog_trace/src/api/Exceptions/UnsupportedFormat.php" name="src/api/Exceptions/UnsupportedFormat.php" />
+   <install as="datadog_trace/src/api/Format.php" name="src/api/Format.php" />
+   <install as="datadog_trace/src/api/GlobalTracer.php" name="src/api/GlobalTracer.php" />
+   <install as="datadog_trace/src/api/Http/Urls.php" name="src/api/Http/Urls.php" />
+   <install as="datadog_trace/src/api/Log/AbstractLogger.php" name="src/api/Log/AbstractLogger.php" />
+   <install as="datadog_trace/src/api/Log/DatadogLogger.php" name="src/api/Log/DatadogLogger.php" />
+   <install as="datadog_trace/src/api/Log/ErrorLogLogger.php" name="src/api/Log/ErrorLogLogger.php" />
+   <install as="datadog_trace/src/api/Log/InterpolateTrait.php" name="src/api/Log/InterpolateTrait.php" />
+   <install as="datadog_trace/src/api/Log/LogLevel.php" name="src/api/Log/LogLevel.php" />
+   <install as="datadog_trace/src/api/Log/Logger.php" name="src/api/Log/Logger.php" />
+   <install as="datadog_trace/src/api/Log/LoggerInterface.php" name="src/api/Log/LoggerInterface.php" />
+   <install as="datadog_trace/src/api/Log/LoggingTrait.php" name="src/api/Log/LoggingTrait.php" />
+   <install as="datadog_trace/src/api/Log/NullLogger.php" name="src/api/Log/NullLogger.php" />
+   <install as="datadog_trace/src/api/Log/PsrLogger.php" name="src/api/Log/PsrLogger.php" />
+   <install as="datadog_trace/src/api/NoopScope.php" name="src/api/NoopScope.php" />
+   <install as="datadog_trace/src/api/NoopScopeManager.php" name="src/api/NoopScopeManager.php" />
+   <install as="datadog_trace/src/api/NoopSpan.php" name="src/api/NoopSpan.php" />
+   <install as="datadog_trace/src/api/NoopSpanContext.php" name="src/api/NoopSpanContext.php" />
+   <install as="datadog_trace/src/api/NoopTracer.php" name="src/api/NoopTracer.php" />
+   <install as="datadog_trace/src/api/Obfuscation/WildcardToRegex.php" name="src/api/Obfuscation/WildcardToRegex.php" />
+   <install as="datadog_trace/src/api/Reference.php" name="src/api/Reference.php" />
+   <install as="datadog_trace/src/api/Sampling/PrioritySampling.php" name="src/api/Sampling/PrioritySampling.php" />
+   <install as="datadog_trace/src/api/StartSpanOptions.php" name="src/api/StartSpanOptions.php" />
+   <install as="datadog_trace/src/api/Tag.php" name="src/api/Tag.php" />
+   <install as="datadog_trace/src/api/Transport.php" name="src/api/Transport.php" />
+   <install as="datadog_trace/src/api/Type.php" name="src/api/Type.php" />
+   <install as="datadog_trace/src/bridge/_generated_api.php" name="src/bridge/_generated_api.php" />
+   <install as="datadog_trace/src/bridge/_generated_tracer.php" name="src/bridge/_generated_tracer.php" />
+   <install as="datadog_trace/src/bridge/_generated_opentelemetry.php" name="src/bridge/_generated_opentelemetry.php" />
+   <install as="datadog_trace/src/ddtrace_php_api.stubs.php" name="src/ddtrace_php_api.stubs.php" />
+  </filelist>
+ </extsrcrelease>
+</package>
