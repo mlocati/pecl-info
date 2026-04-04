@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.18" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>phalcon</name>
+ <channel>pecl.php.net</channel>
+ <summary>Phalcon is a full stack PHP framework offering low resource consumption and high performance.</summary>
+ <description>Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high
+    performance. Its unique architecture allows the framework to always be memory resident, offering its functionality
+    whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.</description>
+ <lead>
+  <name>Anton Vasiliev</name>
+  <user>jeckerson</user>
+  <email>anton@phalcon.io</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Nikolaos Dimopoulos</name>
+  <user>niden</user>
+  <email>nikos@phalcon.io</email>
+  <active>yes</active>
+ </lead>
+ <date>2026-04-03</date>
+ <time>23:48:02</time>
+ <version>
+  <release>5.11.0</release>
+  <api>5.11.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://license.phalcon.io">BSD 3-Clause License</license>
+ <notes>
+Full changelog can be found at: https://github.com/phalcon/cphalcon/blob/master/CHANGELOG-5.0.md
+
+### Changed
+
+- Changed `Phalcon\Filter\Sanitize\IP` to optimize the sanatization of IP address [#16838](https://github.com/phalcon/cphalcon/issues/16838)
+- Changed `Phalcon\Encryption\Security\JWT\Builder::setPassphrase()` to require digits and special characters [#16847](https://github.com/phalcon/cphalcon/issues/16847)
+- Changed `Phalcon\Encryption\Security\JWT\Builder::getAudience()` to return an empty array if not set [#16846](https://github.com/phalcon/cphalcon/issues/16846)
+- Changed `Phalcon\Encryption\Security\Random::base()` to use 16 bits by default [#16845](https://github.com/phalcon/cphalcon/issues/16845)
+- Changed `Phalcon\Logger\Logger` to use lowercase when reporting log levels (previously uppercase) [#16852](https://github.com/phalcon/cphalcon/issues/16852)
+- Changed `Phalcon\Logger\Adapter\Stream` to use a more efficient way to write messages in the logger instead of opening and closing the stream per message [#16852](https://github.com/phalcon/cphalcon/issues/16852)
+- Changed `Phalcon\Logger\Adapter\Syslog` to use the `Enum` instead of `Logger` constants [#16852](https://github.com/phalcon/cphalcon/issues/16852)
+- Changed the whole testing suite to run on phpunit only [#16860](https://github.com/phalcon/cphalcon/issues/16860) [#16861](https://github.com/phalcon/cphalcon/issues/16861) [#16862](https://github.com/phalcon/cphalcon/issues/16862)
+
+### Added
+
+- Added PIE (PHP Installer for Extensions) support [#16832](https://github.com/phalcon/cphalcon/issues/16832)
+- Added the ability to specify aliases for `Phalcon\Di\Di` services.[#13042](https://github.com/phalcon/cphalcon/issues/13042)
+- Added `Phalcon\Encryption\Security\JWT\Validator::validateClaim()` to validate custom claims [#16843](https://github.com/phalcon/cphalcon/issues/16843)
+
+### Fixed
+
+- Fixed `Phalcon\Forms\Form::isValid()` to apply field filters even when no validators are specified [#16936](https://github.com/phalcon/cphalcon/issues/16936)
+- Fixed `Phalcon\Http\Request` method `getClientAddress()` when using `trustForwardedHeader` [#16836](https://github.com/phalcon/cphalcon/issues/16836)
+- Fixed `Phalcon\Acl\Adapter\Memory::isAllowed()` and `Phalcon\Mvc\Model\Binder` to handle PHP 8.1+ union and intersection types by checking for `ReflectionNamedType` before calling `getName()` [#16261](https://github.com/phalcon/cphalcon/issues/16261)
+- Fixed memory leak in PHQL parser (phql_internal_parse_phql()) during repeated query execution. [#16854](https://github.com/phalcon/cphalcon/issues/16854)
+- Fixed a deadlock issue when running the db suite [#16862](https://github.com/phalcon/cphalcon/issues/16862)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="605b108f1e0f081d2175d4648254d104" name="config.m4" role="src" />
+   <file md5sum="30ca2ce4562668288e9c867ee30002c7" name="config.w32" role="src" />
+   <file md5sum="d8ae02d87203fabd2076a6379e86c13a" name="phalcon.zep.c" role="src" />
+   <file md5sum="761560e2b03b34c8773328d771af779c" name="phalcon.zep.h" role="src" />
+   <file md5sum="afe6596dfa86672954a0b13e3f6e5b06" name="php_phalcon.h" role="src" />
+   <file md5sum="d203bdf1a0b2d361f36cd0e0d9c23c74" name="LICENSE.txt" role="doc" />
+   <file md5sum="7213fd8a59170b988b100704be37d84c" name="CHANGELOG-5.0.md" role="doc" />
+   <file md5sum="3e5802d234e4311b08b1e73df07eb5fc" name="CODE_OF_CONDUCT.md" role="doc" />
+   <file md5sum="67bdb8625f7e41763bd695117f7f38f1" name="CODE_OWNERS.TXT" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.1.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>phalcon</providesextension>
+ <extsrcrelease />
+</package>
