@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.18" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>ds</name>
+ <channel>pecl.php.net</channel>
+ <summary>Data Structures</summary>
+ <description>Data Structures for PHP</description>
+ <lead>
+  <name>Rudi Theunissen</name>
+  <user>rtheunissen</user>
+  <email>rtheunissen@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Joe Watkins</name>
+  <user>krakjoe</user>
+  <email>krakjoe@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2026-04-11</date>
+ <time>01:36:08</time>
+ <version>
+  <release>1.8.0</release>
+  <api>1.8.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/MIT">MIT License</license>
+ <notes>
+- Drop PHP &lt; 8.2, require PHP &gt;= 8.2
+- Implement __serialize/__unserialize (O: format), replacing Serializable (C:)
+- Fix sort/ksort to accept null comparators (#134)
+- Support nested sort comparators via FCI save/restore (#48)
+- Guard allocate against negative capacity (#33)
+- Update CI for PHP 8.2-8.5, PHPUnit 11 (#213)
+- Remove legacy Serializable and pre-8.2 compat code
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="304e9223f28f05689a71a6b79e7b587b" name="src/ds/ds_deque.c" role="src" />
+   <file md5sum="246c19bfda01231737a66d611bd04572" name="src/ds/ds_deque.h" role="src" />
+   <file md5sum="6f31def19e02f2dcb38bcce1509982c2" name="src/ds/ds_htable.c" role="src" />
+   <file md5sum="35bd92dd8735e6a882853e95ab8a75f6" name="src/ds/ds_htable.h" role="src" />
+   <file md5sum="8bddd7c1e9f2a2c2dd4e8482b14096ca" name="src/ds/ds_map.c" role="src" />
+   <file md5sum="f12317097fc5f9473b26511e1f31b0e5" name="src/ds/ds_map.h" role="src" />
+   <file md5sum="6ec83d82069bf864cce6a7eb81731f4c" name="src/ds/ds_priority_queue.c" role="src" />
+   <file md5sum="7f907fd3077f15e351ff4afd886ffe1b" name="src/ds/ds_priority_queue.h" role="src" />
+   <file md5sum="0656807f893a9439d0275d2fd25a6c81" name="src/ds/ds_queue.c" role="src" />
+   <file md5sum="2df50b12788742f28e696a7ea2a2c83f" name="src/ds/ds_queue.h" role="src" />
+   <file md5sum="7ce7f76679afaf03a5316f14eae9b4d8" name="src/ds/ds_set.c" role="src" />
+   <file md5sum="a1f36c3402f100197901d5fdc681de96" name="src/ds/ds_set.h" role="src" />
+   <file md5sum="e5cd100722db7f3b6f93dca9bf7e6b16" name="src/ds/ds_stack.c" role="src" />
+   <file md5sum="f99b977e9856a747f928cc7de6f09969" name="src/ds/ds_stack.h" role="src" />
+   <file md5sum="8d11aa776ab138fc86b16af6f0876de3" name="src/ds/ds_vector.c" role="src" />
+   <file md5sum="f2502a74743bdbf085f9378f26367fcf" name="src/ds/ds_vector.h" role="src" />
+   <file md5sum="be138de0299ede53a6bd34f1d3b59ec0" name="src/php/classes/php_collection_ce.c" role="src" />
+   <file md5sum="08e124cb439c51cae77ade32674a1ae2" name="src/php/classes/php_collection_ce.h" role="src" />
+   <file md5sum="a08941e78513cc8891a086f862235319" name="src/php/classes/php_deque_ce.c" role="src" />
+   <file md5sum="f115a1c223d4cd0cad2b58b51cc0659c" name="src/php/classes/php_deque_ce.h" role="src" />
+   <file md5sum="ec54ed58564ab4cab22a3ad520f6250d" name="src/php/classes/php_hashable_ce.c" role="src" />
+   <file md5sum="a16ef064d539da97580fa75c21478e30" name="src/php/classes/php_hashable_ce.h" role="src" />
+   <file md5sum="2ef955f3ff783676605da92b15028589" name="src/php/classes/php_map_ce.c" role="src" />
+   <file md5sum="0abf2dad5c923f97a35b9e6a6d646bf3" name="src/php/classes/php_map_ce.h" role="src" />
+   <file md5sum="dfcad3f7df005187bc6c1c8df211153c" name="src/php/classes/php_pair_ce.c" role="src" />
+   <file md5sum="2a249521e5d402aa36c8106a3796517a" name="src/php/classes/php_pair_ce.h" role="src" />
+   <file md5sum="c5b6f16b2e859b41e1aa5a399cad7377" name="src/php/classes/php_priority_queue_ce.c" role="src" />
+   <file md5sum="ccf831d51145759dd41b9d2657b2778d" name="src/php/classes/php_priority_queue_ce.h" role="src" />
+   <file md5sum="7b9f5f8b02a1bb639a94bbf78fc508d7" name="src/php/classes/php_queue_ce.c" role="src" />
+   <file md5sum="fe770ed455365092b970dac653ef835f" name="src/php/classes/php_queue_ce.h" role="src" />
+   <file md5sum="a13e5393931d14f3b3964676621e52e9" name="src/php/classes/php_sequence_ce.c" role="src" />
+   <file md5sum="289200bca20d6b8d5d8b6b712e627aa5" name="src/php/classes/php_sequence_ce.h" role="src" />
+   <file md5sum="11e843db9f54418d54314433c1b53893" name="src/php/classes/php_set_ce.c" role="src" />
+   <file md5sum="e944a39ef4660741a3ad6be0c75b9011" name="src/php/classes/php_set_ce.h" role="src" />
+   <file md5sum="bdbe23ac8a7f6c78e5eb02a46019a611" name="src/php/classes/php_stack_ce.c" role="src" />
+   <file md5sum="b7631eb3be699d3987078f1aba793eca" name="src/php/classes/php_stack_ce.h" role="src" />
+   <file md5sum="90f2fd1f50bb568c22e3ac04f07c91bf" name="src/php/classes/php_vector_ce.c" role="src" />
+   <file md5sum="15307eafded875264a3d6161c721023f" name="src/php/classes/php_vector_ce.h" role="src" />
+   <file md5sum="a37057a0ae6609e5d2727ffdb4eee475" name="src/php/handlers/php_common_handlers.c" role="src" />
+   <file md5sum="b5e7ccb18c47cb5837f8f431a1e4f8a0" name="src/php/handlers/php_common_handlers.h" role="src" />
+   <file md5sum="37a5b30eccb3d020c45feae1aa771034" name="src/php/handlers/php_deque_handlers.c" role="src" />
+   <file md5sum="52a31582328fc997c6e792fb9bf2db40" name="src/php/handlers/php_deque_handlers.h" role="src" />
+   <file md5sum="b268d55460726b3cd3ea3b858c108ce4" name="src/php/handlers/php_map_handlers.c" role="src" />
+   <file md5sum="cb5a24959ff2fc30b69ec959ee29814b" name="src/php/handlers/php_map_handlers.h" role="src" />
+   <file md5sum="b7e6ca912c6c5ed48e2ce23b0b26af39" name="src/php/handlers/php_pair_handlers.c" role="src" />
+   <file md5sum="474d6082d3d87f5025a9e37c2eee99a5" name="src/php/handlers/php_pair_handlers.h" role="src" />
+   <file md5sum="a612914b8984689a6b2db610a6019d1b" name="src/php/handlers/php_priority_queue_handlers.c" role="src" />
+   <file md5sum="21868c9f77ab6b93c26ce296785436f9" name="src/php/handlers/php_priority_queue_handlers.h" role="src" />
+   <file md5sum="2922e65a28a48172f9e51b13a0b6eb88" name="src/php/handlers/php_queue_handlers.c" role="src" />
+   <file md5sum="b71f7a1a98bd6f15010993a4cd14d3ac" name="src/php/handlers/php_queue_handlers.h" role="src" />
+   <file md5sum="580689ce27d1251b3a3154ea86a773cf" name="src/php/handlers/php_set_handlers.c" role="src" />
+   <file md5sum="15b0e99836e70b7efc99d985d3822f4a" name="src/php/handlers/php_set_handlers.h" role="src" />
+   <file md5sum="4d677da7d9373a55504c2ca3cda66bd2" name="src/php/handlers/php_stack_handlers.c" role="src" />
+   <file md5sum="86a1c161b68a5ecfb25a950ff2620bdc" name="src/php/handlers/php_stack_handlers.h" role="src" />
+   <file md5sum="d4973ada539227219ddba02302649de9" name="src/php/handlers/php_vector_handlers.c" role="src" />
+   <file md5sum="8631f823146ca221efde54627d394d78" name="src/php/handlers/php_vector_handlers.h" role="src" />
+   <file md5sum="752835a7eb591a426d4e30a4640ae9a0" name="src/php/iterators/php_deque_iterator.c" role="src" />
+   <file md5sum="64c01061b5463870352104ae249afe24" name="src/php/iterators/php_deque_iterator.h" role="src" />
+   <file md5sum="7ad209a318cd85657363236ea338f67f" name="src/php/iterators/php_htable_iterator.c" role="src" />
+   <file md5sum="31e8de82851feaecae6f34827f2788f6" name="src/php/iterators/php_htable_iterator.h" role="src" />
+   <file md5sum="2e4d9962492a76f88c0b730726c19651" name="src/php/iterators/php_map_iterator.c" role="src" />
+   <file md5sum="29c7dd2735e1c234252e9b8db35f706a" name="src/php/iterators/php_map_iterator.h" role="src" />
+   <file md5sum="b1950fbac45ef4e813f739b213bacb3a" name="src/php/iterators/php_priority_queue_iterator.c" role="src" />
+   <file md5sum="96e8f29748a42c75e51ba9db7a48f465" name="src/php/iterators/php_priority_queue_iterator.h" role="src" />
+   <file md5sum="79e0e828db2549a7071262739a935fec" name="src/php/iterators/php_queue_iterator.c" role="src" />
+   <file md5sum="ee6c11b6b98a96cf61bd8256cc4a29f7" name="src/php/iterators/php_queue_iterator.h" role="src" />
+   <file md5sum="a5dc760a10f95093b14e5acfb26de8ed" name="src/php/iterators/php_set_iterator.c" role="src" />
+   <file md5sum="d12449f4be76fbfd050a2545e019804f" name="src/php/iterators/php_set_iterator.h" role="src" />
+   <file md5sum="856c0cd09e03308674cbf3aff83cdb5a" name="src/php/iterators/php_stack_iterator.c" role="src" />
+   <file md5sum="8f65ae42cd8c4639bf3074226dd82f1b" name="src/php/iterators/php_stack_iterator.h" role="src" />
+   <file md5sum="064a496256fd7bd84d645f5fc58d2ee9" name="src/php/iterators/php_vector_iterator.c" role="src" />
+   <file md5sum="a4b1bcd9aae6a1ed70875f25157dbbe4" name="src/php/iterators/php_vector_iterator.h" role="src" />
+   <file md5sum="bed04941a47a4c902955dd389e7ce367" name="src/php/objects/php_deque.c" role="src" />
+   <file md5sum="9197a3a53ca60e4914a797f674665ab7" name="src/php/objects/php_deque.h" role="src" />
+   <file md5sum="4966bf9c10a62fbdf06491deab985711" name="src/php/objects/php_map.c" role="src" />
+   <file md5sum="00e8c76c20baf75095a14a9846cfe96d" name="src/php/objects/php_map.h" role="src" />
+   <file md5sum="dedd58ef8e646ffdc5d5830851f6af7d" name="src/php/objects/php_pair.c" role="src" />
+   <file md5sum="c1332a350dbb64d3583892936bfcd0eb" name="src/php/objects/php_pair.h" role="src" />
+   <file md5sum="a6e90cbd31ca265a27faedbdd93111bb" name="src/php/objects/php_priority_queue.c" role="src" />
+   <file md5sum="7cd13f0e8051bc8a20c773ef19fe56cf" name="src/php/objects/php_priority_queue.h" role="src" />
+   <file md5sum="62c7c3ac2e47602ee2b1190a693aa6fa" name="src/php/objects/php_queue.c" role="src" />
+   <file md5sum="8da2fb20d3a357e46dd873b2c5092614" name="src/php/objects/php_queue.h" role="src" />
+   <file md5sum="e4514a42443006cf53fe93870734677e" name="src/php/objects/php_set.c" role="src" />
+   <file md5sum="0afb74c5dc88646906dd96ccfd5b8586" name="src/php/objects/php_set.h" role="src" />
+   <file md5sum="430fafaa4dd0d8b20d25af69613ef582" name="src/php/objects/php_stack.c" role="src" />
+   <file md5sum="3494354d72236b3c5a3df3ddf4006f2e" name="src/php/objects/php_stack.h" role="src" />
+   <file md5sum="13053424ad98ff39001c54b36823cf6c" name="src/php/objects/php_vector.c" role="src" />
+   <file md5sum="b0a2f0dd5455750d69276657e79a85f6" name="src/php/objects/php_vector.h" role="src" />
+   <file md5sum="be40d30380d229eba4e199fea6a36968" name="src/php/arginfo.h" role="src" />
+   <file md5sum="37a696e2ba19d46a947d12d63f9aaf56" name="src/php/parameters.h" role="src" />
+   <file md5sum="7e49a87d854241fdf0b85b633cdc0d51" name="src/common.c" role="src" />
+   <file md5sum="17c20c10d01f3ede0de74008f5cb262a" name="src/common.h" role="src" />
+   <file md5sum="f0062b9445c66e2bfbf04d51249ec7ad" name="LICENSE" role="doc" />
+   <file md5sum="1ad412f6170ca0ab31183c33791f52ff" name="config.m4" role="src" />
+   <file md5sum="0f2fcd6f78859d1312b181ed665a582f" name="config.w32" role="src" />
+   <file md5sum="0e4fb2090686f26d9df8b1878c94c165" name="php_ds.c" role="src" />
+   <file md5sum="4cda1196abbb385806da5dfa5253de1b" name="php_ds.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>ds</providesextension>
+ <extsrcrelease />
+</package>
