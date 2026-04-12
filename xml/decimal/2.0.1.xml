@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.16" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>decimal</name>
+ <channel>pecl.php.net</channel>
+ <summary>Arbitrary precision floating-point decimal</summary>
+ <description>Correctly-rounded arbitrary precision decimal floating-point arithmetic in PHP</description>
+ <lead>
+  <name>Rudi Theunissen</name>
+  <user>rtheunissen</user>
+  <email>rtheunissen@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2026-04-11</date>
+ <time>22:44:18</time>
+ <version>
+  <release>2.0.1</release>
+  <api>2.0.1</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/MIT">MIT License</license>
+ <notes>
+- Default decimal precision changed from 28 to 34.
+- Decimal operations now use the **minimum** precision of all operands.
+- Added `Decimal\Rational` implementation for rational numbers (fractions).
+- Added `Decimal\Number` abstract class.
+- Performance improvements, reduced object allocations.
+- Private constructors, static initializers via `valueOf`.
+- PHP 8.2, 8.3, and 8.4 compatibility.
+- Fixed isPositive/isNegative to return false for zero values.
+- Fixed array/debug output for Decimal and Rational objects.
+- Renamed `toSci` to `toScientific`.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="52f4dc0dac62d6325f73b2a61ba40429" name="src/arginfo.h" role="src" />
+   <file md5sum="34029233f41e5916970625e0c9c70e05" name="src/bool.h" role="src" />
+   <file md5sum="ed0f4a67a54112508f2ac948d3671471" name="src/common.c" role="src" />
+   <file md5sum="43d40c9bb3f6c7453e6441ed7fc1de80" name="src/common.h" role="src" />
+   <file md5sum="7369df54ffe41eb3976913395d1b4890" name="src/compare.c" role="src" />
+   <file md5sum="3091cdba784f49bbbc8d7672dc7b1359" name="src/compare.h" role="src" />
+   <file md5sum="05f103b14e9adbfb8dd4933a64dd2186" name="src/context.c" role="src" />
+   <file md5sum="983d5f5ee3be8f63e297cb27bcc2fb3c" name="src/context.h" role="src" />
+   <file md5sum="5a6bf5eea5ced91dc25ed9630cd86474" name="src/convert.c" role="src" />
+   <file md5sum="3f95ec8caefed8a84426cffe905b0971" name="src/convert.h" role="src" />
+   <file md5sum="b71d7461ce09a522c8005a16a5160a31" name="src/decimal.c" role="src" />
+   <file md5sum="2c104e125a23ad971c40ff34a56cd938" name="src/decimal.h" role="src" />
+   <file md5sum="c273a5be3f77f61d09e6a407d5c32978" name="src/errors.c" role="src" />
+   <file md5sum="e6e75340ffee5e42c75d1b2ab921dd26" name="src/errors.h" role="src" />
+   <file md5sum="0abdea798ee7c138085cc81b9de70b45" name="src/globals.c" role="src" />
+   <file md5sum="274cf1a61d95b29847a7dd1b1a0420c0" name="src/globals.h" role="src" />
+   <file md5sum="28ac1b40ad7bc95fc59d16234af0aeeb" name="src/limits.h" role="src" />
+   <file md5sum="5bf2739a8c84e807bd9ae9acaa705a6f" name="src/math.c" role="src" />
+   <file md5sum="2b01483a0498958dfb8e99cf6ca55298" name="src/math.h" role="src" />
+   <file md5sum="b93ad8fece8bc1dd45d1f835da9f7101" name="src/number.c" role="src" />
+   <file md5sum="b80ef330f01c9fd901a9c19ec506860e" name="src/number.h" role="src" />
+   <file md5sum="f60684d85b63a8fc816e593ee3d5bc69" name="src/params.h" role="src" />
+   <file md5sum="bc10b27f32b3e80ac5c372473add1531" name="src/parse.c" role="src" />
+   <file md5sum="e7cb0a707c2b41ce5f518b198a6e3280" name="src/parse.h" role="src" />
+   <file md5sum="c0a5c32115a50844332a12b6a4f00dbd" name="src/rational.c" role="src" />
+   <file md5sum="0e980aeeada3c6b1f8e9768e895cbf03" name="src/rational.h" role="src" />
+   <file md5sum="4adb1f6d1b841b27a296a45979c5ccd5" name="src/round.c" role="src" />
+   <file md5sum="08667f4b0c7b21831ff4fe629c39bc64" name="src/round.h" role="src" />
+   <file md5sum="eb6a94f6d8e2624c6a21cfda39832586" name="tests/Decimal/methods/__construct.phpt" role="test" />
+   <file md5sum="da4f3608b1d278f573ae7735fc1777f0" name="tests/Decimal/methods/abs.phpt" role="test" />
+   <file md5sum="2f6bb8c74212a58f46279e511d764f43" name="tests/Decimal/methods/add.phpt" role="test" />
+   <file md5sum="45cd8623b9facff249e7e35230bf2420" name="tests/Decimal/methods/between.phpt" role="test" />
+   <file md5sum="3aec3142ca931345ebe15bf73e504450" name="tests/Decimal/methods/ceil.phpt" role="test" />
+   <file md5sum="e1d1636f03a0915f873f599dcd742499" name="tests/Decimal/methods/compareTo.phpt" role="test" />
+   <file md5sum="7d8c575b24b3be769162fb3c692930b4" name="tests/Decimal/methods/div.phpt" role="test" />
+   <file md5sum="fd329cf87211e68d32beca947c83972d" name="tests/Decimal/methods/equals.phpt" role="test" />
+   <file md5sum="c75e1fd79f8e8280824a80f2737fa333" name="tests/Decimal/methods/exp.phpt" role="test" />
+   <file md5sum="bb08eb3e840e9b3b398eeebae1fc45f7" name="tests/Decimal/methods/floor.phpt" role="test" />
+   <file md5sum="15bc8ad714b94d6c55523182cbfebb91" name="tests/Decimal/methods/isEven.phpt" role="test" />
+   <file md5sum="d3b0d383e2d23e506aea97588675bb6e" name="tests/Decimal/methods/isInf.phpt" role="test" />
+   <file md5sum="21805359e32f95079413f1f368f71edf" name="tests/Decimal/methods/isInteger.phpt" role="test" />
+   <file md5sum="aed87019f21fc9f7f1d84bf8440c97f2" name="tests/Decimal/methods/isNaN.phpt" role="test" />
+   <file md5sum="04204770b3c59d510281a6e0a7b8ebd6" name="tests/Decimal/methods/isNegative.phpt" role="test" />
+   <file md5sum="bdfc3a4bb600b77726e2122e76343995" name="tests/Decimal/methods/isOdd.phpt" role="test" />
+   <file md5sum="bc1c028bbc70c6ce05f2f618866bc1e3" name="tests/Decimal/methods/isPositive.phpt" role="test" />
+   <file md5sum="a5221db256348a524cdc528a55186716" name="tests/Decimal/methods/isZero.phpt" role="test" />
+   <file md5sum="431e8ada4732f89f88a56a8779c432f6" name="tests/Decimal/methods/ln.phpt" role="test" />
+   <file md5sum="3ca4a7e814233bbbe83b6aa9f74eaa1c" name="tests/Decimal/methods/log10.phpt" role="test" />
+   <file md5sum="6f800f7fa7b795e4ec3b1111d56f7803" name="tests/Decimal/methods/mod.phpt" role="test" />
+   <file md5sum="30eb47cdbd00096e528645637188df9b" name="tests/Decimal/methods/mul.phpt" role="test" />
+   <file md5sum="73067880cd17dd703d6fc33ae2e9f989" name="tests/Decimal/methods/negate.phpt" role="test" />
+   <file md5sum="7c9e7447eb70fde322612a6a152921f7" name="tests/Decimal/methods/pow.phpt" role="test" />
+   <file md5sum="415be40b756c9ffa7bb2ec7e30aa7a38" name="tests/Decimal/methods/precision.phpt" role="test" />
+   <file md5sum="2cb632ed9c595992fee7898b4c13f0f4" name="tests/Decimal/methods/reduce.phpt" role="test" />
+   <file md5sum="885f1795e4e1d3a4e6c336f1f2a7cc56" name="tests/Decimal/methods/rem.phpt" role="test" />
+   <file md5sum="45760a737ae04d2c9abd033f28d73a61" name="tests/Decimal/methods/round.phpt" role="test" />
+   <file md5sum="853f519db378becb5bf1bf9850670999" name="tests/Decimal/methods/shiftl.phpt" role="test" />
+   <file md5sum="3006f56c6187293d09f5dbce24333d1f" name="tests/Decimal/methods/shiftr.phpt" role="test" />
+   <file md5sum="d0b7ab05570857f227d4cdd7ee0ffb64" name="tests/Decimal/methods/sqrt.phpt" role="test" />
+   <file md5sum="696e65be1a638f3d0989e65bf425a9d2" name="tests/Decimal/methods/sub.phpt" role="test" />
+   <file md5sum="fc06f2511141052d39876627745cc037" name="tests/Decimal/methods/toDecimal.phpt" role="test" />
+   <file md5sum="da13daa33776159e926bd7c8aeb6a984" name="tests/Decimal/methods/toFixed.phpt" role="test" />
+   <file md5sum="026a43a3ecaba04a28c39edf2a65cdab" name="tests/Decimal/methods/toFloat.phpt" role="test" />
+   <file md5sum="9f67e748768b3d5661c8b26f024483dc" name="tests/Decimal/methods/toInt.phpt" role="test" />
+   <file md5sum="f3589bd4394131b087772fcee81c93e8" name="tests/Decimal/methods/toRational.phpt" role="test" />
+   <file md5sum="22977acb2625ba2121742f800d1b8101" name="tests/Decimal/methods/toScientific.phpt" role="test" />
+   <file md5sum="615dd0c27b51a2fb8a922baafa53893f" name="tests/Decimal/methods/toString.phpt" role="test" />
+   <file md5sum="5373660aaabc56d5a8639d95d19f718b" name="tests/Decimal/methods/trim.phpt" role="test" />
+   <file md5sum="9c33749f88468119dd0a7df1338b5aeb" name="tests/Decimal/methods/trunc.phpt" role="test" />
+   <file md5sum="52f022ce23ce74d16b1aaa2f7151e8a1" name="tests/Decimal/methods/valueOf.phpt" role="test" />
+   <file md5sum="5e0f4ef46f86ae08b1db017da9960ad7" name="tests/Decimal/cast.phpt" role="test" />
+   <file md5sum="012f50a3a475f09591dace4b719115fe" name="tests/Decimal/clone.phpt" role="test" />
+   <file md5sum="5bb0fa2fe83fe3416888427a15e398e2" name="tests/Decimal/constants.phpt" role="test" />
+   <file md5sum="b2b4c5982f785188590667baa60d0d58" name="tests/Decimal/empty.phpt" role="test" />
+   <file md5sum="2350ea938e24d4f754c4c2feb02f4303" name="tests/Decimal/json.phpt" role="test" />
+   <file md5sum="48b87610a26654c521fb195ec0690b12" name="tests/Decimal/operators.phpt" role="test" />
+   <file md5sum="94baddf7fde087c821dc480199cf5ce9" name="tests/Decimal/properties.phpt" role="test" />
+   <file md5sum="85ad67d058f02cc8ba6baa67a09856a4" name="tests/Decimal/refcount.phpt" role="test" />
+   <file md5sum="1c02136bea29577883d414c7ea1287ea" name="tests/Decimal/serialize.phpt" role="test" />
+   <file md5sum="ede04d563fc65ee15156a8371de4cd12" name="tests/Number/methods/abs.phpt" role="test" />
+   <file md5sum="4ff8455ba9d111ab0cd8c71c5de77228" name="tests/Number/methods/add.phpt" role="test" />
+   <file md5sum="2e511cc5e706b740f8a628dfba39521c" name="tests/Number/methods/between.phpt" role="test" />
+   <file md5sum="95d9ed5d37039b753d2f43188cc470c4" name="tests/Number/methods/ceil.phpt" role="test" />
+   <file md5sum="f884f0be71e09aa939faacc2a06cd1f8" name="tests/Number/methods/compareTo.phpt" role="test" />
+   <file md5sum="95973b2bd2917d73238ae90f8280d545" name="tests/Number/methods/div.phpt" role="test" />
+   <file md5sum="6973646eb2e6da205fc27a87e3fd83ab" name="tests/Number/methods/equals.phpt" role="test" />
+   <file md5sum="c27730766cf8427db21e85ab84afa021" name="tests/Number/methods/floor.phpt" role="test" />
+   <file md5sum="3cf9ba62bd9a0f816248e43b777eb859" name="tests/Number/methods/isEven.phpt" role="test" />
+   <file md5sum="dffcd6ad931273ada53f98a953da573c" name="tests/Number/methods/isInf.phpt" role="test" />
+   <file md5sum="b4bb980a9ed6406388faa04a2d7d1d6d" name="tests/Number/methods/isInteger.phpt" role="test" />
+   <file md5sum="9879193d4631571eb6d48a35499aa73c" name="tests/Number/methods/isNan.phpt" role="test" />
+   <file md5sum="1efd392cc20510b99e486ba703193f44" name="tests/Number/methods/isNegative.phpt" role="test" />
+   <file md5sum="51230c2c90d126225d184ce6f430e393" name="tests/Number/methods/isOdd.phpt" role="test" />
+   <file md5sum="c6f92ba4911b58f0f63c6139b89c9947" name="tests/Number/methods/isPositive.phpt" role="test" />
+   <file md5sum="c1c0446306b5ee05f3132d52c0661a8f" name="tests/Number/methods/isZero.phpt" role="test" />
+   <file md5sum="6e34aa9dd8f72fd09649314ca4c6b435" name="tests/Number/methods/mod.phpt" role="test" />
+   <file md5sum="6baafa0c71b06223705472702ec641e5" name="tests/Number/methods/mul.phpt" role="test" />
+   <file md5sum="4b293622202f13b8abddeec0953199b1" name="tests/Number/methods/negate.phpt" role="test" />
+   <file md5sum="85466ea4b7391753996617d443e635c7" name="tests/Number/methods/pow.phpt" role="test" />
+   <file md5sum="c8c602357dd4067eeaf0d8330d243d5d" name="tests/Number/methods/shiftl.phpt" role="test" />
+   <file md5sum="337fe856ef36596dabe3a05531c92b05" name="tests/Number/methods/shiftr.phpt" role="test" />
+   <file md5sum="fbe2ad66990268f91f2477db70b2fa74" name="tests/Number/methods/sub.phpt" role="test" />
+   <file md5sum="0580e3f284e7685c91bbe8a9c85dec4f" name="tests/Number/methods/toDecimal.phpt" role="test" />
+   <file md5sum="492d0def95956fc47cbc22faa31fa4db" name="tests/Number/methods/toRational.phpt" role="test" />
+   <file md5sum="73ae49f49265ed361c35913bada9d6d6" name="tests/Number/methods/toString.phpt" role="test" />
+   <file md5sum="1c894e918748dba81fd7d72689065f2c" name="tests/Number/methods/trunc.phpt" role="test" />
+   <file md5sum="640473eda07f8bdde4aa1977232c221e" name="tests/Number/methods/valueOf.phpt" role="test" />
+   <file md5sum="2a56dfcccb321170e5d57215ac3953d4" name="tests/Number/helpers/Number.php" role="test" />
+   <file md5sum="b88f20c60859f6a3e2670982c10f803f" name="tests/Number/cast.phpt" role="test" />
+   <file md5sum="450de013b86d6b8fc17c7a10c619350b" name="tests/Number/clone.phpt" role="test" />
+   <file md5sum="19838e7d92e6342819a830f2a7e30196" name="tests/Number/constants.phpt" role="test" />
+   <file md5sum="69b2bc36352393561ced91f84b4c1d71" name="tests/Number/empty.phpt" role="test" />
+   <file md5sum="b250644db9fc221ef45da8b975644f0a" name="tests/Number/json.phpt" role="test" />
+   <file md5sum="5bd4643fb7d8966af555f257a51f8c71" name="tests/Number/operators.phpt" role="test" />
+   <file md5sum="9f5d6f11d9c8ee3eefce3f5f7f0a5062" name="tests/Number/properties.phpt" role="test" />
+   <file md5sum="f36b0f0b338751fe4ba86da3903ea057" name="tests/Rational/methods/__construct.phpt" role="test" />
+   <file md5sum="8d5a74b0f7bd6c8aacd4e70cf820e70c" name="tests/Rational/methods/abs.phpt" role="test" />
+   <file md5sum="607d5f244d2b7a859668908310e9936a" name="tests/Rational/methods/add.phpt" role="test" />
+   <file md5sum="511683470228c97d3a83dd0493a0f2d9" name="tests/Rational/methods/between.phpt" role="test" />
+   <file md5sum="a47742b78d8600f15fdd3c8c4a4c66b6" name="tests/Rational/methods/ceil.phpt" role="test" />
+   <file md5sum="f87ce0411767f34c46ba318fc4b2305e" name="tests/Rational/methods/compareTo.phpt" role="test" />
+   <file md5sum="4ea422cd18589a2a1347d1fb025d35fc" name="tests/Rational/methods/div.phpt" role="test" />
+   <file md5sum="dbccd40bcd4cbd714f620a4aa0107abb" name="tests/Rational/methods/equals.phpt" role="test" />
+   <file md5sum="224567c28663c8aea65295cd914f8b7c" name="tests/Rational/methods/floor.phpt" role="test" />
+   <file md5sum="a2751ed987e701a5562df5d24dfef31b" name="tests/Rational/methods/isEven.phpt" role="test" />
+   <file md5sum="1e3501000512b291780c8b7741652639" name="tests/Rational/methods/isInf.phpt" role="test" />
+   <file md5sum="7f4c01661d112ae5eb0c055800e64a4d" name="tests/Rational/methods/isInteger.phpt" role="test" />
+   <file md5sum="32a2ed08f46c6610ba3f9fd0952dc6ac" name="tests/Rational/methods/isNaN.phpt" role="test" />
+   <file md5sum="acde70d8bb11d8e1fbcac701b1be9ab5" name="tests/Rational/methods/isNegative.phpt" role="test" />
+   <file md5sum="b81f13e9d88cd672b5cb39a03d9c3e4a" name="tests/Rational/methods/isOdd.phpt" role="test" />
+   <file md5sum="4db1415990254f7e193a5a61c647aa25" name="tests/Rational/methods/isPositive.phpt" role="test" />
+   <file md5sum="4de7510bf8309793757942f07e165676" name="tests/Rational/methods/isZero.phpt" role="test" />
+   <file md5sum="5b5374b2ed0d69b4163fbebe94846682" name="tests/Rational/methods/mod.phpt" role="test" />
+   <file md5sum="417bf8d2fafcf9978f112b98bdb35661" name="tests/Rational/methods/mul.phpt" role="test" />
+   <file md5sum="930aec4b48198b39e3660aed6bc6c9c5" name="tests/Rational/methods/negate.phpt" role="test" />
+   <file md5sum="4fdd0202fc2bc3b171fcd84228c09003" name="tests/Rational/methods/pow.phpt" role="test" />
+   <file md5sum="fceffa6158ec4f32599136c6e66ecf08" name="tests/Rational/methods/rem.phpt" role="test" />
+   <file md5sum="345945674a2e2d10f9366d3585843c2e" name="tests/Rational/methods/round.phpt" role="test" />
+   <file md5sum="6be5075450876433bb443dc2a08d622d" name="tests/Rational/methods/shiftl.phpt" role="test" />
+   <file md5sum="4d2a340da467f572c22c93d75c243cb2" name="tests/Rational/methods/shiftr.phpt" role="test" />
+   <file md5sum="3c23da95547e1effcee6674360f55433" name="tests/Rational/methods/sub.phpt" role="test" />
+   <file md5sum="838018f6bde7d095e35e2b220210785f" name="tests/Rational/methods/toDecimal.phpt" role="test" />
+   <file md5sum="97334aeca57b7081eba82396503d4587" name="tests/Rational/methods/toFixed.phpt" role="test" />
+   <file md5sum="39bb0dcbbe304f4990ab4a8e52bb4ece" name="tests/Rational/methods/toFloat.phpt" role="test" />
+   <file md5sum="f2741a0e097abd02fa0b8ec15a8781df" name="tests/Rational/methods/toInt.phpt" role="test" />
+   <file md5sum="7ccdb0e1fd1bc914b1ea5f42677c09ac" name="tests/Rational/methods/toRational.phpt" role="test" />
+   <file md5sum="97ede3f11922b1778bd0c9673f385546" name="tests/Rational/methods/toScientific.phpt" role="test" />
+   <file md5sum="fbf3b67a63b20c2ca1ff0b38949123c8" name="tests/Rational/methods/toString.phpt" role="test" />
+   <file md5sum="946728f30e7195df006e7ee40ddb1855" name="tests/Rational/methods/trunc.phpt" role="test" />
+   <file md5sum="23d7e462e6b0ec15b0a7a09f3ab6aa36" name="tests/Rational/methods/valueOf.phpt" role="test" />
+   <file md5sum="eafd939063910c26a6331ecdc08885f5" name="tests/Rational/cast.phpt" role="test" />
+   <file md5sum="20804f8339cab9d2fd64655aad58d8fd" name="tests/Rational/clone.phpt" role="test" />
+   <file md5sum="27e20c66f3a936e0cd87f387f9acf050" name="tests/Rational/constants.phpt" role="test" />
+   <file md5sum="8a6cc1d48010b1af4cff0dffd3593698" name="tests/Rational/empty.phpt" role="test" />
+   <file md5sum="2f787d9e3c197b75ab495bedb9463b55" name="tests/Rational/json.phpt" role="test" />
+   <file md5sum="bca679b7aec33af7c6d9cfb95c670b4b" name="tests/Rational/operators.phpt" role="test" />
+   <file md5sum="cd4dc1c22a8398709dee4f38a0d7bc22" name="tests/Rational/properties.phpt" role="test" />
+   <file md5sum="281e1334b15fe19faaffb95d410de361" name="tests/Rational/refcount.phpt" role="test" />
+   <file md5sum="35f6eb7045d24c4b5ab8b8d59a8cf45c" name="tests/Rational/serialize.phpt" role="test" />
+   <file md5sum="e941b4b319e671a340d3093bdbb27429" name="tests/opcache.phpt" role="test" />
+   <file md5sum="114f4a86fda2c8a8c714e9e3fcab0553" name="LICENSE" role="doc" />
+   <file md5sum="5697f1c5713c3b07d0b6d13b1d653c55" name="CHANGELOG.md" role="doc" />
+   <file md5sum="3b41fb3cb8de423d02727da065914520" name="README.md" role="doc" />
+   <file md5sum="06bac2306e0c58faf078aa33a9dfbfd9" name="composer.json" role="doc" />
+   <file md5sum="eafb80f0202129695e8f0f7b3acdedcd" name="config.m4" role="src" />
+   <file md5sum="3f0b8af4d4c35ff7f58be131351e4590" name="config.w32" role="src" />
+   <file md5sum="aa3642d578078f7df24344e12e1f508e" name="php_decimal.c" role="src" />
+   <file md5sum="32113e3c9439d514a3c3c44dbbdba778" name="php_decimal.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>decimal</providesextension>
+ <extsrcrelease />
+</package>

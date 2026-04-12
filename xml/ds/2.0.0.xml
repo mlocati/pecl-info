@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.18" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>ds</name>
+ <channel>pecl.php.net</channel>
+ <summary>Data Structures</summary>
+ <description>Data Structures for PHP</description>
+ <lead>
+  <name>Rudi Theunissen</name>
+  <user>rtheunissen</user>
+  <email>rtheunissen@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Joe Watkins</name>
+  <user>krakjoe</user>
+  <email>krakjoe@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2026-04-12</date>
+ <time>02:11:56</time>
+ <version>
+  <release>2.0.0</release>
+  <api>2.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://opensource.org/licenses/MIT">MIT License</license>
+ <notes>
+- Major release: redesign from 11 types + 3 interfaces to 5 types + 1 interface
+- New types: Ds\Seq, Ds\Map, Ds\Set, Ds\Heap, Ds\Pair (readonly)
+- New interface: Ds\Key (replaces Ds\Hashable)
+- Copy-on-Write: clone and copy() are O(1), mutation during iteration is safe
+- Removed: Vector, Deque, Stack, Queue, PriorityQueue, Collection, Sequence, Hashable
+- Ds\Heap accepts optional callable comparator in constructor
+- Ds\Pair is a readonly class with public key and value properties
+- Require PHP &gt;= 8.2
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="c7d5e5b78f1ed78e135621ea3f5b6e27" name="src/ds/ds_seq.c" role="src" />
+   <file md5sum="39132fa9ed4033a61cbddcbf485e594e" name="src/ds/ds_seq.h" role="src" />
+   <file md5sum="fbdd7bf12146213d6a7bf42a1d5866c2" name="src/ds/ds_htable.c" role="src" />
+   <file md5sum="e9dc2c2435b5682cd4f8a32bbb1ea4cd" name="src/ds/ds_htable.h" role="src" />
+   <file md5sum="661f71ae6b630e116f19fa5f69c0da57" name="src/ds/ds_map.c" role="src" />
+   <file md5sum="d8115dbac65f422ebcdf665526011368" name="src/ds/ds_map.h" role="src" />
+   <file md5sum="5b96c73ac4cf6ae729ae5f73035700e6" name="src/ds/ds_set.c" role="src" />
+   <file md5sum="2d275ae88073920fcbe438e829595d4c" name="src/ds/ds_set.h" role="src" />
+   <file md5sum="633ad472a2f45d34facbd3dff622c367" name="src/ds/ds_heap.c" role="src" />
+   <file md5sum="020aa93bf3df92d0d9a97243ef9a510c" name="src/ds/ds_heap.h" role="src" />
+   <file md5sum="892c734ec53c42f1de1e2bd320774f01" name="src/php/classes/php_ds_ce_common.h" role="src" />
+   <file md5sum="b122a37f0e7cfb5211115f081dee7f49" name="src/php/classes/php_key_ce.c" role="src" />
+   <file md5sum="ff4c986e2fdc22218c6d1a273ab6ea71" name="src/php/classes/php_key_ce.h" role="src" />
+   <file md5sum="e8fdbcf0babc06e1bc0c319a6d66bc08" name="src/php/classes/php_seq_ce.c" role="src" />
+   <file md5sum="7c1b9d9c00cc9b1f9e5fd3944712da57" name="src/php/classes/php_seq_ce.h" role="src" />
+   <file md5sum="9294bcf5d5c732815938365d784dc2db" name="src/php/classes/php_map_ce.c" role="src" />
+   <file md5sum="0abf2dad5c923f97a35b9e6a6d646bf3" name="src/php/classes/php_map_ce.h" role="src" />
+   <file md5sum="bd3ada8632e4e59779a58be7cebea6f6" name="src/php/classes/php_set_ce.c" role="src" />
+   <file md5sum="e944a39ef4660741a3ad6be0c75b9011" name="src/php/classes/php_set_ce.h" role="src" />
+   <file md5sum="803c60154868901e0404f8c3b9c91b4a" name="src/php/classes/php_pair_ce.c" role="src" />
+   <file md5sum="28ac3c5898f970ec6ff4e04e40d22c73" name="src/php/classes/php_pair_ce.h" role="src" />
+   <file md5sum="603da6b8c0aa5a9806a79ff747e58593" name="src/php/classes/php_heap_ce.c" role="src" />
+   <file md5sum="ed94fc6863022f3386aa8e101a0ec4f6" name="src/php/classes/php_heap_ce.h" role="src" />
+   <file md5sum="a37057a0ae6609e5d2727ffdb4eee475" name="src/php/handlers/php_common_handlers.c" role="src" />
+   <file md5sum="b5e7ccb18c47cb5837f8f431a1e4f8a0" name="src/php/handlers/php_common_handlers.h" role="src" />
+   <file md5sum="c49e208b02c7ffb3b392a38ad36af1c3" name="src/php/handlers/php_seq_handlers.c" role="src" />
+   <file md5sum="de3c0b2e30e75a182e2f26217a856802" name="src/php/handlers/php_seq_handlers.h" role="src" />
+   <file md5sum="8e1fd1a1d162c8a5736556ef8a055742" name="src/php/handlers/php_map_handlers.c" role="src" />
+   <file md5sum="cb5a24959ff2fc30b69ec959ee29814b" name="src/php/handlers/php_map_handlers.h" role="src" />
+   <file md5sum="8799caec24372653aca0a848825ee81d" name="src/php/handlers/php_set_handlers.c" role="src" />
+   <file md5sum="15b0e99836e70b7efc99d985d3822f4a" name="src/php/handlers/php_set_handlers.h" role="src" />
+   <file md5sum="b7e6ca912c6c5ed48e2ce23b0b26af39" name="src/php/handlers/php_pair_handlers.c" role="src" />
+   <file md5sum="474d6082d3d87f5025a9e37c2eee99a5" name="src/php/handlers/php_pair_handlers.h" role="src" />
+   <file md5sum="f8011db86069b811f7151e5ea43f4ffc" name="src/php/handlers/php_heap_handlers.c" role="src" />
+   <file md5sum="46d7cafbf6ceb20c0434a91b77d91ed2" name="src/php/handlers/php_heap_handlers.h" role="src" />
+   <file md5sum="5567f197c994a457708f8e4b0c289f4f" name="src/php/iterators/php_seq_iterator.c" role="src" />
+   <file md5sum="8ec71e78a09760681ca31c244f0b4aa0" name="src/php/iterators/php_seq_iterator.h" role="src" />
+   <file md5sum="6baed2d0f5e1c8f7a1176d8203189ccd" name="src/php/iterators/php_htable_iterator.c" role="src" />
+   <file md5sum="31e8de82851feaecae6f34827f2788f6" name="src/php/iterators/php_htable_iterator.h" role="src" />
+   <file md5sum="2e4d9962492a76f88c0b730726c19651" name="src/php/iterators/php_map_iterator.c" role="src" />
+   <file md5sum="29c7dd2735e1c234252e9b8db35f706a" name="src/php/iterators/php_map_iterator.h" role="src" />
+   <file md5sum="a5dc760a10f95093b14e5acfb26de8ed" name="src/php/iterators/php_set_iterator.c" role="src" />
+   <file md5sum="d12449f4be76fbfd050a2545e019804f" name="src/php/iterators/php_set_iterator.h" role="src" />
+   <file md5sum="bafa5c9358445d641148089d0edb51f5" name="src/php/iterators/php_heap_iterator.c" role="src" />
+   <file md5sum="e504569f620b4a06ce364917030bb35f" name="src/php/iterators/php_heap_iterator.h" role="src" />
+   <file md5sum="d7c78f47602c348176bb805d3c629ba7" name="src/php/objects/php_seq.c" role="src" />
+   <file md5sum="c30efd519edf24b1cffb345e4282ab5a" name="src/php/objects/php_seq.h" role="src" />
+   <file md5sum="b076d600ba3c95b7a95397153a3d7038" name="src/php/objects/php_map.c" role="src" />
+   <file md5sum="00e8c76c20baf75095a14a9846cfe96d" name="src/php/objects/php_map.h" role="src" />
+   <file md5sum="ab6fdbc64fc6e64bf94dbb0e2165cfe4" name="src/php/objects/php_set.c" role="src" />
+   <file md5sum="0afb74c5dc88646906dd96ccfd5b8586" name="src/php/objects/php_set.h" role="src" />
+   <file md5sum="dedd58ef8e646ffdc5d5830851f6af7d" name="src/php/objects/php_pair.c" role="src" />
+   <file md5sum="c1332a350dbb64d3583892936bfcd0eb" name="src/php/objects/php_pair.h" role="src" />
+   <file md5sum="aa25de5c21edbc84b93f2b323ed77572" name="src/php/objects/php_heap.c" role="src" />
+   <file md5sum="da3b5c20c2d81441a98ea73f194acc43" name="src/php/objects/php_heap.h" role="src" />
+   <file md5sum="956d73622981c190c0d26c0bbc68246a" name="src/php/arginfo.h" role="src" />
+   <file md5sum="37a696e2ba19d46a947d12d63f9aaf56" name="src/php/parameters.h" role="src" />
+   <file md5sum="7e49a87d854241fdf0b85b633cdc0d51" name="src/common.c" role="src" />
+   <file md5sum="84adc67bfee84af016f38d17d977a99e" name="src/common.h" role="src" />
+   <file md5sum="f0062b9445c66e2bfbf04d51249ec7ad" name="LICENSE" role="doc" />
+   <file md5sum="be62f26a6b8ce49d8d67bbc46a7271d7" name="config.m4" role="src" />
+   <file md5sum="0f2fcd6f78859d1312b181ed665a582f" name="config.w32" role="src" />
+   <file md5sum="2a761f28a279e456740b6b478eb965bf" name="php_ds.c" role="src" />
+   <file md5sum="84e6fdca993e4cff1206f87ea8fea0ee" name="php_ds.h" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>ds</providesextension>
+ <extsrcrelease />
+</package>
