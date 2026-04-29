@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.16" version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0                              http://pear.php.net/dtd/tasks-1.0.xsd                              http://pear.php.net/dtd/package-2.1                              http://pear.php.net/dtd/package-2.1.xsd">
+ <name>statgrab</name>
+ <channel>pecl.php.net</channel>
+ <summary>System statistics via libstatgrab</summary>
+ <description>A PHP extension wrapping libstatgrab (https://libstatgrab.org), the
+cross-platform system-statistics library. Exposes CPU, memory, swap,
+disk I/O, filesystem, network, page, process, user, and host metrics
+through both a procedural API (the original 2006 surface) and a
+modern Statgrab class.
+
+Requires libstatgrab &gt;= 0.92 and PHP &gt;= 8.0.</description>
+ <lead>
+  <name>Ilia Alshanetsky</name>
+  <user>iliaa</user>
+  <email>ilia@ilia.ws</email>
+  <active>yes</active>
+ </lead>
+ <date>2026-04-28</date>
+ <time>14:21:26</time>
+ <version>
+  <release>2.2.0</release>
+  <api>2.2.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License 3.01</license>
+ <notes>
+Bundled-libstatgrab support and leak fixes.
+
+- Vendored libstatgrab 0.92.1 with one local patch fixing an
+  off-by-one in sg_destroy_globals that leaked the user-stats vector
+  (~1.1 KB) at every process exit. Patch is LGPL 2.1+, lives under
+  vendor/libstatgrab/patches/, submitted upstream.
+- New --with-statgrab=bundled configure option statically links the
+  patched copy. System libstatgrab remains the default.
+- Fixed our own 144-byte-per-call leak in sg_cpu_percent_usage /
+  Statgrab::cpu: sg_get_cpu_percents_r returns owned memory and we
+  weren&apos;t freeing it via sg_free_stats_buf.
+- LICENSE.libstatgrab (LGPL 2.1) ships next to LICENSE (PHP-3.01);
+  the two licenses cohabit cleanly.
+
+See CHANGELOG.md for the full list.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="0fa474f5eb26120946733edcac1c1d31" name="tests/001-load.phpt" role="test" />
+   <file md5sum="7f820118f109519b16c780aa53a8cac8" name="tests/002-host.phpt" role="test" />
+   <file md5sum="ae01a84e887a5f800534c6a6ad197878" name="tests/003-load.phpt" role="test" />
+   <file md5sum="5dfdeacc911884555e691ef0d2b2b7e4" name="tests/004-memory.phpt" role="test" />
+   <file md5sum="44b597a70931e5fb7e756c2cb3e4cd29" name="tests/005-swap.phpt" role="test" />
+   <file md5sum="99b243cb02683104404ee14b65cea73e" name="tests/006-cpu-percent.phpt" role="test" />
+   <file md5sum="869a5111338fbc6f974de5498abea567" name="tests/007-cpu-totals.phpt" role="test" />
+   <file md5sum="dca524e6a551ffdee81c3018354a9f99" name="tests/008-process-count.phpt" role="test" />
+   <file md5sum="6170ec457b0d92ec15cb8be0d948f8a1" name="tests/009-fs.phpt" role="test" />
+   <file md5sum="34f22100d6652d3727dc90b8beeecde8" name="tests/010-network-io.phpt" role="test" />
+   <file md5sum="a84afc94db0d78ac727cce0c951c5efd" name="tests/011-iface.phpt" role="test" />
+   <file md5sum="0403a7c316e61b50026ec8e156fd766c" name="tests/012-pages.phpt" role="test" />
+   <file md5sum="b5ad2037bba30686c5616114010f9c24" name="tests/013-process-stats.phpt" role="test" />
+   <file md5sum="9817e89684c6a0d225932cefb78cdcc1" name="tests/014-process-sort.phpt" role="test" />
+   <file md5sum="fe088724659948f930bc77332403ced2" name="tests/015-users.phpt" role="test" />
+   <file md5sum="40d6f8ef5a2ff34674daa1a8ff0eb58f" name="tests/016-oo-class.phpt" role="test" />
+   <file md5sum="d7435e7b646d411b817f307f1ea21031" name="tests/017-no-args.phpt" role="test" />
+   <file md5sum="59abc10349a1882dc77fa4a7f48e004b" name="tests/018-tier-a-systime.phpt" role="test" />
+   <file md5sum="3664c29c2ea2e9ef4e19fe4769e99040" name="tests/019-valid-filesystems.phpt" role="test" />
+   <file md5sum="e42bee837d36227439cca61d066e0bd8" name="tests/020-snapshot.phpt" role="test" />
+   <file md5sum="20cc367b614463d7595813421d87dfb2" name="tests/021-error-details.phpt" role="test" />
+   <file md5sum="3dffe20753a466dfdade44b6efc40bff" name="tests/022-cpu-percent-source.phpt" role="test" />
+   <file md5sum="c61121b422d4a291ff4ee0fe83610e79" name="tests/023-tier-c-constants.phpt" role="test" />
+   <file md5sum="c87dab761d2cc8e50026b234801d19ff" name="tests/024-set-valid-filesystems-typeerror.phpt" role="test" />
+   <file md5sum="1e916353ee2a6474c7275b86fb3c5836" name="config.m4" role="src" />
+   <file md5sum="e0c4df30978fa8eec86a33f2ff4fa078" name="statgrab.c" role="src" />
+   <file md5sum="71c7ae2a13b181f62eb348b3fdbb6e30" name="statgrab.stub.php" role="src" />
+   <file md5sum="2f6696b8c0756743f50e990d63a6beff" name="statgrab_arginfo.h" role="src" />
+   <file md5sum="ca93f5c82c21776fc3322b11e76cd01a" name="php_statgrab.h" role="src" />
+   <file md5sum="cf4e8e01623f6b436cb41c3186e0937f" name="composer.json" role="doc" />
+   <file md5sum="17ba6e1e03886362246780004e00955d" name="CREDITS" role="doc" />
+   <file md5sum="b88b37e735121db2db10f0e7acc2f360" name="CHANGELOG.md" role="doc" />
+   <file md5sum="6a469d66468b4b047b9f988399a18ac1" name="README.md" role="doc" />
+   <file md5sum="3987820d4720d906700e2141091611cd" name="LICENSE" role="doc" />
+   <file md5sum="4fbd65380cdd255951079008b364516c" name="LICENSE.libstatgrab" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+    <max>8.99.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>statgrab</providesextension>
+ <extsrcrelease />
+</package>
