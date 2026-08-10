@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.18" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>taint</name>
+ <channel>pecl.php.net</channel>
+ <summary>XSS code sniffer</summary>
+ <description>An extension used for detecting XSS codes(tainted string), 
+  And also can be used to spot sql injection vulnerabilities, shell inject, etc.</description>
+ <lead>
+  <name>Xinchen Hui</name>
+  <user>laruence</user>
+  <email>laruence@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2026-08-10</date>
+ <time>08:01:54</time>
+ <version>
+  <release>3.0.0</release>
+  <api>3.0.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+- Support PHP 8.0 up to 8.5
+- Dropped PHP 7 support (use taint 2.1.x for PHP 7.x)
+- Propagate the taint mark through the frameless call fast paths (PHP 8.4+)
+- Extended sink coverage (see README for the full list)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="96cffcd89070de65194f1a0be100ed67" name="tests/001.phpt" role="test" />
+   <file md5sum="a7dcab26cd6ebae1511a96c475b77226" name="tests/002.phpt" role="test" />
+   <file md5sum="f2b4d6cba5168e990079bfb9c6228706" name="tests/003.phpt" role="test" />
+   <file md5sum="9921179eec84477a6ef1fa3bcef30bce" name="tests/004.phpt" role="test" />
+   <file md5sum="499b17ddafb9042ddab254b7fce9afb3" name="tests/005.phpt" role="test" />
+   <file md5sum="7a951ac9af256ff947f9d62337e157d5" name="tests/006.phpt" role="test" />
+   <file md5sum="49d9b18c10d95478a573975df4ff54be" name="tests/007.phpt" role="test" />
+   <file md5sum="d47aece53213bf257d3e0b95fcfb7f66" name="tests/008.phpt" role="test" />
+   <file md5sum="2f3e91d10d841e13c257ed0728d1bc45" name="tests/009.phpt" role="test" />
+   <file md5sum="263ee73fe98c43fe4242c681bbfa77ad" name="tests/010.phpt" role="test" />
+   <file md5sum="7d8ffc0a4100a354979581f4b541f164" name="tests/011.phpt" role="test" />
+   <file md5sum="0e621204baf62e827888d954797878a8" name="tests/012.phpt" role="test" />
+   <file md5sum="4f90147726bea22b13f70ccb623c3d7a" name="tests/013.phpt" role="test" />
+   <file md5sum="9c6596f774d481f6ac6a8aeba082a54b" name="tests/014.phpt" role="test" />
+   <file md5sum="6e17c32fce0eff923242e116ad19956d" name="tests/015.phpt" role="test" />
+   <file md5sum="15d7101cb09b2d4a5bd66701c0d668ea" name="tests/016.phpt" role="test" />
+   <file md5sum="c956d1f401893b8b0a62b4d8174ddf9e" name="tests/017.phpt" role="test" />
+   <file md5sum="6842bdca1c73b8d15491994f0f096a6d" name="tests/018.phpt" role="test" />
+   <file md5sum="d74bfe70ab2112eb08c582c0c6595fdd" name="tests/019.phpt" role="test" />
+   <file md5sum="72e1c8d2ecf63b7a6398c70668c6d0d3" name="tests/020.phpt" role="test" />
+   <file md5sum="b74fb9956b1f112de8194a1e22b2105c" name="tests/021.phpt" role="test" />
+   <file md5sum="90d02a4456a75647cdea2b8d89908a80" name="tests/022.phpt" role="test" />
+   <file md5sum="5ffddfa551ab412c34055c083886032e" name="tests/023.phpt" role="test" />
+   <file md5sum="69b8455f2751bbfc451fb743cd07b745" name="tests/024.phpt" role="test" />
+   <file md5sum="5417df47de4de54d9ccc3fca3b70b713" name="tests/025.phpt" role="test" />
+   <file md5sum="46ab2144a91edb5f2e1293908a58f42b" name="tests/026.phpt" role="test" />
+   <file md5sum="308aebcda1f48937f1e691dbb8c52c20" name="tests/027.phpt" role="test" />
+   <file md5sum="b15831cdddc5270644b99118dfdd7007" name="tests/028.phpt" role="test" />
+   <file md5sum="672211d20590521f76f6b74a79409c52" name="tests/029.phpt" role="test" />
+   <file md5sum="76dede0c0adcb83b58ed607ebd16cb0c" name="tests/030.phpt" role="test" />
+   <file md5sum="9358326c7e09e6da40991943c23da4d6" name="tests/031.phpt" role="test" />
+   <file md5sum="eff6d40cb17cfa2a3784dd4a5b097f67" name="tests/032.phpt" role="test" />
+   <file md5sum="77f8cf9b63397ecd6e2a87f47b5ea75e" name="tests/033.phpt" role="test" />
+   <file md5sum="477eee52bffc57fedcb762f6613ae41c" name="tests/034.phpt" role="test" />
+   <file md5sum="fe6e72d6ad7ef9e0d08206f90c081106" name="tests/035.phpt" role="test" />
+   <file md5sum="78ab3ed4a04565c3af5beaabd2f4fd85" name="tests/036.phpt" role="test" />
+   <file md5sum="3bbb1659cc8db74d7c39b40111f96089" name="tests/037.phpt" role="test" />
+   <file md5sum="959d9d4051bac56a6e98f6eab6348970" name="tests/038.phpt" role="test" />
+   <file md5sum="82f744510b865ef42cf2756d5cbad57d" name="tests/039.phpt" role="test" />
+   <file md5sum="42a3f54f9f71acb7cac231242993abca" name="tests/040.phpt" role="test" />
+   <file md5sum="e767825a1cb0f0ae4702c2158664cc2e" name="tests/041.phpt" role="test" />
+   <file md5sum="7acf7f0afbbf4fe893e210205645666c" name="tests/042.phpt" role="test" />
+   <file md5sum="0b3fe19e1d0ae7ea0add47706e1e40b3" name="tests/043.phpt" role="test" />
+   <file md5sum="d292d5b45df3589ec5c1917cd75a7d7e" name="tests/044.phpt" role="test" />
+   <file md5sum="b1887aa12541d02086e22089020b252d" name="tests/045.phpt" role="test" />
+   <file md5sum="c5623fa34f5c6646e0e02d65c082c695" name="tests/046.phpt" role="test" />
+   <file md5sum="62fa899fe94d817df1a013ad76c356a3" name="tests/bug61163.phpt" role="test" />
+   <file md5sum="293fe0db6e8806eda6a988cefe5904e5" name="tests/bug61816.phpt" role="test" />
+   <file md5sum="58ebf0d1501110571bd909a42ffcc0f0" name="tests/bug63100.phpt" role="test" />
+   <file md5sum="508085cd18717581773e47a0a2ed0508" name="tests/bug63123.phpt" role="test" />
+   <file md5sum="22c6657258fc5ec0a6fc7c5ce15fb04a" name="tests/issue004.phpt" role="test" />
+   <file md5sum="ac65ffa3844e7901dca120656c50a0a4" name="tests/issue026.phpt" role="test" />
+   <file md5sum="70bbf1b3a75dee46496c398f05179b16" name="tests/issue061.phpt" role="test" />
+   <file md5sum="656071b926d2661617ec824d48f0b35a" name="config.m4" role="src" />
+   <file md5sum="adb888baf16aa8cecd271971a7242d4a" name="php_taint.h" role="src" />
+   <file md5sum="644620140a0236ecc7ef29f77eb5477f" name="taint.c" role="src" />
+   <file md5sum="280a4229ff6906cd32f3401323515446" name="config.w32" role="src" />
+   <file md5sum="7063408ddc1c1e699386221cf306b1de" name="CREDITS" role="doc" />
+   <file md5sum="dd34a70236f008af999de817b93a5e3a" name="LICENSE" role="doc" />
+   <file md5sum="c4863d56944e74586806bab9392fde5b" name="EXPERIMENTAL" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>taint</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2026-08-10</date>
+   <version>
+    <release>3.0.0</release>
+    <api>3.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Support PHP 8.0 up to 8.5
+- Dropped PHP 7 support (use taint 2.1.x for PHP 7.x)
+- Propagate the taint mark through the frameless call fast paths (PHP 8.4+)
+- Extended sink coverage (see README for the full list)
+   </notes>
+  </release>
+  <release>
+   <date>2020-04-09</date>
+   <version>
+    <release>2.1.0</release>
+    <api>2.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed conflicts with Xdebug
+   </notes>
+  </release>
+  <release>
+   <date>2019-12-23</date>
+   <version>
+    <release>2.0.6</release>
+    <api>2.0.6</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- PHP-7.4 Compatibility
+   </notes>
+  </release>
+  <release>
+   <date>2018-12-12</date>
+   <version>
+    <release>2.0.5</release>
+    <api>2.0.5</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- PHP-7.3 Compatibility
+   </notes>
+  </release>
+  <release>
+   <date>2017-08-09</date>
+   <version>
+    <release>2.0.4</release>
+    <api>2.0.4</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- PHP-7.2 Compatibility
+   </notes>
+  </release>
+  <release>
+   <date>2017-07-27</date>
+   <version>
+    <release>2.0.3</release>
+    <api>2.0.3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Support str_ireplace
+   - Fixed arg order of mysqli
+   </notes>
+  </release>
+  <release>
+   <date>2016-07-04</date>
+   <version>
+    <release>2.0.2</release>
+    <api>2.0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed build with PHP-7.1
+   </notes>
+  </release>
+  <release>
+   <date>2015-12-12</date>
+   <version>
+    <release>2.0.1</release>
+    <api>2.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed issue #26 (taint deson&apos;t work with PDO)
+   - Added SQLite3 supproted
+   </notes>
+  </release>
+  <release>
+   <date>2015-10-27</date>
+   <version>
+    <release>2.0.0</release>
+    <api>2.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Release taint for PHP7
+   </notes>
+  </release>
+  <release>
+   <date>2013-03-22</date>
+   <version>
+    <release>1.2.2</release>
+    <api>1.2.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed issue #4 (wrong op fetched)
+   - Fixed issue #3 (zend_error_noreturn undefined)
+   </notes>
+  </release>
+  <release>
+   <date>2013-02-26</date>
+   <version>
+    <release>1.2.1</release>
+    <api>1.2.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- release stable version
+   </notes>
+  </release>
+  <release>
+   <date>2012-11-06</date>
+   <version>
+    <release>1.2.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Support tracing dim concat result (phonpeng@vip.qq.com)
+   </notes>
+  </release>
+  <release>
+   <date>2012-09-21</date>
+   <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed bug #63100 (array_walk_recursive behaves wrongly when taint enabled)
+   - Fixed bug #63123 (Hash pointer should be reset at the end of function:php_taint_mark_strings). (274611049 at qq dot com)
+   </notes>
+  </release>
+  <release>
+   <date>2012-06-23</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed bug #62395 (str_replace rewrite error)
+   </notes>
+  </release>
+  <release>
+   <date>2012-05-08</date>
+   <version>
+    <release>0.5.3</release>
+    <api>0.5.3</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Bug #61816 (Segmentation fault)
+   </notes>
+  </release>
+  <release>
+   <date>2012-04-12</date>
+   <version>
+    <release>0.5.2</release>
+    <api>0.5.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed Bug that segfault with global keyword
+   </notes>
+  </release>
+  <release>
+   <date>2012-04-11</date>
+   <version>
+    <release>0.5.2</release>
+    <api>0.5.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed build with php 5.3
+   </notes>
+  </release>
+  <release>
+   <date>2012-04-09</date>
+   <version>
+    <release>0.5.1</release>
+    <api>0.5.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed Bug that segfault with global keyword
+   </notes>
+  </release>
+  <release>
+   <date>2012-03-23</date>
+   <version>
+    <release>0.5.0</release>
+    <api>0.5.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Support more functions(strstr, substr, str_replace etc)
+  - Fixed Bug that tainted info lost if string is parsed by htmlspecialchars
+  - Trigger warning when doing dim assign concat
+   </notes>
+  </release>
+  <release>
+   <date>2012-02-26</date>
+   <version>
+    <release>0.4.1</release>
+    <api>0.4.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed bug #61163 (Passing and using tainted data in specific way crashes)
+   - Fix build while zend_error_noreturn missed
+   </notes>
+  </release>
+  <release>
+   <date>2012-02-20</date>
+   <version>
+    <release>0.4.0</release>
+    <api>0.4.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Support trim/rtrim/ltrim
+  - Doesn&apos;t depend on exposing of zif_* symbols any more
+  - Fixed a potential crash(PHP 5.2)
+  - Fixed bug that concat_assign lost tainted info(PHP 5.4, if the var_ptr is tainted while value is not)
+  - Fixed memory leak in assign_concat
+  - Fixed tests faild of sprintf/trim etc args signature
+  - Fixed compiler warnings
+   </notes>
+  </release>
+  <release>
+   <date>2012-02-18</date>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Taint result of sprintf/vsprintf instead of trigger warnings.
+  - Taint result of explode/implode if the input is tained.
+  - Taint result of strval if the input is tainted
+   </notes>
+  </release>
+  <release>
+   <date>2012-02-18</date>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Support separation caused by send_ref
+  - Support separation caused by send_var
+  - Support checking for method
+  - Support more functions (sqlite, oci, etc)
+   </notes>
+  </release>
+  <release>
+   <date>2012-02-17</date>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Support reference separation
+   </notes>
+  </release>
+  <release>
+   <date>2012-02-16</date>
+   <version>
+    <release>0.0.2</release>
+    <api>0.0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed bug that MINIT din&apos;t respect taint.enable
+  - Fixed bug that Taint doesn&apos;t work with eval
+  - Fixed bug that Taint works wrongly with php 5.3(function arguments)
+  - Support ternary
+   </notes>
+  </release>
+  <release>
+   <date>2012-02-15</date>
+   <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- First release
+   </notes>
+  </release>
+ </changelog>
+</package>
