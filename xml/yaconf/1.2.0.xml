@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.18" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>yaconf</name>
+ <channel>pecl.php.net</channel>
+ <summary>PHP Persistent Configurations Container</summary>
+ <description>Yaconf is a configurations container, it parses ini files, and store the result in PHP when PHP is started</description>
+ <lead>
+  <name>Xinchen Hui</name>
+  <user>laruence</user>
+  <email>laruence@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2026-08-18</date>
+ <time>04:29:04</time>
+ <version>
+  <release>1.2.0</release>
+  <api>1.2.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP</license>
+ <notes>
+- Added sub-directory support: INI files in sub-directories are loaded recursively (up to 16 levels) and namespaced by the directory name (&apos;sub/x.ini&apos; as &apos;sub.x&apos;)
+- Added hot-reload tracking of sub-directories
+- Optimized config storage with compact block (two-phase compaction)
+- Added PHP PIE support
+- A name conflict between an INI file and a same-named directory now raises a warning: the directory wins and the file is skipped
+- Fixed memory leaks when a dot-notation key overrides a scalar value
+- Fixed memory leak on foreach-by-ref over compact block tables with PHP 7.0
+- Changed Yaconf::__debug_info() to report the stored value&apos;s address
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="e02daf9b92adf8e8b69656832f513404" name="tests/inis/002/basic.ini" role="test" />
+   <file md5sum="e7003fcf7e0b5d875af76bbbd5edfe3f" name="tests/inis/002/foo.ini" role="test" />
+   <file md5sum="8df12e04fe8d2b3727f39016eef306ad" name="tests/inis/003/section.ini" role="test" />
+   <file md5sum="9cdaafb98218d218aadc990705ea8a9c" name="tests/inis/003/foo.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/004/subdir/e.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/004/a.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/004/b.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/004/d.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/004/c.ini" role="test" />
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="tests/inis/004/a.ini.OLD" role="test" />
+   <file md5sum="4cd2bd04b2ac3228183644feeebf09d1" name="tests/inis/005/a.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/005/foo.ini" role="test" />
+   <file md5sum="4d31864046c1ef4f3ef6dfa1cb0103aa" name="tests/inis/006/a.ini" role="test" />
+   <file md5sum="3043a38def82794758dc30a1d226095c" name="tests/inis/006/foo.ini" role="test" />
+   <file md5sum="8b934a8a1a2e22811a5ffb1bf234bae9" name="tests/inis/009/a.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/009/foo.ini" role="test" />
+   <file md5sum="8e9e83ccea4d32b71b514d509c15207d" name="tests/inis/010/a.ini" role="test" />
+   <file md5sum="e27959775af61d9b3e5d3d4422b67f64" name="tests/inis/010/foo.ini" role="test" />
+   <file md5sum="e72db7ee319c0b8be54a151fbb2f36f2" name="tests/inis/011/011.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/011/foo.ini" role="test" />
+   <file md5sum="0fee0c85d33828d789dd2906a25a6251" name="tests/inis/issue26/issue26.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/issue26/foo.ini" role="test" />
+   <file md5sum="5453f928e336f3defdeb84eb386d8b22" name="tests/inis/issue05/issue05.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/issue05/foo.ini" role="test" />
+   <file md5sum="cf3442959e8b308a55b01e1e70fcf033" name="tests/inis/issue14/issue14.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/issue14/foo.ini" role="test" />
+   <file md5sum="b8a68cfbda202e40d10f5bdf3de5df3a" name="tests/inis/issue67/a.ini" role="test" />
+   <file md5sum="04d06ffacd364e34e14bcb38cc5465e8" name="tests/inis/issue67/b.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/issue67/foo.ini" role="test" />
+   <file md5sum="b15c4bc1af4441c3e90455fae779940e" name="tests/inis/014/bar/deep/y.ini" role="test" />
+   <file md5sum="d3b53ce1b763bcedb27a026b9f8c3f22" name="tests/inis/014/bar/x.ini" role="test" />
+   <file md5sum="36bef010d82556214b7452a787820030" name="tests/inis/014/foo.ini" role="test" />
+   <file md5sum="7a8b1a64a32896ba7468e2b630f80092" name="tests/inis/015/defaults.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/015/foo.ini" role="test" />
+   <file md5sum="d6511535ad52e3dcdb80264fc7a3fba1" name="tests/inis/016/dot.ini" role="test" />
+   <file md5sum="861d0d35ce211bc0eb3aab0f23996257" name="tests/inis/016/prefix.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/016/foo.ini" role="test" />
+   <file md5sum="636608bc59415bf85cfad85e808d23d2" name="tests/inis/017/sections.ini" role="test" />
+   <file md5sum="5c0c923978e757ac0d316d42650b3425" name="tests/inis/017/inherit.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/017/foo.ini" role="test" />
+   <file md5sum="5b6e770735c02915a9fdaeac5c7655f2" name="tests/inis/018/types.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/018/foo.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/019/foo.ini" role="test" />
+   <file md5sum="db5ecc08b0d9e96c45c15c79bd76cea6" name="tests/inis/021/rinit.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/021/foo.ini" role="test" />
+   <file md5sum="a015d4c5a7d7a512c1831b0074c0ac5e" name="tests/inis/023/sub/child.ini" role="test" />
+   <file md5sum="a4af26293c111ec22537af36c762cbb7" name="tests/inis/023/root.ini" role="test" />
+   <file md5sum="7888a5704904448bdbefb2d21693664a" name="tests/inis/023/foo.ini" role="test" />
+   <file md5sum="87b31df76c8301daeb5b5eedf540c55d" name="tests/inis/024/config.ini" role="test" />
+   <file md5sum="68d4a1a18b61a441d85d4eacd07cea26" name="tests/inis/024/notes.md" role="test" />
+   <file md5sum="4aa4ad2fb8e12c86543fbc6d19a1f4b1" name="tests/inis/024/readme.txt" role="test" />
+   <file md5sum="9c939e6443e88f903a2969130c909eac" name="tests/inis/025/deep.ini" role="test" />
+   <file md5sum="a1dd88fb1b4294e1a59d91cd4f327bdf" name="tests/inis/025/normal.ini" role="test" />
+   <file md5sum="dc104711f001a28c53df3cfb4cc0d5c2" name="tests/inis/026/scalar_parent.ini" role="test" />
+   <file md5sum="4e1c0af9e14acbc11ba2a7819adf43cd" name="tests/inis/027/empty_section.ini" role="test" />
+   <file md5sum="16e4795bacd103d45480b50cefed4b95" name="tests/inis/028/rinit.ini" role="test" />
+   <file md5sum="5c609d8e0c0842ef9fbe95bdb968bf66" name="tests/inis/029/app.ini" role="test" />
+   <file md5sum="093ba2f309832764fe2045adac0f8ea7" name="tests/inis/030/sub/child.ini" role="test" />
+   <file md5sum="4abec1b5badeb8670f2474413d6c2e04" name="tests/inis/030/a.ini" role="test" />
+   <file md5sum="1da694c9347eb6ab49812ac56d645a6d" name="tests/inis/030/app.ini" role="test" />
+   <file md5sum="3e9aa8f4a2f07a383d1ff29655034dd6" name="tests/inis/030/b.ini" role="test" />
+   <file md5sum="78012cd84ba6ab370c723f5166ba3587" name="tests/inis/030/c.ini" role="test" />
+   <file md5sum="555aac2931fbe0df7e8fdc436c9444c4" name="tests/inis/030/d.ini" role="test" />
+   <file md5sum="d594d39135f15702a31916b7b0c9bb87" name="tests/inis/030/e.ini" role="test" />
+   <file md5sum="01e161b08f9ebfadf768a4b2fae47f25" name="tests/inis/030/f.ini" role="test" />
+   <file md5sum="1da694c9347eb6ab49812ac56d645a6d" name="tests/inis/031/app.ini" role="test" />
+   <file md5sum="1109e189e400fd09a04d9b4116692747" name="tests/inis/032/sparse.ini" role="test" />
+   <file md5sum="7f4c7416458c35f8bc190248e406c7dd" name="tests/001.phpt" role="test" />
+   <file md5sum="b4b54cb862873b9b961cd804127dbd2f" name="tests/002.phpt" role="test" />
+   <file md5sum="88988247e76b16b17c2c89651e2c3e01" name="tests/003.phpt" role="test" />
+   <file md5sum="24d44cf5189f8225a82504e8ec15fdda" name="tests/004.phpt" role="test" />
+   <file md5sum="74bd4dd5244e13e0e792bf09dcb5e2e8" name="tests/005.phpt" role="test" />
+   <file md5sum="3f2649071d18730087918e7b5f74dd68" name="tests/006.phpt" role="test" />
+   <file md5sum="fbf1c181ce928e0162fa17d9d160cc76" name="tests/007.phpt" role="test" />
+   <file md5sum="819baa04d9f44c8a8a3e6d8e833a9ef0" name="tests/008.phpt" role="test" />
+   <file md5sum="cd0ac79d291dce46fea93f0f050766d1" name="tests/009.phpt" role="test" />
+   <file md5sum="351459a8c230a5e3cbf57e61ff79c9a4" name="tests/010.phpt" role="test" />
+   <file md5sum="2cde456203fd143f805c14220ff76c4f" name="tests/011.phpt" role="test" />
+   <file md5sum="fbdd9a7fb96b4a38c8a7d3b8615d3121" name="tests/012.phpt" role="test" />
+   <file md5sum="2b838860fb77f138f83e54a75ddb45eb" name="tests/013.phpt" role="test" />
+   <file md5sum="44509b751b58ba9399c7318864a7a519" name="tests/issue19.phpt" role="test" />
+   <file md5sum="ab74f7b99e42fd39aecc488e5a21f6e1" name="tests/issue26.phpt" role="test" />
+   <file md5sum="2180b5b68580a06049cb248d84560676" name="tests/issue67.phpt" role="test" />
+   <file md5sum="355b0273a91798c905920e1fb31a1cf7" name="tests/014.phpt" role="test" />
+   <file md5sum="8c5d0095e38209e3973483333bede297" name="tests/015.phpt" role="test" />
+   <file md5sum="581e856b0c7d99dbc03ba53081b26bdf" name="tests/016.phpt" role="test" />
+   <file md5sum="49e504747eb366e93928ade61a96aac7" name="tests/017.phpt" role="test" />
+   <file md5sum="7c0b05a3c749236e5c4f593dc1ca04ce" name="tests/018.phpt" role="test" />
+   <file md5sum="f4be3cc691f1d7fc3ffcf60b5bfb8527" name="tests/019.phpt" role="test" />
+   <file md5sum="a038b3d7fa481752f35a625378f25dec" name="tests/020.phpt" role="test" />
+   <file md5sum="c01e7f2499ac9c13be30911d905360df" name="tests/021.phpt" role="test" />
+   <file md5sum="eb9c8e23b93c730b362181d8e482e7c9" name="tests/022.phpt" role="test" />
+   <file md5sum="e3f7920613dc9e92c3c464f6f343d71f" name="tests/023.phpt" role="test" />
+   <file md5sum="b0ada83697b3944fb943835b3d940c0e" name="tests/024.phpt" role="test" />
+   <file md5sum="b876874fd5f0017954832bee269c55a7" name="tests/025.phpt" role="test" />
+   <file md5sum="8bb45e1472b72daa3c73eae6486edb90" name="tests/026.phpt" role="test" />
+   <file md5sum="4e088f3e55701881ed29a1f9235d80d7" name="tests/027.phpt" role="test" />
+   <file md5sum="7e94c4bfacb71c84ce668d9bfe5d02d3" name="tests/028.phpt" role="test" />
+   <file md5sum="83536946db238c883a00322d55a6b3dd" name="tests/029.phpt" role="test" />
+   <file md5sum="a4cbcd9b3861522db2210846bf07c497" name="tests/030.phpt" role="test" />
+   <file md5sum="1ba87b66cebb0f5df9ba7f5f3aef2692" name="tests/031.phpt" role="test" />
+   <file md5sum="a372f0c6a8072cb2d494fd7ef19271ff" name="tests/032.phpt" role="test" />
+   <file md5sum="9805f1450cc680bb1adc90d460814907" name="tests/yaconf_server.inc" role="test" />
+   <file md5sum="7db73446ae22cab8646a78d969592ac1" name="config.m4" role="src" />
+   <file md5sum="56adf47c129a3f43a2b26dd24b77fe1e" name="php_yaconf.h" role="src" />
+   <file md5sum="8b9c8da43f9961f9d93a1c449a17a0bb" name="yaconf_arginfo.h" role="src" />
+   <file md5sum="47daef96ef6a7d846d36eab31cebe9dd" name="yaconf_legacy_arginfo.h" role="src" />
+   <file md5sum="dd34a70236f008af999de817b93a5e3a" name="LICENSE" role="doc" />
+   <file md5sum="1b638ce58c24a24eec713c81898f794d" name="CREDITS" role="doc" />
+   <file md5sum="fdb2395e616fe9ac15ddd8a7ef317196" name="yaconf.c" role="src" />
+   <file md5sum="4871bc6063ff482911a1a8860a4856d3" name="config.w32" role="src" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>yaconf</providesextension>
+ <extsrcrelease />
+ <changelog>
+  <release>
+   <date>2026-08-18</date>
+   <version>
+    <release>1.2.0</release>
+    <api>1.2.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Added sub-directory support: INI files in sub-directories are loaded recursively (up to 16 levels) and namespaced by the directory name (&apos;sub/x.ini&apos; as &apos;sub.x&apos;)
+- Added hot-reload tracking of sub-directories
+- Optimized config storage with compact block (two-phase compaction)
+- Added PHP PIE support
+- A name conflict between an INI file and a same-named directory now raises a warning: the directory wins and the file is skipped
+- Fixed memory leaks when a dot-notation key overrides a scalar value
+- Fixed memory leak on foreach-by-ref over compact block tables with PHP 7.0
+- Changed Yaconf::__debug_info() to report the stored value&apos;s address
+   </notes>
+  </release>
+  <release>
+   <date>2026-08-06</date>
+   <version>
+    <release>1.1.3</release>
+    <api>1.1.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed memory leak with PHP 8.1
+- Fixed garbage value being returned when an INI file is unreadable
+- Fixed Yaconf::get() with paths deeper than a scalar value
+- Fixed section inheritance from numeric section names
+- Fixed fatal error and a memory leak in the startup scan
+   </notes>
+  </release>
+  <release>
+   <date>2022-05-19</date>
+   <version>
+    <release>1.1.2</release>
+    <api>1.1.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed ISSUE #67 (parsing bug with PHP8.1)
+   </notes>
+  </release>
+  <release>
+   <date>2021-12-16</date>
+   <version>
+    <release>1.1.1</release>
+    <api>1.1.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed build with PHP8.1
+- Change to using stub.php generated arginfos
+   </notes>
+  </release>
+  <release>
+   <date>2020-03-12</date>
+   <version>
+    <release>1.1.0</release>
+    <api>1.1.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Refactor Yaconf for performance
+- Around 40% time reduced according to benchmark
+   </notes>
+  </release>
+  <release>
+   <date>2019-12-23</date>
+   <version>
+    <release>1.0.8</release>
+    <api>1.0.8</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed PHP-7.4 build
+- Added Yaconf::__debug_info method for debug purpose
+   </notes>
+  </release>
+  <release>
+   <date>2017-12-31</date>
+   <version>
+    <release>1.0.7</release>
+    <api>1.0.7</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed PHP-7.2 build
+- Fixed HT flags
+   </notes>
+  </release>
+  <release>
+   <date>2017-07-27</date>
+   <version>
+    <release>1.0.6</release>
+    <api>1.0.6</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed PHP-7.2 Compatiblity
+   </notes>
+  </release>
+  <release>
+   <date>2017-04-27</date>
+   <version>
+    <release>1.0.5</release>
+    <api>1.0.5</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed issue #26 (Segmentation fault $php_fpm_BIN --daemonize $php_opts)
+   </notes>
+  </release>
+  <release>
+   <date>2016-12-07</date>
+   <version>
+    <release>1.0.4</release>
+    <api>1.0.4</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed issue #20 (Segfault during test suite with 7.1.0GA (TS))
+   </notes>
+  </release>
+  <release>
+   <date>2016-11-30</date>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed ISSUE #19 (Memory leak on foreach and reference)
+   </notes>
+  </release>
+  <release>
+   <date>2016-05-26</date>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed ISSUE #14 (segfault with pop entry)
+   </notes>
+  </release>
+  <release>
+   <date>2015-12-12</date>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Fixed various bugs
+   </notes>
+  </release>
+  <release>
+   <date>2015-10-27</date>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+- Release yaconf for PHP7
+   </notes>
+  </release>
+ </changelog>
+</package>
