@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.10.16" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>maxminddb</name>
+ <channel>pecl.php.net</channel>
+ <summary>Reader for the MaxMind DB file format</summary>
+ <description>This is the PHP extension for reading MaxMind DB files. MaxMind DB is a binary file format that stores data indexed by IP address subnets (IPv4 or IPv6).</description>
+ <lead>
+  <name>Greg Oschwald</name>
+  <user>oschwald</user>
+  <email>goschwald@maxmind.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2026-09-10</date>
+ <time>22:02:21</time>
+ <version>
+  <release>1.14.0</release>
+  <api>1.14.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://github.com/maxmind/MaxMind-DB-Reader-php/blob/main/LICENSE">Apache License 2.0</license>
+ <notes>
+* Bounded the resources that the pure PHP decoder spends on a single lookup. A
+  crafted database could nest data-section pointers to shared targets so that
+  decoding one record cost exponential time and memory, or point many times at
+  one large value so that the decoder copied far more data than the file holds.
+  The decoder now follows the Reader Resource Limits section of the MaxMind DB
+  specification. Each lookup is limited to 65,536 values, 512 levels of
+  nesting, and 2 MiB of string and bytes payload.
+  * Exceeding a limit throws an `InvalidDatabaseException`.
+  * Opening a database whose metadata exceeds a limit throws the same
+    exception.
+  * A scalar that declares more than 16 bytes, the width of the widest
+    fixed-width type, is rejected as invalid data.
+* The bundled libmaxminddb used by `--with-maxminddb-bundled` builds of the
+  extension now applies the same decoder limits. The extension throws an
+  `InvalidDatabaseException` when a lookup exceeds them.
+* The pure PHP reader is about 40% faster on City lookups. It no longer seeks
+  before a read that continues where the last one ended, and it checks read
+  lengths with `strlen()` instead of `ftell()`.
+* The Windows build configuration now accepts either `libmaxminddb.lib` or
+  `maxminddb.lib` when building the extension. The `lib` prefix was removed
+  in libmaxminddb 1.6.0, but the libmaxminddb that PHP publishes for Windows
+  builds is still 1.5.0, which uses the prefixed name. Pull request by
+  Jean-Baptiste Nahan. GitHub #231.
+* Replaced `XtOffsetOf()` with `offsetof()`. The `XtOffsetOf()` alias has
+  been removed in PHP 8.6. Pull request by Remi Collet. GitHub #252.
+* The extension can now be built from a bundled copy of libmaxminddb, on
+  both Unix-like systems and Windows, by passing `--with-maxminddb-bundled`
+  to `configure` (or to `configure.bat` on Windows). This produces an
+  extension that does not depend on a system libmaxminddb, which is a
+  prerequisite for distributing precompiled builds; on Windows it also
+  replaces the 1.5.0 import library that PHP publishes for Windows builds.
+  The default is unchanged: without the flag, the extension links against a
+  system libmaxminddb as before. GitHub #265.
+* The `conflict` constraint on `ext-maxminddb` in `composer.json` is again
+  updated when a release is cut. The substitution that maintains it stopped
+  matching in April 2024, when the constraint&apos;s separator changed from a comma
+  to `||`, so the constraint has read `&lt;1.11.1` through four releases. Users of
+  the C extension should note the effect of reviving it: `ext-maxminddb` is a
+  Composer platform package, so this release conflicts with an older compiled
+  extension and `composer update` will require upgrading the two together.
+  GitHub #266.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="8251507e4949ac272bf4cc8503a32f1e" name="ext/tests/001-load.phpt" role="test" />
+   <file md5sum="264e0cadaead64525696692c7ef0ea68" name="ext/tests/002-final.phpt" role="test" />
+   <file md5sum="ef72d5181f1d40f2135fa8c95705b134" name="ext/tests/003-open-basedir.phpt" role="test" />
+   <file md5sum="8cda642784056ebbc898b4292d6d10dc" name="ext/config.m4" role="src" />
+   <file md5sum="fe51c1e3aab4c20f99bea44b61fcae67" name="ext/config.w32" role="src" />
+   <file md5sum="be6612ea16976e20c4f4cbfd5c1a57d3" name="ext/maxminddb.c" role="src" />
+   <file md5sum="98f3ab3542461e80f9dc8d7e8cdd1c8b" name="ext/php_maxminddb.h" role="src" />
+   <file md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="doc" />
+   <file md5sum="f324cee74d330409c7582d5f243cfdff" name="CHANGELOG.md" role="doc" />
+   <file md5sum="6dabf54840e1ccfd7b5df221dce4c7ec" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>maxminddb</providesextension>
+ <extsrcrelease />
+</package>
