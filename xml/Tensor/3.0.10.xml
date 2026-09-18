@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.13" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>tensor</name>
+ <channel>pecl.php.net</channel>
+ <summary>Scientific computing for the PHP language.</summary>
+ <description>A library and extension that provides objects for scientific computing in PHP.</description>
+ <lead>
+  <name>Andrew DalPino</name>
+  <user>andrewdalpino</user>
+  <email>none@example.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2026-09-18</date>
+ <time>00:38:30</time>
+ <version>
+  <release>3.0.10</release>
+  <api>3.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://github.com/RubixML/Tensor/blob/master/LICENSE">MIT</license>
+ <notes>
+- Update to Zephir 0.23, adds support for PHP 8.5
+- Fixed Matrix and Vector build() validation
+- Fixed bug in Matrix row variance
+- Fixed LU decomposition pivot selection, singular matrices now throw a RuntimeException
+- Fixed undefined array key in Vector and Matrix quantile at q=1.0 or with a single element
+- Fix extension rank() operation
+- Fixed reduce() callback argument order inconsistency between Matrix and Vector
+- Fix covariance() summation axis
+- Fixed Vector notEqualMatrix throwing InvalidArgumentException instead of DimensionalityMismatch
+- Fixed memory leak in the extension on the failure path of inverse, pseudoinverse
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="64cad1408cf56f880a4d0f910f667e19" name="ext/include/arithmetic.c" role="src" />
+   <file md5sum="0c263986adb8f0709c00f3c542e0e8ae" name="ext/include/arithmetic.h" role="src" />
+   <file md5sum="f990066f24f2552a4eb35cc08cb19d52" name="ext/include/comparison.c" role="src" />
+   <file md5sum="8b1acdfce927936890bbd406e523cab6" name="ext/include/comparison.h" role="src" />
+   <file md5sum="a8674f14e4f3a56188cde8e4cefdcdd9" name="ext/include/linear_algebra.c" role="src" />
+   <file md5sum="e6a71c22862097bb3caa5eda05c34877" name="ext/include/linear_algebra.h" role="src" />
+   <file md5sum="48fc709e953ba42128eceab17d3635ab" name="ext/include/settings.c" role="src" />
+   <file md5sum="fb1ef1aef1ad093aa43988a3da5a8784" name="ext/include/settings.h" role="src" />
+   <file md5sum="1af94cd29fed55027439786a98509d42" name="ext/include/signal_processing.c" role="src" />
+   <file md5sum="8a38f51bdd55391c2a8554bbfdd7213f" name="ext/include/signal_processing.h" role="src" />
+   <file md5sum="78cf5aa420250b62544bd611ec1e18bf" name="ext/kernel/array.c" role="src" />
+   <file md5sum="c6d24408c79c1a924d9ccf2b0b229007" name="ext/kernel/array.h" role="src" />
+   <file md5sum="1420982d26209c6d21eab977fcccbeef" name="ext/kernel/backtrace.c" role="src" />
+   <file md5sum="9e406534a149efe3d3b31a89324c142d" name="ext/kernel/backtrace.h" role="src" />
+   <file md5sum="08bcf78017385897c884ff577e8dba91" name="ext/kernel/concat.c" role="src" />
+   <file md5sum="feca94a808dc1ea675f85d2af9c003fb" name="ext/kernel/concat.h" role="src" />
+   <file md5sum="2c2855433e7e13aeaa6991dd47a85630" name="ext/kernel/debug.c" role="src" />
+   <file md5sum="2237798b3f0f482eb550747878cd8487" name="ext/kernel/debug.h" role="src" />
+   <file md5sum="b7947130cd0b21059ccf53dc460171a6" name="ext/kernel/exception.c" role="src" />
+   <file md5sum="562a495e8771bb31310c1aeabb72329e" name="ext/kernel/exception.h" role="src" />
+   <file md5sum="addde7369eddf18e27f4d816e4815f57" name="ext/kernel/exit.c" role="src" />
+   <file md5sum="3e08b9184269e978099ffd1c3d720425" name="ext/kernel/exit.h" role="src" />
+   <file md5sum="c2737684147543990e7202978d83183b" name="ext/kernel/fcall_internal.h" role="src" />
+   <file md5sum="be8db24cffcddba96a4aac888965781a" name="ext/kernel/fcall.c" role="src" />
+   <file md5sum="230a7aa99e175bd1bdfa56a1d45c8ccd" name="ext/kernel/fcall.h" role="src" />
+   <file md5sum="313c68ed8c8b3e0335a7f78e5dd0470b" name="ext/kernel/file.c" role="src" />
+   <file md5sum="2e07371c91e925775f0e709a05bd9c7d" name="ext/kernel/file.h" role="src" />
+   <file md5sum="b027efceabfc9c106fea9e213b5e5675" name="ext/kernel/filter.c" role="src" />
+   <file md5sum="a86f102b0751f333e878e2caf7fe5b7b" name="ext/kernel/filter.h" role="src" />
+   <file md5sum="b424bb5f934f417473dfc0b44cf212d8" name="ext/kernel/globals.h" role="src" />
+   <file md5sum="047466cdcb90136744aed27c6ef866c3" name="ext/kernel/iterator.c" role="src" />
+   <file md5sum="0295e6ba9ea61db6d3ed123067e2a0a9" name="ext/kernel/iterator.h" role="src" />
+   <file md5sum="0e30c198fb29c4bfaa32be44be95d9ef" name="ext/kernel/main.c" role="src" />
+   <file md5sum="029ddf5909115e75cc121faae69f2201" name="ext/kernel/main.h" role="src" />
+   <file md5sum="e533b900bd959000bdfcfaf1746336de" name="ext/kernel/math.c" role="src" />
+   <file md5sum="36bc5d97d1319d7a630e9d654b174356" name="ext/kernel/math.h" role="src" />
+   <file md5sum="5bf2c184afb2c658230b66ce0902ea77" name="ext/kernel/memory.c" role="src" />
+   <file md5sum="a8689c1032449cd8e92eda39e2942394" name="ext/kernel/memory.h" role="src" />
+   <file md5sum="35ff785dc358e2acfc3aa1c0f0a32d3d" name="ext/kernel/object.c" role="src" />
+   <file md5sum="178dc4d68da8d88bec5837ae4e3c9f59" name="ext/kernel/object.h" role="src" />
+   <file md5sum="27bb1b2b60590a6ed70a308e8a5fb5fd" name="ext/kernel/operators.c" role="src" />
+   <file md5sum="0e9229fc249150f175b97f65ad759114" name="ext/kernel/operators.h" role="src" />
+   <file md5sum="2dad3ec1ee5207a519354289bfc43a04" name="ext/kernel/require.c" role="src" />
+   <file md5sum="5e1533b7d75f3c8e3305dca3f9806a97" name="ext/kernel/require.h" role="src" />
+   <file md5sum="cfa6724f4e0122a24c5d5cfdb4c9e7c5" name="ext/kernel/string.c" role="src" />
+   <file md5sum="5e2a33f73cf6027aac975e631f990c54" name="ext/kernel/string.h" role="src" />
+   <file md5sum="95714e2cfc892754344182e0ede64da2" name="ext/kernel/time.c" role="src" />
+   <file md5sum="4423d2f45a79e5fd99cd72c319d6e313" name="ext/kernel/time.h" role="src" />
+   <file md5sum="d04eacdb2d04e98be9c629afd172eede" name="ext/kernel/variables.c" role="src" />
+   <file md5sum="32dea1ebb19742dc8784cc0068f51890" name="ext/kernel/variables.h" role="src" />
+   <file md5sum="39fbced5b3d5511bfb38a9407755f8e7" name="ext/tensor/decompositions/cholesky.zep.c" role="src" />
+   <file md5sum="a522bb8bb067a850465097eb2f63a620" name="ext/tensor/decompositions/cholesky.zep.h" role="src" />
+   <file md5sum="f775724363badd95ff3df71bcecb5b2d" name="ext/tensor/decompositions/eigen.zep.c" role="src" />
+   <file md5sum="abe40352da2571acdda4938fa9325a5d" name="ext/tensor/decompositions/eigen.zep.h" role="src" />
+   <file md5sum="f0add6c5822a7edc5017b0a7aea9daf1" name="ext/tensor/decompositions/lu.zep.c" role="src" />
+   <file md5sum="7eebd897cf440e91f1d8d8c0bdafd7bf" name="ext/tensor/decompositions/lu.zep.h" role="src" />
+   <file md5sum="8ad001b2eab4a6fad229dd6ddd2a367f" name="ext/tensor/decompositions/svd.zep.c" role="src" />
+   <file md5sum="5d877ec725715b429ecc3014f3e04013" name="ext/tensor/decompositions/svd.zep.h" role="src" />
+   <file md5sum="46ab82374b8f6db2b80b960651f9a139" name="ext/tensor/exceptions/dimensionalitymismatch.zep.c" role="src" />
+   <file md5sum="f4579d02a96c9acd8dfafd33e4e99d5d" name="ext/tensor/exceptions/dimensionalitymismatch.zep.h" role="src" />
+   <file md5sum="823d4c6b2c47ca45618c3121ce8960cb" name="ext/tensor/exceptions/invalidargumentexception.zep.c" role="src" />
+   <file md5sum="0d6eac0bcb447b7b9624c4775e1d5643" name="ext/tensor/exceptions/invalidargumentexception.zep.h" role="src" />
+   <file md5sum="76dc255437d9fbfb12f998f872bb28a4" name="ext/tensor/exceptions/runtimeexception.zep.c" role="src" />
+   <file md5sum="ab7401796b7ca845025b96dd86c514af" name="ext/tensor/exceptions/runtimeexception.zep.h" role="src" />
+   <file md5sum="4756ce3ecb67fc076460c6bade38f969" name="ext/tensor/exceptions/tensorexception.zep.c" role="src" />
+   <file md5sum="3419e8375fab0d9a607c2f2bd5fe938e" name="ext/tensor/exceptions/tensorexception.zep.h" role="src" />
+   <file md5sum="43454f77589f379e968058a203d512db" name="ext/tensor/reductions/ref.zep.c" role="src" />
+   <file md5sum="7c71cf0e69b08d8c8422ad62c96f9a93" name="ext/tensor/reductions/ref.zep.h" role="src" />
+   <file md5sum="838e0e8b99043ec18237e35b422f71be" name="ext/tensor/reductions/rref.zep.c" role="src" />
+   <file md5sum="84e42d99bd7d9ddab33648a3e1f9c4da" name="ext/tensor/reductions/rref.zep.h" role="src" />
+   <file md5sum="d0eadd24b29cf6b72cb532cf472d329e" name="ext/tensor/algebraic.zep.c" role="src" />
+   <file md5sum="9d14fa6731b6f890532459002b428467" name="ext/tensor/algebraic.zep.h" role="src" />
+   <file md5sum="49a7e4ae771108a2d0708f3278e32b6a" name="ext/tensor/arithmetic.zep.c" role="src" />
+   <file md5sum="f1c5ba65473d2745456642489a9f6a1a" name="ext/tensor/arithmetic.zep.h" role="src" />
+   <file md5sum="ed548e8bfc9e84be3e3802bcc83cebf8" name="ext/tensor/arraylike.zep.c" role="src" />
+   <file md5sum="f6f558fdd8561f9e6db11ab033a86b8b" name="ext/tensor/arraylike.zep.h" role="src" />
+   <file md5sum="15f6955c094e738cf4c180cb78d3656d" name="ext/tensor/columnvector.zep.c" role="src" />
+   <file md5sum="20af7842d5a5d975154d6e3bcc684709" name="ext/tensor/columnvector.zep.h" role="src" />
+   <file md5sum="142205d577dd85d6518406b20f571ec3" name="ext/tensor/comparable.zep.c" role="src" />
+   <file md5sum="4dec6a4718eb5f29c0390d532b690e74" name="ext/tensor/comparable.zep.h" role="src" />
+   <file md5sum="cc943635fcffa0d736058d6519a34803" name="ext/tensor/matrix.zep.c" role="src" />
+   <file md5sum="77a1a0d0cb6f8a25888d306bdd835cb1" name="ext/tensor/matrix.zep.h" role="src" />
+   <file md5sum="ea024ce73689498c03dbce4f7c1cd59e" name="ext/tensor/settings.zep.c" role="src" />
+   <file md5sum="9fdcbfad802f44f87fa55c9eabbc267a" name="ext/tensor/settings.zep.h" role="src" />
+   <file md5sum="0276c4edd65497716867251c9aad5a8d" name="ext/tensor/special.zep.c" role="src" />
+   <file md5sum="79d67200d724ba9df37c819c6b1a1a1c" name="ext/tensor/special.zep.h" role="src" />
+   <file md5sum="b85c49dc458d5366b8b6020f13d70d6c" name="ext/tensor/statistical.zep.c" role="src" />
+   <file md5sum="ec5523be65391c90a88bd0b66a1db4db" name="ext/tensor/statistical.zep.h" role="src" />
+   <file md5sum="22fa0e91f6dc219e36281cc37ec48aa6" name="ext/tensor/tensor.zep.c" role="src" />
+   <file md5sum="ac8b097469b753b5e65417a3879e665f" name="ext/tensor/tensor.zep.h" role="src" />
+   <file md5sum="138fc547ff35055a74f68442125a8645" name="ext/tensor/trigonometric.zep.c" role="src" />
+   <file md5sum="21cc53a6564e21b55454e557d54af921" name="ext/tensor/trigonometric.zep.h" role="src" />
+   <file md5sum="dcd9c9ebb5c0a80c3cfd890918c414d2" name="ext/tensor/vector.zep.c" role="src" />
+   <file md5sum="77896965042b22f018b651d6342da734" name="ext/tensor/vector.zep.h" role="src" />
+   <file md5sum="b7d29143ee39d690dafdeb916926f500" name="ext/clean" role="src" />
+   <file md5sum="3a13d9b634f118c3d7d3c12488a7ded1" name="ext/config.m4" role="src" />
+   <file md5sum="5f70dc55d0a9ff8df496d516511c257f" name="ext/config.w32" role="src" />
+   <file md5sum="e4fc9b9616ec5802c672a59ee06a97f9" name="ext/ext_config.h" role="src" />
+   <file md5sum="26fdec293f71bb3a1ba938ae51222163" name="ext/ext.h" role="src" />
+   <file md5sum="6ef67b2ba7b0ad199c87c74e89fbf93e" name="ext/install" role="src" />
+   <file md5sum="c5213777781692f87863f6fa4caf5f6c" name="ext/php_ext.h" role="src" />
+   <file md5sum="72b38f5f6fe26710232011c1d81706cb" name="ext/php_tensor.h" role="src" />
+   <file md5sum="3dab7b70d07d67739d61000bcdff8600" name="ext/tensor.c" role="src" />
+   <file md5sum="a6bcca8bb4ce104f93529fc5651ce495" name="ext/tensor.h" role="src" />
+   <file md5sum="c05ac045af141f44134f0656e12ba784" name="LICENSE" role="doc" />
+   <file md5sum="a070c29c60386a2ad5ee1545d95b0e74" name="CHANGELOG.md" role="doc" />
+   <file md5sum="8d3f1d587f0e968c96ca6e5a72f95f21" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>8.0.0</min>
+    <max>8.5.99</max>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>tensor</providesextension>
+ <extsrcrelease />
+</package>
