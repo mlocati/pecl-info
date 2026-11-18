@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<package packagerversion="1.10.16" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>maxminddb</name>
+ <channel>pecl.php.net</channel>
+ <summary>Reader for the MaxMind DB file format</summary>
+ <description>This is the PHP extension for reading MaxMind DB files. MaxMind DB is a binary file format that stores data indexed by IP address subnets (IPv4 or IPv6).</description>
+ <lead>
+  <name>Greg Oschwald</name>
+  <user>oschwald</user>
+  <email>goschwald@maxmind.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2026-11-17</date>
+ <time>21:46:48</time>
+ <version>
+  <release>1.15.0</release>
+  <api>1.15.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="https://github.com/maxmind/MaxMind-DB-Reader-php/blob/main/LICENSE">Apache License 2.0</license>
+ <notes>
+* The pure PHP reader now rejects non-string map keys with
+  `InvalidDatabaseException` instead of a `TypeError`, a warning, or an
+  implicit type conversion.
+* The pure PHP reader now rejects malformed metadata with
+  `InvalidDatabaseException` instead of a `TypeError`, a warning, or an
+  implicit type conversion. Missing optional `languages` and `description`
+  fields default to empty arrays.
+* Missing gmp/bcmath support and offsets that exceed the platform limit now
+  throw `MaxMind\Db\Reader\UnsupportedPlatformException`. It extends
+  `RuntimeException`, so existing catches continue to work.
+* The pure PHP reader also throws `UnsupportedPlatformException` when the
+  metadata node count or the start of the data section exceeds the platform&apos;s
+  integer limit. These cases no longer produce `InvalidDatabaseException` or
+  overflow into a `TypeError`.
+* `phpinfo()` and `php --ri maxminddb` now show whether the extension was built
+  with the bundled libmaxminddb or links a system library. The
+  `libmaxminddb library version` row reads, for example, `1.14.0 (bundled)` or
+  `1.9.1 (system)`. Pull request by Remi Collet. GitHub #289.
+* The PHPDoc of the pure PHP reader now lists the exceptions that its methods
+  can throw:
+  * The `MaxMind\Db\Reader` constructor, `get()`, and `getWithPrefixLen()`
+    declare `UnsupportedPlatformException`. The reader throws it when an
+    integer needs gmp or bcmath and neither is installed, or a data offset
+    exceeds the platform limit.
+  * The constructor declares `UnexpectedValueException`.
+  * `close()` declares `BadMethodCallException` in place of `Exception`.
+    `metadata()` no longer declares `InvalidArgumentException`, which it
+    cannot throw.
+  * `MaxMind\Db\Reader\Decoder::decode()` and `MaxMind\Db\Reader\Util::read()`
+    declare their exceptions.
+* The bundled libmaxminddb used by `--with-maxminddb-bundled` builds of the
+  extension is now 1.14.1. This fixes a build failure with `-Werror` on
+  platforms where `ssize_t` is 32 bits, such as i686.
+* The classes in the pure PHP reader are now marked `@final`. They will be
+  `final` in the next major version. Static analyzers such as PHPStan report
+  a class that extends them.
+* On 64-bit Windows, the extension returned `uint32` and `uint64` values
+  from 2^31 to `PHP_INT_MAX` as strings. It now returns them as integers.
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="8251507e4949ac272bf4cc8503a32f1e" name="ext/tests/001-load.phpt" role="test" />
+   <file md5sum="264e0cadaead64525696692c7ef0ea68" name="ext/tests/002-final.phpt" role="test" />
+   <file md5sum="ef72d5181f1d40f2135fa8c95705b134" name="ext/tests/003-open-basedir.phpt" role="test" />
+   <file md5sum="716fcc3f47b6d897050e30a20975b9bf" name="ext/config.m4" role="src" />
+   <file md5sum="c795d9464f376a9dc2468a14c53625d9" name="ext/config.w32" role="src" />
+   <file md5sum="ad9a34f9df214d7d57cc9001a566de98" name="ext/maxminddb.c" role="src" />
+   <file md5sum="0d42eee20ea8502a16b468e1871f19b8" name="ext/php_maxminddb.h" role="src" />
+   <file md5sum="3b83ef96387f14655fc854ddc3c6bd57" name="LICENSE" role="doc" />
+   <file md5sum="ba5480e393e2328dd5664f619e246748" name="CHANGELOG.md" role="doc" />
+   <file md5sum="ecd4689bcff8adbb1eed7839f024b63f" name="README.md" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>maxminddb</providesextension>
+ <extsrcrelease />
+</package>
